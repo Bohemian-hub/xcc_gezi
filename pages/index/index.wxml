@@ -1,14 +1,14 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2020-11-09 14:47:10
+ * @LastEditTime: 2020-11-09 16:23:40
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.wxml
 -->
 <view class='bg_box'>
     <image
-        src='https://xylife.oss-cn-zhangjiakou.aliyuncs.com/xcc_bg/Zoetropic%202_1.gif?Expires=1604908007&OSSAccessKeyId=TMP.3KiowN8uAYXBRgZA9CuYkKgrv2tW7wDSNpKpTdyMMmgv17hycafndQemix18fKfQ8msv5d4No5rbnd48qG3X9rkjPgGfqN&Signature=odpdxSHI4dAGbDgeCzzriuUt9io%3D&versionId=CAEQHhiBgMC54fatrRciIGRlM2NmNmVlMzQxYjRlNmM4NWNlMDVkZDFkYWQzZThl&response-content-type=application%2Foctet-stream'>
+        src='https://xylife.oss-cn-zhangjiakou.aliyuncs.com/xcc_bg/Zoetropic%202_1.gif?Expires=1604911957&OSSAccessKeyId=TMP.3KiowN8uAYXBRgZA9CuYkKgrv2tW7wDSNpKpTdyMMmgv17hycafndQemix18fKfQ8msv5d4No5rbnd48qG3X9rkjPgGfqN&Signature=QOgKSkJSsApdy8%2BvF6hTaj8E4y4%3D&versionId=CAEQHhiBgMC54fatrRciIGRlM2NmNmVlMzQxYjRlNmM4NWNlMDVkZDFkYWQzZThl&response-content-type=application%2Foctet-stream'>
     </image>
 </view>
 
@@ -43,8 +43,58 @@
 
     <!-- 右下角的天气预报 -->
     <view class="card-right-bottom">
+        <view class="weather_panel">
+            <view class="weather_panel_left">
+                <image class="weather_panel_left_weather_icon" src="../../image_icon/weather/阵雨.png" mode="widthFix"
+                    lazy-load="false" binderror="" bindload="" />
+            </view>
+            <view class="weather_panel_right">
+                <view class="weather_panel_right_temperature">
+                    27℃
+                </view>
+                <view class="weather_panel_right_condition">
+                    晴，空气优
+                </view>
 
+            </view>
+
+        </view>
+        <view class="weather_location">
+            <image class="weather_location_icon" src="../../image_icon/location.png" mode="widthFix" lazy-load="false"
+                binderror="" bindload="" />
+            <text class="weather_location_position" selectable="false" space="false" decode="false">
+                西昌学院北校区
+            </text>
+        </view>
+    </view>
+</view>
+
+<!-- 中间的菜单区域可以开始做了 -->
+
+
+<view class="menu_panel">
+    <view class="menu_title">
+        Function
+    </view>
+    <view class="menu_left">
+        表白墙
     </view>
 
+    <view class="menu_middle">
+        <view class="menu_middle_up">
+            努力
+        </view>
+        <view class="menu_middle_down">
+            生活
+        </view>
+    </view>
 
+    <view class="menu_right">
+        <view class="menu_right_up">
+            好物
+        </view>
+        <view class="menu_right_down">
+            分享
+        </view>
+    </view>
 </view>

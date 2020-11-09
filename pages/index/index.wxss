@@ -113,3 +113,132 @@
   font-weight: 600;
   width: 100%;
 }
+
+/* 天气区域 */
+.weather_panel{
+  width: 100%;
+  height: 60%;
+  background-color: rgba(255, 255, 255, 0.432);
+}
+.weather_panel_left{
+  float: left;
+  width: 50%;
+  height: 100%;
+/*   background-color: rgb(61, 91, 117); */
+}
+.weather_panel_right{
+  float: left;
+  width: 50%;
+  height: 100%;
+/*   background-color: rgb(161, 192, 21); */
+}
+.weather_panel_right_temperature{
+  font-size: 37rpx;
+  text-shadow: 6rpx 6rpx 10rpx rgb(112, 112, 112);
+  margin-left: 10rpx;
+}
+.weather_panel_right_condition{
+  line-height: 50rpx;
+  margin-left: 10rpx;
+  font-size: 22rpx;
+  text-shadow: 6rpx 6rpx 10rpx rgb(112, 112, 112);
+}
+.weather_panel_left_weather_icon{
+  width: 85rpx;
+  margin: 10rpx;
+  margin-left: 30rpx;
+}
+.weather_location{
+  width: 100%;
+  height: 40%;
+/*   background-color: rgba(92, 50, 50, 0.432); */
+}
+.weather_location_icon{
+  float: left;
+  width: 40rpx;
+  margin-top: 14rpx;
+  margin-left: 30rpx;
+}
+.weather_location_position{
+  float: left;
+  line-height: 25rpx;
+  font-size: 28rpx;
+}
+.menu_panel{
+  width: 90%;
+  height: 280rpx;
+  margin: 50rpx auto;
+}
+.menu_title{
+  font-size: 50rpx;
+  font-weight: 600;
+  height: 80rpx;
+  text-shadow: 6rpx 6rpx 20rpx rgb(117, 117, 117);
+
+}
+.menu_left{
+  width: 30%;
+  margin-right: 5%;
+  height: 200rpx;
+  float: left;
+  border-radius: 20rpx;
+  text-align: center;
+  line-height: 200rpx;
+  color: aliceblue;
+  background-color: cornflowerblue;
+  box-shadow: 10rpx 10rpx 20rpx rgb(131, 131, 131);
+
+}
+.menu_middle{
+  width: 30%;
+  margin-right: 5%;
+  height: 200rpx;
+  float: left;
+  border-radius: 20rpx;
+  color: aliceblue;
+}
+.menu_middle_up{
+height: 90rpx;
+margin-bottom: 20rpx;
+background-color: rgb(20, 192, 14);
+border-radius: 20rpx;
+text-align: center;
+line-height: 90rpx;
+box-shadow: 10rpx 10rpx 20rpx rgb(131, 131, 131);
+
+}
+.menu_middle_down{
+  height: 90rpx;
+  background-color: rgb(196, 193, 39);
+  border-radius: 20rpx;
+  text-align: center;
+  line-height: 90rpx;
+  box-shadow: 10rpx 10rpx 20rpx rgb(131, 131, 131);
+
+  }
+.menu_right{
+  width: 30%;
+  height: 200rpx;
+  float: left;
+  border-radius: 20rpx;
+  color: aliceblue;
+}
+.menu_right_up{
+  height: 90rpx;
+  margin-bottom: 20rpx;
+  background-color: rgb(223, 13, 188);
+  border-radius: 20rpx;
+  text-align: center;
+  line-height: 90rpx;
+  box-shadow: 10rpx 10rpx 20rpx rgb(131, 131, 131);
+
+  }
+  .menu_right_down{
+    height: 90rpx;
+    background-color: rgb(59, 3, 65);
+    border-radius: 20rpx;
+    text-align: center;
+    line-height: 90rpx;
+  box-shadow: 10rpx 10rpx 20rpx rgb(131, 131, 131);
+
+    }
