@@ -32,6 +32,7 @@
 .content_toptilte > text {
   font-weight: 600;
   font-size: 18px;
+  color: aliceblue;
 }
 
 /* 区域二 */
