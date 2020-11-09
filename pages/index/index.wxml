@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2020-11-09 16:23:40
+ * @LastEditTime: 2020-11-09 16:33:40
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.wxml
@@ -85,7 +85,7 @@
             努力
         </view>
         <view class="menu_middle_down">
-            生活
+            Life
         </view>
     </view>
 
