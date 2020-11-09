@@ -1,100 +1,193 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2020-11-09 16:33:40
+ * @LastEditTime: 2020-11-09 23:00:09
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.wxml
 -->
-<view class='bg_box'>
-    <image
-        src='https://xylife.oss-cn-zhangjiakou.aliyuncs.com/xcc_bg/Zoetropic%202_1.gif?Expires=1604911957&OSSAccessKeyId=TMP.3KiowN8uAYXBRgZA9CuYkKgrv2tW7wDSNpKpTdyMMmgv17hycafndQemix18fKfQ8msv5d4No5rbnd48qG3X9rkjPgGfqN&Signature=QOgKSkJSsApdy8%2BvF6hTaj8E4y4%3D&versionId=CAEQHhiBgMC54fatrRciIGRlM2NmNmVlMzQxYjRlNmM4NWNlMDVkZDFkYWQzZThl&response-content-type=application%2Foctet-stream'>
-    </image>
-</view>
+<view class="page_all">
 
-<view class="content_toptilte">
-    <text>Hi! {{userInfo.nickName}} </text>
-</view>
 
-<view class="content_niceday">
-    <!-- 左侧的one区域 -->
-    <view class="cardleft">
-        <image class="cardleft_bg" src="{{imageone_src}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false"
-            binderror="" bindload="" />
-        <view class="cardleft_date">
-            {{one_date}} {{one_week}}
-        </view>
-        <view class="cardleft_text" style="font-size:{{sentence_size}}">
-            {{sentence}}
-        </view>
-    </view>
-    <!-- 右上方的问候区域 -->
-    <view class="card-right-top">
-        <view class="card_right_data_hello">
-            Hello,{{student_name}}何东
-        </view>
-        <view class="card_right_data_wenhou">
-            {{greeting}}
-        </view>
-        <view class="card_right_data_time">
-            {{now_time}}
-        </view>
+
+    <view class='bg_box'>
+        <image class="bg1" src='https://s1.ax1x.com/2020/11/09/BbKc2d.png'>
+        </image>
+        <image class="bg2" src="https://s1.ax1x.com/2020/11/09/BbKmgs.png">
+        </image>
     </view>
 
-    <!-- 右下角的天气预报 -->
-    <view class="card-right-bottom">
-        <view class="weather_panel">
-            <view class="weather_panel_left">
-                <image class="weather_panel_left_weather_icon" src="../../image_icon/weather/阵雨.png" mode="widthFix"
-                    lazy-load="false" binderror="" bindload="" />
-            </view>
-            <view class="weather_panel_right">
-                <view class="weather_panel_right_temperature">
-                    27℃
-                </view>
-                <view class="weather_panel_right_condition">
-                    晴，空气优
-                </view>
+    <view class="content_toptilte">
+        <text>Hi! {{userInfo.nickName}} </text>
+    </view>
 
-            </view>
-
-        </view>
-        <view class="weather_location">
-            <image class="weather_location_icon" src="../../image_icon/location.png" mode="widthFix" lazy-load="false"
+    <view class="content_niceday">
+        <!-- 左侧的one区域 -->
+        <view class="cardleft">
+            <image class="cardleft_bg" src="{{imageone_src}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false"
                 binderror="" bindload="" />
-            <text class="weather_location_position" selectable="false" space="false" decode="false">
-                西昌学院北校区
-            </text>
+            <view class="cardleft_date">
+                {{one_date}} {{one_week}}
+            </view>
+            <view class="cardleft_text" style="font-size:{{sentence_size}}">
+                {{sentence}}
+            </view>
+        </view>
+        <!-- 右上方的问候区域 -->
+        <view class="card-right-top">
+            <view class="card_right_data_hello">
+                Hello,{{student_name}}何东
+            </view>
+            <view class="card_right_data_wenhou">
+                {{greeting}}
+            </view>
+            <view class="card_right_data_time">
+                {{now_time}}
+            </view>
+        </view>
+
+        <!-- 右下角的天气预报 -->
+        <view class="card-right-bottom">
+            <view class="weather_panel">
+                <view class="weather_panel_left">
+                    <image class="weather_panel_left_weather_icon" src="https://s1.ax1x.com/2020/11/09/BH8B01.png"
+                        mode="widthFix" lazy-load="true" binderror="" bindload="" />
+                </view>
+                <view class="weather_panel_right">
+                    <view class="weather_panel_right_temperature">
+                        27℃
+                    </view>
+                    <view class="weather_panel_right_condition">
+                        晴，空气优
+                    </view>
+
+                </view>
+
+            </view>
+            <view class="weather_location">
+                <image class="weather_location_icon" src="../../image_icon/location.png" mode="widthFix"
+                    lazy-load="false" binderror="" bindload="" />
+                <text class="weather_location_position" selectable="false" space="false" decode="false">
+                    西昌学院北校区
+                </text>
+            </view>
         </view>
     </view>
-</view>
 
-<!-- 中间的菜单区域可以开始做了 -->
+    <!-- 中间的菜单区域可以开始做了 -->
 
 
-<view class="menu_panel">
-    <view class="menu_title">
-        Function
-    </view>
-    <view class="menu_left">
-        表白墙
-    </view>
-
-    <view class="menu_middle">
-        <view class="menu_middle_up">
-            努力
+    <view class="menu_panel">
+        <view class="menu_title">
+            Function
         </view>
-        <view class="menu_middle_down">
-            Life
+        <view class="menu_left">
+            表白墙
+        </view>
+
+        <view class="menu_middle">
+            <view class="menu_middle_up">
+                教务
+            </view>
+            <view class="menu_middle_down">
+                甜蜜
+            </view>
+        </view>
+
+        <view class="menu_right">
+            <view class="menu_right_up">
+                服务
+            </view>
+            <view class="menu_right_down">
+                努力
+            </view>
         </view>
     </view>
 
-    <view class="menu_right">
-        <view class="menu_right_up">
-            好物
-        </view>
-        <view class="menu_right_down">
-            分享
-        </view>
+    <view class="news_panel">
+        <view class="news_title">校园头条</view>
+        <view class="news_more">更多</view>
+
+        <scroll-view class="news_panel_place" scroll-x="false" scroll-y="true" upper-threshold="50" lower-threshold="50"
+            scroll-top="0" scroll-left="0" scroll-into-view="" scroll-with-animation="false" enable-back-to-top="false"
+            bindscrolltoupper="" bindscrolltolower="" bindscroll="">
+            <view class="news_one">
+                <view class="news_one_left">
+                    <view class="news_one_left_up">
+                        【荐读】不懂排球咋玩的，别说比赛，你连电影都看不懂！懂排球咋玩的，别说比赛，你连电影都看不懂！
+                    </view>
+                    <view class="news_one_left_down">
+                        2020/11/09
+                    </view>
+                </view>
+                <view class="news_one_right">
+                    <image class="news_one_right_image" src="https://s1.ax1x.com/2020/11/09/Bb3p01.jpg"
+                        lazy-load="true" />
+                </view>
+            </view>
+            <view class="news_one">
+                <view class="news_one_left">
+                    <view class="news_one_left_up">
+                        【荐读】不懂排球咋玩的，别说比赛，你连电影都看不懂！懂排球咋玩的，别说比赛，你连电影都看不懂！
+                    </view>
+                    <view class="news_one_left_down">
+                        2020/11/09
+                    </view>
+                </view>
+                <view class="news_one_right">
+                    <image class="news_one_right_image" src="https://s1.ax1x.com/2020/11/09/Bb3p01.jpg"
+                        lazy-load="true" />
+                </view>
+            </view>
+            <view class="news_one">
+                <view class="news_one_left">
+                    <view class="news_one_left_up">
+                        【荐读】不懂排球咋玩的，别说比赛，你连电影都看不懂！懂排球咋玩的，别说比赛，你连电影都看不懂！
+                    </view>
+                    <view class="news_one_left_down">
+                        2020/11/09
+                    </view>
+                </view>
+                <view class="news_one_right">
+                    <image class="news_one_right_image" src="https://s1.ax1x.com/2020/11/09/Bb3p01.jpg"
+                        lazy-load="true" />
+                </view>
+            </view>
+            <view class="news_one">
+                <view class="news_one_left">
+                    <view class="news_one_left_up">
+                        【荐读】不懂排球咋玩的，别说比赛，你连电影都看不懂！懂排球咋玩的，别说比赛，你连电影都看不懂！
+                    </view>
+                    <view class="news_one_left_down">
+                        2020/11/09
+                    </view>
+                </view>
+                <view class="news_one_right">
+                    <image class="news_one_right_image" src="https://s1.ax1x.com/2020/11/09/Bb3p01.jpg"
+                        lazy-load="true" />
+                </view>
+            </view>
+            <view class="news_one">
+                <view class="news_one_left">
+                    <view class="news_one_left_up">
+                        【荐读】不懂排球咋玩的，别说比赛，你连电影都看不懂！懂排球咋玩的，别说比赛，你连电影都看不懂！
+                    </view>
+                    <view class="news_one_left_down">
+                        2020/11/09
+                    </view>
+                </view>
+                <view class="news_one_right">
+                    <image class="news_one_right_image" src="https://s1.ax1x.com/2020/11/09/Bb3p01.jpg"
+                        lazy-load="true" />
+                </view>
+            </view>
+            <view class="no_last_one">
+                到底啦，宝贝儿
+            </view>
+
+
+        </scroll-view>
     </view>
+
+
 </view>
