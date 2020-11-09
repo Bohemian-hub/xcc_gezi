@@ -1,3 +1,50 @@
-<view class='bg'>
-　　<image src='../../image/bg_welcome.gif' class='full'></image>
+<!--
+ * @Author: your name
+ * @Date: 2020-11-08 23:33:47
+ * @LastEditTime: 2020-11-09 09:03:15
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Editew
+ * @FilePath: /miniprogram-5/pages/login/login.wxml
+-->
+<!-- 背景区域设置 -->
+<view class='bg_box'>
+    <image src='https://xylife.oss-cn-zhangjiakou.aliyuncs.com/bg_welcome.gif?Expires=1604888000&OSSAccessKeyId=TMP.3KiowN8uAYXBRgZA9CuYkKgrv2tW7wDSNpKpTdyMMmgv17hycafndQemix18fKfQ8msv5d4No5rbnd48qG3X9rkjPgGfqN&Signature=IKkVHBVQiwvo069l1l71Q4%2F3i7o%3D&versionId=CAEQHhiBgIDF6aCqrRciIGU3M2Q3N2NkZmY4MjQyMTc4MDQ3YjA2NDQ0ZDllNGQ2&response-content-type=application%2Foctet-stream'></image>
 </view>
+<view class='bg_whitebg'>
+</view>
+<!-- 设置logo部分 -->
+<view class='login_logo'>
+    <image class="" src="../../image/logo.png" mode="widthFix" />
+    <text class="">
+        西院格子
+    </text>
+</view>
+<!-- 设置下方登录框 -->
+<view class="login_frame">
+    <!-- 学号用户名输入框 -->
+    <input class="login_username" value="" type="number" password="false" placeholder="学号" placeholder-style="" maxlength="10" focus="true">
+        
+    </input>
+    <!-- 密码输入框 -->
+    <input class="login_password" value="" type="text" password="true" placeholder="密码" placeholder-style=""
+    >
+    </input>
+      
+    <image class="login_button" src="../../image_icon/login_button.png" mode="widthFix"/>
+</view>
+
+<!-- 服务 -->
+<view class="login_botton">
+    <text class="login_forgetpassword" selectable="false" space="false" decode="false">
+        忘记密码
+    </text>
+    <text class="shu"> 
+        |
+    </text>
+    <text class="login_know" selectable="false" space="false" decode="false">
+        使用须知
+    </text>
+    
+</view>
+  
+  

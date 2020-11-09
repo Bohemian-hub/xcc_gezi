@@ -1,11 +1,97 @@
-
-.bg{
-  width: 100%;
-  height:100%;
-  position: absolute;
-  z-index: -99999;
+page {
+  overflow: hidden;
 }
-.bg image{
+
+.bg_box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+  z-index: -999;
+}
+.bg_box > image {
   width: 100%;
   height: 100%;
+}
+.bg_whitebg {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0
+  ); /* 这里的透明图可以用来设置背景图片的透明度 */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+  z-index: -998;
+}
+.login_logo {
+  width: 160rpx;
+  margin: 300rpx auto 0 auto;
+  text-align: center;
+}
+.login_logo > image {
+  width: 100%;
+  margin-bottom: 20rpx; /*logo图片和文字的距离*/
+}
+.login_logo > text {
+  font-size: 16px;
+  font-weight: 900;
+  color: rgb(70, 70, 70);
+}
+.login_frame {
+  position: relative;
+  width: 60%;
+  height: 300rpx;
+  background-color: rgba(255, 255, 255, 0.623);
+  border-radius: 12rpx;
+  margin: 160rpx auto 0 auto;
+}
+.login_frame > image {
+  border-radius: 12rpx;
+  overflow: hidden;
+  position: absolute;
+  right: -50rpx;
+  bottom: -50rpx;
+  width: 100rpx;
+  height: 100rpx;
+  z-index: 1;
+}
+.login_username {
+  border-bottom: 5rpx solid rgb(136, 136, 136);
+  padding-top: 70rpx;
+  margin-left: 30rpx;
+  margin-right: 50rpx;
+}
+.login_password {
+  border-bottom: 5rpx solid rgb(156, 156, 156);
+  padding-top: 70rpx;
+  margin-left: 30rpx;
+  margin-right: 50rpx;
+}
+.login_botton {
+  width: 80%;
+  
+  margin: 400rpx 0 0 240rpx;
+}
+.login_forgetpassword {
+  float: left;
+  color: #ffffff;
+  font-weight: 400;
+}
+.shu {
+  float: left;
+  color: #ffffff;
+  font-weight: 900;
+margin: 0 8rpx;
+
+}
+.login_know {
+  float: left;
+
+  color: #ffffff;
+  font-weight: 400;
 }
