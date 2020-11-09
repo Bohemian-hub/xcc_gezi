@@ -1,13 +1,50 @@
-<!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
+<!--
+ * @Author: your name
+ * @Date: 2020-11-08 23:29:46
+ * @LastEditTime: 2020-11-09 14:47:10
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /miniprogram-5/pages/index/index.wxml
+-->
+<view class='bg_box'>
+    <image
+        src='https://xylife.oss-cn-zhangjiakou.aliyuncs.com/xcc_bg/Zoetropic%202_1.gif?Expires=1604908007&OSSAccessKeyId=TMP.3KiowN8uAYXBRgZA9CuYkKgrv2tW7wDSNpKpTdyMMmgv17hycafndQemix18fKfQ8msv5d4No5rbnd48qG3X9rkjPgGfqN&Signature=odpdxSHI4dAGbDgeCzzriuUt9io%3D&versionId=CAEQHhiBgMC54fatrRciIGRlM2NmNmVlMzQxYjRlNmM4NWNlMDVkZDFkYWQzZThl&response-content-type=application%2Foctet-stream'>
+    </image>
+</view>
+
+<view class="content_toptilte">
+    <text>Hi! {{userInfo.nickName}} </text>
+</view>
+
+<view class="content_niceday">
+    <!-- 左侧的one区域 -->
+    <view class="cardleft">
+        <image class="cardleft_bg" src="{{imageone_src}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false"
+            binderror="" bindload="" />
+        <view class="cardleft_date">
+            {{one_date}} {{one_week}}
+        </view>
+        <view class="cardleft_text" style="font-size:{{sentence_size}}">
+            {{sentence}}
+        </view>
+    </view>
+    <!-- 右上方的问候区域 -->
+    <view class="card-right-top">
+        <view class="card_right_data_hello">
+            Hello,{{student_name}}何东
+        </view>
+        <view class="card_right_data_wenhou">
+            {{greeting}}
+        </view>
+        <view class="card_right_data_time">
+            {{now_time}}
+        </view>
+    </view>
+
+    <!-- 右下角的天气预报 -->
+    <view class="card-right-bottom">
+
+    </view>
+
+
 </view>

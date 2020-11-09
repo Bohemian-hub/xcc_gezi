@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"enhance": false,
 		"postcss": true,
@@ -32,7 +32,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.14.0",
-	"appid": "wx0ced0e1b95c82fe1",
+	"appid": "wx59e91e5808e0170d",
 	"projectname": "XXJS_XCC_GEZI",
 	"debugOptions": {
 		"hidedInDevtools": []
