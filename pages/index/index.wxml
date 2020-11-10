@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2020-11-09 23:00:09
+ * @LastEditTime: 2020-11-10 14:15:26
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.wxml
@@ -18,7 +18,8 @@
     </view>
 
     <view class="content_toptilte">
-        <text>Hi! {{userInfo.nickName}} </text>
+        <text class="user_hi">Hi! {{student_name}}何东 </text>
+        <view class="user_personalized_signature">你的光芒万丈，今天也要比明天更加努力哦（一共二十八个字）</view>
     </view>
 
     <view class="content_niceday">
@@ -34,15 +35,18 @@
             </view>
         </view>
         <!-- 右上方的问候区域 -->
-        <view class="card-right-top">
-            <view class="card_right_data_hello">
-                Hello,{{student_name}}何东
+        <view class="card_right_top">
+
+
+            <view class="card_right_data_counttime">
+                距离{{}}2021考研仅剩:
+                <view class="card_right_data_counttime_number">
+                    45天
+                </view>
+
             </view>
             <view class="card_right_data_wenhou">
                 {{greeting}}
-            </view>
-            <view class="card_right_data_time">
-                {{now_time}}
             </view>
         </view>
 
@@ -81,25 +85,57 @@
         <view class="menu_title">
             Function
         </view>
+        <view class="menu_setting">
+            <image class="menu_setting_icon" src="https://s1.ax1x.com/2020/11/10/Bbz6tf.png" mode="widthFix"
+                lazy-load="false" binderror="" bindload="" />
+
+        </view>
+        <view class="clear_both"></view>
+
         <view class="menu_left">
-            表白墙
+            <image class="menu_left_icon" src="https://s1.ax1x.com/2020/11/10/BbbpAe.png" mode="widthFix"
+                lazy-load="false" binderror="" bindload="" />
+            <view class="menu_left_text">
+                表白墙
+            </view>
+
         </view>
 
         <view class="menu_middle">
             <view class="menu_middle_up">
-                教务
+                <image class="menu_middle_up_icon" src="https://s1.ax1x.com/2020/11/10/BbOZB6.png" mode="widthFix"
+                    lazy-load="false" binderror="" bindload="" />
+
+                <view class="menu_middle_up_text">
+                    教务
+                </view>
             </view>
             <view class="menu_middle_down">
-                好物
+                <image class="menu_middle_up_icon" src="https://s1.ax1x.com/2020/11/10/BbXjoT.png" mode="widthFix"
+                    lazy-load="false" binderror="" bindload="" />
+
+                <view class="menu_middle_up_text">
+                    好物
+                </view>
             </view>
         </view>
 
         <view class="menu_right">
             <view class="menu_right_up">
-                服务
+                <image class="menu_middle_up_icon" src="https://s1.ax1x.com/2020/11/10/BbjuSH.png" mode="widthFix"
+                    lazy-load="false" binderror="" bindload="" />
+
+                <view class="menu_middle_up_text">
+                    服务
+                </view>
             </view>
             <view class="menu_right_down">
-                努力
+                <image class="menu_middle_up_icon" src="https://s1.ax1x.com/2020/11/10/Bbjmfe.png" mode="widthFix"
+                    lazy-load="false" binderror="" bindload="" />
+
+                <view class="menu_middle_up_text">
+                    努力
+                </view>
             </view>
         </view>
     </view>

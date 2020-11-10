@@ -11,28 +11,39 @@
 }
 .bg1 {
   width: 100%;
-  opacity:0.8;
+  opacity:1;
 
 }
 .bg2 {
   top: 400rpx;
   width: 100%;
   height: 1333rpx;
-  opacity:0.9;
+  opacity:1;
 
 }
+
 .content_toptilte {
   width: 100%;
-  height: 80rpx;
+  height: 100rpx;
   background-color: rgba(240, 248, 255, 0);
   overflow: hidden;
   padding-left: 40rpx;
-  padding-top: 75rpx;
+  padding-top: 80rpx;
 }
-.content_toptilte > text {
+.user_hi {
   font-weight: 600;
   font-size: 18px;
   color: aliceblue;
+  text-shadow: 8rpx 8rpx 10rpx rgb(90, 90, 90);
+
+
+}
+.user_personalized_signature{
+  margin-top: 10rpx;
+  font-size: 25rpx;
+  color: white;
+  text-shadow: 10rpx 5rpx 20rpx rgb(0, 0, 0);
+
 }
 
 /* 区域二 */
@@ -62,7 +73,7 @@
   height: 100%;
 }
 .cardleft_text {
-    background-color: rgba(240, 248, 255, 0.473);
+    background-color: rgba(240, 248, 255, 0.26);
   text-indent: 2em;
   width: 90%;
   left: 0rpx;
@@ -73,7 +84,7 @@
   color: rgb(58, 58, 58);
 }
 .cardleft_date{
-    background-color: rgba(240, 248, 255, 0.308);
+    background-color: rgba(240, 248, 255, 0.26);
     font-weight: 600;
     width: 90%;
     left: 0rpx;
@@ -83,7 +94,7 @@
     position: absolute;
     color: rgb(58, 58, 58);
 }
-.card-right-top {
+.card_right_top {
   height: 180rpx;
   margin-bottom: 20rpx;
   float: right;
@@ -92,7 +103,9 @@
   box-shadow: 10rpx 10rpx 20rpx rgb(131, 131, 131);
 
   color: black;
-  background-color: rgba(255, 255, 255, 0.616);
+/*   background-color: rgba(255, 255, 255, 0.801); */
+  background-image: url(https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2847449187,2030324034&fm=26&gp=0.jpg);
+  background-size: 100% 100%;
 }
 
 .card-right-bottom {
@@ -102,27 +115,36 @@
   border-radius: 10rpx;
   box-shadow: 10rpx 10rpx 20rpx rgb(131, 131, 131);
  overflow: hidden;
-  background-color: rgba(62, 178, 255, 0.616);
+  background-color: rgb(62, 178, 255);
 }
 
-.card_right_data_hello{
-  font-size: 35rpx;
-  margin-top: 5rpx;
-  padding-left: 10rpx;
-  font-weight: 600;
-}
 .card_right_data_wenhou{
   line-height: 50rpx;
-  font-size: 24rpx;
+  font-size: 22rpx;
   padding-left: 10rpx;
   font-weight: 400;
+  font-weight: 400;
+  color: #b8b8b8;
+  text-align: center;
+
 }
-.card_right_data_time{
-  font-size: 58rpx;
-  line-height: 80rpx;
-  padding-left: 10rpx;
-  font-weight: 600;
-  width: 100%;
+.card_right_data_counttime{
+width: 95%;
+height: 120rpx;
+background-color: #ffd7d700;
+margin: 0 auto;
+padding: 5rpx;
+border-radius: 20rpx;
+font-size: 25rpx;
+color: #23a7ff;
+}
+.card_right_data_counttime_number{
+  font-size: 45rpx;
+  text-align: center;
+  margin-top: 30rpx;
+  line-height: 50rpx;
+  font-weight: 800;
+  color: #3eb2ff;
 }
 
 /* 天气区域 */
@@ -168,11 +190,12 @@
 .weather_location_icon{
   float: left;
   width: 40rpx;
-  margin-top: 14rpx;
-  margin-left: 30rpx;
+  margin-top: 20rpx;
+  margin-left: 20rpx;
 }
 .weather_location_position{
   float: left;
+  width: 200rpx;
   line-height: 25rpx;
   font-size: 28rpx;
 }
@@ -185,10 +208,23 @@
   font-size: 50rpx;
   font-weight: 600;
   height: 80rpx;
+  float: left;
   color: white;
   width: 50%;
-  text-shadow: 18rpx 6rpx 8rpx rgb(49, 49, 49)
+  text-shadow: 18rpx 6rpx 8rpx rgb(49, 49, 49);
+}
+.menu_setting{
+  height: 40rpx;
+  width: 40rpx;
+  float: right;
+  margin-top: 20rpx;
 
+}
+.clear_both{
+  clear: both;
+}
+.menu_setting_icon{
+  width: 100%;
 }
 .menu_left{
   width: 30%;
@@ -197,12 +233,19 @@
   float: left;
   border-radius: 14rpx;
   text-align: center;
-  line-height: 200rpx;
   color: aliceblue;
   background-color: #ff7282;
   box-shadow: 3rpx 3rpx 5rpx #fc6375;
-  
 
+}
+.menu_left_icon{
+  margin-top: 50rpx;
+width: 40rpx;
+}
+.menu_left_text{
+  margin-top: 20rpx;
+height: 20rpx;
+line-height: 20rpx;
 }
 .menu_middle{
   width: 30%;
@@ -217,10 +260,21 @@ height: 90rpx;
 margin-bottom: 20rpx;
 background-color: #18d08d;
 border-radius: 14rpx;
-text-align: center;
+
 line-height: 90rpx;
 box-shadow: 3rpx 3rpx 5rpx #0bb979;
 
+}
+.menu_middle_up_icon{
+  float: left;
+  margin-top: 25rpx;
+  margin-left: 40rpx;
+width: 40rpx;
+
+}
+.menu_middle_up_text{
+  margin-left: 10rpx;
+  float: left;
 }
 .menu_middle_down{
   height: 90rpx;
@@ -273,15 +327,15 @@ box-shadow: 3rpx 3rpx 5rpx #35aeb9;
 .news_more{
   width: 15%;
   float: right;
-  margin-top: 20rpx;
+  margin-top: 25rpx;
   height: 40rpx;
   line-height: 40rpx;
   text-align: center;
   border: 3rpx solid rgb(214, 214, 214);
   background-color: rgb(214, 214, 214);
-  color:  rgb(20, 20, 20);
+  color:  rgb(0, 0, 0);
   font-size: 25rpx;
-  font-weight: 500;
+  font-weight: 600;
   border-radius: 25rpx;
 
 }
@@ -293,7 +347,7 @@ height: 800rpx;
 .news_one{
   width: 100%;
   height: 120rpx;
-  background-color: rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0.452);
   border-radius: 10rpx;
   margin: 30rpx 0;
 }

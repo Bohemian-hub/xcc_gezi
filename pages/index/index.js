@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2020-11-09 14:50:06
+ * @LastEditTime: 2020-11-10 13:54:46
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.js
@@ -14,7 +14,7 @@ Page({
   data: {
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+
     imageone_src: '',
     sentence: '',
     one_date: '',
@@ -67,17 +67,17 @@ Page({
     if (h < 6) {
       greet = "夜深啦 快快休息！"
     } else if (h < 9) {
-      greet = "早上好 现在是:"
+      greet = "早安，新的一天啦(*^▽^*)"
     } else if (h < 12) {
       greet = "上午好 加油学习"
     } else if (h < 14) {
-      greet = "中午休息一下!"
+      greet = "别太忙，休息休息(๑′ᴗ‵๑)"
     } else if (h < 17) {
-      greet = "最忙碌的下午来啦 现在是:"
+      greet = "坚持就是胜利(＾－＾)V"
     } else if (h < 21) {
-      greet = "饭后走走，减肥(*╹▽╹*)"
+      greet = "饭后走走，去减肥(*╹▽╹*)"
     } else if (h < 23) {
-      greet = "晚上吃东西要胖的"
+      greet = "晚上吃东西要胖的呢"
     } else if (h = 23) {
       greet = "今天又快结束啦！"
     }
@@ -93,7 +93,6 @@ Page({
 
 
   onLoad: function () {
-
     /* 获取头像昵称信息等等 */
     if (app.globalData.userInfo) {
       this.setData({
@@ -104,6 +103,7 @@ Page({
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
       app.userInfoReadyCallback = res => {
+        console.log(res.userInfo);
         this.setData({
           userInfo: res.userInfo,
           hasUserInfo: true
@@ -113,6 +113,7 @@ Page({
       // 在没有 open-type=getUserInfo 版本的兼容处理
       wx.getUserInfo({
         success: res => {
+          console.log(res.userInfo);
           app.globalData.userInfo = res.userInfo
           this.setData({
             userInfo: res.userInfo,
@@ -121,10 +122,12 @@ Page({
         }
       })
     }
-    /* 加载one一个接口获取数据 */
 
+
+
+    /* 加载one一个接口获取数据 */
     const that = this;
-    const index = 3;
+    const index = 0;
     that.Get_time();  //页面加载的时候获取一次时间，后面就每60秒在调用一次时间获取时间了
     wx.request({
 
@@ -141,6 +144,10 @@ Page({
         if (res.data.data[index].text.length < 50) {
           that.setData({
             sentence_size: '22rpx',
+          })
+        } else if (res.data.data[index].text.length > 50) {
+          that.setData({
+            sentence: "来自开发者的话：老夫很帅啊！"
           })
         }
       }
