@@ -1,0 +1,46 @@
+/* pages/setting/setting.wxss */
+.page_tile{
+    width: 90%;
+    font-size: 60rpx;
+    font-weight: 800;
+    margin: 120rpx auto 0 auto;
+}
+.xian_long{
+    height: 10rpx;
+    width: 80rpx;
+    background-color: rgb(39, 101, 235);
+    border-radius:5rpx;
+    margin-left:40rpx;
+    float: left;
+}
+.xian_short{
+    height: 10rpx;
+    width: 10rpx;
+    background-color: rgb(39, 101, 235);
+    border-radius:50%;
+    margin-left:5rpx;
+    float: left;
+}
+.clear_both{
+    clear: both;
+}
+.setting_menu{
+    width: 40%;
+    margin: 30rpx 5% 0 5%;
+    height: 300rpx;
+    background-color: rgb(255, 255, 255);
+    float: left;
+    box-shadow: 2rpx 2rpx 20rpx rgb(180, 180, 180);
+    text-align: center;
+}
+.setting_menu_icon{
+    width: 60rpx;
+    margin-top: 100rpx;
+}
+.copyright{
+    text-align: center;
+    padding-top: 200rpx;
+    height: 200rpx;
+    font-size: 20rpx;
+    color: rgb(131, 131, 131);
+}

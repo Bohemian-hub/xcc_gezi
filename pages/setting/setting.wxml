@@ -1,0 +1,76 @@
+<view class="page_tile">
+Setings
+</view>
+<view class="xian_long">
+</view>
+<view class="xian_short">
+</view>
+  
+<view class="clear_both">
+    
+</view>
+  
+<view class="setting_menu">
+<image class="setting_menu_icon" src="https://s1.ax1x.com/2020/11/10/BLTM3n.png" mode="widthFix" lazy-load="false" binderror="" bindload="" />
+  
+    <view>
+        倒计时
+    </view>
+      
+</view>
+<view class="setting_menu">
+<image class="setting_menu_icon" src="https://s1.ax1x.com/2020/11/10/BLTQcq.png" mode="widthFix" lazy-load="false" binderror="" bindload="" />
+  
+    <view>
+        个人信息
+    </view>
+      
+</view>
+<view class="setting_menu">
+<image class="setting_menu_icon" src="https://s1.ax1x.com/2020/11/10/BLTeAg.png" mode="widthFix" lazy-load="false" binderror="" bindload="" />
+  
+    <view>
+        签名
+    </view>
+      
+</view>
+<view class="setting_menu">
+<image class="setting_menu_icon" src="https://s1.ax1x.com/2020/11/10/BLTmNQ.png" mode="widthFix" lazy-load="false" binderror="" bindload="" />
+  
+    <view>
+        订单
+    </view>
+      
+</view>
+<view class="setting_menu">
+<image class="setting_menu_icon" src="https://s1.ax1x.com/2020/11/10/BLT5KP.png" mode="widthFix" lazy-load="false" binderror="" bindload="" />
+  
+    <view>
+        通用
+    </view>
+      
+</view>
+<view class="setting_menu">
+<image class="setting_menu_icon" src="https://s1.ax1x.com/2020/11/10/BLTnhj.png" mode="widthFix" lazy-load="false" binderror="" bindload="" />
+  
+    <view>
+        反馈
+    </view>
+      
+</view>
+<view class="clear_both">
+    
+</view>
+<view class="copyright">
+    <view>
+        西院格子 V1.12
+    </view>
+        <view>
+        义乌市松雷网络科技工作室
+    </view>
+      
+</view>
+  
+
+  
+  
