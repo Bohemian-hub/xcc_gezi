@@ -1,0 +1,93 @@
+.pay_title{
+    width: 100%;
+    height: 150rpx;
+    text-align: center;
+    font-size: 40rpx;
+    line-height: 200rpx;
+    background-color: red;
+    color: white;
+}
+.pay_product{
+    width: 50%;
+    
+    margin: 0 auto;
+}
+.pay_product_imgbox{
+width: 100%;
+background-color: rgb(255, 255, 255);
+height: 300rpx;
+box-shadow: 2rpx 2rpx 20rpx rgb(180, 180, 180);
+margin-top: 100rpx;
+}
+.pay_product_img{
+    width: 100%;
+    height: 100%;
+}
+.pay_product_describe{
+    margin-top: 20rpx;
+    height: 100rpx;
+    text-align: center;
+    line-height: 50rpx;
+}
+.pay_product_describe_title{
+    font-size: 30rpx;
+    font-weight: 600;
+}
+.pay_product_describe_price{
+    font-size: 45rpx;
+    font-weight: 400;
+    color: rgb(184, 0, 0);
+}
+
+.pay_product_information{
+    width: 80%;
+    height: 300rpx;
+    border: 3rpx solid rgb(85, 85, 85);
+    margin: 0 auto;
+    border-radius: 20rpx;
+    padding: 20rpx;
+    text-indent: 2em;
+}
+.pat_way{
+    height: 300rpx;
+    width: 100%;
+}
+.pat_way_choose{
+
+    margin: 25rpx 0 23rpx 50rpx;
+}
+.pay_way_wechatpay{
+    width: 40%;
+    height: 120rpx;
+    margin-left: 7%;
+    border: 2rpx solid black;
+    box-shadow: 2rpx 2rpx 20rpx rgb(0, 180, 0);
+    float: left;
+}
+.pay_way_face{
+    width: 40%;
+    height: 120rpx;
+    margin-left: 5%;
+    float: left;
+    text-align: center;
+    line-height: 120rpx;
+    border: 2rpx solid rgb(165, 165, 165);
+}
+
+.pay_way_wechatpay_img{
+    width: 100%;
+    height: 100%;
+}
+.pay_button{
+    background-color: red;
+    width: 40%;
+    height: 100rpx;
+    margin: 0 auto;
+    border-radius: 20rpx;
+    text-align: center;
+    line-height: 100rpx;
+    font-size: 50rpx;
+    font-weight: 600rpx;
+    color: white;
+    
+}
