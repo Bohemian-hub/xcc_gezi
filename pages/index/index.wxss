@@ -201,8 +201,28 @@ color: #23a7ff;
 }
 .menu_panel{
   width: 90%;
-  height: 280rpx;
-  margin: 50rpx auto;
+  margin: 20rpx auto;
+  overflow: hidden;
+
+}
+.menu_all_title{
+  background-image: url(https://s1.ax1x.com/2020/11/11/BjSbin.png);
+  background-size: 100% 160%;
+  padding: 0 20rpx;
+  border-top-left-radius: 20rpx;
+  border-top-right-radius: 20rpx;
+  margin-top: 50rpx;
+
+  
+}
+.menu_all_title2{
+  background-image: url(https://s1.ax1x.com/2020/11/11/BjpSZ4.png);
+  background-size: 100% 160%;
+  padding: 0 20rpx;
+  border-top-left-radius: 20rpx;
+  border-top-right-radius: 20rpx;
+  margin-top: 50rpx;
+  
 }
 .menu_title{
   font-size: 50rpx;
@@ -211,6 +231,14 @@ color: #23a7ff;
   float: left;
   color: white;
   width: 50%;
+  text-shadow: 18rpx 6rpx 8rpx rgb(49, 49, 49);
+}
+.menu_sub_title{
+  font-size: 25rpx;
+  font-weight: 400;
+  height: 50rpx;
+  color: white;
+  width: 90%;
   text-shadow: 18rpx 6rpx 8rpx rgb(49, 49, 49);
 }
 .menu_setting{
@@ -322,7 +350,8 @@ box-shadow: 3rpx 3rpx 5rpx #35aeb9;
   color: white;
   width: 50%;
   height: 80rpx;
-  text-shadow: 18rpx 6rpx 8rpx rgb(49, 49, 49)
+  text-shadow: 18rpx 6rpx 8rpx rgb(49, 49, 49);
+  margin-top:20rpx;
 }
 .news_more{
   width: 15%;
@@ -331,9 +360,9 @@ box-shadow: 3rpx 3rpx 5rpx #35aeb9;
   height: 40rpx;
   line-height: 40rpx;
   text-align: center;
-  border: 3rpx solid rgb(214, 214, 214);
+  border: 3rpx solid rgb(177, 177, 177);
   background-color: rgb(214, 214, 214);
-  color:  rgb(0, 0, 0);
+  color:  rgb(46, 46, 46);
   font-size: 25rpx;
   font-weight: 600;
   border-radius: 25rpx;
@@ -349,7 +378,7 @@ height: 800rpx;
   height: 120rpx;
   background-color: rgba(255, 255, 255, 0.452);
   border-radius: 10rpx;
-  margin: 30rpx 0;
+  margin: 0 0 30rpx 0;
 }
 .no_last_one{
   width: 100%;

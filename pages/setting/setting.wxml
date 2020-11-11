@@ -1,3 +1,8 @@
+<view class="page_back_button" bindtap='page_back_index'>
+   <image class="page_back" src="https://s1.ax1x.com/2020/11/11/BXy3Jf.png" mode="widthFix" lazy-load="false" binderror="" bindload="" />
+     
+</view>
+  
 <view class="page_tile">
 Setings
 </view>

@@ -1,9 +1,20 @@
+
 /* pages/setting/setting.wxss */
+.page_back_button{
+    margin-top: 40rpx;
+    margin-left: 20rpx;
+    padding: 30rpx;
+    width: 20%;
+}
+.page_back{
+    width: 50rpx;
+    
+}
 .page_tile{
     width: 90%;
     font-size: 60rpx;
     font-weight: 800;
-    margin: 120rpx auto 0 auto;
+    margin: 0rpx auto 0 auto;
 }
 .xian_long{
     height: 10rpx;
@@ -39,7 +50,7 @@
 }
 .copyright{
     text-align: center;
-    padding-top: 200rpx;
+    padding-top: 150rpx;
     height: 200rpx;
     font-size: 30rpx;
     color: rgb(131, 131, 131);
