@@ -8,7 +8,7 @@
 -->
 <!-- 背景区域设置 -->
 <view class='bg_box'>
-    <image src='https://xylife.oss-cn-zhangjiakou.aliyuncs.com/bg_welcome.gif?Expires=1604888000&OSSAccessKeyId=TMP.3KiowN8uAYXBRgZA9CuYkKgrv2tW7wDSNpKpTdyMMmgv17hycafndQemix18fKfQ8msv5d4No5rbnd48qG3X9rkjPgGfqN&Signature=IKkVHBVQiwvo069l1l71Q4%2F3i7o%3D&versionId=CAEQHhiBgIDF6aCqrRciIGU3M2Q3N2NkZmY4MjQyMTc4MDQ3YjA2NDQ0ZDllNGQ2&response-content-type=application%2Foctet-stream'></image>
+    <image src='https://s3.ax1x.com/2020/11/12/BzShB8.jpg'></image>
 </view>
 <view class='bg_whitebg'>
 </view>
@@ -30,7 +30,7 @@
     >
     </input>
       
-    <image class="login_button" src="../../image_icon/login_button.png" mode="widthFix"/>
+    <image class="login_button" src="../../image_icon/login_button.png" mode="widthFix" bindtap="login" />
 </view>
 
 <!-- 服务 -->

@@ -1,27 +1,27 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2020-11-10 14:15:26
+ * @LastEditTime: 2020-11-13 18:04:58
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.wxml
 -->
-<view class="page_all">
 
 
 
-    <view class='bg_box'>
-        <image class="bg1" src='https://s1.ax1x.com/2020/11/09/BbKc2d.png'>
-        </image>
-        <image class="bg2" src="https://s1.ax1x.com/2020/11/09/BbKmgs.png">
-        </image>
-    </view>
+<view class='bg_box'>
+    <image class="bg1" src='https://s1.ax1x.com/2020/11/09/BbKc2d.png'>
+    </image>
+    <!--        <image class="bg2" src="https://s1.ax1x.com/2020/11/09/BbKmgs.png">
+        </image> -->
+</view>
 
-    <view class="content_toptilte">
-        <text class="user_hi">Hi! {{student_name}}何东 </text>
-        <view class="user_personalized_signature">你的光芒万丈，今天也要比明天更加努力哦（一共二十八个字）</view>
-    </view>
+<view class="content_toptilte">
+    <text class="user_hi">Hi! {{student_name}}何东 </text>
+    <view class="user_personalized_signature">你的光芒万丈，今天也要比明天更加努力哦（一共二十八个字）</view>
+</view>
 
+<view class="content_niceday_back">
     <view class="content_niceday">
         <!-- 左侧的one区域 -->
         <view class="cardleft">
@@ -77,29 +77,30 @@
             </view>
         </view>
     </view>
+</view>
 
-    <!-- 中间的菜单区域可以开始做了 -->
 
+<!-- 中间的菜单区域可以开始做了 -->
 
+<view class="menu_panel_back">
     <view class="menu_panel">
+        <view class="menu_all_title">
+            <view class="menu_title">
+                Function
+            </view>
 
-    <view class="menu_all_title">
-        <view class="menu_title">
-            Function
+            <view class="menu_setting" bindtap='jump'>
+                <image class="menu_setting_icon" src="https://s1.ax1x.com/2020/11/10/Bbz6tf.png" mode="widthFix"
+                    lazy-load="false" binderror="" bindload="" />
+
+            </view>
+            <view class="clear_both"></view>
+            <view class="menu_sub_title">
+                正在努力开发出更优质的功能与服务哦
+            </view>
+
         </view>
 
-        <view class="menu_setting" bindtap='jump'>
-            <image class="menu_setting_icon" src="https://s1.ax1x.com/2020/11/10/Bbz6tf.png" mode="widthFix"
-                lazy-load="false" binderror="" bindload="" />
-
-        </view>
-        <view class="clear_both"></view>
-        <view class="menu_sub_title">
-            正在努力开发出更优质的功能与服务哦
-        </view>
-
-    </view>
-      
 
 
         <view class="menu_left">
@@ -112,7 +113,7 @@
         </view>
 
         <view class="menu_middle">
-            <view class="menu_middle_up">
+            <view class="menu_middle_up" bindtap="jiaowu" data-id="教务">
                 <image class="menu_middle_up_icon" src="https://s1.ax1x.com/2020/11/10/BbOZB6.png" mode="widthFix"
                     lazy-load="false" binderror="" bindload="" />
 
@@ -120,7 +121,7 @@
                     教务
                 </view>
             </view>
-            <view class="menu_middle_down">
+            <view class="menu_middle_down" bindtap="jiaowu" data-id="好物">
                 <image class="menu_middle_up_icon" src="https://s1.ax1x.com/2020/11/10/BbXjoT.png" mode="widthFix"
                     lazy-load="false" binderror="" bindload="" />
 
@@ -131,7 +132,7 @@
         </view>
 
         <view class="menu_right">
-            <view class="menu_right_up">
+            <view class="menu_right_up" bindtap="jiaowu" data-id="服务">
                 <image class="menu_middle_up_icon" src="https://s1.ax1x.com/2020/11/10/BbjuSH.png" mode="widthFix"
                     lazy-load="false" binderror="" bindload="" />
 
@@ -139,7 +140,7 @@
                     服务
                 </view>
             </view>
-            <view class="menu_right_down">
+            <view class="menu_right_down" bindtap="jiaowu" data-id="努力">
                 <image class="menu_middle_up_icon" src="https://s1.ax1x.com/2020/11/10/Bbjmfe.png" mode="widthFix"
                     lazy-load="false" binderror="" bindload="" />
 
@@ -149,99 +150,315 @@
             </view>
         </view>
     </view>
-
+</view>
+<view class="news_panel_back">
     <view class="news_panel">
-    <view class="menu_all_title2">
+        <view class="menu_all_title2">
 
-        <view class="news_title">校园头条</view>
-        <view class="news_more">更多</view>
-        <view class="clear_both"></view>
-        <view class="menu_sub_title">
-            关注学校最新动态资讯
+            <view class="news_title">校园·Know</view>
+            <view class="news_more">更多</view>
+            <view class="clear_both"></view>
+            <view class="news_sub_title2">
+                关注学校最新动态资讯
+            </view>
+        </view>
+        <view class="news_content">
+            <view class="news_one">
+                <view class="news_one_left">
+                    <view class="news_one_left_up">
+                        【荐读】不懂排球咋玩的，别说比赛，你连电影都看不懂！懂排球咋玩的，别说比赛，你连电影都看不懂！
+                    </view>
+                    <view class="news_one_left_down">
+                        2020/11/09
+                    </view>
+                </view>
+                <view class="news_one_right">
+                    <image class="news_one_right_image" src="https://s1.ax1x.com/2020/11/09/Bb3p01.jpg"
+                        lazy-load="true" />
+                </view>
+            </view>
+            <view class="news_one">
+                <view class="news_one_left">
+                    <view class="news_one_left_up">
+                        【荐读】不懂排球咋玩的，别说比赛，你连电影都看不懂！懂排球咋玩的，别说比赛，你连电影都看不懂！
+                    </view>
+                    <view class="news_one_left_down">
+                        2020/11/09
+                    </view>
+                </view>
+                <view class="news_one_right">
+                    <image class="news_one_right_image" src="https://s1.ax1x.com/2020/11/09/Bb3p01.jpg"
+                        lazy-load="true" />
+                </view>
+            </view>
+            <view class="news_one">
+                <view class="news_one_left">
+                    <view class="news_one_left_up">
+                        【荐读】不懂排球咋玩的，别说比赛，你连电影都看不懂！懂排球咋玩的，别说比赛，你连电影都看不懂！
+                    </view>
+                    <view class="news_one_left_down">
+                        2020/11/09
+                    </view>
+                </view>
+                <view class="news_one_right">
+                    <image class="news_one_right_image" src="https://s1.ax1x.com/2020/11/09/Bb3p01.jpg"
+                        lazy-load="true" />
+                </view>
+            </view>
+            <view class="news_one">
+                <view class="news_one_left">
+                    <view class="news_one_left_up">
+                        【荐读】不懂排球咋玩的，别说比赛，你连电影都看不懂！懂排球咋玩的，别说比赛，你连电影都看不懂！
+                    </view>
+                    <view class="news_one_left_down">
+                        2020/11/09
+                    </view>
+                </view>
+                <view class="news_one_right">
+                    <image class="news_one_right_image" src="https://s1.ax1x.com/2020/11/09/Bb3p01.jpg"
+                        lazy-load="true" />
+                </view>
+            </view>
+            <view class="news_one">
+                <view class="news_one_left">
+                    <view class="news_one_left_up">
+                        【荐读】不懂排球咋玩的，别说比赛，你连电影都看不懂！懂排球咋玩的，别说比赛，你连电影都看不懂！
+                    </view>
+                    <view class="news_one_left_down">
+                        2020/11/09
+                    </view>
+                </view>
+                <view class="news_one_right">
+                    <image class="news_one_right_image" src="https://s1.ax1x.com/2020/11/09/Bb3p01.jpg"
+                        lazy-load="true" />
+                </view>
+            </view>
+            <view class="news_one">
+                <view class="news_one_left">
+                    <view class="news_one_left_up">
+                        【荐读】不懂排球咋玩的，别说比赛，你连电影都看不懂！懂排球咋玩的，别说比赛，你连电影都看不懂！
+                    </view>
+                    <view class="news_one_left_down">
+                        2020/11/09
+                    </view>
+                </view>
+                <view class="news_one_right">
+                    <image class="news_one_right_image" src="https://s1.ax1x.com/2020/11/09/Bb3p01.jpg"
+                        lazy-load="true" />
+                </view>
+            </view>
+            <view class="news_one">
+                <view class="news_one_left">
+                    <view class="news_one_left_up">
+                        【荐读】不懂排球咋玩的，别说比赛，你连电影都看不懂！懂排球咋玩的，别说比赛，你连电影都看不懂！
+                    </view>
+                    <view class="news_one_left_down">
+                        2020/11/09
+                    </view>
+                </view>
+                <view class="news_one_right">
+                    <image class="news_one_right_image" src="https://s1.ax1x.com/2020/11/09/Bb3p01.jpg"
+                        lazy-load="true" />
+                </view>
+            </view>
+            <view class="news_one">
+                <view class="news_one_left">
+                    <view class="news_one_left_up">
+                        【荐读】不懂排球咋玩的，别说比赛，你连电影都看不懂！懂排球咋玩的，别说比赛，你连电影都看不懂！
+                    </view>
+                    <view class="news_one_left_down">
+                        2020/11/09
+                    </view>
+                </view>
+                <view class="news_one_right">
+                    <image class="news_one_right_image" src="https://s1.ax1x.com/2020/11/09/Bb3p01.jpg"
+                        lazy-load="true" />
+                </view>
+            </view>
+            <view class="news_one">
+                <view class="news_one_left">
+                    <view class="news_one_left_up">
+                        【荐读】不懂排球咋玩的，别说比赛，你连电影都看不懂！懂排球咋玩的，别说比赛，你连电影都看不懂！
+                    </view>
+                    <view class="news_one_left_down">
+                        2020/11/09
+                    </view>
+                </view>
+                <view class="news_one_right">
+                    <image class="news_one_right_image" src="https://s1.ax1x.com/2020/11/09/Bb3p01.jpg"
+                        lazy-load="true" />
+                </view>
+            </view>
+            <view class="news_one">
+                <view class="news_one_left">
+                    <view class="news_one_left_up">
+                        【荐读】不懂排球咋玩的，别说比赛，你连电影都看不懂！懂排球咋玩的，别说比赛，你连电影都看不懂！
+                    </view>
+                    <view class="news_one_left_down">
+                        2020/11/09
+                    </view>
+                </view>
+                <view class="news_one_right">
+                    <image class="news_one_right_image" src="https://s1.ax1x.com/2020/11/09/Bb3p01.jpg"
+                        lazy-load="true" />
+                </view>
+            </view>
+            <view class="news_one">
+                <view class="news_one_left">
+                    <view class="news_one_left_up">
+                        【荐读】不懂排球咋玩的，别说比赛，你连电影都看不懂！懂排球咋玩的，别说比赛，你连电影都看不懂！
+                    </view>
+                    <view class="news_one_left_down">
+                        2020/11/09
+                    </view>
+                </view>
+                <view class="news_one_right">
+                    <image class="news_one_right_image" src="https://s1.ax1x.com/2020/11/09/Bb3p01.jpg"
+                        lazy-load="true" />
+                </view>
+            </view>
+            <view class="news_one">
+                <view class="news_one_left">
+                    <view class="news_one_left_up">
+                        【荐读】不懂排球咋玩的，别说比赛，你连电影都看不懂！懂排球咋玩的，别说比赛，你连电影都看不懂！
+                    </view>
+                    <view class="news_one_left_down">
+                        2020/11/09
+                    </view>
+                </view>
+                <view class="news_one_right">
+                    <image class="news_one_right_image" src="https://s1.ax1x.com/2020/11/09/Bb3p01.jpg"
+                        lazy-load="true" />
+                </view>
+            </view>
+            <view class="news_one">
+                <view class="news_one_left">
+                    <view class="news_one_left_up">
+                        【荐读】不懂排球咋玩的，别说比赛，你连电影都看不懂！懂排球咋玩的，别说比赛，你连电影都看不懂！
+                    </view>
+                    <view class="news_one_left_down">
+                        2020/11/09
+                    </view>
+                </view>
+                <view class="news_one_right">
+                    <image class="news_one_right_image" src="https://s1.ax1x.com/2020/11/09/Bb3p01.jpg"
+                        lazy-load="true" />
+                </view>
+            </view>
+            <view class="news_one">
+                <view class="news_one_left">
+                    <view class="news_one_left_up">
+                        【荐读】不懂排球咋玩的，别说比赛，你连电影都看不懂！懂排球咋玩的，别说比赛，你连电影都看不懂！
+                    </view>
+                    <view class="news_one_left_down">
+                        2020/11/09
+                    </view>
+                </view>
+                <view class="news_one_right">
+                    <image class="news_one_right_image" src="https://s1.ax1x.com/2020/11/09/Bb3p01.jpg"
+                        lazy-load="true" />
+                </view>
+            </view>
+            <view class="news_one">
+                <view class="news_one_left">
+                    <view class="news_one_left_up">
+                        【荐读】不懂排球咋玩的，别说比赛，你连电影都看不懂！懂排球咋玩的，别说比赛，你连电影都看不懂！
+                    </view>
+                    <view class="news_one_left_down">
+                        2020/11/09
+                    </view>
+                </view>
+                <view class="news_one_right">
+                    <image class="news_one_right_image" src="https://s1.ax1x.com/2020/11/09/Bb3p01.jpg"
+                        lazy-load="true" />
+                </view>
+            </view>
+            <view class="news_one">
+                <view class="news_one_left">
+                    <view class="news_one_left_up">
+                        【荐读】不懂排球咋玩的，别说比赛，你连电影都看不懂！懂排球咋玩的，别说比赛，你连电影都看不懂！
+                    </view>
+                    <view class="news_one_left_down">
+                        2020/11/09
+                    </view>
+                </view>
+                <view class="news_one_right">
+                    <image class="news_one_right_image" src="https://s1.ax1x.com/2020/11/09/Bb3p01.jpg"
+                        lazy-load="true" />
+                </view>
+            </view>
+            <view class="news_one">
+                <view class="news_one_left">
+                    <view class="news_one_left_up">
+                        【荐读】不懂排球咋玩的，别说比赛，你连电影都看不懂！懂排球咋玩的，别说比赛，你连电影都看不懂！
+                    </view>
+                    <view class="news_one_left_down">
+                        2020/11/09
+                    </view>
+                </view>
+                <view class="news_one_right">
+                    <image class="news_one_right_image" src="https://s1.ax1x.com/2020/11/09/Bb3p01.jpg"
+                        lazy-load="true" />
+                </view>
+            </view>
+            <view class="news_one">
+                <view class="news_one_left">
+                    <view class="news_one_left_up">
+                        【荐读】不懂排球咋玩的，别说比赛，你连电影都看不懂！懂排球咋玩的，别说比赛，你连电影都看不懂！
+                    </view>
+                    <view class="news_one_left_down">
+                        2020/11/09
+                    </view>
+                </view>
+                <view class="news_one_right">
+                    <image class="news_one_right_image" src="https://s1.ax1x.com/2020/11/09/Bb3p01.jpg"
+                        lazy-load="true" />
+                </view>
+            </view>
+            <view class="news_one">
+                <view class="news_one_left">
+                    <view class="news_one_left_up">
+                        【荐读】不懂排球咋玩的，别说比赛，你连电影都看不懂！懂排球咋玩的，别说比赛，你连电影都看不懂！
+                    </view>
+                    <view class="news_one_left_down">
+                        2020/11/09
+                    </view>
+                </view>
+                <view class="news_one_right">
+                    <image class="news_one_right_image" src="https://s1.ax1x.com/2020/11/09/Bb3p01.jpg"
+                        lazy-load="true" />
+                </view>
+            </view>
+            <view class="news_one">
+                <view class="news_one_left">
+                    <view class="news_one_left_up">
+                        【荐读】不懂排球咋玩的，别说比赛，你连电影都看不懂！懂排球咋玩的，别说比赛，你连电影都看不懂！
+                    </view>
+                    <view class="news_one_left_down">
+                        2020/11/09
+                    </view>
+                </view>
+                <view class="news_one_right">
+                    <image class="news_one_right_image" src="https://s1.ax1x.com/2020/11/09/Bb3p01.jpg"
+                        lazy-load="true" />
+                </view>
+            </view>
+        </view>
+
+        <view class="no_last_one">
+            到底啦，宝贝儿
         </view>
     </view>
+</view>
 
 
-        <scroll-view class="news_panel_place" scroll-x="false" scroll-y="true" upper-threshold="50" lower-threshold="50"
-            scroll-top="0" scroll-left="0" scroll-into-view="" scroll-with-animation="false" enable-back-to-top="false"
-            bindscrolltoupper="" bindscrolltolower="" bindscroll="">
-            <view class="news_one">
-                <view class="news_one_left">
-                    <view class="news_one_left_up">
-                        【荐读】不懂排球咋玩的，别说比赛，你连电影都看不懂！懂排球咋玩的，别说比赛，你连电影都看不懂！
-                    </view>
-                    <view class="news_one_left_down">
-                        2020/11/09
-                    </view>
-                </view>
-                <view class="news_one_right">
-                    <image class="news_one_right_image" src="https://s1.ax1x.com/2020/11/09/Bb3p01.jpg"
-                        lazy-load="true" />
-                </view>
-            </view>
-            <view class="news_one">
-                <view class="news_one_left">
-                    <view class="news_one_left_up">
-                        【荐读】不懂排球咋玩的，别说比赛，你连电影都看不懂！懂排球咋玩的，别说比赛，你连电影都看不懂！
-                    </view>
-                    <view class="news_one_left_down">
-                        2020/11/09
-                    </view>
-                </view>
-                <view class="news_one_right">
-                    <image class="news_one_right_image" src="https://s1.ax1x.com/2020/11/09/Bb3p01.jpg"
-                        lazy-load="true" />
-                </view>
-            </view>
-            <view class="news_one">
-                <view class="news_one_left">
-                    <view class="news_one_left_up">
-                        【荐读】不懂排球咋玩的，别说比赛，你连电影都看不懂！懂排球咋玩的，别说比赛，你连电影都看不懂！
-                    </view>
-                    <view class="news_one_left_down">
-                        2020/11/09
-                    </view>
-                </view>
-                <view class="news_one_right">
-                    <image class="news_one_right_image" src="https://s1.ax1x.com/2020/11/09/Bb3p01.jpg"
-                        lazy-load="true" />
-                </view>
-            </view>
-            <view class="news_one">
-                <view class="news_one_left">
-                    <view class="news_one_left_up">
-                        【荐读】不懂排球咋玩的，别说比赛，你连电影都看不懂！懂排球咋玩的，别说比赛，你连电影都看不懂！
-                    </view>
-                    <view class="news_one_left_down">
-                        2020/11/09
-                    </view>
-                </view>
-                <view class="news_one_right">
-                    <image class="news_one_right_image" src="https://s1.ax1x.com/2020/11/09/Bb3p01.jpg"
-                        lazy-load="true" />
-                </view>
-            </view>
-            <view class="news_one">
-                <view class="news_one_left">
-                    <view class="news_one_left_up">
-                        【荐读】不懂排球咋玩的，别说比赛，你连电影都看不懂！懂排球咋玩的，别说比赛，你连电影都看不懂！
-                    </view>
-                    <view class="news_one_left_down">
-                        2020/11/09
-                    </view>
-                </view>
-                <view class="news_one_right">
-                    <image class="news_one_right_image" src="https://s1.ax1x.com/2020/11/09/Bb3p01.jpg"
-                        lazy-load="true" />
-                </view>
-            </view>
-            <view class="no_last_one">
-                到底啦，宝贝儿
-            </view>
-
-
-        </scroll-view>
+<view class="son_menu_of_jiaowu" animation="{{animationData}}" wx:if="{{showModalStatus}}" bindtap="close_jiaowu">
+    子菜单面板1
+    <view class="son_menu_of_jiaowu_title">
+        {{son_menu_of_title}}
     </view>
-
+    <view class="son_menu_of_jiaowu_content" catchtap="jiaowu">
+        子菜单中心区域
+    </view>
 
 </view>

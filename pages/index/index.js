@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2020-11-11 12:08:16
+ * @LastEditTime: 2020-11-13 18:01:56
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.js
@@ -21,6 +21,9 @@ Page({
     greeting: '',
     student_name: '',
     now_time: '',
+    showModalStatus: false,
+    animationData: {},
+    son_menu_of_title:'',
   },
 
   Get_time() {
@@ -83,7 +86,55 @@ Page({
     })
 
   },
+  jiaowu(event) {
+    console.log(event.currentTarget.dataset.id);
+    var that = this;
+    // 显示遮罩层 
+    var animation = wx.createAnimation({
+      duration: 100,
+      timingFunction: "linear",
+      delay: 0
+    })
+    this.animation = animation
+    this.animation.rotate(0).step()
+    this.animation.scale(2, 2).step()
+    this.setData({
+      animationData: animation.export(),
+      showModalStatus: true,
+      son_menu_of_title: event.currentTarget.dataset.id
+    })
+    setTimeout(function () {
+      animation.translateY(0).step()
+      this.setData({
+        animationData: animation.export()
+      })
+    }.bind(this), 0)
 
+  },
+  close_jiaowu() {
+
+    var that = this;
+    // 隐藏遮罩层 
+    var animation = wx.createAnimation({
+      duration: 300,
+      timingFunction: "linear",
+      delay: 0
+    })
+    this.animation = animation
+    this.animation.rotate(0).step()
+    this.animation.scale(0.4, 0.4).step()
+    this.setData({
+      animationData: animation.export(),
+    })
+    setTimeout(function () {
+      animation.translateY(0).step()
+      this.setData({
+        animationData: animation.export(),
+        showModalStatus: false
+      })
+    }.bind(this), 300)
+
+  },
 
   onLoad: function () {
 

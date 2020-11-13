@@ -8,6 +8,27 @@ Page({
 
   },
 
+  login() {
+
+    wx.request({
+      url: 'http://127.0.0.1:8000/info/schedule',
+      header:{
+        "content-type": "application/x-www-form-urlencoded"		//使用POST方法要带上这个header
+      },
+      method: "POST",
+      data:{
+        name: "1811030132",
+        pwd:"dswl1234"
+      }, // 向后端发送的数据，后端通过request.data拿到该数据
+      success: res => {
+        if (res.statusCode == 200) {
+            console.log(res);
+        }
+      }
+    })
+  
+
+  },
   /**
    * 生命周期函数--监听页面加载
    */
