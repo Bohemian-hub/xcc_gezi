@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2020-11-13 22:41:01
+ * @LastEditTime: 2020-11-13 23:34:46
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.js
@@ -148,7 +148,7 @@ Page({
     var that = this;
     // 隐藏遮罩层 
     var animation = wx.createAnimation({
-      duration: 300,
+      duration: 200,
       timingFunction: "linear",
       delay: 0
     })
@@ -165,7 +165,7 @@ Page({
         showModalStatus: false,
         bodylock: '',
       })
-    }.bind(this), 300)
+    }.bind(this), 200)
 
   },
 

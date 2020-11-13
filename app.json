@@ -2,11 +2,11 @@
   "pages": [
     "pages/index/index",
     "pages/login/login",
-
     "pages/pay/pay",
     "pages/product/product",
     "pages/setting/setting",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/ConfessionWall/ConfessionWall"
   ],
   "window": {
     "backgroundTextStyle": "light",
