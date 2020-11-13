@@ -522,14 +522,14 @@ background-size: 100%;
 .son_menu_function_title{
   font-size: 15rpx;
   font-weight: 800; 
-
+  color: white;
   text-align: center;
 }
 .show{
   display: block;
-  color: red;
+
 }
 .notshow{
-  display: block;
-  color: yellow;
+  display: none;
+
 }
