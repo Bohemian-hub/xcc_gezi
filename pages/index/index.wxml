@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2020-11-13 22:23:42
+ * @LastEditTime: 2020-11-13 22:59:18
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.wxml
@@ -454,12 +454,19 @@
     </view>
 </view>
 
-<view class="son_menu_of_jiaowu" animation="{{animationData}}" wx:if="{{showModalStatus}}" bindtap="close_jiaowu">
+<view class="son_menu_of_jiaowu" animation="{{animationData}}" wx:if="{{showModalStatus}}">
     子菜单面板1
-    <view class="son_menu_of_jiaowu_title">
+    <view class="close_place1" bindtap="close_jiaowu">
+
+    </view>
+
+    <view class="son_menu_of_jiaowu_title" bindtap="close_jiaowu">
         {{son_menu_of_title}}
     </view>
-    <view class="son_menu_of_jiaowu_content" catchtap="jiaowu">
+    <view class="close_place2" bindtap="close_jiaowu">
+
+    </view>
+    <view class="son_menu_of_jiaowu_content">
         <!-- 以防自己关闭自己 -->
         <scroll-view class="son_menu_function_panel" scroll-y="true">
 
@@ -634,6 +641,9 @@
 
         </scroll-view>
 
+
+    </view>
+    <view class="close_place3" bindtap="close_jiaowu">
 
     </view>
 

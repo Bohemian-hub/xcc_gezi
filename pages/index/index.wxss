@@ -205,15 +205,15 @@ color: #23a7ff;
 }
 .weather_location_icon{
   float: left;
-  width: 40rpx;
+  width: 30rpx;
   margin-top: 20rpx;
-  margin-left: 20rpx;
+  margin-left: 80rpx;
 }
 .weather_location_position{
   float: left;
   width: 200rpx;
   line-height: 25rpx;
-  font-size: 28rpx;
+  font-size: 25rpx;
 }
 .menu_panel_back{
   width: 100%;
@@ -482,7 +482,16 @@ background-size: 100%;
   text-align: center;
   background-color: rgba(255, 255, 255, 0);
   color: white;
-  margin: 600rpx auto 0 auto;
+  margin: 0rpx auto 0 auto;
+}
+.close_place1{
+  height: 600rpx;
+}
+.close_place2{
+  height: 40rpx;
+}
+.close_place3{
+  height: 10000rpx;
 }
 .son_menu_of_jiaowu_content{
   position: flex;
@@ -490,7 +499,7 @@ background-size: 100%;
   height: 220rpx;
   background-color: rgba(196, 196, 196, 0.726);
   box-shadow: 0rpx 0rpx 20rpx rgb(102, 102, 102);
-  margin: 40rpx auto;
+  margin: 0rpx auto;
   border-radius: 20rpx;
   overflow: hidden;
   z-index: 999;
