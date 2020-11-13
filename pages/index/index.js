@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2020-11-13 18:01:56
+ * @LastEditTime: 2020-11-13 21:18:54
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.js
@@ -23,7 +23,9 @@ Page({
     now_time: '',
     showModalStatus: false,
     animationData: {},
-    son_menu_of_title:'',
+    son_menu_of_title: '',
+    bodylock: '',
+    showwhat: '',
   },
 
   Get_time() {
@@ -98,9 +100,39 @@ Page({
     this.animation = animation
     this.animation.rotate(0).step()
     this.animation.scale(2, 2).step()
+
+    if (event.currentTarget.dataset.id == '教务') {
+      console.log(1);
+      this.setData({
+        showwhat: 'jiaowu',
+      })
+    } else if (event.currentTarget.dataset.id == '服务') {
+      console.log(2);
+
+      this.setData({
+        showwhat: 'server',
+      })
+    } else if (event.currentTarget.dataset.id == '好物') {
+      console.log(3);
+
+      this.setData({
+        showwhat: 'goods',
+      })
+    } else if (event.currentTarget.dataset.id == '努力') {
+      console.log(4);
+
+      this.setData({
+        showwhat: 'strive',
+      })
+    } else {
+      this.setData({
+        showwhat: 'else',
+      })
+    }
     this.setData({
       animationData: animation.export(),
       showModalStatus: true,
+      bodylock: 'bodylock',
       son_menu_of_title: event.currentTarget.dataset.id
     })
     setTimeout(function () {
@@ -130,18 +162,19 @@ Page({
       animation.translateY(0).step()
       this.setData({
         animationData: animation.export(),
-        showModalStatus: false
+        showModalStatus: false,
+        bodylock: '',
       })
     }.bind(this), 300)
 
   },
 
   onLoad: function () {
-
     /* 加载one一个接口获取数据 */
     const that = this;
     const index = 0;
     that.Get_time();  //页面加载的时候获取一次时间，后面就每60秒在调用一次时间获取时间了
+    /*     that.jiaowu(); */
     wx.request({
 
       url: 'http://api.youngam.cn/api/one.php', //仅为示例，并非真实的接口地址
@@ -169,7 +202,9 @@ Page({
     var ref = "";
     ref = setInterval(function () {
       that.Get_time();
-    }, 60000);
+
+    }, 30000);
+
   },
 
   getUserInfo: function (e) {
