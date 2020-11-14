@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2020-11-13 23:34:46
+ * @LastEditTime: 2020-11-15 00:30:11
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.js
@@ -26,6 +26,20 @@ Page({
     son_menu_of_title: '',
     bodylock: '',
     showwhat: '',
+  },
+  confress_page: function () {
+    wx.navigateTo({
+      url: '../ConfessionWall/ConfessionWall',
+      success: function (res) {
+
+      },
+      fail: function (res) {
+
+      },
+      complete: function (res) {
+
+      },
+    })
   },
 
   Get_time() {

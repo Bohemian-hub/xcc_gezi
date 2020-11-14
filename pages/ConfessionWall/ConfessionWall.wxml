@@ -1,37 +1,35 @@
-<view class="wall1" hover-class="none" hover-stop-propagation="false">
-    <view class="wall_of_confress">
-    <image class="wall_of_confress_img" src="https://s3.ax1x.com/2020/11/14/D9x6Pg.png" mode="widthFix" lazy-load="false" binderror="" bindload="" />
-    </view>
-    <view class="wall_of_confress_desc" hover-class="none" hover-stop-propagation="false">
-        凡夫俗子，你就不想尝尝本仙女的味道？
-    </view>
-    <view class="wall_of_confress_wall">
-        
-    </view> 
+<!--
+ * @Author: your name
+ * @Date: 2020-11-13 23:35:52
+ * @LastEditTime: 2020-11-15 00:25:06
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /miniprogram-5/pages/ConfessionWall/ConfessionWall.wxml
+-->
+<view class="page_back_button" bindtap='page_back_index'>
+    <image class="page_back" src="https://s1.ax1x.com/2020/11/11/BXy3Jf.png" mode="widthFix" lazy-load="false"
+        binderror="" bindload="" />
+
 </view>
 
-<view class="wall1" hover-class="none" hover-stop-propagation="false">
-<view class="wall_of_confress">
-    <image class="wall_of_confress_img" src="https://s3.ax1x.com/2020/11/14/D9xra8.png" mode="widthFix" lazy-load="false" binderror="" bindload="" />
+<view class="title">
+    <view class="title_confress">表白墙</view>
+    <view class="title_division">|</view>
+    <view class="title_complain">吐槽墙</view>
 </view>
-    <view class="wall_of_confress_desc" hover-class="none" hover-stop-propagation="false">
-        凡夫俗子，你就不想尝尝本仙女的味道？
+
+<view class="date_and_numbers">
+    <view class="date">
+        2020/12/12 :
     </view>
-    <view class="wall_of_confress_wall">
-        
-    </view> 
-</view>
-
-<view class="wall1" hover-class="none" hover-stop-propagation="false">
-<view class="wall_of_confress">
-    <image class="wall_of_confress_img" src="https://s3.ax1x.com/2020/11/14/D9xsIS.png" mode="widthFix" lazy-load="false" binderror="" bindload="" />
-</view>
-    <view class="wall_of_confress_desc" hover-class="none" hover-stop-propagation="false">
-        凡夫俗子，你就不想尝尝本仙女的味道？
+    <view class="numbers">
+        该来的爱情总会来，无法拥有的一辈子也得不到.
     </view>
-    <view class="wall_of_confress_wall">
-        
-    </view> 
+    <view style="clear: both;">
+    </view>
+
 </view>
 
+<view class="confress_panel">
 
+</view>
