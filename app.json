@@ -1,9 +1,9 @@
 {
   "pages": [
     
-
-    "pages/index/index",
     "pages/ConfessionWall/ConfessionWall",
+    "pages/index/index",
+
     "pages/login/login",
     "pages/pay/pay",
     "pages/product/product",

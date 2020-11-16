@@ -1,35 +1,81 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-13 23:35:52
- * @LastEditTime: 2020-11-15 00:25:06
+ * @LastEditTime: 2020-11-16 21:51:41
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/ConfessionWall/ConfessionWall.wxml
 -->
-<view class="page_back_button" bindtap='page_back_index'>
-    <image class="page_back" src="https://s1.ax1x.com/2020/11/11/BXy3Jf.png" mode="widthFix" lazy-load="false"
-        binderror="" bindload="" />
 
-</view>
+<view class="touch" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd">
+    <view class="page_back_button" bindtap='page_back_index'>
+        <image class="page_back" src="https://s1.ax1x.com/2020/11/11/BXy3Jf.png" mode="widthFix" lazy-load="false"
+            binderror="" bindload="" />
 
-<view class="title">
-    <view class="title_confress">表白墙</view>
-    <view class="title_division">|</view>
-    <view class="title_complain">吐槽墙</view>
-</view>
-
-<view class="date_and_numbers">
-    <view class="date">
-        2020/12/12 :
-    </view>
-    <view class="numbers">
-        该来的爱情总会来，无法拥有的一辈子也得不到.
-    </view>
-    <view style="clear: both;">
     </view>
 
-</view>
+    <view class="title">
+        <view class="title_confress">表白墙</view>
+        <view class="title_division">|</view>
+        <view class="title_complain">吐槽墙</view>
+    </view>
 
-<view class="confress_panel">
+    <view class="date_and_numbers">
+        <view class="date">
+            2020/11/16 :
+        </view>
+        <view class="numbers">
+            该来的爱情总会来，无法拥有的一辈子也得不到.
+        </view>
+        <view style="clear: both;">
+        </view>
 
+    </view>
+
+    <view class="confress_panel" animation="{{animation}}">
+
+        <view class="confress_panel_top">
+            <view class="confress_panel_title">
+                刘二先生的表白卡
+            </view>
+            <view class="confress_panel_numbers">
+                11/17
+            </view>
+            <view class="confess_to_who">
+                <view class="confess_to_who_text" selectable="false" space="false" decode="false">
+                    To 胖舒舒 :
+                </view>
+            </view>
+            <view style="clear: both;">
+
+            </view>
+
+        </view>
+
+        <view style="width:100%;">
+            <view class="confess_image">
+                <image class="confess_image_icon" src="../../image_icon/shushu.jpg" mode="heightFix" lazy-load="false"
+                    binderror="" bindload="" />
+            </view>
+            <view class="confess_text">
+                胖舒舒每天都要开心哦,天天都有在想你哦胖舒舒每天天都有在想你哦胖舒舒每天都要开心哦,天天都有在想你哦胖舒舒每天都要开心哦,天天都有在想你哦
+            </view>
+        </view>
+
+        <view class="confess_makelove">
+            <view class="confess_right_love_numbers"
+                style="color: {{confess_makelove_icon=='https://s3.ax1x.com/2020/11/15/DFhpB4.png'?'white':'red'}};">
+                25
+            </view>
+            <image class="confess_right_love" src="{{confess_makelove_icon}}" bindtap="makelove"></image>
+            <view class="confess_right_comment_numbers"
+                style="color: {{confess_makecomment_icon=='../../image_icon/comment.png'?'white':'#00cdf6'}};">
+                13
+            </view>
+            <image class="confess_right_comment" src='{{confess_makecomment_icon}}' bindtap="makecomment"></image>
+        </view>
+
+
+
+    </view>
 </view>
