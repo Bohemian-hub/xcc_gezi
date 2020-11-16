@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-13 23:35:52
- * @LastEditTime: 2020-11-16 21:53:14
+ * @LastEditTime: 2020-11-16 23:03:52
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/ConfessionWall/ConfessionWall.js
@@ -20,7 +20,18 @@ Page({
   data: {
     confess_makelove_icon: 'https://s3.ax1x.com/2020/11/15/DFhpB4.png',
     confess_makecomment_icon: '../../image_icon/comment.png',
-    content: "可以试试左右滑动了"
+    animation_index: '',
+    array: [{
+      id: '7294',
+    }, {
+      id: '7295',
+    }, {
+      id: '7296',
+    }, {
+      id: '7297',
+    }, {
+      id: '7298',
+    }]
   },
 
   /**
@@ -69,12 +80,12 @@ Page({
     if (moveFlag) {
       if (endX - startX > 50) {
         console.log("move right");
-        this.move2right();
+        this.move2right(e.currentTarget.dataset.id);
         moveFlag = false;
       }
       if (startX - endX > 50) {
         console.log("move left");
-        this.move2left();
+        this.move2left(e.currentTarget.dataset.id);
         moveFlag = false;
       }
     }
@@ -83,21 +94,33 @@ Page({
   // 触摸结束事件
   touchEnd: function (e) {
     moveFlag = true; // 回复滑动事件
-
   },
 
-  move2left() {
-    var that = this;
-
-    that.setData({
-      content: "move2left"
-    });
+  move2left(animation_index) {
+    console.log(animation_index);
+    var animation_index = wx.createAnimation({
+      duration: 100,
+      timingFunction: "linear",
+      delay: 0
+    })
+    this.animation = animation_index
+    this.animation.translate(-320, -1).step()
+    this.setData({
+      animation_index: this.animation.export(),
+    })
   },
-  move2right() {
-    var that = this;
-    that.setData({
-      content: "move2right"
-    });
+  move2right(animation_index) {
+    console.log(animation_index);
+    var animation_index = wx.createAnimation({
+      duration: 100,
+      timingFunction: "linear",
+      delay: 0
+    })
+    this.animation = animation_index
+    this.animation.translate(320, -1).step()
+    this.setData({
+      animation_index: this.animation.export()
+    })
   }
 
 });
