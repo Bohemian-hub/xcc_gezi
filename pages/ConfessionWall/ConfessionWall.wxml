@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-13 23:35:52
- * @LastEditTime: 2020-11-16 23:23:11
+ * @LastEditTime: 2020-11-17 11:34:27
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/ConfessionWall/ConfessionWall.wxml
@@ -32,10 +32,9 @@
 
     </view>
 
-    <view wx:for="{{array}}">
-        <view class="confress_panel" animation="animation{{item.id}}" animation="{{animation_index}}"
-            data-id='animation{{item.id}}' bindtouchstart="touchStart" bindtouchmove="touchMove"
-            bindtouchend="touchEnd">
+    <view wx:for="{{array}}" wx:key="index">
+        <view class="confress_panel" animation="{{animationDataB[index]}}" bindtouchstart="touchStart"
+            bindtouchmove="touchMove" bindtouchend="touchEnd" data-index="{{index}}">
 
             <view class="confress_panel_top">
                 <view class="confress_panel_title">

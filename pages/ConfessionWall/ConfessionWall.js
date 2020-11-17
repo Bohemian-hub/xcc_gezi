@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-13 23:35:52
- * @LastEditTime: 2020-11-16 23:03:52
+ * @LastEditTime: 2020-11-17 12:31:36
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/ConfessionWall/ConfessionWall.js
@@ -20,7 +20,7 @@ Page({
   data: {
     confess_makelove_icon: 'https://s3.ax1x.com/2020/11/15/DFhpB4.png',
     confess_makecomment_icon: '../../image_icon/comment.png',
-    animation_index: '',
+    animationDataB: [], //动画数组
     array: [{
       id: '7294',
     }, {
@@ -77,15 +77,16 @@ Page({
   // 触摸移动事件
   touchMove: function (e) {
     endX = e.touches[0].pageX; // 获取触摸时的原点
+    var nowIndex = e.currentTarget.dataset.index;//获取当前点击的子项index
     if (moveFlag) {
       if (endX - startX > 50) {
         console.log("move right");
-        this.move2right(e.currentTarget.dataset.id);
+        this.move2right(nowIndex);
         moveFlag = false;
       }
       if (startX - endX > 50) {
         console.log("move left");
-        this.move2left(e.currentTarget.dataset.id);
+        this.move2left(nowIndex);
         moveFlag = false;
       }
     }
@@ -96,31 +97,35 @@ Page({
     moveFlag = true; // 回复滑动事件
   },
 
-  move2left(animation_index) {
-    console.log(animation_index);
-    var animation_index = wx.createAnimation({
+  move2left(nowIndex) {
+    console.log(nowIndex);
+    var animation = wx.createAnimation({
       duration: 100,
-      timingFunction: "linear",
+      timingFunction: "ease-in",
       delay: 0
     })
-    this.animation = animation_index
-    this.animation.translate(-320, -1).step()
+    this.animation = animation
+    this.animation.translate(-120, -1).step()
+    this.data.animationDataB[nowIndex] = animation.export(); //导出当前选择子项的动画队列
     this.setData({
-      animation_index: this.animation.export(),
+      animationDataB: this.data.animationDataB // 修改新的动画数组
     })
-  },
-  move2right(animation_index) {
-    console.log(animation_index);
-    var animation_index = wx.createAnimation({
-      duration: 100,
-      timingFunction: "linear",
-      delay: 0
-    })
-    this.animation = animation_index
-    this.animation.translate(320, -1).step()
-    this.setData({
-      animation_index: this.animation.export()
-    })
-  }
 
+  },
+
+  move2right(nowIndex) {
+    console.log(nowIndex);
+    var animation = wx.createAnimation({
+      duration: 100,
+      timingFunction: "ease-in",
+      delay: 0
+    })
+    this.animation = animation
+    this.animation.translate(120, -1).step()
+    this.data.animationDataB[nowIndex] = animation.export(); //导出当前选择子项的动画队列
+    this.setData({
+      animationDataB: this.data.animationDataB // 修改新的动画数组
+    })
+
+  },
 });
