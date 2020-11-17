@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-13 23:35:52
- * @LastEditTime: 2020-11-17 12:31:36
+ * @LastEditTime: 2020-11-17 19:18:41
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/ConfessionWall/ConfessionWall.js
@@ -21,17 +21,52 @@ Page({
     confess_makelove_icon: 'https://s3.ax1x.com/2020/11/15/DFhpB4.png',
     confess_makecomment_icon: '../../image_icon/comment.png',
     animationDataB: [], //动画数组
-    array: [{
-      id: '7294',
+    swiperList: [{
+      id: 0,
+      card_from: '张益达',
+      card_object: '刘露漫',
+      card_bg_url: '',
+      card_img_url: '',
+      card_content: '我爱你啊我爱你啊我爱你啊我爱你啊我爱你啊我爱你啊我爱你啊我爱你啊我爱你啊我爱你啊我爱你啊',
+      love_numbers: '35',
+      comment_numbers: '22',
     }, {
-      id: '7295',
+      id: 1,
+      card_from: '陈建军',
+      card_object: '刘德华',
+      card_bg_url: '',
+      card_img_url: '',
+      card_content: '你是傻逼你是傻逼你是傻逼你是傻逼你是傻逼你是傻逼你是傻逼你是傻逼你是傻逼',
+      love_numbers: '21',
+      comment_numbers: '1000',
     }, {
-      id: '7296',
+      id: 2,
+      card_from: '阿宝',
+      card_object: '蔡蔡',
+      card_bg_url: '',
+      card_img_url: '',
+      card_content: '我是你爸爸',
+      love_numbers: '3',
+      comment_numbers: '0',
     }, {
-      id: '7297',
+      id: 3,
+      card_from: '阿小华',
+      card_object: '英语',
+      card_bg_url: '',
+      card_img_url: '',
+      card_content: '一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五',
+      love_numbers: '10000',
+      comment_numbers: '10000',
     }, {
-      id: '7298',
-    }]
+      id: 4,
+      card_from: '刘仪伟',
+      card_object: '虞姬',
+      card_bg_url: '',
+      card_img_url: '',
+      card_content: '一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五',
+      love_numbers: '3',
+      comment_numbers: '1',
+    }],
   },
 
   /**

@@ -2617,12 +2617,12 @@ swiper.round-dot .wx-swiper-dot.wx-swiper-dot-active {
 }
 
 .card-swiper {
-	height: 420rpx !important;
+	height: 960rpx !important;
 }
 
 .card-swiper swiper-item {
-	width: 610rpx !important;
-	left: 70rpx;
+	width: 580rpx !important;
+	left: 115rpx;
 	box-sizing: border-box;
 	padding: 40rpx 0rpx 70rpx;
 	overflow: initial;

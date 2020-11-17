@@ -89,9 +89,9 @@ box-shadow: 0rpx 0rpx 20rpx rgb(216, 216, 216);
   height: 100%;
 }
 .cardleft_text {
-    background-color: rgba(240, 248, 255, 0.26);
+  background-color: rgba(240, 248, 255, 0.452);
   text-indent: 2em;
-  width: 90%;
+  width: 100%;
   left: 0rpx;
   padding: 10px;
   bottom: 0rpx;

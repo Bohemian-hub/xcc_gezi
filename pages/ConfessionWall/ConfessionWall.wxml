@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-13 23:35:52
- * @LastEditTime: 2020-11-17 11:34:27
+ * @LastEditTime: 2020-11-17 16:30:44
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/ConfessionWall/ConfessionWall.wxml
@@ -32,53 +32,55 @@
 
     </view>
 
-    <view wx:for="{{array}}" wx:key="index">
-        <view class="confress_panel" animation="{{animationDataB[index]}}" bindtouchstart="touchStart"
-            bindtouchmove="touchMove" bindtouchend="touchEnd" data-index="{{index}}">
+<swiper class="card-swiper {{DotStyle?'square-dot':'square-dot'}}" indicator-dots="true" circular="true"
+ autoplay="true" interval="3000" duration="500" 
+  indicator-color="#8799a3" indicator-active-color="#0081ff">
 
+  <!-- 这就是儿子了吧 -->
+  <swiper-item wx:for="{{swiperList}}">
+    <view class="confress_panel" >
             <view class="confress_panel_top">
                 <view class="confress_panel_title">
-                    刘二先生的表白卡
+                    {{item.card_from}}的表白卡
                 </view>
                 <view class="confress_panel_numbers">
-                    11/17
-                </view>
-                <view class="confess_to_who">
-                    <view class="confess_to_who_text" selectable="false" space="false" decode="false">
-                        To 胖舒舒 :
-                    </view>
+                    {{item.id}}/{{swiperList.length}}
                 </view>
                 <view style="clear: both;">
-
                 </view>
-
+                <view class="confess_to_who_text" selectable="false" space="false" decode="false">
+                    To {{item.card_object}} :
+                </view>
             </view>
 
             <view style="width:100%;">
                 <view class="confess_image">
-                    <image class="confess_image_icon" src="../../image_icon/shushu.jpg" mode="heightFix"
+                    <image class="confess_image_icon" src="https://img-blog.csdnimg.cn/20190819220643788.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5MTI5ODQ1,size_16,color_FFFFFF,t_70" mode="heightFix"
                         lazy-load="false" binderror="" bindload="" />
                 </view>
                 <view class="confess_text">
-                    胖舒舒每天都要开心哦,天天都有在想你哦胖舒舒每天天都有在想你哦胖舒舒每天都要开心哦,天天都有在想你哦胖舒舒每天都要开心哦,天天都有在想你哦
+                    {{item.card_content}} 
                 </view>
             </view>
 
             <view class="confess_makelove">
                 <view class="confess_right_love_numbers"
                     style="color: {{confess_makelove_icon=='https://s3.ax1x.com/2020/11/15/DFhpB4.png'?'white':'red'}};">
-                    25
+                    {{item.love_numbers}}
                 </view>
                 <image class="confess_right_love" src="{{confess_makelove_icon}}" bindtap="makelove"></image>
                 <view class="confess_right_comment_numbers"
                     style="color: {{confess_makecomment_icon=='../../image_icon/comment.png'?'white':'#00cdf6'}};">
-                    13
+                    {{item.comment_numbers}}
                 </view>
-                <image class="confess_right_comment" src='{{confess_makecomment_icon}}' bindtap="makecomment"></image>
+                <image class="confess_right_comment" src='{{confess_makecomment_icon}}' bindtap="makecomment">
+                </image>
             </view>
         </view>
-    </view>
+  </swiper-item>
 
+
+</swiper>
 
 
 
