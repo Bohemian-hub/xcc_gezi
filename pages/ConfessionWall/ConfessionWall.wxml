@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-13 23:35:52
- * @LastEditTime: 2020-11-17 21:54:43
+ * @LastEditTime: 2020-11-17 22:28:00
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/ConfessionWall/ConfessionWall.wxml
@@ -33,7 +33,7 @@
 </view>
 
 <swiper class="card-swiper {{DotStyle?'square-dot':'square-dot'}}" indicator-dots="true" circular="true" autoplay="true"
-    interval="3000" duration="500" indicator-color="#8799a3" indicator-active-color="#0081ff">
+    interval="800000" duration="500" indicator-color="#8799a3" indicator-active-color="#0081ff">
 
     <!-- 这就是儿子了吧 -->
     <swiper-item wx:for="{{swiperList}}" wx:key="item">
@@ -64,20 +64,28 @@
             </view>
 
             <view class="confess_makelove">
-                <view class="confess_right_love_numbers" style="color: {{item.id==onclick_id?'red':'white'}};">
+
+
+                <view class="confess_right_love_numbers"
+                    style="color: {{item.id==onclick_love_id[index]?'red':'white'}};">
                     {{item.love_numbers}}
                 </view>
                 <image class="confess_right_love"
                     src="{{item.id==onclick_love_id[index]?'https://s3.ax1x.com/2020/11/15/DFhSuF.png':'https://s3.ax1x.com/2020/11/15/DFhpB4.png'}}"
-                    data-id='{{item.id}}' bindtap="makelove"></image>
+                    data-id='{{item.id}}' bindtap="makelove">
+                </image>
+
+
                 <view class="confess_right_comment_numbers"
-                    style="color: {{item.id==onclick_comment_id?'#00cdf6':'#white'}};">
+                    style="color: {{item.id==onclick_comment_id[index]?'#00cdf6':'#white'}};">
                     {{item.comment_numbers}}
                 </view>
                 <image class="confess_right_comment"
                     src="{{item.id==onclick_comment_id[index]?'../../image_icon/comment_after.png':'../../image_icon/comment.png'}}"
                     data-id='{{item.id}}' bindtap="makecomment">
                 </image>
+
+
             </view>
         </view>
     </swiper-item>

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-13 23:35:52
- * @LastEditTime: 2020-11-17 22:15:47
+ * @LastEditTime: 2020-11-17 22:25:40
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/ConfessionWall/ConfessionWall.js
@@ -18,6 +18,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    onclick_love_id: [],
+    onclick_comment_id: [],
     swiperList: [{
       id: 0,
       card_from: '张益达',
@@ -63,10 +65,8 @@ Page({
       card_content: '一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五',
       love_numbers: '3',
       comment_numbers: '1',
-      onclick_love_id: [],
-      onclick_comment_id: [],
-
     }],
+
   },
 
   /**
@@ -104,6 +104,7 @@ Page({
       console.log(e.currentTarget.dataset.id);
       that.setData({
         ['onclick_love_id[' + e.currentTarget.dataset.id + ']']: e.currentTarget.dataset.id,
+        /*         ['swiperList[' + e.currentTarget.dataset.id + '].love_numbers']: swiperList[e.currentTarget.dataset.id].love_numbers + 1 */
       })
       love_onclick_status[e.currentTarget.dataset.id] = 1;
       console.log(this.data.onclick_love_id);
