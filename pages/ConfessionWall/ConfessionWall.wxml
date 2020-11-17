@@ -1,44 +1,43 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-13 23:35:52
- * @LastEditTime: 2020-11-17 16:30:44
+ * @LastEditTime: 2020-11-17 21:54:43
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/ConfessionWall/ConfessionWall.wxml
 -->
 
-<view class="touch">
-    <view class="page_back_button" bindtap='page_back_index'>
-        <image class="page_back" src="https://s1.ax1x.com/2020/11/11/BXy3Jf.png" mode="widthFix" lazy-load="false"
-            binderror="" bindload="" />
 
+<view class="page_back_button" bindtap='page_back_index'>
+    <image class="page_back" src="https://s1.ax1x.com/2020/11/11/BXy3Jf.png" mode="widthFix" lazy-load="false"
+        binderror="" bindload="" />
+
+</view>
+
+<view class="title">
+    <view class="title_confress">表白墙</view>
+    <view class="title_division">|</view>
+    <view class="title_complain">吐槽墙</view>
+</view>
+
+<view class="date_and_numbers">
+    <view class="date">
+        2020/11/16 :
+    </view>
+    <view class="numbers">
+        该来的爱情总会来，无法拥有的一辈子也得不到.
+    </view>
+    <view style="clear: both;">
     </view>
 
-    <view class="title">
-        <view class="title_confress">表白墙</view>
-        <view class="title_division">|</view>
-        <view class="title_complain">吐槽墙</view>
-    </view>
+</view>
 
-    <view class="date_and_numbers">
-        <view class="date">
-            2020/11/16 :
-        </view>
-        <view class="numbers">
-            该来的爱情总会来，无法拥有的一辈子也得不到.
-        </view>
-        <view style="clear: both;">
-        </view>
+<swiper class="card-swiper {{DotStyle?'square-dot':'square-dot'}}" indicator-dots="true" circular="true" autoplay="true"
+    interval="3000" duration="500" indicator-color="#8799a3" indicator-active-color="#0081ff">
 
-    </view>
-
-<swiper class="card-swiper {{DotStyle?'square-dot':'square-dot'}}" indicator-dots="true" circular="true"
- autoplay="true" interval="3000" duration="500" 
-  indicator-color="#8799a3" indicator-active-color="#0081ff">
-
-  <!-- 这就是儿子了吧 -->
-  <swiper-item wx:for="{{swiperList}}">
-    <view class="confress_panel" >
+    <!-- 这就是儿子了吧 -->
+    <swiper-item wx:for="{{swiperList}}" wx:key="item">
+        <view class="confress_panel">
             <view class="confress_panel_top">
                 <view class="confress_panel_title">
                     {{item.card_from}}的表白卡
@@ -55,34 +54,44 @@
 
             <view style="width:100%;">
                 <view class="confess_image">
-                    <image class="confess_image_icon" src="https://img-blog.csdnimg.cn/20190819220643788.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5MTI5ODQ1,size_16,color_FFFFFF,t_70" mode="heightFix"
-                        lazy-load="false" binderror="" bindload="" />
+                    <image class="confess_image_icon"
+                        src="https://img-blog.csdnimg.cn/20190819220643788.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5MTI5ODQ1,size_16,color_FFFFFF,t_70"
+                        mode="heightFix" lazy-load="false" binderror="" bindload="" />
                 </view>
                 <view class="confess_text">
-                    {{item.card_content}} 
+                    {{item.card_content}}
                 </view>
             </view>
 
             <view class="confess_makelove">
-                <view class="confess_right_love_numbers"
-                    style="color: {{confess_makelove_icon=='https://s3.ax1x.com/2020/11/15/DFhpB4.png'?'white':'red'}};">
+                <view class="confess_right_love_numbers" style="color: {{item.id==onclick_id?'red':'white'}};">
                     {{item.love_numbers}}
                 </view>
-                <image class="confess_right_love" src="{{confess_makelove_icon}}" bindtap="makelove"></image>
+                <image class="confess_right_love"
+                    src="{{item.id==onclick_love_id[index]?'https://s3.ax1x.com/2020/11/15/DFhSuF.png':'https://s3.ax1x.com/2020/11/15/DFhpB4.png'}}"
+                    data-id='{{item.id}}' bindtap="makelove"></image>
                 <view class="confess_right_comment_numbers"
-                    style="color: {{confess_makecomment_icon=='../../image_icon/comment.png'?'white':'#00cdf6'}};">
+                    style="color: {{item.id==onclick_comment_id?'#00cdf6':'#white'}};">
                     {{item.comment_numbers}}
                 </view>
-                <image class="confess_right_comment" src='{{confess_makecomment_icon}}' bindtap="makecomment">
+                <image class="confess_right_comment"
+                    src="{{item.id==onclick_comment_id[index]?'../../image_icon/comment_after.png':'../../image_icon/comment.png'}}"
+                    data-id='{{item.id}}' bindtap="makecomment">
                 </image>
             </view>
         </view>
-  </swiper-item>
+    </swiper-item>
 
 
 </swiper>
 
-
+<view class="publish">
+    <view class="publish_confess">
+        我要表白
+    </view>
+    <view class="publish_complain">
+        我要吐槽
+    </view>
 
 
 </view>

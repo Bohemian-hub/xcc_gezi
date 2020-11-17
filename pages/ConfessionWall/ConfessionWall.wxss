@@ -53,9 +53,8 @@ page{
 
 }
 .date_and_numbers{
-    margin-top: 150rpx;
     width: 90%;
-    margin: 150rpx auto 50rpx auto;
+    margin: 100rpx auto 20rpx auto;
 }
 .date{
     width: 30%;
@@ -85,6 +84,7 @@ page{
   border-radius: 20rpx;
   background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1605458116739&di=b2465c710f18a01c8cb26b0f44badb9b&imgtype=0&src=http%3A%2F%2Fbpic.588ku.com%2Fback_origin_min_pic%2F19%2F04%2F16%2F784fef9651d00c717c2ef49f62baf1d2.jpg%2521%2Ffw%2F750%2Fquality%2F99%2Funsharp%2Ftrue%2Fcompress%2Ftrue);
   background-size: 100% 100%;
+  box-shadow: 0rpx 0rpx 20rpx rgb(112, 31, 31);
   opacity: 1;
   position: relative;
   overflow: hidden;
@@ -179,4 +179,37 @@ page{
   float: right;
   color: white;
 
+}
+.publish{
+    width: 100%;
+    height: 120rpx;
+    position: fixed;
+    bottom: 0;
+    background-color: rgba(250, 235, 215, 0);
+}
+.publish_confess{
+    width: 30%;
+    margin-left: 15%;
+    text-align: center;
+    line-height: 100rpx;
+    border-radius: 20rpx;
+    font-size: 35rpx;
+    background-color: rgb(105, 196, 248);
+    box-shadow: 0rpx 0rpx 20rpx rgb(250, 174, 174);
+    color: white;
+    font-weight: 800;
+    float: left;
+}
+.publish_complain{
+    width: 30%;
+    margin-left: 10%;
+    text-align: center;
+    line-height: 100rpx;
+    border-radius: 20rpx;
+    font-size: 35rpx;
+    background-color: rgb(202, 12, 44);
+    box-shadow: 0rpx 0rpx 20rpx rgb(255, 169, 169);
+    color: white;
+    font-weight: 800;
+    float: left;
 }

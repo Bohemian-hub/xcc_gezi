@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-13 23:35:52
- * @LastEditTime: 2020-11-17 19:18:41
+ * @LastEditTime: 2020-11-17 22:15:47
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/ConfessionWall/ConfessionWall.js
@@ -9,18 +9,15 @@
 // pages/ConfessionWall/ConfessionWall.js
 
 //声明工具类对象
+var love_onclick_status = [];
+var comment_onclick_status = [];
 
-var startX, endX;
-var moveFlag = true;// 判断执行滑动事件
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    confess_makelove_icon: 'https://s3.ax1x.com/2020/11/15/DFhpB4.png',
-    confess_makecomment_icon: '../../image_icon/comment.png',
-    animationDataB: [], //动画数组
     swiperList: [{
       id: 0,
       card_from: '张益达',
@@ -66,6 +63,9 @@ Page({
       card_content: '一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五一二三四五',
       love_numbers: '3',
       comment_numbers: '1',
+      onclick_love_id: [],
+      onclick_comment_id: [],
+
     }],
   },
 
@@ -90,77 +90,48 @@ Page({
       },
     })
   },
-  makelove() {
+
+  makelove(e) {
     var that = this;
-    that.setData({
-      confess_makelove_icon: 'https://s3.ax1x.com/2020/11/15/DFhSuF.png',
-    })
-  },
-  makecomment() {
-    var that = this;
-    that.setData({
-      confess_makecomment_icon: '../../image_icon/comment_after.png',
-    })
-  },
+    if (love_onclick_status[e.currentTarget.dataset.id] == 1) {
+      that.setData({
+        ['onclick_love_id[' + e.currentTarget.dataset.id + ']']: -1,
+      })
+      love_onclick_status[e.currentTarget.dataset.id] = 0;
+      console.log(this.data.onclick_love_id);
 
-
-
-  touchStart: function (e) {
-    startX = e.touches[0].pageX; // 获取触摸时的原点
-    moveFlag = true;
-  },
-  // 触摸移动事件
-  touchMove: function (e) {
-    endX = e.touches[0].pageX; // 获取触摸时的原点
-    var nowIndex = e.currentTarget.dataset.index;//获取当前点击的子项index
-    if (moveFlag) {
-      if (endX - startX > 50) {
-        console.log("move right");
-        this.move2right(nowIndex);
-        moveFlag = false;
-      }
-      if (startX - endX > 50) {
-        console.log("move left");
-        this.move2left(nowIndex);
-        moveFlag = false;
-      }
+    } else {
+      console.log(e.currentTarget.dataset.id);
+      that.setData({
+        ['onclick_love_id[' + e.currentTarget.dataset.id + ']']: e.currentTarget.dataset.id,
+      })
+      love_onclick_status[e.currentTarget.dataset.id] = 1;
+      console.log(this.data.onclick_love_id);
     }
 
   },
-  // 触摸结束事件
-  touchEnd: function (e) {
-    moveFlag = true; // 回复滑动事件
-  },
+  makecomment(e) {
+    var that = this;
+    if (comment_onclick_status[e.currentTarget.dataset.id] == 1) {
+      that.setData({
+        ['onclick_comment_id[' + e.currentTarget.dataset.id + ']']: -1,
+      })
+      comment_onclick_status[e.currentTarget.dataset.id] = 0;
+      console.log(this.data.onclick_comment_id);
 
-  move2left(nowIndex) {
-    console.log(nowIndex);
-    var animation = wx.createAnimation({
-      duration: 100,
-      timingFunction: "ease-in",
-      delay: 0
-    })
-    this.animation = animation
-    this.animation.translate(-120, -1).step()
-    this.data.animationDataB[nowIndex] = animation.export(); //导出当前选择子项的动画队列
-    this.setData({
-      animationDataB: this.data.animationDataB // 修改新的动画数组
-    })
+    } else {
+      console.log(e.currentTarget.dataset.id);
+      that.setData({
+        ['onclick_comment_id[' + e.currentTarget.dataset.id + ']']: e.currentTarget.dataset.id,
+      })
+      comment_onclick_status[e.currentTarget.dataset.id] = 1;
+      console.log(this.data.onclick_comment_id);
+    }
 
-  },
 
-  move2right(nowIndex) {
-    console.log(nowIndex);
-    var animation = wx.createAnimation({
-      duration: 100,
-      timingFunction: "ease-in",
-      delay: 0
-    })
-    this.animation = animation
-    this.animation.translate(120, -1).step()
-    this.data.animationDataB[nowIndex] = animation.export(); //导出当前选择子项的动画队列
-    this.setData({
-      animationDataB: this.data.animationDataB // 修改新的动画数组
-    })
+
+
 
   },
+
 });
