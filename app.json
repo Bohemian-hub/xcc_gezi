@@ -1,14 +1,13 @@
 {
   "pages": [
-    
     "pages/ConfessionWall/ConfessionWall",
     "pages/index/index",
-
     "pages/login/login",
     "pages/pay/pay",
     "pages/product/product",
     "pages/setting/setting",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/publish_confess/publish_confess"
   ],
   "window": {
     "backgroundTextStyle": "light",
