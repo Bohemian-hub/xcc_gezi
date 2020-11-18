@@ -256,7 +256,7 @@ box-shadow: 0 0 20rpx rgb(143, 143, 143);
   font-size: 40rpx;
 }
 .comment_panel_comment{
-  background-color: rgba(255, 255, 255, 0.76);
+  background-color: rgb(255, 255, 255);
   border-top-left-radius: 50rpx;
   border-top-right-radius: 50rpx;
   height: 740rpx;
@@ -276,7 +276,7 @@ background-color: rgba(250, 235, 215, 0);
   margin: 0 auto;
 }
 .comment_panel_comment_title_content_one{
-  border-bottom: 4rpx solid rgb(168, 168, 168);
+  border-bottom: 4rpx solid rgb(204, 204, 204);
   padding-top: 10rpx;
   padding-bottom: 20rpx;
 }
@@ -310,7 +310,21 @@ background-color: rgba(250, 235, 215, 0);
 }
 .content_right_content{
   text-indent: 2em;
-  color: rgb(114, 114, 114);
+  color: rgb(7, 7, 7);
+}
+.content_right_content_son{
+  width: 100%;
+  line-height: 60rpx;
+  background-color: rgba(138, 138, 138, 0.151);  
+  margin-bottom: 10rpx;
+  padding: 10rpx;
+}
+.son_from{
+  color: rgb(19, 111, 187);
+  float: left;
+}
+.son_content{
+  float: left;
 }
 .content_right_time{
   margin-top: 10rpx;

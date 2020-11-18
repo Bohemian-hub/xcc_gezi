@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-13 23:35:52
- * @LastEditTime: 2020-11-18 13:44:07
+ * @LastEditTime: 2020-11-18 15:02:34
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/ConfessionWall/ConfessionWall.wxml
@@ -128,6 +128,28 @@
                     <view class="content_right_content">
                         沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼
                     </view>
+                    <view>
+                        <view class="content_right_content_son">
+                            <view class="son_from" selectable="false" space="false" decode="false">
+                                {{}}评论者昵称:
+                            </view>
+                            哈哈哈，谢谢你
+                        </view>
+                        <view class="content_right_content_son">
+                            <view class="son_from" selectable="false" space="false" decode="false">
+                                {{}}评论者昵称:
+                            </view>
+                            子评论的字数不超过现在这样的二十个字啊
+                        </view>
+                        <view class="content_right_content_son">
+                            <view class="son_from" selectable="false" space="false" decode="false">
+                                {{}}评论者昵称:
+                            </view>
+                            谢谢！😁
+                        </view>
+
+                    </view>
+
                     <view class="content_right_time">11-19 12:18</view>
                 </view>
                 <view style="clear:both;"></view>
