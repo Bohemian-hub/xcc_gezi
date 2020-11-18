@@ -213,7 +213,13 @@ page{
     font-weight: 800;
     float: left;
 }
-
+.close_comment{
+  width: 100%;
+  height: 800rpx;
+  position: fixed;
+  top: 0;
+  background-color: rgba(250, 235, 215, 0);
+}
 .comment_panel{
   position: fixed;
   height: 820rpx;
@@ -276,13 +282,37 @@ background-color: rgba(250, 235, 215, 0);
 }
 .content_left{
   width: 15%;
-  height: 120rpx;
+  height: 100rpx;
   background-color: pink;
+  border-radius: 50%;
   float: left;
+  overflow: hidden;
+  box-shadow: 0 0 20rpx rgb(143, 143, 143);
+
+  
+}
+.content_left_head{
+  width: 100%;
+  height: 100%;
 }
 .content_right{
-  width: 85%;
-  background-color: aqua;
+  width: 80%;
+  background-color: rgba(60, 184, 167, 0);
   float: left;
-  height: 200rpx;
+  height: auto;
+  margin-left: 3%;
+}
+.content_right_name{
+  width: 100%;
+  height: 60rpx;
+  font-size: 35rpx;
+  font-weight: 800;
+}
+.content_right_content{
+  text-indent: 2em;
+  color: rgb(114, 114, 114);
+}
+.content_right_time{
+  margin-top: 10rpx;
+  color: rgb(146, 146, 146);
 }

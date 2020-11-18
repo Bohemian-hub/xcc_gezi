@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-13 23:35:52
- * @LastEditTime: 2020-11-18 11:17:57
+ * @LastEditTime: 2020-11-18 13:44:07
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/ConfessionWall/ConfessionWall.wxml
@@ -76,13 +76,11 @@
                 </image>
 
 
-                <view class="confess_right_comment_numbers"
-                    style="color: {{item.id==onclick_comment_id[index]?'#00cdf6':'#white'}};">
+                <view class="confess_right_comment_numbers">
                     {{item.comment_numbers}}
                 </view>
-                <image class="confess_right_comment"
-                    src="{{item.id==onclick_comment_id[index]?'../../image_icon/comment_after.png':'../../image_icon/comment.png'}}"
-                    data-id='{{item.id}}' bindtap="makecomment">
+                <image class="confess_right_comment" src="../../image_icon/comment.png" data-id='{{item.id}}'
+                    bindtap="makecomment">
                 </image>
 
 
@@ -102,34 +100,84 @@
     </view>
 </view>
 
-<view class="comment_panel" style="display: none;">
-    <view class="comment_panel_scanf">
+<view class="close_comment" wx:if="{{showModalStatus}}" bindtap="close_comment">
+
+</view>
+
+
+<view class="comment_panel" animation="{{animationData}}" wx:if="{{showModalStatus}}">
+    <!-- <view class="comment_panel" animation="{{animationData}}"> -->
+    <view class=" comment_panel_scanf">
         <input class="comment_panel_scanf_frame">框框</input>
         <view class="comment_panel_scanf_button">发送</view>
     </view>
     <view class="comment_panel_comment">
         <view class="comment_panel_comment_title">
-            评论25
+            评论{{comment_onclick_count}}
         </view>
         <scroll-view class="comment_panel_comment_title_content" scroll-y="true">
             <view class="comment_panel_comment_title_content_one">
-                <view class="content_left">头像</view>
-                <view class="content_right">右边</view>
+                <view class="content_left">
+                    <image class="content_left_head"
+                        src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2913758430,898689551&fm=26&gp=0.jpg"
+                        mode="aspectFit" lazy-load="false" binderror="" bindload="">
+                    </image>
+                </view>
+                <view class="content_right">
+                    <view class="content_right_name">你的昵称</view>
+                    <view class="content_right_content">
+                        沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼
+                    </view>
+                    <view class="content_right_time">11-19 12:18</view>
+                </view>
                 <view style="clear:both;"></view>
             </view>
             <view class="comment_panel_comment_title_content_one">
-                <view class="content_left">头像</view>
-                <view class="content_right">右边</view>
+                <view class="content_left">
+                    <image class="content_left_head"
+                        src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2913758430,898689551&fm=26&gp=0.jpg"
+                        mode="aspectFit" lazy-load="false" binderror="" bindload="">
+                    </image>
+                </view>
+                <view class="content_right">
+                    <view class="content_right_name">你的昵称</view>
+                    <view class="content_right_content">
+                        你个糟老头子坏得很
+                    </view>
+                    <view class="content_right_time">11-19 12:18</view>
+                </view>
                 <view style="clear:both;"></view>
             </view>
             <view class="comment_panel_comment_title_content_one">
-                <view class="content_left">头像</view>
-                <view class="content_right">右边</view>
+                <view class="content_left">
+                    <image class="content_left_head"
+                        src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2913758430,898689551&fm=26&gp=0.jpg"
+                        mode="aspectFit" lazy-load="false" binderror="" bindload="">
+                    </image>
+                </view>
+                <view class="content_right">
+                    <view class="content_right_name">你的昵称</view>
+                    <view class="content_right_content">
+                        9999999999999
+                    </view>
+                    <view class="content_right_time">11-19 12:18</view>
+                </view>
                 <view style="clear:both;"></view>
             </view>
             <view class="comment_panel_comment_title_content_one">
-                <view class="content_left">头像</view>
-                <view class="content_right">右边</view>
+                <view class="content_left">
+                    <image class="content_left_head"
+                        src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2913758430,898689551&fm=26&gp=0.jpg"
+                        mode="aspectFit" lazy-load="false" binderror="" bindload="">
+                    </image>
+                </view>
+                <view class="content_right">
+                    <view class="content_right_name">你的昵称</view>
+                    <view class="content_right_content">
+                        哈哈哈哈哈哈哈哈哈哈哈哈
+                    </view>
+                    <view class="content_right_time">11-19 12:18</view>
+                </view>
                 <view style="clear:both;"></view>
             </view>
 

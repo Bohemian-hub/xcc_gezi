@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-13 23:35:52
- * @LastEditTime: 2020-11-17 22:25:40
+ * @LastEditTime: 2020-11-18 13:28:46
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/ConfessionWall/ConfessionWall.js
@@ -10,7 +10,6 @@
 
 //声明工具类对象
 var love_onclick_status = [];
-var comment_onclick_status = [];
 
 Page({
 
@@ -19,7 +18,10 @@ Page({
    */
   data: {
     onclick_love_id: [],
-    onclick_comment_id: [],
+    animationData: {},
+    showModalStatus: false,
+    comment_onclick_count: '',
+
     swiperList: [{
       id: 0,
       card_from: '张益达',
@@ -113,26 +115,51 @@ Page({
   },
   makecomment(e) {
     var that = this;
-    if (comment_onclick_status[e.currentTarget.dataset.id] == 1) {
-      that.setData({
-        ['onclick_comment_id[' + e.currentTarget.dataset.id + ']']: -1,
+    console.log(e.currentTarget.dataset.id);
+    var animation = wx.createAnimation({
+      duration: 100,
+      timingFunction: "linear",
+      delay: 0
+    })
+    this.animation = animation
+    this.animation.translateY(520).step()
+
+    that.setData({
+      animationData: animation.export(),
+      showModalStatus: true,
+      comment_onclick_count: this.data.swiperList[e.currentTarget.dataset.id].comment_numbers,
+    })
+    setTimeout(function () {
+      animation.translateY(0).step()
+      this.setData({
+        animationData: animation.export()
       })
-      comment_onclick_status[e.currentTarget.dataset.id] = 0;
-      console.log(this.data.onclick_comment_id);
-
-    } else {
-      console.log(e.currentTarget.dataset.id);
-      that.setData({
-        ['onclick_comment_id[' + e.currentTarget.dataset.id + ']']: e.currentTarget.dataset.id,
-      })
-      comment_onclick_status[e.currentTarget.dataset.id] = 1;
-      console.log(this.data.onclick_comment_id);
-    }
-
-
-
-
-
+    }.bind(this), 0)
   },
+  close_comment() {
+    var that = this;
+    var animation = wx.createAnimation({
+      duration: 100,
+      timingFunction: "linear",
+      delay: 0
+    })
+    this.animation = animation
+    this.animation.translateY(0).step()
+    that.setData({
+      animationData: animation.export(),
+
+    })
+    setTimeout(function () {
+      animation.translateY(520).step()
+      this.setData({
+        animationData: animation.export(),
+      })
+    }.bind(this), 0)
+    setTimeout(function () {
+      this.setData({
+        showModalStatus: false,
+      })
+    }.bind(this), 300)
+  }
 
 });
