@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-13 23:35:52
- * @LastEditTime: 2020-11-18 15:02:34
+ * @LastEditTime: 2020-11-18 15:16:32
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/ConfessionWall/ConfessionWall.wxml
@@ -92,7 +92,7 @@
 </swiper>
 
 <view class="publish">
-    <view class="publish_confess">
+    <view class="publish_confess" bindtap="publish_confess">
         我要表白
     </view>
     <view class="publish_complain">

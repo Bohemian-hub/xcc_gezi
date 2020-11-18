@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-13 23:35:52
- * @LastEditTime: 2020-11-18 13:28:46
+ * @LastEditTime: 2020-11-18 15:08:55
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/ConfessionWall/ConfessionWall.js
@@ -160,6 +160,11 @@ Page({
         showModalStatus: false,
       })
     }.bind(this), 300)
+  },
+  publish_confess() {
+    wx.navigateTo({
+      url: '../publish_confess/publish_confess',
+    })
   }
 
 });

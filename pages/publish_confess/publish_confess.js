@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2020-11-18 15:06:45
+ * @LastEditTime: 2020-11-18 16:42:21
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: /miniprogram-5/pages/publish_confess/publish_confess.js
+ */
 // pages/publish_confess/publish_confess.js
 Page({
 
@@ -14,6 +22,21 @@ Page({
   onLoad: function (options) {
 
   },
+  page_back_index: function () {
+    wx.navigateTo({
+      url: '../index/index',
+      success: function (res) {
+
+      },
+      fail: function (res) {
+
+      },
+      complete: function (res) {
+
+      },
+    })
+  },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成

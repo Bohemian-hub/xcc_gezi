@@ -1,2 +1,38 @@
-<!--pages/publish_confess/publish_confess.wxml-->
-<text>pages/publish_confess/publish_confess.wxml</text>
+<!--
+ * @Author: your name
+ * @Date: 2020-11-18 15:06:45
+ * @LastEditTime: 2020-11-18 17:14:12
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /miniprogram-5/pages/publish_confess/publish_confess.wxml
+-->
+<view class="page_back_button" bindtap='page_back_index'>
+    <image class="page_back" src="https://s1.ax1x.com/2020/11/11/BXy3Jf.png" mode="widthFix" lazy-load="false"
+        binderror="" bindload="" />
+
+</view>
+<view class="form_sentence">
+    I fell in love with you the moment I saw you.
+</view>
+<view class="form_preview">
+    预览
+</view>
+
+<view class="form_title">
+    表白标题
+</view>
+<view class="form_object">
+    表白对象
+</view>
+<view class="form_background">
+    表白卡背景
+</view>
+<view class="form_img">
+    表白用图
+</view>
+<view class="form_content">
+    内容
+</view>
+<view class="form_button">
+    发布
+</view>
