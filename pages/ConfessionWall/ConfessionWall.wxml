@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-13 23:35:52
- * @LastEditTime: 2020-11-17 22:28:00
+ * @LastEditTime: 2020-11-18 11:17:57
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/ConfessionWall/ConfessionWall.wxml
@@ -33,7 +33,7 @@
 </view>
 
 <swiper class="card-swiper {{DotStyle?'square-dot':'square-dot'}}" indicator-dots="true" circular="true" autoplay="true"
-    interval="800000" duration="500" indicator-color="#8799a3" indicator-active-color="#0081ff">
+    interval="8000" duration="500" indicator-color="#8799a3" indicator-active-color="#0081ff">
 
     <!-- 这就是儿子了吧 -->
     <swiper-item wx:for="{{swiperList}}" wx:key="item">
@@ -100,6 +100,41 @@
     <view class="publish_complain">
         我要吐槽
     </view>
+</view>
+
+<view class="comment_panel" style="display: none;">
+    <view class="comment_panel_scanf">
+        <input class="comment_panel_scanf_frame">框框</input>
+        <view class="comment_panel_scanf_button">发送</view>
+    </view>
+    <view class="comment_panel_comment">
+        <view class="comment_panel_comment_title">
+            评论25
+        </view>
+        <scroll-view class="comment_panel_comment_title_content" scroll-y="true">
+            <view class="comment_panel_comment_title_content_one">
+                <view class="content_left">头像</view>
+                <view class="content_right">右边</view>
+                <view style="clear:both;"></view>
+            </view>
+            <view class="comment_panel_comment_title_content_one">
+                <view class="content_left">头像</view>
+                <view class="content_right">右边</view>
+                <view style="clear:both;"></view>
+            </view>
+            <view class="comment_panel_comment_title_content_one">
+                <view class="content_left">头像</view>
+                <view class="content_right">右边</view>
+                <view style="clear:both;"></view>
+            </view>
+            <view class="comment_panel_comment_title_content_one">
+                <view class="content_left">头像</view>
+                <view class="content_right">右边</view>
+                <view style="clear:both;"></view>
+            </view>
 
 
+        </scroll-view>
+
+    </view>
 </view>

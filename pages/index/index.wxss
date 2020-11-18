@@ -228,7 +228,7 @@ color: #23a7ff;
   width: 90%;
   margin: 40rpx auto;
   overflow: hidden;
-padding: 20rpx 0;
+  padding: 20rpx 0;
 }
 .menu_all_title{
 /*   background-image: url(https://s1.ax1x.com/2020/11/11/BjSbin.png); */
