@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-18 15:06:45
- * @LastEditTime: 2020-11-18 17:14:12
+ * @LastEditTime: 2020-11-19 12:33:54
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/publish_confess/publish_confess.wxml
@@ -14,24 +14,95 @@
 <view class="form_sentence">
     I fell in love with you the moment I saw you.
 </view>
+
+
 <view class="form_preview">
     预览
 </view>
 
-<view class="form_title">
-    表白标题
+<view class="form_title_object">
+    <view class="form_title">
+        <view class="input_text_me">
+            我：
+        </view>
+        <input class="input_me">框框</input>
+    </view>
+    <view class="form_object">
+        <view class="input_text_me">
+            Ta：
+        </view>
+        <input class="input_me">框框</input>
+    </view>
 </view>
-<view class="form_object">
-    表白对象
+
+
+<view style="clear: both;">
+
 </view>
+
+
+
+
+
+
 <view class="form_background">
-    表白卡背景
+    <view class="choose_bg">
+        背景：
+    </view>
+    <!--设置监听器，当点击radio时调用-->
+    <radio-group bindchange="listenerRadioGroup">
+
+        <view class=" choose_bg_one">
+
+        </view>
+        <view class="choose_bg_one">
+
+        </view>
+        <view class="choose_bg_one">
+
+        </view>
+        <view style="clear: both;">
+
+        </view>
+        <label class="choose_label">
+            <radio class="choose_radio_first" />
+            <radio class="choose_radio_sec" />
+            <radio class="choose_radio_sec" />
+        </label>
+
+    </radio-group>
 </view>
+
 <view class="form_img">
-    表白用图
+    <view class="input_text_me">
+        图：
+    </view>
+    <view style="clear: both;">
+
+    </view>
+
+    <view class="cu-form-group">
+        <view class="grid col-4 grid-square flex-sub">
+            <view class="bg-img" wx:for="{{imgList}}" wx:key="{{index}}" bindtap="ViewImage"
+                data-url="{{imgList[index]}}">
+                <image src='{{imgList[index]}}' mode='aspectFill'></image>
+                <view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
+                    <text class="cuIcon-close"></text>
+                </view>
+            </view>
+            <view class="solids" bindtap="ChooseImage" wx:if="{{imgList.length<4}}">
+                <text class="cuIcon-cameraadd"></text>
+            </view>
+        </view>
+    </view>
+
 </view>
 <view class="form_content">
-    内容
+    <view class="input_text_me">
+        内容：
+    </view>
+    <textarea class="input_content"></textarea>
+
 </view>
 <view class="form_button">
     发布

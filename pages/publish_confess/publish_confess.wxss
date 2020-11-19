@@ -16,52 +16,119 @@ margin: 0 auto;
 font-size: 50rpx;
 font-weight: 800;
 }
-.form_preview{
-    width: 15%;
-    height: 100rpx;
-    margin-left: 78%;
-    background-color: blue;
+.form_title_object{
+    width: 500rpx;
+    margin: 50rpx auto ;
+    
 }
+.form_preview{
+    width: 70rpx;
+    height: 70rpx;
+    background-color: blue;
+    float: right;
+    margin-right: 40rpx;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 70rpx;
+}
+
 .form_title{
-    width: 90%;
-    height: 60rpx;
-    background-color: aquamarine;
-    margin: 20rpx auto;
+    width: 100%;
+    height: 70rpx;
+    background-color: rgba(127, 255, 212, 0);
+    margin: 0rpx auto;
 }
 .form_object{
-    width: 90%;
-    height: 60rpx;
-    background-color: rgb(127, 182, 255);
-    margin: 20rpx auto;
+    width: 100%;
+    height: 70rpx;
+    background-color: rgba(127, 182, 255, 0);
+    margin: 20rpx auto 0 auto;
 
 }
 .form_background{
     width: 90%;
-    height: 360rpx;
-    background-color: rgb(245, 92, 237);
+    background-color: rgba(204, 48, 196, 0);
     margin: 20rpx auto;
+    border-top: 3rpx solid  rgb(129, 129, 129);
+    border-bottom: 3rpx solid  rgb(129, 129, 129);
 
 
 }
 .form_img{
     width: 90%;
-    height: 160rpx;
-    background-color: rgb(245, 92, 237);
-    margin: 20rpx auto;
 
+    background-color: rgba(245, 92, 237, 0);
+    margin: 20rpx auto;
+    border-bottom: 3rpx solid  rgb(129, 129, 129);
 }
+.cu-form-group .title {
+    min-width: calc(4em + 30rpx);
+  }
+  
 .form_content{
     width: 90%;
     height: 260rpx;
-    background-color: rgb(245, 92, 237);
+    background-color: rgba(245, 92, 237, 0);
     margin: 20rpx auto;
+    
 }
 .form_button{
-    width: 20%;
+    width: 90%;
     height: 100rpx;
     margin: 0 auto;
-    background-color: pink;
+    background-color: rgb(69, 172, 0);
     text-align: center;
     line-height: 100rpx;
     border-radius: 20rpx;
+    color: aliceblue;
+    font-size: 40rpx;
+}
+.input_text_me{
+    float: left;
+
+    text-align: center;
+    line-height: 70rpx;
+    font-size: 40rpx;
+
+}
+.choose_bg{
+    line-height: 70rpx;
+    font-size: 40rpx;
+}
+.input_me{
+    background-color: rgba(255, 192, 203, 0);
+    float: left;
+    width: 80%;
+    text-align: center;
+    margin-top: 10rpx;
+    height: 50rpx;
+    border-bottom: 3rpx solid  rgb(129, 129, 129);
+}
+.input_content{
+    width: 80%;
+    height: 250rpx;
+    background-color: rgba(0, 255, 255, 0);
+    border-radius: 20rpx;
+    padding: 20rpx;
+    border: 3rpx solid  rgb(129, 129, 129);
+
+}
+.choose_label{
+    display: flex;
+    margin: 20rpx 0;
+
+}
+.choose_radio_first{
+margin-left: 109rpx;
+}
+.choose_radio_sec{
+    margin-left: 158rpx;
+}
+
+.choose_bg_one{
+    width: 150rpx;
+    height: 250rpx;
+    background-color: pink;
+    float: left;
+    margin-left: 60rpx;
 }
