@@ -9,8 +9,8 @@
     
 }
 .form_sentence{
-width: 80%;
-
+width: 90%;
+color: red;
 text-align: center;
 margin: 0 auto;
 font-size: 50rpx;
@@ -125,10 +125,33 @@ margin-left: 109rpx;
     margin-left: 158rpx;
 }
 
-.choose_bg_one{
+.choose_bg_one1{
     width: 150rpx;
     height: 250rpx;
     background-color: rgb(32, 206, 104);
     float: left;
     margin-left: 60rpx;
+    background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1605812047244&di=e565f8d78273cb9158b9c878404acd4a&imgtype=0&src=http%3A%2F%2Fimage.biaobaiju.com%2Fuploads%2F20180801%2F23%2F1533136367-GBQIhKumqb.jpg);
+    background-size: 100% 100%;
+}
+.choose_bg_one2{
+    width: 150rpx;
+    height: 250rpx;
+    background-color: rgb(32, 206, 104);
+    float: left;
+    margin-left: 60rpx;
+    background-image: url(https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1988607977,452097805&fm=26&gp=0.jpg);
+    background-size: 100% 100%;
+}
+.choose_bg_one3{
+    width: 150rpx;
+    height: 250rpx;
+    background-color: rgb(32, 206, 104);
+    float: left;
+    margin-left: 60rpx;
+    background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1605812047241&di=da1737730ae140b30aa382d52809bb31&imgtype=0&src=http%3A%2F%2Fimage.biaobaiju.com%2Fuploads%2F20190807%2F16%2F1565166837-ASlVtKPhzo.jpg);
+    background-size: 100% 100%;
+}
+.bg-img-choose{
+border: 6rpx solid rgb(0, 156, 39);
 }

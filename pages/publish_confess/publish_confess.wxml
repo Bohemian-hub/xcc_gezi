@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-18 15:06:45
- * @LastEditTime: 2020-11-19 12:33:54
+ * @LastEditTime: 2020-11-20 00:46:16
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/publish_confess/publish_confess.wxml
@@ -12,7 +12,7 @@
 
 </view>
 <view class="form_sentence">
-    I fell in love with you the moment I saw you.
+    "I fell in love with you the moment I saw you."
 </view>
 
 
@@ -52,20 +52,20 @@
     <!--设置监听器，当点击radio时调用-->
     <radio-group bindchange="listenerRadioGroup">
 
-        <view class=" choose_bg_one">
+        <view class=" choose_bg_one1">
 
         </view>
-        <view class="choose_bg_one">
+        <view class="choose_bg_one2">
 
         </view>
-        <view class="choose_bg_one">
+        <view class="choose_bg_one3">
 
         </view>
         <view style="clear: both;">
 
         </view>
         <label class="choose_label">
-            <radio class="choose_radio_first" />
+            <radio class="choose_radio_first" checked="checked" />
             <radio class="choose_radio_sec" />
             <radio class="choose_radio_sec" />
         </label>
@@ -83,14 +83,32 @@
 
     <view class="cu-form-group">
         <view class="grid col-4 grid-square flex-sub">
-            <view class="bg-img" wx:for="{{imgList}}" wx:key="{{index}}" bindtap="ViewImage"
-                data-url="{{imgList[index]}}">
+            <view class="{{choose_image_index=='image1'?'bg-img-choose':'bg-img'}}" bindtap="choose_image"
+                data-id="image1">
+                <image class="choose_image_one"
+                    src='https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3844056729,169452221&fm=26&gp=0.jpg'
+                    mode='aspectFill'></image>
+            </view>
+            <view class="{{choose_image_index=='image2'?'bg-img-choose':'bg-img'}}" bindtap="choose_image"
+                data-id="image2">
+                <image
+                    src='https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3082372117,1837107116&fm=26&gp=0.jpg'
+                    mode='aspectFill'></image>
+            </view>
+            <view class="{{choose_image_index=='image3'?'bg-img-choose':'bg-img'}}" bindtap="choose_image"
+                data-id="image3">
+                <image
+                    src='https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1116313726,3874542020&fm=26&gp=0.jpg'
+                    mode='aspectFill'></image>
+            </view>
+            <view class="{{choose_image_index=='image4'?'bg-img-choose':'bg-img'}}" wx:for="{{imgList}}" wx:key="index"
+                bindtap="ViewImage" data-url="{{imgList[index]}}">
                 <image src='{{imgList[index]}}' mode='aspectFill'></image>
                 <view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
                     <text class="cuIcon-close"></text>
                 </view>
             </view>
-            <view class="solids" bindtap="ChooseImage" wx:if="{{imgList.length<4}}">
+            <view class="solids" bindtap="ChooseImage" wx:if="{{imgList.length<1}}">
                 <text class="cuIcon-cameraadd"></text>
             </view>
         </view>

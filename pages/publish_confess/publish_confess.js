@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-18 15:06:45
- * @LastEditTime: 2020-11-19 12:40:49
+ * @LastEditTime: 2020-11-20 00:46:55
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/publish_confess/publish_confess.js
@@ -14,6 +14,7 @@ Page({
    */
   data: {
     imgList: [],
+    choose_image_index: '',
   },
 
   /**
@@ -36,6 +37,12 @@ Page({
       },
     })
   },
+  choose_image(e) {
+    console.log(e.currentTarget.dataset.id);
+    this.setData({
+      choose_image_index: e.currentTarget.dataset.id,
+    })
+  },
   ChooseImage() {
     wx.chooseImage({
       count: 4, //默认9
@@ -48,17 +55,17 @@ Page({
           })
         } else {
           this.setData({
-            imgList: res.tempFilePaths
+            imgList: res.tempFilePaths,
+            choose_image_index: 'image4',
           })
         }
       }
     });
   },
   ViewImage(e) {
-    wx.previewImage({
-      urls: this.data.imgList,
-      current: e.currentTarget.dataset.url
-    });
+    this.setData({
+      choose_image_index: 'image4',
+    })
   },
   DelImg(e) {
     wx.showModal({
