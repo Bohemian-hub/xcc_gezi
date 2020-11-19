@@ -58,7 +58,7 @@ font-weight: 800;
     width: 90%;
 
     background-color: rgba(245, 92, 237, 0);
-    margin: 20rpx auto;
+    margin: 20rpx auto 20rpx auto;
     border-bottom: 3rpx solid  rgb(129, 129, 129);
 }
 .cu-form-group .title {
