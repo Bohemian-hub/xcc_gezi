@@ -128,7 +128,7 @@ margin-left: 109rpx;
 .choose_bg_one{
     width: 150rpx;
     height: 250rpx;
-    background-color: pink;
+    background-color: rgb(32, 206, 104);
     float: left;
     margin-left: 60rpx;
 }
