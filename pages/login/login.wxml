@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-08 23:33:47
- * @LastEditTime: 2020-11-20 09:47:27
+ * @LastEditTime: 2020-11-21 00:32:26
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Editew
  * @FilePath: /miniprogram-5/pages/login/login.wxml
@@ -48,4 +48,17 @@
         使用须知
     </text>
 
+</view>
+
+<view class="warning0" style="display: {{loginstatus==1?'block':'none'}};">
+    正在登陆...
+</view>
+<view class="warning1" style="display: {{loginstatus==400?'block':'none'}};">
+    密码错误!
+</view>
+<view class="warning2" style="display: {{loginstatus==900?'block':'none'}};">
+    系统异常，请重试！
+</view>
+<view class="warning3" style="display: {{loginstatus==500?'block':'none'}};">
+    教务系统故障，暂不可登录哦
 </view>

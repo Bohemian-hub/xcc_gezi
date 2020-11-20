@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:33:47
- * @LastEditTime: 2020-11-20 09:52:22
+ * @LastEditTime: 2020-11-21 00:47:11
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/login/login.js
@@ -13,12 +13,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    loginstatus: '',
   },
   loginForm: function (data) {
+    var that = this;
     console.log(data.detail.value)//  {username: "hgj", password: "fsdfsd"}
     var username = data.detail.value.username;
     var password = data.detail.value.password;
+    wx.showLoading({
+      title: '加载中',
+    })
     wx.request({
       url: 'http://127.0.0.1:8000/info/pinfo',
       header: {
@@ -31,9 +35,40 @@ Page({
       }, // 向后端发送的数据，后端通过request.data拿到该数据
       success: res => {
         if (res.statusCode == 200) {
-          console.log(res);
+          console.log('服务器请求正常' + res.data.loginnum);
+
+          if (res.data.loginnum == 1) {
+            that.setData({
+              loginstatus: '1',
+            })
+            setTimeout(function () {
+              wx.hideLoading()
+            }, 500)
+          } else if (res.data.loginnum == 400) {
+            that.setData({
+              loginstatus: '400',
+            })
+            setTimeout(function () {
+              wx.hideLoading()
+            }, 500)
+          } else if (res.data.loginnum == 500) {
+            that.setData({
+              loginstatus: '500',
+            })
+            setTimeout(function () {
+              wx.hideLoading()
+            }, 500)
+          }
+        } else {
+          console.log('服务器请求异常' + res.data.loginnum);
+          that.setData({
+            loginstatus: '900',
+          })
+          setTimeout(function () {
+            wx.hideLoading()
+          }, 500)
         }
-      }
+      },
     })
   },
 
