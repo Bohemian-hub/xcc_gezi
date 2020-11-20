@@ -61,18 +61,36 @@ page {
   z-index: 1;
 }
 .login_username {
+  height: 120rpx;
+  background-color: rgba(250, 235, 215, 0);
   border-bottom: 5rpx solid rgb(136, 136, 136);
-  padding-top: 70rpx;
+  padding-top: 60rpx;
   margin-left: 30rpx;
   margin-right: 50rpx;
 }
 .login_password {
+  height: 120rpx;
+  background-color: rgba(199, 136, 55, 0);
   border-bottom: 5rpx solid rgb(156, 156, 156);
-  padding-top: 70rpx;
+  padding-top: 60rpx;
   margin-left: 30rpx;
   margin-right: 50rpx;
 }
-.login_botton {
+.login_button{
+  position: fixed;
+  margin-top: 150rpx;
+  height: 100rpx;
+  width: 100rpx;
+  line-height: 100rpx;
+  font-size: 50rpx;
+  right: 100rpx;
+  top: 800rpx;
+
+
+
+}
+
+.login_menu {
   width: 80%;
   
   margin: 400rpx 0 0 240rpx;

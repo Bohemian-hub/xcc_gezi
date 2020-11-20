@@ -1,10 +1,11 @@
 {
   "pages": [
+    "pages/login/login",
     "pages/publish_confess/publish_confess",
     "pages/ConfessionWall/ConfessionWall",
 
     "pages/index/index",
-    "pages/login/login",
+
     "pages/pay/pay",
     "pages/product/product",
     "pages/setting/setting",
@@ -17,6 +18,5 @@
     "navigationBarTextStyle": "black",
     "navigationStyle": "custom"
   },
-  "style": "v2",
   "sitemapLocation": "sitemap.json"
 }

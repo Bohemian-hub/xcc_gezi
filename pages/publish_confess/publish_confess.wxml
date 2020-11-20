@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-18 15:06:45
- * @LastEditTime: 2020-11-20 00:46:16
+ * @LastEditTime: 2020-11-20 08:35:44
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/publish_confess/publish_confess.wxml
@@ -17,7 +17,9 @@
 
 
 <view class="form_preview">
-    预览
+    <image class="form_preview_img" src="https://s3.ax1x.com/2020/11/20/DMJ5kt.png" mode="widthFix" lazy-load="false"
+        binderror="" bindload="" />
+
 </view>
 
 <view class="form_title_object">

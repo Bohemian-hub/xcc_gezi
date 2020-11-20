@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-08 23:33:47
- * @LastEditTime: 2020-11-09 09:03:15
+ * @LastEditTime: 2020-11-20 09:47:27
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Editew
  * @FilePath: /miniprogram-5/pages/login/login.wxml
@@ -21,30 +21,31 @@
 </view>
 <!-- 设置下方登录框 -->
 <view class="login_frame">
-    <!-- 学号用户名输入框 -->
-    <input class="login_username" value="" type="text" placeholder="学号" placeholder-style="" maxlength="10">
-        
-    </input>
-    <!-- 密码输入框 -->
-    <input class="login_password" value="" type="password" placeholder="密码" placeholder-style=""
-    >
-    </input>
-      
-    <image class="login_button" src="../../image_icon/login_button.png" mode="widthFix" bindtap="login" />
+    <form bindsubmit='loginForm'>
+        <!-- 学号用户名输入框 -->
+        <input class="login_username" name='username' type="text" placeholder="学号" maxlength="10">
+
+        </input>
+        <!-- 密码输入框 -->
+        <input class="login_password" name='password' type="password" placeholder="密码">
+        </input>
+        <button class="login_button" formType="submit" type='primary'>▶
+        </button>
+
+
+    </form>
 </view>
 
 <!-- 服务 -->
-<view class="login_botton">
+<view class="login_menu">
     <text class="login_forgetpassword" selectable="false" space="false" decode="false">
         忘记密码
     </text>
-    <text class="shu"> 
+    <text class="shu">
         |
     </text>
     <text class="login_know" selectable="false" space="false" decode="false">
         使用须知
     </text>
-    
+
 </view>
-  
-  
