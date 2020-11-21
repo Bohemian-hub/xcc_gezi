@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:33:47
- * @LastEditTime: 2020-11-21 00:47:11
+ * @LastEditTime: 2020-11-21 16:39:34
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/login/login.js
@@ -43,7 +43,8 @@ Page({
             })
             setTimeout(function () {
               wx.hideLoading()
-            }, 500)
+            }, 1500)
+            this.login()
           } else if (res.data.loginnum == 400) {
             that.setData({
               loginstatus: '400',
@@ -68,15 +69,19 @@ Page({
             wx.hideLoading()
           }, 500)
         }
+        setTimeout(function () {
+          that.setData({
+            loginstatus: 'ok',
+          })
+        }, 2500)
       },
     })
   },
 
   login() {
 
-
-
-
+    console.log("在这里写记录数据库的请求");
+    
   },
 
   /**

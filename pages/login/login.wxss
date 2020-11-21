@@ -155,7 +155,7 @@ border-radius: 50rpx;
   top: 1200rpx;
   background-color: rgb(255, 31, 87);
   width: 60%;
-  height: 120rpx;
+  height: 60rpx;
   margin-left: 20%;
   text-align: center;
   line-height: 60rpx;
