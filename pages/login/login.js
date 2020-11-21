@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:33:47
- * @LastEditTime: 2020-11-21 16:39:34
+ * @LastEditTime: 2020-11-21 16:47:54
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/login/login.js
@@ -36,7 +36,7 @@ Page({
       success: res => {
         if (res.statusCode == 200) {
           console.log('服务器请求正常' + res.data.loginnum);
-
+          /* 下面是正常请求到服务器后的if分支，我将在后端完成对后台数据的渲染 */
           if (res.data.loginnum == 1) {
             that.setData({
               loginstatus: '1',
@@ -44,7 +44,6 @@ Page({
             setTimeout(function () {
               wx.hideLoading()
             }, 1500)
-            this.login()
           } else if (res.data.loginnum == 400) {
             that.setData({
               loginstatus: '400',
@@ -76,12 +75,6 @@ Page({
         }, 2500)
       },
     })
-  },
-
-  login() {
-
-    console.log("在这里写记录数据库的请求");
-    
   },
 
   /**
