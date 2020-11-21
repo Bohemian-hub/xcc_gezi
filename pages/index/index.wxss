@@ -103,7 +103,7 @@ box-shadow: 0rpx 0rpx 20rpx rgb(216, 216, 216);
 .cardleft_date{
     background-color: rgba(240, 248, 255, 0.26);
     font-weight: 600;
-    width: 90%;
+    width: 100%;
     left: 0rpx;
     padding: 10px;
     top: 0rpx;

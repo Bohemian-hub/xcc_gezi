@@ -26,13 +26,13 @@
     <view class="content_niceday_back">
         <view class="content_niceday">
             <!-- 左侧的one区域 -->
-            <view class="cardleft">
+            <view class="cardleft" bindtap="hidden_onetext_on_onepic">
                 <image class="cardleft_bg" src="{{imageone_src}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false"
                     binderror="" bindload="" />
-                <view class="cardleft_date">
+                <view class="cardleft_date" style="display:{{hidden_onetext_on_onepic=='yes'?'none':'block'}}">
                     {{one_date}} {{one_week}}
                 </view>
-                <view class="cardleft_text" style="font-size:{{sentence_size}}">
+                <view class="cardleft_text" style="font-size:{{sentence_size}};display:{{hidden_onetext_on_onepic=='yes'?'none':'block'}}" >
                     {{sentence}}
                 </view>
             </view>

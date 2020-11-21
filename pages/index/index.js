@@ -9,7 +9,7 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
+var hidden_turn_status = 0
 Page({
   data: {
 
@@ -26,7 +26,8 @@ Page({
     son_menu_of_title: '',
     bodylock: '',
     showwhat: '',
-    username:''
+    username:'',
+    hidden_onetext_on_onepic:'no',
   },
   confress_page: function () {
     wx.navigateTo({
@@ -180,7 +181,7 @@ Page({
         showModalStatus: false,
         bodylock: '',
       })
-    }.bind(this), 200)
+    }.bind(this), 100)
 
   },
 
@@ -208,23 +209,19 @@ Page({
     /*     that.jiaowu(); */
     wx.request({
 
-      url: 'http://api.youngam.cn/api/one.php', //仅为示例，并非真实的接口地址
+      url: 'http://127.0.0.1:8000/one/', //仅为示例，并非真实的接口地址
       header: {
         'content-type': 'application/json' // 默认值
       },
       success(res) {
         console.log(res.data)
         that.setData({
-          imageone_src: res.data.data[index].src,
-          sentence: res.data.data[index].text
+          imageone_src: res.data.img_src,
+          sentence: res.data.content
         })
-        if (res.data.data[index].text.length < 50) {
+        if (res.data.content.length < 50) {
           that.setData({
             sentence_size: '22rpx',
-          })
-        } else if (res.data.data[index].text.length > 50) {
-          that.setData({
-            sentence: "来自开发者的话：老夫很帅啊！"
           })
         }
       }
@@ -235,6 +232,20 @@ Page({
       that.Get_time();
 
     }, 30000);
+
+  },
+  hidden_onetext_on_onepic(){
+    if(hidden_turn_status == 0){
+      this.setData({
+        hidden_onetext_on_onepic:'yes',
+      })
+      hidden_turn_status = 1
+    }else{
+      this.setData({
+        hidden_onetext_on_onepic:'no',
+      })
+      hidden_turn_status = 0
+    }
 
   },
   getUserInfo: function (e) {
