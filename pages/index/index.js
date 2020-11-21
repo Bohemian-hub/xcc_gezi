@@ -26,6 +26,7 @@ Page({
     son_menu_of_title: '',
     bodylock: '',
     showwhat: '',
+    username:''
   },
   confress_page: function () {
     wx.navigateTo({
@@ -184,6 +185,22 @@ Page({
   },
 
   onLoad: function () {
+
+    var value = wx.getStorageSync('name')
+    // if是说明如果没有本地信息,需要客户进行第一次认证,反之则不需要认证
+    if (!value) {
+      wx.redirectTo({
+        url: '../login/login',
+      })
+    }else{
+      this.setData({
+        student_name: wx.getStorageSync('name'),
+      })
+    }
+
+
+
+
     /* 加载one一个接口获取数据 */
     const that = this;
     const index = 0;
@@ -242,5 +259,6 @@ Page({
 
       },
     })
-  }
+  },
+
 })

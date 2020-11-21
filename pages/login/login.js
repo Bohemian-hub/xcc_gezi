@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:33:47
- * @LastEditTime: 2020-11-21 16:47:54
+ * @LastEditTime: 2020-11-21 21:45:41
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/login/login.js
@@ -21,7 +21,7 @@ Page({
     var username = data.detail.value.username;
     var password = data.detail.value.password;
     wx.showLoading({
-      title: '加载中',
+      title: '登录中',
     })
     wx.request({
       url: 'http://127.0.0.1:8000/info/pinfo',
@@ -35,11 +35,17 @@ Page({
       }, // 向后端发送的数据，后端通过request.data拿到该数据
       success: res => {
         if (res.statusCode == 200) {
-          console.log('服务器请求正常' + res.data.loginnum);
+          console.log(res.data.ret.name);
           /* 下面是正常请求到服务器后的if分支，我将在后端完成对后台数据的渲染 */
           if (res.data.loginnum == 1) {
             that.setData({
               loginstatus: '1',
+            })
+            wx.setStorageSync('username', username)
+            wx.setStorageSync('password', password)
+            wx.setStorageSync('name', res.data.ret.name)
+            wx.navigateTo({
+              url: '../index/index',
             })
             setTimeout(function () {
               wx.hideLoading()

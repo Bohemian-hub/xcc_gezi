@@ -19,7 +19,7 @@
 <view class="{{bodylock}}">
     <!-- 顶部的文字区域 -->
     <view class="content_toptilte">
-        <text class="user_hi">Hi! {{student_name}}何东 </text>
+        <text class="user_hi">Hi! {{student_name}} </text>
         <view class=" user_personalized_signature">你的光芒万丈，今天也要比明天更加努力哦（一共二十八个字）</view>
     </view>
     <!-- one面板区域 -->
