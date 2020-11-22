@@ -44,6 +44,7 @@ Page({
             wx.setStorageSync('username', username)
             wx.setStorageSync('password', password)
             wx.setStorageSync('name', res.data.ret.name)
+            wx.setStorageSync('studentId', res.data.ret.studentId)
             wx.navigateTo({
               url: '../index/index',
             })

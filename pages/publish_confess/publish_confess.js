@@ -7,6 +7,16 @@
  * @FilePath: /miniprogram-5/pages/publish_confess/publish_confess.js
  */
 // pages/publish_confess/publish_confess.js
+// 引入模块 
+var COS = require('../../cos-wx-sdk-v5.js');
+var cos = new COS({
+
+      SecretId: 'AKIDYCaiCuKWQRbVzFq6e1IPFpaXEeOyuYWY',
+  
+      SecretKey: 'WnpDAvPfway2RO50gW7RabOvB6FApAIx',
+  
+  });
+
 Page({
 
   /**
@@ -14,7 +24,16 @@ Page({
    */
   data: {
     imgList: [],
-    choose_image_index: '',
+    filePath:'',
+    filename:'',
+    choose_image_index: 'image1',
+    me:'',
+    ta:'',
+    content:'',
+    radio:1,
+    choose_img_url:'',
+
+
   },
 
   /**
@@ -37,6 +56,7 @@ Page({
       },
     })
   },
+  /* 我选择了哪一张表白用图 */
   choose_image(e) {
     console.log(e.currentTarget.dataset.id);
     this.setData({
@@ -45,20 +65,27 @@ Page({
   },
   ChooseImage() {
     wx.chooseImage({
-      count: 4, //默认9
-      sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
+      count: 1, //默认9
+      sizeType: ['compressed'], //可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album'], //从相册选择
       success: (res) => {
+        var imagename = wx.getStorageSync('studentId')+"_"+Date.parse(new Date())
+        /* 这里的if是判断我是否选了图片，然后决定上传按钮是否显示 */
         if (this.data.imgList.length != 0) {
+          /* 有图片了，让选择图标消失 */
           this.setData({
-            imgList: this.data.imgList.concat(res.tempFilePaths)
+            imgList: this.data.imgList.concat(res.tempFilePaths),
           })
         } else {
           this.setData({
             imgList: res.tempFilePaths,
             choose_image_index: 'image4',
+            filePath:res.tempFiles[0].path,
+            filename:wx.getStorageSync('studentId')+"_"+Date.parse(new Date())+".jpg"
           })
         }
+        
+
       }
     });
   },
@@ -84,52 +111,70 @@ Page({
     })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  /* 获取各个地方的值 */
+  getInputValue1(e){
+    console.log(e.detail)// {value: "ff", cursor: 2}  
+    this.setData({
+      me:e.detail
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  getInputValue2(e){
+    console.log(e.detail)// {value: "ff", cursor: 2}  
+    this.setData({
+      ta:e.detail
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  getInputValue3(e){
+    console.log(e.detail)// {value: "ff", cursor: 2}  
+    this.setData({
+      content:e.detail
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  listenerRadioGroup(e){
+    console.log(e.detail.value);
+    this.setData({
+      radio:e.detail.value
+    })
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
+  publish(res){
+    var that = this
+    /* 表示我选择了自定义的图片，这样才上传图片，否则我不用图片 */
+    if(this.data.choose_image_index == 'image4'){
+      cos.postObject({
+        Bucket: 'xcc-grid-1256135907',
+        Region: 'ap-nanjing',
+        Key: 'xcc_confess/' + this.data.filename,
+        FilePath: that.data.filePath,
+        onProgress: function (info) {
+            /* 显示进度 */
+            console.log(JSON.stringify(info));
+        }
+      }, function (err, data) {
+          console.log(err || data);
+          console.log(data.headers.location);
+          that.setData({
+            choose_img_url:data.headers.location,
+          })
+          that.add_confess()
+      });
+    }else{
+      that.setData({
+        choose_img_url:this.data.choose_image_index,
+      })
+      that.add_confess()
+    }
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  add_confess(){
+    /* 展示所有即将录入数据库的东西 */
+    console.log('----------------------------');
+    console.log(wx.getStorageSync('name'));
+    console.log(wx.getStorageSync('studentId'));
+    console.log(this.data.me.value);
+    console.log(this.data.ta.value);
+    console.log(this.data.radio);
+    console.log(this.data.choose_img_url);
+    console.log(this.data.content.value);
+    console.log('----------------------------');
   }
+  
 })

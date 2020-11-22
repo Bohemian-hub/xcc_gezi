@@ -27,13 +27,13 @@
         <view class="input_text_me">
             我：
         </view>
-        <input class="input_me">框框</input>
+        <input class="input_me" bindinput='getInputValue1'>框框</input>
     </view>
     <view class="form_object">
         <view class="input_text_me">
             Ta：
         </view>
-        <input class="input_me">框框</input>
+        <input class="input_me" bindinput='getInputValue2'>框框</input>
     </view>
 </view>
 
@@ -67,9 +67,9 @@
 
         </view>
         <label class="choose_label">
-            <radio class="choose_radio_first" checked="checked" />
-            <radio class="choose_radio_sec" />
-            <radio class="choose_radio_sec" />
+            <radio class="choose_radio_first" value="1" checked="checked" />
+            <radio class="choose_radio_sec" value="2"/>
+            <radio class="choose_radio_sec" value="3"/>
         </label>
 
     </radio-group>
@@ -121,9 +121,9 @@
     <view class="input_text_me">
         内容：
     </view>
-    <textarea class="input_content"></textarea>
+    <textarea class="input_content" bindinput="getInputValue3"></textarea>
 
 </view>
-<view class="form_button">
+<view class="form_button" bindtap="publish">
     发布
 </view>
