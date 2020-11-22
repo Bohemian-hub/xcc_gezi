@@ -28,6 +28,10 @@ Page({
     showwhat: '',
     username:'',
     hidden_onetext_on_onepic:'no',
+    wendu:'',
+    weather_condition:'',
+    weather_wendy_condition:'',
+    weather_condition_src:''
   },
   confress_page: function () {
     wx.navigateTo({
@@ -45,6 +49,7 @@ Page({
   },
 
   Get_time() {
+    var that= this
     /* 加载时间日期 */
     var myDate = new Date();
     var month = myDate.getMonth() + 1
@@ -67,8 +72,6 @@ Page({
     } else if (myDate.getDay() == 0) {
       week = 'Sun.';
     }
-
-
     if (h < 10) {
       h = "0" + String(h)
     }
@@ -95,6 +98,24 @@ Page({
     } else if (h = 23) {
       greet = "今天又快结束啦！"
     }
+    /* 加载获取天气 */
+    wx.request({
+
+      url: 'http://127.0.0.1:8000/weather/', //仅为示例，并非真实的接口地址
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success(res) {
+        console.log(res.data.data)
+        that.setData({
+          wendu:res.data.data.wendu,
+          weather_condition:res.data.data.forecast[0].type,
+          weather_wendy_condition:res.data.data.forecast[0].fengxiang,
+          weather_condition_src:'../../image_icon/weather/'+res.data.data.forecast[0].type+'.png'
+        })
+      }
+    })
+
 
     this.setData({
       one_date: date,
@@ -231,7 +252,7 @@ Page({
     ref = setInterval(function () {
       that.Get_time();
 
-    }, 30000);
+    }, 120000);
 
   },
   hidden_onetext_on_onepic(){

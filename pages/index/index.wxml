@@ -56,15 +56,15 @@
             <view class="card-right-bottom">
                 <view class="weather_panel">
                     <view class="weather_panel_left">
-                        <image class="weather_panel_left_weather_icon" src="https://s1.ax1x.com/2020/11/09/BH8B01.png"
+                        <image class="weather_panel_left_weather_icon" src="{{weather_condition_src}}"
                             mode="widthFix" lazy-load="true" binderror="" bindload="" />
                     </view>
                     <view class="weather_panel_right">
                         <view class="weather_panel_right_temperature">
-                            27℃
+                            {{wendu}}℃
                         </view>
                         <view class="weather_panel_right_condition">
-                            晴，空气优
+                            {{weather_condition}} , {{weather_wendy_condition}}
                         </view>
 
                     </view>
