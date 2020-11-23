@@ -82,7 +82,6 @@ page{
   width: 90%;
   height: 100%;
   border-radius: 20rpx;
-  background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1605458116739&di=b2465c710f18a01c8cb26b0f44badb9b&imgtype=0&src=http%3A%2F%2Fbpic.588ku.com%2Fback_origin_min_pic%2F19%2F04%2F16%2F784fef9651d00c717c2ef49f62baf1d2.jpg%2521%2Ffw%2F750%2Fquality%2F99%2Funsharp%2Ftrue%2Fcompress%2Ftrue);
   background-size: 100% 100%;
   box-shadow: 0rpx 0rpx 20rpx rgb(112, 31, 31);
   opacity: 1;

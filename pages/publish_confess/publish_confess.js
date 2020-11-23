@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-18 15:06:45
- * @LastEditTime: 2020-11-20 00:46:55
+ * @LastEditTime: 2020-11-23 10:49:18
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/publish_confess/publish_confess.js
@@ -9,13 +9,7 @@
 // pages/publish_confess/publish_confess.js
 // 引入模块 
 var COS = require('../../cos-wx-sdk-v5.js');
-var cos = new COS({
 
-      SecretId: 'AKIDYCaiCuKWQRbVzFq6e1IPFpaXEeOyuYWY',
-  
-      SecretKey: 'WnpDAvPfway2RO50gW7RabOvB6FApAIx',
-  
-  });
 
 Page({
 
@@ -24,14 +18,16 @@ Page({
    */
   data: {
     imgList: [],
-    filePath:'',
-    filename:'',
+    filePath: '',
+    filename: '',
     choose_image_index: 'image1',
-    me:'',
-    ta:'',
-    content:'',
-    radio:1,
-    choose_img_url:'',
+    me: '',
+    ta: '',
+    content: '',
+    radio: 1,
+    choose_img_url: '',
+    card_id: '',
+    card_day: '',
 
 
   },
@@ -64,12 +60,35 @@ Page({
     })
   },
   ChooseImage() {
+    var that = this
+    /* 获取一个格式化的日期，方便后面的使用 */
+    var myDate = new Date();
+    var month = myDate.getMonth() + 1
+    var daly = myDate.getDate()
+    var h = myDate.getHours();       //获取当前小时数(0-23)
+    var m = myDate.getMinutes();     //获取当前分钟数(0-59)
+    var s = myDate.getSeconds();     //获取当前秒数(0-59)
+    if (daly < 10) {
+      daly = "0" + String(daly)
+    }
+    if (month < 10) {
+      month = "0" + String(month)
+    }
+    if (h < 10) {
+      h = "0" + String(h)
+    }
+    if (m < 10) {
+      m = "0" + String(m)
+    }
+    if (s < 10) {
+      s = "0" + String(s)
+    }
+    var card_time = myDate.getFullYear() + '' + month + '' + daly + '' + h + '' + m + '' + s;
     wx.chooseImage({
       count: 1, //默认9
       sizeType: ['compressed'], //可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album'], //从相册选择
       success: (res) => {
-        var imagename = wx.getStorageSync('studentId')+"_"+Date.parse(new Date())
         /* 这里的if是判断我是否选了图片，然后决定上传按钮是否显示 */
         if (this.data.imgList.length != 0) {
           /* 有图片了，让选择图标消失 */
@@ -80,11 +99,11 @@ Page({
           this.setData({
             imgList: res.tempFilePaths,
             choose_image_index: 'image4',
-            filePath:res.tempFiles[0].path,
-            filename:wx.getStorageSync('studentId')+"_"+Date.parse(new Date())+".jpg"
+            filePath: res.tempFiles[0].path,
+            filename: wx.getStorageSync('studentId') + "_" + card_time + ".jpg",
           })
         }
-        
+
 
       }
     });
@@ -112,69 +131,160 @@ Page({
   },
 
   /* 获取各个地方的值 */
-  getInputValue1(e){
+  getInputValue1(e) {
     console.log(e.detail)// {value: "ff", cursor: 2}  
     this.setData({
-      me:e.detail
+      me: e.detail
     })
   },
-  getInputValue2(e){
+  getInputValue2(e) {
     console.log(e.detail)// {value: "ff", cursor: 2}  
     this.setData({
-      ta:e.detail
+      ta: e.detail
     })
   },
-  getInputValue3(e){
+  getInputValue3(e) {
     console.log(e.detail)// {value: "ff", cursor: 2}  
     this.setData({
-      content:e.detail
+      content: e.detail
     })
   },
-  listenerRadioGroup(e){
+  listenerRadioGroup(e) {
     console.log(e.detail.value);
     this.setData({
-      radio:e.detail.value
+      radio: e.detail.value
     })
   },
-  publish(res){
+  publish(res) {
     var that = this
+    var myDate = new Date();
+    var month = myDate.getMonth() + 1
+    var daly = myDate.getDate()
+    var h = myDate.getHours();       //获取当前小时数(0-23)
+    var m = myDate.getMinutes();     //获取当前分钟数(0-59)
+    var s = myDate.getSeconds();     //获取当前秒数(0-59)
+    if (daly < 10) {
+      daly = "0" + String(daly)
+    }
+    if (month < 10) {
+      month = "0" + String(month)
+    }
+    if (h < 10) {
+      h = "0" + String(h)
+    }
+    if (m < 10) {
+      m = "0" + String(m)
+    }
+    if (s < 10) {
+      s = "0" + String(s)
+    }
+    var card_time = myDate.getFullYear() + '' + month + '' + daly + '' + h + '' + m + '' + s;
+    var card_day = myDate.getFullYear() + '' + month + '' + daly
+    that.setData({
+      card_id: card_time,
+      card_day: card_day
+    })
     /* 表示我选择了自定义的图片，这样才上传图片，否则我不用图片 */
-    if(this.data.choose_image_index == 'image4'){
+    if (this.data.choose_image_index == 'image4') {
+      // 去某个地方获取一个临时密钥
+      var cos = new COS({
+        getAuthorization: function (options, callback) {
+          // 服务端 JS 和 PHP 示例：https://github.com/tencentyun/cos-js-sdk-v5/blob/master/server/
+          // 服务端其他语言参考 COS STS SDK ：https://github.com/tencentyun/qcloud-cos-sts-sdk
+          // STS 详细文档指引看：https://cloud.tencent.com/document/product/436/14048
+          wx.request({
+            url: 'http://127.0.0.1:8000/confess/credential',
+            data: {
+              // 可从 options 取需要的参数
+            },
+            success: function (result) {
+              var data = result.data;
+              var credentials = data.credentials;
+              callback({
+                TmpSecretId: credentials.tmpSecretId,
+                TmpSecretKey: credentials.tmpSecretKey,
+                XCosSecurityToken: credentials.sessionToken,
+                ExpiredTime: data.expiredTime,
+              });
+            }
+          });
+        }
+      });
       cos.postObject({
         Bucket: 'xcc-grid-1256135907',
         Region: 'ap-nanjing',
         Key: 'xcc_confess/' + this.data.filename,
         FilePath: that.data.filePath,
         onProgress: function (info) {
-            /* 显示进度 */
-            console.log(JSON.stringify(info));
+          /* 显示进度 */
+          console.log(JSON.stringify(info.percent));
         }
       }, function (err, data) {
-          console.log(err || data);
-          console.log(data.headers.location);
-          that.setData({
-            choose_img_url:data.headers.location,
-          })
-          that.add_confess()
+        console.log(err || data);
+        console.log(data.Location);
+        that.setData({
+          choose_img_url: "https://" + data.Location,
+        })
+        that.add_confess()
       });
-    }else{
+    } else {
       that.setData({
-        choose_img_url:this.data.choose_image_index,
+        choose_img_url: this.data.choose_image_index,
       })
       that.add_confess()
     }
   },
-  add_confess(){
+  add_confess() {
+    var that = this
+    /* 开启等待框 */
+    wx.showLoading({
+      title: '正在上传中！！！',
+    })
     /* 展示所有即将录入数据库的东西 */
     console.log('----------------------------');
     console.log(wx.getStorageSync('name'));
     console.log(wx.getStorageSync('studentId'));
-    console.log(this.data.me.value);
-    console.log(this.data.ta.value);
-    console.log(this.data.radio);
-    console.log(this.data.choose_img_url);
-    console.log(this.data.content.value);
+    console.log(that.data.me.value);
+    console.log(that.data.ta.value);
+    console.log(that.data.radio);
+    console.log(that.data.choose_img_url);
+    console.log(that.data.content.value);
+    console.log(that.data.card_id);
+    console.log(that.data.card_day);
     console.log('----------------------------');
+    /* 传值到后端，后端入库 */
+    wx.request({
+      url: 'http://127.0.0.1:8000/confess/add_confess', //仅为示例，并非真实的接口地址
+      data: {
+        name: wx.getStorageSync('name'),
+        studentId: wx.getStorageSync('studentId'),
+        confess_name: that.data.me.value,
+        confess_object: that.data.ta.value,
+        bg_img: that.data.radio,
+        object_img: that.data.choose_img_url,
+        confess_content: that.data.content.value,
+        comment_id: that.data.card_id,
+        card_date: that.data.card_day
+      },
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      success(res) {
+        console.log(res.data.loginnum)
+        if(res.data.loginnum == 200){
+          /* 关闭等待框，弹出提示框 */
+          wx.hideLoading()
+          wx.showToast({
+            title: '成功!',       
+            icon: 'success',       
+            duration: 2000//持续的时间       
+          })
+        }
+      }
+    })
+
+
   }
-  
+
 })

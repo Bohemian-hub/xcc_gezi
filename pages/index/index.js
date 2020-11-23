@@ -251,7 +251,7 @@ Page({
     var ref = "";
     ref = setInterval(function () {
       that.Get_time();
-z
+
     }, 120000);
 
   },

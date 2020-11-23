@@ -36,30 +36,30 @@
     interval="8000" duration="500" indicator-color="#8799a3" indicator-active-color="#0081ff">
 
     <!-- 这就是儿子了吧 -->
-    <swiper-item wx:for="{{swiperList}}" wx:key="item">
-        <view class="confress_panel">
+    <swiper-item wx:for="{{confessList}}" wx:key="item.fields">
+        <view class="confress_panel" style="background-image: url({{item.fields.bg_img}})">
             <view class="confress_panel_top">
                 <view class="confress_panel_title">
-                    {{item.card_from}}的表白卡
+                    {{item.fields.confess_name}}的表白卡
                 </view>
                 <view class="confress_panel_numbers">
-                    {{item.id}}/{{swiperList.length}}
+                    {{item.pk}}/{{confessList.length}}
                 </view>
                 <view style="clear: both;">
                 </view>
                 <view class="confess_to_who_text" selectable="false" space="false" decode="false">
-                    To {{item.card_object}} :
+                    To {{item.fields.confess_object}} :
                 </view>
             </view>
 
             <view style="width:100%;">
                 <view class="confess_image">
                     <image class="confess_image_icon"
-                        src="https://img-blog.csdnimg.cn/20190819220643788.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5MTI5ODQ1,size_16,color_FFFFFF,t_70"
+                        src="{{item.fields.object_img}}"
                         mode="heightFix" lazy-load="false" binderror="" bindload="" />
                 </view>
                 <view class="confess_text">
-                    {{item.card_content}}
+                    {{item.fields.confess_content}}
                 </view>
             </view>
 
@@ -77,7 +77,7 @@
 
 
                 <view class="confess_right_comment_numbers">
-                    {{item.comment_numbers}}
+                    {{item.fields.comment_numbers}}
                 </view>
                 <image class="confess_right_comment" src="../../image_icon/comment.png" data-id='{{item.id}}'
                     bindtap="makecomment">
