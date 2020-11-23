@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-13 23:35:52
- * @LastEditTime: 2020-11-23 16:11:39
+ * @LastEditTime: 2020-11-23 23:53:13
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/ConfessionWall/ConfessionWall.js
@@ -22,6 +22,7 @@ Page({
     showModalStatus: false,
     comment_onclick_count: '',
     confessList: [],
+    warning1: 0,
     swiperList: [{
       id: 0,
       card_from: '张益达',
@@ -161,6 +162,39 @@ Page({
 
       }
     })
+    /* 查询一下哪些卡片我是点了赞的 */
+    wx.request({
+      url: 'http://127.0.0.1:8000/confess/which_love', //仅为示例，并非真实的接口地址
+      data: {
+        studentId: wx.getStorageSync('studentId'),
+      },
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      success: (result) => {
+        console.log(result.data);
+        for (let index = 0; index < result.data.length; index++) {
+          console.log("点了赞的comment_id：" + result.data[index].fields.comment_id);
+          var peach = result.data[index].fields.comment_id
+          for (let index = 0; index < that.data.confessList.length; index++) {
+            const element = that.data.confessList[index].fields.comment_id;
+            console.log(element);
+            if (element == peach) {
+              console.log("匹配成功");
+              console.log(that.data.confessList[index].pk);
+              var love_target = that.data.confessList[index].pk - 1
+              that.setData({
+                ['onclick_love_id[' + love_target + ']']: 1,
+              })
+              love_onclick_status[love_target] = 1;
+            }
+
+          }
+        }
+      },
+    });
+
 
   },
   page_back_index: function () {
@@ -180,21 +214,62 @@ Page({
 
   makelove(e) {
     var that = this;
-    if (love_onclick_status[e.currentTarget.dataset.id] == 1) {
+    console.log(e.currentTarget.dataset.id);
+    var love_target = e.currentTarget.dataset.id - 1
+
+    if (love_onclick_status[love_target] == 1) {
+      /* 下面是将点赞的按钮变回去，但是想在我不想变了，真的很麻烦你知道吗 */
+      /*       that.setData({
+              ['onclick_love_id[' + love_target + ']']: -1,
+            })
+            love_onclick_status[love_target] = 0;
+            console.log(this.data.onclick_love_id); */
+
       that.setData({
-        ['onclick_love_id[' + e.currentTarget.dataset.id + ']']: -1,
+        warning1: 1
       })
-      love_onclick_status[e.currentTarget.dataset.id] = 0;
-      console.log(this.data.onclick_love_id);
+      setTimeout(function () {
+        that.setData({
+          warning1: 0
+        })
+      }, 2000);
 
     } else {
-      console.log(e.currentTarget.dataset.id);
+      /* 下面是将点赞的按钮变成红色 */
       that.setData({
-        ['onclick_love_id[' + e.currentTarget.dataset.id + ']']: e.currentTarget.dataset.id,
+        ['onclick_love_id[' + love_target + ']']: 1,
         /*         ['swiperList[' + e.currentTarget.dataset.id + '].love_numbers']: swiperList[e.currentTarget.dataset.id].love_numbers + 1 */
+        ['confessList[' + love_target + '].fields.love_count']: that.data.confessList[love_target].fields.love_count + 1
       })
-      love_onclick_status[e.currentTarget.dataset.id] = 1;
-      console.log(this.data.onclick_love_id);
+      love_onclick_status[love_target] = 1;
+      console.log(that.data.onclick_love_id);
+      console.log('-----------------');
+      console.log('-----------------');
+      console.log('-----------------');
+      console.log('-----------------');
+      console.log(that.data.confessList[1].fields.comment_id);
+      console.log(that.data.confessList[1].fields.id);
+      console.log('-----------------');
+      console.log('-----------------');
+      console.log('-----------------');
+
+
+      /* 下面我就要记录我这个点赞了，也就是发送点赞请求到后端 */
+      wx.request({
+        url: 'http://127.0.0.1:8000/confess/add_love', //仅为示例，并非真实的接口地址
+        data: {
+          name: wx.getStorageSync('name'),
+          studentId: wx.getStorageSync('studentId'),
+          comment_id: that.data.confessList[love_target].fields.comment_id,
+        },
+        method: "POST",
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' // 默认值
+        },
+        success: (result) => {
+          console.log("点赞成功");
+        },
+      });
     }
 
   },
@@ -212,7 +287,6 @@ Page({
     that.setData({
       animationData: animation.export(),
       showModalStatus: true,
-      comment_onclick_count: this.data.swiperList[e.currentTarget.dataset.id].comment_numbers,
     })
     setTimeout(function () {
       animation.translateY(0).step()
@@ -250,6 +324,39 @@ Page({
     wx.navigateTo({
       url: '../publish_confess/publish_confess',
     })
-  }
+  },
+
+  complain_panel() {
+    var that = this
+    that.setData({
+      warning2: 1
+    })
+    setTimeout(function () {
+      that.setData({
+        warning2: 0
+      })
+    }, 2000);
+  },
+
+  publish_complain() {
+    var that = this
+    that.setData({
+      warning2: 1
+    })
+    setTimeout(function () {
+      that.setData({
+        warning2: 0
+      })
+    }, 2000);
+  },
+
+
+  close_warning() {
+    var that = this
+    that.setData({
+      warning1: 0,
+      warning2: 0
+    })
+  },
 
 });

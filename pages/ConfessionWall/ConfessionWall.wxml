@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-13 23:35:52
- * @LastEditTime: 2020-11-18 15:16:32
+ * @LastEditTime: 2020-11-23 22:19:31
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/ConfessionWall/ConfessionWall.wxml
@@ -17,7 +17,7 @@
 <view class="title">
     <view class="title_confress">表白墙</view>
     <view class="title_division">|</view>
-    <view class="title_complain">吐槽墙</view>
+    <view class="title_complain" bindtap="complain_panel">吐槽墙</view>
 </view>
 
 <view class="date_and_numbers">
@@ -54,9 +54,8 @@
 
             <view style="width:100%;">
                 <view class="confess_image">
-                    <image class="confess_image_icon"
-                        src="{{item.fields.object_img}}"
-                        mode="heightFix" lazy-load="false" binderror="" bindload="" />
+                    <image class="confess_image_icon" src="{{item.fields.object_img}}" mode="heightFix"
+                        lazy-load="false" binderror="" bindload="" />
                 </view>
                 <view class="confess_text">
                     {{item.fields.confess_content}}
@@ -67,19 +66,19 @@
 
 
                 <view class="confess_right_love_numbers"
-                    style="color: {{item.id==onclick_love_id[index]?'red':'white'}};">
-                    {{item.love_numbers}}
+                    style="color: {{item.pk==onclick_love_id[index]?'red':'white'}};">
+                    {{item.fields.love_count}}
                 </view>
                 <image class="confess_right_love"
-                    src="{{item.id==onclick_love_id[index]?'https://s3.ax1x.com/2020/11/15/DFhSuF.png':'https://s3.ax1x.com/2020/11/15/DFhpB4.png'}}"
-                    data-id='{{item.id}}' bindtap="makelove">
+                    src="{{onclick_love_id[index]==1?'https://s3.ax1x.com/2020/11/15/DFhSuF.png':'https://s3.ax1x.com/2020/11/15/DFhpB4.png'}}"
+                    data-id='{{item.pk}}' bindtap="makelove">
                 </image>
 
 
                 <view class="confess_right_comment_numbers">
-                    {{item.fields.comment_numbers}}
+                    {{item.fields.comment_count}}
                 </view>
-                <image class="confess_right_comment" src="../../image_icon/comment.png" data-id='{{item.id}}'
+                <image class="confess_right_comment" src="../../image_icon/comment.png" data-id='{{item.pk}}'
                     bindtap="makecomment">
                 </image>
 
@@ -95,7 +94,7 @@
     <view class="publish_confess" bindtap="publish_confess">
         我要表白
     </view>
-    <view class="publish_complain">
+    <view class="publish_complain" bindtap="publish_complain">
         我要吐槽
     </view>
 </view>
@@ -207,4 +206,20 @@
         </scroll-view>
 
     </view>
+</view>
+
+
+<view class="warning1" style="display:{{warning1==1?'block':'none'}}">
+    请勿重复点赞！
+    <view class="warning1_confirm" bindtap="close_warning">
+        [确定]
+    </view>
+
+</view>
+<view class="warning2" style="display:{{warning2==1?'block':'none'}}">
+    正在努力开发中...
+    <view class="warning1_confirm" bindtap="close_warning">
+        [确定]
+    </view>
+
 </view>

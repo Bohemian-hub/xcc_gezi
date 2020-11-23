@@ -329,3 +329,39 @@ background-color: rgba(250, 235, 215, 0);
   margin-top: 10rpx;
   color: rgb(146, 146, 146);
 }
+.warning1{
+  width: 60%;
+  height: 40rpx;
+  font-size: 30rpx;
+  line-height: 40rpx;
+  background-color: aliceblue;
+  color: red;
+  padding-left: 20rpx;
+}
+.warning1_confirm{
+  width: 30%;
+  float: right;
+  text-align: right;
+  padding-right: 20rpx;
+  color: black;
+  font-weight: 900;
+}
+
+.warning2{
+  width: 60%;
+  height: 40rpx;
+  font-size: 30rpx;
+  line-height: 40rpx;
+  background-color: aliceblue;
+  color: red;
+  padding-left: 20rpx;
+}
+.warning2_confirm{
+  width: 40%;
+  float: right;
+  text-align: right;
+  padding-right: 20rpx;
+  color: black;
+  font-weight: 900;
+
+}
