@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-13 23:35:52
- * @LastEditTime: 2020-11-24 17:30:04
+ * @LastEditTime: 2020-11-24 23:00:58
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/ConfessionWall/ConfessionWall.wxml
@@ -113,11 +113,12 @@
     <!-- <view class="comment_panel" animation="{{animationData}}"> -->
     <view class=" comment_panel_scanf" style="display: {{switch_reply == 0?'block':'none'}}">
         <input class="comment_panel_scanf_frame" bindinput='getInputValue1'
-            bindfocus="{{switch_reply == 1?'inputFocus':'none'}}" placeholder="评论一个叭！"></input>
+            bindfocus="{{switch_reply == 1?'inputFocus':'none'}}" placeholder="评论一个叭！" value='{{inputValue}}'></input>
         <view class="comment_panel_scanf_button" bindtap="comment_send">发送</view>
     </view>
     <view class=" comment_panel_scanf" style="display: {{switch_reply == 1?'block':'none'}}">
-        <input class="comment_panel_scanf_frame" bindinput='getInputValue2' placeholder="{{reply_words}}"></input>
+        <input class="comment_panel_scanf_frame" bindinput='getInputValue2' placeholder="{{reply_words}}"
+            value='{{inputValue}}'></input>
         <view class="comment_panel_scanf_button" bindtap="son_comment_send">回复</view>
     </view>
     <view class="comment_panel_comment">
@@ -150,11 +151,13 @@
                         {{item.fields.comment_content}}
                     </view>
                     <view>
-                        <view class="content_right_content_son">
+                        <view class="content_right_content_son" wx:for="{{now_son_comment_all}}" wx:for-item="item2"
+                            wx:key="item2.fields"
+                            style="display: {{item.fields.son_comment_id==item2.fields.son_comment_id?'block':'none'}};">
                             <view class="son_from" selectable="false" space="false" decode="false">
-                                {{}}评论者昵称:
+                                {{item2.fields.son_name}}回复{{item2.fields.son_comment_to_who}}:
                             </view>
-                            哈哈哈，谢谢你
+                            {{item2.fields.son_comment_content}}
                         </view>
                     </view>
 

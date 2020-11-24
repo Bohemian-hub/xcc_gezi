@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-13 23:35:52
- * @LastEditTime: 2020-11-24 17:57:57
+ * @LastEditTime: 2020-11-24 23:06:53
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/ConfessionWall/ConfessionWall.js
@@ -27,12 +27,14 @@ Page({
     comment_user_comtent: '',
     now_turn_comment_id: '',
     now_comment_all: [],
+    now_son_comment_all: [],
     switch_reply: 0,
     conment_index: '',
     reply_words: '',
     reply_son_comment: '',
     which_reply_id: '',
     which_reply_name: '',
+    inputValue: null,
     swiperList: [{
       id: 0,
       fields: {
@@ -315,6 +317,24 @@ Page({
         wx.hideLoading()
       },
     });
+    wx.request({
+      url: 'http://127.0.0.1:8000/confess/get_comment_son', //仅为示例，并非真实的接口地址
+      data: {
+        comment_id: that.data.now_turn_comment_id,
+      },
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      success: (result) => {
+        console.log("获取所有子评论成功！");
+        console.log(result.data);
+        that.setData({
+          now_son_comment_all: result.data,
+        })
+        console.log(that.data.now_son_comment_all);
+      },
+    });
 
   },
   close_comment() {
@@ -394,7 +414,11 @@ Page({
     })
   },
   comment_send() {
+
     var that = this
+    that.setData({
+      inputValue: ''
+    })
     var myDate = new Date();
     var mon = myDate.getMonth() + 1
     var d = myDate.getDate()
@@ -472,6 +496,9 @@ Page({
   },
   son_comment_send() {
     var that = this
+    that.setData({
+      inputValue: ''
+    })
     var myDate = new Date();
     var mon = myDate.getMonth() + 1
     var d = myDate.getDate()
@@ -496,6 +523,7 @@ Page({
     var son_comment_id = that.data.which_reply_id
     var son_comment_id_time = wx.getStorageSync('studentId') + mon + d + h + m + s
     var son_comment_to_who = that.data.which_reply_name
+    var comment_id = this.data.now_turn_comment_id
 
 
     console.log(wx.getStorageSync('name'));
@@ -504,6 +532,7 @@ Page({
     console.log(son_comment_id);
     console.log(son_comment_id_time);
     console.log(son_comment_to_who);
+    console.log(comment_id);
 
 
     /* 下面我要请求后端数据库了，我要将这个评论增加大哦我的评论表中去。 */
@@ -516,6 +545,7 @@ Page({
         son_comment_id: son_comment_id,   //与之关联的评论id
         son_comment_to_who: son_comment_to_who,   //子评论的对象名称
         son_comment_id_time: son_comment_id_time,      //子评论的时间
+        comment_id: comment_id,//卡片的comment_id
 
       },
       method: "POST",
@@ -526,6 +556,50 @@ Page({
         console.log("子评论成功！");
       },
     });
+    /* 子评论成功了，就重新获取下评论和子评论，然后渲染 */
+    /* 先来刷新评论 */
+    wx.request({
+      url: 'http://127.0.0.1:8000/confess/get_comment', //仅为示例，并非真实的接口地址
+      data: {
+        comment_id: that.data.now_turn_comment_id,
+      },
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      success: (result) => {
+        console.log("获取所有评论成功！");
+        that.setData({
+          now_comment_all: result.data,
+          comment_onclick_count: result.data.length
+        })
+        console.log(this.data.now_comment_all);
+        wx.hideLoading()
+      },
+    });
+    /* 再来刷新子评论 */
+    wx.request({
+      url: 'http://127.0.0.1:8000/confess/get_comment_son', //仅为示例，并非真实的接口地址
+      data: {
+        comment_id: that.data.now_turn_comment_id,
+      },
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      success: (result) => {
+        console.log("获取所有子评论成功！");
+        console.log(result.data);
+        that.setData({
+          now_son_comment_all: result.data,
+        })
+        console.log(that.data.now_son_comment_all);
+      },
+    });
+    /* 然后再更改一下发布评论盒子评论的状态 */
+    that.setData({
+      switch_reply: 0
+    })
   },
   reply(e) {
     var that = this
