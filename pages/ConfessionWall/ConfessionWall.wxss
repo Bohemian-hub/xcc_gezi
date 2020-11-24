@@ -273,12 +273,26 @@ box-shadow: 0 0 20rpx rgb(143, 143, 143);
   padding-top: 30rpx;
 }
 .comment_panel_comment_title{
-  background-color: rgba(255, 255, 255, 0);
+  width: 50%;
   padding-left: 5%;
   font-size: 40rpx;
   font-weight: 800;
+  float: left;
   height: 60rpx;
-background-color: rgba(250, 235, 215, 0);
+
+background-color: rgba(209, 128, 21, 0);
+}
+.comment_panel_comment_back{
+  width: 30%;
+  margin-left: 14%;
+  font-size: 40rpx;
+  font-weight: 600;
+  height: 60rpx;
+  float: left;
+  text-align: center;
+  border-radius: 30rpx;
+  border: 2rpx solid rgb(141, 141, 141);
+  background-color: rgba(21, 209, 137, 0);
 }
 .comment_panel_comment_title_content{
   width: 90%;

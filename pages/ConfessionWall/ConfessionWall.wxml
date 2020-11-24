@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-13 23:35:52
- * @LastEditTime: 2020-11-24 13:16:20
+ * @LastEditTime: 2020-11-24 16:07:59
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/ConfessionWall/ConfessionWall.wxml
@@ -83,7 +83,7 @@
                 <view class="confess_right_comment_numbers">
                     {{item.fields.comment_count}}
                 </view>
-                <image class="confess_right_comment" src="../../image_icon/comment.png" data-id='{{item.pk}}'
+                <image class="confess_right_comment" src="../../image_icon/comment.png" data-id='{{index+1}}'
                     bindtap="makecomment">
                 </image>
 
@@ -111,16 +111,32 @@
 
 <view class="comment_panel" animation="{{animationData}}" wx:if="{{showModalStatus}}">
     <!-- <view class="comment_panel" animation="{{animationData}}"> -->
-    <view class=" comment_panel_scanf">
-        <input class="comment_panel_scanf_frame">框框</input>
-        <view class="comment_panel_scanf_button">发送</view>
+    <view class=" comment_panel_scanf" style="display: {{switch_reply == 0?'block':'none'}}">
+        <input class="comment_panel_scanf_frame" bindinput='getInputValue1'
+            bindfocus="{{switch_reply == 1?'inputFocus':'none'}}" placeholder="评论一个叭！"></input>
+        <view class="comment_panel_scanf_button" bindtap="comment_send">发送</view>
+    </view>
+    <view class=" comment_panel_scanf" style="display: {{switch_reply == 1?'block':'none'}}">
+        <input class="comment_panel_scanf_frame" bindinput='getInputValue1' placeholder="回复张益达："></input>
+        <view class="comment_panel_scanf_button" bindtap="comment_send">回复</view>
     </view>
     <view class="comment_panel_comment">
         <view class="comment_panel_comment_title">
             评论{{comment_onclick_count}}
         </view>
+        <view class="comment_panel_comment_back" style="display: {{switch_reply == 1?'block':'none'}}"
+            bindtap="change_reply_switch">
+            返回评论
+        </view>
+        <view style="clear: both;">
+
+        </view>
+
+
         <scroll-view class="comment_panel_comment_title_content" scroll-y="true">
-            <view class="comment_panel_comment_title_content_one">
+
+            <!-- 这就是其中一个评论吧 -->
+            <view class="comment_panel_comment_title_content_one" wx:for="{{now_comment_all}}" wx:key="item.fields">
                 <view class="content_left">
                     <image class="content_left_head"
                         src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2913758430,898689551&fm=26&gp=0.jpg"
@@ -128,9 +144,9 @@
                     </image>
                 </view>
                 <view class="content_right">
-                    <view class="content_right_name">你的昵称</view>
-                    <view class="content_right_content">
-                        沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼沃日你个鬼
+                    <view class="content_right_name">{{item.fields.name}}</view>
+                    <view class="content_right_content" bindtap="reply">
+                        {{item.fields.comment_content}}
                     </view>
                     <view>
                         <view class="content_right_content_son">
@@ -139,74 +155,12 @@
                             </view>
                             哈哈哈，谢谢你
                         </view>
-                        <view class="content_right_content_son">
-                            <view class="son_from" selectable="false" space="false" decode="false">
-                                {{}}评论者昵称:
-                            </view>
-                            子评论的字数不超过现在这样的二十个字啊
-                        </view>
-                        <view class="content_right_content_son">
-                            <view class="son_from" selectable="false" space="false" decode="false">
-                                {{}}评论者昵称:
-                            </view>
-                            谢谢！😁
-                        </view>
-
                     </view>
 
-                    <view class="content_right_time">11-19 12:18</view>
+                    <view class="content_right_time">{{item.fields.comment_time}}</view>
                 </view>
                 <view style="clear:both;"></view>
             </view>
-            <view class="comment_panel_comment_title_content_one">
-                <view class="content_left">
-                    <image class="content_left_head"
-                        src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2913758430,898689551&fm=26&gp=0.jpg"
-                        mode="aspectFit" lazy-load="false" binderror="" bindload="">
-                    </image>
-                </view>
-                <view class="content_right">
-                    <view class="content_right_name">你的昵称</view>
-                    <view class="content_right_content">
-                        你个糟老头子坏得很
-                    </view>
-                    <view class="content_right_time">11-19 12:18</view>
-                </view>
-                <view style="clear:both;"></view>
-            </view>
-            <view class="comment_panel_comment_title_content_one">
-                <view class="content_left">
-                    <image class="content_left_head"
-                        src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2913758430,898689551&fm=26&gp=0.jpg"
-                        mode="aspectFit" lazy-load="false" binderror="" bindload="">
-                    </image>
-                </view>
-                <view class="content_right">
-                    <view class="content_right_name">你的昵称</view>
-                    <view class="content_right_content">
-                        9999999999999
-                    </view>
-                    <view class="content_right_time">11-19 12:18</view>
-                </view>
-                <view style="clear:both;"></view>
-            </view>
-            <view class="comment_panel_comment_title_content_one">
-                <view class="content_left">
-                    <image class="content_left_head"
-                        src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2913758430,898689551&fm=26&gp=0.jpg"
-                        mode="aspectFit" lazy-load="false" binderror="" bindload="">
-                    </image>
-                </view>
-                <view class="content_right">
-                    <view class="content_right_name">你的昵称</view>
-                    <view class="content_right_content">
-                        哈哈哈哈哈哈哈哈哈哈哈哈
-                    </view>
-                    <view class="content_right_time">11-19 12:18</view>
-                </view>
-                <view style="clear:both;"></view>
-            </view>
-
 
         </scroll-view>
 

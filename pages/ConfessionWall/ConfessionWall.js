@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-13 23:35:52
- * @LastEditTime: 2020-11-24 13:33:32
+ * @LastEditTime: 2020-11-24 16:04:04
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/ConfessionWall/ConfessionWall.js
@@ -24,6 +24,10 @@ Page({
     use_List: 'swiperList',
     confessList: [],
     warning1: 0,
+    comment_user_comtent: '',
+    now_turn_comment_id: '',
+    now_comment_all: [],
+    switch_reply: 0,
     swiperList: [{
       id: 0,
       fields: {
@@ -253,7 +257,17 @@ Page({
   },
   makecomment(e) {
     var that = this;
+    that.setData({
+      switch_reply: 0
+    })
     console.log(e.currentTarget.dataset.id);
+    var conment_index = e.currentTarget.dataset.id - 1
+    console.log(that.data.confessList[conment_index].fields.comment_count);
+    that.setData({
+      comment_onclick_count: that.data.confessList[conment_index].fields.comment_count,
+      now_turn_comment_id: that.data.confessList[conment_index].fields.comment_id
+    })
+    /* 下面是设置动画的基本操作 */
     var animation = wx.createAnimation({
       duration: 100,
       timingFunction: "linear",
@@ -272,6 +286,29 @@ Page({
         animationData: animation.export()
       })
     }.bind(this), 0)
+    /* 下面 我就要调用后端做查询有那些评论啦，首先请出来我们最爱的正在加载！ */
+    wx.showLoading({
+      title: '正在加载',
+    })
+    wx.request({
+      url: 'http://127.0.0.1:8000/confess/get_comment', //仅为示例，并非真实的接口地址
+      data: {
+        comment_id: that.data.now_turn_comment_id,
+      },
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      success: (result) => {
+        console.log("获取所有评论成功！");
+        that.setData({
+          now_comment_all: result.data,
+        })
+        console.log(this.data.now_comment_all);
+        wx.hideLoading()
+      },
+    });
+
   },
   close_comment() {
     var that = this;
@@ -336,5 +373,78 @@ Page({
       warning2: 0
     })
   },
+  getInputValue1(e) {
+    console.log(e.detail)// {value: "ff", cursor: 2}  
+    this.setData({
+      comment_user_comtent: e.detail
+    })
+  },
+  comment_send() {
+    var that = this
+    var myDate = new Date();
+    var mon = myDate.getMonth() + 1
+    var d = myDate.getDate()
+    var h = myDate.getHours();      //获取当前小时数(0-23)
+    var m = myDate.getMinutes();    //获取当前分钟数(0-59)
+    var s = myDate.getSeconds();    //获取当前秒数(0-59)
+    if (d < 10) {
+      d = "0" + String(d)
+    }
+    if (mon < 10) {
+      mon = "0" + String(mon)
+    }
+    if (h < 10) {
+      h = "0" + String(h)
+    }
+    if (m < 10) {
+      m = "0" + String(m)
+    }
+    console.log(that.data.comment_user_comtent.value);
+    console.log(comment_time);
+    console.log(wx.getStorageSync('name'));
+    console.log(wx.getStorageSync('studentId'));
+    console.log(that.data.now_turn_comment_id);
+
+    var comment_time = mon + '-' + d + ' ' + h + ':' + m
+    var comment_content = that.data.comment_user_comtent.value
+    var comment_id = that.data.now_turn_comment_id
+    var son_comment_id_time = wx.getStorageSync('studentId') + mon + d + h + m + s
+    console.log(son_comment_id_time);
+
+    /* 下面我要请求后端数据库了，我要将这个评论增加大哦我的评论表中去。 */
+    wx.request({
+      url: 'http://127.0.0.1:8000/confess/add_comment', //仅为示例，并非真实的接口地址
+      data: {
+        name: wx.getStorageSync('name'),
+        studentId: wx.getStorageSync('studentId'),
+        comment_time: comment_time,
+        comment_id: comment_id,
+        comment_content: comment_content,
+        son_comment_id: son_comment_id_time,      //我看还是用时间来区分每一条评论比较合适，当然还是加上学号吧
+      },
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      success: (result) => {
+        console.log("评论成功！");
+      },
+    });
+
+
+  },
+  reply() {
+    var that = this
+    that.setData({
+      switch_reply: 1
+    })
+  },
+  change_reply_switch() {
+    console.log('点到了');
+    var that = this
+    that.setData({
+      switch_reply: 0
+    })
+  }
 
 });
