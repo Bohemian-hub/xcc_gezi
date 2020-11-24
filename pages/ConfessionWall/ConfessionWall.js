@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-13 23:35:52
- * @LastEditTime: 2020-11-23 23:53:13
+ * @LastEditTime: 2020-11-24 10:06:32
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/ConfessionWall/ConfessionWall.js
@@ -182,12 +182,13 @@ Page({
             console.log(element);
             if (element == peach) {
               console.log("匹配成功");
-              console.log(that.data.confessList[index].pk);
-              var love_target = that.data.confessList[index].pk - 1
+              console.log(index);
+              var love_target = index
               that.setData({
                 ['onclick_love_id[' + love_target + ']']: 1,
               })
               love_onclick_status[love_target] = 1;
+              console.log(that.data.onclick_love_id);
             }
 
           }
@@ -239,6 +240,7 @@ Page({
       that.setData({
         ['onclick_love_id[' + love_target + ']']: 1,
         /*         ['swiperList[' + e.currentTarget.dataset.id + '].love_numbers']: swiperList[e.currentTarget.dataset.id].love_numbers + 1 */
+        /* 这里是为了让点赞数量本地+1 */
         ['confessList[' + love_target + '].fields.love_count']: that.data.confessList[love_target].fields.love_count + 1
       })
       love_onclick_status[love_target] = 1;
@@ -246,7 +248,7 @@ Page({
       console.log('-----------------');
       console.log('-----------------');
       console.log('-----------------');
-      console.log('-----------------');
+      console.log(love_target)
       console.log(that.data.confessList[1].fields.comment_id);
       console.log(that.data.confessList[1].fields.id);
       console.log('-----------------');

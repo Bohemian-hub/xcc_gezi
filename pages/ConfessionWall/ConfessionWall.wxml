@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-13 23:35:52
- * @LastEditTime: 2020-11-23 22:19:31
+ * @LastEditTime: 2020-11-24 09:56:18
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/ConfessionWall/ConfessionWall.wxml
@@ -43,7 +43,7 @@
                     {{item.fields.confess_name}}的表白卡
                 </view>
                 <view class="confress_panel_numbers">
-                    {{item.pk}}/{{confessList.length}}
+                    {{index+1}}/{{confessList.length}}
                 </view>
                 <view style="clear: both;">
                 </view>
@@ -66,12 +66,12 @@
 
 
                 <view class="confess_right_love_numbers"
-                    style="color: {{item.pk==onclick_love_id[index]?'red':'white'}};">
+                    style="color: {{index+1==onclick_love_id[index]?'red':'white'}};">
                     {{item.fields.love_count}}
                 </view>
                 <image class="confess_right_love"
                     src="{{onclick_love_id[index]==1?'https://s3.ax1x.com/2020/11/15/DFhSuF.png':'https://s3.ax1x.com/2020/11/15/DFhpB4.png'}}"
-                    data-id='{{item.pk}}' bindtap="makelove">
+                    data-id='{{index+1}}' bindtap="makelove">
                 </image>
 
 

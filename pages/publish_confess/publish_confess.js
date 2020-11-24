@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-18 15:06:45
- * @LastEditTime: 2020-11-23 10:49:18
+ * @LastEditTime: 2020-11-24 00:11:33
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/publish_confess/publish_confess.js
@@ -157,6 +157,10 @@ Page({
   },
   publish(res) {
     var that = this
+    /* 开启等待框 */
+    wx.showLoading({
+      title: '正在上传中！！！',
+    })
     var myDate = new Date();
     var month = myDate.getMonth() + 1
     var daly = myDate.getDate()
@@ -236,10 +240,6 @@ Page({
   },
   add_confess() {
     var that = this
-    /* 开启等待框 */
-    wx.showLoading({
-      title: '正在上传中！！！',
-    })
     /* 展示所有即将录入数据库的东西 */
     console.log('----------------------------');
     console.log(wx.getStorageSync('name'));
@@ -272,13 +272,22 @@ Page({
       },
       success(res) {
         console.log(res.data.loginnum)
-        if(res.data.loginnum == 200){
+        if (res.data.loginnum == 200) {
           /* 关闭等待框，弹出提示框 */
           wx.hideLoading()
           wx.showToast({
-            title: '成功!',       
-            icon: 'success',       
-            duration: 2000//持续的时间       
+            title: '发布成功!',
+            icon: 'success',
+            duration: 2000,//持续的时间
+            success: function () {
+              console.log('haha');
+              setTimeout(function () {
+                //要延时执行的代码
+                wx.redirectTo({
+                  url: '../ConfessionWall/ConfessionWall'
+                })
+              }, 2000) //延迟时间
+            }
           })
         }
       }
