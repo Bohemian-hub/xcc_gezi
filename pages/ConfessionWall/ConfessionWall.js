@@ -35,6 +35,7 @@ Page({
     which_reply_id: '',
     which_reply_name: '',
     inputValue: null,
+    if_focus:false,
     swiperList: [{
       id: 0,
       fields: {
@@ -497,7 +498,7 @@ Page({
   son_comment_send() {
     var that = this
     that.setData({
-      inputValue: ''
+      inputValue: '',
     })
     var myDate = new Date();
     var mon = myDate.getMonth() + 1
@@ -604,7 +605,8 @@ Page({
   reply(e) {
     var that = this
     that.setData({
-      switch_reply: 1
+      switch_reply: 1,
+      if_focus:true,
     })
 
     /* 要准备前往数据库啦，哈哈哈哈，真的太快乐了 */
