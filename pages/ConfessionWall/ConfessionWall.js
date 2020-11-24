@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-13 23:35:52
- * @LastEditTime: 2020-11-24 16:04:04
+ * @LastEditTime: 2020-11-24 16:59:00
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/ConfessionWall/ConfessionWall.js
@@ -28,6 +28,7 @@ Page({
     now_turn_comment_id: '',
     now_comment_all: [],
     switch_reply: 0,
+    conment_index: '',
     swiperList: [{
       id: 0,
       fields: {
@@ -265,7 +266,8 @@ Page({
     console.log(that.data.confessList[conment_index].fields.comment_count);
     that.setData({
       comment_onclick_count: that.data.confessList[conment_index].fields.comment_count,
-      now_turn_comment_id: that.data.confessList[conment_index].fields.comment_id
+      now_turn_comment_id: that.data.confessList[conment_index].fields.comment_id,
+      conment_index: conment_index,
     })
     /* 下面是设置动画的基本操作 */
     var animation = wx.createAnimation({
@@ -303,6 +305,7 @@ Page({
         console.log("获取所有评论成功！");
         that.setData({
           now_comment_all: result.data,
+          comment_onclick_count: result.data.length
         })
         console.log(this.data.now_comment_all);
         wx.hideLoading()
@@ -312,6 +315,13 @@ Page({
   },
   close_comment() {
     var that = this;
+    /* 要不关的时候也做一个假的数据增加 */
+
+    that.setData({
+      ['confessList[' + that.data.conment_index + '].fields.comment_count']: this.data.comment_onclick_count
+    })
+
+
     var animation = wx.createAnimation({
       duration: 100,
       timingFunction: "linear",
@@ -428,6 +438,31 @@ Page({
       },
       success: (result) => {
         console.log("评论成功！");
+        wx.showToast({
+          title: '评论成功！',
+          icon: 'success',
+          duration: 2000,//持续的时间
+        })
+        /* 评论成功之后就要想办法刷新数据了 */
+        wx.request({
+          url: 'http://127.0.0.1:8000/confess/get_comment', //仅为示例，并非真实的接口地址
+          data: {
+            comment_id: that.data.now_turn_comment_id,
+          },
+          method: "POST",
+          header: {
+            'content-type': 'application/x-www-form-urlencoded' // 默认值
+          },
+          success: (result) => {
+            console.log("获取所有评论成功！");
+            that.setData({
+              now_comment_all: result.data,
+              comment_onclick_count: result.data.length
+            })
+            console.log(this.data.now_comment_all);
+            wx.hideLoading()
+          },
+        });
       },
     });
 
