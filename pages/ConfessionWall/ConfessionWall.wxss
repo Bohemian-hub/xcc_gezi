@@ -109,7 +109,7 @@ page{
   color: rgb(75, 75, 75);
   text-shadow: 0 0 10rpx rgb(255, 255, 255);
   width: 30%;
-  font-size: 30rpx;
+  font-size: 50rpx;
   
   float: right;
   text-align: right;

@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-13 23:35:52
- * @LastEditTime: 2020-11-24 16:47:09
+ * @LastEditTime: 2020-11-24 17:30:04
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/ConfessionWall/ConfessionWall.wxml
@@ -117,8 +117,8 @@
         <view class="comment_panel_scanf_button" bindtap="comment_send">发送</view>
     </view>
     <view class=" comment_panel_scanf" style="display: {{switch_reply == 1?'block':'none'}}">
-        <input class="comment_panel_scanf_frame" bindinput='getInputValue1' placeholder="回复张益达："></input>
-        <view class="comment_panel_scanf_button" bindtap="comment_send">回复</view>
+        <input class="comment_panel_scanf_frame" bindinput='getInputValue2' placeholder="{{reply_words}}"></input>
+        <view class="comment_panel_scanf_button" bindtap="son_comment_send">回复</view>
     </view>
     <view class="comment_panel_comment">
         <view class="comment_panel_comment_title">
@@ -145,7 +145,8 @@
                 </view>
                 <view class="content_right">
                     <view class="content_right_name">{{item.fields.name}}</view>
-                    <view class="content_right_content" bindtap="reply">
+                    <view class="content_right_content" bindtap="reply" data-id="{{item.fields.son_comment_id}}"
+                        data-name="{{item.fields.name}}">
                         {{item.fields.comment_content}}
                     </view>
                     <view>
