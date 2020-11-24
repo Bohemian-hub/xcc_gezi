@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-13 23:35:52
- * @LastEditTime: 2020-11-24 09:56:18
+ * @LastEditTime: 2020-11-24 13:16:20
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/ConfessionWall/ConfessionWall.wxml
@@ -57,9 +57,14 @@
                     <image class="confess_image_icon" src="{{item.fields.object_img}}" mode="heightFix"
                         lazy-load="false" binderror="" bindload="" />
                 </view>
-                <view class="confess_text">
-                    {{item.fields.confess_content}}
-                </view>
+
+
+                <scroll-view class="confess_text" scroll-y="true">
+                    <view class="confess_text_frame">
+                        {{item.fields.confess_content}}
+                    </view>
+                </scroll-view>
+
             </view>
 
             <view class="confess_makelove">

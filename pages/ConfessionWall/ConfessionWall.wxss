@@ -57,25 +57,26 @@ page{
     margin: 100rpx auto 20rpx auto;
 }
 .date{
-    width: 30%;
-    float: left;
-    color: white;
-    background-color: rgba(89, 60, 218, 0);
+    width: 50%;
+    margin: 0 auto;
+    color: rgb(0, 0, 0);
+    background-color: rgba(255, 255, 255, 0);
     font-weight: 800;  
-    font-size: 30rpx;
-    text-align: center;
+    font-size: 40rpx;
+    text-indent: 2em;
     
     
     
 }
 .numbers{
-    width: 70%;
-    float: right;
-    color: white;
+    width: 90%;
+    height:40rpx;
+    margin: 0 auto;
+    color: rgb(0, 0, 0);
     text-align: left;
-    background-color: rgba(52, 194, 59, 0);
-    text-indent:em;
-    font-size: 25rpx;
+    background-color: rgba(175, 10, 10, 0);
+    font-size: 30rpx;
+    text-indent: 2em;
 
 }
 .confress_panel{
@@ -92,24 +93,24 @@ page{
 .confress_panel_top{
 
   width: 100%;
-  height: 180rpx;
+  height: 150rpx;
 }
 .confress_panel_title{
   width: 50%;
   float: left;
   margin: 20rpx;
+  font-size: 35rpx;
   font-weight: 800;
-  color: azure;
+  color: rgb(0, 171, 238);
   text-shadow: 0 0 10rpx rgb(52, 231, 231);
 
 }
 .confress_panel_numbers{
-  color: rgb(124, 124, 124);
-  text-shadow: 0 0 10rpx rgb(52, 231, 231);
-
-}
-.confress_panel_numbers{
+  color: rgb(75, 75, 75);
+  text-shadow: 0 0 10rpx rgb(255, 255, 255);
   width: 30%;
+  font-size: 30rpx;
+  
   float: right;
   text-align: right;
   padding: 20rpx;
@@ -119,31 +120,41 @@ page{
   height: 50rpx;
   padding-left: 20rpx;
   line-height: 35rpx;
-  color: white;
-  text-shadow: 0 0 10rpx rgb(255, 0, 0);
+  font-size: 30rpx;
+  color: rgb(214, 57, 57);
+  text-shadow: 0 0 5rpx rgb(255, 0, 0);
 }
 
 .confess_image{
   text-align: center;
   margin: 0 auto;
+  background-image: url(https://s3.ax1x.com/2020/11/24/DtwyX4.md.png);
+  background-size: 100% 100%;
+  padding: 30rpx;
+
 }
 .confess_image_icon{
-  height: 220rpx;
+  height: 210rpx;
 }
 .confess_text{
   text-indent: 2em;
   width: 91%;
+  height: 355rpx;
   padding:20rpx;
-  background-color: rgba(189, 189, 189, 0.418);
-  margin: 20rpx auto;
+  margin: 0rpx auto 15rpx auto;
+}
+.confess_text_frame{
+  background-color: rgba(255, 255, 255, 0.329);
+
   font-size: 30rpx;
+  font-weight: 800;
   color:white;
-  text-shadow: 0 0 10rpx rgb(248, 110, 110);
+  text-shadow: 0 0 15rpx rgb(248, 110, 110);
 }
 .confess_makelove{
   width: 100%;
   height: 90rpx;
-  background-color: pink ;
+  background-color: rgba(255, 192, 203, 0.445) ;
   position: absolute;
   bottom: 0;
 }

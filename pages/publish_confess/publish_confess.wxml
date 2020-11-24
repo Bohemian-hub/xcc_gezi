@@ -88,20 +88,20 @@
             <view class="{{choose_image_index=='image1'?'bg-img-choose':'bg-img'}}" bindtap="choose_image"
                 data-id="image1">
                 <image class="choose_image_one"
-                    src='https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3844056729,169452221&fm=26&gp=0.jpg'
+                    src='https://s3.ax1x.com/2020/11/24/DtJDqx.md.png'
                     mode='aspectFill'></image>
             </view>
             <view class="{{choose_image_index=='image2'?'bg-img-choose':'bg-img'}}" bindtap="choose_image"
                 data-id="image2">
                 <image
-                    src='https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3082372117,1837107116&fm=26&gp=0.jpg'
+                    src='https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3118951955,1143076286&fm=26&gp=0.jpg'
                     mode='aspectFill'></image>
             </view>
             <view class="{{choose_image_index=='image3'?'bg-img-choose':'bg-img'}}" bindtap="choose_image"
                 data-id="image3">
                 <image
-                    src='https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1116313726,3874542020&fm=26&gp=0.jpg'
-                    mode='aspectFill'></image>
+                    src='https://s3.ax1x.com/2020/11/24/DtNC24.png' style='margin-top:30rpx' mode="widthFix"
+                    ></image>
             </view>
             <view class="{{choose_image_index=='image4'?'bg-img-choose':'bg-img'}}" wx:for="{{imgList}}" wx:key="index"
                 bindtap="ViewImage" data-url="{{imgList[index]}}">
