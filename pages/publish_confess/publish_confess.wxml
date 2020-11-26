@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-18 15:06:45
- * @LastEditTime: 2020-11-20 08:35:44
+ * @LastEditTime: 2020-11-26 18:37:49
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/publish_confess/publish_confess.wxml
@@ -27,13 +27,13 @@
         <view class="input_text_me">
             我：
         </view>
-        <input class="input_me" bindinput='getInputValue1'>框框</input>
+        <input class="input_me" bindinput='getInputValue1' placeholder="告诉Ta你是...">框框</input>
     </view>
     <view class="form_object">
         <view class="input_text_me">
             Ta：
         </view>
-        <input class="input_me" bindinput='getInputValue2'>框框</input>
+        <input class="input_me" bindinput='getInputValue2' placeholder="你怎么称呼Ta：">框框</input>
     </view>
 </view>
 
@@ -68,8 +68,8 @@
         </view>
         <label class="choose_label">
             <radio class="choose_radio_first" value="1" checked="checked" />
-            <radio class="choose_radio_sec" value="2"/>
-            <radio class="choose_radio_sec" value="3"/>
+            <radio class="choose_radio_sec" value="2" />
+            <radio class="choose_radio_sec" value="3" />
         </label>
 
     </radio-group>
@@ -87,9 +87,8 @@
         <view class="grid col-4 grid-square flex-sub">
             <view class="{{choose_image_index=='image1'?'bg-img-choose':'bg-img'}}" bindtap="choose_image"
                 data-id="image1">
-                <image class="choose_image_one"
-                    src='https://s3.ax1x.com/2020/11/24/DtJDqx.md.png'
-                    mode='aspectFill'></image>
+                <image class="choose_image_one" src='https://s3.ax1x.com/2020/11/24/DtJDqx.md.png' mode='aspectFill'>
+                </image>
             </view>
             <view class="{{choose_image_index=='image2'?'bg-img-choose':'bg-img'}}" bindtap="choose_image"
                 data-id="image2">
@@ -99,9 +98,7 @@
             </view>
             <view class="{{choose_image_index=='image3'?'bg-img-choose':'bg-img'}}" bindtap="choose_image"
                 data-id="image3">
-                <image
-                    src='https://s3.ax1x.com/2020/11/24/DtNC24.png' style='margin-top:30rpx' mode="widthFix"
-                    ></image>
+                <image src='https://s3.ax1x.com/2020/11/24/DtNC24.png' style='margin-top:30rpx' mode="widthFix"></image>
             </view>
             <view class="{{choose_image_index=='image4'?'bg-img-choose':'bg-img'}}" wx:for="{{imgList}}" wx:key="index"
                 bindtap="ViewImage" data-url="{{imgList[index]}}">
@@ -121,9 +118,38 @@
     <view class="input_text_me">
         内容：
     </view>
-    <textarea class="input_content" bindinput="getInputValue3"></textarea>
+    <textarea class="input_content" bindinput="getInputValue3" maxlength="500" placeholder="字数限制500个字哦"></textarea>
 
 </view>
-<view class="form_button" bindtap="publish">
+<view class=" form_button" bindtap="publish">
     发布
+</view>
+
+
+
+<view class="warning1" style="display: {{warn_display==1?'block':'none'}};">
+    <view class="warn_title">
+        欢迎！
+        <view class="view_close" bindtap="close_warn">
+            ×
+        </view>
+    </view>
+    <view class="warn_content">
+        您当前正在表白墙发布页面，为保证平台有序运营，平台限制用户每天只能发布两条表白墙，<text
+            style="font-weight:800">您当前还可以发布{{publish_chance}}条表白墙!</text>你的发布将在管理员审核后展示在表白墙页面。
+    </view>
+</view>
+
+
+
+<view class="warning2" style="display:{{warn_display2==1?'block':'none'}};">
+    <view class="warn_title">
+        提示
+        <view class="view_close" bindtap="close_warn2">
+            ×
+        </view>
+    </view>
+    <view class="warn_content">
+        不好意思，你今日的机会已经使用完啦，明天再来吧
+    </view>
 </view>

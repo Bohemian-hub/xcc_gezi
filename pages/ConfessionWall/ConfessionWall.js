@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-13 23:35:52
- * @LastEditTime: 2020-11-24 23:06:53
+ * @LastEditTime: 2020-11-26 18:45:05
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/ConfessionWall/ConfessionWall.js
@@ -35,7 +35,8 @@ Page({
     which_reply_id: '',
     which_reply_name: '',
     inputValue: null,
-    if_focus:false,
+    if_focus: false,
+    confess_time: '',
     swiperList: [{
       id: 0,
       fields: {
@@ -56,10 +57,32 @@ Page({
    */
   /* 我准备在这里查询我想要的数据，加载的时候 就显示等待，等成功了就关闭等待，用户可以浏览 */
   onLoad: function (options) {
+    var that = this
+
+    var myDate = new Date();
+
+    var y = myDate.getFullYear();    //获取完整的年份(4位,1970-????)
+
+    var mon = myDate.getMonth()+1;       //获取当前月份(0-11,0代表1月)
+
+    var d = myDate.getDate();        //获取当前日(1-31)
+
+    if (d < 10) {
+      d = "0" + String(d)
+    }
+    if (mon < 10) {
+      mon = "0" + String(mon)
+    }
+    var confesstime = y + '/' + mon + '/' + d
+
+    that.setData({
+      confess_time: confesstime
+    })
+
+
     wx.showLoading({
       title: '正在加载',
     })
-    var that = this
     var myDate = new Date();
     var month = myDate.getMonth() + 1
     var daly = myDate.getDate()
@@ -74,7 +97,7 @@ Page({
     /* 发送一个数据请求，获取表白墙上日期为今天的所有表白数据。 */
     /* 当然是通过向后端传值的方式 */
     wx.request({
-      url: 'http://127.0.0.1:8000/confess/get_confess', //仅为示例，并非真实的接口地址
+      url: 'http://39.100.67.217:8001/confess/get_confess', //仅为示例，并非真实的接口地址
       data: {
         card_date: card_day
       },
@@ -153,7 +176,7 @@ Page({
     })
     /* 查询一下哪些卡片我是点了赞的 */
     wx.request({
-      url: 'http://127.0.0.1:8000/confess/which_love', //仅为示例，并非真实的接口地址
+      url: 'http://39.100.67.217:8001/confess/which_love', //仅为示例，并非真实的接口地址
       data: {
         studentId: wx.getStorageSync('studentId'),
       },
@@ -237,8 +260,7 @@ Page({
       console.log('-----------------');
       console.log('-----------------');
       console.log(love_target)
-      console.log(that.data.confessList[1].fields.comment_id);
-      console.log(that.data.confessList[1].fields.id);
+      console.log(that.data.confessList[love_target].fields.comment_id);
       console.log('-----------------');
       console.log('-----------------');
       console.log('-----------------');
@@ -246,7 +268,7 @@ Page({
 
       /* 下面我就要记录我这个点赞了，也就是发送点赞请求到后端 */
       wx.request({
-        url: 'http://127.0.0.1:8000/confess/add_love', //仅为示例，并非真实的接口地址
+        url: 'http://39.100.67.217:8001/confess/add_love', //仅为示例，并非真实的接口地址
         data: {
           name: wx.getStorageSync('name'),
           studentId: wx.getStorageSync('studentId'),
@@ -300,7 +322,7 @@ Page({
       title: '正在加载',
     })
     wx.request({
-      url: 'http://127.0.0.1:8000/confess/get_comment', //仅为示例，并非真实的接口地址
+      url: 'http://39.100.67.217:8001/confess/get_comment', //仅为示例，并非真实的接口地址
       data: {
         comment_id: that.data.now_turn_comment_id,
       },
@@ -319,7 +341,7 @@ Page({
       },
     });
     wx.request({
-      url: 'http://127.0.0.1:8000/confess/get_comment_son', //仅为示例，并非真实的接口地址
+      url: 'http://39.100.67.217:8001/confess/get_comment_son', //仅为示例，并非真实的接口地址
       data: {
         comment_id: that.data.now_turn_comment_id,
       },
@@ -416,197 +438,215 @@ Page({
   },
   comment_send() {
 
+
     var that = this
-    that.setData({
-      inputValue: ''
-    })
-    var myDate = new Date();
-    var mon = myDate.getMonth() + 1
-    var d = myDate.getDate()
-    var h = myDate.getHours();      //获取当前小时数(0-23)
-    var m = myDate.getMinutes();    //获取当前分钟数(0-59)
-    var s = myDate.getSeconds();    //获取当前秒数(0-59)
-    if (d < 10) {
-      d = "0" + String(d)
-    }
-    if (mon < 10) {
-      mon = "0" + String(mon)
-    }
-    if (h < 10) {
-      h = "0" + String(h)
-    }
-    if (m < 10) {
-      m = "0" + String(m)
-    }
-    console.log(that.data.comment_user_comtent.value);
-    console.log(comment_time);
-    console.log(wx.getStorageSync('name'));
-    console.log(wx.getStorageSync('studentId'));
-    console.log(that.data.now_turn_comment_id);
+    if (that.data.comment_user_comtent) {
 
-    var comment_time = mon + '-' + d + ' ' + h + ':' + m
-    var comment_content = that.data.comment_user_comtent.value
-    var comment_id = that.data.now_turn_comment_id
-    var son_comment_id_time = wx.getStorageSync('studentId') + mon + d + h + m + s
-    console.log(son_comment_id_time);
+      that.setData({
+        inputValue: ''
+      })
+      var myDate = new Date();
+      var mon = myDate.getMonth() + 1
+      var d = myDate.getDate()
+      var h = myDate.getHours();      //获取当前小时数(0-23)
+      var m = myDate.getMinutes();    //获取当前分钟数(0-59)
+      var s = myDate.getSeconds();    //获取当前秒数(0-59)
+      if (d < 10) {
+        d = "0" + String(d)
+      }
+      if (mon < 10) {
+        mon = "0" + String(mon)
+      }
+      if (h < 10) {
+        h = "0" + String(h)
+      }
+      if (m < 10) {
+        m = "0" + String(m)
+      }
+      console.log(that.data.comment_user_comtent.value);
+      console.log(comment_time);
+      console.log(wx.getStorageSync('name'));
+      console.log(wx.getStorageSync('studentId'));
+      console.log(that.data.now_turn_comment_id);
 
-    /* 下面我要请求后端数据库了，我要将这个评论增加大哦我的评论表中去。 */
-    wx.request({
-      url: 'http://127.0.0.1:8000/confess/add_comment', //仅为示例，并非真实的接口地址
-      data: {
-        name: wx.getStorageSync('name'),
-        studentId: wx.getStorageSync('studentId'),
-        comment_time: comment_time,
-        comment_id: comment_id,
-        comment_content: comment_content,
-        son_comment_id: son_comment_id_time,      //我看还是用时间来区分每一条评论比较合适，当然还是加上学号吧
-      },
-      method: "POST",
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
-      },
-      success: (result) => {
-        console.log("评论成功！");
-        wx.showToast({
-          title: '评论成功！',
-          icon: 'success',
-          duration: 2000,//持续的时间
-        })
-        /* 评论成功之后就要想办法刷新数据了 */
-        wx.request({
-          url: 'http://127.0.0.1:8000/confess/get_comment', //仅为示例，并非真实的接口地址
-          data: {
-            comment_id: that.data.now_turn_comment_id,
-          },
-          method: "POST",
-          header: {
-            'content-type': 'application/x-www-form-urlencoded' // 默认值
-          },
-          success: (result) => {
-            console.log("获取所有评论成功！");
-            that.setData({
-              now_comment_all: result.data,
-              comment_onclick_count: result.data.length
-            })
-            console.log(this.data.now_comment_all);
-            wx.hideLoading()
-          },
-        });
-      },
-    });
+      var comment_time = mon + '-' + d + ' ' + h + ':' + m
+      var comment_content = that.data.comment_user_comtent.value
+      var comment_id = that.data.now_turn_comment_id
+      var son_comment_id_time = wx.getStorageSync('studentId') + mon + d + h + m + s
+      console.log(son_comment_id_time);
+
+      /* 下面我要请求后端数据库了，我要将这个评论增加大哦我的评论表中去。 */
+      wx.request({
+        url: 'http://39.100.67.217:8001/confess/add_comment', //仅为示例，并非真实的接口地址
+        data: {
+          name: wx.getStorageSync('name'),
+          studentId: wx.getStorageSync('studentId'),
+          comment_time: comment_time,
+          comment_id: comment_id,
+          comment_content: comment_content,
+          son_comment_id: son_comment_id_time,      //我看还是用时间来区分每一条评论比较合适，当然还是加上学号吧
+        },
+        method: "POST",
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' // 默认值
+        },
+        success: (result) => {
+          console.log("评论成功！");
+          wx.showToast({
+            title: '评论成功！',
+            icon: 'success',
+            duration: 2000,//持续的时间
+          })
+          /* 评论成功之后就要想办法刷新数据了 */
+          wx.request({
+            url: 'http://39.100.67.217:8001/confess/get_comment', //仅为示例，并非真实的接口地址
+            data: {
+              comment_id: that.data.now_turn_comment_id,
+            },
+            method: "POST",
+            header: {
+              'content-type': 'application/x-www-form-urlencoded' // 默认值
+            },
+            success: (result) => {
+              console.log("获取所有评论成功！");
+              that.setData({
+                now_comment_all: result.data,
+                comment_onclick_count: result.data.length
+              })
+              console.log(this.data.now_comment_all);
+              wx.hideLoading()
+            },
+          });
+        },
+      });
+    } else {
+      wx.showToast({
+        title: '至少写两个字叭',
+        icon: 'false',
+        duration: 2000
+      })
+    }
   },
   son_comment_send() {
     var that = this
-    that.setData({
-      inputValue: '',
-    })
-    var myDate = new Date();
-    var mon = myDate.getMonth() + 1
-    var d = myDate.getDate()
-    var h = myDate.getHours();      //获取当前小时数(0-23)
-    var m = myDate.getMinutes();    //获取当前分钟数(0-59)
-    var s = myDate.getSeconds();    //获取当前秒数(0-59)
-    if (d < 10) {
-      d = "0" + String(d)
+    if (that.data.reply_son_comment) {
+      that.setData({
+        inputValue: '',
+      })
+      var myDate = new Date();
+      var mon = myDate.getMonth() + 1
+      var d = myDate.getDate()
+      var h = myDate.getHours();      //获取当前小时数(0-23)
+      var m = myDate.getMinutes();    //获取当前分钟数(0-59)
+      var s = myDate.getSeconds();    //获取当前秒数(0-59)
+      if (d < 10) {
+        d = "0" + String(d)
+      }
+      if (mon < 10) {
+        mon = "0" + String(mon)
+      }
+      if (h < 10) {
+        h = "0" + String(h)
+      }
+      if (m < 10) {
+        m = "0" + String(m)
+      }
+
+
+      var son_comment_content = that.data.reply_son_comment.value
+      var son_comment_id = that.data.which_reply_id
+      var son_comment_id_time = wx.getStorageSync('studentId') + mon + d + h + m + s
+      var son_comment_to_who = that.data.which_reply_name
+      var comment_id = this.data.now_turn_comment_id
+
+
+      console.log(wx.getStorageSync('name'));
+      console.log(wx.getStorageSync('studentId'));
+      console.log(son_comment_content);
+      console.log(son_comment_id);
+      console.log(son_comment_id_time);
+      console.log(son_comment_to_who);
+      console.log(comment_id);
+
+
+      /* 下面我要请求后端数据库了，我要将这个评论增加大哦我的评论表中去。 */
+      wx.request({
+        url: 'http://39.100.67.217:8001/confess/add_son_comment', //仅为示例，并非真实的接口地址
+        data: {
+          son_name: wx.getStorageSync('name'),   //评论者的姓名
+          son_studentId: wx.getStorageSync('studentId'),  //评论者的学号
+          son_comment_content: son_comment_content,      //子评论的内容
+          son_comment_id: son_comment_id,   //与之关联的评论id
+          son_comment_to_who: son_comment_to_who,   //子评论的对象名称
+          son_comment_id_time: son_comment_id_time,      //子评论的时间
+          comment_id: comment_id,//卡片的comment_id
+
+        },
+        method: "POST",
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' // 默认值
+        },
+        success: (result) => {
+          console.log("子评论成功！");
+        },
+      });
+      /* 子评论成功了，就重新获取下评论和子评论，然后渲染 */
+      /* 先来刷新评论 */
+      wx.request({
+        url: 'http://39.100.67.217:8001/confess/get_comment', //仅为示例，并非真实的接口地址
+        data: {
+          comment_id: that.data.now_turn_comment_id,
+        },
+        method: "POST",
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' // 默认值
+        },
+        success: (result) => {
+          console.log("获取所有评论成功！");
+          that.setData({
+            now_comment_all: result.data,
+            comment_onclick_count: result.data.length
+          })
+          console.log(this.data.now_comment_all);
+          wx.hideLoading()
+        },
+      });
+      /* 再来刷新子评论 */
+      wx.request({
+        url: 'http://39.100.67.217:8001/confess/get_comment_son', //仅为示例，并非真实的接口地址
+        data: {
+          comment_id: that.data.now_turn_comment_id,
+        },
+        method: "POST",
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' // 默认值
+        },
+        success: (result) => {
+          console.log("获取所有子评论成功！");
+          console.log(result.data);
+          that.setData({
+            now_son_comment_all: result.data,
+          })
+          console.log(that.data.now_son_comment_all);
+        },
+      });
+      /* 然后再更改一下发布评论盒子评论的状态 */
+      that.setData({
+        switch_reply: 0
+      })
+    } else {
+      wx.showToast({
+        title: '至少写两个字叭',
+        icon: 'false',
+        duration: 2000
+      })
     }
-    if (mon < 10) {
-      mon = "0" + String(mon)
-    }
-    if (h < 10) {
-      h = "0" + String(h)
-    }
-    if (m < 10) {
-      m = "0" + String(m)
-    }
-
-
-    var son_comment_content = that.data.reply_son_comment.value
-    var son_comment_id = that.data.which_reply_id
-    var son_comment_id_time = wx.getStorageSync('studentId') + mon + d + h + m + s
-    var son_comment_to_who = that.data.which_reply_name
-    var comment_id = this.data.now_turn_comment_id
-
-
-    console.log(wx.getStorageSync('name'));
-    console.log(wx.getStorageSync('studentId'));
-    console.log(son_comment_content);
-    console.log(son_comment_id);
-    console.log(son_comment_id_time);
-    console.log(son_comment_to_who);
-    console.log(comment_id);
-
-
-    /* 下面我要请求后端数据库了，我要将这个评论增加大哦我的评论表中去。 */
-    wx.request({
-      url: 'http://127.0.0.1:8000/confess/add_son_comment', //仅为示例，并非真实的接口地址
-      data: {
-        son_name: wx.getStorageSync('name'),   //评论者的姓名
-        son_studentId: wx.getStorageSync('studentId'),  //评论者的学号
-        son_comment_content: son_comment_content,      //子评论的内容
-        son_comment_id: son_comment_id,   //与之关联的评论id
-        son_comment_to_who: son_comment_to_who,   //子评论的对象名称
-        son_comment_id_time: son_comment_id_time,      //子评论的时间
-        comment_id: comment_id,//卡片的comment_id
-
-      },
-      method: "POST",
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
-      },
-      success: (result) => {
-        console.log("子评论成功！");
-      },
-    });
-    /* 子评论成功了，就重新获取下评论和子评论，然后渲染 */
-    /* 先来刷新评论 */
-    wx.request({
-      url: 'http://127.0.0.1:8000/confess/get_comment', //仅为示例，并非真实的接口地址
-      data: {
-        comment_id: that.data.now_turn_comment_id,
-      },
-      method: "POST",
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
-      },
-      success: (result) => {
-        console.log("获取所有评论成功！");
-        that.setData({
-          now_comment_all: result.data,
-          comment_onclick_count: result.data.length
-        })
-        console.log(this.data.now_comment_all);
-        wx.hideLoading()
-      },
-    });
-    /* 再来刷新子评论 */
-    wx.request({
-      url: 'http://127.0.0.1:8000/confess/get_comment_son', //仅为示例，并非真实的接口地址
-      data: {
-        comment_id: that.data.now_turn_comment_id,
-      },
-      method: "POST",
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
-      },
-      success: (result) => {
-        console.log("获取所有子评论成功！");
-        console.log(result.data);
-        that.setData({
-          now_son_comment_all: result.data,
-        })
-        console.log(that.data.now_son_comment_all);
-      },
-    });
-    /* 然后再更改一下发布评论盒子评论的状态 */
-    that.setData({
-      switch_reply: 0
-    })
   },
   reply(e) {
     var that = this
     that.setData({
       switch_reply: 1,
-      if_focus:true,
+      if_focus: true,
     })
 
     /* 要准备前往数据库啦，哈哈哈哈，真的太快乐了 */
@@ -628,7 +668,7 @@ Page({
     })
   },
   getInputValue2(e) {
-    console.log(e.detail)// {value: "ff", cursor: 2}  
+    console.log(e.detail)// {value: "ff", cursor: 2}
     this.setData({
       reply_son_comment: e.detail
     })
