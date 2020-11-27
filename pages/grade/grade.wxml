@@ -1,0 +1,99 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-11-26 21:05:54
+ * @LastEditTime: 2020-11-27 23:01:27
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /miniprogram-5/pages/grade/grade.wxml
+-->
+
+<view class="grade_back" bindtap="back_index">
+
+    <image class="page_back" src="https://s1.ax1x.com/2020/11/11/BXy3Jf.png" mode="widthFix" lazy-load="false"
+        binderror="" bindload="" />
+    <view class="page_back_text">
+        返回
+    </view>
+
+</view>
+<view class="grade_when">
+    <view class="grade_when_button" bindtap="turn_choose">
+        <view class="grade_when_button_text">
+            学期:{{which_term}}
+        </view>
+        <view class="red_text">
+            点击切换学期
+        </view>
+
+
+    </view>
+
+    <view class="grade_when_choose" style="display: {{turn_choose==1?'block':'none'}};">
+        <view class="grade_choose_one" bindtap="change_term" data-name="2019年 学期2">
+            2019年 学期2
+        </view>
+        <view class="grade_choose_one" bindtap="change_term" data-name="2019年 学期1">
+            2019年 学期1
+
+        </view>
+        <view class="grade_choose_one" bindtap="change_term" data-name="2018年 学期2">
+            2018年 学期2
+        </view>
+        <view class="grade_choose_one" bindtap="change_term" data-name="2018年 学期1">
+            2018年 学期1
+        </view>
+
+    </view>
+
+</view>
+<view class="grade_rank">
+    <view class="grade_rank_number">{{something}}{{get_befor}}</view>
+    <view class="grade_rank_name">学分绩点</view>
+</view>
+<view class="grade_rank">
+    <view class="grade_rank_number">39</view>
+    <view class="grade_rank_name">班级排名</view>
+</view>
+<view class="grade_rank">
+    <view class="grade_rank_number">106</view>
+    <view class="grade_rank_name">专业排名</view>
+</view>
+<view style="clear: both;">
+</view>
+
+<view class="grade_hint">
+    <font class="grade_hint_careful">
+        温馨提示:
+    </font>
+    {{}}18计科二班已加入46人，5人未初始化成绩，邀请更多同学加入，使排名更准确
+</view>
+
+<view class="grade_content">
+
+
+    <view class="grade_cource" wx:for="{{gradeList}}" wx:key="">
+        <view class="grade_left">
+            <view class="grade_left_title">{{item.courseTitle}}</view>
+            <view>
+                <view class="grade_left_learnscore">{{item.credit}}</view>
+                <view class="grade_left_test_quality">{{item.gradeNature}}</view>
+                <view class="grade_left_cource_quality">{{item.courseNature}}</view>
+            </view>
+        </view>
+        <view class="grade_right">
+            <view class="grade_right_grade">
+                {{item.grade}}
+            </view>
+            <view class="grade_right_point">
+                {{item.gradePoint}}
+            </view>
+        </view>
+    </view>
+
+
+
+</view>
+
+<view class="get_grade" bindtap="getgrade">
+    获取成绩
+</view>

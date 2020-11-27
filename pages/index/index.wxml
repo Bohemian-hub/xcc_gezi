@@ -470,7 +470,7 @@
         <!-- 以防自己关闭自己 -->
         <scroll-view class="son_menu_function_panel" scroll-y="true">
 
-            <view class="son_menu_function {{showwhat=='jiaowu' ? 'show' : 'notshow'}}">
+            <view class="son_menu_function {{showwhat=='jiaowu' ? 'show' : 'notshow'}}" bindtap="grade">
                 <view class="son_menu_function_image">
                     <image class="son_menu_function_image_icon" src="https://s3.ax1x.com/2020/11/13/D9kq9f.png"
                         mode="widthFix" lazy-load="false" binderror="" bindload="" />

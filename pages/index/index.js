@@ -205,7 +205,11 @@ Page({
     }.bind(this), 100)
 
   },
-
+  grade(){
+    wx.navigateTo({
+      url: '../grade/grade',
+    })
+  },
   onLoad: function () {
 
     var value = wx.getStorageSync('name')
