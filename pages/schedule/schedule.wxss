@@ -1,0 +1,213 @@
+page{
+    background-color: rgba(253, 224, 224, 0.493);
+}
+.page_back{
+    width: 50rpx;
+    margin-top: 35rpx;
+    float: left;
+    margin-left: 20rpx;
+    
+}
+.grade_back{
+    width: 25%;
+    float: left;
+    height: 120rpx;
+    background-color: white;    
+    border-radius: 20rpx;
+    margin: 40rpx 0 10rpx 2.5%;
+    box-shadow: 0rpx 0rpx 10rpx rgb(201, 201, 201);
+}
+.page_back_text{
+    font-size: 45rpx;
+    line-height: 122rpx;
+    float: left;
+}
+.grade_when{
+    width: 67.5%;
+    height: 120rpx;
+    background-color: white;
+    margin: 40rpx auto 10rpx 2.5%;
+    border-radius: 20rpx;
+    float: left;
+    box-shadow: 0rpx 0rpx 10rpx rgb(201, 201, 201);
+    text-align: center;
+    font-size: 45rpx;
+    line-height: 120rpx;
+    
+}
+.grade_when_choose{
+    width: 67.5%;
+    position: fixed;
+    height: 880rpx;
+    background-color: rgba(247, 247, 247, 0);
+    z-index: 10;
+
+}
+.grade_when_button_text{
+    height: 80rpx;
+    line-height: 120rpx;
+    color: rgb(7, 131, 202);
+}
+.turn_choose_bottom_text{
+    height: 20rpx;
+    line-height: 20rpx;
+    font-size: 20rpx;
+    text-align: center;
+    color: rgb(194, 23, 171);
+    position: absolute;
+    bottom: 0rpx;
+    left: 100rpx; 
+}
+.grade_choose_one{
+    background-color: rgba(255, 255, 255, 0.842);
+    height: 100rpx;
+    line-height: 100rpx;
+    margin-top: 10rpx;
+    box-shadow: 0 0 8rpx rgb(175, 175, 175);
+    border-radius: 20rpx;
+}
+.schedule_date{
+    width: 47.5%;
+    height: 90rpx;
+    background-color: rgb(23, 169, 226);
+    color: aliceblue;
+    box-shadow: 0 0 8rpx rgb(175, 175, 175);
+    margin-top: 20rpx;
+    margin-left: 2.5%;
+    float: left;
+    text-align: center;
+    line-height: 90rpx;
+    font-size:40rpx;
+    border-radius: 20rpx;
+}
+.schedule_week{
+    width: 45%;
+    height: 90rpx;
+    background-color: rgb(23, 169, 226);
+    box-shadow: 0 0 8rpx rgb(175, 175, 175);
+    color: aliceblue;
+    margin-top: 20rpx;
+    margin-left: 2.5%;
+    line-height: 90rpx;
+    text-align: center;
+    font-size:40rpx;
+    float: left;
+    border-radius: 20rpx;
+    position: relative;
+}
+.schedule_week_choose_panel{
+    position: fixed;
+    height: 300rpx;
+    width: 45%;
+    z-index: 10;
+}
+.schedule_week_choose{
+    height: 90rpx;
+    background-color: rgb(23, 169, 226);
+    color: aliceblue;
+    box-shadow: 0 0 8rpx rgb(175, 175, 175);
+    margin-top: 10rpx;
+    text-align: center;
+    font-size:40rpx;
+    border-radius: 20rpx;
+}
+.scroll-header{
+    display: block;
+    white-space: nowrap;
+    height: 200rpx;
+
+}
+.schedule_day_one{
+    height: 160rpx;
+    width: 11%;
+    background-color: rgb(45, 175, 250);
+    margin-left: 3.3%;
+    margin-top: 20rpx;
+    border-radius: 20rpx;
+    color: aliceblue;
+    display: inline-block;
+}
+.schedule_day_one_nalmol{
+    height: 160rpx;
+    width: 11%;
+    background-color: rgb(219, 219, 219);
+    margin-left: 3%;
+    margin-top: 20rpx;
+    border-radius: 20rpx;
+    color: rgb(51, 51, 51);
+    display: inline-block;
+}
+.schedule_day_week{
+    width: 100%;
+    height: 40rpx;
+    text-align: center;
+}
+
+
+
+.schedule_day_date{
+    width: 100%;
+    height: 80rpx;
+    text-align: center;
+    font-size: 60rpx;
+    line-height: 80rpx;
+}
+.schedule_day_course{
+    width: 100%;
+    height: 30rpx;
+    text-align: center;
+}
+.course_panel{
+    width: 100%;
+}
+.course_one{
+    width: 90%;
+    height: 200rpx;
+    background-color: rgb(255, 255, 255);
+    margin: 20rpx auto 20rpx auto;
+    border-radius: 10rpx;
+    box-shadow: 0 0 10rpx rgb(151, 151, 151);
+}
+.course_one_top{
+    width: 100%;
+    height: 80rpx;
+    line-height: 80rpx;
+}
+.course_one_top_left{
+    width: 80%;
+    height: 80rpx;
+    overflow: hidden;
+    float: left;
+    font-size: 40rpx;
+    font-weight: 600;
+    padding-left: 40rpx;
+}
+.course_one_top_right{
+    margin-top: 20rpx;
+    width: 15%;
+    float: left;
+    background-color: rgb(255, 119, 142);
+    color: rgb(255, 255,255);
+    text-align: center;
+    height: 60rpx;
+    line-height: 60rpx;
+    border-radius: 10rpx;
+}
+.course_one_bottom{
+    width: 100%;
+    height: 120rpx;
+}
+.course_one_bottom_left{
+    width: 60%;
+    float: left;
+    padding-left: 40rpx;
+    padding-top: 20rpx;
+    color: rgb(138, 138, 138);
+}
+.course_one_bottom_right{
+    width: 40%;
+    float: left;
+    padding-top: 40rpx;
+    font-size: 40rpx;
+    color: rgb(15, 141, 214);
+}

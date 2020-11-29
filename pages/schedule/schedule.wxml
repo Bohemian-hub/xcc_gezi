@@ -1,0 +1,115 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-11-28 10:04:46
+ * @LastEditTime: 2020-11-29 12:59:12
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /miniprogram-5/pages/schedule/schedule.wxml
+-->
+<view class="grade_back" bindtap="back_index">
+
+    <image class="page_back" src="https://s1.ax1x.com/2020/11/11/BXy3Jf.png" mode="widthFix" lazy-load="false"
+        binderror="" bindload="" />
+    <view class="page_back_text">
+        返回
+    </view>
+
+</view>
+<view class="grade_when">
+    <view class="grade_when_button">
+        <view class="grade_when_button_text">
+            2020年 第一学期
+        </view>
+    </view>
+</view>
+<view class="schedule_date">
+    11月18日
+</view>
+<view class="schedule_week">
+    <view bindtap="turn_choose" class="turn_choose_button">
+        第{{now_week}}周
+        <view class="turn_choose_bottom_text">
+            点击切换当前周
+        </view>
+    </view>
+
+    <view class="schedule_week_choose_panel" style="display: {{turn_choose==1?'block':'none'}};">
+        <view class="schedule_week_choose" data-id="{{now_week+1}}" bindtap="change_week_course">
+            第{{now_week+1}}周
+        </view>
+        <view class="schedule_week_choose" data-id="{{now_week+2}}" bindtap="change_week_course">
+            第{{now_week+2}}周
+        </view>
+        <view class="schedule_week_choose" data-id="{{now_week+3}}" bindtap="change_week_course">
+            第{{now_week+3}}周
+        </view>
+    </view>
+
+
+
+</view>
+<view style="clear: both;">
+
+</view>
+
+
+
+<scroll-view scroll-x class="scroll-header">
+
+    <view class="{{change_day==1?'schedule_day_one':'schedule_day_one_nalmol'}}" bindtap="change_day" data-id="1">
+        <view class="schedule_day_week">周一</view>
+        <view class="schedule_day_date">{{MON}}</view>
+        <view class="schedule_day_course">{{mon_course.length}}节课</view>
+    </view>
+    <view class="{{change_day==2?'schedule_day_one':'schedule_day_one_nalmol'}}" bindtap="change_day" data-id="2">
+        <view class="schedule_day_week">周二</view>
+        <view class="schedule_day_date">{{TUES}}</view>
+        <view class="schedule_day_course">{{tue_course.length}}节课</view>
+    </view>
+
+    <view class="{{change_day==3?'schedule_day_one':'schedule_day_one_nalmol'}}" bindtap="change_day" data-id="3">
+        <view class="schedule_day_week">周三</view>
+        <view class="schedule_day_date">{{WES}}</view>
+        <view class="schedule_day_course">{{wes_course.length}}节课</view>
+    </view>
+    <view class="{{change_day==4?'schedule_day_one':'schedule_day_one_nalmol'}}" bindtap="change_day" data-id="4">
+        <view class="schedule_day_week">周四</view>
+        <view class="schedule_day_date">{{THUR}}</view>
+        <view class="schedule_day_course">{{thu_course.length}}节课</view>
+    </view>
+    <view class="{{change_day==5?'schedule_day_one':'schedule_day_one_nalmol'}}" bindtap="change_day" data-id="5">
+        <view class="schedule_day_week">周五</view>
+        <view class="schedule_day_date">{{FRI}}</view>
+        <view class="schedule_day_course">{{fri_course.length}}节课</view>
+    </view>
+    <view class="{{change_day==6?'schedule_day_one':'schedule_day_one_nalmol'}}" bindtap="change_day" data-id="6">
+        <view class="schedule_day_week">周六</view>
+        <view class="schedule_day_date">{{SAT}}</view>
+        <view class="schedule_day_course">{{sat_course.length}}节课</view>
+    </view>
+    <view class="{{change_day==0?'schedule_day_one':'schedule_day_one_nalmol'}}" bindtap="change_day" data-id="0">
+        <view class="schedule_day_week">周日</view>
+        <view class="schedule_day_date">{{SUN}}</view>
+        <view class="schedule_day_course">{{sun_course.length}}节课</view>
+    </view>
+
+</scroll-view>
+
+
+<view class="course_panel">
+
+    <view class="course_one" wx:for="{{today_course}}" wx:key="{{item.fields}}">
+        <view class="course_one_top">
+            <view class="course_one_top_left">{{item.courseTitle}}</view>
+            <view class=" course_one_top_right">{{item.credit}}分</view>
+        </view>
+        <view class="course_one_bottom">
+            <view class="course_one_bottom_left">
+                <view class="course_one_bottom_left_top">{{item.teacher}}-{{item.courseRoom}}</view>
+                <view class="course_one_bottom_left_bottom">{{item.courseWeek}} {{item.courseSection}}</view>
+            </view>
+            <view class="course_one_bottom_right">{{item.courseTime}}</view>
+        </view>
+    </view>
+
+</view>

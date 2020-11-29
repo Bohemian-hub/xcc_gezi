@@ -1,5 +1,5 @@
-body{
-    background-color: rgb(206, 206, 206);
+page{
+    background-color: rgba(225, 243, 217, 0.514);
 }
 .page_back{
     width: 50rpx;

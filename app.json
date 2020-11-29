@@ -1,5 +1,7 @@
 {
   "pages": [
+
+    "pages/schedule/schedule",
     "pages/index/index",
     "pages/grade/grade",
     "pages/ConfessionWall/ConfessionWall",
@@ -10,7 +12,6 @@
     "pages/product/product",
     "pages/setting/setting",
     "pages/logs/logs"
-
   ],
   "window": {
     "backgroundTextStyle": "light",

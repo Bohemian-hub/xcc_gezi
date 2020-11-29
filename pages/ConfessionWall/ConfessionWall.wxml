@@ -52,7 +52,7 @@
                 </view>
             </view>
 
-            <view style="width:100%;">
+            <view style="width:100%;">                  
                 <view class="confess_image">
                     <image class="confess_image_icon" src="{{item.fields.object_img}}" mode="heightFix"
                         lazy-load="false" binderror="" bindload="" />
