@@ -97,6 +97,7 @@ page{
 }
 .schedule_week_choose_panel{
     position: fixed;
+    top: 80rpx;
     height: 300rpx;
     width: 45%;
     z-index: 10;

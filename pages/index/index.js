@@ -210,6 +210,11 @@ Page({
       url: '../grade/grade',
     })
   },
+  coursetable(){
+    wx.navigateTo({
+      url: '../schedule/schedule',
+    })
+  },
   onLoad: function () {
 
     var value = wx.getStorageSync('name')

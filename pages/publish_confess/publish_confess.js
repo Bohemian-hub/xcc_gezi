@@ -59,7 +59,7 @@ Page({
     /* 只需要传入我的学号就好啦 */
     wx.request({
 
-      url: 'http://127.0.0.1:8000/confess/count', //仅为示例，并非真实的接口地址
+      url: 'http://39.100.67.217:8001/confess/count', //仅为示例，并非真实的接口地址
       header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },

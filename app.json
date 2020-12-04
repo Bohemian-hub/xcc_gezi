@@ -1,17 +1,17 @@
 {
   "pages": [
-
-    "pages/schedule/schedule",
+    "pages/express/express",
     "pages/index/index",
+    "pages/schedule/schedule",
     "pages/grade/grade",
     "pages/ConfessionWall/ConfessionWall",
-
     "pages/login/login",
     "pages/publish_confess/publish_confess",
     "pages/pay/pay",
     "pages/product/product",
     "pages/setting/setting",
     "pages/logs/logs"
+
   ],
   "window": {
     "backgroundTextStyle": "light",

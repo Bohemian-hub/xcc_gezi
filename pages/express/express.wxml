@@ -1,0 +1,205 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-12-01 10:00:16
+ * @LastEditTime: 2020-12-04 10:20:12
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /miniprogram-5/pages/express/express.wxml
+-->
+<view class="title">
+    <view class="title_back" hover-class="none" hover-stop-propagation="false">
+        <image class="page_back" src="https://s1.ax1x.com/2020/11/11/BXy3Jf.png" mode="widthFix" lazy-load="false"
+            binderror="" bindload="" />
+        <view class="page_back_text">
+            返回
+        </view>
+
+    </view>
+    <view class="title_text">
+        取快递
+    </view>
+</view>
+
+<!-- 在这里填写正常信息 -->
+<view class="express_infor">
+    <view class="express_infor_one">
+        <view class="express_piece" style="background-color: rgb(212, 137, 40);"></view>
+        <input class="express_info_text" placeholder="请填写收件人姓名" bindinput='getInputValue1'>
+        </input>
+    </view>
+    <view class="express_infor_one">
+        <view class="express_piece" style="background-color: rgb(40, 200, 212);"></view>
+        <input class=" express_info_text" placeholder="请填写收件人电话" bindinput='getInputValue2'>
+        </input>
+    </view>
+    <view class="express_infor_one">
+        <view class="express_piece" style="background-color: rgb(206, 40, 212);"></view>
+        <input class=" express_info_text" placeholder="请填写取件码" bindinput='getInputValue3'></input>
+    </view>
+</view>
+
+<!-- 粘贴短信的地方 -->
+<view class="message" hover-class="none" hover-stop-propagation="false">
+    <view class="message_piece">
+        <!-- 这里我做了很多的格子来装饰他，非常的好看哈哈哈 -->
+        <view class="message_piece_blue"></view>
+        <view class="message_piece_red"></view>
+        <view class="message_piece_blue"></view>
+        <view class="message_piece_red"></view>
+        <view class="message_piece_blue"></view>
+        <view class="message_piece_red"></view>
+        <view class="message_piece_blue"></view>
+        <view class="message_piece_red"></view>
+        <view class="message_piece_blue"></view>
+        <view class="message_piece_red"></view>
+    </view>
+    <view class="message_content">
+        <textarea class="message_content_text" value="" placeholder="[选填]粘贴快递短信或填写备注" bindinput='getInputValue4'>
+
+        </textarea>
+    </view>
+    <view>
+
+    </view>
+
+
+</view>
+<view style="clear: both;">
+
+</view>
+
+
+<!-- 下面是快递的规格信息  -->
+<view class="express_property">
+    <view class="express_company">
+
+        <image class="express_company_icon" src="../../image_icon/company.png">
+
+        </image>
+
+        <view class="express_company_text">
+            快递公司
+        </view>
+        <image class="express_company_choose_value_icon" src="../../image_icon/dayu.png" />
+        <view class="express_company_choose_value">
+            <picker bindchange="bindPickerChange1" value="{{index1}}" range="{{array1}}">
+                <view class="picker">
+                    {{array1[index1]}}
+                </view>
+            </picker>
+
+
+        </view>
+
+
+
+
+    </view>
+    <view class="express_size">
+
+        <image class="express_company_icon" src="../../image_icon/size.png">
+
+        </image>
+
+        <view class="express_company_text">
+            快递规格
+        </view>
+        <image class="express_company_choose_value_icon" src="../../image_icon/dayu.png" />
+        <view class="express_company_choose_value">
+            <picker bindchange="bindPickerChange2" value="{{index2}}" range="{{array2}}">
+                <view class="picker">
+                    {{array2[index2]}}
+                </view>
+            </picker>
+
+
+        </view>
+    </view>
+    <view class="express_arrive">
+
+        <image class="express_company_icon" src="../../image_icon/date.png">
+
+        </image>
+
+        <view class="express_company_text">
+            到校日期
+        </view>
+        <image class="express_company_choose_value_icon" src="../../image_icon/dayu.png" />
+        <view class="express_company_choose_value">
+            <picker mode="date" value="{{date}}" start="2020-12-01" end="2021-02-01" bindchange="bindDateChange">
+                <view class="picker">
+                    {{date}}
+                </view>
+            </picker>
+
+
+        </view>
+    </view>
+    <view class="express_fee">
+
+        <image class="express_company_icon" src="../../image_icon/fee.png">
+
+        </image>
+
+        <view class="express_company_text">
+            小费
+        </view>
+        <image class="express_company_choose_value_icon" src="../../image_icon/dayu.png" />
+        <view class="express_company_choose_value">
+            <picker bindchange="bindPickerChange4" value="{{index4}}" range="{{array4}}">
+                <view class="picker">
+                    {{array4[index4]}}元
+                </view>
+            </picker>
+
+
+        </view>
+    </view>
+
+</view>
+<!-- 这里我要来一个协议的勾选确认 -->
+<view class="clause_check" hover-class="none" hover-stop-propagation="false">
+    <label class="checkbox">
+        <checkbox class="check_frame" value="cb" checked="true" />我已阅读并同意
+        <a class="check_frame_text" href="" bindtap="turn_clause">《西院格子服务协议》</a>
+    </label>
+</view>
+
+
+<!-- 来个底部栏 -->
+<view class="bottom_pay">
+    <view class="bottom_pay_money">实付金额
+        <view class="bottom_pay_money_num">
+            ￥{{fee}}
+        </view>
+    </view>
+    <view class="bottom_pay_way" bindtap="pay">微信支付</view>
+</view>
+
+<!-- 做一个协议书 -->
+<view class="clause_frame" style="display: {{clause_switch==1?'block':'none'}};">
+    <view class="clause_big_title">《西院格子服务协议》
+    </view>
+    <view class="clause_small_title">——快递代取服务协议
+    </view>
+    <view class="clause_content">
+        <text class="" selectable="false" space="false" decode="false">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;欢迎使用西院格子快递代取功能，本格子提供的快递代取只适用于西昌学院在校学生。
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. 学生在填写需求订单之后，会由我们指派的可信任的代取员取件,男生送至寝室，女生送至楼下或者宿管室。
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. 当订单被接取，代取费生效；接单后24小时若代取员未取，订单自动取消，代取费退回客户。
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. 若包裹过大过重或时间紧迫可适当增加小费，代取员会优先为您处理。
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. 当包裹在从驿站拿出若有异常，代取员将反馈给客户，代取员不承担快递公司造成的包裹损坏，丢失，回寄等问题。
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;更多问题请 设置—联系客服 进行咨询。
+
+        </text>
+
+    </view>
+    <view class="clause_close" bindtap="close_clause">
+        关闭
+    </view>
+
+</view>
+
+<view class="warning" style="display: {{warn_show == 1?'block':'none'}};">
+    提示:{{warning}}
+</view>
