@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-01 10:00:16
- * @LastEditTime: 2020-12-04 11:07:26
+ * @LastEditTime: 2020-12-05 00:44:04
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express/express.js
@@ -161,6 +161,17 @@ Page({
           },
           success: (result) => {
             console.log(result);
+            wx.requestPayment({
+              timeStamp: result.data.timeStamp,
+              nonceStr: result.data.nonceStr,
+              package: result.data.package,
+              signType: result.data.signType,
+              paySign: result.data.paySign,
+              success: (ret) => {
+                console.log("成功！");
+              },
+            });
+
           }
         });
       }
