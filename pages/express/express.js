@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-01 10:00:16
- * @LastEditTime: 2020-12-05 00:44:04
+ * @LastEditTime: 2020-12-05 17:44:02
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express/express.js
@@ -116,7 +116,7 @@ Page({
       })
     } else if (that.data.index2 == 2) {
       that.setData({
-        fee: 3.5 + that.data.array4[that.data.index4]
+        fee: 4 + that.data.array4[that.data.index4]
       })
     } else if (that.data.index2 == 3) {
       that.setData({
@@ -150,27 +150,61 @@ Page({
     }, 2000);
   },
   pay_money() {
+    this.count_fee()
+    var that = this
     console.log("wechat pay!!!")
     wx.login({
       success(res) {
         console.log(res);
         wx.request({
-          url: 'http://127.0.0.1:8000/express/pay',
+          url: 'http://39.100.67.217:8001/express/pay',
           data: {
-            code: res.code
+            code: res.code,
+            fee: that.data.fee * 100 //传入到后端作为以分为单位的金额
           },
           success: (result) => {
             console.log(result);
-            wx.requestPayment({
-              timeStamp: result.data.timeStamp,
-              nonceStr: result.data.nonceStr,
-              package: result.data.package,
-              signType: result.data.signType,
-              paySign: result.data.paySign,
-              success: (ret) => {
-                console.log("成功！");
+            console.log(that.data.express_name);
+            wx.request({
+              url: 'http://127.0.0.1:8000/express/add_order', //仅为示例，并非真实的接口地址
+              data: {
+                name: wx.getStorageSync('name'),
+                studentId: wx.getStorageSync('studentId'),
+                rec_name: that.data.express_name.value,
+                rec_tel: that.data.express_tel.value,
+                rec_code: that.data.express_code.value,
+                rec_message: that.data.express_message.value,
+                express_company: that.data.array1[that.data.index1],
+                express_size: that.data.array2[that.data.index2],
+                express_date: that.data.date,
+                express_small_fee: that.data.array4[that.data.index4],
+                express_total_fee: that.data.fee,
+                nonceStr: result.data.nonceStr,
+                order_stadus: 0
               },
-            });
+              method: "POST",
+              header: {
+                'content-type': 'application/x-www-form-urlencoded' // 默认值
+              },
+              success(res) {
+                console.log(res.data.loginnum)
+                if (res.data.loginnum == 200) {
+                  wx.requestPayment({
+                    timeStamp: result.data.timeStamp,
+                    nonceStr: result.data.nonceStr,
+                    package: result.data.package,
+                    signType: result.data.signType,
+                    paySign: result.data.paySign,
+                    success: (ret) => {
+                      console.log("成功！", ret);
+                    },
+                  });
+                }
+
+              }
+            })
+            // 真正的调起微信支付接口
+
 
           }
         });
