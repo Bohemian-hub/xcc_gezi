@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-01 10:00:16
- * @LastEditTime: 2020-12-05 21:29:18
+ * @LastEditTime: 2020-12-05 23:16:40
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express/express.js
@@ -37,6 +37,11 @@ Page({
   onLoad: function (options) {
     this.count_fee()
 
+  },
+  back_index() {
+    wx.navigateTo({
+      url: '../index/index',
+    })
   },
   bindPickerChange1: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
@@ -160,13 +165,14 @@ Page({
           url: 'http://39.100.67.217:8001/express/pay',
           data: {
             code: res.code,
-            fee: that.data.fee * 100 //传入到后端作为以分为单位的金额
+            //fee: that.data.fee * 100 //传入到后端作为以分为单位的金额
+            fee: 1 //传入到后端作为以分为单位的金额
           },
           success: (result) => {
             console.log(result);
             console.log(that.data.express_name);
             wx.request({
-              url: 'http://127.0.0.1:8000/express/add_order', //仅为示例，并非真实的接口地址
+              url: 'http://39.100.67.217:8001/express/add_order', //仅为示例，并非真实的接口地址
               data: {
                 name: wx.getStorageSync('name'),
                 studentId: wx.getStorageSync('studentId'),
@@ -197,6 +203,24 @@ Page({
                     paySign: result.data.paySign,
                     success: (ret) => {
                       console.log("成功！", ret);
+                      wx.showModal({
+                        title: '下单成功',
+                        content: '查看订单信息？',
+                        showCancel: true,//是否显示取消按钮
+                        cancelText: "返回",//默认是“取消”
+                        cancelColor: 'skyblue',//取消文字的颜色
+                        confirmText: "确定",//默认是“确定”
+                        confirmColor: 'skyblue',//确定文字的颜色
+                        success: function (res) {
+                          if (res.confirm) {//这里是点击了确定以后
+                            console.log('用户点击确定')
+                          } else {//这里是点击了取消以后
+                            console.log('用户点击取消')
+                          }
+
+                        }
+
+                      })
                     },
                   });
                 }

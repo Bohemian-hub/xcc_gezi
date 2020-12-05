@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2020-11-15 00:30:11
+ * @LastEditTime: 2020-12-05 22:46:38
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.js
@@ -26,12 +26,12 @@ Page({
     son_menu_of_title: '',
     bodylock: '',
     showwhat: '',
-    username:'',
-    hidden_onetext_on_onepic:'no',
-    wendu:'',
-    weather_condition:'',
-    weather_wendy_condition:'',
-    weather_condition_src:''
+    username: '',
+    hidden_onetext_on_onepic: 'no',
+    wendu: '',
+    weather_condition: '',
+    weather_wendy_condition: '',
+    weather_condition_src: ''
   },
   confress_page: function () {
     wx.navigateTo({
@@ -49,7 +49,7 @@ Page({
   },
 
   Get_time() {
-    var that= this
+    var that = this
     /* 加载时间日期 */
     var myDate = new Date();
     var month = myDate.getMonth() + 1
@@ -108,10 +108,10 @@ Page({
       success(res) {
         console.log(res.data.data)
         that.setData({
-          wendu:res.data.data.wendu,
-          weather_condition:res.data.data.forecast[0].type,
-          weather_wendy_condition:res.data.data.forecast[0].fengxiang,
-          weather_condition_src:'../../image_icon/weather/'+res.data.data.forecast[0].type+'.png'
+          wendu: res.data.data.wendu,
+          weather_condition: res.data.data.forecast[0].type,
+          weather_wendy_condition: res.data.data.forecast[0].fengxiang,
+          weather_condition_src: '../../image_icon/weather/' + res.data.data.forecast[0].type + '.png'
         })
       }
     })
@@ -205,12 +205,17 @@ Page({
     }.bind(this), 100)
 
   },
-  grade(){
+  grade() {
     wx.navigateTo({
       url: '../grade/grade',
     })
   },
-  coursetable(){
+  express() {
+    wx.navigateTo({
+      url: '../express/express',
+    })
+  },
+  coursetable() {
     wx.navigateTo({
       url: '../schedule/schedule',
     })
@@ -223,7 +228,7 @@ Page({
       wx.redirectTo({
         url: '../login/login',
       })
-    }else{
+    } else {
       this.setData({
         student_name: wx.getStorageSync('name'),
       })
@@ -264,15 +269,15 @@ Page({
     }, 120000);
 
   },
-  hidden_onetext_on_onepic(){
-    if(hidden_turn_status == 0){
+  hidden_onetext_on_onepic() {
+    if (hidden_turn_status == 0) {
       this.setData({
-        hidden_onetext_on_onepic:'yes',
+        hidden_onetext_on_onepic: 'yes',
       })
       hidden_turn_status = 1
-    }else{
+    } else {
       this.setData({
-        hidden_onetext_on_onepic:'no',
+        hidden_onetext_on_onepic: 'no',
       })
       hidden_turn_status = 0
     }

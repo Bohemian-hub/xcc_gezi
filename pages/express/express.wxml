@@ -1,13 +1,13 @@
 <!--
  * @Author: your name
  * @Date: 2020-12-01 10:00:16
- * @LastEditTime: 2020-12-04 10:20:12
+ * @LastEditTime: 2020-12-05 23:47:55
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express/express.wxml
 -->
 <view class="title">
-    <view class="title_back" hover-class="none" hover-stop-propagation="false">
+    <view class="title_back" hover-class="none" hover-stop-propagation="false" bindtap="back_index">
         <image class="page_back" src="https://s1.ax1x.com/2020/11/11/BXy3Jf.png" mode="widthFix" lazy-load="false"
             binderror="" bindload="" />
         <view class="page_back_text">
@@ -20,6 +20,14 @@
     </view>
 </view>
 
+<!-- 这里做一个菜单切换 -->
+<view class="menu_change">
+    <view class="menu_1">下单</view>
+    <view class="menu_2">订单</view>
+    <view class="menu_3">接单</view>
+    <view class="menu_4">个人</view>
+</view>
+  
 <!-- 在这里填写正常信息 -->
 <view class="express_infor">
     <view class="express_infor_one">
