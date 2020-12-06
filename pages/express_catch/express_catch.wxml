@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-12-06 15:05:19
- * @LastEditTime: 2020-12-06 17:16:32
+ * @LastEditTime: 2020-12-06 17:56:31
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express_catch/express_catch.wxml
@@ -43,5 +43,40 @@
             <view class="express_catch_one_content_right_smallfee">（含小费{{item.fields.express_small_fee}}元）</view>
             <view class="express_catch_one_content_right_button">抢单</view>
         </view>
+    </view>
+</view>
+
+<view class="apply_panel">
+    <view class="apply_panel_title">您还不是代取员，点击申请成为代取员，赚零花钱！</view>
+    <view class="apply_panel_form">
+        <view class="apply_panel_form_what">
+            姓名：
+        </view>
+
+        <input class="apply_panel_form_input" value="" type="text|number|idcard|digit|time|date">
+
+        </input>
+        <view class="apply_panel_form_what">
+            姓名：
+        </view>
+
+        <input class="apply_panel_form_input" value="" type="text|number|idcard|digit|time|date">
+
+        </input>
+        <view class="apply_panel_form_what">
+            姓名：
+        </view>
+
+        <input class="apply_panel_form_input" value="" type="text|number|idcard|digit|time|date">
+
+        </input>
+        <view class="apply_panel_form_what">
+            姓名：
+        </view>
+
+        <input class="apply_panel_form_input" value="" type="text|number|idcard|digit|time|date">
+
+        </input>
+
     </view>
 </view>
