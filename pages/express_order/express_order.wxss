@@ -97,24 +97,34 @@ background-color: rgba(235, 235, 235, 0.699);
     width: 90%;
     background-color: white;
     box-shadow: 0 0 10rpx #666;
-    height: 400rpx;
-    margin: 0 auto;
-    padding: 20rpx;
+    height: 540rpx;
+    margin: 30rpx auto;
+    padding: 10rpx;
+    border-radius: 10rpx;
+}
+.order_title{
+    font-size: 40rpx;
+    font-weight: 900;
+    height: 60rpx;
 }
 .express_order_user{
     color: rgb(12, 120, 170);
     height: 80rpx;
+    padding-bottom: 90rpx;
+    border-bottom: 2rpx solid rgb(126, 148, 182);
 }
 .express_order_express{
     color: rgb(13, 150, 70);
-    margin-top: 20rpx;
-    height: 100rpx;
+    margin-top: 10rpx;
+    padding-bottom: 120rpx;
+    border-bottom: 2rpx solid rgb(49, 117, 75);
 
 }
 .express_order_order{
-    color: rgb(85, 85, 85);
-    margin-top: 30rpx;
-    font-weight: 600;
+    color: rgb(117, 117, 117);
+    margin-top: 10rpx;
+    font-weight: 500;
+    font-size: 32rpx;
 }
 .express_order_name{
     width: 50%;
@@ -129,19 +139,32 @@ background-color: rgba(235, 235, 235, 0.699);
     float: left;
 }
 .express_order_company{
-    width: 100%;
+    width: 50%;
     float: left;
+    color: #9b7c00;
+    font-weight: 600;
+    font-size: 25rpx;
+}
+.express_order_place{
+    width: 50%;
+    float: left;
+    font-size: 25rpx;
 }
 .express_order_size{
     width: 100%;
+    font-size: 25rpx;
     float: left;
 }
 .express_order_smallfee{
     width: 50%;
-    float: left;
+    font-weight: 600;
+    font-size: 25rpx;
+    float: left; 
 }
 .express_order_totalfee{
     width: 50%;
+    font-size: 25rpx;
+    font-weight: 600;
     float: left;
 }
 .express_order_time{
@@ -150,6 +173,7 @@ background-color: rgba(235, 235, 235, 0.699);
 }
 .express_order_num{
     width: 100%;
+
     float: left;
 }
 .express_order_status{
@@ -161,4 +185,22 @@ background-color: rgba(235, 235, 235, 0.699);
 .express_order_person{
     width: 50%;
     float: left;
+}
+.express_content{
+    width: 15%;
+    float: left;
+    color: rgb(117, 117, 117);
+    font-weight: 500;
+    font-size: 32rpx;
+    overflow: hidden;
+}
+.express_content_text{
+    width: 85%;
+    float: left;
+    height: 100rpx;
+    background-color: #99cc3300;
+    line-height: 25rpx;
+    font-size: 20rpx;
+    text-indent: 2em;
+    color: rgb(50, 219, 197);
 }

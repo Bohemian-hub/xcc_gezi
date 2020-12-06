@@ -167,7 +167,7 @@ background-color: rgba(235, 235, 235, 0.699);
 }
 .express_property{
     width: 90%;
-    height: 400rpx;
+    height: 520rpx;
     background-color: rgb(255, 255, 255);
     margin: 0 auto;
     font-size: 30rpx;
@@ -194,6 +194,12 @@ background-color: rgba(235, 235, 235, 0.699);
     float: left;
     padding-left: 40rpx; 
     
+}
+.express_place{
+    margin-top: 20rpx;
+    margin-right: 20rpx;
+    color: rgb(167, 167, 167);
+
 }
 .express_size{
     height: 100rpx;

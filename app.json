@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/express_order/express_order",
     "pages/express/express",
+    "pages/express_order/express_order",
     "pages/index/index",
     "pages/schedule/schedule",
     "pages/grade/grade",
@@ -11,7 +11,8 @@
     "pages/pay/pay",
     "pages/product/product",
     "pages/setting/setting",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/express_catch/express_catch"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-26 21:05:54
- * @LastEditTime: 2020-11-27 23:02:14
+ * @LastEditTime: 2020-12-06 14:14:15
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/grade/grade.js
@@ -88,7 +88,7 @@ Page({
     });
   },
   back_index() {
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../index/index',
     })
   },

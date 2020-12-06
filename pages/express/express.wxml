@@ -22,10 +22,10 @@
 
 <!-- 这里做一个菜单切换 -->
 <view class="menu_change">
-    <view class="menu_1">下单</view>
-    <view class="menu_2">订单</view>
-    <view class="menu_3">接单</view>
-    <view class="menu_4">个人</view>
+    <view class="menu_1" bindtap="turn_page_neworder">下单</view>
+    <view class="menu_2" bindtap="turn_page_myorder">订单</view>
+    <view class="menu_3" bindtap="turn_page_catchorder">接单</view>
+    <view class="menu_4" bindtap="turn_page_myself">个人</view>
 </view>
   
 <!-- 在这里填写正常信息 -->
@@ -96,6 +96,26 @@
                 </view>
             </picker>
 
+
+        </view>
+
+
+
+
+    </view>
+        <view class="express_company">
+
+        <image class="express_company_icon" src="../../image_icon/she.png">
+
+        </image>
+
+        <view class="express_company_text">
+            配送位置
+        </view>
+        <view class="express_company_choose_value">
+
+        <input class="express_place" placeholder="eg:14栋509" bindinput='getInputValue5'>
+        </input>
 
         </view>
 

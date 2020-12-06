@@ -343,7 +343,7 @@ Page({
 
   },
   back_index() {
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../index/index',
     })
   },

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-01 10:00:16
- * @LastEditTime: 2020-12-05 23:16:40
+ * @LastEditTime: 2020-12-06 14:19:10
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express/express.js
@@ -25,6 +25,7 @@ Page({
     express_tel: '',
     express_code: '',
     express_message: '',
+    express_place: '',
     fee: '&&',
     warning: '欢迎使用',
     warn_show: 0
@@ -39,9 +40,31 @@ Page({
 
   },
   back_index() {
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../index/index',
     })
+  },
+  turn_page_neworder() {
+    wx.redirectTo({
+      url: '../express/express',
+    })
+  },
+  turn_page_myorder() {
+    wx.redirectTo({
+      url: '../express_order/express_order',
+    })
+  },
+  turn_page_catchorder() {
+    // 本来要切换页面的, 但是还没做好
+    /*     wx.navigateTo({
+          url: '../express/express',
+        }) */
+  },
+  turn_page_myself() {
+    // 本来要切换页面的, 但是还没做好
+    /*     wx.navigateTo({
+          url: '../express/express',
+        }) */
   },
   bindPickerChange1: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
@@ -106,6 +129,12 @@ Page({
       express_message: e.detail
     })
   },
+  getInputValue5(e) {
+    console.log(e.detail)// {value: "ff", cursor: 2}  
+    this.setData({
+      express_place: e.detail
+    })
+  },
   count_fee() {
     var that = this
     console.log(that.data.index2);
@@ -139,8 +168,7 @@ Page({
         warning: '请检查到校日期设置',
         warn_show: 1
       })
-    } else if (that.data.express_name == '' || that.data.express_tel == '' || that.data.express_code == '') {
-      console.log('≈');
+    } else if (that.data.express_name == '' || that.data.express_tel == '' || that.data.express_code == '' || that.data.express_place == '') {
       that.setData({
         warning: '请检查信息填写是否完善',
         warn_show: 1
@@ -181,6 +209,7 @@ Page({
                 rec_code: that.data.express_code.value,
                 rec_message: that.data.express_message.value,
                 express_company: that.data.array1[that.data.index1],
+                express_place: that.data.express_place.value,
                 express_size: that.data.array2[that.data.index2],
                 express_date: that.data.date,
                 express_small_fee: that.data.array4[that.data.index4],
@@ -214,8 +243,14 @@ Page({
                         success: function (res) {
                           if (res.confirm) {//这里是点击了确定以后
                             console.log('用户点击确定')
+                            wx.navigateTo({
+                              url: '../express_order/express_order',
+                            })
                           } else {//这里是点击了取消以后
                             console.log('用户点击取消')
+                            wx.redirectTo({
+                              url: '../index/index',
+                            })
                           }
 
                         }

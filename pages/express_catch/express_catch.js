@@ -1,12 +1,4 @@
-/*
- * @Author: your name
- * @Date: 2020-11-10 20:01:02
- * @LastEditTime: 2020-11-11 11:24:58
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /miniprogram-5/pages/setting/setting.js
- */
-// pages/setting/setting.js
+// pages/express_catch/express_catch.js
 Page({
 
   /**
@@ -19,21 +11,6 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-
-  page_back_index: function () {
-    wx.redirectTo({
-      url: '../index/index',
-      success: function (res) {
-
-      },
-      fail: function (res) {
-
-      },
-      complete: function (res) {
-
-      },
-    })
-  },
   onLoad: function (options) {
 
   },

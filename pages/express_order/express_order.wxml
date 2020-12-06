@@ -1,3 +1,11 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-12-05 23:36:24
+ * @LastEditTime: 2020-12-06 14:00:31
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /miniprogram-5/pages/express_order/express_order.wxml
+-->
 <view class="title">
     <view class="title_back" hover-class="none" hover-stop-propagation="false" bindtap="back_index">
         <image class="page_back" src="https://s1.ax1x.com/2020/11/11/BXy3Jf.png" mode="widthFix" lazy-load="false"
@@ -12,28 +20,41 @@
     </view>
 </view>
 <view class="menu_change">
-    <view class="menu_1">下单</view>
-    <view class="menu_2">订单</view>
-    <view class="menu_3">接单</view>
-    <view class="menu_4">个人</view>
+    <view class="menu_1" bindtap="turn_page_neworder">下单</view>
+    <view class="menu_2" bindtap="turn_page_myorder">订单</view>
+    <view class="menu_3" bindtap="turn_page_catchorder">接单</view>
+    <view class="menu_4" bindtap="turn_page_myself">个人</view>
 </view>
-<view class="order_show">
+<view class="order_show" wx:for="{{orderList}}" wx:key="item.fields">
+    <view class="order_title" hover-class="none" hover-stop-propagation="false">
+        我的下单
+    </view>
     <view class="express_order_user">
-        <view class="express_order_name">姓名：张益达</view>
-        <view class="express_order_code">取件码：8888</view>
-        <view class="express_order_tel">电话：18181238888</view>
+        <view class="express_order_name">姓名：{{item.fields.rec_name}}</view>
+        <view class="express_order_code">取件码：{{item.fields.rec_code}}</view>
+        <view class="express_order_tel">电话：{{item.fields.rec_tel}}</view>
     </view>
     <view class="express_order_express">
-        <view class="express_order_company">快递公司：韵达</view>
-        <view class="express_order_size">快递型号：小件（3-5kg）</view>
-        <view class="express_order_smallfee">小费:￥0.5</view>
-        <view class="express_order_totalfee">总费用：￥2</view>
+        <view class="express_order_company">快递公司：{{item.fields.express_company}}</view>
+        <view class="express_order_place">送至：{{item.fields.express_place}}</view>
+        <view class="express_order_size">快递型号：{{item.fields.express_size}}</view>
+        <view class="express_order_smallfee">小费:￥{{item.fields.express_small_fee}}</view>
+        <view class="express_order_totalfee">总费用：￥{{item.fields.express_total_fee}}</view>
     </view>
     <view class="express_order_order">
-        <view class="express_order_num">订单号：40055332116542545552</view>
-        <view class="express_order_status">订单状态：等待接单</view>
+        <view class="express_order_num">订单号：{{item.fields.transaction_id}}</view>
+        <view class="express_order_status">订单状态：{{item.fields.order_stadus}}</view>
         <view class="express_order_person">代取人：暂无</view>
-        <view class="express_order_time">下单时间：2012/12/3 23:56:21</view>
+        <view class="express_order_time">下单时间：{{item.fields.express_date}}</view>
+    </view>
+    <view>
+        <view class="express_content">
+            备注：
+        </view>
+        <view class="express_content_text">
+            {{item.fields.rec_message}}
+        </view>
+
     </view>
 
 
