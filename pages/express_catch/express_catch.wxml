@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-12-06 15:05:19
- * @LastEditTime: 2020-12-06 17:56:31
+ * @LastEditTime: 2020-12-06 18:07:15
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express_catch/express_catch.wxml
@@ -49,6 +49,9 @@
 <view class="apply_panel">
     <view class="apply_panel_title">您还不是代取员，点击申请成为代取员，赚零花钱！</view>
     <view class="apply_panel_form">
+        <view class="apply_table_title">
+            西院格子代取员申请表
+        </view>
         <view class="apply_panel_form_what">
             姓名：
         </view>
@@ -57,26 +60,41 @@
 
         </input>
         <view class="apply_panel_form_what">
-            姓名：
+            QQ：
         </view>
 
         <input class="apply_panel_form_input" value="" type="text|number|idcard|digit|time|date">
 
         </input>
         <view class="apply_panel_form_what">
-            姓名：
+            手机：
         </view>
 
         <input class="apply_panel_form_input" value="" type="text|number|idcard|digit|time|date">
 
         </input>
         <view class="apply_panel_form_what">
-            姓名：
+            邮箱：
         </view>
 
         <input class="apply_panel_form_input" value="" type="text|number|idcard|digit|time|date">
 
         </input>
+        <view class="apply_panel_form_what">
+            微信号：
+        </view>
+
+        <input class="apply_panel_form_input" value="" type="text|number|idcard|digit|time|date">
+
+        </input>
+        <view style="clear: both;">
+
+        </view>
+
+        <view class="apply_submit">
+            提交
+        </view>
+
 
     </view>
 </view>

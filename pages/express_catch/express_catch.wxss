@@ -199,18 +199,43 @@ background-color: rgba(68, 196, 255, 0.699);
     font-weight: 800;
     height: 200rpx;
 }
+
 .apply_panel_form{
-height: 800rpx;
+height: 900rpx;
 background-color: #ffffff;
 padding: 20rpx;
+border-radius: 20rpx;
+}
+.apply_table_title{
+    text-align: center;
+    font-size: 45rpx;
+    margin: 20rpx 0 30rpx 0;
+
 }
 .apply_panel_form_what{
     width: 20%;
     float: left;
+    height: 50rpx;
+    margin: 30rpx 0 ;
+    text-align: right;
+    color: rgb(5, 82, 133);
 }
 .apply_panel_form_input{
     width: 80%;
     float: left;
-    border: 2rpx solid black;
-    
+    border: 2rpx solid rgb(136, 136, 136);
+    height: 50rpx;
+    margin: 30rpx 0 ;    
+}
+.apply_submit{
+    width: 20%;
+    height: 80rpx;
+    background-color: #99CC33;
+    border-radius: 20rpx;
+
+    margin: 100rpx auto;
+    text-align: center;
+    line-height: 80rpx;
+    font-size: 35rpx;
+    color: #ffffff;
 }
