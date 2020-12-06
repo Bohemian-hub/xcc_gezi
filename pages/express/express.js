@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-01 10:00:16
- * @LastEditTime: 2020-12-06 15:21:03
+ * @LastEditTime: 2020-12-06 21:47:15
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express/express.js
@@ -60,10 +60,9 @@ Page({
     })
   },
   turn_page_myself() {
-    // 本来要切换页面的, 但是还没做好
-    /*     wx.navigateTo({
-          url: '../express/express',
-        }) */
+    wx.redirectTo({
+      url: '../express_task/express_task',
+    })
   },
   bindPickerChange1: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)

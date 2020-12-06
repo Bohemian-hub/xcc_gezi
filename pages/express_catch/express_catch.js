@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-06 15:05:19
- * @LastEditTime: 2020-12-06 17:48:52
+ * @LastEditTime: 2020-12-06 21:27:04
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express_catch/express_catch.js
@@ -13,7 +13,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    orderwaitList: []
+    orderwaitList: [],
+    showtable: 0,
+    applyname: '',
+    applyqq: '',
+    applytel: '',
+    applyemail: '',
+    applywechat: '',
+    showcheck: 0
+
   },
 
   /**
@@ -36,10 +44,83 @@ Page({
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
       success(res) {
-        console.log(res.data.length);
         if (res.data.length == 0) {
           console.log("我还没有注册成为代取员");
           /* 下面是申请板块展示 */
+          that.setData({
+            /* 展示申请表 */
+            showtable: 1
+          })
+        } else if (res.data[0].fields.check_num == 0) {
+          /* 正在审核中 */
+          that.setData({
+            showcheck: 1
+          })
+
+        } else if (res.data[0].fields.check_num == 1) {
+          /* 审核通过 */
+          that.get_order()
+
+        }
+      }
+    })
+  },
+
+  /* 先做一个申请表提交 */
+  getInputname(e) {
+    console.log(e.detail)// {value: "ff", cursor: 2}  
+    this.setData({
+      applyname: e.detail
+    })
+  },
+  getInputqq(e) {
+    console.log(e.detail)// {value: "ff", cursor: 2}  
+    this.setData({
+      applyqq: e.detail
+    })
+  },
+  getInputtel(e) {
+    console.log(e.detail)// {value: "ff", cursor: 2}  
+    this.setData({
+      applytel: e.detail
+    })
+  },
+  getInputemail(e) {
+    console.log(e.detail)// {value: "ff", cursor: 2}  
+    this.setData({
+      applyemail: e.detail
+    })
+  },
+  getInputwechat(e) {
+    console.log(e.detail)// {value: "ff", cursor: 2}  
+    this.setData({
+      applywechat: e.detail
+    })
+  },
+  applysubmit() {
+    var that = this
+    wx.request({
+      url: 'http://127.0.0.1:8000/express/applysubmit', //仅为示例，并非真实的接口地址
+      data: {
+        name: wx.getStorageSync('name'),
+        writename: that.data.applyname.value,
+        studentId: wx.getStorageSync('studentId'),
+        applyqq: that.data.applyqq.value,
+        applytel: that.data.applytel.value,
+        applyemail: that.data.applyemail.value,
+        applywechat: that.data.applywechat.value,
+      },
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      success(res) {
+        console.log(res.data.loginnum);
+        if (res.data.loginnum == 200) {
+          /* 重新加载页面 */
+          wx.redirectTo({
+            url: '../express_catch/express_catch',
+          })
         }
       }
     })
@@ -88,9 +169,8 @@ Page({
     })
   },
   turn_page_myself() {
-    // 本来要切换页面的, 但是还没做好
-    /*     wx.navigateTo({
-          url: '../express/express',
-        }) */
+    wx.redirectTo({
+      url: '../express_task/express_task',
+    })
   },
 })
