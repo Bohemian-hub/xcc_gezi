@@ -1,2 +1,47 @@
-<!--pages/express_catch/express_catch.wxml-->
-<text>pages/express_catch/express_catch.wxml</text>
+<!--
+ * @Author: your name
+ * @Date: 2020-12-06 15:05:19
+ * @LastEditTime: 2020-12-06 17:16:32
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /miniprogram-5/pages/express_catch/express_catch.wxml
+-->
+<view class="title">
+    <view class="title_back" hover-class="none" hover-stop-propagation="false" bindtap="back_index">
+        <image class="page_back" src="https://s1.ax1x.com/2020/11/11/BXy3Jf.png" mode="widthFix" lazy-load="false"
+            binderror="" bindload="" />
+        <view class="page_back_text">
+            返回
+        </view>
+
+    </view>
+    <view class="title_text">
+        快递服务
+    </view>
+</view>
+<view class="menu_change">
+    <view class="menu_1" bindtap="turn_page_neworder">下单</view>
+    <view class="menu_2" bindtap="turn_page_myorder">订单</view>
+    <view class="menu_3" bindtap="turn_page_catchorder">接单</view>
+    <view class="menu_4" bindtap="turn_page_myself">个人</view>
+</view>
+
+<!-- 下面开始做每一个项目 -->
+<view class="express_catch_one" wx:for="{{orderwaitList}}" wx:key="item.fields">
+    <view class="express_catch_one_title">
+        <view class="express_catch_one_title_big">{{item.fields.express_company}}</view>
+        <view class="express_catch_one_title_small">单号：{{item.fields.transaction_id}}</view>
+    </view>
+    <view class="express_catch_one_content">
+        <view class="express_catch_one_content_left">
+            <view class="express_catch_one_content_left_size">类型：{{item.fields.express_size}}</view>
+            <view class="express_catch_one_content_place">配送地址：{{item.fields.express_company}}</view>
+            <view class="express_catch_one_content_date">下单时间：{{item.fields.order_time}}</view>
+        </view>
+        <view class="express_catch_one_content_right">
+            <view class="express_catch_one_content_right_fee">共{{item.fields.express_total_fee}}元</view>
+            <view class="express_catch_one_content_right_smallfee">（含小费{{item.fields.express_small_fee}}元）</view>
+            <view class="express_catch_one_content_right_button">抢单</view>
+        </view>
+    </view>
+</view>

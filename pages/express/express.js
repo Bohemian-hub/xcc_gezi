@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-01 10:00:16
- * @LastEditTime: 2020-12-06 14:19:10
+ * @LastEditTime: 2020-12-06 15:21:03
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express/express.js
@@ -55,10 +55,9 @@ Page({
     })
   },
   turn_page_catchorder() {
-    // 本来要切换页面的, 但是还没做好
-    /*     wx.navigateTo({
-          url: '../express/express',
-        }) */
+    wx.redirectTo({
+      url: '../express_catch/express_catch',
+    })
   },
   turn_page_myself() {
     // 本来要切换页面的, 但是还没做好

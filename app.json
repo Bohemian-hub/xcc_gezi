@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/express_catch/express_catch",
     "pages/express/express",
     "pages/express_order/express_order",
     "pages/index/index",
@@ -11,9 +12,8 @@
     "pages/pay/pay",
     "pages/product/product",
     "pages/setting/setting",
-    "pages/logs/logs",
-    "pages/express_catch/express_catch"
-  ],
+    "pages/logs/logs"
+    ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",

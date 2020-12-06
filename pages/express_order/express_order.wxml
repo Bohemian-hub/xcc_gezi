@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-12-05 23:36:24
- * @LastEditTime: 2020-12-06 14:00:31
+ * @LastEditTime: 2020-12-06 17:31:05
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express_order/express_order.wxml
@@ -16,7 +16,7 @@
 
     </view>
     <view class="title_text">
-        取快递
+        快递服务
     </view>
 </view>
 <view class="menu_change">
@@ -33,6 +33,7 @@
         <view class="express_order_name">姓名：{{item.fields.rec_name}}</view>
         <view class="express_order_code">取件码：{{item.fields.rec_code}}</view>
         <view class="express_order_tel">电话：{{item.fields.rec_tel}}</view>
+        <view class="express_order_arrivetime">到达时间：{{item.fields.express_date}}</view>
     </view>
     <view class="express_order_express">
         <view class="express_order_company">快递公司：{{item.fields.express_company}}</view>
@@ -45,7 +46,7 @@
         <view class="express_order_num">订单号：{{item.fields.transaction_id}}</view>
         <view class="express_order_status">订单状态：{{item.fields.order_stadus}}</view>
         <view class="express_order_person">代取人：暂无</view>
-        <view class="express_order_time">下单时间：{{item.fields.express_date}}</view>
+        <view class="express_order_time">下单时间：{{item.fields.order_time}}</view>
     </view>
     <view>
         <view class="express_content">

@@ -135,7 +135,11 @@ background-color: rgba(235, 235, 235, 0.699);
     float: left;
 }
 .express_order_tel{
-    width: 100%;
+    width: 50%;
+    float: left;
+}
+.express_order_arrivetime{
+    width: 50%;
     float: left;
 }
 .express_order_company{
@@ -204,3 +208,4 @@ background-color: rgba(235, 235, 235, 0.699);
     text-indent: 2em;
     color: rgb(50, 219, 197);
 }
+

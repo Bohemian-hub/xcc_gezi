@@ -1,1 +1,188 @@
-/* pages/express_catch/express_catch.wxss */
+page{
+background-color: rgba(68, 196, 255, 0.699);
+}
+.title{
+    width: 100%;
+    height: 140rpx;
+    background-color: rgb(69, 183, 228);
+    text-align: center;
+    font-size: 40rpx;
+}
+.title_back{
+    width: 25%;
+    background-color: rgb(255, 255, 255);
+    height: 80rpx;
+    float: left;
+    margin: 50rpx 0 10rpx 5%;
+    border-radius: 20rpx;
+}
+.title_text{
+    background-color: rgba(250, 235, 215, 0);
+    width: 50%;
+    height: 80rpx;
+    float: left;
+    margin-top: 30rpx;
+    line-height: 100rpx;
+    color: rgb(255, 255, 255);
+}
+.page_back{
+    width: 50rpx;
+    float: left;
+    margin-top: 15rpx;
+    margin-left: 10rpx;
+}
+.page_back_text{
+    line-height: 80rpx;
+    width: 80%;
+}
+.menu_change{
+    width: 100%;
+    height: 80rpx;
+    background-color: rgba(0, 255, 255, 0);
+    margin:20rpx 0;
+}
+.menu_1{
+    width: 20%;
+    background-color: #99CC33;
+    float: left;
+    height: 100%;
+    margin-left: 4%;
+    border-radius: 20rpx;
+    box-shadow: 0 0 10rpx rgb(66, 66, 66);
+    text-align: center;
+    line-height: 80rpx;
+    color: aliceblue;
+    font-size: 35rpx;
+}
+.menu_2{
+    width: 20%;
+    background-color: #FF9900;
+    height: 100%;
+    margin-left: 4%;
+    float: left;    
+    border-radius: 20rpx;
+    box-shadow: 0 0 10rpx  rgb(66, 66, 66);
+    text-align: center;
+    line-height: 80rpx;
+    color: aliceblue;
+    font-size: 35rpx;
+}
+.menu_3{
+    width: 20%;
+    background-color: #FFCC00;
+    height: 100%;
+    margin-left: 4%;
+    float: left;
+    border-radius: 20rpx;
+    box-shadow: 0 0 10rpx  rgb(66, 66, 66);
+    text-align: center;
+    line-height: 80rpx;
+    color: aliceblue;
+    font-size: 35rpx;
+}
+.menu_4{
+    width: 20%;
+    background-color:#FFCC99;
+    float: left;
+    margin-left: 4%;
+    height: 100%; 
+    border-radius: 20rpx;
+    box-shadow: 0 0 10rpx  rgb(66, 66, 66);
+    text-align: center;
+    line-height: 80rpx;
+    color: aliceblue;
+    font-size: 35rpx;
+}
+/* 下面是代接订单的样式 */
+
+.express_catch_one{
+    width: 90%;
+    margin: 20rpx auto;
+    height: 250rpx;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20rpx;
+}
+.express_catch_one_title{
+    width: 95%;
+    margin: 0 auto;
+    height: 90rpx;
+    background-color: rgba(135, 207, 235, 0);   
+    margin-bottom: 5rpx; 
+    border-bottom: 5rpx solid rgb(173, 173, 173);
+}
+.express_catch_one_title_big{
+    height: 50rpx;
+    font-size: 35rpx;
+    line-height: 50rpx;
+    margin-left: 20rpx;   
+    color: rgb(0, 162, 255);
+}
+.express_catch_one_title_small{
+    height: 30rpx;
+    line-height: 30rpx;
+    margin-left: 20rpx;   
+    font-size: 25rpx;
+
+}
+.express_catch_one_content{
+    width: 95%;
+    height: 150rpx;
+    margin: 0 auto;
+    background-color: #ff990000;
+}
+.express_catch_one_content_left{
+    width: 70%;
+    height: 150rpx;
+    background-color: #99cc3300;
+    float: left;
+
+}
+.express_catch_one_content_left_size{
+    height: 50rpx;
+    font-size: 30rpx;
+    line-height: 50rpx;
+    margin-left: 20rpx;
+}
+.express_catch_one_content_place{
+    font-size: 30rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    margin-left: 20rpx;
+}
+.express_catch_one_content_date{
+    font-size: 30rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    margin-left: 20rpx;
+}
+.express_catch_one_content_right{
+    width: 30%;
+    height: 150rpx;
+    background-color: #ffcc9900;
+    border-left: 5rpx dashed #666;
+    float: left;
+}
+.express_catch_one_content_right_fee{
+    font-size: 35rpx;
+    height: 45rpx;
+    line-height: 50rpx;
+    text-align: center;
+}
+.express_catch_one_content_right_smallfee{
+    text-align: center;
+    height: 50rpx;
+    font-size: 20rpx;
+    color: #666;
+    line-height: 40rpx;
+}
+.express_catch_one_content_right_button{
+    width: 50%;
+    background-color: rgb(72, 197, 22);
+    margin: 0 auto;
+    color: white;
+    font-size: 35rpx;
+    height: 50rpx;
+    text-align: center;
+    line-height: 50rpx;
+    border-radius: 10rpx;
+}
