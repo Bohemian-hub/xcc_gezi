@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-06 15:05:19
- * @LastEditTime: 2020-12-06 21:27:04
+ * @LastEditTime: 2020-12-06 22:36:20
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express_catch/express_catch.js
@@ -146,6 +146,24 @@ Page({
 
       }
     })
+  },
+  /* 抢单 */
+  scratch(e) {
+    wx.request({
+      url: 'http://127.0.0.1:8000/express/scratch', //仅为示例，并非真实的接口地址
+      data: {
+        name: wx.getStorageSync('name'),
+        order_id: e.currentTarget.dataset.id
+      },
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      success(res) {
+        console.log(res.data);
+      }
+    })
+
   },
 
   back_index() {

@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-12-06 21:44:10
- * @LastEditTime: 2020-12-06 22:03:16
+ * @LastEditTime: 2020-12-06 22:15:48
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express_task/express_task.wxml
@@ -27,21 +27,101 @@
 </view>
 
 <!-- 下面展示我接的单 -->
-<view class="task_one">
+<view class="task_one" wx:for="{{orderList}}" wx:key="item.fields">
     <view class="task_one_title">待配送:</view>
     <view class="task_one_content">
-        <view>姓名:</view>
-        <view>电话:</view>
-        <view>取件码</view>
-        <view>快递公司:</view>
-        <view>配送地点:</view>
-        <view>快递类型:</view>
-        <view>到校日期:</view>
-        <view>小费:</view>
-        <view>总佣金:</view>
-        <view>下单日期:</view>
-        <view>订单号:</view>
+        <view class="task_one_content_title">
+            <view class="task_one_content_title_text">
+                姓名:
+            </view>
+            <view class="task_one_content_text">
+                {{item.fields.rec_name}}
+            </view>
+            </view>
+        <view class="task_one_content_title">
+            <view class="task_one_content_title_text">
+                电话:
+            </view>
+            <view class="task_one_content_text">
+                {{item.fields.rec_tel}}
+            </view>
+            </view>
+        <view class="task_one_content_title">
+            <view class="task_one_content_title_text">
+                取件码:
+            </view>
+            <view class="task_one_content_text">
+                {{item.fields.rec_code}}
+            </view>
+            </view>
+        <view class="task_one_content_title">
+            <view class="task_one_content_title_text">
+                快递公司:
+            </view>
+            <view class="task_one_content_text">
+                {{item.fields.express_company}}
+            </view>
+            </view>
+        <view class="task_one_content_title">
+            <view class="task_one_content_title_text">
+                配送地点:
+            </view>
+            <view class="task_one_content_text">
+                {{item.fields.express_place}}
+            </view>
+            </view>
+        <view class="task_one_content_title">
+            <view class="task_one_content_title_text">
+                快递类型:
+            </view>
+            <view class="task_one_content_text">
+                {{item.fields.express_size}}
+            </view>
+            </view>
+        <view class="task_one_content_title">
+            <view class="task_one_content_title_text">
+                到校日期:
+            </view>
+            <view class="task_one_content_text">
+                {{item.fields.express_date}}
+            </view>
+            </view>
+        <view class="task_one_content_title">
+            <view class="task_one_content_title_text">
+                小费:
+            </view>
+            <view class="task_one_content_text">
+                {{item.fields.express_small_fee}}
+            </view>
+            </view>
+        <view class="task_one_content_title">
+            <view class="task_one_content_title_text">
+                总佣金:
+            </view>
+            <view class="task_one_content_text">
+                {{item.fields.express_total_fee}}
+            </view>
+            </view>
+        <view class="task_one_content_title">
+            <view class="task_one_content_title_text">
+                下单日期:
+            </view>
+            <view class="task_one_content_text">
+                {{item.fields.order_time}}
+            </view>
+            </view>
+        <view class="task_one_content_title">
+            <view class="task_one_content_title_text">
+                订单号:
+            </view>
+            <view class="task_one_content_text">
+                {{item.fields.transaction_id}}
+            </view>
+            </view>
     </view>
-    <view></view>
+    <view class="task_one_button">
+        <view class="task_one_button_cancel">取消</view>
+        <view class="task_one_button_confirm">送达</view>
+    </view>
 
 </view>

@@ -95,7 +95,7 @@ background-color: rgba(68, 196, 255, 0.699);
 }
 .task_one{
     width: 90%;
-    height: 550rpx;
+    height: 600rpx;
     margin: 20rpx auto;
     background-color: rgb(255, 255, 255);
     border-radius: 10rpx;
@@ -110,4 +110,48 @@ background-color: rgba(68, 196, 255, 0.699);
 .task_one_content{
     padding-left: 20rpx;
     color: #666;
+}
+.task_one_button{
+    height: 100rpx;
+    width: 100%;
+    margin-top: 20rpx;
+}
+.task_one_button_cancel{
+    height: 80rpx;
+    width: 20%;
+    margin-left: 10%;
+    float: left;
+    background-color: rgb(109, 109, 109);
+    text-align: center;
+    line-height: 80rpx;
+    color: white;
+    border-radius: 10rpx;
+}
+.task_one_button_confirm{
+    height: 80rpx;
+    width: 20%;
+    margin-right: 10%;
+    background-color: rgb(230, 147, 39);
+    float: right;
+    text-align: center;
+    line-height: 80rpx;
+    color: white;
+    border-radius: 10rpx;
+}
+.task_one_content_title_text{
+    font-weight: 600;
+    width: 25%;
+    height: 40rpx;
+    line-height: 40rpx;
+
+    float: left;
+
+}
+.task_one_content_text{
+    font-weight: 400;
+    width: 70%;
+    height: 40rpx;
+    line-height: 40rpx;
+    text-align: center;
+    float: left;
 }

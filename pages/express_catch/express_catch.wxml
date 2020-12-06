@@ -41,7 +41,7 @@
         <view class="express_catch_one_content_right">
             <view class="express_catch_one_content_right_fee">共{{item.fields.express_total_fee}}元</view>
             <view class="express_catch_one_content_right_smallfee">（含小费{{item.fields.express_small_fee}}元）</view>
-            <view class="express_catch_one_content_right_button">抢单</view>
+            <view class="express_catch_one_content_right_button" bindtap = "scratch" data-id="{{item.fields.transaction_id}}">抢单</view>
         </view>
     </view>
 </view>
