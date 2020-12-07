@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-06 21:44:10
- * @LastEditTime: 2020-12-06 22:51:06
+ * @LastEditTime: 2020-12-07 09:45:37
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express_task/express_task.js
@@ -14,6 +14,9 @@ Page({
    */
   data: {
     orderList: [],
+    status_color: 'red',
+    confim_button: '送达',
+
   },
 
   /**
@@ -41,7 +44,32 @@ Page({
         console.log(res.data);
         for (let index = 0; index < res.data.length; index++) {
           const element = res.data[index];
-          console.log(element.fields.order_stadus);
+          if (element.fields.order_stadus == 2) {
+            console.log(element.fields.order_stadus);
+            element.fields.order_stadus = '待配送'
+            element.fields.status_color = 'red'
+            element.fields.confim_button = '送达'
+
+
+
+          } else if (element.fields.order_stadus == 3) {
+            console.log(element.fields.order_stadus);
+            element.fields.order_stadus = '待确认'
+            element.fields.status_color = 'rgb(38, 176, 255)'
+            element.fields.confim_button = '已送达'
+
+
+
+
+          } else if (element.fields.order_stadus == 4) {
+            console.log(element.fields.order_stadus);
+            element.fields.order_stadus = '客户已确认收到'
+            element.fields.status_color = 'rgb(33, 209, 86)'
+            element.fields.confim_button = '已结单'
+
+
+
+          }
 
         }
         that.setData({
@@ -52,6 +80,42 @@ Page({
 
       }
     })
+  },
+  送达(e) {
+    /* 展示一个模态框，你确定送达？ */
+    wx.showModal({
+      title: '',
+      content: '已将包裹送至客户手中？',
+      showCancel: true,
+      cancelText: '取消',
+      cancelColor: '#000000',
+      confirmText: '确定',
+      confirmColor: '#3CC51F',
+      success: (result) => {
+        if (result.confirm) {
+          /* 点了确认，发送请求更改数据库的数据为3 */
+          wx.request({
+            url: 'http://127.0.0.1:8000/express/express_arrive', //仅为示例，并非真实的接口地址
+            data: {
+              name: wx.getStorageSync('name'),
+              order_id: e.currentTarget.dataset.id
+            },
+            method: "POST",
+            header: {
+              'content-type': 'application/x-www-form-urlencoded' // 默认值
+            },
+            success(res) {
+              console.log(res.data);
+            }
+          })
+
+        }
+      },
+    });
+
+  },
+  已送达() {
+
   },
 
   back_index() {

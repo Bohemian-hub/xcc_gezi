@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-12-06 21:44:10
- * @LastEditTime: 2020-12-06 22:15:48
+ * @LastEditTime: 2020-12-07 09:43:33
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express_task/express_task.wxml
@@ -28,7 +28,7 @@
 
 <!-- 下面展示我接的单 -->
 <view class="task_one" wx:for="{{orderList}}" wx:key="item.fields">
-    <view class="task_one_title">待配送:</view>
+    <view class="task_one_title" style="color:{{item.fields.status_color}};">{{item.fields.order_stadus}}:</view>
     <view class="task_one_content">
         <view class="task_one_content_title">
             <view class="task_one_content_title_text">
@@ -37,7 +37,7 @@
             <view class="task_one_content_text">
                 {{item.fields.rec_name}}
             </view>
-            </view>
+        </view>
         <view class="task_one_content_title">
             <view class="task_one_content_title_text">
                 电话:
@@ -45,15 +45,15 @@
             <view class="task_one_content_text">
                 {{item.fields.rec_tel}}
             </view>
-            </view>
-        <view class="task_one_content_title">
+        </view>
+        <view class="task_one_content_title" style="color:rgb(255, 95, 95);">
             <view class="task_one_content_title_text">
                 取件码:
             </view>
             <view class="task_one_content_text">
                 {{item.fields.rec_code}}
             </view>
-            </view>
+        </view>
         <view class="task_one_content_title">
             <view class="task_one_content_title_text">
                 快递公司:
@@ -61,15 +61,15 @@
             <view class="task_one_content_text">
                 {{item.fields.express_company}}
             </view>
-            </view>
-        <view class="task_one_content_title">
+        </view>
+        <view class="task_one_content_title" style="color:rgb(255, 95, 95);">
             <view class="task_one_content_title_text">
                 配送地点:
             </view>
             <view class="task_one_content_text">
                 {{item.fields.express_place}}
             </view>
-            </view>
+        </view>
         <view class="task_one_content_title">
             <view class="task_one_content_title_text">
                 快递类型:
@@ -77,7 +77,7 @@
             <view class="task_one_content_text">
                 {{item.fields.express_size}}
             </view>
-            </view>
+        </view>
         <view class="task_one_content_title">
             <view class="task_one_content_title_text">
                 到校日期:
@@ -85,23 +85,23 @@
             <view class="task_one_content_text">
                 {{item.fields.express_date}}
             </view>
-            </view>
+        </view>
         <view class="task_one_content_title">
             <view class="task_one_content_title_text">
                 小费:
             </view>
             <view class="task_one_content_text">
-                {{item.fields.express_small_fee}}
+                ￥{{item.fields.express_small_fee}}
             </view>
-            </view>
+        </view>
         <view class="task_one_content_title">
             <view class="task_one_content_title_text">
                 总佣金:
             </view>
             <view class="task_one_content_text">
-                {{item.fields.express_total_fee}}
+                ￥{{item.fields.express_total_fee}}
             </view>
-            </view>
+        </view>
         <view class="task_one_content_title">
             <view class="task_one_content_title_text">
                 下单日期:
@@ -109,7 +109,7 @@
             <view class="task_one_content_text">
                 {{item.fields.order_time}}
             </view>
-            </view>
+        </view>
         <view class="task_one_content_title">
             <view class="task_one_content_title_text">
                 订单号:
@@ -117,11 +117,17 @@
             <view class="task_one_content_text">
                 {{item.fields.transaction_id}}
             </view>
-            </view>
+        </view>
     </view>
     <view class="task_one_button">
-        <view class="task_one_button_cancel">取消</view>
-        <view class="task_one_button_confirm">送达</view>
+        <view class="task_one_button_cancel" style="display: {{item.fields.order_stadus == '待配送'?'block':'none'}};">取消
+        </view>
+        <view class="task_one_button_cancel" style="display: {{item.fields.order_stadus == '已确认'?'block':'none'}};">删除
+        </view> <!-- 只有客户已经确认的时候才显示 -->
+        <view class="task_one_button_confirm" bindtap="{{confim_button}}" data-id="{{item.fields.transaction_id}}"
+            style="background-color:{{item.fields.order_stadus == '待配送'?'rgb(230, 147, 39)':' rgb(69, 183, 228)'}};display: {{item.fields.order_stadus == '待配送'||item.fields.order_stadus == '待确认'?'block':'none'}};">
+            {{item.fields.confim_button}}
+        </view>
     </view>
 
 </view>
