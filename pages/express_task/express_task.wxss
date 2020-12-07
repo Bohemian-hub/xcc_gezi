@@ -156,3 +156,17 @@ background-color: rgba(68, 196, 255, 0.699);
     text-align: center;
     float: left;
 }
+
+.apply_panel{
+    width: 80%;
+    height: 1000rpx;
+    position: fixed;
+    left: 10%;
+    top: 300rpx;
+}
+.apply_panel_title{
+    font-size: 45rpx;
+    text-align: center;
+    font-weight: 800;
+    height: 200rpx;
+}

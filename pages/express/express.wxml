@@ -62,7 +62,7 @@
         <view class="message_piece_red"></view>
     </view>
     <view class="message_content">
-        <textarea class="message_content_text" value="" placeholder="[选填]粘贴快递短信或填写备注" bindinput='getInputValue4'>
+        <textarea class="message_content_text" value="" placeholder="[选填]粘贴快递短信、填写备注（上门时间，特殊情况等）" bindinput='getInputValue4'>
 
         </textarea>
     </view>

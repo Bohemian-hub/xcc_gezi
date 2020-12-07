@@ -128,9 +128,11 @@
         </view>
     </view>
     <view class="task_one_button">
-        <view class="task_one_button_cancel" style="display: {{item.fields.order_stadus == '待配送'?'block':'none'}};">取消
+        <view class="task_one_button_cancel" style="display: {{item.fields.order_stadus == '待配送'?'block':'none'}};" 
+        bindtap = "cancel_catch" data-id="{{item.fields.transaction_id}}">取消
         </view>
-        <view class="task_one_button_cancel" style="display: {{item.fields.order_stadus == '已确认'?'block':'none'}};">删除
+        <view class="task_one_button_cancel" style="display: {{item.fields.order_stadus == '客户已确认收到'?'block':'none'}};"
+         bindtap = "delete_order_catcher" data-id="{{item.fields.transaction_id}}">删除
         </view> <!-- 只有客户已经确认的时候才显示 -->
         <view class="task_one_button_confirm" bindtap="{{item.fields.confim_js}}"
             data-id="{{item.fields.transaction_id}}"
@@ -139,4 +141,8 @@
         </view>
     </view>
 
+</view>
+
+<view class="apply_panel" style="display: {{nothing==1?'block':'none'}};">
+    <view class="apply_panel_title">你还没有需要取的快递，快去下单吧！</view>
 </view>

@@ -64,15 +64,20 @@
 
     <view class="task_one_button">
         <view class="task_one_button_cancel"
-            style="display: {{item.fields.order_stadus == '代取中'||item.fields.order_stadus == '待接单'?'block':'none'}};">取消
+            style="display: {{item.fields.order_stadus == '代取中'||item.fields.order_stadus == '待接单'?'block':'none'}};" 
+            data-id="{{item.fields.transaction_id}}" bindtap="cancel_order">取消
         </view>
         <view class="task_one_button_cancel" style="display: {{item.fields.order_stadus == '已确认'?'block':'none'}};"
             data-id="{{item.fields.transaction_id}}" bindtap="delete_already_order">删除
         </view> <!-- 只有客户已经确认的时候才显示 -->
         <view class="task_one_button_confirm" bindtap="receive_express" data-id="{{item.fields.transaction_id}}"
-            style="background-color:{{item.fields.order_stadus == '代取中'?'rgb(230, 147, 39)':' rgb(69, 183, 228)'}};display: {{item.fields.order_stadus == '待确认'?'block':'none'}};">
+            style="background-color:{{item.fields.order_stadus == '代取中'?'rgb(230, 147, 39)':' rgb(69, 183, 228)'}};display: {{item.fields.order_stadus == '送达待确认'?'block':'none'}};">
             {{item.fields.confim_button}}
         </view>
     </view>
 
+</view>
+
+<view class="apply_panel" style="display: {{nothing==1?'block':'none'}};">
+    <view class="apply_panel_title">你还没有需要派送的订单，快去接单赚钱吧！</view>
 </view>

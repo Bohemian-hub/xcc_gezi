@@ -237,3 +237,16 @@ page{
     color: white;
     border-radius: 10rpx;
 }
+.apply_panel{
+    width: 80%;
+    height: 1000rpx;
+    position: fixed;
+    left: 10%;
+    top: 300rpx;
+}
+.apply_panel_title{
+    font-size: 45rpx;
+    text-align: center;
+    font-weight: 800;
+    height: 200rpx;
+}

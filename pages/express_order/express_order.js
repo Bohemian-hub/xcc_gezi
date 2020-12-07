@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-05 23:36:24
- * @LastEditTime: 2020-12-07 14:09:52
+ * @LastEditTime: 2020-12-07 22:12:36
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express_order/express_order.js
@@ -13,7 +13,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    orderList: []
+    orderList: [],
+    nothing: 0
   },
 
   /**
@@ -55,12 +56,12 @@ Page({
 
 
           } else if (element.fields.order_stadus == 3) {
-            element.fields.order_stadus = '待确认'
+            element.fields.order_stadus = '送达待确认'
             element.fields.order_stadus_color = 'rgb(69, 183, 228)'
             element.fields.confim_button = '确认收件'
 
 
-          } else if (element.fields.order_stadus == 4) {
+          } else if (element.fields.order_stadus == 4 || element.fields.order_stadus == 6) {
             element.fields.order_stadus = '已确认'
             element.fields.order_stadus_color = 'green'
 
@@ -71,6 +72,12 @@ Page({
         that.setData({
           orderList: res.data
         })
+        console.log(that.data.orderList.length);
+        if (that.data.orderList.length == 0) {
+          that.setData({
+            nothing: 1
+          })
+        }
 
 
       }
@@ -103,26 +110,99 @@ Page({
   },
   /* 删除已经完成的订单 */
   delete_already_order(e) {
-    wx.request({
-      url: 'http://127.0.0.1:8000/express/delete_order_user', //仅为示例，并非真实的接口地址
-      data: {
-        name: wx.getStorageSync('name'),
-        order_id: e.currentTarget.dataset.id
-      },
-      method: "POST",
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
-      },
-      success(res) {
-        console.log(res.data.loginnum);
-        wx.hideLoading();
-        if (res.data.loginnum == 200) {
-          wx.redirectTo({
-            url: '../express_order/express_order',
+    wx.showModal({
+      title: '',
+      content: '删除订单后可以在设置中查看历史订单！',
+      showCancel: true,
+      cancelText: '取消',
+      cancelColor: '#000000',
+      confirmText: '确定',
+      confirmColor: '#3CC51F',
+      success: (result) => {
+        if (result.confirm) {
+          /* 点了确认，发送请求更改数据库的数据为3 */
+          wx.request({
+            url: 'http://127.0.0.1:8000/express/delete_order_user', //仅为示例，并非真实的接口地址
+            data: {
+              name: wx.getStorageSync('name'),
+              order_id: e.currentTarget.dataset.id
+            },
+            method: "POST",
+            header: {
+              'content-type': 'application/x-www-form-urlencoded' // 默认值
+            },
+            success(res) {
+              console.log(res.data.loginnum);
+              wx.hideLoading();
+              if (res.data.loginnum == 200) {
+                wx.redirectTo({
+                  url: '../express_order/express_order',
+                })
+              }
+            }
           })
+
         }
-      }
-    })
+      },
+    });
+
+  },
+  cancel_order(e) {
+    /* 用户取消还没有人取的订单 */
+    var that = this
+    wx.showModal({
+      title: '',
+      content: '确定取消此订单？（退款将收取5%手续费）',
+      showCancel: true,
+      cancelText: '取消',
+      cancelColor: '#000000',
+      confirmText: '确定',
+      confirmColor: '#3CC51F',
+      success: (result) => {
+        if (result.confirm) {
+          /* 点了确认，发送请求更改数据库的数据为3 */
+          wx.request({
+            url: 'http://127.0.0.1:8000/express/cancel_order', //仅为示例，并非真实的接口地址
+            data: {
+              name: wx.getStorageSync('name'),
+              order_id: e.currentTarget.dataset.id
+            },
+            method: "POST",
+            header: {
+              'content-type': 'application/x-www-form-urlencoded' // 默认值
+            },
+            success(res) {
+              console.log(res.data.loginnum);
+              wx.hideLoading();
+              if (res.data.loginnum == 200) {
+                wx.redirectTo({
+                  url: '../express_order/express_order',
+                })
+              }
+              else if (res.data.loginnum == 100) {
+                wx.showModal({
+                  title: '',
+                  content: '此订单已经被接单，如需退单请联系您的代取员！',
+                  showCancel: false,
+                  confirmText: '确定',
+                  confirmColor: '#3CC51F',
+                  success: (result) => {
+                    if (result.confirm) {
+                      wx.redirectTo({
+                        url: '../express_order/express_order',
+                      })
+                    }
+                  },
+                });
+              }
+            }
+          })
+
+        }
+      },
+    });
+
+
   },
   back_index() {
     wx.redirectTo({
