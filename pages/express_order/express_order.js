@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-05 23:36:24
- * @LastEditTime: 2020-12-06 21:46:52
+ * @LastEditTime: 2020-12-07 11:50:14
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express_order/express_order.js
@@ -27,7 +27,7 @@ Page({
   get_order() {
     var that = this
     wx.request({
-      url: 'http://39.100.67.217:8001/express/get_express', //仅为示例，并非真实的接口地址
+      url: 'http://127.0.0.1:8000/express/get_express', //仅为示例，并非真实的接口地址
       data: {
         studentId: wx.getStorageSync('studentId'),
       },
@@ -44,6 +44,15 @@ Page({
           console.log(element.fields.order_stadus);
           if (element.fields.order_stadus == 1) {
             element.fields.order_stadus = '待接单'
+            element.fields.order_stadus_color = 'red'
+          } else if (element.fields.order_stadus == 2) {
+            element.fields.order_stadus = '代取中'
+            element.fields.order_stadus_color = 'rgb(230, 147, 39)'
+
+          } else if (element.fields.order_stadus == 3) {
+            element.fields.order_stadus = '待确认'
+            element.fields.order_stadus_color = 'rgb(69, 183, 228)'
+
           }
 
         }
