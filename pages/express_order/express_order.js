@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-05 23:36:24
- * @LastEditTime: 2020-12-07 22:12:36
+ * @LastEditTime: 2020-12-07 23:18:54
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express_order/express_order.js
@@ -14,7 +14,9 @@ Page({
    */
   data: {
     orderList: [],
-    nothing: 0
+    nothing: 0,
+    catcher_infor: [],
+    catcher_show: 0
   },
 
   /**
@@ -203,6 +205,45 @@ Page({
     });
 
 
+  },
+  catcher_infomation(e) {
+    var that = this
+    /* 展示代取员的信息 */
+    wx.showLoading({
+      title: '正在获取',
+    })
+    wx.request({
+      url: 'http://127.0.0.1:8000/express/catcher_infomation', //仅为示例，并非真实的接口地址
+      data: {
+        name: e.currentTarget.dataset.id
+      },
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      success(res) {
+        console.log(res.data);
+        wx.hideLoading();
+        if (res.data.length == 1) {
+          that.setData({
+            catcher_infor: res.data[0].fields,
+            catcher_show: 1
+          })
+        }
+        else {
+
+        }
+        console.log(that.data.catcher_infor);
+      }
+    })
+
+
+  },
+  close_infor() {
+
+    this.setData({
+      catcher_show: 0
+    })
   },
   back_index() {
     wx.redirectTo({
