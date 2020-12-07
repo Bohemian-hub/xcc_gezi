@@ -1,5 +1,5 @@
 page{
-background-color: rgba(235, 235, 235, 0.699);
+    background-color: rgba(68, 196, 255, 0.699);
 }
 .title{
     width: 100%;
@@ -43,12 +43,12 @@ background-color: rgba(235, 235, 235, 0.699);
 }
 .menu_1{
     width: 20%;
-    background-color: #99CC33;
+    background-color: #757575;
     float: left;
     height: 100%;
     margin-left: 4%;
     border-radius: 20rpx;
-    box-shadow: 0 0 10rpx rgb(66, 66, 66);
+    box-shadow: 0 0 10rpx rgb(206, 206, 206);
     text-align: center;
     line-height: 80rpx;
     color: aliceblue;
@@ -61,7 +61,7 @@ background-color: rgba(235, 235, 235, 0.699);
     margin-left: 4%;
     float: left;    
     border-radius: 20rpx;
-    box-shadow: 0 0 10rpx  rgb(66, 66, 66);
+    box-shadow: 0 0 10rpx rgb(206, 206, 206);
     text-align: center;
     line-height: 80rpx;
     color: aliceblue;
@@ -69,12 +69,12 @@ background-color: rgba(235, 235, 235, 0.699);
 }
 .menu_3{
     width: 20%;
-    background-color: #FFCC00;
+    background-color: #757575;
     height: 100%;
     margin-left: 4%;
     float: left;
     border-radius: 20rpx;
-    box-shadow: 0 0 10rpx  rgb(66, 66, 66);
+    box-shadow: 0 0 10rpx rgb(206, 206, 206);
     text-align: center;
     line-height: 80rpx;
     color: aliceblue;
@@ -82,12 +82,12 @@ background-color: rgba(235, 235, 235, 0.699);
 }
 .menu_4{
     width: 20%;
-    background-color:#FFCC99;
+    background-color:#757575;
     float: left;
     margin-left: 4%;
     height: 100%; 
     border-radius: 20rpx;
-    box-shadow: 0 0 10rpx  rgb(66, 66, 66);
+    box-shadow: 0 0 10rpx  rgb(206, 206, 206);
     text-align: center;
     line-height: 80rpx;
     color: aliceblue;
@@ -97,7 +97,7 @@ background-color: rgba(235, 235, 235, 0.699);
     width: 90%;
     background-color: white;
     box-shadow: 0 0 10rpx #666;
-    height: 540rpx;
+    height: 640rpx;
     margin: 30rpx auto;
     padding: 10rpx;
     border-radius: 10rpx;
@@ -209,3 +209,31 @@ background-color: rgba(235, 235, 235, 0.699);
     color: rgb(50, 219, 197);
 }
 
+.task_one_button{
+    height:100rpx;
+    width: 100%;
+
+
+}
+.task_one_button_cancel{
+    height: 80rpx;
+    width: 20%;
+    margin-left: 10%;
+    float: left;
+    background-color: rgb(109, 109, 109);
+    text-align: center;
+    line-height: 80rpx;
+    color: white;
+    border-radius: 10rpx;
+}
+.task_one_button_confirm{
+    height: 80rpx;
+    width: 20%;
+    margin-right: 10%;
+    background-color: rgb(230, 147, 39);
+    float: right;
+    text-align: center;
+    line-height: 80rpx;
+    color: white;
+    border-radius: 10rpx;
+}

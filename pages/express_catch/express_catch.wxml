@@ -88,3 +88,10 @@
 <view class="apply_panel" style="display: {{showcheck==1?'block':'none'}};">
     <view class="apply_panel_title">您成为代取员的申请正在急速审核中，请耐心等待...</view>
 </view>
+
+<view class="apply_panel" style="display: {{nothing==1?'block':'none'}};">
+    <view class="apply_panel_title">暂无可接订单，请稍后再来吧！</view>
+</view>
+
+
+  

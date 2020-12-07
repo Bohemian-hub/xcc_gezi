@@ -28,7 +28,7 @@
 
 <!-- 下面展示我接的单 -->
 <view class="task_one" wx:for="{{orderList}}" wx:key="item.fields">
-    <view class="task_one_title" style="color:{{item.fields.status_color}};">{{item.fields.order_stadus}}:</view>
+    <view class="task_one_title" style="color:{{item.fields.status_color}};">{{index+1}}.{{item.fields.order_stadus}}:</view>
     <view class="task_one_content">
         <view class="task_one_content_title">
             <view class="task_one_content_title_text">
@@ -116,6 +116,14 @@
             </view>
             <view class="task_one_content_text">
                 {{item.fields.transaction_id}}
+            </view>
+        </view>
+        <view class="task_one_content_title">
+            <view class="task_one_content_title_text">
+                备注信息:
+            </view>
+            <view class="task_one_content_text" style="text-align:left;">
+                {{item.fields.rec_message}}
             </view>
         </view>
     </view>

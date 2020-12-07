@@ -43,12 +43,12 @@ background-color: rgba(68, 196, 255, 0.699);
 }
 .menu_1{
     width: 20%;
-    background-color: #99CC33;
+    background-color: #757575;
     float: left;
     height: 100%;
     margin-left: 4%;
     border-radius: 20rpx;
-    box-shadow: 0 0 10rpx rgb(66, 66, 66);
+    box-shadow: 0 0 10rpx rgb(206, 206, 206);
     text-align: center;
     line-height: 80rpx;
     color: aliceblue;
@@ -56,12 +56,12 @@ background-color: rgba(68, 196, 255, 0.699);
 }
 .menu_2{
     width: 20%;
-    background-color: #FF9900;
+    background-color: #757575;
     height: 100%;
     margin-left: 4%;
     float: left;    
     border-radius: 20rpx;
-    box-shadow: 0 0 10rpx  rgb(66, 66, 66);
+    box-shadow: 0 0 10rpx rgb(206, 206, 206);
     text-align: center;
     line-height: 80rpx;
     color: aliceblue;
@@ -69,12 +69,12 @@ background-color: rgba(68, 196, 255, 0.699);
 }
 .menu_3{
     width: 20%;
-    background-color: #FFCC00;
+    background-color: #757575;
     height: 100%;
     margin-left: 4%;
     float: left;
     border-radius: 20rpx;
-    box-shadow: 0 0 10rpx  rgb(66, 66, 66);
+    box-shadow: 0 0 10rpx rgb(206, 206, 206);
     text-align: center;
     line-height: 80rpx;
     color: aliceblue;
@@ -82,12 +82,12 @@ background-color: rgba(68, 196, 255, 0.699);
 }
 .menu_4{
     width: 20%;
-    background-color:#FFCC99;
+    background-color:#FF9900;
     float: left;
     margin-left: 4%;
     height: 100%; 
     border-radius: 20rpx;
-    box-shadow: 0 0 10rpx  rgb(66, 66, 66);
+    box-shadow: 0 0 10rpx  rgb(206, 206, 206);
     text-align: center;
     line-height: 80rpx;
     color: aliceblue;
@@ -95,7 +95,7 @@ background-color: rgba(68, 196, 255, 0.699);
 }
 .task_one{
     width: 90%;
-    height: 600rpx;
+    height: 800rpx;
     margin: 20rpx auto;
     background-color: rgb(255, 255, 255);
     border-radius: 10rpx;
@@ -110,7 +110,7 @@ background-color: rgba(68, 196, 255, 0.699);
 .task_one_content{
     padding-left: 20rpx;
     color: #666;
-    height: 450rpx;
+    height: 650rpx;
 }
 .task_one_button{
     height: 100rpx;

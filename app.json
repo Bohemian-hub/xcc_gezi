@@ -1,10 +1,10 @@
 {
   "pages": [
-    "pages/index/index",
     "pages/express_order/express_order",
-
     "pages/express_task/express_task",
     "pages/express_catch/express_catch",
+    "pages/index/index",
+
 
     "pages/express/express",
 

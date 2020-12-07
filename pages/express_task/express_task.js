@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-06 21:44:10
- * @LastEditTime: 2020-12-07 10:37:39
+ * @LastEditTime: 2020-12-07 12:29:02
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express_task/express_task.js
@@ -50,31 +50,18 @@ Page({
             element.fields.status_color = 'red'
             element.fields.confim_button = '送达'
             element.fields.confim_js = 'express_arrive'
-
-
-
-
           } else if (element.fields.order_stadus == 3) {
             console.log(element.fields.order_stadus);
             element.fields.order_stadus = '待确认'
             element.fields.status_color = 'rgb(38, 176, 255)'
             element.fields.confim_button = '已送达'
             element.fields.confim_js = 'none'
-
-
-
-
-
           } else if (element.fields.order_stadus == 4) {
             console.log(element.fields.order_stadus);
             element.fields.order_stadus = '客户已确认收到'
             element.fields.status_color = 'rgb(33, 209, 86)'
             element.fields.confim_button = '已结单'
             element.fields.confim_js = 'none'
-
-
-
-
           }
 
         }
@@ -111,7 +98,7 @@ Page({
               'content-type': 'application/x-www-form-urlencoded' // 默认值
             },
             success(res) {
-              console.log(res.data); 
+              console.log(res.data);
               that.turn_page_myself()
             }
           })

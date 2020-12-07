@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-12-05 23:36:24
- * @LastEditTime: 2020-12-07 11:35:15
+ * @LastEditTime: 2020-12-07 14:09:29
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express_order/express_order.wxml
@@ -23,11 +23,11 @@
     <view class="menu_1" bindtap="turn_page_neworder">下单</view>
     <view class="menu_2" bindtap="turn_page_myorder">订单</view>
     <view class="menu_3" bindtap="turn_page_catchorder">接单</view>
-    <view class="menu_4" bindtap="turn_page_myself">个人</view>
+    <view class="menu_4" bindtap="turn_page_myself">任务</view>
 </view>
 <view class="order_show" wx:for="{{orderList}}" wx:key="item.fields">
     <view class="order_title" hover-class="none" hover-stop-propagation="false">
-        我的下单
+        我的下单{{index+1}}
     </view>
     <view class="express_order_user">
         <view class="express_order_name">姓名：{{item.fields.rec_name}}</view>
@@ -46,7 +46,7 @@
         <view class="express_order_num">订单号：{{item.fields.transaction_id}}</view>
         <view class="express_order_status" style="color: {{item.fields.order_stadus_color}};">
             订单状态：{{item.fields.order_stadus}}</view>
-        <view class="express_order_person">代取人：暂无</view>
+        <view class="express_order_person">代取人：{{item.fields.catch_person}}</view>
         <view class="express_order_time">下单时间：{{item.fields.order_time}}</view>
     </view>
     <view>
@@ -58,6 +58,21 @@
         </view>
 
     </view>
+    <view style="clear:both;">
 
+    </view>
+
+    <view class="task_one_button">
+        <view class="task_one_button_cancel"
+            style="display: {{item.fields.order_stadus == '代取中'||item.fields.order_stadus == '待接单'?'block':'none'}};">取消
+        </view>
+        <view class="task_one_button_cancel" style="display: {{item.fields.order_stadus == '已确认'?'block':'none'}};"
+            data-id="{{item.fields.transaction_id}}" bindtap="delete_already_order">删除
+        </view> <!-- 只有客户已经确认的时候才显示 -->
+        <view class="task_one_button_confirm" bindtap="receive_express" data-id="{{item.fields.transaction_id}}"
+            style="background-color:{{item.fields.order_stadus == '代取中'?'rgb(230, 147, 39)':' rgb(69, 183, 228)'}};display: {{item.fields.order_stadus == '待确认'?'block':'none'}};">
+            {{item.fields.confim_button}}
+        </view>
+    </view>
 
 </view>

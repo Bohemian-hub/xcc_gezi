@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-06 15:05:19
- * @LastEditTime: 2020-12-06 22:36:20
+ * @LastEditTime: 2020-12-07 14:07:03
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express_catch/express_catch.js
@@ -20,7 +20,8 @@ Page({
     applytel: '',
     applyemail: '',
     applywechat: '',
-    showcheck: 0
+    showcheck: 0,
+    nothing: 0
 
   },
 
@@ -33,6 +34,9 @@ Page({
   },
   /* 把本机的studentID传入，确定我有咩有提交代取员申请 */
   Iamcatcher() {
+    wx.showLoading({
+      title: '正在加载',
+    })
     var that = this
     wx.request({
       url: 'http://127.0.0.1:8000/express/ifapply', //仅为示例，并非真实的接口地址
@@ -64,6 +68,8 @@ Page({
         }
       }
     })
+    wx.hideLoading();
+
   },
 
   /* 先做一个申请表提交 */
@@ -98,6 +104,9 @@ Page({
     })
   },
   applysubmit() {
+    wx.showLoading({
+      title: '正在加载',
+    })
     var that = this
     wx.request({
       url: 'http://127.0.0.1:8000/express/applysubmit', //仅为示例，并非真实的接口地址
@@ -124,9 +133,15 @@ Page({
         }
       }
     })
+    wx.hideLoading();
+
   },
   get_order() {
+    wx.showLoading({
+      title: '正在加载',
+    })
     var that = this
+    /* 获取所有待接订单 */
     wx.request({
       url: 'http://39.100.67.217:8001/express/get_all_express', //仅为示例，并非真实的接口地址
       data: {
@@ -141,14 +156,24 @@ Page({
         that.setData({
           orderwaitList: res.data
         })
-        console.log(that.data.orderwaitList);
+        console.log(that.data.orderwaitList.length);
+        if (that.data.orderwaitList.length == 0) {
+          that.setData({
+            nothing: 1
+          })
+        }
 
 
       }
     })
+    wx.hideLoading();
+
   },
   /* 抢单 */
   scratch(e) {
+    wx.showLoading({
+      title: '正在加载',
+    })
     wx.request({
       url: 'http://127.0.0.1:8000/express/scratch', //仅为示例，并非真实的接口地址
       data: {
@@ -160,9 +185,45 @@ Page({
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
       success(res) {
-        console.log(res.data);
+        console.log(res.data.loginnum);
+        wx.hideLoading();
+        if (res.data.loginnum == 100) {
+          /* 已经被抢了 */
+          wx.showModal({
+            title: '提示',
+            content: '该订单已经被抢了！',
+            showCancel: false,
+            confirmText: '确定',
+            confirmColor: '#3CC51F',
+            success: (result) => {
+              if (result.confirm) {
+
+              }
+            },
+          });
+
+        } else if (res.data.loginnum == 200) {
+          /* 抢单成功 */
+          /* 设置一个提示吧！ */
+          wx.showModal({
+            title: '提示',
+            content: '恭喜你，抢到此订单！',
+            showCancel: false,
+            confirmText: '确定',
+            confirmColor: '#3CC51F',
+            success: (result) => {
+              if (result.confirm) {
+                wx.redirectTo({
+                  url: '../express_task/express_task',
+                })
+              }
+            },
+          });
+        }
       }
     })
+
+
 
   },
 
