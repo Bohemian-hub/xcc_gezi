@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-08 13:16:59
- * @LastEditTime: 2020-12-08 19:55:29
+ * @LastEditTime: 2020-12-08 21:26:06
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Editget
  * @FilePath: /miniprogram-5/pages/setting_infor/setting_infor.js
@@ -30,7 +30,7 @@ Page({
     })
     var that = this
     wx.request({
-      url: 'http://127.0.0.1:8000/info/pinfo2',
+      url: 'http://39.100.67.217:8001/info/pinfo2',
       header: {
         "content-type": "application/x-www-form-urlencoded"		//使用POST方法要带上这个header
       },

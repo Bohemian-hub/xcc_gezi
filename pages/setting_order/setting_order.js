@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-08 13:17:20
- * @LastEditTime: 2020-12-08 20:01:19
+ * @LastEditTime: 2020-12-08 21:26:20
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/setting_order/setting_order.js
@@ -15,7 +15,7 @@ Page({
   data: {
     my_express_data: [],
     get_task_orde: [],
-    back_choosse:1
+    back_choosse: 1
   },
 
   /**
@@ -39,7 +39,7 @@ Page({
     })
     var that = this
     wx.request({
-      url: 'http://127.0.0.1:8000/express/get_my_express_order', //仅为示例，并非真实的接口地址
+      url: 'http://39.100.67.217:8001/express/get_my_express_order', //仅为示例，并非真实的接口地址
       data: {
         studentId: wx.getStorageSync('studentId'),
       },
@@ -68,7 +68,7 @@ Page({
     })
     var that = this
     wx.request({
-      url: 'http://127.0.0.1:8000/express/get_task_order', //仅为示例，并非真实的接口地址
+      url: 'http://39.100.67.217:8001/express/get_task_order', //仅为示例，并非真实的接口地址
       data: {
         name: wx.getStorageSync('name'),
       },
