@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-10 20:01:02
- * @LastEditTime: 2020-11-11 11:24:58
+ * @LastEditTime: 2020-12-08 20:05:22
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/setting/setting.js
@@ -34,56 +34,37 @@ Page({
       },
     })
   },
+  notdofunction() {
+    wx.showModal({
+      title: '提示',
+      content: '该功能暂未开发，敬请期待',
+      showCancel: false,
+      cancelText: '取消',
+      cancelColor: '#000000',
+      confirmText: '确定',
+      confirmColor: '#3CC51F',
+      success: (result) => {
+
+      },
+    });
+
+  },
   onLoad: function (options) {
 
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  myinfor() {
+    wx.redirectTo({
+      url: '../setting_infor/setting_infor',
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  myorder() {
+    wx.redirectTo({
+      url: '../setting_order/setting_order',
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  talkback() {
+    wx.redirectTo({
+      url: '../setting_talkback/setting_talkback',
+    })
   }
 })

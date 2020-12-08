@@ -1,8 +1,13 @@
 {
   "pages": [
+    "pages/index/index",
+    "pages/setting_talkback/setting_talkback",
+    "pages/setting_order/setting_order",
+    "pages/setting_infor/setting_infor",
+    
+
     "pages/setting/setting",
 
-    "pages/index/index",
     "pages/express_task/express_task",
     "pages/express_catch/express_catch",
     "pages/express/express",
@@ -14,7 +19,9 @@
     "pages/publish_confess/publish_confess",
     "pages/pay/pay",
     "pages/product/product",
-    "pages/logs/logs"
+    "pages/logs/logs",
+
+    "pages/setting_more/setting_more"
   ],
   "window": {
     "backgroundTextStyle": "light",

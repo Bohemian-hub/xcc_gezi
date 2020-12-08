@@ -4,7 +4,7 @@
 </view>
   
 <view class="page_tile">
-Setings
+Settings
 </view>
 <view class="xian_long">
 </view>
@@ -15,15 +15,15 @@ Setings
     
 </view>
   
-<view class="setting_menu">
+<view class="setting_menu" bindtap = "notdofunction">
 <image class="setting_menu_icon" src="https://s1.ax1x.com/2020/11/10/BLTM3n.png" mode="widthFix" lazy-load="false" binderror="" bindload="" />
-  
+
     <view>
         倒计时
     </view>
       
 </view>
-<view class="setting_menu">
+<view class="setting_menu" bindtap = "myinfor">
 <image class="setting_menu_icon" src="https://s1.ax1x.com/2020/11/10/BLTQcq.png" mode="widthFix" lazy-load="false" binderror="" bindload="" />
   
     <view>
@@ -31,7 +31,7 @@ Setings
     </view>
       
 </view>
-<view class="setting_menu">
+<view class="setting_menu" bindtap = "notdofunction">
 <image class="setting_menu_icon" src="https://s1.ax1x.com/2020/11/10/BLTeAg.png" mode="widthFix" lazy-load="false" binderror="" bindload="" />
   
     <view>
@@ -39,7 +39,7 @@ Setings
     </view>
       
 </view>
-<view class="setting_menu">
+<view class="setting_menu" bindtap = "myorder">
 <image class="setting_menu_icon" src="https://s1.ax1x.com/2020/11/10/BLTmNQ.png" mode="widthFix" lazy-load="false" binderror="" bindload="" />
   
     <view>
@@ -55,7 +55,7 @@ Setings
     </view>
       
 </view>
-<view class="setting_menu">
+<view class="setting_menu" bindtap = "talkback">
 <image class="setting_menu_icon" src="https://s1.ax1x.com/2020/11/10/BLTnhj.png" mode="widthFix" lazy-load="false" binderror="" bindload="" />
   
     <view>

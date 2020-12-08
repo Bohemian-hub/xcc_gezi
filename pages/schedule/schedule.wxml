@@ -8,8 +8,6 @@
 -->
 <view class="grade_back" bindtap="back_index">
 
-    <image class="page_back" src="https://s1.ax1x.com/2020/11/11/BXy3Jf.png" mode="widthFix" lazy-load="false"
-        binderror="" bindload="" />
     <view class="page_back_text">
         返回
     </view>

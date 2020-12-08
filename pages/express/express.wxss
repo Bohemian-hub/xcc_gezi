@@ -33,7 +33,7 @@ background-color: rgba(235, 235, 235, 0.699);
 }
 .page_back_text{
     line-height: 80rpx;
-    width: 80%;
+    width: 100%;
 }
 .menu_change{
     width: 100%;

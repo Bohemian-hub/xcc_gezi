@@ -1,0 +1,28 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-12-08 13:18:11
+ * @LastEditTime: 2020-12-08 20:13:51
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /miniprogram-5/pages/setting_talkback/setting_talkback.wxml
+-->
+<view class="title">
+    <view class="title_back" bindtap="backttosetting">
+        返回
+    </view>
+    <view class="title_text">
+        意见反馈
+    </view>
+</view>
+<view style="clear: both;">
+</view>
+
+<view class="talk_panel">
+    <textarea class="talk_panel_white" value="" placeholder="此处可以写五百个字哦！" maxlength="500rpx" bindinput='getInputValue1'>
+
+    </textarea>
+
+</view>
+<view class="submit_button" bindtap="submit_talkback">
+    提交
+</view>

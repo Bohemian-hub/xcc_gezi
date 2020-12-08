@@ -21,6 +21,8 @@ page{
     font-size: 45rpx;
     line-height: 122rpx;
     float: left;
+    text-align: center;
+    width: 100%;
 }
 .grade_when{
     width: 67.5%;

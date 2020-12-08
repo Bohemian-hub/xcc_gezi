@@ -1,0 +1,77 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-12-08 13:16:59
+ * @LastEditTime: 2020-12-08 17:11:10
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /miniprogram-5/pages/setting_infor/setting_infor.wxml
+-->
+<view class="title">
+    <view class="title_back" bindtap="backttosetting">
+        返回
+    </view>
+    <view class="title_text">
+        我的个人信息卡
+    </view>
+</view>
+
+
+<view style="clear: both;">
+
+</view>
+
+<view class="card_title">
+    校园身份卡
+</view>
+<view class="card">
+    <view class="infor_one">
+        <view class="infor_one_text">姓名:{{infor_data.name}}</view>
+    </view>
+
+
+    <view class="infor_one">
+        <view class="infor_one_text">学号:{{studentId}}</view>
+    </view>
+
+
+    <view class="infor_one">
+        <view class="infor_one_text">班级:{{infor_data.className}}</view>
+    </view>
+
+
+    <view class="infor_one">
+        <view class="infor_one_text">专业:{{infor_data.majorName}}</view>
+    </view>
+
+    <view class="infor_one">
+        <view class="infor_one_text">学院:{{infor_data.collegeName}}</view>
+    </view>
+</view>
+
+
+
+
+<view class="card_title">
+    个人信息卡
+</view>
+<view class="card1">
+    <view class="infor_one">
+        <view class="infor_one_text">家乡:{{infor_data.domicile}}</view>
+    </view>
+
+    <view class="infor_one">
+        <view class="infor_one_text">毕业高中:{{infor_data.graduationSchool}}</view>
+    </view>
+
+
+    <view class="infor_one">
+        <view class="infor_one_text">出生日期:{{infor_data.birthDay}}</view>
+    </view>
+
+    <view class="infor_one">
+        <view class="infor_one_text">身份证号:{{infor_data.idNumber}}</view>
+    </view>
+</view>
+<view class="warning">
+    以上所展示个人信息均来自教务系统
+</view>

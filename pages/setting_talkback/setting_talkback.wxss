@@ -1,0 +1,51 @@
+.title{
+width: 100%;
+height: 150rpx;
+background-color: rgb(37, 161, 233);
+color: aliceblue;
+
+font-size: 45rpx;
+}
+.title_back{
+    background-color: white;
+    width: 120rpx;
+    height: 80rpx;
+    color: black;
+    float: left;
+    line-height: 80rpx;
+    margin-left: 20rpx;
+    margin-top: 50rpx;
+    text-align: center;
+    border-radius: 20rpx;
+}
+.title_text{
+    width: 60%;
+    text-align: center;
+    float: left;
+    line-height: 180rpx;
+
+}
+.talk_panel{
+width: 80%;
+height: 600rpx;
+background-color: antiquewhite;
+margin: 120rpx auto;
+padding: 20rpx;
+border-radius: 30rpx;
+}
+.submit_button{
+    width: 80%;
+    height: 100rpx;
+    background-color: rgb(29, 182, 93);
+    text-align: center;
+    line-height: 100rpx;
+    margin: 0 auto;
+    border-radius: 20rpx;
+    color:white;
+    font-size: 40rpx;
+    font-weight: 800;
+}
+.talk_panel_white{
+    width: 100%;
+    height: 100%;
+}

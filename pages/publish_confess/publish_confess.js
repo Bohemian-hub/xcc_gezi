@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-18 15:06:45
- * @LastEditTime: 2020-11-26 18:25:59
+ * @LastEditTime: 2020-12-08 19:57:46
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/publish_confess/publish_confess.js
@@ -39,6 +39,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading({
+      title: '正在加载',
+    })
     /* 首先我的获取一下我的card_date */
     var that = this
     var myDate = new Date();
@@ -86,6 +89,7 @@ Page({
         }
       }
     })
+    wx.hideLoading();
 
   },
   page_back_index: function () {

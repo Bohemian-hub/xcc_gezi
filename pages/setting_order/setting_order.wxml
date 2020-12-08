@@ -1,0 +1,58 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-12-08 13:17:20
+ * @LastEditTime: 2020-12-08 20:02:53
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /miniprogram-5/pages/setting_order/setting_order.wxml
+-->
+<view class="title">
+    <view class="title_back" bindtap="backttosetting">
+        返回
+    </view>
+    <view class="title_text">
+        我的订单
+    </view>
+</view>
+<view style="clear: both;">
+
+</view>
+
+<view class="order_menu">
+    <view class="order_menu_one1" bindtap="get_my_express_order"
+        style="background-color: {{back_choosse==1?'skyblue':''}};">我的快递</view>
+    <view class="order_menu_one2" bindtap="get_task_order" style="background-color: {{back_choosse==2?'skyblue':''}};">我的代取
+    </view>
+</view>
+<view class="order_one">
+    <view class="order_panel" wx:for="{{nothmy_express_dataing}}" wx:key="item.fields">
+        <view class="order_panel_left">
+            <view class="order_panel_left_top">{{index+1}}.{{item.fields.express_company}}--{{item.fields.rec_code}}
+            </view>
+            <view class="order_panel_left_bottom">订单号：{{item.fields.transaction_id}}</view>
+        </view>
+        <view class="order_panel_right">
+            <view class="order_panel_right_top">￥{{item.fields.express_total_fee}}</view>
+            <view class="order_panel_right_bottom">{{item.fields.express_date}}</view>
+        </view>
+    </view>
+
+
+
+</view>
+<view class="order_one">
+    <view class="order_panel" wx:for="{{get_task_orde}}" wx:key="item.fields">
+        <view class="order_panel_left">
+            <view class="order_panel_left_top">{{index+1}}.{{item.fields.express_company}}--{{item.fields.rec_code}}
+            </view>
+            <view class="order_panel_left_bottom">订单号：{{item.fields.transaction_id}}</view>
+        </view>
+        <view class="order_panel_right">
+            <view class="order_panel_right_top">￥{{item.fields.express_total_fee}}</view>
+            <view class="order_panel_right_bottom">{{item.fields.express_date}}</view>
+        </view>
+    </view>
+
+
+
+</view>

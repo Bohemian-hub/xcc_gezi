@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-28 10:04:46
- * @LastEditTime: 2020-11-29 19:03:52
+ * @LastEditTime: 2020-12-08 19:57:08
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/schedule/schedule.js
@@ -39,6 +39,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
     var that = this
     this.get_schedule()
     this.cal_time()
@@ -53,6 +54,9 @@ Page({
   },
   /* 做一个页面数据请求 */
   cal_time() {
+    wx.showLoading({
+      title: '正在加载',
+    })
     var that = this
     wx.request({
       url: 'http://39.100.67.217:8001/info/cal_time',
@@ -70,8 +74,13 @@ Page({
         that.with_week_enter_date()
       },
     });
+    wx.hideLoading();
+
   },
   change_week_course(e) {
+    wx.showLoading({
+      title: '正在加载',
+    })
     var that = this
     console.log(e.currentTarget.dataset.id);
     that.setData({
@@ -102,10 +111,14 @@ Page({
 
     that.find_thisweek_howmuchcourse()
 
+    wx.hideLoading();
 
 
   },
   turn_choose() {
+    wx.showLoading({
+      title: '正在加载',
+    })
     if (turn_status == 0) {
       this.setData({
         turn_choose: 1
@@ -117,8 +130,13 @@ Page({
       })
       turn_status = 0
     }
+    wx.hideLoading();
+
   },
   get_schedule() {
+    wx.showLoading({
+      title: '正在加载',
+    })
     var that = this;
     wx.request({
       url: 'http://39.100.67.217:8001/info/schedule',
@@ -165,8 +183,13 @@ Page({
 
       },
     });
+    wx.hideLoading();
+
   },
   find_thisweek_howmuchcourse() {
+    wx.showLoading({
+      title: '正在加载',
+    })
     var that = this
     /* 先把本周课程清零 */
     that.setData({
@@ -230,6 +253,8 @@ Page({
         }
       }
     }
+    wx.hideLoading();
+      
   },
   with_week_enter_date() {
     var that = this
