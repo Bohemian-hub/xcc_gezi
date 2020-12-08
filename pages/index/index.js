@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2020-12-05 22:46:38
+ * @LastEditTime: 2020-12-08 13:03:39
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.js
@@ -31,7 +31,8 @@ Page({
     wendu: '',
     weather_condition: '',
     weather_wendy_condition: '',
-    weather_condition_src: ''
+    weather_condition_src: '',
+    show_choose_counttime: 0
   },
   confress_page: function () {
     wx.navigateTo({
@@ -112,39 +113,39 @@ Page({
           weather_condition: res.data.data.forecast[0].type,
           weather_wendy_condition: res.data.data.forecast[0].fengxiang,
         })
-        if(res.data.data.forecast[0].type == '大雨'){
+        if (res.data.data.forecast[0].type == '大雨') {
           that.setData({
             weather_condition_src: '../../image_icon/weather/dayu.png'
           })
-        }else if(res.data.data.forecast[0].type == '多云'){
+        } else if (res.data.data.forecast[0].type == '多云') {
           that.setData({
             weather_condition_src: '../../image_icon/weather/duoyun.png'
           })
-        }else if(res.data.data.forecast[0].type == '雷阵雨'){
+        } else if (res.data.data.forecast[0].type == '雷阵雨') {
           that.setData({
             weather_condition_src: '../../image_icon/weather/leizhenyu.png'
           })
-        }else if(res.data.data.forecast[0].type == '晴'){
+        } else if (res.data.data.forecast[0].type == '晴') {
           that.setData({
             weather_condition_src: '../../image_icon/weather/qing.png'
           })
-        }else if(res.data.data.forecast[0].type == '小雨'){
+        } else if (res.data.data.forecast[0].type == '小雨') {
           that.setData({
             weather_condition_src: '../../image_icon/weather/xiaoyu.png'
           })
-        }else if(res.data.data.forecast[0].type == '阴'){
+        } else if (res.data.data.forecast[0].type == '阴') {
           that.setData({
             weather_condition_src: '../../image_icon/weather/yin.png'
           })
-        }else if(res.data.data.forecast[0].type == '月亮'){
+        } else if (res.data.data.forecast[0].type == '月亮') {
           that.setData({
             weather_condition_src: '../../image_icon/weather/moon.png'
           })
-        }else if(res.data.data.forecast[0].type == '阵雨'){
+        } else if (res.data.data.forecast[0].type == '阵雨') {
           that.setData({
             weather_condition_src: '../../image_icon/weather/zhenyu.png'
           })
-        }else if(res.data.data.forecast[0].type == '中雨'){
+        } else if (res.data.data.forecast[0].type == '中雨') {
           that.setData({
             weather_condition_src: '../../image_icon/weather/zhongyu.png'
           })
@@ -159,6 +160,35 @@ Page({
       greeting: greet,
       now_time: time
     })
+
+  },
+  show_choose_counttime() {
+    if (this.data.show_choose_counttime == 0) {
+      this.setData({
+        show_choose_counttime: 1
+
+      })
+    } else {
+      this.setData({
+        show_choose_counttime: 0
+
+      })
+    }
+
+  },
+  notdofunction() {
+    wx.showModal({
+      title: '提示',
+      content: '该功能暂未开放，敬请期待',
+      showCancel: false,
+      cancelText: '取消',
+      cancelColor: '#000000',
+      confirmText: '确定',
+      confirmColor: '#3CC51F',
+      success: (result) => {
+
+      },
+    });
 
   },
   jiaowu(event) {

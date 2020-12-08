@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/setting/setting",
 
     "pages/index/index",
     "pages/express_task/express_task",
@@ -13,7 +14,6 @@
     "pages/publish_confess/publish_confess",
     "pages/pay/pay",
     "pages/product/product",
-    "pages/setting/setting",
     "pages/logs/logs"
   ],
   "window": {
