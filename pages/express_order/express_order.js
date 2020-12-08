@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-05 23:36:24
- * @LastEditTime: 2020-12-07 23:18:54
+ * @LastEditTime: 2020-12-07 23:33:12
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express_order/express_order.js
@@ -33,7 +33,7 @@ Page({
     })
     var that = this
     wx.request({
-      url: 'http://127.0.0.1:8000/express/get_express', //仅为示例，并非真实的接口地址
+      url: 'http://39.100.67.217:8001/express/get_express', //仅为示例，并非真实的接口地址
       data: {
         studentId: wx.getStorageSync('studentId'),
       },
@@ -90,7 +90,7 @@ Page({
     /* 这里是用户确认收件，在代取员将状态从接单2变成3时，我这里就提示带我确认了 */
     /* 来一个事件将订单状态 改成4，就是已经完结 */
     wx.request({
-      url: 'http://127.0.0.1:8000/express/receive_express', //仅为示例，并非真实的接口地址
+      url: 'http://39.100.67.217:8001/express/receive_express', //仅为示例，并非真实的接口地址
       data: {
         name: wx.getStorageSync('name'),
         order_id: e.currentTarget.dataset.id
@@ -124,7 +124,7 @@ Page({
         if (result.confirm) {
           /* 点了确认，发送请求更改数据库的数据为3 */
           wx.request({
-            url: 'http://127.0.0.1:8000/express/delete_order_user', //仅为示例，并非真实的接口地址
+            url: 'http://39.100.67.217:8001/express/delete_order_user', //仅为示例，并非真实的接口地址
             data: {
               name: wx.getStorageSync('name'),
               order_id: e.currentTarget.dataset.id
@@ -164,7 +164,7 @@ Page({
         if (result.confirm) {
           /* 点了确认，发送请求更改数据库的数据为3 */
           wx.request({
-            url: 'http://127.0.0.1:8000/express/cancel_order', //仅为示例，并非真实的接口地址
+            url: 'http://39.100.67.217:8001/express/cancel_order', //仅为示例，并非真实的接口地址
             data: {
               name: wx.getStorageSync('name'),
               order_id: e.currentTarget.dataset.id
@@ -213,7 +213,7 @@ Page({
       title: '正在获取',
     })
     wx.request({
-      url: 'http://127.0.0.1:8000/express/catcher_infomation', //仅为示例，并非真实的接口地址
+      url: 'http://39.100.67.217:8001/express/catcher_infomation', //仅为示例，并非真实的接口地址
       data: {
         name: e.currentTarget.dataset.id
       },

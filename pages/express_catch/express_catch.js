@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-06 15:05:19
- * @LastEditTime: 2020-12-07 14:07:03
+ * @LastEditTime: 2020-12-07 23:33:42
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express_catch/express_catch.js
@@ -39,7 +39,7 @@ Page({
     })
     var that = this
     wx.request({
-      url: 'http://127.0.0.1:8000/express/ifapply', //仅为示例，并非真实的接口地址
+      url: 'http://39.100.67.217:8001/express/ifapply', //仅为示例，并非真实的接口地址
       data: {
         studentId: wx.getStorageSync('studentId'),
       },
@@ -109,7 +109,7 @@ Page({
     })
     var that = this
     wx.request({
-      url: 'http://127.0.0.1:8000/express/applysubmit', //仅为示例，并非真实的接口地址
+      url: 'http://39.100.67.217:8001/express/applysubmit', //仅为示例，并非真实的接口地址
       data: {
         name: wx.getStorageSync('name'),
         writename: that.data.applyname.value,
@@ -175,7 +175,7 @@ Page({
       title: '正在加载',
     })
     wx.request({
-      url: 'http://127.0.0.1:8000/express/scratch', //仅为示例，并非真实的接口地址
+      url: 'http://39.100.67.217:8001/express/scratch', //仅为示例，并非真实的接口地址
       data: {
         name: wx.getStorageSync('name'),
         order_id: e.currentTarget.dataset.id

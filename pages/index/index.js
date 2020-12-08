@@ -111,8 +111,44 @@ Page({
           wendu: res.data.data.wendu,
           weather_condition: res.data.data.forecast[0].type,
           weather_wendy_condition: res.data.data.forecast[0].fengxiang,
-          weather_condition_src: '../../image_icon/weather/' + res.data.data.forecast[0].type + '.png'
         })
+        if(res.data.data.forecast[0].type == '大雨'){
+          that.setData({
+            weather_condition_src: '../../image_icon/weather/dayu.png'
+          })
+        }else if(res.data.data.forecast[0].type == '多云'){
+          that.setData({
+            weather_condition_src: '../../image_icon/weather/duoyun.png'
+          })
+        }else if(res.data.data.forecast[0].type == '雷阵雨'){
+          that.setData({
+            weather_condition_src: '../../image_icon/weather/leizhenyu.png'
+          })
+        }else if(res.data.data.forecast[0].type == '晴'){
+          that.setData({
+            weather_condition_src: '../../image_icon/weather/qing.png'
+          })
+        }else if(res.data.data.forecast[0].type == '小雨'){
+          that.setData({
+            weather_condition_src: '../../image_icon/weather/xiaoyu.png'
+          })
+        }else if(res.data.data.forecast[0].type == '阴'){
+          that.setData({
+            weather_condition_src: '../../image_icon/weather/yin.png'
+          })
+        }else if(res.data.data.forecast[0].type == '月亮'){
+          that.setData({
+            weather_condition_src: '../../image_icon/weather/moon.png'
+          })
+        }else if(res.data.data.forecast[0].type == '阵雨'){
+          that.setData({
+            weather_condition_src: '../../image_icon/weather/zhenyu.png'
+          })
+        }else if(res.data.data.forecast[0].type == '中雨'){
+          that.setData({
+            weather_condition_src: '../../image_icon/weather/zhongyu.png'
+          })
+        }
       }
     })
 

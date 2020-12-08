@@ -1,14 +1,11 @@
 {
   "pages": [
-    "pages/express_order/express_order",
+
     "pages/index/index",
     "pages/express_task/express_task",
     "pages/express_catch/express_catch",
-
-
-
     "pages/express/express",
-
+    "pages/express_order/express_order",
     "pages/schedule/schedule",
     "pages/grade/grade",
     "pages/ConfessionWall/ConfessionWall",

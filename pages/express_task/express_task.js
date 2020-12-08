@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-06 21:44:10
- * @LastEditTime: 2020-12-07 22:22:49
+ * @LastEditTime: 2020-12-07 23:33:25
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express_task/express_task.js
@@ -30,7 +30,7 @@ Page({
   get_my_catch_order() {
     var that = this
     wx.request({
-      url: 'http://127.0.0.1:8000/express/get_my_catch_order', //仅为示例，并非真实的接口地址
+      url: 'http://39.100.67.217:8001/express/get_my_catch_order', //仅为示例，并非真实的接口地址
       data: {
         name: wx.getStorageSync('name'),
       },
@@ -94,7 +94,7 @@ Page({
         if (result.confirm) {
           /* 点了确认，发送请求更改数据库的数据为3 */
           wx.request({
-            url: 'http://127.0.0.1:8000/express/cancel_catch', //仅为示例，并非真实的接口地址
+            url: 'http://39.100.67.217:8001/express/cancel_catch', //仅为示例，并非真实的接口地址
             data: {
               name: wx.getStorageSync('name'),
               order_id: e.currentTarget.dataset.id
@@ -133,7 +133,7 @@ Page({
         if (result.confirm) {
           /* 点了确认，发送请求更改数据库的数据为3 */
           wx.request({
-            url: 'http://127.0.0.1:8000/express/express_arrive', //仅为示例，并非真实的接口地址
+            url: 'http://39.100.67.217:8001/express/express_arrive', //仅为示例，并非真实的接口地址
             data: {
               name: wx.getStorageSync('name'),
               order_id: e.currentTarget.dataset.id
@@ -171,7 +171,7 @@ Page({
         if (result.confirm) {
           /* 点了确认，发送请求更改数据库的数据为3 */
           wx.request({
-            url: 'http://127.0.0.1:8000/express/delete_order_catcher', //仅为示例，并非真实的接口地址
+            url: 'http://39.100.67.217:8001/express/delete_order_catcher', //仅为示例，并非真实的接口地址
             data: {
               name: wx.getStorageSync('name'),
               order_id: e.currentTarget.dataset.id
