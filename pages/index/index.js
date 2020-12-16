@@ -102,7 +102,7 @@ Page({
     /* 加载获取天气 */
     wx.request({
 
-      url: 'http://39.100.67.217:8001/weather/', //仅为示例，并非真实的接口地址
+      url: 'https://www.hedad.cn/weather/', //仅为示例，并非真实的接口地址
       header: {
         'content-type': 'application/json' // 默认值
       },
@@ -310,7 +310,7 @@ Page({
     /*     that.jiaowu(); */
     wx.request({
 
-      url: 'http://39.100.67.217:8001/one/', //仅为示例，并非真实的接口地址
+      url: 'https://www.hedad.cn/one/', //仅为示例，并非真实的接口地址
       header: {
         'content-type': 'application/json' // 默认值
       },

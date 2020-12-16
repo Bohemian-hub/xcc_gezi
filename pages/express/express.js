@@ -188,7 +188,7 @@ Page({
       success(res) {
         console.log(res);
         wx.request({
-          url: 'http://39.100.67.217:8001/express/pay',
+          url: 'https://www.hedad.cn/express/pay',
           data: {
             code: res.code,
             //fee: that.data.fee * 100 //传入到后端作为以分为单位的金额
@@ -198,7 +198,7 @@ Page({
             console.log(result);
             console.log(that.data.express_name);
             wx.request({
-              url: 'http://39.100.67.217:8001/express/add_order', //仅为示例，并非真实的接口地址
+              url: 'https://www.hedad.cn/express/add_order', //仅为示例，并非真实的接口地址
               data: {
                 name: wx.getStorageSync('name'),
                 studentId: wx.getStorageSync('studentId'),

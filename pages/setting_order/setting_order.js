@@ -39,7 +39,7 @@ Page({
     })
     var that = this
     wx.request({
-      url: 'http://39.100.67.217:8001/express/get_my_express_order', //仅为示例，并非真实的接口地址
+      url: 'https://www.hedad.cn/express/get_my_express_order', //仅为示例，并非真实的接口地址
       data: {
         studentId: wx.getStorageSync('studentId'),
       },
@@ -68,7 +68,7 @@ Page({
     })
     var that = this
     wx.request({
-      url: 'http://39.100.67.217:8001/express/get_task_order', //仅为示例，并非真实的接口地址
+      url: 'https://www.hedad.cn/express/get_task_order', //仅为示例，并非真实的接口地址
       data: {
         name: wx.getStorageSync('name'),
       },
