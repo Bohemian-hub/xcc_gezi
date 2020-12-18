@@ -210,17 +210,10 @@ Page({
 
   },
   page_back_index: function () {
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../index/index',
       success: function (res) {
-
-      },
-      fail: function (res) {
-
-      },
-      complete: function (res) {
-
-      },
+      }
     })
   },
 

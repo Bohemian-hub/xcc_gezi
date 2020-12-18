@@ -152,7 +152,7 @@ Page({
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
       success(res) {
-        //console.log(res.data);
+        console.log(res.data);
         that.setData({
           orderwaitList: res.data
         })

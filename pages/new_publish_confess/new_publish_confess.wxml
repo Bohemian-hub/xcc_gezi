@@ -1,0 +1,140 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-12-16 22:19:42
+ * @LastEditTime: 2020-12-19 00:01:14
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /miniprogram-5/pages/new_publish_confess/new_publish_confess.wxml
+-->
+<view class="title">
+    <view class="back" bindtap="back">
+        返回
+    </view>
+    <view class="text">
+        表一个白
+    </view>
+</view>
+<view class="place_hoder">
+
+</view>
+
+
+
+<view class="question_one" style="display: {{ifquestion1show}}">
+    <view class="free">
+        <view class="question" animation="{{animation}}">
+            1.Ta是男生还是女生？
+        </view>
+
+        <view class="{{which_sex1_class}}" style="background-color: #81D4FA" animation="{{animation}}" bindtap="sex"
+            data-sex="boy">男生
+        </view>
+        <view class="{{which_sex2_class}}" style="background-color: rgb(255, 113, 156);" animation="{{animation}}"
+            bindtap="sex" data-sex="girl">女生</view>
+    </view>
+</view>
+<view class="question_one" style="display: {{ifquestion2show}}">
+    <view class="free">
+        <view class="question" animation="{{animation2}}">
+            2.Ta是那个学院的？
+        </view>
+
+        <view class="college_one" style="background-color: #81D4FA" animation="{{animation2}}" bindtap="college"
+            data-college="information_college">信息技术学院</view>
+        <view class="college_one" style="background-color: #80DEEA" animation="{{animation2}}" bindtap="college"
+            data-college="language_college">外国语学院</view>
+        <view class="college_one" style="background-color: #81D4FA" animation="{{animation2}}" bindtap="college"
+            data-college="civil_college">土木与水利工程学院</view>
+        <view class="college_one" style="background-color: #80DEEA" animation="{{animation2}}" bindtap="college"
+            data-college="yi_college">彝语言文化学院</view>
+        <view class="college_one" style="background-color: #81D4FA" animation="{{animation2}}" bindtap="college"
+            data-college="culture_college">文化传媒学院</view>
+        <view class="college_one" style="background-color: #80DEEA" animation="{{animation2}}" bindtap="college"
+            data-college="economics_college">经济管理学院</view>
+        <view class="college_one" style="background-color: #81D4FA" animation="{{animation2}}" bindtap="college"
+            data-college="art_college">艺术学院</view>
+        <view class="college_one" style="background-color: #80DEEA" animation="{{animation2}}" bindtap="college"
+            data-college="teacher_college">教师教育学院</view>
+        <view class="college_one" style="background-color: #81D4FA" animation="{{animation2}}" bindtap="college"
+            data-college="agriculture_college">农业科学学院</view>
+        <view class="college_one" style="background-color: #80DEEA" animation="{{animation2}}" bindtap="college"
+            data-college="mechanical_college">机械与电气工程学院</view>
+        <view class="college_one" style="background-color: #81D4FA" animation="{{animation2}}" bindtap="college"
+            data-college="math_college">理学院</view>
+        <view class="college_one" style="background-color: #80DEEA" animation="{{animation2}}" bindtap="college"
+            data-college="pe_college">体育学院</view>
+        <view class="college_one" style="background-color: #81D4FA" animation="{{animation2}}" bindtap="college"
+            data-college="animal_college">动物科学学院</view>
+        <view class="college_one" style="background-color: #80DEEA" animation="{{animation2}}" bindtap="college"
+            data-college="travel_college">旅游与城乡规划学院</view>
+        <view class="college_one" style="background-color: #80DEEA" animation="{{animation2}}" bindtap="college"
+            data-college="source_college">资源与环境学院</view>
+    </view>
+</view>
+<view class="question_one" style="display: {{ifquestion3show}}">
+    <view class="free">
+        <view class="question" animation="{{animation3}}">
+            3.Ta是哪个专业的？
+        </view>
+        <view>
+            <view class="major_one" style="background-color: rgb(212, 79, 117);" animation="{{animation3}}"
+                bindtap="major" data-major="{{item}}" wx:for="{{college}}" wx:key="">{{item}}
+            </view>
+        </view>
+    </view>
+</view>
+<view class="question_one" style="display: {{ifquestion4show}}">
+    <view class="free">
+        <view class="question" animation="{{animation4}}">
+            4.写一封表白信吧
+        </view>
+
+        <view class="paper">
+            <view>
+                <view class="dear">
+                    Dear
+                </view>
+                <input class="dearname" type="text" placeholder="真实姓名">
+                </input>
+                <view class="dear">
+                    :
+                </view>
+            </view>
+            <view style="clear:both">
+
+            </view>
+
+            <view class="content_box" hover-class="none" hover-stop-propagation="false">
+                <textarea class="content" value="" placeholder="输入内容" maxlength="500">
+
+                </textarea>
+            </view>
+
+            <view class="buwho">
+                --By{{bywho}}
+            </view>
+        </view>
+
+
+
+        <view class="noname_confess" animation="{{animation4}}">
+            匿名表白
+        </view>
+
+        <view class="send_confess" animation="{{animation4}}">
+            发送表白
+        </view>
+
+
+    </view>
+</view>
+
+
+
+
+
+
+
+<view class="bottom_button" bindtap="last_step">
+    {{bottom_text}}
+</view>

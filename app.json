@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/new_publish_confess/new_publish_confess",
+    "pages/new_confesswall/new_confesswall",
     "pages/index/index",
     "pages/setting_talkback/setting_talkback",
     "pages/setting_order/setting_order",

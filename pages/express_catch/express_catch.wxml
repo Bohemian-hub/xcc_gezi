@@ -34,7 +34,7 @@
     <view class="express_catch_one_content">
         <view class="express_catch_one_content_left">
             <view class="express_catch_one_content_left_size">类型：{{item.fields.express_size}}</view>
-            <view class="express_catch_one_content_place">配送地址：{{item.fields.express_company}}</view>
+            <view class="express_catch_one_content_place">配送地址：{{item.fields.express_place}}</view>
             <view class="express_catch_one_content_date">下单时间：{{item.fields.order_time}}</view>
         </view>
         <view class="express_catch_one_content_right">

@@ -1,0 +1,183 @@
+page{
+background-color: #fff9e3;
+}
+
+.title{
+    width: 100%;
+    height: 150rpx;
+    background-color: #00cec9;
+    padding-left: 50rpx;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+}
+.place_hoder{
+    width: 100%;
+    height: 150rpx;
+}
+.back{
+    width: 130rpx;
+    height: 80rpx;
+    background-color: rgb(255, 255, 255);
+    float: left;
+    margin-top: 50rpx;
+    border-radius: 8rpx;
+    text-align: center;
+    line-height: 80rpx;
+    font-size: 40rpx;
+}
+.text{
+    color: white;
+    width: 450rpx;
+    background-color: #ffffff00;
+    font-size: 50rpx;
+    line-height: 175rpx;
+    text-align: center;
+    float: left;
+
+}
+.free{
+    background-color: #00cecb00;
+    margin-top: 100rpx;
+}
+.question{
+    width: 100%;
+    text-align: center;
+    font-size: 18rpx;
+    color: rgb(145, 148, 0);
+    font-weight: 700;
+    opacity:0;
+}
+.sex_button{
+    width: 35%;
+    height: 150rpx;
+    margin: 200rpx auto 300rpx auto ;
+    text-align: center;
+    border-radius: 20rpx;
+    line-height: 150rpx;
+    color: white;
+    font-size: 45rpx;
+    opacity:0;
+}
+.sex_button_after{
+    width: 35%;
+    height: 150rpx;
+    margin: 200rpx auto 300rpx auto ;
+    text-align: center;
+    border-radius: 20rpx;
+    line-height: 150rpx;
+    color: white;
+    font-size: 45rpx;
+    opacity:0;
+    border: 5rpx solid rgb(250, 198, 26);
+}
+.bottom_button{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 100rpx;
+    background-color: #00cec9;
+    text-align: center;
+    line-height: 100rpx;
+    font-size: 40rpx;
+    color: white;
+}
+.college_one{
+    width: 42%; 
+    height: 50rpx;
+    border-radius: 20rpx;
+    background-color: pink;
+    margin: 80rpx auto;
+    font-size: 20rpx;
+    color: white;
+    text-align: center;
+    line-height: 50rpx;
+    opacity:0;
+}
+
+.major_one{
+    width: 42%; 
+    height: 50rpx;
+    border-radius: 20rpx;
+    background-color: pink;
+    margin: 80rpx auto;
+    font-size: 20rpx;
+    color: white;
+    text-align: center;
+    line-height: 50rpx;
+    opacity:0;
+}
+.noname_confess{
+    width: 40%;
+    height: 50rpx;
+    margin: 100rpx auto 100rpx auto;
+    opacity: 0;
+    background-color: #7efaf8;
+    text-align: center;
+    line-height: 50rpx;
+    font-size: 20rpx;
+    border-radius: 10rpx;
+    color: white;
+}
+.send_confess{
+    width: 40%;
+    height: 50rpx;
+    margin: 0rpx auto 0rpx auto;
+    opacity: 0;
+    background-color: #00cec9;
+    text-align: center;
+    line-height: 50rpx;
+    font-size: 20rpx;
+    border-radius: 10rpx;
+    color: white;
+}
+.paper{
+    width: 80%;
+    height: 800rpx;
+    margin: 100rpx auto;
+    background-image: url(https://s3.ax1x.com/2020/12/18/rtpABQ.png);
+    background-size: 100% 100%;
+    z-index: 999;
+}
+.dear{
+    width: 100rpx;
+    height: 50rpx;
+    background-color: #eb7c3b00;
+    float: left;
+    line-height: 50rpx;
+    font-weight: 800;
+    color: rgb(51, 29, 0);
+    font-size: 35rpx;
+    margin-left: 20rpx;
+}
+.dearname{
+    width: 200rpx;
+    height: 50rpx;
+    background-color: #eb7c3b00;
+    float: left;
+    color: rgb(71, 40, 0);
+    border-bottom: 1rpx dashed rgb(128, 128, 128);
+    text-align: center;
+
+}
+.content_box{
+    width: 95%;
+    margin: 30rpx auto 0 auto;
+    height: 600rpx;
+}
+.content{
+    width: 100%;
+    height: 100%;
+    font-size: 30rpx;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.buwho{
+    text-align: right;
+    padding-right: 50rpx;
+    width: 100%;
+    height: 50rpx;    
+    line-height: 50rpx;
+    font-weight: 800;
+    color: rgb(51, 29, 0);
+    font-size: 35rpx;
+}
