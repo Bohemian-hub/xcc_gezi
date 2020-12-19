@@ -138,6 +138,7 @@ background-color: #fff9e3;
     background-image: url(https://s3.ax1x.com/2020/12/18/rtpABQ.png);
     background-size: 100% 100%;
     z-index: 999;
+    opacity:0;
 }
 .dear{
     width: 100rpx;
@@ -149,6 +150,8 @@ background-color: #fff9e3;
     color: rgb(51, 29, 0);
     font-size: 35rpx;
     margin-left: 20rpx;
+    opacity:0;
+
 }
 .dearname{
     width: 200rpx;
@@ -157,18 +160,21 @@ background-color: #fff9e3;
     float: left;
     color: rgb(71, 40, 0);
     border-bottom: 1rpx dashed rgb(128, 128, 128);
+    opacity:0;
     text-align: center;
 
 }
 .content_box{
     width: 95%;
     margin: 30rpx auto 0 auto;
+    opacity:0;
     height: 600rpx;
 }
 .content{
     width: 100%;
     height: 100%;
     font-size: 30rpx;
+    opacity:0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .buwho{
@@ -179,5 +185,6 @@ background-color: #fff9e3;
     line-height: 50rpx;
     font-weight: 800;
     color: rgb(51, 29, 0);
+    opacity:0;
     font-size: 35rpx;
 }

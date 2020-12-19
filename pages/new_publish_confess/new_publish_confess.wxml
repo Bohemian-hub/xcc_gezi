@@ -89,39 +89,39 @@
             4.写一封表白信吧
         </view>
 
-        <view class="paper">
+        <view class="paper" animation="{{animation5}}" >
             <view>
-                <view class="dear">
+                <view class="dear" animation="{{animation5}}">
                     Dear
                 </view>
-                <input class="dearname" type="text" placeholder="真实姓名">
+                <input class="dearname" type="text" placeholder="真实姓名" animation="{{animation5}}" bindinput='getInputValue1'>
                 </input>
-                <view class="dear">
+                <view class="dear" animation="{{animation5}}">
                     :
                 </view>
             </view>
-            <view style="clear:both">
+            <view style="clear:both" >
 
             </view>
 
-            <view class="content_box" hover-class="none" hover-stop-propagation="false">
-                <textarea class="content" value="" placeholder="输入内容" maxlength="500">
+            <view class="content_box" hover-class="none" hover-stop-propagation="false" animation="{{animation5}}">
+                <textarea class="content" value="" placeholder="输入内容" maxlength="500" animation="{{animation5}}" bindinput='getInputValue2'>
 
                 </textarea>
             </view>
 
-            <view class="buwho">
+            <view class="buwho" animation="{{animation5}}">
                 --By{{bywho}}
             </view>
         </view>
 
 
 
-        <view class="noname_confess" animation="{{animation4}}">
+        <view class="noname_confess" animation="{{animation4}}" bindtap="nonamesubmit">
             匿名表白
         </view>
 
-        <view class="send_confess" animation="{{animation4}}">
+        <view class="send_confess" animation="{{animation4}}" bindtap="confesssubmit">
             发送表白
         </view>
 
