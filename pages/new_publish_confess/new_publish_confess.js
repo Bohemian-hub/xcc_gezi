@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-16 22:19:42
- * @LastEditTime: 2020-12-20 00:50:01
+ * @LastEditTime: 2020-12-20 23:12:11
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/new_publish_confess/new_publish_confess.js
@@ -277,6 +277,19 @@ Page({
             this.animation5.translate(300, -300).scale(.5, .5).opacity(0).step()
             this.setData({ animation5: this.animation5.export() })
           }
+
+          wx.showModal({
+            title: '提示',
+            content: '你的表白信已经寄出，他会在登录西院格子时看到哦。',
+            showCancel: false,
+            confirmText: '确定',
+            confirmColor: '#3CC51F',
+            success: (result) => {
+              if (result.confirm) {
+                this.back()
+              }
+            },
+          });
         },
       });
 
@@ -291,12 +304,40 @@ Page({
   },
   /* 这是匿名提交 */
   nonamesubmit() {
-    this.tijiaobiaobai("匿名")
+    wx.showModal({
+      title: '提示',
+      content: '你即将发送匿名表白，Ta可能永远不知道你爱Ta！',
+      showCancel: true,
+      cancelText: '取消',
+      cancelColor: '#000000',
+      confirmText: '发送',
+      confirmColor: '#3CC51F',
+      success: (result) => {
+        if (result.confirm) {
+          this.tijiaobiaobai("匿名")
+        }
+      },
+    });
+
+
   },
 
   /* 这不是匿名提交 */
   confesssubmit() {
-    this.tijiaobiaobai(wx.getStorageSync('name'))
+    wx.showModal({
+      title: '提示',
+      content: '确定发送表白吗',
+      showCancel: true,
+      cancelText: '取消',
+      cancelColor: '#000000',
+      confirmText: '发送',
+      confirmColor: '#3CC51F',
+      success: (result) => {
+        if (result.confirm) {
+          this.tijiaobiaobai(wx.getStorageSync('name'))
+        }
+      },
+    });
 
   }
 })

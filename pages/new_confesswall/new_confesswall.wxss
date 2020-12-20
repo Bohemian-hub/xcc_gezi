@@ -50,6 +50,19 @@ background-color: #ffeaa7;
     color: white;
     font-size: 45rpx;
 }
+.button_change2{
+    width:35%;
+    height: 100rpx;
+    background-color: #b6b6b6;
+    float: left;
+    margin-top: 30rpx;
+    border-radius: 20rpx;
+    margin-left: 10%;
+    text-align: center;
+    line-height: 100rpx;
+    color: white;
+    font-size: 45rpx;
+}
 .confess{
     width: 38%;
     margin-left: 8%;
