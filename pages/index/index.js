@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2020-12-08 13:03:39
+ * @LastEditTime: 2020-12-21 23:18:43
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.js
@@ -34,20 +34,7 @@ Page({
     weather_condition_src: '',
     show_choose_counttime: 0
   },
-  confress_page: function () {
-    wx.navigateTo({
-      url: '../ConfessionWall/ConfessionWall',
-      success: function (res) {
 
-      },
-      fail: function (res) {
-
-      },
-      complete: function (res) {
-
-      },
-    })
-  },
 
   Get_time() {
     var that = this
@@ -227,6 +214,12 @@ Page({
       this.setData({
         showwhat: 'strive',
       })
+    } else if (event.currentTarget.dataset.id == '表白') {
+      console.log(5);
+
+      this.setData({
+        showwhat: 'confess',
+      })
     } else {
       this.setData({
         showwhat: 'else',
@@ -284,6 +277,16 @@ Page({
   coursetable() {
     wx.navigateTo({
       url: '../schedule/schedule',
+    })
+  },
+  confress_page: function () {
+    wx.navigateTo({
+      url: '../ConfessionWall/ConfessionWall',
+    })
+  },
+  new_confesswall: function () {
+    wx.navigateTo({
+      url: '../new_confesswall/new_confesswall',
     })
   },
   onLoad: function () {
