@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-12-16 20:57:02
- * @LastEditTime: 2020-12-16 22:29:21
+ * @LastEditTime: 2020-12-21 11:44:59
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/new_confesswall/new_confesswall.wxml
@@ -18,8 +18,10 @@
 
 </view>
 
-<view class="button_change">我表白の人</view>
-<view class="button_change2" bindtap = "confess_tome">收到の表白</view>
+<view class="button_change" bindtap="my_confess" style="background-color:{{color == '1'?'#00cec9':'#b6b6b6'}}">我表白の人
+</view>
+<view class="button_change2" bindtap="confess_tome" style="background-color:{{color == '2'?'#00cec9':'#b6b6b6'}}">收到の表白
+</view>
 
 <view class="confess" wx:for="{{my_confess}}" wx:key="">
     <view class="who">Dear {{item.fields.confess_name}}</view>
@@ -31,6 +33,6 @@
 
 
 
-<view class="publish" bindtap = "confessone">
+<view class="publish" bindtap="confessone">
     表一个白
 </view>
