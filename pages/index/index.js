@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2020-12-22 10:12:00
+ * @LastEditTime: 2021-01-02 22:25:27
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.js
@@ -32,7 +32,8 @@ Page({
     weather_condition: '',
     weather_wendy_condition: '',
     weather_condition_src: '',
-    show_choose_counttime: 0
+    show_choose_counttime: 0,
+    passagearr: []
   },
 
 
@@ -89,7 +90,7 @@ Page({
     /* 加载获取天气 */
     wx.request({
 
-      url: 'https://www.hedad.cn/weather/', //仅为示例，并非真实的接口地址
+      url: 'https://www.xiyuangezi.cn/weather/', //仅为示例，并非真实的接口地址
       header: {
         'content-type': 'application/json' // 默认值
       },
@@ -307,7 +308,9 @@ Page({
       })
     }
 
+    /* 这里调用函数来请求新闻 */
 
+    this.get_passage()
 
 
     /* 加载one一个接口获取数据 */
@@ -317,7 +320,7 @@ Page({
     /*     that.jiaowu(); */
     wx.request({
 
-      url: 'https://www.hedad.cn/one/', //仅为示例，并非真实的接口地址
+      url: 'https://www.xiyuangezi.cn/one/', //仅为示例，并非真实的接口地址
       header: {
         'content-type': 'application/json' // 默认值
       },
@@ -341,6 +344,23 @@ Page({
 
     }, 120000);
 
+  },
+  get_passage() {
+    var that = this
+    wx.request({
+
+      url: 'http://127.0.0.1:8000/passage/get_passage', //仅为示例，并非真实的接口地址
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success(res) {
+        console.log(res.data)
+        that.setData({
+          passagearr: res.data
+        })
+        console.log(that.data.passagearr);
+      }
+    })
   },
   hidden_onetext_on_onepic() {
     if (hidden_turn_status == 0) {
@@ -368,16 +388,14 @@ Page({
   jump: function () {
     wx.navigateTo({
       url: '../setting/setting',
-      success: function (res) {
-
-      },
-      fail: function (res) {
-
-      },
-      complete: function (res) {
-
-      },
     })
   },
+  turn_news(e) {
+    console.log(e.currentTarget.dataset.src);
+    var src = e.currentTarget.dataset.src
+    wx.navigateTo({
+      url: '../index_passage/index_passage?src=' + src,
+    })
+  }
 
 })

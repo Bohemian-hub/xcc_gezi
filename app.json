@@ -19,7 +19,8 @@
     "pages/pay/pay",
     "pages/product/product",
     "pages/logs/logs",
-    "pages/setting_more/setting_more"
+    "pages/setting_more/setting_more",
+    "pages/index_passage/index_passage"
   ],
   "window": {
     "backgroundTextStyle": "light",
