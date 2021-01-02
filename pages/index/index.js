@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2020-12-21 23:18:43
+ * @LastEditTime: 2020-12-22 10:12:00
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.js
@@ -135,6 +135,10 @@ Page({
         } else if (res.data.data.forecast[0].type == '中雨') {
           that.setData({
             weather_condition_src: '../../image_icon/weather/zhongyu.png'
+          })
+        } else if (res.data.data.forecast[0].type == '霾') {
+          that.setData({
+            weather_condition_src: '../../image_icon/weather/mai.png'
           })
         }
       }
