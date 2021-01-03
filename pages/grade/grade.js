@@ -34,7 +34,7 @@ Page({
   getgrade() {
     var that = this;
     wx.request({
-      url: 'https://www.hedad.cn/info/grade1',
+      url: 'https://www.xiyuangezi.cn/info/grade1',
       header: {
         "content-type": "application/x-www-form-urlencoded"		//使用POST方法要带上这个header
       },
@@ -142,7 +142,7 @@ Page({
       })
     }
     wx.request({
-      url: 'https://www.hedad.cn/info/grade1',
+      url: 'https://www.xiyuangezi.cn/info/grade1',
       header: {
         "content-type": "application/x-www-form-urlencoded"		//使用POST方法要带上这个header
       },

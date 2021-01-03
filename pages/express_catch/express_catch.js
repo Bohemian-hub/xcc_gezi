@@ -39,7 +39,7 @@ Page({
     })
     var that = this
     wx.request({
-      url: 'https://www.hedad.cn/express/ifapply', //仅为示例，并非真实的接口地址
+      url: 'https://www.xiyuangezi.cn/express/ifapply', //仅为示例，并非真实的接口地址
       data: {
         studentId: wx.getStorageSync('studentId'),
       },
@@ -109,7 +109,7 @@ Page({
     })
     var that = this
     wx.request({
-      url: 'https://www.hedad.cn/express/applysubmit', //仅为示例，并非真实的接口地址
+      url: 'https://www.xiyuangezi.cn/express/applysubmit', //仅为示例，并非真实的接口地址
       data: {
         name: wx.getStorageSync('name'),
         writename: that.data.applyname.value,
@@ -143,7 +143,7 @@ Page({
     var that = this
     /* 获取所有待接订单 */
     wx.request({
-      url: 'https://www.hedad.cn/express/get_all_express', //仅为示例，并非真实的接口地址
+      url: 'https://www.xiyuangezi.cn/express/get_all_express', //仅为示例，并非真实的接口地址
       data: {
         studentId: wx.getStorageSync('studentId'),
       },
@@ -175,7 +175,7 @@ Page({
       title: '正在加载',
     })
     wx.request({
-      url: 'https://www.hedad.cn/express/scratch', //仅为示例，并非真实的接口地址
+      url: 'https://www.xiyuangezi.cn/express/scratch', //仅为示例，并非真实的接口地址
       data: {
         name: wx.getStorageSync('name'),
         order_id: e.currentTarget.dataset.id

@@ -97,7 +97,7 @@ Page({
     /* 发送一个数据请求，获取表白墙上日期为今天的所有表白数据。 */
     /* 当然是通过向后端传值的方式 */
     wx.request({
-      url: 'https://www.hedad.cn/confess/get_confess', //仅为示例，并非真实的接口地址
+      url: 'https://www.xiyuangezi.cn/confess/get_confess', //仅为示例，并非真实的接口地址
       data: {
         card_date: card_day
       },
@@ -176,7 +176,7 @@ Page({
     })
     /* 查询一下哪些卡片我是点了赞的 */
     wx.request({
-      url: 'https://www.hedad.cn/confess/which_love', //仅为示例，并非真实的接口地址
+      url: 'https://www.xiyuangezi.cn/confess/which_love', //仅为示例，并非真实的接口地址
       data: {
         studentId: wx.getStorageSync('studentId'),
       },
@@ -261,7 +261,7 @@ Page({
 
       /* 下面我就要记录我这个点赞了，也就是发送点赞请求到后端 */
       wx.request({
-        url: 'https://www.hedad.cn/confess/add_love', //仅为示例，并非真实的接口地址
+        url: 'https://www.xiyuangezi.cn/confess/add_love', //仅为示例，并非真实的接口地址
         data: {
           name: wx.getStorageSync('name'),
           studentId: wx.getStorageSync('studentId'),
@@ -315,7 +315,7 @@ Page({
       title: '正在加载',
     })
     wx.request({
-      url: 'https://www.hedad.cn/confess/get_comment', //仅为示例，并非真实的接口地址
+      url: 'https://www.xiyuangezi.cn/confess/get_comment', //仅为示例，并非真实的接口地址
       data: {
         comment_id: that.data.now_turn_comment_id,
       },
@@ -334,7 +334,7 @@ Page({
       },
     });
     wx.request({
-      url: 'https://www.hedad.cn/confess/get_comment_son', //仅为示例，并非真实的接口地址
+      url: 'https://www.xiyuangezi.cn/confess/get_comment_son', //仅为示例，并非真实的接口地址
       data: {
         comment_id: that.data.now_turn_comment_id,
       },
@@ -470,7 +470,7 @@ Page({
 
       /* 下面我要请求后端数据库了，我要将这个评论增加大哦我的评论表中去。 */
       wx.request({
-        url: 'https://www.hedad.cn/confess/add_comment', //仅为示例，并非真实的接口地址
+        url: 'https://www.xiyuangezi.cn/confess/add_comment', //仅为示例，并非真实的接口地址
         data: {
           name: wx.getStorageSync('name'),
           studentId: wx.getStorageSync('studentId'),
@@ -492,7 +492,7 @@ Page({
           })
           /* 评论成功之后就要想办法刷新数据了 */
           wx.request({
-            url: 'https://www.hedad.cn/confess/get_comment', //仅为示例，并非真实的接口地址
+            url: 'https://www.xiyuangezi.cn/confess/get_comment', //仅为示例，并非真实的接口地址
             data: {
               comment_id: that.data.now_turn_comment_id,
             },
@@ -564,7 +564,7 @@ Page({
 
       /* 下面我要请求后端数据库了，我要将这个评论增加大哦我的评论表中去。 */
       wx.request({
-        url: 'https://www.hedad.cn/confess/add_son_comment', //仅为示例，并非真实的接口地址
+        url: 'https://www.xiyuangezi.cn/confess/add_son_comment', //仅为示例，并非真实的接口地址
         data: {
           son_name: wx.getStorageSync('name'),   //评论者的姓名
           son_studentId: wx.getStorageSync('studentId'),  //评论者的学号
@@ -586,7 +586,7 @@ Page({
       /* 子评论成功了，就重新获取下评论和子评论，然后渲染 */
       /* 先来刷新评论 */
       wx.request({
-        url: 'https://www.hedad.cn/confess/get_comment', //仅为示例，并非真实的接口地址
+        url: 'https://www.xiyuangezi.cn/confess/get_comment', //仅为示例，并非真实的接口地址
         data: {
           comment_id: that.data.now_turn_comment_id,
         },
@@ -606,7 +606,7 @@ Page({
       });
       /* 再来刷新子评论 */
       wx.request({
-        url: 'https://www.hedad.cn/confess/get_comment_son', //仅为示例，并非真实的接口地址
+        url: 'https://www.xiyuangezi.cn/confess/get_comment_son', //仅为示例，并非真实的接口地址
         data: {
           comment_id: that.data.now_turn_comment_id,
         },

@@ -59,7 +59,7 @@ Page({
     })
     var that = this
     wx.request({
-      url: 'https://www.hedad.cn/info/cal_time',
+      url: 'https://www.xiyuangezi.cn/info/cal_time',
       header: {
         'content-type': 'application/x-www-form-urlencoded'		//使用POST方法要带上这个header
       },
@@ -139,7 +139,7 @@ Page({
     })
     var that = this;
     wx.request({
-      url: 'https://www.hedad.cn/info/schedule',
+      url: 'https://www.xiyuangezi.cn/info/schedule',
       header: {
         "content-type": "application/x-www-form-urlencoded"		//使用POST方法要带上这个header
       },

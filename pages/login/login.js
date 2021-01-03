@@ -24,7 +24,7 @@ Page({
       title: '登录中',
     })
     wx.request({
-      url: 'https://www.hedad.cn/info/pinfo',
+      url: 'https://www.xiyuangezi.cn/info/pinfo',
       header: {
         "content-type": "application/x-www-form-urlencoded"		//使用POST方法要带上这个header
       },

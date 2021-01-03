@@ -62,7 +62,7 @@ Page({
     /* 只需要传入我的学号就好啦 */
     wx.request({
 
-      url: 'https://www.hedad.cn/confess/count', //仅为示例，并非真实的接口地址
+      url: 'https://www.xiyuangezi.cn/confess/count', //仅为示例，并非真实的接口地址
       header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
@@ -253,7 +253,7 @@ Page({
             // 服务端其他语言参考 COS STS SDK ：https://github.com/tencentyun/qcloud-cos-sts-sdk
             // STS 详细文档指引看：https://cloud.tencent.com/document/product/436/14048
             wx.request({
-              url: 'https://www.hedad.cn/confess/credential',
+              url: 'https://www.xiyuangezi.cn/confess/credential',
               data: {
                 // 可从 options 取需要的参数
               },
@@ -324,7 +324,7 @@ Page({
 
     } else {
       wx.request({
-        url: 'https://www.hedad.cn/confess/add_confess', //仅为示例，并非真实的接口地址
+        url: 'https://www.xiyuangezi.cn/confess/add_confess', //仅为示例，并非真实的接口地址
         data: {
           name: wx.getStorageSync('name'),
           studentId: wx.getStorageSync('studentId'),

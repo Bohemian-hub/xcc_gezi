@@ -30,7 +30,7 @@ Page({
     })
     var that = this
     wx.request({
-      url: 'https://www.hedad.cn/info/pinfo2',
+      url: 'https://www.xiyuangezi.cn/info/pinfo2',
       header: {
         "content-type": "application/x-www-form-urlencoded"		//使用POST方法要带上这个header
       },
