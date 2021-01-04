@@ -330,11 +330,18 @@ Page({
           imageone_src: res.data.img_src,
           sentence: res.data.content
         })
-        if (res.data.content.length < 50) {
+        if(!res.data.content){
           that.setData({
-            sentence_size: '22rpx',
+            sentence: "这个年龄段你睡得着觉？"
           })
+        }else{
+          if (res.data.content.length < 50) {
+            that.setData({
+              sentence_size: '22rpx',
+            })
+          }
         }
+
       }
     })
 
@@ -349,7 +356,7 @@ Page({
     var that = this
     wx.request({
 
-      url: 'http://127.0.0.1:8000/passage/get_passage', //仅为示例，并非真实的接口地址
+      url: 'https://www.xiyuangezi.cn/passage/get_passage', //仅为示例，并非真实的接口地址
       header: {
         'content-type': 'application/json' // 默认值
       },
