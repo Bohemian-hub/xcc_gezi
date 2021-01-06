@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2021-01-02 22:25:27
+ * @LastEditTime: 2021-01-06 18:53:13
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.js
@@ -201,7 +201,7 @@ Page({
       this.setData({
         showwhat: 'jiaowu',
       })
-    } else if (event.currentTarget.dataset.id == '服务') {
+    } else if (event.currentTarget.dataset.id == '生活') {
       console.log(2);
 
       this.setData({
@@ -279,6 +279,11 @@ Page({
       url: '../express/express',
     })
   },
+  makemoney() {
+    wx.redirectTo({
+      url: '../express_catch/express_catch',
+    })
+  },
   coursetable() {
     wx.navigateTo({
       url: '../schedule/schedule',
@@ -330,11 +335,11 @@ Page({
           imageone_src: res.data.img_src,
           sentence: res.data.content
         })
-        if(!res.data.content){
+        if (!res.data.content) {
           that.setData({
             sentence: "这个年龄段你睡得着觉？"
           })
-        }else{
+        } else {
           if (res.data.content.length < 50) {
             that.setData({
               sentence_size: '22rpx',

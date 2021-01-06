@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-01 10:00:16
- * @LastEditTime: 2020-12-06 21:47:15
+ * @LastEditTime: 2021-01-06 20:07:33
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express/express.js
@@ -28,7 +28,17 @@ Page({
     express_place: '',
     fee: '&&',
     warning: '欢迎使用',
-    warn_show: 0
+    warn_show: 0,
+    expressshowwhat: 0,
+    choosemenucolor: 0,
+    express_info_text_name: '',
+    express_info_text_tel: '',
+    express_info_text_code: '',
+    /* 下面是第二个页面展示的 */
+    orderList: [],
+    nothing: 0,
+    catcher_infor: [],
+    catcher_show: 0
 
   },
 
@@ -45,24 +55,23 @@ Page({
     })
   },
   turn_page_neworder() {
-    wx.redirectTo({
-      url: '../express/express',
+    this.setData({
+      expressshowwhat: 0,
+      choosemenucolor: 0,
+      express_info_text_name: '',     //清空这些地方的值
+      express_info_text_tel: '',
+      express_info_text_code: '',
     })
+
   },
   turn_page_myorder() {
-    wx.redirectTo({
-      url: '../express_order/express_order',
+    /* 让填单的view不显示，让订单的view显示 */
+    this.setData({
+      expressshowwhat: 1,
+      choosemenucolor: 1
     })
-  },
-  turn_page_catchorder() {
-    wx.redirectTo({
-      url: '../express_catch/express_catch',
-    })
-  },
-  turn_page_myself() {
-    wx.redirectTo({
-      url: '../express_task/express_task',
-    })
+    this.get_order()  //获取订单
+
   },
   bindPickerChange1: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
@@ -158,6 +167,69 @@ Page({
 
 
   },
+  get_order() {
+    wx.showLoading({
+      title: '正在加载',
+    })
+    var that = this
+    wx.request({
+      url: 'https://www.xiyuangezi.cn/express/get_express', //仅为示例，并非真实的接口地址
+      data: {
+        studentId: wx.getStorageSync('studentId'),
+      },
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      success(res) {
+        console.log(res);
+
+        console.log(res.data);
+        for (let index = 0; index < res.data.length; index++) {
+          const element = res.data[index];
+          console.log(element.fields.order_stadus);
+          if (element.fields.order_stadus == 1) {
+            element.fields.order_stadus = '待接单'
+            element.fields.order_stadus_color = 'red'
+          } else if (element.fields.order_stadus == 2) {
+            element.fields.order_stadus = '代取中'
+            element.fields.order_stadus_color = 'rgb(230, 147, 39)'
+            element.fields.confim_button = ''
+
+
+          } else if (element.fields.order_stadus == 3) {
+            element.fields.order_stadus = '送达待确认'
+            element.fields.order_stadus_color = 'rgb(69, 183, 228)'
+            element.fields.confim_button = '确认收件'
+
+
+          } else if (element.fields.order_stadus == 4 || element.fields.order_stadus == 6) {
+            element.fields.order_stadus = '已确认'
+            element.fields.order_stadus_color = 'green'
+
+
+          }
+
+        }
+        that.setData({
+          orderList: res.data
+        })
+        console.log(that.data.orderList.length);
+        if (that.data.orderList.length == 0) {
+          that.setData({
+            nothing1: 1
+          })
+        } else {
+          that.setData({
+            nothing1: 0
+          })
+        }
+
+
+      }
+    })
+    wx.hideLoading()
+  },
   pay() {
     var that = this
     if (that.data.date == '2020-12-01') {
@@ -241,9 +313,7 @@ Page({
                         success: function (res) {
                           if (res.confirm) {//这里是点击了确定以后
                             console.log('用户点击确定')
-                            wx.navigateTo({
-                              url: '../express_order/express_order',
-                            })
+                            that.turn_page_myorder()
                           } else {//这里是点击了取消以后
                             console.log('用户点击取消')
                             wx.redirectTo({
@@ -268,6 +338,158 @@ Page({
       }
     })
   },
+  receive_express(e) {
+    var that = this
+    /* 这里是用户确认收件，在代取员将状态从接单2变成3时，我这里就提示带我确认了 */
+    /* 来一个事件将订单状态 改成4，就是已经完结 */
+    wx.request({
+      url: 'https://www.xiyuangezi.cn/express/receive_express', //仅为示例，并非真实的接口地址
+      data: {
+        name: wx.getStorageSync('name'),
+        order_id: e.currentTarget.dataset.id
+      },
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      success(res) {
+        console.log(res.data.loginnum);
+        wx.hideLoading();
+        if (res.data.loginnum == 200) {
+          that.turn_page_myorder()
+        }
+      }
+    })
+  },
+  /* 删除已经完成的订单 */
+  delete_already_order(e) {
+    var that = this
+    wx.showModal({
+      title: '',
+      content: '删除订单后可以在设置中查看历史订单！',
+      showCancel: true,
+      cancelText: '取消',
+      cancelColor: '#000000',
+      confirmText: '确定',
+      confirmColor: '#3CC51F',
+      success: (result) => {
+        if (result.confirm) {
+          /* 点了确认，发送请求更改数据库的数据为3 */
+          wx.request({
+            url: 'https://www.xiyuangezi.cn/express/delete_order_user', //仅为示例，并非真实的接口地址
+            data: {
+              name: wx.getStorageSync('name'),
+              order_id: e.currentTarget.dataset.id
+            },
+            method: "POST",
+            header: {
+              'content-type': 'application/x-www-form-urlencoded' // 默认值
+            },
+            success(res) {
+              console.log(res.data.loginnum);
+              wx.hideLoading();
+              if (res.data.loginnum == 200) {
+                that.turn_page_myorder()
+              }
+            }
+          })
+
+        }
+      },
+    });
+
+  },
+  cancel_order(e) {
+    /* 用户取消还没有人取的订单 */
+    var that = this
+    wx.showModal({
+      title: '',
+      content: '确定取消此订单？（退款将收取5%手续费）',
+      showCancel: true,
+      cancelText: '取消',
+      cancelColor: '#000000',
+      confirmText: '确定',
+      confirmColor: '#3CC51F',
+      success: (result) => {
+        if (result.confirm) {
+          /* 点了确认，发送请求更改数据库的数据为3 */
+          wx.request({
+            url: 'https://www.xiyuangezi.cn/express/cancel_order', //仅为示例，并非真实的接口地址
+            data: {
+              name: wx.getStorageSync('name'),
+              order_id: e.currentTarget.dataset.id
+            },
+            method: "POST",
+            header: {
+              'content-type': 'application/x-www-form-urlencoded' // 默认值
+            },
+            success(res) {
+              console.log(res.data.loginnum);
+              wx.hideLoading();
+              if (res.data.loginnum == 200) {
+                that.turn_page_myorder()
+              }
+              else if (res.data.loginnum == 100) {
+                wx.showModal({
+                  title: '',
+                  content: '此订单已经被接单，如需退单请联系您的代取员！',
+                  showCancel: false,
+                  confirmText: '确定',
+                  confirmColor: '#3CC51F',
+                  success: () => {
+                    that.turn_page_myorder()
+                  },
+                });
+              }
+            }
+          })
+
+        }
+      },
+    });
+
+
+  },
+  catcher_infomation(e) {
+    var that = this
+    /* 展示代取员的信息 */
+    wx.showLoading({
+      title: '正在获取',
+    })
+    wx.request({
+      url: 'https://www.xiyuangezi.cn/express/catcher_infomation', //仅为示例，并非真实的接口地址
+      data: {
+        name: e.currentTarget.dataset.id
+      },
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      success(res) {
+        console.log(res.data);
+        wx.hideLoading();
+        if (res.data.length == 1) {
+          that.setData({
+            catcher_infor: res.data[0].fields,
+            catcher_show: 1
+          })
+        }
+        else {
+
+        }
+        console.log(that.data.catcher_infor);
+      }
+    })
+
+
+  },
+  close_infor() {
+
+    this.setData({
+      catcher_show: 0
+    })
+  },
+
 
 
 

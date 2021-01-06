@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-06 15:05:19
- * @LastEditTime: 2020-12-07 23:33:42
+ * @LastEditTime: 2021-01-06 19:55:45
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express_catch/express_catch.js
@@ -21,7 +21,10 @@ Page({
     applyemail: '',
     applywechat: '',
     showcheck: 0,
-    nothing: 0
+    earnshowwhat: 0,
+    choosemenucolor: 0,
+    nothing1: 0,
+    nothing2: 0
 
   },
 
@@ -159,7 +162,7 @@ Page({
         console.log(that.data.orderwaitList.length);
         if (that.data.orderwaitList.length == 0) {
           that.setData({
-            nothing: 1
+            nothing1: 1
           })
         }
 
@@ -171,6 +174,7 @@ Page({
   },
   /* 抢单 */
   scratch(e) {
+    var that = this
     wx.showLoading({
       title: '正在加载',
     })
@@ -208,14 +212,11 @@ Page({
           wx.showModal({
             title: '提示',
             content: '恭喜你，抢到此订单！',
-            showCancel: false,
             confirmText: '确定',
             confirmColor: '#3CC51F',
             success: (result) => {
               if (result.confirm) {
-                wx.redirectTo({
-                  url: '../express_task/express_task',
-                })
+                that.turn_page_myself()
               }
             },
           });
@@ -226,30 +227,193 @@ Page({
 
 
   },
+  /* 来一个订单的获取 */
+  get_my_catch_order() {
+    var that = this
+    wx.request({
+      url: 'https://www.xiyuangezi.cn/express/get_my_catch_order', //仅为示例，并非真实的接口地址
+      data: {
+        name: wx.getStorageSync('name'),
+      },
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      success(res) {
+        console.log(res);
+
+        console.log(res.data);
+        for (let index = 0; index < res.data.length; index++) {
+          const element = res.data[index];
+          if (element.fields.order_stadus == 2) {
+            console.log(element.fields.order_stadus);
+            element.fields.order_stadus = '待配送'
+            element.fields.status_color = 'red'
+            element.fields.confim_button = '送达'
+            element.fields.confim_js = 'express_arrive'
+          } else if (element.fields.order_stadus == 3) {
+            console.log(element.fields.order_stadus);
+            element.fields.order_stadus = '待确认'
+            element.fields.status_color = 'rgb(38, 176, 255)'
+            element.fields.confim_button = '已送达'
+            element.fields.confim_js = 'none'
+          } else if (element.fields.order_stadus == 4 || element.fields.order_stadus == 5) {
+            console.log(element.fields.order_stadus);
+            element.fields.order_stadus = '客户已确认收到'
+            element.fields.status_color = 'rgb(33, 209, 86)'
+            element.fields.confim_button = '已结单'
+            element.fields.confim_js = 'none'
+          }
+
+        }
+        that.setData({
+          orderList: res.data
+        })
+        console.log(that.data.orderList);
+        console.log(that.data.orderList.length);
+        if (that.data.orderList.length == 0) {
+          that.setData({
+            nothing2: 1
+          })
+        } else {
+          that.setData({
+            nothing2: 0
+          })
+        }
+
+
+      }
+    })
+  },
+  cancel_catch(e) {
+    var that = this
+    wx.showModal({
+      title: '',
+      content: '确定取消此订单？（或将面临被投诉的风险，请主动联系客户解释情况）',
+      showCancel: true,
+      cancelText: '取消',
+      cancelColor: '#000000',
+      confirmText: '确定',
+      confirmColor: '#3CC51F',
+      success: (result) => {
+        if (result.confirm) {
+          /* 点了确认，发送请求更改数据库的数据为3 */
+          wx.request({
+            url: 'https://www.xiyuangezi.cn/express/cancel_catch', //仅为示例，并非真实的接口地址
+            data: {
+              name: wx.getStorageSync('name'),
+              order_id: e.currentTarget.dataset.id
+            },
+            method: "POST",
+            header: {
+              'content-type': 'application/x-www-form-urlencoded' // 默认值
+            },
+            success(res) {
+              console.log(res.data.loginnum);
+              wx.hideLoading();
+              if (res.data.loginnum == 200) {
+                that.turn_page_myself()
+              }
+            }
+          })
+
+        }
+      },
+    });
+  },
+  express_arrive(e) {
+    /* 展示一个模态框，你确定express_arrive？ */
+    var that = this
+    wx.showModal({
+      title: '',
+      content: '已将包裹送至客户手中？',
+      showCancel: true,
+      cancelText: '取消',
+      cancelColor: '#000000',
+      confirmText: '确定',
+      confirmColor: '#3CC51F',
+      success: (result) => {
+        if (result.confirm) {
+          /* 点了确认，发送请求更改数据库的数据为3 */
+          wx.request({
+            url: 'https://www.xiyuangezi.cn/express/express_arrive', //仅为示例，并非真实的接口地址
+            data: {
+              name: wx.getStorageSync('name'),
+              order_id: e.currentTarget.dataset.id
+            },
+            method: "POST",
+            header: {
+              'content-type': 'application/x-www-form-urlencoded' // 默认值
+            },
+            success(res) {
+              console.log(res.data);
+              that.turn_page_myself()
+            }
+          })
+
+        }
+      },
+    });
+
+  },
+  none() {
+
+  },
+  /* 这个是从代取员的自己主页中删除掉这个订单 */
+  delete_order_catcher(e) {
+    var that = this
+    wx.showModal({
+      title: '',
+      content: '删除订单后可以在设置中查看历史订单！',
+      showCancel: true,
+      cancelText: '取消',
+      cancelColor: '#000000',
+      confirmText: '确定',
+      confirmColor: '#3CC51F',
+      success: (result) => {
+        if (result.confirm) {
+          /* 点了确认，发送请求更改数据库的数据为3 */
+          wx.request({
+            url: 'https://www.xiyuangezi.cn/express/delete_order_catcher', //仅为示例，并非真实的接口地址
+            data: {
+              name: wx.getStorageSync('name'),
+              order_id: e.currentTarget.dataset.id
+            },
+            method: "POST",
+            header: {
+              'content-type': 'application/x-www-form-urlencoded' // 默认值
+            },
+            success(res) {
+              console.log(res.data);
+              that.turn_page_myself()
+
+
+            }
+          })
+        }
+      },
+    });
+
+
+  },
 
   back_index() {
     wx.redirectTo({
       url: '../index/index',
     })
   },
-  turn_page_neworder() {
-    wx.redirectTo({
-      url: '../express/express',
-    })
-  },
-  turn_page_myorder() {
-    wx.redirectTo({
-      url: '../express_order/express_order',
-    })
-  },
   turn_page_catchorder() {
-    wx.redirectTo({
-      url: '../express_catch/express_catch',
+    this.setData({
+      earnshowwhat: 0,
+      choosemenucolor: 0
     })
+    this.get_order()
   },
   turn_page_myself() {
-    wx.redirectTo({
-      url: '../express_task/express_task',
+    this.setData({
+      earnshowwhat: 1,
+      choosemenucolor: 1
     })
+    this.get_my_catch_order()
   },
 })

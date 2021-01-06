@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-12-01 10:00:16
- * @LastEditTime: 2020-12-05 23:47:55
+ * @LastEditTime: 2021-01-06 18:48:53
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express/express.wxml
@@ -21,212 +21,293 @@
 
 <!-- 这里做一个菜单切换 -->
 <view class="menu_change">
-    <view class="menu_1" bindtap="turn_page_neworder">下单</view>
-    <view class="menu_2" bindtap="turn_page_myorder">订单</view>
-    <view class="menu_3" bindtap="turn_page_catchorder">接单</view>
-    <view class="menu_4" bindtap="turn_page_myself">任务</view>
+    <view class="menu_1" bindtap="turn_page_neworder"
+        style="background-color: {{choosemenucolor == 0?'#FF9900':'#757575'}};">下单
+    </view>
+    <view class="menu_2" bindtap="turn_page_myorder"
+        style="background-color: {{choosemenucolor == 1?'#FF9900':'#757575'}};">订单</view>
 </view>
-  
-<!-- 在这里填写正常信息 -->
-<view class="express_infor">
-    <view class="express_infor_one">
-        <view class="express_piece" style="background-color: rgb(212, 137, 40);"></view>
-        <input class="express_info_text" placeholder="请填写收件人姓名" bindinput='getInputValue1'>
-        </input>
+<!-- 下面是代取快递恬淡的区域，当点了另一个按钮的时候 ，我要做的是隐藏这个区域，然后显示另一个区域 -->
+<view class="express_panel" style="display: {{expressshowwhat == 0? 'block':'none'}};">
+    <!-- 在这里填写正常信息 -->
+    <view class="express_infor">
+        <view class="express_infor_one">
+            <view class="express_piece" style="background-color: rgb(212, 137, 40);"></view>
+            <input class="express_info_text" placeholder="请填写收件人姓名" bindinput='getInputValue1' value="{{express_info_text_name}}">
+            </input>
+        </view>
+        <view class="express_infor_one">
+            <view class="express_piece" style="background-color: rgb(40, 200, 212);"></view>
+            <input class=" express_info_text" placeholder="请填写收件人电话" bindinput='getInputValue2' value="{{express_info_text_tel}}">
+            </input>
+        </view>
+        <view class="express_infor_one">
+            <view class="express_piece" style="background-color: rgb(206, 40, 212);"></view>
+            <input class=" express_info_text" placeholder="请填写取件码" bindinput='getInputValue3' value="{{express_info_text_code}}">
+            </input>
+        </view>
     </view>
-    <view class="express_infor_one">
-        <view class="express_piece" style="background-color: rgb(40, 200, 212);"></view>
-        <input class=" express_info_text" placeholder="请填写收件人电话" bindinput='getInputValue2'>
-        </input>
-    </view>
-    <view class="express_infor_one">
-        <view class="express_piece" style="background-color: rgb(206, 40, 212);"></view>
-        <input class=" express_info_text" placeholder="请填写取件码" bindinput='getInputValue3'></input>
-    </view>
-</view>
 
-<!-- 粘贴短信的地方 -->
-<view class="message" hover-class="none" hover-stop-propagation="false">
-    <view class="message_piece">
-        <!-- 这里我做了很多的格子来装饰他，非常的好看哈哈哈 -->
-        <view class="message_piece_blue"></view>
-        <view class="message_piece_red"></view>
-        <view class="message_piece_blue"></view>
-        <view class="message_piece_red"></view>
-        <view class="message_piece_blue"></view>
-        <view class="message_piece_red"></view>
-        <view class="message_piece_blue"></view>
-        <view class="message_piece_red"></view>
-        <view class="message_piece_blue"></view>
-        <view class="message_piece_red"></view>
-    </view>
-    <view class="message_content">
-        <textarea class="message_content_text" value="" placeholder="[选填]粘贴快递短信、填写备注（上门时间，特殊情况等）" bindinput='getInputValue4'>
+    <!-- 粘贴短信的地方 -->
+    <view class="message" hover-class="none" hover-stop-propagation="false">
+        <view class="message_piece">
+            <!-- 这里我做了很多的格子来装饰他，非常的好看哈哈哈 -->
+            <view class="message_piece_blue"></view>
+            <view class="message_piece_red"></view>
+            <view class="message_piece_blue"></view>
+            <view class="message_piece_red"></view>
+            <view class="message_piece_blue"></view>
+            <view class="message_piece_red"></view>
+            <view class="message_piece_blue"></view>
+            <view class="message_piece_red"></view>
+            <view class="message_piece_blue"></view>
+            <view class="message_piece_red"></view>
+        </view>
+        <view class="message_content">
+            <textarea class="message_content_text" value="" placeholder="[选填]粘贴快递短信、填写备注（上门时间，特殊情况等）"
+                bindinput='getInputValue4'>
 
         </textarea>
-    </view>
-    <view>
-
-    </view>
-
-
-</view>
-<view style="clear: both;">
-
-</view>
-
-
-<!-- 下面是快递的规格信息  -->
-<view class="express_property">
-    <view class="express_company">
-
-        <image class="express_company_icon" src="../../image_icon/company.png">
-
-        </image>
-
-        <view class="express_company_text">
-            快递公司
         </view>
-        <image class="express_company_choose_value_icon" src="../../image_icon/dayu.png" />
-        <view class="express_company_choose_value">
-            <picker bindchange="bindPickerChange1" value="{{index1}}" range="{{array1}}">
-                <view class="picker">
-                    {{array1[index1]}}
-                </view>
-            </picker>
-
+        <view>
 
         </view>
 
 
-
+    </view>
+    <view style="clear: both;">
 
     </view>
+
+
+    <!-- 下面是快递的规格信息  -->
+    <view class="express_property">
         <view class="express_company">
 
-        <image class="express_company_icon" src="../../image_icon/she.png">
+            <image class="express_company_icon" src="../../image_icon/company.png">
 
-        </image>
+            </image>
 
-        <view class="express_company_text">
-            配送位置
+            <view class="express_company_text">
+                快递公司
+            </view>
+            <image class="express_company_choose_value_icon" src="../../image_icon/dayu.png" />
+            <view class="express_company_choose_value">
+                <picker bindchange="bindPickerChange1" value="{{index1}}" range="{{array1}}">
+                    <view class="picker">
+                        {{array1[index1]}}
+                    </view>
+                </picker>
+
+
+            </view>
+
+
+
+
         </view>
-        <view class="express_company_choose_value">
+        <view class="express_company">
 
-        <input class="express_place" placeholder="eg:14栋509" bindinput='getInputValue5'>
-        </input>
+            <image class="express_company_icon" src="../../image_icon/she.png">
+
+            </image>
+
+            <view class="express_company_text">
+                配送位置
+            </view>
+            <view class="express_company_choose_value">
+
+                <input class="express_place" placeholder="eg:14栋509" bindinput='getInputValue5'>
+                </input>
+
+            </view>
+
+
+
 
         </view>
+        <view class="express_size">
+
+            <image class="express_company_icon" src="../../image_icon/size.png">
+
+            </image>
+
+            <view class="express_company_text">
+                快递规格
+            </view>
+            <image class="express_company_choose_value_icon" src="../../image_icon/dayu.png" />
+            <view class="express_company_choose_value">
+                <picker bindchange="bindPickerChange2" value="{{index2}}" range="{{array2}}">
+                    <view class="picker">
+                        {{array2[index2]}}
+                    </view>
+                </picker>
 
 
+            </view>
+        </view>
+        <view class="express_arrive">
 
+            <image class="express_company_icon" src="../../image_icon/date.png">
+
+            </image>
+
+            <view class="express_company_text">
+                到校日期
+            </view>
+            <image class="express_company_choose_value_icon" src="../../image_icon/dayu.png" />
+            <view class="express_company_choose_value">
+                <picker mode="date" value="{{date}}" start="2020-12-01" end="2021-02-01" bindchange="bindDateChange">
+                    <view class="picker">
+                        {{date}}
+                    </view>
+                </picker>
+
+
+            </view>
+        </view>
+        <view class="express_fee">
+
+            <image class="express_company_icon" src="../../image_icon/fee.png">
+
+            </image>
+
+            <view class="express_company_text">
+                小费
+            </view>
+            <image class="express_company_choose_value_icon" src="../../image_icon/dayu.png" />
+            <view class="express_company_choose_value">
+                <picker bindchange="bindPickerChange4" value="{{index4}}" range="{{array4}}">
+                    <view class="picker">
+                        {{array4[index4]}}元
+                    </view>
+                </picker>
+
+
+            </view>
+        </view>
 
     </view>
-    <view class="express_size">
-
-        <image class="express_company_icon" src="../../image_icon/size.png">
-
-        </image>
-
-        <view class="express_company_text">
-            快递规格
-        </view>
-        <image class="express_company_choose_value_icon" src="../../image_icon/dayu.png" />
-        <view class="express_company_choose_value">
-            <picker bindchange="bindPickerChange2" value="{{index2}}" range="{{array2}}">
-                <view class="picker">
-                    {{array2[index2]}}
-                </view>
-            </picker>
-
-
-        </view>
+    <!-- 这里我要来一个协议的勾选确认 -->
+    <view class="clause_check" hover-class="none" hover-stop-propagation="false">
+        <label class="checkbox">
+            <checkbox class="check_frame" value="cb" checked="true" />我已阅读并同意
+            <a class="check_frame_text" href="" bindtap="turn_clause">《西院格子服务协议》</a>
+        </label>
     </view>
-    <view class="express_arrive">
 
-        <image class="express_company_icon" src="../../image_icon/date.png">
 
-        </image>
-
-        <view class="express_company_text">
-            到校日期
+    <!-- 来个底部栏 -->
+    <view class="bottom_pay">
+        <view class="bottom_pay_money">实付金额
+            <view class="bottom_pay_money_num">
+                ￥{{fee}}
+            </view>
         </view>
-        <image class="express_company_choose_value_icon" src="../../image_icon/dayu.png" />
-        <view class="express_company_choose_value">
-            <picker mode="date" value="{{date}}" start="2020-12-01" end="2021-02-01" bindchange="bindDateChange">
-                <view class="picker">
-                    {{date}}
-                </view>
-            </picker>
-
-
-        </view>
+        <view class="bottom_pay_way" bindtap="pay">微信支付</view>
     </view>
-    <view class="express_fee">
 
-        <image class="express_company_icon" src="../../image_icon/fee.png">
-
-        </image>
-
-        <view class="express_company_text">
-            小费
+    <!-- 做一个协议书 -->
+    <view class="clause_frame" style="display: {{clause_switch==1?'block':'none'}};">
+        <view class="clause_big_title">《西院格子服务协议》
         </view>
-        <image class="express_company_choose_value_icon" src="../../image_icon/dayu.png" />
-        <view class="express_company_choose_value">
-            <picker bindchange="bindPickerChange4" value="{{index4}}" range="{{array4}}">
-                <view class="picker">
-                    {{array4[index4]}}元
-                </view>
-            </picker>
+        <view class="clause_small_title">——快递代取服务协议
+        </view>
+        <view class="clause_content">
+            <text class="" selectable="false" space="false" decode="false">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;欢迎使用西院格子快递代取功能，本格子提供的快递代取只适用于西昌学院在校学生。
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. 学生在填写需求订单之后，会由我们指派的可信任的代取员取件,男生送至寝室，女生送至楼下或者宿管室。
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. 当订单被接取，代取费生效；接单后24小时若代取员未取，订单自动取消，代取费退回客户。
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. 若包裹过大过重或时间紧迫可适当增加小费，代取员会优先为您处理。
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. 当包裹在从驿站拿出若有异常，代取员将反馈给客户，代取员不承担快递公司造成的包裹损坏，丢失，回寄等问题。
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;更多问题请 设置—联系客服 进行咨询。
 
+            </text>
 
         </view>
+        <view class="clause_close" bindtap="close_clause">
+            关闭
+        </view>
+
+    </view>
+
+    <view class="warning" style="display: {{warn_show == 1?'block':'none'}};">
+        提示:{{warning}}
     </view>
 
 </view>
-<!-- 这里我要来一个协议的勾选确认 -->
-<view class="clause_check" hover-class="none" hover-stop-propagation="false">
-    <label class="checkbox">
-        <checkbox class="check_frame" value="cb" checked="true" />我已阅读并同意
-        <a class="check_frame_text" href="" bindtap="turn_clause">《西院格子服务协议》</a>
-    </label>
-</view>
-
-
-<!-- 来个底部栏 -->
-<view class="bottom_pay">
-    <view class="bottom_pay_money">实付金额
-        <view class="bottom_pay_money_num">
-            ￥{{fee}}
+<view class="express_panel" style="display: {{expressshowwhat == 1? 'block':'none'}};">
+    <view class="order_show" wx:for="{{orderList}}" wx:key="item.fields">
+        <view class="order_title" hover-class="none" hover-stop-propagation="false">
+            我的下单{{index+1}}
         </view>
-    </view>
-    <view class="bottom_pay_way" bindtap="pay">微信支付</view>
-</view>
+        <view class="express_order_user">
+            <view class="express_order_name">姓名：{{item.fields.rec_name}}</view>
+            <view class="express_order_code">取件码：{{item.fields.rec_code}}</view>
+            <view class="express_order_tel">电话：{{item.fields.rec_tel}}</view>
+            <view class="express_order_arrivetime">到达时间：{{item.fields.express_date}}</view>
+        </view>
+        <view class="express_order_express">
+            <view class="express_order_company">快递公司：{{item.fields.express_company}}</view>
+            <view class="express_order_place">送至：{{item.fields.express_place}}</view>
+            <view class="express_order_size">快递型号：{{item.fields.express_size}}</view>
+            <view class="express_order_smallfee">小费:￥{{item.fields.express_small_fee}}</view>
+            <view class="express_order_totalfee">总费用：￥{{item.fields.express_total_fee}}</view>
+        </view>
+        <view class="express_order_order">
+            <view class="express_order_num">订单号：{{item.fields.transaction_id}}</view>
+            <view class="express_order_status" style="color: {{item.fields.order_stadus_color}};">
+                订单状态：{{item.fields.order_stadus}}</view>
+            <view class="express_order_person" style="color: {{item.fields.order_stadus_color}};"
+                data-id="{{item.fields.catch_person}}" bindtap="catcher_infomation">
+                代取员：{{item.fields.catch_person}}</view>
+            <view class="express_order_time">下单时间：{{item.fields.order_time}}</view>
+        </view>
+        <view>
+            <view class="express_content">
+                备注：
+            </view>
+            <view class="express_content_text">
+                {{item.fields.rec_message}}
+            </view>
 
-<!-- 做一个协议书 -->
-<view class="clause_frame" style="display: {{clause_switch==1?'block':'none'}};">
-    <view class="clause_big_title">《西院格子服务协议》
-    </view>
-    <view class="clause_small_title">——快递代取服务协议
-    </view>
-    <view class="clause_content">
-        <text class="" selectable="false" space="false" decode="false">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;欢迎使用西院格子快递代取功能，本格子提供的快递代取只适用于西昌学院在校学生。
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. 学生在填写需求订单之后，会由我们指派的可信任的代取员取件,男生送至寝室，女生送至楼下或者宿管室。
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. 当订单被接取，代取费生效；接单后24小时若代取员未取，订单自动取消，代取费退回客户。
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. 若包裹过大过重或时间紧迫可适当增加小费，代取员会优先为您处理。
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. 当包裹在从驿站拿出若有异常，代取员将反馈给客户，代取员不承担快递公司造成的包裹损坏，丢失，回寄等问题。
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;更多问题请 设置—联系客服 进行咨询。
+        </view>
+        <view style="clear:both;">
 
-        </text>
+        </view>
+
+        <view class="task_one_button">
+            <view class="task_one_button_cancel"
+                style="display: {{item.fields.order_stadus == '代取中'||item.fields.order_stadus == '待接单'?'block':'none'}};"
+                data-id="{{item.fields.transaction_id}}" bindtap="cancel_order">取消
+            </view>
+            <view class="task_one_button_cancel" style="display: {{item.fields.order_stadus == '已确认'?'block':'none'}};"
+                data-id="{{item.fields.transaction_id}}" bindtap="delete_already_order">删除
+            </view> <!-- 只有客户已经确认的时候才显示 -->
+            <view class="task_one_button_confirm" bindtap="receive_express" data-id="{{item.fields.transaction_id}}"
+                style="background-color:{{item.fields.order_stadus == '代取中'?'rgb(230, 147, 39)':' rgb(69, 183, 228)'}};display: {{item.fields.order_stadus == '送达待确认'?'block':'none'}};">
+                {{item.fields.confim_button}}
+            </view>
+        </view>
 
     </view>
-    <view class="clause_close" bindtap="close_clause">
-        关闭
+
+    <view class="apply_panel" style="display: {{nothing1==1?'block':'none'}};">
+        <view class="apply_panel_title">你还没有需要派送的订单，快去接单赚钱吧！</view>
     </view>
 
-</view>
+    <view class="catcher_infor" style="display: {{catcher_show==1?'block':'none'}};">
+        <view class="close_infor" bindtap="close_infor">
+            ×
+        </view>
 
-<view class="warning" style="display: {{warn_show == 1?'block':'none'}};">
-    提示:{{warning}}
+        <view class="infor_title">代取员信息：</view>
+        <view class="infor_one">姓名：{{catcher_infor.name}}</view>
+        <view class="infor_one">电话：{{catcher_infor.tel}}</view>
+        <view class="infor_one">QQ：{{catcher_infor.qq}}</view>
+        <view class="infor_one">邮箱：{{catcher_infor.email}}</view>
+        <view class="infor_one">微信：{{catcher_infor.wechat}}</view>
+        <view class="infor_one">更多信息查询请联系客服</view>
+
+    </view>
 </view>

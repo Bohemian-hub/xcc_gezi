@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-12-06 15:05:19
- * @LastEditTime: 2020-12-06 21:34:43
+ * @LastEditTime: 2021-01-06 19:04:20
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express_catch/express_catch.wxml
@@ -19,78 +19,204 @@
     </view>
 </view>
 <view class="menu_change">
-    <view class="menu_1" bindtap="turn_page_neworder">下单</view>
-    <view class="menu_2" bindtap="turn_page_myorder">订单</view>
-    <view class="menu_3" bindtap="turn_page_catchorder">接单</view>
-    <view class="menu_4" bindtap="turn_page_myself">任务</view>
+    <view class="menu_3" bindtap="turn_page_catchorder"
+        style="background-color: {{choosemenucolor == 0?'#FF9900':'#757575'}};">接单</view>
+    <view class="menu_4" bindtap="turn_page_myself"
+        style="background-color: {{choosemenucolor == 1?'#FF9900':'#757575'}};">任务</view>
 </view>
 
-<!-- 下面开始做每一个项目 -->
-<view class="express_catch_one" wx:for="{{orderwaitList}}" wx:key="item.fields">
-    <view class="express_catch_one_title">
-        <view class="express_catch_one_title_big">{{item.fields.express_company}}</view>
-        <view class="express_catch_one_title_small">单号：{{item.fields.transaction_id}}</view>
-    </view>
-    <view class="express_catch_one_content">
-        <view class="express_catch_one_content_left">
-            <view class="express_catch_one_content_left_size">类型：{{item.fields.express_size}}</view>
-            <view class="express_catch_one_content_place">配送地址：{{item.fields.express_place}}</view>
-            <view class="express_catch_one_content_date">下单时间：{{item.fields.order_time}}</view>
+<view class="earn_panel" style="display: {{earnshowwhat == 0? 'block':'none'}};">
+    <!-- 下面开始做每一个项目 -->
+    <view class="express_catch_one" wx:for="{{orderwaitList}}" wx:key="item.fields">
+        <view class="express_catch_one_title">
+            <view class="express_catch_one_title_big">{{item.fields.express_company}}</view>
+            <view class="express_catch_one_title_small">单号：{{item.fields.transaction_id}}</view>
         </view>
-        <view class="express_catch_one_content_right">
-            <view class="express_catch_one_content_right_fee">共{{item.fields.express_total_fee}}元</view>
-            <view class="express_catch_one_content_right_smallfee">（含小费{{item.fields.express_small_fee}}元）</view>
-            <view class="express_catch_one_content_right_button" bindtap = "scratch" data-id="{{item.fields.transaction_id}}">抢单</view>
-        </view>
-    </view>
-</view>
-
-<view class="apply_panel" style="display: {{showtable==1?'block':'none'}};">
-    <view class="apply_panel_title">您还不是代取员，点击申请成为代取员，赚零花钱！</view>
-    <view class="apply_panel_form">
-        <view class="apply_table_title">
-            西院格子代取员申请表
-        </view>
-        <view class="apply_panel_form_what">
-            姓名：
-        </view>
-        <input class="apply_panel_form_input" value="" type="text" bindinput='getInputname'>
-        </input>
-        <view class="apply_panel_form_what">
-            QQ：
-        </view>
-        <input class="apply_panel_form_input" value="" type="number" bindinput='getInputqq'>
-        </input>
-        <view class="apply_panel_form_what">
-            手机：
-        </view>
-        <input class="apply_panel_form_input" value="" type="number" bindinput='getInputtel'>
-        </input>
-        <view class="apply_panel_form_what">
-            邮箱：
-        </view>
-        <input class="apply_panel_form_input" value="" type="text" bindinput='getInputemail'>
-        </input>
-        <view class="apply_panel_form_what">
-            微信号：
-        </view>
-        <input class="apply_panel_form_input" value="" type="text" bindinput='getInputwechat'>
-        </input>
-        <view style="clear: both;">
-        </view>
-        <view class="apply_submit" bindtap="applysubmit">
-            提交
+        <view class="express_catch_one_content">
+            <view class="express_catch_one_content_left">
+                <view class="express_catch_one_content_left_size">类型：{{item.fields.express_size}}</view>
+                <view class="express_catch_one_content_place">配送地址：{{item.fields.express_place}}</view>
+                <view class="express_catch_one_content_date">下单时间：{{item.fields.order_time}}</view>
+            </view>
+            <view class="express_catch_one_content_right">
+                <view class="express_catch_one_content_right_fee">共{{item.fields.express_total_fee}}元</view>
+                <view class="express_catch_one_content_right_smallfee">（含小费{{item.fields.express_small_fee}}元）</view>
+                <view class="express_catch_one_content_right_button" bindtap="scratch"
+                    data-id="{{item.fields.transaction_id}}">抢单</view>
+            </view>
         </view>
     </view>
+
+    <view class="apply_panel" style="display: {{showtable==1?'block':'none'}};">
+        <view class="apply_panel_title">您还不是代取员，点击申请成为代取员，赚零花钱！</view>
+        <view class="apply_panel_form">
+            <view class="apply_table_title">
+                西院格子代取员申请表
+            </view>
+            <view class="apply_panel_form_what">
+                姓名：
+            </view>
+            <input class="apply_panel_form_input" value="" type="text" bindinput='getInputname'>
+            </input>
+            <view class="apply_panel_form_what">
+                QQ：
+            </view>
+            <input class="apply_panel_form_input" value="" type="number" bindinput='getInputqq'>
+            </input>
+            <view class="apply_panel_form_what">
+                手机：
+            </view>
+            <input class="apply_panel_form_input" value="" type="number" bindinput='getInputtel'>
+            </input>
+            <view class="apply_panel_form_what">
+                邮箱：
+            </view>
+            <input class="apply_panel_form_input" value="" type="text" bindinput='getInputemail'>
+            </input>
+            <view class="apply_panel_form_what">
+                微信号：
+            </view>
+            <input class="apply_panel_form_input" value="" type="text" bindinput='getInputwechat'>
+            </input>
+            <view style="clear: both;">
+            </view>
+            <view class="apply_submit" bindtap="applysubmit">
+                提交
+            </view>
+        </view>
+    </view>
+
+    <view class="apply_panel" style="display: {{showcheck==1?'block':'none'}};">
+        <view class="apply_panel_title">您成为代取员的申请正在急速审核中，请耐心等待...</view>
+    </view>
+
+    <view class="apply_panel" style="display: {{nothing1==1?'block':'none'}};">
+        <view class="apply_panel_title">暂无可接订单，请稍后再来吧！</view>
+    </view>
 </view>
 
-<view class="apply_panel" style="display: {{showcheck==1?'block':'none'}};">
-    <view class="apply_panel_title">您成为代取员的申请正在急速审核中，请耐心等待...</view>
+<view class="earn_panel" style="display: {{earnshowwhat == 1? 'block':'none'}};">
+    <!-- 下面展示我接的单 -->
+    <view class="task_one" wx:for="{{orderList}}" wx:key="item.fields">
+        <view class="task_one_title" style="color:{{item.fields.status_color}};">
+            {{index+1}}.{{item.fields.order_stadus}}:</view>
+        <view class="task_one_content">
+            <view class="task_one_content_title">
+                <view class="task_one_content_title_text">
+                    姓名:
+                </view>
+                <view class="task_one_content_text">
+                    {{item.fields.rec_name}}
+                </view>
+            </view>
+            <view class="task_one_content_title">
+                <view class="task_one_content_title_text">
+                    电话:
+                </view>
+                <view class="task_one_content_text">
+                    {{item.fields.rec_tel}}
+                </view>
+            </view>
+            <view class="task_one_content_title" style="color:rgb(255, 95, 95);">
+                <view class="task_one_content_title_text">
+                    取件码:
+                </view>
+                <view class="task_one_content_text">
+                    {{item.fields.rec_code}}
+                </view>
+            </view>
+            <view class="task_one_content_title">
+                <view class="task_one_content_title_text">
+                    快递公司:
+                </view>
+                <view class="task_one_content_text">
+                    {{item.fields.express_company}}
+                </view>
+            </view>
+            <view class="task_one_content_title" style="color:rgb(255, 95, 95);">
+                <view class="task_one_content_title_text">
+                    配送地点:
+                </view>
+                <view class="task_one_content_text">
+                    {{item.fields.express_place}}
+                </view>
+            </view>
+            <view class="task_one_content_title">
+                <view class="task_one_content_title_text">
+                    快递类型:
+                </view>
+                <view class="task_one_content_text">
+                    {{item.fields.express_size}}
+                </view>
+            </view>
+            <view class="task_one_content_title">
+                <view class="task_one_content_title_text">
+                    到校日期:
+                </view>
+                <view class="task_one_content_text">
+                    {{item.fields.express_date}}
+                </view>
+            </view>
+            <view class="task_one_content_title">
+                <view class="task_one_content_title_text">
+                    小费:
+                </view>
+                <view class="task_one_content_text">
+                    ￥{{item.fields.express_small_fee}}
+                </view>
+            </view>
+            <view class="task_one_content_title">
+                <view class="task_one_content_title_text">
+                    总佣金:
+                </view>
+                <view class="task_one_content_text">
+                    ￥{{item.fields.express_total_fee}}
+                </view>
+            </view>
+            <view class="task_one_content_title">
+                <view class="task_one_content_title_text">
+                    下单日期:
+                </view>
+                <view class="task_one_content_text">
+                    {{item.fields.order_time}}
+                </view>
+            </view>
+            <view class="task_one_content_title">
+                <view class="task_one_content_title_text">
+                    订单号:
+                </view>
+                <view class="task_one_content_text">
+                    {{item.fields.transaction_id}}
+                </view>
+            </view>
+            <view class="task_one_content_title">
+                <view class="task_one_content_title_text">
+                    备注信息:
+                </view>
+                <view class="task_one_content_text" style="text-align:left;">
+                    {{item.fields.rec_message}}
+                </view>
+            </view>
+        </view>
+        <view class="task_one_button">
+            <view class="task_one_button_cancel" style="display: {{item.fields.order_stadus == '待配送'?'block':'none'}};"
+                bindtap="cancel_catch" data-id="{{item.fields.transaction_id}}">取消
+            </view>
+            <view class="task_one_button_cancel"
+                style="display: {{item.fields.order_stadus == '客户已确认收到'?'block':'none'}};"
+                bindtap="delete_order_catcher" data-id="{{item.fields.transaction_id}}">删除
+            </view> <!-- 只有客户已经确认的时候才显示 -->
+            <view class="task_one_button_confirm" bindtap="{{item.fields.confim_js}}"
+                data-id="{{item.fields.transaction_id}}"
+                style="background-color:{{item.fields.order_stadus == '待配送'?'rgb(230, 147, 39)':' rgb(69, 183, 228)'}};display: {{item.fields.order_stadus == '待配送'||item.fields.order_stadus == '待确认'?'block':'none'}};">
+                {{item.fields.confim_button}}
+            </view>
+        </view>
+
+    </view>
+
+    <view class="apply_panel" style="display: {{nothing2==1?'block':'none'}};">
+        <view class="apply_panel_title">你还没有需要取的快递，快去下单吧！</view>
+    </view>
+
 </view>
-
-<view class="apply_panel" style="display: {{nothing==1?'block':'none'}};">
-    <view class="apply_panel_title">暂无可接订单，请稍后再来吧！</view>
-</view>
-
-
-  

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-05 23:36:24
- * @LastEditTime: 2020-12-07 23:33:12
+ * @LastEditTime: 2021-01-06 18:41:57
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express_order/express_order.js
@@ -27,65 +27,7 @@ Page({
     that.get_order()
   },
   /* 做一个页面加载获取订单信息的函数 */
-  get_order() {
-    wx.showLoading({
-      title: '正在加载',
-    })
-    var that = this
-    wx.request({
-      url: 'https://www.xiyuangezi.cn/express/get_express', //仅为示例，并非真实的接口地址
-      data: {
-        studentId: wx.getStorageSync('studentId'),
-      },
-      method: "POST",
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
-      },
-      success(res) {
-        console.log(res);
 
-        console.log(res.data);
-        for (let index = 0; index < res.data.length; index++) {
-          const element = res.data[index];
-          console.log(element.fields.order_stadus);
-          if (element.fields.order_stadus == 1) {
-            element.fields.order_stadus = '待接单'
-            element.fields.order_stadus_color = 'red'
-          } else if (element.fields.order_stadus == 2) {
-            element.fields.order_stadus = '代取中'
-            element.fields.order_stadus_color = 'rgb(230, 147, 39)'
-            element.fields.confim_button = ''
-
-
-          } else if (element.fields.order_stadus == 3) {
-            element.fields.order_stadus = '送达待确认'
-            element.fields.order_stadus_color = 'rgb(69, 183, 228)'
-            element.fields.confim_button = '确认收件'
-
-
-          } else if (element.fields.order_stadus == 4 || element.fields.order_stadus == 6) {
-            element.fields.order_stadus = '已确认'
-            element.fields.order_stadus_color = 'green'
-
-
-          }
-
-        }
-        that.setData({
-          orderList: res.data
-        })
-        console.log(that.data.orderList.length);
-        if (that.data.orderList.length == 0) {
-          that.setData({
-            nothing: 1
-          })
-        }
-
-
-      }
-    })
-    wx.hideLoading()
-  },
   receive_express(e) {
     /* 这里是用户确认收件，在代取员将状态从接单2变成3时，我这里就提示带我确认了 */
     /* 来一个事件将订单状态 改成4，就是已经完结 */
