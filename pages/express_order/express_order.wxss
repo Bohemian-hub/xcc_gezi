@@ -25,12 +25,7 @@ page{
     line-height: 100rpx;
     color: rgb(255, 255, 255);
 }
-.page_back{
-    width: 50rpx;
-    float: left;
-    margin-top: 15rpx;
-    margin-left: 10rpx;
-}
+
 .page_back_text{
     line-height: 80rpx;
     width: 100%;

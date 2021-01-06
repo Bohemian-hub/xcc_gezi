@@ -1,0 +1,185 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-01-06 21:10:31
+ * @LastEditTime: 2021-01-07 00:26:34
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /miniprogram-5/pages/forum/forum.wxml
+-->
+<!-- 现在开始开发论坛功能，这是一个不简单的过程 -->
+
+<view class="title">
+    <view class="title_back" hover-class="none" hover-stop-propagation="false" bindtap="back_index">
+
+        <view class="page_back_text">
+            返回
+        </view>
+
+    </view>
+    <view class="title_text">
+        论坛
+    </view>
+</view>
+<!-- 功能区面板 -->
+<view class="forum_function" hover-class="none" hover-stop-propagation="false">
+    <view class="forum_function_one">
+        <image class="function_img" src="https://s3.ax1x.com/2021/01/06/sZPXu9.png" mode="widthFix" lazy-load="false"
+            binderror="" bindload="">
+
+        </image>
+        <view class="function_text">
+            话题
+        </view>
+
+
+
+    </view>
+    <view class="forum_function_one">
+        <image class="function_img" src="https://s3.ax1x.com/2021/01/06/sZPzAx.png" mode="widthFix" lazy-load="false"
+            binderror="" bindload="">
+
+        </image>
+        <view class="function_text">
+            坦白说
+        </view>
+
+
+
+    </view>
+    <view class="forum_function_one">
+        <image class="function_img" src="https://s3.ax1x.com/2021/01/06/sZPvH1.png" mode="widthFix" lazy-load="false"
+            binderror="" bindload="">
+
+        </image>
+        <view class="function_text">
+            打卡
+        </view>
+
+
+
+    </view>
+    <view class="forum_function_one">
+        <image class="function_img" src="https://s3.ax1x.com/2021/01/06/sZiSN6.png" mode="widthFix" lazy-load="false"
+            binderror="" bindload="">
+
+        </image>
+        <view class="function_text">
+            邂逅
+        </view>
+
+
+
+    </view>
+    <view class="forum_function_one">
+        <image class="function_img" src="https://s3.ax1x.com/2021/01/06/sZPjBR.png" mode="widthFix" lazy-load="false"
+            binderror="" bindload="">
+
+        </image>
+        <view class="function_text">
+            学习室
+        </view>
+
+
+
+    </view>
+
+</view>
+<!-- 今日热门贴子区域，使用点赞数最多来计算显示 -->
+<view class="hot_post">
+    <view class="hot_post_title">
+        <view class="hot_post_xian"></view>
+        <view class="hot_post_title_text">热门帖子</view>
+
+    </view>
+    <view class="hot_one"
+        style="background-image: url(https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=368714404,1635014424&fm=26&gp=0.jpg);">
+        <view class="hot_title">
+            新年快了，祝大家开开心心，高高兴兴！哈哈哈哈哈哈哈
+        </view>
+        <view class="hot_who">
+            <image class="hot_who_img"
+                src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2860174361,2149221696&fm=26&gp=0.jpg">
+
+            </image>
+            <view class="hot_who_text">
+                何东
+            </view>
+
+        </view>
+
+    </view>
+    <view class="hot_one"
+        style="background-image: url(https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=368714404,1635014424&fm=26&gp=0.jpg);">
+        <view class="hot_title">
+            新年快了，祝大家开开心心，高高兴兴！哈哈哈哈哈哈哈
+        </view>
+        <view class="hot_who">
+            <image class="hot_who_img"
+                src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2860174361,2149221696&fm=26&gp=0.jpg">
+
+            </image>
+            <view class="hot_who_text">
+                何东
+            </view>
+
+        </view>
+
+    </view>
+    <view class="hot_one"
+        style="background-image: url(https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=368714404,1635014424&fm=26&gp=0.jpg);">
+        <view class="hot_title">
+            新年快了，祝大家开开心心，高高兴兴！哈哈哈哈哈哈哈
+        </view>
+        <view class="hot_who">
+            <image class="hot_who_img"
+                src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2860174361,2149221696&fm=26&gp=0.jpg">
+
+            </image>
+            <view class="hot_who_text">
+                何东
+            </view>
+
+        </view>
+
+    </view>
+
+    <view class="hot_one"
+        style="background-image: url(https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=368714404,1635014424&fm=26&gp=0.jpg);">
+        <view class="hot_title">
+            新年快了，祝大家开开心心，高高兴兴！哈哈哈哈哈哈哈
+        </view>
+        <view class="hot_who">
+            <image class="hot_who_img"
+                src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2860174361,2149221696&fm=26&gp=0.jpg">
+
+            </image>
+            <view class="hot_who_text">
+                何东
+            </view>
+
+        </view>
+
+    </view>
+</view>
+<!-- 帖子的浏览区域 -->
+<!-- 弄一个分页器，用个戴框架的，这样响应速度可能会快一些 -->
+<scroll-view scroll-x class="bg-white nav text-center">
+    <view class="cu-item {{0==TabCur?'text-blue cur':''}}" bindtap="tabSelect" data-id="0">
+        <text class="cuIcon-all"></text> 推荐
+    </view>
+    <view class="cu-item {{1==TabCur?'text-blue cur':''}}" bindtap="tabSelect" data-id="1">
+        <text class="cuIcon-text"></text>学习
+    </view>
+    <view class="cu-item {{2==TabCur?'text-blue cur':''}}" bindtap="tabSelect" data-id="2">
+        <text class="cuIcon-clothesfill"></text> 生活
+    </view>
+    <view class="cu-item {{3==TabCur?'text-blue cur':''}}" bindtap="tabSelect" data-id="3">
+        <text class="cuIcon-likefill"></text> 情感
+    </view>
+</scroll-view>
+<view class="forum_one">
+
+</view>
+<view class="forum_one">
+
+</view>
