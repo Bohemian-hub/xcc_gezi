@@ -137,9 +137,136 @@ word-break: break-all;
 }
 .forum_one{
     width: 100%;
-    height: 300rpx;
     background-color: rgb(255, 255, 255);
     margin-bottom: 20rpx;
     box-shadow: 0 0 20rpx rgb(211, 211, 211);
 
+}
+.forum_one_name_img{
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+    margin-left: 20rpx;
+    margin-top: 20rpx;
+    float: left;
+}
+.forum_one_name_text{
+    height: 80rpx;
+    width: 78%;
+    float: left;
+    background-color: rgba(255, 192, 203, 0);
+    margin-top: 20rpx;
+    padding-left: 20rpx;
+}
+.forum_one_name_text_top{
+    height: 50rpx;
+}
+
+.forum_one_name_text_top_nickname{
+    font-size: 30rpx;
+    font-weight: 500;
+    background-color: rgba(127, 255, 212, 0);
+    float: left;
+}
+.forum_one_name_text_top_college {
+    background-color: skyblue;
+    float: left;
+    border-radius: 5rpx;
+    margin-left: 10rpx;
+    color: white;
+    padding: 5rpx;
+    font-size: 20rpx;
+    height: 38rpx;
+    line-height: 30rpx;
+    margin-top: 5rpx;
+}
+.forum_one_name_text_top_grade{
+    background-color: skyblue;
+    float: left;
+    border-radius: 5rpx;
+    margin-left: 10rpx;
+    color: white;
+    padding: 5rpx;
+    font-size: 20rpx;
+    height: 38rpx;
+    line-height: 30rpx;
+    margin-top: 5rpx;
+}
+.forum_one_name_text_bottom{
+    line-height: 30rpx;
+    height: 30rpx;
+    color: rgb(165, 165, 165);
+}
+.forum_one_content{
+    width: 80%;
+    margin-left: 120rpx;
+    
+}
+.forum_one_content_pic{
+    width: 80%;
+    margin-left: 120rpx;
+    max-height: 878rpx;
+    overflow: hidden;
+}
+.forum_one_content_pic_one{
+    width: 395rpx;
+    margin-left: 5rpx;
+}
+.forum_one_content_pic_one1{
+    width: 295rpx;
+    height: 295rpx;
+    margin-left: 5rpx;
+}
+.forum_one_content_pic_one2{
+    width: 195rpx;
+    height: 195rpx;
+    margin-left: 5rpx;
+}
+.forum_one_comment{
+    width: 600rpx;
+    margin-left: 120rpx;
+    height: 35rpx;
+    background-color: rgba(255, 192, 203, 0);
+}
+.forum_one_comment_button{
+    width: 200rpx;
+    text-align: center;
+    float: left;
+    line-height: 35rpx;
+    margin: 20rpx 0;
+}
+.loveperson{
+    background-color: rgba(255, 192, 203, 0);
+    width: 600rpx;
+    margin-left: 120rpx;
+    border-top: 0.5px rgb(204, 204, 204) solid;
+    border-bottom: 0.5px rgb(204, 204, 204) solid;
+    line-height: 40rpx;
+    padding-top: 20rpx;
+    padding-bottom: 20rpx;
+   text-indent: 2em;
+
+}
+.anameoflove{
+    float: left;
+    color: rgb(73, 121, 192);
+
+}
+.anameoflove1{
+    float: left;
+    color: black;
+}
+.commentperson{
+    width: 600rpx;
+    margin-left: 120rpx;
+    border-bottom: 0.5px rgb(204, 204, 204) solid;
+    line-height: 40rpx;
+    padding-top: 20rpx;
+    padding-bottom: 20rpx;
+    color:rgb(95, 95, 95);
+}
+.morecomment{
+    color: rgb(31, 94, 189);
+    margin-top: 20rpx;
+    font-weight: 600;
 }
