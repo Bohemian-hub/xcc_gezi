@@ -323,3 +323,50 @@ word-break: break-all;
     font-weight: 500;
     color: #0edcc6;
 }
+.choose_classify{
+    position: fixed;
+    width: 100%;
+    height: 770rpx;
+    bottom: -770rpx;
+    background-color: rgb(235, 235, 235);
+}
+.choose_classify_top{
+    height: 180rpx;
+    width: 100%;
+    background-color: white;
+    border-bottom: 3rpx solid rgb(235, 235, 235);
+}
+
+.choose_classify_middle{
+    height: 500rpx;
+    width: 100%;
+    background-color: white;
+    margin-bottom: 10rpx;
+
+}
+.choose_classify_bottom{
+    height: 120rpx;
+    width: 100%;
+    background-color: white;
+    text-align: center;
+    line-height: 90rpx;
+}
+.classify_one{
+    width: 25%;
+    height: 180rpx;
+    float: left;
+    margin-top: 50rpx;
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+}
+.classify_one_img{
+    width: 120rpx;
+    height: 120rpx;
+}
+.masking{
+    width: 100%;
+    height: 1012px;
+    background-color: rgba(148, 148, 148, 0.61);
+    position: fixed;
+    bottom: 0;
+}

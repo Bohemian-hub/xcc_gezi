@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-01-11 09:50:01
+ * @LastEditTime: 2021-01-11 12:16:19
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.wxml
@@ -283,7 +283,7 @@
 
     <view class="edit" animation="{{animation2}}">
 
-        <view style="display:{{shouldshow?'block':'none'}};">
+        <view style="display:{{shouldshow?'block':'none'}};" bindtap="forum_publish">
             发布
         </view>
     </view>
@@ -300,5 +300,92 @@
 </view>
 <view class="menu" bindtap="turnmenu"
     style="background-image: url({{turnmenu?'https://s3.ax1x.com/2021/01/10/s1UMhF.png':'https://s3.ax1x.com/2021/01/10/s1kLtS.png'}});">
+</view>
+
+<view class="masking" style="display: {{masking_show?'block':'none'}};" catchtouchstart="touchStart">
+
+</view>
+
+<!-- 下面是发布分类 -->
+<view class="choose_classify" animation="{{animation_classify}}" catchtouchmove="myCatchTouch">
+    <view class="choose_classify_top">
+    </view>
+    <view class="choose_classify_middle">
+        <view class="classify_one" bindtap="publish_learn">
+            <image class="classify_one_img" src="https://s3.ax1x.com/2021/01/11/s319eS.png">
+
+            </image>
+            <view>
+                学习
+
+            </view>
+        </view>
+        <view class="classify_one">
+            <image class="classify_one_img" src="https://s3.ax1x.com/2021/01/11/s3aspD.png">
+
+            </image>
+            <view>
+                生活
+
+            </view>
+        </view>
+        <view class="classify_one">
+            <image class="classify_one_img" src="https://s3.ax1x.com/2021/01/11/s31Cdg.png">
+
+            </image>
+            <view>
+                情感
+
+            </view>
+        </view>
+        <view class="classify_one">
+            <image class="classify_one_img" src="https://s3.ax1x.com/2021/01/06/sZiSN6.png">
+
+            </image>
+            <view>
+                邂逅
+
+            </view>
+        </view>
+        <view class="classify_one">
+            <image class="classify_one_img" src="https://s3.ax1x.com/2021/01/06/sZPvH1.png">
+
+            </image>
+            <view>
+                打卡
+
+            </view>
+        </view>
+        <view class="classify_one">
+            <image class="classify_one_img" src="https://s3.ax1x.com/2021/01/06/sZPzAx.png">
+
+            </image>
+            <view>
+                坦白说
+            </view>
+
+        </view>
+        <view class="classify_one">
+            <image class="classify_one_img" src="https://s3.ax1x.com/2021/01/11/s3GAWd.png">
+
+            </image>
+            <view>
+                暂无
+
+            </view>
+        </view>
+        <view class="classify_one">
+            <image class="classify_one_img" src="https://s3.ax1x.com/2021/01/11/s3GAWd.png">
+
+            </image>
+            <view>
+                暂无
+
+            </view>
+        </view>
+    </view>
+    <view class="choose_classify_bottom" bindtap = "forum_publish_close">
+        取消
+    </view>
 
 </view>

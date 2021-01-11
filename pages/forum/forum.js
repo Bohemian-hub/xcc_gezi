@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-01-11 09:51:27
+ * @LastEditTime: 2021-01-11 12:14:11
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.js
@@ -241,7 +241,8 @@ Page({
     scrollStart: 0,
     scrollStart1: '',
     scrollEnd: '',
-    shouldshow: false
+    shouldshow: false,
+    masking_show: false
   },
 
   /**
@@ -315,6 +316,12 @@ Page({
     this.setData({
       scrollStart1: this.data.scrollStart
     })
+    /* 开始滑动的时候可以把那个菜单关闭了 */
+    this.forum_publish_close()
+  },
+  myCatchTouch() {
+    console.log('prvent user scroll it!');
+    return
   },
 
   translate1() {
@@ -342,52 +349,30 @@ Page({
       })
     }
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  forum_publish() {
+    /* 这里产生一个动画，可以将那个东西显示出来 */
+    this.animation_classify = wx.createAnimation()
+    this.animation_classify.translate(0, -405).step()
+    this.setData({ animation_classify: this.animation_classify.export() })
+    /* 显示的同时也可以将背景混成透明 */
+    this.setData({
+      masking_show: true
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  forum_publish_close() {
+    /* 这里产生一个动画，可以将那个东西显示出来 */
+    this.animation_classify = wx.createAnimation()
+    this.animation_classify.translate(0, 0).step()
+    this.setData({ animation_classify: this.animation_classify.export() })
+    this.setData({
+      masking_show: false
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
+  /* 发布内容跳转 */
+  publish_learn() {
+    wx.navigateTo({
+      url: '../forum_publish/forum_publish',
+    });
 
   }
 })
