@@ -1,272 +1,304 @@
 <!--
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-01-10 18:51:44
+ * @LastEditTime: 2021-01-11 09:50:01
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.wxml
 -->
 <!-- 现在开始开发论坛功能，这是一个不简单的过程 -->
+<view>
+    <view class="title" bindtouchstart="touchStart" onPageScroll='onPageScroll'>
+        <view class="title_back" hover-class="none" hover-stop-propagation="false" bindtap="back_index">
 
-<view class="title">
-    <view class="title_back" hover-class="none" hover-stop-propagation="false" bindtap="back_index">
+            <view class="page_back_text">
+                返回
+            </view>
 
-        <view class="page_back_text">
-            返回
         </view>
-
-    </view>
-    <view class="title_text">
-        论坛
-    </view>
-</view>
-<!-- 功能区面板 -->
-<view class="forum_function" hover-class="none" hover-stop-propagation="false">
-    <view class="forum_function_one">
-        <image class="function_img" src="https://s3.ax1x.com/2021/01/06/sZPXu9.png" mode="widthFix" lazy-load="false"
-            binderror="" bindload="">
-
-        </image>
-        <view class="function_text">
-            话题
+        <view class="title_text">
+            论坛
         </view>
-
-
-
     </view>
-    <view class="forum_function_one">
-        <image class="function_img" src="https://s3.ax1x.com/2021/01/06/sZPzAx.png" mode="widthFix" lazy-load="false"
-            binderror="" bindload="">
-
-        </image>
-        <view class="function_text">
-            坦白说
-        </view>
-
-
-
-    </view>
-    <view class="forum_function_one">
-        <image class="function_img" src="https://s3.ax1x.com/2021/01/06/sZPvH1.png" mode="widthFix" lazy-load="false"
-            binderror="" bindload="">
-
-        </image>
-        <view class="function_text">
-            打卡
-        </view>
-
-
-
-    </view>
-    <view class="forum_function_one">
-        <image class="function_img" src="https://s3.ax1x.com/2021/01/06/sZiSN6.png" mode="widthFix" lazy-load="false"
-            binderror="" bindload="">
-
-        </image>
-        <view class="function_text">
-            邂逅
-        </view>
-
-
-
-    </view>
-    <view class="forum_function_one">
-        <image class="function_img" src="https://s3.ax1x.com/2021/01/06/sZPjBR.png" mode="widthFix" lazy-load="false"
-            binderror="" bindload="">
-
-        </image>
-        <view class="function_text">
-            学习室
-        </view>
-
-
-
-    </view>
-
-</view>
-<!-- 今日热门贴子区域，使用点赞数最多来计算显示 -->
-<view class="hot_post">
-    <view class="hot_post_title">
-        <view class="hot_post_xian"></view>
-        <view class="hot_post_title_text">热门帖子</view>
-
-    </view>
-    <view class="hot_one"
-        style="background-image: url(https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=368714404,1635014424&fm=26&gp=0.jpg);">
-        <view class="hot_title">
-            新年快了，祝大家开开心心，高高兴兴！哈哈哈哈哈哈哈
-        </view>
-        <view class="hot_who">
-            <image class="hot_who_img"
-                src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2860174361,2149221696&fm=26&gp=0.jpg">
+    <!-- 功能区面板 -->
+    <view class="forum_function" hover-class="none" hover-stop-propagation="false" bindtouchstart="touchStart"
+        onPageScroll='onPageScroll'>
+        <view class="forum_function_one">
+            <image class="function_img" src="https://s3.ax1x.com/2021/01/06/sZPXu9.png" mode="widthFix"
+                lazy-load="false" binderror="" bindload="">
 
             </image>
-            <view class="hot_who_text">
-                何东
+            <view class="function_text">
+                话题
             </view>
 
-        </view>
 
-    </view>
-    <view class="hot_one"
-        style="background-image: url(https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=368714404,1635014424&fm=26&gp=0.jpg);">
-        <view class="hot_title">
-            新年快了，祝大家开开心心，高高兴兴！哈哈哈哈哈哈哈
+
         </view>
-        <view class="hot_who">
-            <image class="hot_who_img"
-                src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2860174361,2149221696&fm=26&gp=0.jpg">
+        <view class="forum_function_one">
+            <image class="function_img" src="https://s3.ax1x.com/2021/01/06/sZPzAx.png" mode="widthFix"
+                lazy-load="false" binderror="" bindload="">
 
             </image>
-            <view class="hot_who_text">
-                何东
+            <view class="function_text">
+                坦白说
             </view>
 
-        </view>
 
-    </view>
-    <view class="hot_one"
-        style="background-image: url(https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=368714404,1635014424&fm=26&gp=0.jpg);">
-        <view class="hot_title">
-            新年快了，祝大家开开心心，高高兴兴！哈哈哈哈哈哈哈
+
         </view>
-        <view class="hot_who">
-            <image class="hot_who_img"
-                src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2860174361,2149221696&fm=26&gp=0.jpg">
+        <view class="forum_function_one">
+            <image class="function_img" src="https://s3.ax1x.com/2021/01/06/sZPvH1.png" mode="widthFix"
+                lazy-load="false" binderror="" bindload="">
 
             </image>
-            <view class="hot_who_text">
-                何东
+            <view class="function_text">
+                打卡
             </view>
 
-        </view>
 
-    </view>
 
-    <view class="hot_one"
-        style="background-image: url(https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=368714404,1635014424&fm=26&gp=0.jpg);">
-        <view class="hot_title">
-            新年快了，祝大家开开心心，高高兴兴！哈哈哈哈哈哈哈
         </view>
-        <view class="hot_who">
-            <image class="hot_who_img"
-                src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2860174361,2149221696&fm=26&gp=0.jpg">
+        <view class="forum_function_one">
+            <image class="function_img" src="https://s3.ax1x.com/2021/01/06/sZiSN6.png" mode="widthFix"
+                lazy-load="false" binderror="" bindload="">
 
             </image>
-            <view class="hot_who_text">
-                何东
+            <view class="function_text">
+                邂逅
             </view>
 
-        </view>
 
-    </view>
-</view>
-<!-- 帖子的浏览区域 -->
-<!-- 弄一个分页器，用个戴框架的，这样响应速度可能会快一些 -->
-<scroll-view scroll-x class="bg-white nav text-center">
-    <view class="cu-item {{0==TabCur?'text-blue cur':''}}" bindtap="tabSelect" data-id="0">
-        <text class="cuIcon-all"></text> 推荐
-    </view>
-    <view class="cu-item {{1==TabCur?'text-blue cur':''}}" bindtap="tabSelect" data-id="1">
-        <text class="cuIcon-text"></text>学习
-    </view>
-    <view class="cu-item {{2==TabCur?'text-blue cur':''}}" bindtap="tabSelect" data-id="2">
-        <text class="cuIcon-clothesfill"></text> 生活
-    </view>
-    <view class="cu-item {{3==TabCur?'text-blue cur':''}}" bindtap="tabSelect" data-id="3">
-        <text class="cuIcon-likefill"></text> 情感
-    </view>
-</scroll-view>
-<!--下面是我要做的 -->
-<view class="forum_one" wx:for="{{monidata}}" wx:key="item" wx:for-index="idx">
-    <view class="forum_one_name">
-        <image class="forum_one_name_img" mode="aspectFill" src="{{item.touxiang}}">
-        </image>
-        <view class="forum_one_name_text">
-            <view class="forum_one_name_text_top">
-                <view class="forum_one_name_text_top_nickname">{{item.name}}</view>
-                <view class="forum_one_name_text_top_college"
-                    style="background-color: {{item.sex == '男'?'skyblue':'pink'}};">
-                    {{item.college}}</view>
-                <view class="forum_one_name_text_top_grade"
-                    style="background-color: {{item.sex == '男'?'skyblue':'pink'}};">{{item.grade}}</view>
+
+        </view>
+        <view class="forum_function_one">
+            <image class="function_img" src="https://s3.ax1x.com/2021/01/06/sZPjBR.png" mode="widthFix"
+                lazy-load="false" binderror="" bindload="">
+
+            </image>
+            <view class="function_text">
+                学习室
             </view>
-            <view class="forum_one_name_text_bottom">{{item.time}}</view>
-        </view>
 
-    </view>
-    <view style="clear: both;">
 
-    </view>
-
-    <!-- 下面是文字 -->
-    <view class="forum_one_content">{{item.content}}{{item.picture_length}}</view>
-    <!-- 下面是图片区域 -->
-    <view class="forum_one_content_pic">
-        <image
-            class="{{item.picture.length == 1?'forum_one_content_pic_one':item.picture.length == 2?'forum_one_content_pic_one1': item.picture.length == 3?'forum_one_content_pic_one2': item.picture.length == 4?'forum_one_content_pic_one1': item.picture.length == 5?'forum_one_content_pic_one2': item.picture.length == 6?'forum_one_content_pic_one2': item.picture.length == 7?'forum_one_content_pic_one2': item.picture.length == 8?'forum_one_content_pic_one2': item.picture.length == 9?'forum_one_content_pic_one2':'forum_one_content_pic_one2'}}"
-            mode="{{item.picture.length == 1?'widthFix':'aspectFill'}}" wx:for="{{item.picture}}" wx:key="item"
-            wx:for-item="items" src="{{items}}" data-src="{{items}}" data-index="{{idx}}" bindtap="previewImage">
-        </image>
-
-    </view>
-    <!-- 下面是分享、赞、评论按钮区域 -->
-    <view class="forum_one_comment">
-        <view class="forum_one_comment_button" style="border-right: 1rpx  solid rgb(138, 138, 138);">
-            <text class="cuIcon-share">
-
-            </text>
-            分享
-        </view>
-        <view class="forum_one_comment_button" style="border-right: 1rpx  solid rgb(138, 138, 138);">
-            <text class="cuIcon-comment">
-
-            </text>
-            评论
-        </view>
-        <view class="forum_one_comment_button">
-            <text class="cuIcon-like">
-
-            </text>
-            赞
-        </view>
-
-    </view>
-    <view style="clear: both;">
-
-    </view>
-    <!-- 显示点赞的人名字吧 -->
-    <view class="loveperson">
-        <view class="anameoflove">
-            {{item.love[0].name}}、{{item.love[1].name}}、{{item.love[2].name}}、{{item.love[3].name}}、{{item.love[4].name}}、{{item.love[5].name}}、{{item.love[6].name}}、{{item.love[7].name}}、{{item.love[8].name}}、{{item.love[9].name}}、<text
-                style="color: rgb(90, 90, 90);">等{{item.love.length}}人觉得很赞</text>
-        </view>
-        <view style=" clear: both;">
 
         </view>
 
     </view>
-    <!-- 这里评论展示区，展示三个主评论，和他们自带的所有子评论，最后显示一个可以按的更多评论。 -->
-    <view class="commentperson">
-        <view>
-            <view wx:for="{{item.comment}}" wx:for-item="itemss" wx:if="{{index<3}}">
-                <!-- 循环次数限制在三次以内 -->
-                <text style="color:rgb(31, 94, 189);">{{itemss.name}}</text>：{{itemss.content}}
-                <!-- 下面是子评论，出不出现在于有没有 -->
-                <view wx:for="{{item.soncomment}}" wx:for-item="itemsss"
-                    style="display: {{itemsss.towho == itemss.name ? 'block':'none'}};">
-                    <text style="color:rgb(31, 94, 189);">{{itemsss.name}}</text>回复<text
-                        style="color: rgb(31, 94, 189);">{{itemsss.towho}}</text>:{{itemsss.content}}
+    <!-- 今日热门贴子区域，使用点赞数最多来计算显示 -->
+    <view class="hot_post" bindtouchstart="touchStart" onPageScroll='onPageScroll'>
+        <view class="hot_post_title">
+            <view class="hot_post_xian"></view>
+            <view class="hot_post_title_text">热门帖子</view>
+
+        </view>
+        <view class="hot_one"
+            style="background-image: url(https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=368714404,1635014424&fm=26&gp=0.jpg);">
+            <view class="hot_title">
+                新年快了，祝大家开开心心，高高兴兴！哈哈哈哈哈哈哈
+            </view>
+            <view class="hot_who">
+                <image class="hot_who_img"
+                    src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2860174361,2149221696&fm=26&gp=0.jpg">
+
+                </image>
+                <view class="hot_who_text">
+                    何东
                 </view>
+
             </view>
-            <view class="morecomment">
-                更多评论({{item.comment.length}})
+
+        </view>
+        <view class="hot_one"
+            style="background-image: url(https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=368714404,1635014424&fm=26&gp=0.jpg);">
+            <view class="hot_title">
+                新年快了，祝大家开开心心，高高兴兴！哈哈哈哈哈哈哈
             </view>
+            <view class="hot_who">
+                <image class="hot_who_img"
+                    src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2860174361,2149221696&fm=26&gp=0.jpg">
+
+                </image>
+                <view class="hot_who_text">
+                    何东
+                </view>
+
+            </view>
+
+        </view>
+        <view class="hot_one"
+            style="background-image: url(https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=368714404,1635014424&fm=26&gp=0.jpg);">
+            <view class="hot_title">
+                新年快了，祝大家开开心心，高高兴兴！哈哈哈哈哈哈哈
+            </view>
+            <view class="hot_who">
+                <image class="hot_who_img"
+                    src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2860174361,2149221696&fm=26&gp=0.jpg">
+
+                </image>
+                <view class="hot_who_text">
+                    何东
+                </view>
+
+            </view>
+
+        </view>
+
+        <view class="hot_one"
+            style="background-image: url(https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=368714404,1635014424&fm=26&gp=0.jpg);">
+            <view class="hot_title">
+                新年快了，祝大家开开心心，高高兴兴！哈哈哈哈哈哈哈
+            </view>
+            <view class="hot_who">
+                <image class="hot_who_img"
+                    src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2860174361,2149221696&fm=26&gp=0.jpg">
+
+                </image>
+                <view class="hot_who_text">
+                    何东
+                </view>
+
+            </view>
+
+        </view>
+    </view>
+    <!-- 帖子的浏览区域 -->
+    <!-- 弄一个分页器，用个戴框架的，这样响应速度可能会快一些 -->
+    <scroll-view scroll-x class="bg-white nav text-center" bindtouchstart="touchStart" onPageScroll='onPageScroll'>
+        <view class="cu-item {{0==TabCur?'text-blue cur':''}}" bindtap="tabSelect" data-id="0">
+            <text class="cuIcon-all"></text> 推荐
+        </view>
+        <view class="cu-item {{1==TabCur?'text-blue cur':''}}" bindtap="tabSelect" data-id="1">
+            <text class="cuIcon-text"></text>学习
+        </view>
+        <view class="cu-item {{2==TabCur?'text-blue cur':''}}" bindtap="tabSelect" data-id="2">
+            <text class="cuIcon-clothesfill"></text> 生活
+        </view>
+        <view class="cu-item {{3==TabCur?'text-blue cur':''}}" bindtap="tabSelect" data-id="3">
+            <text class="cuIcon-likefill"></text> 情感
+        </view>
+    </scroll-view>
+    <!--下面是我要做的 -->
+    <view class="forum_one" wx:for="{{monidata}}" wx:key="item" wx:for-index="idx" bindtouchstart="touchStart"
+        onPageScroll='onPageScroll'>
+        <view class="forum_one_name">
+            <image class="forum_one_name_img" mode="aspectFill" src="{{item.touxiang}}">
+            </image>
+            <view class="forum_one_name_text">
+                <view class="forum_one_name_text_top">
+                    <view class="forum_one_name_text_top_nickname">{{item.name}}</view>
+                    <view class="forum_one_name_text_top_college"
+                        style="background-color: {{item.sex == '男'?'skyblue':'pink'}};">
+                        {{item.college}}</view>
+                    <view class="forum_one_name_text_top_grade"
+                        style="background-color: {{item.sex == '男'?'skyblue':'pink'}};">{{item.grade}}</view>
+                </view>
+                <view class="forum_one_name_text_bottom">{{item.time}}</view>
+            </view>
+
+        </view>
+        <view style="clear: both;">
+
+        </view>
+
+        <!-- 下面是文字 -->
+        <view class="forum_one_content">{{item.content}}{{item.picture_length}}</view>
+        <!-- 下面是图片区域 -->
+        <view class="forum_one_content_pic">
+            <image
+                class="{{item.picture.length == 1?'forum_one_content_pic_one':item.picture.length == 2?'forum_one_content_pic_one1': item.picture.length == 3?'forum_one_content_pic_one2': item.picture.length == 4?'forum_one_content_pic_one1': item.picture.length == 5?'forum_one_content_pic_one2': item.picture.length == 6?'forum_one_content_pic_one2': item.picture.length == 7?'forum_one_content_pic_one2': item.picture.length == 8?'forum_one_content_pic_one2': item.picture.length == 9?'forum_one_content_pic_one2':'forum_one_content_pic_one2'}}"
+                mode="{{item.picture.length == 1?'widthFix':'aspectFill'}}" wx:for="{{item.picture}}" wx:key="item"
+                wx:for-item="items" src="{{items}}" data-src="{{items}}" data-index="{{idx}}" bindtap="previewImage">
+            </image>
+
+        </view>
+        <!-- 下面是分享、赞、评论按钮区域 -->
+        <view class="forum_one_comment">
+            <view class="forum_one_comment_button" style="border-right: 1rpx  solid rgb(138, 138, 138);">
+                <text class="cuIcon-share">
+
+                </text>
+                分享
+            </view>
+            <view class="forum_one_comment_button" style="border-right: 1rpx  solid rgb(138, 138, 138);">
+                <text class="cuIcon-comment">
+
+                </text>
+                评论
+            </view>
+            <view class="forum_one_comment_button">
+                <text class="cuIcon-like">
+
+                </text>
+                赞
+            </view>
+
+        </view>
+        <view style="clear: both;">
+
+        </view>
+        <!-- 显示点赞的人名字吧 -->
+        <view class="loveperson">
+            <view class="anameoflove">
+                {{item.love[0].name}}、{{item.love[1].name}}、{{item.love[2].name}}、{{item.love[3].name}}、{{item.love[4].name}}、{{item.love[5].name}}、{{item.love[6].name}}、{{item.love[7].name}}、{{item.love[8].name}}、{{item.love[9].name}}、<text
+                    style="color: rgb(90, 90, 90);">等{{item.love.length}}人觉得很赞</text>
+            </view>
+            <view style=" clear: both;">
+
+            </view>
+
+        </view>
+        <!-- 这里评论展示区，展示三个主评论，和他们自带的所有子评论，最后显示一个可以按的更多评论。 -->
+        <view class="commentperson">
+            <view>
+                <view wx:for="{{item.comment}}" wx:for-item="itemss" wx:if="{{index<3}}">
+                    <!-- 循环次数限制在三次以内 -->
+                    <text style="color:rgb(31, 94, 189);">{{itemss.name}}</text>：{{itemss.content}}
+                    <!-- 下面是子评论，出不出现在于有没有 -->
+                    <view wx:for="{{item.soncomment}}" wx:for-item="itemsss"
+                        style="display: {{itemsss.towho == itemss.name ? 'block':'none'}};">
+                        <text style="color:rgb(31, 94, 189);">{{itemsss.name}}</text>回复<text
+                            style="color: rgb(31, 94, 189);">{{itemsss.towho}}</text>:{{itemsss.content}}
+                    </view>
+                </view>
+                <view class="morecomment">
+                    更多评论({{item.comment.length}})
+                </view>
+
+            </view>
+
 
         </view>
 
 
     </view>
+</view>
 
+
+
+
+
+<!-- 下面我要做一个发布按钮，准备进入发布页面 -->
+<view style="display: {{turnmenu?'block':'none'}};">
+
+    <view class="edit" animation="{{animation2}}">
+
+        <view style="display:{{shouldshow?'block':'none'}};">
+            发布
+        </view>
+    </view>
+    <view class="reback" animation="{{animation3}}">
+
+        <view style="display:{{shouldshow?'block':'none'}};">
+            反馈
+        </view>
+    </view>
+</view>
+
+<!-- 下面这是一个加号 -->
+<view class="top" bindtap="totop">
+</view>
+<view class="menu" bindtap="turnmenu"
+    style="background-image: url({{turnmenu?'https://s3.ax1x.com/2021/01/10/s1UMhF.png':'https://s3.ax1x.com/2021/01/10/s1kLtS.png'}});">
 
 </view>

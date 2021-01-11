@@ -270,3 +270,56 @@ word-break: break-all;
     margin-top: 20rpx;
     font-weight: 600;
 }
+/* 发布 */
+.top{
+    position: fixed;
+    bottom: 80rpx;
+    width: 80rpx;
+    height: 80rpx;
+    right: 50rpx;
+    background-image: url(https://s3.ax1x.com/2021/01/10/s1i44e.png);
+    background-size: 100% 100%;
+    text-align: center;
+    line-height: 200rpx;
+    font-weight: 500;
+    color: #ffad10;
+}
+.reback{
+    position: fixed;
+    bottom: 200rpx;
+    width: 80rpx;
+    height: 80rpx;
+    right: 50rpx;
+    background-image: url(https://s3.ax1x.com/2021/01/10/s1io3d.png);
+    background-size: 100% 100%;
+    text-align: center;
+    line-height: 200rpx;
+    font-weight: 500;
+    color: #775cff;
+}
+.edit{
+    position: fixed;
+    bottom: 200rpx;
+    width: 80rpx;
+    height: 80rpx;
+    right: 50rpx;
+    background-image: url(https://s3.ax1x.com/2021/01/10/s1iI9H.png);
+    background-size: 100% 100%;
+    text-align: center;
+    line-height: 200rpx;
+    font-weight: 500;
+    color: #0edcc6;
+}
+.menu{
+    position: fixed;
+    bottom: 200rpx;
+    width: 80rpx;
+    height: 80rpx;
+    right: 50rpx;
+    background-image: url(https://s3.ax1x.com/2021/01/10/s1kLtS.png);
+    background-size: 100% 100%;
+    text-align: center;
+    line-height: 200rpx;
+    font-weight: 500;
+    color: #0edcc6;
+}

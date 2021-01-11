@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-01-10 18:45:26
+ * @LastEditTime: 2021-01-11 09:51:27
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.js
@@ -235,14 +235,22 @@ Page({
         content: '整他一个亿'
       }],
 
-    }]
+    }],
+    turnmenu: false,
+    scrollIng: '',
+    scrollStart: 0,
+    scrollStart1: '',
+    scrollEnd: '',
+    shouldshow: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.animation1 = wx.createAnimation()
+    this.animation2 = wx.createAnimation()
+    this.animation3 = wx.createAnimation()
   },
   tabSelect(e) {
     this.setData({
@@ -258,6 +266,81 @@ Page({
       current: current, // 当前显示图片的http链接  
       urls: this.data.monidata[Listindex].picture // 需要预览的图片http链接列表  
     })
+  },
+  turnmenu() {
+
+    if (!this.data.turnmenu) {
+      this.setData({
+        turnmenu: !this.data.turnmenu
+      })
+      this.translate1()
+      setTimeout(() => {
+        this.setData({
+          shouldshow: true
+        })
+      }, 300);
+    } else {
+      this.closeturnmenu()
+    }
+  },
+  closeturnmenu() {
+    this.setData({
+      shouldshow: false
+    })
+    this.translate2()
+    setTimeout(() => {
+      this.setData({
+        turnmenu: false
+      })
+    }, 300);
+  },
+
+  onPageScroll(e) {
+    this.setData({
+      scrollStart: e.scrollTop,
+      scrollIng: true
+    })
+    //console.log(this.data.scrollStart - this.data.scrollStart1);
+    if (this.data.scrollStart - this.data.scrollStart1 > 50) {
+      console.log("向上滑动了");
+      this.closeturnmenu()
+      /* 调用缩放动画 */
+    } else if (this.data.scrollStart - this.data.scrollStart1 < -50) {
+      console.log("向下滑动了");
+      this.closeturnmenu()
+    }
+
+  },
+  touchStart() {
+    this.setData({
+      scrollStart1: this.data.scrollStart
+    })
+  },
+
+  translate1() {
+    this.animation2.translate(0, -140).step()
+    this.animation3.translate(0, -70).step()
+    this.setData({ animation2: this.animation2.export() })
+    this.setData({ animation3: this.animation3.export() })
+  },
+  translate2() {
+    this.animation2.translate(0, 0).step()
+    this.animation3.translate(0, 0).step()
+    this.setData({ animation2: this.animation2.export() })
+    this.setData({ animation3: this.animation3.export() })
+  },
+  /* 回到顶部 */
+  totop() {
+    if (wx.pageScrollTo) {
+      wx.pageScrollTo({
+        scrollTop: 0
+      })
+    } else {
+      wx.showModal({
+        title: '提示',
+        content: '当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。'
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
