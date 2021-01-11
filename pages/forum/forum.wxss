@@ -18,11 +18,11 @@ page{
 }
 .title_text{
     background-color: rgba(250, 235, 215, 0);
-    width: 50%;
+    width: 40%;
     height: 80rpx;
     float: left;
     margin-top: 30rpx;
-    line-height: 100rpx;
+    line-height: 120rpx;
     color: rgb(255, 255, 255);
 }
 

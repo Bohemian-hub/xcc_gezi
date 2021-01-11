@@ -1,5 +1,6 @@
 {
   "pages": [
+
     "pages/forum_publish/forum_publish",
     "pages/forum/forum",
     "pages/index/index",
