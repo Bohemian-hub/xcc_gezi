@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-01-11 09:56:30
- * @LastEditTime: 2021-01-11 14:50:05
+ * @LastEditTime: 2021-01-11 21:58:58
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum_publish/forum_publish.wxml
@@ -23,7 +23,8 @@
 </view>
 
 <view class="forum_write">
-    <textarea class="forum_content" value="" placeholder="500字以内" bindinput="" maxlength="500">
+    <textarea class="forum_content" value="{{input_content}}" placeholder="500字以内" bindinput="" maxlength="500"
+        bindinput="bind_input_content">
 
     </textarea>
     <scroll-view class="forum_pic" scroll-x="false" scroll-y="true">
@@ -44,105 +45,37 @@
     </scroll-view>
 
 </view>
+
 <view class="forum_topic">
     <view class="forum_topic_left">
-        <view class="forum_topic_left_top">#表白墙#</view>
-        <view class="forum_topic_left_bottom">6823人添加该话题</view>
+        <input class="forum_topic_left_top" type="text" placeholder="#自定义话题#" bindinput="add_topic_text"
+            placeholder-class="input-placeholder">
+            
+        </input>
+        <view class="forum_topic_left_bottom">新增话题 </view>
     </view>
-    <view class="forum_topic_right">
+    <view class="forum_topic_right" bindtap="add_this_topic" data-topic="{{add_topic_content}}">
         <image class="forum_topic_right_jia" src="https://s3.ax1x.com/2021/01/11/s3qsds.png">
 
         </image>
     </view>
 </view>
-<view class="forum_topic">
+
+
+
+<view class="forum_topic" wx:for="{{topicList}}">
     <view class="forum_topic_left">
-        <view class="forum_topic_left_top">#表白墙#</view>
-        <view class="forum_topic_left_bottom">6823人添加该话题</view>
+        <view class="forum_topic_left_top">{{item.fields.content}}</view>
+        <view class="forum_topic_left_bottom">{{item.fields.use_times}}人添加该话题</view>
     </view>
-    <view class="forum_topic_right">
+    <view class="forum_topic_right" bindtap="add_this_topic" data-topic="{{item.fields.content}}">
         <image class="forum_topic_right_jia" src="https://s3.ax1x.com/2021/01/11/s3qsds.png">
 
         </image>
     </view>
 </view>
-<view class="forum_topic">
-    <view class="forum_topic_left">
-        <view class="forum_topic_left_top">#表白墙#</view>
-        <view class="forum_topic_left_bottom">6823人添加该话题</view>
-    </view>
-    <view class="forum_topic_right">
-        <image class="forum_topic_right_jia" src="https://s3.ax1x.com/2021/01/11/s3qsds.png">
 
-        </image>
-    </view>
-</view>
-<view class="forum_topic">
-    <view class="forum_topic_left">
-        <view class="forum_topic_left_top">#表白墙#</view>
-        <view class="forum_topic_left_bottom">6823人添加该话题</view>
-    </view>
-    <view class="forum_topic_right">
-        <image class="forum_topic_right_jia" src="https://s3.ax1x.com/2021/01/11/s3qsds.png">
 
-        </image>
-    </view>
-</view>
-<view class="forum_topic">
-    <view class="forum_topic_left">
-        <view class="forum_topic_left_top">#表白墙#</view>
-        <view class="forum_topic_left_bottom">6823人添加该话题</view>
-    </view>
-    <view class="forum_topic_right">
-        <image class="forum_topic_right_jia" src="https://s3.ax1x.com/2021/01/11/s3qsds.png">
-
-        </image>
-    </view>
-</view>
-<view class="forum_topic">
-    <view class="forum_topic_left">
-        <view class="forum_topic_left_top">#表白墙#</view>
-        <view class="forum_topic_left_bottom">6823人添加该话题</view>
-    </view>
-    <view class="forum_topic_right">
-        <image class="forum_topic_right_jia" src="https://s3.ax1x.com/2021/01/11/s3qsds.png">
-
-        </image>
-    </view>
-</view>
-<view class="forum_topic">
-    <view class="forum_topic_left">
-        <view class="forum_topic_left_top">#表白墙#</view>
-        <view class="forum_topic_left_bottom">6823人添加该话题</view>
-    </view>
-    <view class="forum_topic_right">
-        <image class="forum_topic_right_jia" src="https://s3.ax1x.com/2021/01/11/s3qsds.png">
-
-        </image>
-    </view>
-</view>
-<view class="forum_topic">
-    <view class="forum_topic_left">
-        <view class="forum_topic_left_top">#表白墙#</view>
-        <view class="forum_topic_left_bottom">6823人添加该话题</view>
-    </view>
-    <view class="forum_topic_right">
-        <image class="forum_topic_right_jia" src="https://s3.ax1x.com/2021/01/11/s3qsds.png">
-
-        </image>
-    </view>
-</view>
-<view class="forum_topic">
-    <view class="forum_topic_left">
-        <view class="forum_topic_left_top">#表白墙#</view>
-        <view class="forum_topic_left_bottom">6823人添加该话题</view>
-    </view>
-    <view class="forum_topic_right">
-        <image class="forum_topic_right_jia" src="https://s3.ax1x.com/2021/01/11/s3qsds.png">
-
-        </image>
-    </view>
-</view>
 <view class="placeholder">
 
 </view>
