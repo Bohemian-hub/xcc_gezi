@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:33:47
- * @LastEditTime: 2020-12-20 23:35:49
+ * @LastEditTime: 2021-01-12 19:56:33
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/login/login.js
@@ -41,12 +41,18 @@ Page({
             that.setData({
               loginstatus: '1',
             })
+            var sex = that.boyorgirl(res.data.ret.idNumber)
+            var grade = that.sumgrade(res.data.ret.grade)
             wx.setStorageSync('username', username)
             wx.setStorageSync('password', password)
+            wx.setStorageSync('sex', sex)
+            wx.setStorageSync('grade', grade)
             wx.setStorageSync('name', res.data.ret.name)
             wx.setStorageSync('studentId', res.data.ret.studentId)
             wx.setStorageSync('college', res.data.ret.collegeName)
             wx.setStorageSync('major', res.data.ret.majorName)
+
+
             wx.redirectTo({
               url: '../index/index',
             })
@@ -85,5 +91,34 @@ Page({
       },
     })
   },
+  boyorgirl(a) {
+    var sexAndAge = {};
+    var userCard = a;
+    //如果身份证号码为undefind则返回空
+    console.log(userCard);
+    //获取性别
+    if (parseInt(userCard.substr(16, 1)) % 2 == 1) {
+      sexAndAge.sex = '男'
+    } else {
+      sexAndAge.sex = '女'
+    }
+
+    return sexAndAge.sex;
+  },
+  sumgrade(e) {
+    var grade = e;
+    var hangrade = '';
+    if (grade == 20) {
+      hangrade = "大一"
+    } else if (grade == 19) {
+      hangrade = "大二"
+
+    } else if (grade == 18) {
+      hangrade = "大三"
+    } else if (grade == 17) {
+      hangrade = "大四"
+    }
+    return hangrade;
+  }
 
 })

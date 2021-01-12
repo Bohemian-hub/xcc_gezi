@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-18 15:06:45
- * @LastEditTime: 2020-12-08 19:57:46
+ * @LastEditTime: 2021-01-12 15:18:13
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/publish_confess/publish_confess.js
@@ -277,18 +277,24 @@ Page({
           FilePath: that.data.filePath,
           onProgress: function (info) {
             /* 显示进度 */
+            console.log("step1：")
             console.log(JSON.stringify(info.percent));
           }
         }, function (err, data) {
+          console.log("step2：")
           console.log(err || data);
+          console.log("step3：")
+
           console.log(data.Location);
           that.setData({
+            /* 将上传图片后，阿里云返回给我的图片地址拿到，并且放到本地数据中，上传数据的时候将地址放过去。 */
             choose_img_url: "https://" + data.Location,
           })
           that.add_confess()
         });
       } else {
         that.setData({
+          /* 如果没有自定义图片的话，就直接将选择的图片的地址传到数据库 */
           choose_img_url: this.data.choose_image_index,
         })
         that.add_confess()
