@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-11 09:56:30
- * @LastEditTime: 2021-01-12 22:15:45
+ * @LastEditTime: 2021-01-14 14:01:39
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum_publish/forum_publish.js
@@ -14,6 +14,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    classify: 'learn',
     imgList: [],
     topicList: [],
     input_content: '',
@@ -27,6 +28,9 @@ Page({
     post_data_grade: '',
     post_data_college: '',
     post_data_sex: '',
+    tempavatarUrl: '',
+    post_data_avatarUrl: '',
+
   },
   ChooseImage() {
     wx.chooseImage({
@@ -66,63 +70,40 @@ Page({
           this.setData({
             imgList: this.data.imgList
           })
+          console.log(this.data.imgList);
         }
       }
     })
   },
-  onLoad: function () {
+  onLoad: function (options) {
     /* 页面在加载的时候从和后台数据库中请求数据 */
     this.get_topic()
+    console.log(options);
+    console.log(options.classify);
+    this.setData({
+      classify: options.classify
+    })
   },
   getuserinfo(e) {
     var that = this
     /* 这里获取之后不如我就上床一下，免得头像地址失效了不可用。*/
-    var cos1 = new COS({
-      getAuthorization: function (options, callback) {
-        // 服务端 JS 和 PHP 示例：https://github.com/tencentyun/cos-js-sdk-v5/blob/master/server/
-        // 服务端其他语言参考 COS STS SDK ：https://github.com/tencentyun/qcloud-cos-sts-sdk
-        // STS 详细文档指引看：https://cloud.tencent.com/document/product/436/14048
-        wx.request({
-          url: 'https://www.xiyuangezi.cn/confess/credential',
-          data: {
-            // 可从 options 取需要的参数
-          },
-          success: function (result) {
-            var data = result.data;
-            var credentials = data.credentials;
-            callback({
-              TmpSecretId: credentials.tmpSecretId,
-              TmpSecretKey: credentials.tmpSecretKey,
-              XCosSecurityToken: credentials.sessionToken,
-              ExpiredTime: data.expiredTime,
-            });
-          }
-        });
-      }
-    });
+
+
     wx.downloadFile({
       url: e.detail.userInfo.avatarUrl,
       success: function (res) {
-        console.log(res.tempFilePath);
-        cos1.postObject({
-          Bucket: 'xcc-grid-1256135907',
-          Region: 'ap-nanjing',
-          Key: 'xcc_forum/' + wx.getStorageSync('studentId') + "-touxiang" + ".jpg",
-          //下面这个东西就是传入临时地址
-          FilePath: res.tempFilePath,
-          onProgress: function (info) {
-            /* 显示进度 */
-            console.log(JSON.stringify(info.percent));
-          }
-        }, function (err, data) {
-          console.log(data.Location);
-          /* 将上传的头像返回的地址存放过来。 */
-          that.setData({
-            post_data_avatarUrl: "https://" + data.Location
-          })
-        });
+        console.log(res.tempFilePath)
+        that.setData({
+          tempavatarUrl: res.tempFilePath
+        })
+        console.log("执行异步函数")
+        that.uploadavatar()
       }
     })
+
+
+
+
 
   },
   get_topic() {
@@ -173,6 +154,8 @@ Page({
       /* -----------------------这里是获取其他值---------------------- */
       that.get_other_infor()
       /* 表示我选择了自定义的图片，这样才上传图片，否则我不用图片 */
+
+      /* 现在分情况看是否上传图片 */
       if (this.data.imgList.length > 0) {
         // 去某个地方获取一个临时密钥cos
         var cos = new COS({
@@ -199,6 +182,7 @@ Page({
           }
         });
 
+        /* 现在通过循环上传选择了的图片 */
         for (var i = 0; i < this.data.imgList.length; i++) {
           console.log(this.data.imgList[i]);
 
@@ -227,9 +211,12 @@ Page({
           });
         }
 
-        wx.hideLoading()
       } else {
         /* 没有图片的话，要做的事这里 */
+        //看看需要的数据上传是否正确
+        console.log("-------*-*-*-*-*----------");
+        that.preparedata_to_post()
+        console.log("-------*-*-*-*-*----------");
       }
     } else {
       /* 没有填写完成的话，走这里 */
@@ -248,11 +235,55 @@ Page({
       post_data_grade: wx.getStorageSync('grade'),
       post_data_college: wx.getStorageSync('college'),
     })
-    wx.getUserInfo({
-      success: function (res) {
-        console.log(res.userInfo.avatarUrl);
+  },
+  uploadavatar() {
+    var that = this
+    /* 后上传头像 */
+    var cos1 = new COS({
+      getAuthorization: function (options, callback) {
+        // 服务端 JS 和 PHP 示例：https://github.com/tencentyun/cos-js-sdk-v5/blob/master/server/
+        // 服务端其他语言参考 COS STS SDK ：https://github.com/tencentyun/qcloud-cos-sts-sdk
+        // STS 详细文档指引看：https://cloud.tencent.com/document/product/436/14048
+        wx.request({
+          url: 'https://www.xiyuangezi.cn/confess/credential',
+          data: {
+            // 可从 options 取需要的参数
+          },
+          success: function (result) {
+            var data = result.data;
+            var credentials = data.credentials;
+            callback({
+              TmpSecretId: credentials.tmpSecretId,
+              TmpSecretKey: credentials.tmpSecretKey,
+              XCosSecurityToken: credentials.sessionToken,
+              ExpiredTime: data.expiredTime,
+            });
+          }
+        });
       }
-    })
+    });
+
+    console.log(that.data.tempavatarUrl);
+    if (that.data.tempavatarUrl) {
+      cos1.postObject({
+        Bucket: 'xcc-grid-1256135907',
+        Region: 'ap-nanjing',
+        Key: 'xcc_forum/' + wx.getStorageSync('studentId') + "-touxiang" + ".jpg",
+        //下面这个东西就是传入临时地址
+        FilePath: that.data.tempavatarUrl,
+        onProgress: function (info) {
+          /* 显示进度 */
+          console.log(JSON.stringify(info.percent));
+        }
+      }, function (err, data) {
+        console.log(err || data.Location);
+        /* 将上传的头像返回的地址存放过来。 */
+        that.setData({
+          post_data_avatarUrl: "https://" + data.Location
+        })
+        that.publish()
+      });
+    }
   },
   get_publish_time() {
     var that = this;
@@ -293,11 +324,41 @@ Page({
     console.log(this.data.post_data_grade);
     console.log(this.data.post_data_college);
     console.log(this.data.input_content);
+    console.log(JSON.stringify(this.data.post_data_pic));
+    console.log("数组：");
     console.log(this.data.post_data_pic);
     console.log(this.data.post_data_avatarUrl);
     console.log(this.data.card_time);
     console.log(this.data.real_time);
     console.log(this.data.real_date);
+    console.log(this.data.classify);
+
+    /* 数据已经拿到了，现在准备向后端发送请求，现在先把数据传入后端 */
+    wx.request({
+      url: 'http://127.0.0.1:8000/forum/add_forum', //仅为示例，并非真实的接口地址
+      data: {
+        classify: this.data.classify,
+        studentId: wx.getStorageSync('studentId'),
+        post_data_name: this.data.post_data_name,
+        post_data_sex: this.data.post_data_sex,
+        post_data_grade: this.data.post_data_grade,
+        post_data_college: this.data.post_data_college,
+        input_content: this.data.input_content,
+        post_data_pic: JSON.stringify(this.data.post_data_pic),
+        post_data_avatarUrl: this.data.post_data_avatarUrl,
+        card_time: this.data.card_time,
+        real_time: this.data.real_time,
+        real_date: this.data.real_date,
+      },
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      success(res) {
+        console.log(res);
+        wx.hideLoading()
+      }
+    })
   }
 
 })

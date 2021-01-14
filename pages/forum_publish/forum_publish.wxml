@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-01-11 09:56:30
- * @LastEditTime: 2021-01-12 21:39:08
+ * @LastEditTime: 2021-01-13 09:54:54
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum_publish/forum_publish.wxml
@@ -80,6 +80,6 @@
 
 </view>
 
-<button open-type='getUserInfo' class="publish_button" bindtap="publish" bindgetuserinfo="getuserinfo">
+<button open-type='getUserInfo' class="publish_button" bindgetuserinfo="getuserinfo">
     发布
 </button>

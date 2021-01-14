@@ -1,8 +1,9 @@
 {
   "pages": [
 
-    "pages/forum_publish/forum_publish",
+
     "pages/forum/forum",
+    "pages/forum_publish/forum_publish",
     "pages/index/index",
     "pages/new_confesswall/new_confesswall",
     "pages/new_publish_confess/new_publish_confess",

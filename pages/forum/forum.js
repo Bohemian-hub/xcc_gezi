@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-01-11 12:14:11
+ * @LastEditTime: 2021-01-14 14:02:14
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.js
@@ -371,7 +371,7 @@ Page({
   /* 发布内容跳转 */
   publish_learn() {
     wx.navigateTo({
-      url: '../forum_publish/forum_publish',
+      url: "../forum_publish/forum_publish?classify=learn",
     });
 
   }
