@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-11 09:56:30
- * @LastEditTime: 2021-01-14 14:01:39
+ * @LastEditTime: 2021-01-15 21:20:06
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum_publish/forum_publish.js
@@ -309,12 +309,14 @@ Page({
       s = "0" + String(s)
     }
     var card_time = myDate.getFullYear() + '' + month + '' + daly + '' + h + '' + m + '' + s;
+    var format_time = myDate.getFullYear() + '-' + month + '-' + daly + ' ' + h + ':' + m + ':' + s;
     var real_time = h + ':' + m;
     var real_date = myDate.getFullYear() + '' + month + '' + daly;
     that.setData({
       card_time: card_time,
       real_time: real_time,
       real_date: real_date,
+      format_time: format_time,
       filename: wx.getStorageSync('studentId') + "_" + card_time,
     })
   },
@@ -349,6 +351,7 @@ Page({
         card_time: this.data.card_time,
         real_time: this.data.real_time,
         real_date: this.data.real_date,
+        format_time: this.data.format_time,
       },
       method: "POST",
       header: {
