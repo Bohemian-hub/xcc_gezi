@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-11 09:56:30
- * @LastEditTime: 2021-01-16 21:58:11
+ * @LastEditTime: 2021-01-16 22:09:58
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum_publish/forum_publish.js
@@ -62,8 +62,8 @@ Page({
   },
   DelImg(e) {
     wx.showModal({
-      title: '召唤师',
-      content: '确定要删除这段回忆吗？',
+      title: '同学',
+      content: '确定要删除这张图片吗？',
       cancelText: '再看看',
       confirmText: '再见',
       success: res => {
@@ -86,6 +86,11 @@ Page({
       classify: options.classify
     })
   },
+  back_index() {
+    wx.redirectTo({
+      url: '../forum/forum'
+    })
+  },
   getuserinfo(e) {
     var that = this
     /* 这里获取之后不如我就上床一下，免得头像地址失效了不可用。*/
@@ -102,11 +107,6 @@ Page({
         that.uploadavatar()
       }
     })
-
-
-
-
-
   },
   get_topic() {
     var that = this
@@ -154,10 +154,6 @@ Page({
         })
       }
     }
-
-
-
-
   },
   clear_topic(e) {
     console.log(e.currentTarget.dataset.index);
@@ -390,8 +386,22 @@ Page({
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
       success(res) {
-        console.log(res);
-        wx.hideLoading()
+        console.log(res.statusCode);
+        if (res.statusCode == 200) {
+          wx.hideLoading()
+          wx.showToast({
+            title: '发布成功！',
+            icon: 'success',
+            duration: 2000
+          })
+          /* 返回到论坛首页 */
+          setTimeout(() => {
+            wx.redirectTo({
+              url: '../forum/forum'
+            })
+          }, 2000);
+
+        }
       }
     })
   }
