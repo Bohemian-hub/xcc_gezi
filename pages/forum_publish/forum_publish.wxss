@@ -48,7 +48,7 @@ page{
     background-color: white;
 }
 .topic_display{
-    height: 60rpx;
+
     background-color: #1cb5ed00;
 }
 .topic_display_what{
@@ -62,6 +62,7 @@ page{
     line-height: 40rpx;
     width: auto;
     color: #1cb4ed;
+    float: left;
 
 }
 .delete_topic_content{

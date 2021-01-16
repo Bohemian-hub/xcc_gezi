@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-01-11 09:56:30
- * @LastEditTime: 2021-01-16 20:28:01
+ * @LastEditTime: 2021-01-16 21:23:02
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum_publish/forum_publish.wxml
@@ -47,20 +47,18 @@
 
     <view class="topic_display" style="display: {{topic_show?'inline-block':'none'}};">
 
-        <view class="topic_display_what">
+        <view class="topic_display_what" wx:for="{{topic_content}}" wx:key="{{index}}">
             <view style="display: inline-block;">
                 <view class="delete_topic_content">
-                    {{topic_content}}
+                    {{topic_content[index]}}
                 </view>
 
-                <view class="delete_topic_close" bindtap="clear_topic">
+                <view class="delete_topic_close" bindtap="clear_topic" data-index="{{index}}">
                     ×
                 </view>
             </view>
-
-
-
         </view>
+
     </view>
 
 

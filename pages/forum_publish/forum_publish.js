@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-11 09:56:30
- * @LastEditTime: 2021-01-16 18:57:11
+ * @LastEditTime: 2021-01-16 21:58:11
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum_publish/forum_publish.js
@@ -30,8 +30,8 @@ Page({
     post_data_sex: '',
     tempavatarUrl: '',
     post_data_avatarUrl: '',
-    topic_show: 0,
-    topic_content: ''
+    topic_show: 1,
+    topic_content: []
 
   },
   ChooseImage() {
@@ -138,16 +138,40 @@ Page({
   add_this_topic(e) {
     /* 添加点击的话题 */
     console.log(e.currentTarget.dataset.topic);
-    this.setData({
-      topic_show: 1,
-      topic_content: e.currentTarget.dataset.topic
-    })
+    /* 无论如何，只要add了，就记得把这个打开 */
+    /* 判断数组是否包含某一个元素 */
+    if (this.data.topic_content.length > 4) {
+      console.log("已经五个元素了，不能再增加了");
+    } else {
+      if (this.data.topic_content.indexOf(e.currentTarget.dataset.topic) > -1) {
+        console.log("已经包含这个 元素了");
+      } else {
+        this.data.topic_content[this.data.topic_content.length] = e.currentTarget.dataset.topic
+        console.log(this.data.topic_content);
+        this.setData({
+          topic_show: 1,
+          topic_content: this.data.topic_content
+        })
+      }
+    }
+
+
+
+
   },
-  clear_topic() {
-    this.setData({
-      topic_show: 0,
-      topic_content: ''
-    })
+  clear_topic(e) {
+    console.log(e.currentTarget.dataset.index);
+    this.data.topic_content.splice(e.currentTarget.dataset.index, 1);
+    if (this.data.topic_content.length == 0) {
+      this.setData({
+        topic_show: 0,
+        topic_content: this.data.topic_content
+      })
+    } else {
+      this.setData({
+        topic_content: this.data.topic_content
+      })
+    }
   },
   publish(res) {
     var that = this
