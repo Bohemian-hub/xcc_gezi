@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-01-14 14:02:14
+ * @LastEditTime: 2021-01-16 22:34:22
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.js
@@ -242,7 +242,8 @@ Page({
     scrollStart1: '',
     scrollEnd: '',
     shouldshow: false,
-    masking_show: false
+    masking_show: false,
+    get_forum_times: 1
   },
 
   /**
@@ -252,6 +253,26 @@ Page({
     this.animation1 = wx.createAnimation()
     this.animation2 = wx.createAnimation()
     this.animation3 = wx.createAnimation()
+    /* 页面加载的时候获取数据 */
+    /* 这里一次性获取20条数据，下面的方法实现上滑一次获取下一个20条数据，上拉一次重新获取第一个二十条数据 */
+    /* 这里直接引用一个获取20条数据的函数 */
+    this.get_forum()
+  },
+  get_forum() {
+    /* 一次性请求二十条数据，只需要传入第几次获取 */
+    wx.request({
+      url: 'http://127.0.0.1:8000/forum/get_forum', //仅为示例，并非真实的接口地址
+      data: {
+        get_forum_times: this.data.get_forum_times,
+      },
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      success(res) {
+        console.log(res);
+      }
+    })
   },
   tabSelect(e) {
     this.setData({
