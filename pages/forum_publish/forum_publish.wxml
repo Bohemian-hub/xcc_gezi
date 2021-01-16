@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-01-11 09:56:30
- * @LastEditTime: 2021-01-13 09:54:54
+ * @LastEditTime: 2021-01-16 20:28:01
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum_publish/forum_publish.wxml
@@ -23,10 +23,11 @@
 </view>
 
 <view class="forum_write">
+
     <textarea class="forum_content" value="{{input_content}}" placeholder="500字以内" bindinput="" maxlength="500"
         bindinput="bind_input_content">
-
     </textarea>
+
     <scroll-view class="forum_pic" scroll-x="false" scroll-y="true">
         <view class="cu-form-group">
             <view class="grid col-4 grid-square flex-sub">
@@ -44,15 +45,34 @@
         </view>
     </scroll-view>
 
+    <view class="topic_display" style="display: {{topic_show?'inline-block':'none'}};">
+
+        <view class="topic_display_what">
+            <view style="display: inline-block;">
+                <view class="delete_topic_content">
+                    {{topic_content}}
+                </view>
+
+                <view class="delete_topic_close" bindtap="clear_topic">
+                    ×
+                </view>
+            </view>
+
+
+
+        </view>
+    </view>
+
+
 </view>
 
 <view class="forum_topic">
     <view class="forum_topic_left">
         <input class="forum_topic_left_top" type="text" placeholder="#自定义话题#" bindinput="add_topic_text"
-            placeholder-class="input-placeholder">
+            placeholder-class="input-placeholder" maxlength="10">
 
         </input>
-        <view class="forum_topic_left_bottom">新增话题 </view>
+        <view class="forum_topic_left_bottom">新增话题(十个字以内) </view>
     </view>
     <view class="forum_topic_right" bindtap="add_this_topic" data-topic="{{add_topic_content}}">
         <image class="forum_topic_right_jia" src="https://s3.ax1x.com/2021/01/11/s3qsds.png">

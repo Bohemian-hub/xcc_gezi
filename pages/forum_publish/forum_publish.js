@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-11 09:56:30
- * @LastEditTime: 2021-01-15 21:20:06
+ * @LastEditTime: 2021-01-16 18:57:11
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum_publish/forum_publish.js
@@ -30,6 +30,8 @@ Page({
     post_data_sex: '',
     tempavatarUrl: '',
     post_data_avatarUrl: '',
+    topic_show: 0,
+    topic_content: ''
 
   },
   ChooseImage() {
@@ -137,10 +139,15 @@ Page({
     /* 添加点击的话题 */
     console.log(e.currentTarget.dataset.topic);
     this.setData({
-      /* 追加到 content ,话题就在内容中了，传到后端等他自己想吧*/
-      input_content: this.data.input_content + e.currentTarget.dataset.topic
+      topic_show: 1,
+      topic_content: e.currentTarget.dataset.topic
     })
-
+  },
+  clear_topic() {
+    this.setData({
+      topic_show: 0,
+      topic_content: ''
+    })
   },
   publish(res) {
     var that = this
@@ -346,6 +353,7 @@ Page({
         post_data_grade: this.data.post_data_grade,
         post_data_college: this.data.post_data_college,
         input_content: this.data.input_content,
+        topic_content: this.data.topic_content,
         post_data_pic: JSON.stringify(this.data.post_data_pic),
         post_data_avatarUrl: this.data.post_data_avatarUrl,
         card_time: this.data.card_time,

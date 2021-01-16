@@ -47,6 +47,38 @@ page{
     margin-bottom: 20rpx;
     background-color: white;
 }
+.topic_display{
+    height: 60rpx;
+    background-color: #1cb5ed00;
+}
+.topic_display_what{
+    height: 40rpx;
+    margin-top: 10rpx;
+    margin-left: 30rpx;
+    padding-left: 15rpx;
+    padding-right: 15rpx;
+    border-radius: 20rpx;
+    background-color: #e9e9e9;
+    line-height: 40rpx;
+    width: auto;
+    color: #1cb4ed;
+
+}
+.delete_topic_content{
+    float: left;
+}
+.delete_topic_close{
+    float: left;
+    background-color: #d4d4d4;
+    color: white;
+    height: 30rpx;
+    width: 30rpx;
+    border-radius: 50%;
+    margin-top: 5rpx;
+    text-align: center;
+    line-height: 30rpx;
+    margin-left: 10rpx;
+}
 .forum_topic{
     width: 100%;
     height: 120rpx;
