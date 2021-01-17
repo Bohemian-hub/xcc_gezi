@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-01-17 20:52:44
+ * @LastEditTime: 2021-01-17 22:36:39
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.js
@@ -245,7 +245,8 @@ Page({
     masking_show: false,
     get_forum_times: 1,
     display_forum_data: [],
-    if_display_pic: 0
+    if_display_pic: 0,
+
   },
 
   /**
@@ -258,7 +259,6 @@ Page({
     /* 页面加载的时候获取数据 */
     /* 这里一次性获取20条数据，下面的方法实现上滑一次获取下一个20条数据，上拉一次重新获取第一个二十条数据 */
     /* 这里直接引用一个获取20条数据的函数 */
-    console.log(this.data.display_forum_data);
     this.get_forum()
   },
   get_forum() {
@@ -287,7 +287,7 @@ Page({
 
           /* 把他们变成数组 */
           var stringResult = that.data.display_forum_data[i].fields.post_data_pic.split(',');
-          console.log(stringResult);
+          //console.log(stringResult);
           that.setData({
             ['display_forum_data[' + i + '].fields.post_data_pic']: stringResult,
 
@@ -298,8 +298,43 @@ Page({
           that.setData({
             if_display_pic: 1
           })
-        }, 200);
-        console.log(that.data.display_forum_data[0]);
+        }, 100);
+        console.log(that.data.display_forum_data);
+        for (let i = 0; i < that.data.display_forum_data.length; i++) {
+          if (that.data.display_forum_data[i].fields.topic1 !== "init") {
+            that.setData({
+              ['display_forum_data[' + i + '].fields.topic_arr[0]']: that.data.display_forum_data[i].fields.topic1
+            })
+          } else {
+            that.setData({
+              ['display_forum_data[' + i + '].fields.topic_arr']: []
+            })
+          }
+          if (that.data.display_forum_data[i].fields.topic2 !== "init") {
+            that.setData({
+              ['display_forum_data[' + i + '].fields.topic_arr[1]']: that.data.display_forum_data[i].fields.topic2
+            })
+          }
+          if (that.data.display_forum_data[i].fields.topic3 !== "init") {
+            that.setData({
+              ['display_forum_data[' + i + '].fields.topic_arr[2]']: that.data.display_forum_data[i].fields.topic3
+            })
+          }
+          if (that.data.display_forum_data[i].fields.topic4 !== "init") {
+            that.setData({
+              ['display_forum_data[' + i + '].fields.topic_arr[3]']: that.data.display_forum_data[i].fields.topic4
+            })
+          }
+          if (that.data.display_forum_data[i].fields.topic5 !== "init") {
+            that.setData({
+              ['display_forum_data[' + i + '].fields.topic_arr[4]']: that.data.display_forum_data[i].fields.topic5
+            })
+          }
+
+        }
+        console.log(that.data.display_forum_data[0].fields.topic_arr.length);
+
+
 
       }
     })

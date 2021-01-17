@@ -222,6 +222,11 @@ page{
     background-size: cover;
 
 }
+.topic_display{
+    color: #1cb4ed;
+    font-weight: 700;
+    padding-right: 10rpx;
+}
 .forum_one_content_pic_one1{
     width: 295rpx;
     height: 295rpx;

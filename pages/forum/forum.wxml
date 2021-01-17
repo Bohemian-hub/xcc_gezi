@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-01-17 20:34:33
+ * @LastEditTime: 2021-01-17 22:42:43
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.wxml
@@ -203,7 +203,13 @@
         </view>
 
         <!-- 下面是文字 -->
-        <view class="forum_one_content">{{item.fields.input_content}}</view>
+        <view class="forum_one_content">
+            <view class="topic_display" style="display: inline-block;" wx:for="{{item.fields.topic_arr}}"
+                wx:for-item="topic">
+                {{topic}}
+            </view>
+            {{item.fields.input_content}}
+        </view>
 
 
         <!-- 下面是图片区域 -->
@@ -268,9 +274,7 @@
                             style="color: rgb(31, 94, 189);">{{itemsss.towho}}</text>:{{itemsss.content}}
                     </view>
                 </view>
-                <view class="morecomment">
-                    更多评论({{item.comment.length}})
-                </view>
+
 
             </view>
 
