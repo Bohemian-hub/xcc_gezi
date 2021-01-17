@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-01-11 12:16:19
+ * @LastEditTime: 2021-01-17 20:34:33
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.wxml
@@ -179,21 +179,22 @@
         </view>
     </scroll-view>
     <!--下面是我要做的 -->
-    <view class="forum_one" wx:for="{{monidata}}" wx:key="item" wx:for-index="idx" bindtouchstart="touchStart"
+    <view class="forum_one" wx:for="{{display_forum_data}}" wx:key="item" wx:for-index="idx" bindtouchstart="touchStart"
         onPageScroll='onPageScroll'>
         <view class="forum_one_name">
-            <image class="forum_one_name_img" mode="aspectFill" src="{{item.touxiang}}">
-            </image>
+            <view class="forum_one_name_img" style="background-image: url({{item.fields.post_data_avatarUrl}});">
+            </view>
             <view class="forum_one_name_text">
                 <view class="forum_one_name_text_top">
-                    <view class="forum_one_name_text_top_nickname">{{item.name}}</view>
+                    <view class="forum_one_name_text_top_nickname">{{item.fields.post_data_name}}</view>
                     <view class="forum_one_name_text_top_college"
-                        style="background-color: {{item.sex == '男'?'skyblue':'pink'}};">
-                        {{item.college}}</view>
+                        style="background-color: {{item.fields.post_data_sex == '男'?'skyblue':'pink'}};">
+                        {{item.fields.post_data_college}}</view>
                     <view class="forum_one_name_text_top_grade"
-                        style="background-color: {{item.sex == '男'?'skyblue':'pink'}};">{{item.grade}}</view>
+                        style="background-color: {{item.fields.post_data_sex == '男'?'skyblue':'pink'}};">
+                        {{item.fields.post_data_grade}}</view>
                 </view>
-                <view class="forum_one_name_text_bottom">{{item.time}}</view>
+                <view class="forum_one_name_text_bottom">{{item.fields.real_time}}</view>
             </view>
 
         </view>
@@ -202,16 +203,22 @@
         </view>
 
         <!-- 下面是文字 -->
-        <view class="forum_one_content">{{item.content}}{{item.picture_length}}</view>
+        <view class="forum_one_content">{{item.fields.input_content}}</view>
+
+
         <!-- 下面是图片区域 -->
-        <view class="forum_one_content_pic">
-            <image
-                class="{{item.picture.length == 1?'forum_one_content_pic_one':item.picture.length == 2?'forum_one_content_pic_one1': item.picture.length == 3?'forum_one_content_pic_one2': item.picture.length == 4?'forum_one_content_pic_one1': item.picture.length == 5?'forum_one_content_pic_one2': item.picture.length == 6?'forum_one_content_pic_one2': item.picture.length == 7?'forum_one_content_pic_one2': item.picture.length == 8?'forum_one_content_pic_one2': item.picture.length == 9?'forum_one_content_pic_one2':'forum_one_content_pic_one2'}}"
-                mode="{{item.picture.length == 1?'widthFix':'aspectFill'}}" wx:for="{{item.picture}}" wx:key="item"
-                wx:for-item="items" src="{{items}}" data-src="{{items}}" data-index="{{idx}}" bindtap="previewImage">
-            </image>
+        <view class="forum_one_content_pic" style="display: {{item.fields.has_pic == 0?'none':'bolck'}};">
+            <!-- 没有图片就不要显示这个区域 -->
+            <view
+                style="background-image: url({{if_display_pic==1?items:'https://image.weilanwl.com/gif/loading-white.gif'}});"
+                class="{{item.fields.post_data_pic.length == 1?'forum_one_content_pic_one':item.fields.post_data_pic.length == 2?'forum_one_content_pic_one1': item.fields.post_data_pic.length == 3?'forum_one_content_pic_one2': item.fields.post_data_pic.length == 4?'forum_one_content_pic_one1': item.fields.post_data_pic.length == 5?'forum_one_content_pic_one2': item.fields.post_data_pic.length == 6?'forum_one_content_pic_one2': item.fields.post_data_pic.length == 7?'forum_one_content_pic_one2': item.fields.post_data_pic.length == 8?'forum_one_content_pic_one2': item.fields.post_data_pic.length == 9?'forum_one_content_pic_one2':'forum_one_content_pic_one2'}}"
+                wx:for="{{item.fields.post_data_pic}}" wx:key="item" wx:for-item="items" data-src="{{items}}"
+                data-index="{{idx}}" bindtap="previewImage">
+            </view>
 
         </view>
+
+
         <!-- 下面是分享、赞、评论按钮区域 -->
         <view class="forum_one_comment">
             <view class="forum_one_comment_button" style="border-right: 1rpx  solid rgb(138, 138, 138);">
@@ -384,7 +391,7 @@
             </view>
         </view>
     </view>
-    <view class="choose_classify_bottom" bindtap = "forum_publish_close">
+    <view class="choose_classify_bottom" bindtap="forum_publish_close">
         取消
     </view>
 

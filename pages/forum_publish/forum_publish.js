@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-11 09:56:30
- * @LastEditTime: 2021-01-16 22:09:58
+ * @LastEditTime: 2021-01-17 20:53:21
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum_publish/forum_publish.js
@@ -35,9 +35,10 @@ Page({
 
   },
   ChooseImage() {
+    var that = this
     wx.chooseImage({
       count: 9, //默认9
-      sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
+      sizeType: ['compressed'], //可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album'], //从相册选择
       success: (res) => {
         if (this.data.imgList.length != 0) {
@@ -48,9 +49,33 @@ Page({
           this.setData({
             imgList: res.tempFilePaths
           })
-          /* 选完图片我看看到底imgList是啥？ */
-          console.log(this.data.imgList);   //其实就是个图片地址的数组
         }
+        /* 选完图片我看看到底imgList是啥？ */
+        console.log(this.data.imgList);   //其实就是个图片地址的数组
+        /* 装好了图片之后我借给他压缩了先，再放进去 */
+        wx.showLoading({
+          title: '压缩图片中！！！',
+        })
+        /* 单独用一个for循环来实现这个压缩图片 */
+        for (let index = 0; index < that.data.imgList.length; index++) {
+          wx.compressImage({
+            src: that.data.imgList[index], // 图片路径
+            quality: 20, // 压缩质量
+            success: res => {
+              that.setData({
+                ['imgList[' + index + ']']: res.tempFilePath
+              })
+              console.log("最终结果：---------------------");
+              console.log(res.tempFilePath);
+              console.log(that.data.imgList);
+              console.log("最终结果：---------------------");
+
+            }
+          })
+        }
+        console.log("压缩完成：");
+        console.log(that.data.imgList);
+        wx.hideLoading()
       }
     });
   },
@@ -111,7 +136,7 @@ Page({
   get_topic() {
     var that = this
     wx.request({
-      url: 'http://127.0.0.1:8000/forum/get_topic', //仅为示例，并非真实的接口地址
+      url: 'https://www.xiyuangezi.cn/forum/get_topic', //仅为示例，并非真实的接口地址
       header: {
         'content-type': 'application/json' // 默认值
       },
@@ -170,6 +195,7 @@ Page({
     }
   },
   publish(res) {
+
     var that = this
     /* 开启等待框 */
     if (that.data.input_content) {
@@ -209,22 +235,26 @@ Page({
           }
         });
 
-        /* 现在通过循环上传选择了的图片 */
-        for (var i = 0; i < this.data.imgList.length; i++) {
-          console.log(this.data.imgList[i]);
 
+
+        /* 现在通过循环上传选择了的图片 */
+        for (var i = 0; i < that.data.imgList.length; i++) {
+          console.log("送到腾讯云的图片地址：-------------top---------");
+          console.log(that.data.imgList[i]);
+          console.log("送到腾讯云的图片地址：-------------bottom---------");
           /* 这是真正的上传图片 */
           cos.postObject({
             Bucket: 'xcc-grid-1256135907',
             Region: 'ap-nanjing',
-            Key: 'xcc_forum/' + this.data.filename + "" + i + ".jpg",
+            Key: 'xcc_forum/' + that.data.filename + "" + i + ".jpg",
             //下面这个东西就是传入临时地址
-            FilePath: this.data.imgList[i],
+            FilePath: that.data.imgList[i],
             onProgress: function (info) {
               /* 显示进度 */
               console.log(JSON.stringify(info.percent));
             }
           }, function (err, data) {
+            console.log(data);
             console.log(data.Location);
             /* 将上传的图片返回的地址存放过来。 */
             that.data.post_data_pic[that.data.post_data_pic.length] = "https://" + data.Location     //图片准备工作完成了
@@ -237,6 +267,9 @@ Page({
             }
           });
         }
+
+
+
 
       } else {
         /* 没有图片的话，要做的事这里 */
@@ -364,7 +397,7 @@ Page({
 
     /* 数据已经拿到了，现在准备向后端发送请求，现在先把数据传入后端 */
     wx.request({
-      url: 'http://127.0.0.1:8000/forum/add_forum', //仅为示例，并非真实的接口地址
+      url: 'https://www.xiyuangezi.cn/forum/add_forum', //仅为示例，并非真实的接口地址
       data: {
         classify: this.data.classify,
         studentId: wx.getStorageSync('studentId'),
@@ -375,6 +408,7 @@ Page({
         input_content: this.data.input_content,
         topic_content: this.data.topic_content,
         post_data_pic: JSON.stringify(this.data.post_data_pic),
+        post_data_pic1: this.data.post_data_pic,
         post_data_avatarUrl: this.data.post_data_avatarUrl,
         card_time: this.data.card_time,
         real_time: this.data.real_time,
@@ -386,7 +420,7 @@ Page({
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
       success(res) {
-        console.log(res.statusCode);
+        console.log(res);
         if (res.statusCode == 200) {
           wx.hideLoading()
           wx.showToast({

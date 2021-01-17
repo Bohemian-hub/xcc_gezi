@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-01-16 22:34:22
+ * @LastEditTime: 2021-01-17 20:52:44
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.js
@@ -243,7 +243,9 @@ Page({
     scrollEnd: '',
     shouldshow: false,
     masking_show: false,
-    get_forum_times: 1
+    get_forum_times: 1,
+    display_forum_data: [],
+    if_display_pic: 0
   },
 
   /**
@@ -256,21 +258,49 @@ Page({
     /* 页面加载的时候获取数据 */
     /* 这里一次性获取20条数据，下面的方法实现上滑一次获取下一个20条数据，上拉一次重新获取第一个二十条数据 */
     /* 这里直接引用一个获取20条数据的函数 */
+    console.log(this.data.display_forum_data);
     this.get_forum()
   },
   get_forum() {
+    var that = this;
     /* 一次性请求二十条数据，只需要传入第几次获取 */
     wx.request({
-      url: 'http://127.0.0.1:8000/forum/get_forum', //仅为示例，并非真实的接口地址
+      url: 'https://www.xiyuangezi.cn/forum/get_forum', //仅为示例，并非真实的接口地址
       data: {
-        get_forum_times: this.data.get_forum_times,
+        get_forum_times: that.data.get_forum_times,
       },
       method: "POST",
       header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
       success(res) {
-        console.log(res);
+        that.setData({
+          display_forum_data: res.data
+        })
+        for (let i = 0; i < that.data.display_forum_data.length; i++) {
+          if (that.data.display_forum_data[i].fields.post_data_pic.length == 0) {
+            /* 说明没得图片 */
+            that.setData({
+              ['display_forum_data[' + i + '].fields.has_pic']: 0    //没得图片
+            })
+          }
+
+          /* 把他们变成数组 */
+          var stringResult = that.data.display_forum_data[i].fields.post_data_pic.split(',');
+          console.log(stringResult);
+          that.setData({
+            ['display_forum_data[' + i + '].fields.post_data_pic']: stringResult,
+
+          })
+
+        }
+        setTimeout(() => {
+          that.setData({
+            if_display_pic: 1
+          })
+        }, 200);
+        console.log(that.data.display_forum_data[0]);
+
       }
     })
   },
@@ -283,10 +313,11 @@ Page({
   previewImage: function (e) {
     var current = e.target.dataset.src;
     var Listindex = e.target.dataset.index;
-    console.log(e.target.dataset.index);
+    console.log(current);
+    console.log(Listindex);
     wx.previewImage({
       current: current, // 当前显示图片的http链接  
-      urls: this.data.monidata[Listindex].picture // 需要预览的图片http链接列表  
+      urls: this.data.display_forum_data[Listindex].fields.post_data_pic // 需要预览的图片http链接列表  
     })
   },
   turnmenu() {
@@ -395,5 +426,10 @@ Page({
       url: "../forum_publish/forum_publish?classify=learn",
     });
 
+  },
+  back_index() {
+    wx.redirectTo({
+      url: "../index/index",
+    });
   }
 })

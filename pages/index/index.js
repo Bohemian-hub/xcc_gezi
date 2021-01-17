@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2021-01-06 18:53:13
+ * @LastEditTime: 2021-01-17 14:24:54
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.js
@@ -299,6 +299,11 @@ Page({
       url: '../new_confesswall/new_confesswall',
     })
   },
+  forum() {
+    wx.navigateTo({
+      url: '../forum/forum',
+    })
+  },
   onLoad: function () {
 
     var value = wx.getStorageSync('name')
@@ -408,6 +413,7 @@ Page({
     wx.navigateTo({
       url: '../index_passage/index_passage?src=' + src,
     })
-  }
+  },
+
 
 })
