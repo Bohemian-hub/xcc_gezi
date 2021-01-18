@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-01-17 22:36:39
+ * @LastEditTime: 2021-01-18 21:56:56
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.js
@@ -246,6 +246,8 @@ Page({
     get_forum_times: 1,
     display_forum_data: [],
     if_display_pic: 0,
+    loading: 0,
+    loadingtext: '正在加载中...'
 
   },
 
@@ -264,6 +266,7 @@ Page({
   get_forum() {
     var that = this;
     /* 一次性请求二十条数据，只需要传入第几次获取 */
+    console.log(that.data.get_forum_times);
     wx.request({
       url: 'https://www.xiyuangezi.cn/forum/get_forum', //仅为示例，并非真实的接口地址
       data: {
@@ -274,9 +277,25 @@ Page({
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
       success(res) {
-        that.setData({
-          display_forum_data: res.data
-        })
+        console.log(that.data.display_forum_data.length);
+        /* 正因为页面中没有数据才执行下面这些操作，如果有数据的话，应该追加 */
+        if (res.data.length == 0) {
+          that.setData({
+            loadingtext: '我也是有底线的'
+          })
+        }
+        console.log(res.data.length);
+        if (that.data.display_forum_data.length == 0) {
+          /* 数组里面没与数据，需要把获取到的数据写进数组 */
+          that.setData({
+            display_forum_data: res.data
+          })
+        } else {
+          that.setData({
+            display_forum_data: that.data.display_forum_data.concat(res.data)
+          })
+        }
+        /* 下面是有图片的话处理里面的图片数据，将字符创变成数组。似乎并不影响页面数组总数 */
         for (let i = 0; i < that.data.display_forum_data.length; i++) {
           if (that.data.display_forum_data[i].fields.post_data_pic.length == 0) {
             /* 说明没得图片 */
@@ -289,7 +308,7 @@ Page({
           var stringResult = that.data.display_forum_data[i].fields.post_data_pic.split(',');
           //console.log(stringResult);
           that.setData({
-            ['display_forum_data[' + i + '].fields.post_data_pic']: stringResult,
+            ['display_forum_data[' + i + '].fields.post_data_pic2']: stringResult,
 
           })
 
@@ -299,8 +318,10 @@ Page({
             if_display_pic: 1
           })
         }, 100);
-        console.log(that.data.display_forum_data);
         for (let i = 0; i < that.data.display_forum_data.length; i++) {
+          that.setData({
+            ['display_forum_data[' + i + '].fields.iflove']: 0
+          })
           if (that.data.display_forum_data[i].fields.topic1 !== "init") {
             that.setData({
               ['display_forum_data[' + i + '].fields.topic_arr[0]']: that.data.display_forum_data[i].fields.topic1
@@ -332,8 +353,6 @@ Page({
           }
 
         }
-        console.log(that.data.display_forum_data[0].fields.topic_arr.length);
-
 
 
       }
@@ -352,7 +371,7 @@ Page({
     console.log(Listindex);
     wx.previewImage({
       current: current, // 当前显示图片的http链接  
-      urls: this.data.display_forum_data[Listindex].fields.post_data_pic // 需要预览的图片http链接列表  
+      urls: this.data.display_forum_data[Listindex].fields.post_data_pic2 // 需要预览的图片http链接列表  
     })
   },
   turnmenu() {
@@ -383,28 +402,25 @@ Page({
     }, 300);
   },
 
-  onPageScroll(e) {
+  onReachBottom: function () {
+    console.log("哈哈哈");
+    /* 现在就说明到达了底部，准备再次获取数据了 */
+    /* 首先哈，展示一个加载选项 */
     this.setData({
-      scrollStart: e.scrollTop,
-      scrollIng: true
+      loading: 1,
+      get_forum_times: this.data.get_forum_times + 1
     })
-    //console.log(this.data.scrollStart - this.data.scrollStart1);
-    if (this.data.scrollStart - this.data.scrollStart1 > 50) {
-      console.log("向上滑动了");
-      this.closeturnmenu()
-      /* 调用缩放动画 */
-    } else if (this.data.scrollStart - this.data.scrollStart1 < -50) {
-      console.log("向下滑动了");
-      this.closeturnmenu()
-    }
+    /* 马上执行数据获取操作 */
+    this.get_forum()
 
   },
   touchStart() {
-    this.setData({
-      scrollStart1: this.data.scrollStart
-    })
+    // this.setData({
+    //   scrollStart1: this.data.scrollStart
+    // })
     /* 开始滑动的时候可以把那个菜单关闭了 */
     this.forum_publish_close()
+    this.closeturnmenu()
   },
   myCatchTouch() {
     console.log('prvent user scroll it!');
@@ -466,5 +482,16 @@ Page({
     wx.redirectTo({
       url: "../index/index",
     });
+  },
+  /* 点赞评论机制等等 */
+  tolike(e) {
+    var that = this
+    console.log(e.target.dataset.idx);
+    that.setData({
+      ['display_forum_data[' + e.target.dataset.idx + '].fields.iflove']: 1
+    })
+    /* 成功实现了点赞能够让他们梁 */
+    /* 下面打算发送请求，把每一个点赞都记录下来，单独用一张论坛点赞表，这样能够让帖子去找到那些人点的赞是自己的，另一方面，也可以让点赞人知道 我点了哪些帖子的赞 */
   }
+
 })

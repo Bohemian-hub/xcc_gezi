@@ -28,6 +28,9 @@
     </view>
 
     <view class="grade_when_choose" style="display: {{turn_choose==1?'block':'none'}};">
+            <view class="grade_choose_one" bindtap="change_term" data-name="2019年 学期2">
+            2020年 学期1
+        </view>
         <view class="grade_choose_one" bindtap="change_term" data-name="2019年 学期2">
             2019年 学期2
         </view>

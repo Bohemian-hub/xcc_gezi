@@ -1,13 +1,13 @@
 <!--
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-01-17 22:42:43
+ * @LastEditTime: 2021-01-18 21:54:44
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.wxml
 -->
 <!-- 现在开始开发论坛功能，这是一个不简单的过程 -->
-<view>
+<view onPageScroll="onPageScroll2">
     <view class="title" bindtouchstart="touchStart" onPageScroll='onPageScroll'>
         <view class="title_back" hover-class="none" hover-stop-propagation="false" bindtap="back_index">
 
@@ -217,8 +217,8 @@
             <!-- 没有图片就不要显示这个区域 -->
             <view
                 style="background-image: url({{if_display_pic==1?items:'https://image.weilanwl.com/gif/loading-white.gif'}});"
-                class="{{item.fields.post_data_pic.length == 1?'forum_one_content_pic_one':item.fields.post_data_pic.length == 2?'forum_one_content_pic_one1': item.fields.post_data_pic.length == 3?'forum_one_content_pic_one2': item.fields.post_data_pic.length == 4?'forum_one_content_pic_one1': item.fields.post_data_pic.length == 5?'forum_one_content_pic_one2': item.fields.post_data_pic.length == 6?'forum_one_content_pic_one2': item.fields.post_data_pic.length == 7?'forum_one_content_pic_one2': item.fields.post_data_pic.length == 8?'forum_one_content_pic_one2': item.fields.post_data_pic.length == 9?'forum_one_content_pic_one2':'forum_one_content_pic_one2'}}"
-                wx:for="{{item.fields.post_data_pic}}" wx:key="item" wx:for-item="items" data-src="{{items}}"
+                class="{{item.fields.post_data_pic2.length == 1?'forum_one_content_pic_one':item.fields.post_data_pic2.length == 2?'forum_one_content_pic_one1': item.fields.post_data_pic2.length == 3?'forum_one_content_pic_one2': item.fields.post_data_pic2.length == 4?'forum_one_content_pic_one1': item.fields.post_data_pic2.length == 5?'forum_one_content_pic_one2': item.fields.post_data_pic2.length == 6?'forum_one_content_pic_one2': item.fields.post_data_pic2.length == 7?'forum_one_content_pic_one2': item.fields.post_data_pic2.length == 8?'forum_one_content_pic_one2': item.fields.post_data_pic2.length == 9?'forum_one_content_pic_one2':'forum_one_content_pic_one2'}}"
+                wx:for="{{item.fields.post_data_pic2}}" wx:key="item" wx:for-item="items" data-src="{{items}}"
                 data-index="{{idx}}" bindtap="previewImage">
             </view>
 
@@ -239,15 +239,16 @@
                 </text>
                 评论
             </view>
-            <view class="forum_one_comment_button">
-                <text class="cuIcon-like">
+            <view class="forum_one_comment_button" bindtap="tolike" data-idx="{{idx}}">
+                <text class="{{item.fields.iflove == 1?'cuIcon-likefill':'cuIcon-like'}}" style="color:red"
+                    data-idx="{{idx}}">
 
                 </text>
                 赞
             </view>
 
         </view>
-        <view style="clear: both;">
+        <view style=" clear: both;">
 
         </view>
         <!-- 显示点赞的人名字吧 -->
@@ -282,6 +283,10 @@
         </view>
 
 
+    </view>
+    <!-- 这里展示loading 模块 -->
+    <view class="loading">
+        {{loadingtext}}
     </view>
 </view>
 

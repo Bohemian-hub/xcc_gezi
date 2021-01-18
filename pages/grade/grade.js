@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-26 21:05:54
- * @LastEditTime: 2020-12-06 14:14:15
+ * @LastEditTime: 2021-01-18 13:27:10
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/grade/grade.js
@@ -17,7 +17,7 @@ Page({
     gradeList: [],
     something: '',
     turn_choose: 0,
-    which_term: '2019年 学期2',
+    which_term: '2020年 学期1',
     get_befor: "&&"
   },
 
@@ -42,8 +42,8 @@ Page({
       data: {
         xh: wx.getStorageSync('studentId'),  //评论者的学号
         pswd: wx.getStorageSync('password'),
-        xnm: 2019,
-        xqm: 2,
+        xnm: 2020,
+        xqm: 1,
       }, // 向后端发送的数据，后端通过request.data拿到该数据
 
       success: (ret) => {
@@ -116,7 +116,13 @@ Page({
       turn_choose: 0
     })
     turn_status = 0
-    if (e.currentTarget.dataset.name == '2019年 学期2') {
+    if (e.currentTarget.dataset.name == '2020年 学期1') {
+      var xnm = 2020;
+      var xqm = 1
+      that.setData({
+        which_term: '2019年 学期2'
+      })
+    } else if (e.currentTarget.dataset.name == '2019年 学期2') {
       var xnm = 2019;
       var xqm = 2
       that.setData({

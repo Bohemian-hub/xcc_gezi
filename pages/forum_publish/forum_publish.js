@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-11 09:56:30
- * @LastEditTime: 2021-01-17 22:08:00
+ * @LastEditTime: 2021-01-18 20:42:48
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum_publish/forum_publish.js
@@ -217,7 +217,7 @@ Page({
             // 服务端其他语言参考 COS STS SDK ：https://github.com/tencentyun/qcloud-cos-sts-sdk
             // STS 详细文档指引看：https://cloud.tencent.com/document/product/436/14048
             wx.request({
-              url: 'http://127.0.0.1:8000/confess/credential',
+              url: 'https://www.xiyuangezi.cn/confess/credential',
               data: {
                 // 可从 options 取需要的参数
               },
@@ -397,7 +397,7 @@ Page({
 
     /* 数据已经拿到了，现在准备向后端发送请求，现在先把数据传入后端 */
     wx.request({
-      url: 'http://127.0.0.1:8000/forum/add_forum', //仅为示例，并非真实的接口地址
+      url: 'https://www.xiyuangezi.cn/forum/add_forum', //仅为示例，并非真实的接口地址
       data: {
         classify: this.data.classify,
         studentId: wx.getStorageSync('studentId'),
@@ -430,7 +430,7 @@ Page({
           })
           /* 返回到论坛首页 */
           setTimeout(() => {
-            wx.redirectTo({
+            wx.reLaunch({
               url: '../forum/forum'
             })
           }, 2000);
