@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-01-19 21:47:12
+ * @LastEditTime: 2021-01-19 22:04:31
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.js
@@ -486,6 +486,7 @@ Page({
   /* 点赞评论机制等等 */
   tolike(e) {
     var that = this
+    console.log(that.data.display_forum_data);
     console.log(e.target.dataset.idx);
     var myDate = new Date();
     var month = myDate.getMonth() + 1
@@ -522,7 +523,7 @@ Page({
       data: {
         lover: wx.getStorageSync('name'),
         studentId: wx.getStorageSync('studentId'),
-        forum_id: e.target.dataset.idx,
+        forum_id: that.data.display_forum_data[e.target.dataset.idx].pk,
         love_status: that.data.display_forum_data[e.target.dataset.idx].fields.iflove,
         love_time: love_time
       },
