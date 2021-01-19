@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-01-18 22:08:38
+ * @LastEditTime: 2021-01-19 21:47:12
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.js
@@ -320,7 +320,7 @@ Page({
         }, 100);
         for (let i = 0; i < that.data.display_forum_data.length; i++) {
           that.setData({
-            ['display_forum_data[' + i + '].fields.iflove']: 0
+            ['display_forum_data[' + i + '].fields.iflove']: false
           })
           if (that.data.display_forum_data[i].fields.topic1 !== "init") {
             that.setData({
@@ -487,11 +487,53 @@ Page({
   tolike(e) {
     var that = this
     console.log(e.target.dataset.idx);
+    var myDate = new Date();
+    var month = myDate.getMonth() + 1
+    var daly = myDate.getDate()
+    var h = myDate.getHours();       //获取当前小时数(0-23)
+    var m = myDate.getMinutes();     //获取当前分钟数(0-59)
+    var s = myDate.getSeconds();     //获取当前秒数(0-59)
+    if (daly < 10) {
+      daly = "0" + String(daly)
+    }
+    if (month < 10) {
+      month = "0" + String(month)
+    }
+    if (h < 10) {
+      h = "0" + String(h)
+    }
+    if (m < 10) {
+      m = "0" + String(m)
+    }
+    if (s < 10) {
+      s = "0" + String(s)
+    }
+    var love_time = myDate.getFullYear() + '' + month + '' + daly + '' + h + '' + m + '' + s;
     that.setData({
-      ['display_forum_data[' + e.target.dataset.idx + '].fields.iflove']: 1
+      ['display_forum_data[' + e.target.dataset.idx + '].fields.iflove']: !this.data.display_forum_data[e.target.dataset.idx].fields.iflove
     })
     /* 成功实现了点赞能够让他们梁 */
     /* 下面打算发送请求，把每一个点赞都记录下来，单独用一张论坛点赞表，这样能够让帖子去找到那些人点的赞是自己的，另一方面，也可以让点赞人知道 我点了哪些帖子的赞 */
+    /* 现在数据发送到后台， */
+    /* 保存此次的点赞信息 */
+    console.log(that.data.display_forum_data[e.target.dataset.idx].fields.iflove);    //这个是当前我点的这个东西的点赞情况
+    wx.request({
+      url: 'http://127.0.0.1:8000/forum/love', //仅为示例，并非真实的接口地址
+      data: {
+        lover: wx.getStorageSync('name'),
+        studentId: wx.getStorageSync('studentId'),
+        forum_id: e.target.dataset.idx,
+        love_status: that.data.display_forum_data[e.target.dataset.idx].fields.iflove,
+        love_time: love_time
+      },
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      success: (result) => {
+        console.log(result);
+      },
+    });
   }
 
 })

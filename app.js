@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2020-11-08 23:29:46
+ * @LastEditTime: 2021-01-19 20:28:55
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /miniprogram-5/app.js
+ */
 //app.js
 App({
   onLaunch: function () {
