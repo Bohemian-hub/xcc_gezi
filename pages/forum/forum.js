@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-01-19 22:04:31
+ * @LastEditTime: 2021-01-20 21:29:18
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.js
@@ -262,6 +262,7 @@ Page({
     /* 这里一次性获取20条数据，下面的方法实现上滑一次获取下一个20条数据，上拉一次重新获取第一个二十条数据 */
     /* 这里直接引用一个获取20条数据的函数 */
     this.get_forum()
+    this.get_mylove_inf()
   },
   get_forum() {
     var that = this;
@@ -277,14 +278,13 @@ Page({
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
       success(res) {
-        console.log(that.data.display_forum_data.length);
         /* 正因为页面中没有数据才执行下面这些操作，如果有数据的话，应该追加 */
         if (res.data.length == 0) {
           that.setData({
             loadingtext: '我也是有底线的'
           })
         }
-        console.log(res.data.length);
+        console.log(res.data);
         if (that.data.display_forum_data.length == 0) {
           /* 数组里面没与数据，需要把获取到的数据写进数组 */
           that.setData({
@@ -357,6 +357,35 @@ Page({
 
       }
     })
+  },
+  get_mylove_inf() {
+    var that = this
+    wx.request({
+      url: 'http://127.0.0.1:8000/forum/get_love', //仅为示例，并非真实的接口地址
+      data: {
+        studentId: wx.getStorageSync('studentId'),
+      },
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      success: (result) => {
+        for (let index = 0; index < result.data.length; index++) {
+          console.log(result.data[index].fields.forum_id)
+          const a = result.data[index].fields.forum_id
+
+          for (let index2 = 0; index2 < that.data.display_forum_data.length; index2++) {
+            if (that.data.display_forum_data[index2].pk == a) {
+              that.setData({
+                ['display_forum_data[' + index2 + '].fields.iflove']: true
+              })
+
+            }
+
+          }
+        }
+      },
+    });
   },
   tabSelect(e) {
     this.setData({
