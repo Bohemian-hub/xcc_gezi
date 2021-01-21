@@ -213,6 +213,7 @@ page{
 }
 .forum_one_content_pic_one{
     width: 395rpx;
+    height: 395rpx;
     margin-left: 5rpx;
     float: left;
     background-position: center center;
@@ -220,6 +221,7 @@ page{
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
+    margin-bottom: 5rpx;
 
 }
 .topic_display{
@@ -229,6 +231,7 @@ page{
 }
 .lover_display{
     padding-right: 10rpx;
+    color: rgb(73, 121, 192);
 }
 .forum_one_content_pic_one1{
     width: 295rpx;
@@ -240,6 +243,8 @@ page{
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
+    margin-bottom: 5rpx;
+
 }
 .forum_one_content_pic_one2{
     width: 195rpx;
@@ -251,6 +256,7 @@ page{
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
+    margin-bottom: 5rpx;
 }
 .forum_one_comment{
     width: 600rpx;
@@ -279,7 +285,7 @@ page{
 }
 .anameoflove{
     float: left;
-    color: rgb(73, 121, 192);
+    color: rgb(129, 129, 129);
 
 }
 .anameoflove1{

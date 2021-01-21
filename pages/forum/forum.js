@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-01-21 22:27:31
+ * @LastEditTime: 2021-01-22 00:21:07
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.js
@@ -357,7 +357,7 @@ Page({
           console.log('执行获取我点了哪些帖子的赞');
           /* 先是获取一下我点赞了哪些帖子 */
           wx.request({
-            url: 'http://127.0.0.1:8000/forum/get_love', //仅为示例，并非真实的接口地址
+            url: 'https://www.xiyuangezi.cn/forum/get_love', //仅为示例，并非真实的接口地址
             data: {
               studentId: wx.getStorageSync('studentId'),
             },
@@ -394,7 +394,7 @@ Page({
           console.log('现在执行那些帖子有哪些人点赞');
           /* 现在准备获取一下一个帖子有哪些人点赞。真难到一个论坛要去获取三次数据，润次频繁的数据请求？ */
           wx.request({
-            url: 'http://127.0.0.1:8000/forum/get_all_lover', //仅为示例，并非真实的接口地址
+            url: 'https://www.xiyuangezi.cn/forum/get_all_lover', //仅为示例，并非真实的接口地址
             data: {
               getloverforumarr: getloverforumarr
             },
@@ -539,11 +539,12 @@ Page({
     })
   },
   /* 发布内容跳转 */
-  publish_learn() {
+  publish_learn(e) {
+    console.log(e.currentTarget.dataset.classify);
     wx.navigateTo({
-      url: "../forum_publish/forum_publish?classify=learn",
+      url: "../forum_publish/forum_publish?classify=" + e.currentTarget.dataset.classify,
     });
-
+    
   },
   back_index() {
     wx.redirectTo({

@@ -1,10 +1,10 @@
 {
   "pages": [
 
-
+    "pages/index/index",
     "pages/forum/forum",
     "pages/forum_publish/forum_publish",
-    "pages/index/index",
+
     "pages/new_confesswall/new_confesswall",
     "pages/new_publish_confess/new_publish_confess",
     "pages/setting_talkback/setting_talkback",

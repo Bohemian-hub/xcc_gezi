@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-11 09:56:30
- * @LastEditTime: 2021-01-19 20:28:19
+ * @LastEditTime: 2021-01-21 23:54:52
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum_publish/forum_publish.js
@@ -70,11 +70,14 @@ Page({
               console.log(that.data.imgList);
               console.log("最终结果：---------------------");
 
+
             }
           })
         }
         console.log("压缩完成：");
         console.log(that.data.imgList);
+        wx.hideLoading()
+        wx.hideLoading()
         wx.hideLoading()
       }
     });
