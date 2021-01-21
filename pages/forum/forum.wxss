@@ -227,6 +227,9 @@ page{
     font-weight: 700;
     padding-right: 10rpx;
 }
+.lover_display{
+    padding-right: 10rpx;
+}
 .forum_one_content_pic_one1{
     width: 295rpx;
     height: 295rpx;
@@ -271,7 +274,7 @@ page{
     line-height: 40rpx;
     padding-top: 20rpx;
     padding-bottom: 20rpx;
-   text-indent: 2em;
+   text-indent: 0.5em;
 
 }
 .anameoflove{

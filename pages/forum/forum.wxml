@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-01-19 22:04:12
+ * @LastEditTime: 2021-01-21 14:12:00
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.wxml
@@ -252,10 +252,12 @@
 
         </view>
         <!-- 显示点赞的人名字吧 -->
-        <view class="loveperson">
+        <view class="loveperson" wx:if="{{item.fields.lover.length>0}}">
             <view class="anameoflove">
-                {{item.love[0].name}}、{{item.love[1].name}}、{{item.love[2].name}}、{{item.love[3].name}}、{{item.love[4].name}}、{{item.love[5].name}}、{{item.love[6].name}}、{{item.love[7].name}}、{{item.love[8].name}}、{{item.love[9].name}}、<text
-                    style="color: rgb(90, 90, 90);">等{{item.love.length}}人觉得很赞</text>
+                <view class="lover_display" style="display: inline-block;" wx:for="{{item.fields.lover}}"
+                    wx:for-item="lover" wx:if="{{index<20}}">
+                    {{lover}}
+                </view>等{{item.fields.lover.length}}人觉得很赞
             </view>
             <view style=" clear: both;">
 

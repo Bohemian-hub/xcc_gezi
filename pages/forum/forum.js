@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-01-20 21:29:18
+ * @LastEditTime: 2021-01-21 22:27:31
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.js
@@ -262,12 +262,11 @@ Page({
     /* 这里一次性获取20条数据，下面的方法实现上滑一次获取下一个20条数据，上拉一次重新获取第一个二十条数据 */
     /* 这里直接引用一个获取20条数据的函数 */
     this.get_forum()
-    this.get_mylove_inf()
   },
   get_forum() {
     var that = this;
     /* 一次性请求二十条数据，只需要传入第几次获取 */
-    console.log(that.data.get_forum_times);
+    console.log(that.data.get_forum_times);   //显示是第几次去获取数据
     wx.request({
       url: 'https://www.xiyuangezi.cn/forum/get_forum', //仅为示例，并非真实的接口地址
       data: {
@@ -279,24 +278,28 @@ Page({
       },
       success(res) {
         /* 正因为页面中没有数据才执行下面这些操作，如果有数据的话，应该追加 */
-        if (res.data.length == 0) {
+        if (res.data.length == 0) {      //没有获取到数据
           that.setData({
             loadingtext: '我也是有底线的'
           })
         }
         console.log(res.data);
-        if (that.data.display_forum_data.length == 0) {
+        for (let index = 0; index < res.data.length; index++) {
+          console.log(res.data[index]);
+          res.data[index].fields.lover = []
+        }
+        if (that.data.display_forum_data.length == 0) {     //如果之前display数组中没有数据，则把数据给他
           /* 数组里面没与数据，需要把获取到的数据写进数组 */
           that.setData({
             display_forum_data: res.data
           })
-        } else {
+        } else {           //如果之前display数组中有数据，则把刚刚获取到的数据拼接进去
           that.setData({
             display_forum_data: that.data.display_forum_data.concat(res.data)
           })
         }
         /* 下面是有图片的话处理里面的图片数据，将字符创变成数组。似乎并不影响页面数组总数 */
-        for (let i = 0; i < that.data.display_forum_data.length; i++) {
+        for (let i = 0; i < that.data.display_forum_data.length; i++) {    //这个
           if (that.data.display_forum_data[i].fields.post_data_pic.length == 0) {
             /* 说明没得图片 */
             that.setData({
@@ -304,25 +307,21 @@ Page({
             })
           }
 
-          /* 把他们变成数组 */
+          /* 把他们变成数组 ，让页面可以看得到*/
           var stringResult = that.data.display_forum_data[i].fields.post_data_pic.split(',');
           //console.log(stringResult);
           that.setData({
             ['display_forum_data[' + i + '].fields.post_data_pic2']: stringResult,
-
           })
 
         }
-        setTimeout(() => {
+        setTimeout(() => {     //等一哈之后再渲染图片，不然会有src异步错误
           that.setData({
             if_display_pic: 1
           })
         }, 100);
         for (let i = 0; i < that.data.display_forum_data.length; i++) {
-          that.setData({
-            ['display_forum_data[' + i + '].fields.iflove']: false
-          })
-          if (that.data.display_forum_data[i].fields.topic1 !== "init") {
+          if (that.data.display_forum_data[i].fields.topic1 !== "init") {    //一次看五个话题字段是否有值，有值就方到topic_arr里面去
             that.setData({
               ['display_forum_data[' + i + '].fields.topic_arr[0]']: that.data.display_forum_data[i].fields.topic1
             })
@@ -353,39 +352,78 @@ Page({
           }
 
         }
+        /* 获取我点了哪些帖子的赞 */
+        setTimeout(() => {
+          console.log('执行获取我点了哪些帖子的赞');
+          /* 先是获取一下我点赞了哪些帖子 */
+          wx.request({
+            url: 'http://127.0.0.1:8000/forum/get_love', //仅为示例，并非真实的接口地址
+            data: {
+              studentId: wx.getStorageSync('studentId'),
+            },
+            method: "POST",
+            header: {
+              'content-type': 'application/x-www-form-urlencoded' // 默认值
+            },
+            success: (result) => {
+              for (let index = 0; index < result.data.length; index++) {
+                const a = result.data[index].fields.forum_id
+                for (let index2 = 0; index2 < that.data.display_forum_data.length; index2++) {
+                  if (that.data.display_forum_data[index2].pk == a) {
+                    that.setData({
+                      ['display_forum_data[' + index2 + '].fields.iflove']: true,
+                    })
+                  }
+                }
+              }
+            },
+          });
 
+        }, 500);
+
+
+        /* 字段渲染完了，可以准备获取点赞信息了，每次获取点赞信息就获取已有的forum_id 的点赞信息/最新拉取到的forum_id */
+        var getloverforumarr = []
+        for (let index = 0; index < res.data.length; index++) {
+          getloverforumarr = getloverforumarr.concat(res.data[index].pk)
+        }
+        /* 把这十八条forum_id拿到后台去获取与他们有关的lover */
+        console.log(getloverforumarr);
+        /* 获取一下有帖子们有哪些人点了赞 */
+        setTimeout(() => {
+          console.log('现在执行那些帖子有哪些人点赞');
+          /* 现在准备获取一下一个帖子有哪些人点赞。真难到一个论坛要去获取三次数据，润次频繁的数据请求？ */
+          wx.request({
+            url: 'http://127.0.0.1:8000/forum/get_all_lover', //仅为示例，并非真实的接口地址
+            data: {
+              getloverforumarr: getloverforumarr
+            },
+            method: "POST",
+            header: {
+              'content-type': 'application/x-www-form-urlencoded' // 默认值
+            },
+            success: (result) => {
+              /* 拿到所有的爱之后，循环这个爱同时匹配display中，有一样的就追加到lover数组中去 */
+              console.log(result);
+              console.log(that.data.display_forum_data);
+              for (let index = 0; index < result.data.length; index++) {
+                console.log(result.data[index].fields);
+                for (let index2 = 0; index2 < that.data.display_forum_data.length; index2++) {
+                  if (that.data.display_forum_data[index2].pk == result.data[index].fields.forum_id) {
+                    that.setData({
+                      ['display_forum_data[' + index2 + '].fields.lover']: that.data.display_forum_data[index2].fields.lover.concat(result.data[index].fields.lover)
+                    })
+                  }
+                }
+
+              }
+              console.log(that.data.display_forum_data);
+            },
+          });
+        }, 1000);
 
       }
     })
-  },
-  get_mylove_inf() {
-    var that = this
-    wx.request({
-      url: 'http://127.0.0.1:8000/forum/get_love', //仅为示例，并非真实的接口地址
-      data: {
-        studentId: wx.getStorageSync('studentId'),
-      },
-      method: "POST",
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
-      },
-      success: (result) => {
-        for (let index = 0; index < result.data.length; index++) {
-          console.log(result.data[index].fields.forum_id)
-          const a = result.data[index].fields.forum_id
-
-          for (let index2 = 0; index2 < that.data.display_forum_data.length; index2++) {
-            if (that.data.display_forum_data[index2].pk == a) {
-              that.setData({
-                ['display_forum_data[' + index2 + '].fields.iflove']: true
-              })
-
-            }
-
-          }
-        }
-      },
-    });
   },
   tabSelect(e) {
     this.setData({
@@ -548,7 +586,7 @@ Page({
     /* 保存此次的点赞信息 */
     console.log(that.data.display_forum_data[e.target.dataset.idx].fields.iflove);    //这个是当前我点的这个东西的点赞情况
     wx.request({
-      url: 'http://127.0.0.1:8000/forum/love', //仅为示例，并非真实的接口地址
+      url: 'https://www.xiyuangezi.cn/forum/love', //仅为示例，并非真实的接口地址
       data: {
         lover: wx.getStorageSync('name'),
         studentId: wx.getStorageSync('studentId'),
@@ -561,9 +599,33 @@ Page({
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
       success: (result) => {
-        console.log(result);
+        /* 这里应该是将这一条数据中的lover清空重新渲染 */
+        if (that.data.display_forum_data[e.target.dataset.idx].fields.iflove == true) {
+          /* 下面是点赞，前端的呈现数据变化 */
+          let myname = wx.getStorageSync('name').split(',')
+          that.setData({
+            ['display_forum_data[' + e.target.dataset.idx + '].fields.lover']: myname.concat(that.data.display_forum_data[e.target.dataset.idx].fields.lover),
+          })
+        } else {
+          /* 下面是取消赞时候，我需要在数组中删除我的名字 */
+          let myname = wx.getStorageSync('name')
+          for (let index = 0; index < that.data.display_forum_data[e.target.dataset.idx].fields.lover.length; index++) {
+            if (that.data.display_forum_data[e.target.dataset.idx].fields.lover[index] == myname) {
+              console.log(index);
+            }
+            that.data.display_forum_data[e.target.dataset.idx].fields.lover.splice(index, 1);
+            this.setData({
+              ['display_forum_data[' + e.target.dataset.idx + '].fields.lover']: that.data.display_forum_data[e.target.dataset.idx].fields.lover
+            })
+
+          }
+        }
+
+        /* 对某一个帖子点了赞或者取消赞，我们只需要发送这个帖子的forum_id获取该帖子的最新点赞情况计科 */
+        /* 没必要重新获取点赞列表，直接前端追加显示一下即可 */
+
       },
     });
-  }
+  },
 
 })
