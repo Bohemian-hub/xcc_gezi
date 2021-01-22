@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-01-22 00:21:07
+ * @LastEditTime: 2021-01-22 17:58:09
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.js
@@ -15,227 +15,6 @@ Page({
   data: {
     TabCur: 0,
     scrollLeft: 0,
-    monidata: [{
-      touxiang: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3335200364,664435613&fm=26&gp=0.jpg',
-      name: '张益达',
-      sex: '男',
-      college: '信息技术学院',
-      grade: '大三',
-      time: '13分钟前',
-      content: '瑞雪兆丰年呢！',
-      picture: [
-
-        'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2174384932,1613588892&fm=26&gp=0.jpg'
-
-      ],
-      love: [{
-        name: '何炅',
-      }, {
-        name: '刘德华',
-      }, {
-        name: '谢霆锋',
-      }, {
-        name: '赵本山',
-      }, {
-        name: '宋丹丹',
-      }, {
-        name: '冯巩',
-      }, {
-        name: '邓紫棋',
-      }, {
-        name: '张伟',
-      }, {
-        name: '曾国藩',
-      }, {
-        name: '谢娜',
-      }, {
-        name: '张三丰',
-      }, {
-        name: '罗志祥',
-      }],
-      comment: [{
-        name: '张毅',
-        content: '你很牛逼哦！'
-      }, {
-        name: '谢霆锋 ',
-        content: '加油，你很厉害的'
-      }, {
-        name: '王丽雯',
-        content: '哈哈哈'
-      }, {
-        name: '张益达',
-        content: '你真吉尔利害啊，可不可以和我一起玩呀，我可喜欢玩这个了，可是玩不来没大哥哥可不可以带带我啊，我是是的爸爸，我很爱你的哦， 咱们永远 在一起啊吧，我可以给你带来幸福'
-      }],
-      soncomment: [{
-        name: '雷神',
-        towho: '张毅',
-        content: '你也牛逼'
-      }, {
-        name: '唐强',
-        towho: '张毅',
-        content: '你更牛逼些'
-      }, {
-        name: '冯双',
-        towho: '张益达',
-        content: '可以挣一百万呢'
-      }, {
-        name: '虞姬',
-        towho: '张益达',
-        content: '整他一个亿'
-      }],
-
-    }, {
-      touxiang: 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2905222703,1588432193&fm=26&gp=0.jpg',
-      name: '张益达',
-      sex: '男',
-      college: '信息技术学院',
-      grade: '大三',
-      time: '13分钟前',
-      content: '瑞雪兆丰年呢！',
-      picture: [
-
-        'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1855446114,586757561&fm=26&gp=0.jpg',
-
-
-        'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=100541962,2833807992&fm=26&gp=0.jpg',
-
-
-        'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=821379803,1558762353&fm=11&gp=0.jpg',
-
-
-        'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3256875674,3691999735&fm=11&gp=0.jpg'
-
-      ],
-      love: [{
-        name: '何炅',
-      }, {
-        name: '刘德华',
-      }, {
-        name: '谢霆锋',
-      }, {
-        name: '赵本山',
-      }, {
-        name: '宋丹丹',
-      }, {
-        name: '冯巩',
-      }, {
-        name: '邓紫棋',
-      }, {
-        name: '张伟',
-      }, {
-        name: '曾国藩',
-      }, {
-        name: '谢娜',
-      }, {
-        name: '张三丰',
-      }, {
-        name: '罗志祥',
-      }],
-      comment: [{
-        name: '张毅',
-        content: '你很牛逼哦！'
-      }, {
-        name: '谢霆锋 ',
-        content: '加油，你很厉害的'
-      }, {
-        name: '王丽',
-        content: '哈哈哈'
-      }, {
-        name: '张益达',
-        content: '你真吉尔利害啊，可不可以和我一起玩呀，我可喜欢玩这个了，可是玩不来没大哥哥可不可以带带我啊，我是是的爸爸，我很爱你的哦， 咱们永远 在一起啊吧，我可以给你带来幸福'
-      }],
-      soncomment: [{
-        name: '雷神',
-        towho: '张毅',
-        content: '你也牛逼'
-      }, {
-        name: '唐强',
-        towho: '张毅',
-        content: '你更牛逼些'
-      }, {
-        name: '冯双',
-        towho: '张益达',
-        content: '可以挣一百万呢'
-      }, {
-        name: '虞姬',
-        towho: '张益达',
-        content: '整他一个亿'
-      }],
-
-    }, {
-      touxiang: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2017958222,3835362425&fm=11&gp=0.jpg',
-      name: '张丽',
-      sex: '女',
-      college: '信息技术学院',
-      grade: '大二',
-      time: '.1-6 15:23',
-      content: '这些可是世界上最乖的妹儿哦，欧尼酱敲击可爱的呢！',
-      picture: [
-        'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=4001791683,2216116189&fm=26&gp=0.jpg',
-        'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=278547510,452014085&fm=26&gp=0.jpg',
-        'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2317008229,906140941&fm=26&gp=0.jpg',
-        'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2598405804,875979297&fm=26&gp=0.jpg',
-        'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2197674299,1839023644&fm=11&gp=0.jpg',
-        'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1264363610,237150817&fm=26&gp=0.jpg',
-        'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2857483951,1440537674&fm=26&gp=0.jpg'
-      ],
-      love: [{
-        name: '何炅',
-      }, {
-        name: '刘德华',
-      }, {
-        name: '谢霆锋',
-      }, {
-        name: '赵本山',
-      }, {
-        name: '宋丹丹',
-      }, {
-        name: '冯巩',
-      }, {
-        name: '邓紫棋',
-      }, {
-        name: '张伟',
-      }, {
-        name: '曾国藩',
-      }, {
-        name: '谢娜',
-      }, {
-        name: '张三丰',
-      }, {
-        name: '罗志祥',
-      }],
-      comment: [{
-        name: '张毅',
-        content: '你很牛逼哦！'
-      }, {
-        name: '谢霆锋 ',
-        content: '加油，你很厉害的'
-      }, {
-        name: '王丽',
-        content: '哈哈哈'
-      }, {
-        name: '张益达',
-        content: '你真吉尔利害啊，可不可以和我一起玩呀，我可喜欢玩这个了，可是玩不来没大哥哥可不可以带带我啊，我是是的爸爸，我很爱你的哦， 咱们永远 在一起啊吧，我可以给你带来幸福'
-      }],
-      soncomment: [{
-        name: '雷神',
-        towho: '张毅',
-        content: '你也牛逼'
-      }, {
-        name: '唐强',
-        towho: '张毅',
-        content: '你更牛逼些'
-      }, {
-        name: '冯双',
-        towho: '张益达',
-        content: '可以挣一百万呢'
-      }, {
-        name: '虞姬',
-        towho: '张益达',
-        content: '整他一个亿'
-      }],
-
-    }],
     turnmenu: false,
     scrollIng: '',
     scrollStart: 0,
@@ -245,9 +24,12 @@ Page({
     masking_show: false,
     get_forum_times: 1,
     display_forum_data: [],
+    display_temp: [],
+    display_temp2: [],
     if_display_pic: 0,
     loading: 0,
-    loadingtext: '正在加载中...'
+    loadingtext: '正在加载中...',
+    control_status: 1
 
   },
 
@@ -255,6 +37,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      control_status: 0    //此刻不允许操作
+    })
     this.animation1 = wx.createAnimation()
     this.animation2 = wx.createAnimation()
     this.animation3 = wx.createAnimation()
@@ -262,6 +47,13 @@ Page({
     /* 这里一次性获取20条数据，下面的方法实现上滑一次获取下一个20条数据，上拉一次重新获取第一个二十条数据 */
     /* 这里直接引用一个获取20条数据的函数 */
     this.get_forum()
+    /* 首次加载的时候会有加载时禁止操作以及将得到的数据放到 display_temp 中 的操作*/
+    setTimeout(() => {
+      this.setData({
+        display_temp: this.data.display_forum_data,
+        control_status: 1  /* 此刻允许操作 */
+      })
+    }, 2000);
   },
   get_forum() {
     var that = this;
@@ -426,10 +218,68 @@ Page({
     })
   },
   tabSelect(e) {
-    this.setData({
-      TabCur: e.currentTarget.dataset.id,
-      scrollLeft: (e.currentTarget.dataset.id - 1) * 60
-    })
+    if (this.data.control_status == 1) {
+      this.setData({
+        TabCur: e.currentTarget.dataset.id,
+        scrollLeft: (e.currentTarget.dataset.id - 1) * 60
+      })
+      console.log(this.data.TabCur);
+      /* 点了之后调整页面的数据，采用过滤的方式 */
+      console.log(this.data.display_forum_data);
+
+      if (this.data.TabCur == 0) {
+        this.setData({
+          display_forum_data: this.data.display_temp
+        })
+      } else {
+        /* 先把数据备份一下，用temp数组来备份 */
+        this.setData({
+          display_temp2: this.data.display_temp,/* 先拿到所有的数据，循环遍历进行操作 */
+          display_forum_data: []/* 把页面渲染数组清空 */
+        })
+        for (let index = 0; index < this.data.display_temp2.length; index++) {
+          if (this.data.TabCur == 1) {
+            if (this.data.display_temp2[index].fields.classify == 'learn') {
+              console.log("欧利酱");
+              this.setData({
+                display_forum_data: this.data.display_forum_data.concat(this.data.display_temp2[index])
+              })
+            }
+          } else if (this.data.TabCur == 2) {
+            if (this.data.display_temp2[index].fields.classify == 'life') {
+              console.log("嘎嘎");
+              this.setData({
+                display_forum_data: this.data.display_forum_data.concat(this.data.display_temp2[index])
+              })
+            }
+          } else if (this.data.TabCur == 3) {
+            if (this.data.display_temp2[index].fields.classify == 'emotion') {
+              console.log("阿里系铁路");
+              this.setData({
+                display_forum_data: this.data.display_forum_data.concat(this.data.display_temp2[index])
+              })
+            }
+          }
+        }
+      }
+      if (this.data.display_forum_data.length <= 20) {
+        this.setData({
+          loadingtext: '我也是有底线的'
+        })
+      }
+    } else {
+      console.log("你手速太快了");
+      /* 此刻数据没有完成初始化，先给用户讲个笑话 */
+      wx.showModal({
+        title: '提示',
+        content: '从前有个剑客，他心是冷的，剑是冷的，手是冷的，于是他冻死了……',
+        showCancel: false,
+        confirmText: '心疼他',
+        confirmColor: '#3CC51F',
+      });
+
+    }
+
   },
   previewImage: function (e) {
     var current = e.target.dataset.src;
@@ -474,6 +324,7 @@ Page({
     /* 现在就说明到达了底部，准备再次获取数据了 */
     /* 首先哈，展示一个加载选项 */
     this.setData({
+      loadingtext: '正在加载中...',
       loading: 1,
       get_forum_times: this.data.get_forum_times + 1
     })
@@ -544,7 +395,7 @@ Page({
     wx.navigateTo({
       url: "../forum_publish/forum_publish?classify=" + e.currentTarget.dataset.classify,
     });
-    
+
   },
   back_index() {
     wx.redirectTo({

@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-01-22 00:41:18
+ * @LastEditTime: 2021-01-22 00:55:06
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.wxml
@@ -178,6 +178,9 @@
             <text class="cuIcon-likefill"></text> 情感
         </view>
     </scroll-view>
+    <view class="">
+
+    </view>
     <!--下面是我要做的 -->
     <view class="forum_one" wx:for="{{display_forum_data}}" wx:key="item" wx:for-index="idx" bindtouchstart="touchStart"
         onPageScroll='onPageScroll'>
