@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-01-24 15:30:26
+ * @LastEditTime: 2021-01-24 17:37:26
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.js
@@ -37,7 +37,8 @@ Page({
     soncomment_of_comment: '',
     inputValue: '',   //输入框内容，用于清空
     now_forum_id: '', // 目前点击的forum的id
-    now_display_comment: []
+    now_display_comment: [],
+    now_display_soncomment: []
 
   },
 
@@ -87,6 +88,7 @@ Page({
         for (let index = 0; index < res.data.length; index++) {
           res.data[index].fields.lover = []
           res.data[index].fields.comment = []
+          res.data[index].fields.soncomment = []
         }
         if (that.data.display_forum_data.length == 0) {     //如果之前display数组中没有数据，则把数据给他
           /* 数组里面没与数据，需要把获取到的数据写进数组 */
@@ -240,9 +242,34 @@ Page({
             for (let index = 0; index < result.data.length; index++) {
               for (let index2 = 0; index2 < that.data.display_forum_data.length; index2++) {
                 if (that.data.display_forum_data[index2].pk == result.data[index].fields.forum_id) {
-                  console.log(result.data[index].fields);
                   that.setData({
                     ['display_forum_data[' + index2 + '].fields.comment']: that.data.display_forum_data[index2].fields.comment.concat(result.data[index].fields)
+                  })
+                }
+              }
+
+            }
+            console.log(that.data.display_forum_data);
+          },
+        });
+        wx.request({
+          url: 'http://127.0.0.1:8000/forum/get_son_comment', //仅为示例，并非真实的接口地址
+          data: {
+            getloverforumarr: getloverforumarr
+          },
+          method: "POST",
+          header: {
+            'content-type': 'application/x-www-form-urlencoded' // 默认值
+          },
+          success: (result) => {
+            console.log("哈哈");
+            console.log(result);
+            for (let index = 0; index < result.data.length; index++) {
+              for (let index2 = 0; index2 < that.data.display_forum_data.length; index2++) {
+                if (that.data.display_forum_data[index2].pk == result.data[index].fields.forum_id) {
+                  console.log(result.data[index].fields);
+                  that.setData({
+                    ['display_forum_data[' + index2 + '].fields.soncomment']: that.data.display_forum_data[index2].fields.soncomment.concat(result.data[index].fields)
                   })
                 }
               }
@@ -711,7 +738,7 @@ Page({
   },
   son_comment_send() {
     var that = this
-    if (that.data.reply_son_comment) {
+    if (that.data.soncomment_of_comment) {
       that.setData({
         inputValue: '',
       })
@@ -735,7 +762,7 @@ Page({
       }
       var son_comment_time = mon + '-' + d + ' ' + h + ':' + m
       var son_comment_id = wx.getStorageSync('studentId') + mon + d + h + m + s
-      var son_comment_content = that.data.soncomment_of_comment
+      var son_comment_content = that.data.soncomment_of_comment.value
       var son_comment_to_who = that.data.which_reply_name
       var name = wx.getStorageSync('name')
       var studentId = wx.getStorageSync('studentId')
@@ -772,6 +799,55 @@ Page({
         },
         success: (result) => {
           console.log("子评论成功！");
+          wx.showToast({
+            title: '回复成功！',
+            icon: 'success',
+            duration: 2000,//持续的时间
+          })
+          /* 刷新数据！！！ */
+          var getloverforumarr = []
+          for (let index = 0; index < that.data.display_forum_data.length; index++) {
+            getloverforumarr = getloverforumarr.concat(that.data.display_forum_data[index].pk)
+            that.setData({
+              ['display_forum_data[' + index + '].fields.soncomment']: []     //把他们里面的评论数据先清空
+            })
+          }
+          wx.request({
+            url: 'http://127.0.0.1:8000/forum/get_son_comment', //仅为示例，并非真实的接口地址
+            data: {
+              getloverforumarr: getloverforumarr
+            },
+            method: "POST",
+            header: {
+              'content-type': 'application/x-www-form-urlencoded' // 默认值
+            },
+            success: (result) => {
+              console.log(result);
+              for (let index = 0; index < result.data.length; index++) {
+                for (let index2 = 0; index2 < that.data.display_forum_data.length; index2++) {
+                  if (that.data.display_forum_data[index2].pk == result.data[index].fields.forum_id) {
+                    console.log(result.data[index].fields);
+                    that.setData({
+                      ['display_forum_data[' + index2 + '].fields.soncomment']: that.data.display_forum_data[index2].fields.soncomment.concat(result.data[index].fields)
+                    })
+                  }
+                }
+              }
+              console.log(that.data.display_forum_data);
+              for (let index = 0; index < that.data.display_forum_data.length; index++) {
+                if (that.data.display_forum_data[index].pk == this.data.now_forum_id) {
+                  this.setData({
+                    now_display_comment: that.data.display_forum_data[index].fields.comment,
+                    now_display_soncomment: that.data.display_forum_data[index].fields.soncomment,
+                    comment_onclick_count: that.data.display_forum_data[index].fields.comment.length + that.data.display_forum_data[index].fields.soncomment.length
+                  })
+                }
+
+              }
+
+            },
+          });
+
         },
       });
 
@@ -800,7 +876,8 @@ Page({
       if (that.data.display_forum_data[index].pk == e.currentTarget.dataset.id) {
         this.setData({
           now_display_comment: that.data.display_forum_data[index].fields.comment,
-          comment_onclick_count: that.data.display_forum_data[index].fields.comment.length
+          now_display_soncomment: that.data.display_forum_data[index].fields.soncomment,
+          comment_onclick_count: that.data.display_forum_data[index].fields.comment.length + that.data.display_forum_data[index].fields.soncomment.length
         })
       }
 

@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-01-24 15:14:10
+ * @LastEditTime: 2021-01-24 18:44:18
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.wxml
@@ -272,14 +272,14 @@
         <!-- 这里评论展示区，展示三个主评论，和他们自带的所有子评论，最后显示一个可以按的更多评论。 -->
         <view class="commentperson">
             <view>
-                <view wx:for="{{item.comment}}" wx:for-item="itemss" wx:if="{{index<3}}">
+                <view wx:for="{{item.fields.comment}}" wx:for-item="itemss" wx:if="{{index<3}}">
                     <!-- 循环次数限制在三次以内 -->
-                    <text style="color:rgb(31, 94, 189);">{{itemss.name}}</text>：{{itemss.content}}
+                    <text style="color:rgb(31, 94, 189);">{{itemss.name}}</text>：{{itemss.comment_content}}
                     <!-- 下面是子评论，出不出现在于有没有 -->
-                    <view wx:for="{{item.soncomment}}" wx:for-item="itemsss"
-                        style="display: {{itemsss.towho == itemss.name ? 'block':'none'}};">
+                    <view wx:for="{{item.fields.soncomment}}" wx:for-item="itemsss"
+                        style="display: {{itemsss.comment_id == itemss.comment_id ? 'block':'none'}};">
                         <text style="color:rgb(31, 94, 189);">{{itemsss.name}}</text>回复<text
-                            style="color: rgb(31, 94, 189);">{{itemsss.towho}}</text>:{{itemsss.content}}
+                            style="color: rgb(31, 94, 189);">{{itemsss.son_comment_to_who}}</text>:{{itemsss.son_comment_content}}
                     </view>
                 </view>
 
@@ -462,14 +462,13 @@
                         {{item.comment_content}}
                     </view>
                     <view>
-                        <view class="content_right_content_son" wx:for="{{now_son_comment_all}}" wx:for-item="item2"
-                            wx:key="item2.fields"
-                            style="display: {{item.fields.son_comment_id==item2.fields.son_comment_id?'block':'none'}};">
+                        <view class="content_right_content_son" wx:for="{{now_display_soncomment}}" wx:for-item="item2"
+                            wx:key="item2" style="display: {{item.comment_id==item2.comment_id?'block':'none'}};">
                             <view class="son_from" selectable="false" space="false" decode="false">
-                                {{item2.son_name}}回复{{item2.fields.son_comment_to_who}}:
+                                {{item2.name}}回复{{item2.son_comment_to_who}}:
                             </view>
-                            <view bindtap="reply" data-id="{{item.fields.son_comment_id}}"
-                                data-name="{{item2.fields.son_name}}">
+                            <view bindtap="reply" data-id="{{item.forum_id}}" data-id2="{{item.comment_id}}"
+                                data-name="{{item2.name}}">
                                 {{item2.son_comment_content}}
                             </view>
 
