@@ -1,12 +1,13 @@
 /*
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-01-22 17:58:09
+ * @LastEditTime: 2021-01-24 15:30:26
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.js
  */
 // pages/forum/forum.js
+var COS = require('../../cos-wx-sdk-v5.js');
 Page({
 
   /**
@@ -29,7 +30,14 @@ Page({
     if_display_pic: 0,
     loading: 0,
     loadingtext: '正在加载中...',
-    control_status: 1
+    control_status: 1,
+    showModalStatus: 0,
+    switch_reply: 0,
+    comment_of_forum: '',
+    soncomment_of_comment: '',
+    inputValue: '',   //输入框内容，用于清空
+    now_forum_id: '', // 目前点击的forum的id
+    now_display_comment: []
 
   },
 
@@ -77,8 +85,8 @@ Page({
         }
         console.log(res.data);
         for (let index = 0; index < res.data.length; index++) {
-          console.log(res.data[index]);
           res.data[index].fields.lover = []
+          res.data[index].fields.comment = []
         }
         if (that.data.display_forum_data.length == 0) {     //如果之前display数组中没有数据，则把数据给他
           /* 数组里面没与数据，需要把获取到的数据写进数组 */
@@ -199,7 +207,6 @@ Page({
               console.log(result);
               console.log(that.data.display_forum_data);
               for (let index = 0; index < result.data.length; index++) {
-                console.log(result.data[index].fields);
                 for (let index2 = 0; index2 < that.data.display_forum_data.length; index2++) {
                   if (that.data.display_forum_data[index2].pk == result.data[index].fields.forum_id) {
                     that.setData({
@@ -213,6 +220,37 @@ Page({
             },
           });
         }, 1000);
+
+        /* 现在应该获取评论信息了，首先是第一个，大评论 */
+        var getloverforumarr = []
+        for (let index = 0; index < res.data.length; index++) {
+          getloverforumarr = getloverforumarr.concat(res.data[index].pk)
+        }
+        wx.request({
+          url: 'http://127.0.0.1:8000/forum/get_comment', //仅为示例，并非真实的接口地址
+          data: {
+            getloverforumarr: getloverforumarr
+          },
+          method: "POST",
+          header: {
+            'content-type': 'application/x-www-form-urlencoded' // 默认值
+          },
+          success: (result) => {
+            console.log(result);
+            for (let index = 0; index < result.data.length; index++) {
+              for (let index2 = 0; index2 < that.data.display_forum_data.length; index2++) {
+                if (that.data.display_forum_data[index2].pk == result.data[index].fields.forum_id) {
+                  console.log(result.data[index].fields);
+                  that.setData({
+                    ['display_forum_data[' + index2 + '].fields.comment']: that.data.display_forum_data[index2].fields.comment.concat(result.data[index].fields)
+                  })
+                }
+              }
+
+            }
+            console.log(that.data.display_forum_data);
+          },
+        });
 
       }
     })
@@ -478,6 +516,389 @@ Page({
 
       },
     });
+  },
+  /* 评论区域的函数 */
+  getInputValue1(e) {
+    console.log(e.detail)// {value: "ff", cursor: 2}  
+    this.setData({
+      comment_of_forum: e.detail
+    })
+  },
+  getInputValue2(e) {
+    console.log(e.detail)// {value: "ff", cursor: 2}
+    this.setData({
+      soncomment_of_comment: e.detail
+    })
+  },
+  /* 发送评论之前先获取一下头像地址 */
+  getuserinfo(e) {
+    var that = this
+    /* 这里获取之后不如我就上床一下，免得头像地址失效了不可用。*/
+    wx.downloadFile({
+      url: e.detail.userInfo.avatarUrl,
+      success: function (res) {
+        console.log(res.tempFilePath)
+        that.setData({
+          tempavatarUrl: res.tempFilePath
+        })
+        console.log("执行异步函数")
+        that.uploadavatar()
+      }
+    })
+  },
+  uploadavatar() {
+    var that = this
+    /* 后上传头像 */
+    var cos1 = new COS({
+      getAuthorization: function (options, callback) {
+        // 服务端 JS 和 PHP 示例：https://github.com/tencentyun/cos-js-sdk-v5/blob/master/server/
+        // 服务端其他语言参考 COS STS SDK ：https://github.com/tencentyun/qcloud-cos-sts-sdk
+        // STS 详细文档指引看：https://cloud.tencent.com/document/product/436/14048
+        wx.request({
+          url: 'https://www.xiyuangezi.cn/confess/credential',
+          data: {
+            // 可从 options 取需要的参数
+          },
+          success: function (result) {
+            var data = result.data;
+            var credentials = data.credentials;
+            callback({
+              TmpSecretId: credentials.tmpSecretId,
+              TmpSecretKey: credentials.tmpSecretKey,
+              XCosSecurityToken: credentials.sessionToken,
+              ExpiredTime: data.expiredTime,
+            });
+          }
+        });
+      }
+    });
+
+    console.log(that.data.tempavatarUrl);
+    if (that.data.tempavatarUrl) {
+      cos1.postObject({
+        Bucket: 'xcc-grid-1256135907',
+        Region: 'ap-nanjing',
+        Key: 'xcc_forum/' + wx.getStorageSync('studentId') + "-touxiang" + ".jpg",
+        //下面这个东西就是传入临时地址
+        FilePath: that.data.tempavatarUrl,
+        onProgress: function (info) {
+          /* 显示进度 */
+          console.log(JSON.stringify(info.percent));
+        }
+      }, function (err, data) {
+        console.log(err || data.Location);
+        /* 将上传的头像返回的地址存放过来。 */
+        that.setData({
+          post_data_avatarUrl: "https://" + data.Location
+        })
+        console.log(that.data.post_data_avatarUrl);
+      });
+    }
+  },
+  comment_send() {
+    var that = this
+    if (that.data.comment_of_forum) {
+      that.setData({
+        inputValue: ''
+      })
+      var myDate = new Date();
+      var mon = myDate.getMonth() + 1
+      var d = myDate.getDate()
+      var h = myDate.getHours();      //获取当前小时数(0-23)
+      var m = myDate.getMinutes();    //获取当前分钟数(0-59)
+      var s = myDate.getSeconds();    //获取当前秒数(0-59)
+      if (d < 10) {
+        d = "0" + String(d)
+      }
+      if (mon < 10) {
+        mon = "0" + String(mon)
+      }
+      if (h < 10) {
+        h = "0" + String(h)
+      }
+      if (m < 10) {
+        m = "0" + String(m)
+      }
+      var comment_time = mon + '-' + d + ' ' + h + ':' + m
+      var comment_id = wx.getStorageSync('studentId') + mon + d + h + m + s
+
+      console.log(that.data.comment_of_forum.value);
+      console.log(wx.getStorageSync('name'));
+      console.log(wx.getStorageSync('studentId'));
+      console.log(that.data.post_data_avatarUrl);
+      console.log(comment_time);
+      console.log(comment_id);
+      console.log(that.data.now_forum_id);
+
+
+      /* 下面我要请求后端数据库了，我要将这个评论增加大哦我的评论表中去。 */
+      wx.request({
+        url: 'http://127.0.0.1:8000/forum/add_comment', //仅为示例，并非真实的接口地址
+        data: {
+          name: wx.getStorageSync('name'),
+          studentId: wx.getStorageSync('studentId'),
+          post_data_avatarUrl: this.data.post_data_avatarUrl,
+          comment_time: comment_time,
+          comment_id: comment_id,
+          comment_content: that.data.comment_of_forum.value,
+          now_forum_id: that.data.now_forum_id
+
+        },
+        method: "POST",
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' // 默认值
+        },
+        success: (result) => {
+          console.log("评论成功！");
+          wx.showToast({
+            title: '评论成功！',
+            icon: 'success',
+            duration: 2000,//持续的时间
+          })
+          /* 评论成功之后就要想办法刷新数据了 */
+          var getloverforumarr = []
+          for (let index = 0; index < that.data.display_forum_data.length; index++) {
+            getloverforumarr = getloverforumarr.concat(that.data.display_forum_data[index].pk)
+            that.setData({
+              ['display_forum_data[' + index + '].fields.comment']: []     //把他们里面的评论数据先清空
+            })
+          }
+          wx.request({
+            url: 'http://127.0.0.1:8000/forum/get_comment', //仅为示例，并非真实的接口地址
+            data: {
+              getloverforumarr: getloverforumarr
+            },
+            method: "POST",
+            header: {
+              'content-type': 'application/x-www-form-urlencoded' // 默认值
+            },
+            success: (result) => {
+              console.log(result);
+              for (let index = 0; index < result.data.length; index++) {
+                for (let index2 = 0; index2 < that.data.display_forum_data.length; index2++) {
+                  if (that.data.display_forum_data[index2].pk == result.data[index].fields.forum_id) {
+                    console.log(result.data[index].fields);
+                    that.setData({
+                      ['display_forum_data[' + index2 + '].fields.comment']: that.data.display_forum_data[index2].fields.comment.concat(result.data[index].fields)
+                    })
+                  }
+                }
+              }
+              console.log(that.data.display_forum_data);
+              for (let index = 0; index < that.data.display_forum_data.length; index++) {
+                if (that.data.display_forum_data[index].pk == this.data.now_forum_id) {
+                  this.setData({
+                    now_display_comment: that.data.display_forum_data[index].fields.comment,
+                    comment_onclick_count: that.data.display_forum_data[index].fields.comment.length
+                  })
+                }
+
+              }
+
+            },
+          });
+
+
+        },
+      });
+    } else {
+      wx.showToast({
+        title: '至少写两个字叭',
+        icon: 'false',
+        duration: 2000
+      })
+    }
+  },
+  son_comment_send() {
+    var that = this
+    if (that.data.reply_son_comment) {
+      that.setData({
+        inputValue: '',
+      })
+      var myDate = new Date();
+      var mon = myDate.getMonth() + 1
+      var d = myDate.getDate()
+      var h = myDate.getHours();      //获取当前小时数(0-23)
+      var m = myDate.getMinutes();    //获取当前分钟数(0-59)
+      var s = myDate.getSeconds();    //获取当前秒数(0-59)
+      if (d < 10) {
+        d = "0" + String(d)
+      }
+      if (mon < 10) {
+        mon = "0" + String(mon)
+      }
+      if (h < 10) {
+        h = "0" + String(h)
+      }
+      if (m < 10) {
+        m = "0" + String(m)
+      }
+      var son_comment_time = mon + '-' + d + ' ' + h + ':' + m
+      var son_comment_id = wx.getStorageSync('studentId') + mon + d + h + m + s
+      var son_comment_content = that.data.soncomment_of_comment
+      var son_comment_to_who = that.data.which_reply_name
+      var name = wx.getStorageSync('name')
+      var studentId = wx.getStorageSync('studentId')
+      var comment_id = this.data.comment_id1
+      var forum_id = that.data.forum_id1
+
+
+      console.log(forum_id);
+      console.log(comment_id);
+      console.log(name);
+      console.log(studentId);
+      console.log(son_comment_id);
+      console.log(son_comment_content);
+      console.log(son_comment_to_who);
+      console.log(son_comment_time);
+
+
+      /* 下面我要请求后端数据库了，我要将这个评论增加大哦我的评论表中去。 */
+      wx.request({
+        url: 'http://127.0.0.1:8000/forum/add_son_comment', //仅为示例，并非真实的接口地址
+        data: {
+          forum_id: forum_id,   //帖子id
+          comment_id: comment_id,  //主评论的id
+          name: name,      //姓名
+          studentId: studentId,   //学号
+          son_comment_id: son_comment_id,   //子评论的id，方便做子子评论
+          son_comment_content: son_comment_content,      //子评论的内容
+          son_comment_to_who: son_comment_to_who,//子评论对象
+          son_comment_time: son_comment_time,//子评论的时间
+        },
+        method: "POST",
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' // 默认值
+        },
+        success: (result) => {
+          console.log("子评论成功！");
+        },
+      });
+
+      that.setData({
+        switch_reply: 0
+      })
+    } else {
+      wx.showToast({
+        title: '至少写两个字叭',
+        icon: 'false',
+        duration: 2000
+      })
+    }
+  },
+
+  makecomment(e) {
+    var that = this;
+    console.log(e.currentTarget.dataset.id);
+    that.setData({
+      switch_reply: 0,
+      now_forum_id: e.currentTarget.dataset.id
+    })
+
+    console.log(that.data.display_forum_data);
+    for (let index = 0; index < that.data.display_forum_data.length; index++) {
+      if (that.data.display_forum_data[index].pk == e.currentTarget.dataset.id) {
+        this.setData({
+          now_display_comment: that.data.display_forum_data[index].fields.comment,
+          comment_onclick_count: that.data.display_forum_data[index].fields.comment.length
+        })
+      }
+
+    }
+    console.log(that.data.now_display_comment);
+
+    /* 下面是设置动画的基本操作 */
+    var animation = wx.createAnimation({
+      duration: 100,
+      timingFunction: "linear",
+      delay: 0
+    })
+    this.animation = animation
+    this.animation.translateY(520).step()
+
+    that.setData({
+      animationData: animation.export(),
+      showModalStatus: true,
+    })
+    setTimeout(function () {
+      animation.translateY(0).step()
+      this.setData({
+        animationData: animation.export()
+      })
+    }.bind(this), 0)
+
+
+    /* 下面 我就要调用后端做查询有那些评论啦，首先请出来我们最爱的正在加载！ */
+
+    // wx.request({
+    //   url: '', //仅为示例，并非真实的接口地址
+    //   data: {
+    //     comment_id: that.data.now_turn_comment_id,
+    //   },
+    //   method: "POST",
+    //   header: {
+    //     'content-type': 'application/x-www-form-urlencoded' // 默认值
+    //   },
+    //   success: (result) => {
+    //     console.log("获取所有评论成功！");
+
+    //     wx.hideLoading()
+    //   },
+    // });
+
+  },
+  /* 回复评论，坐姿评论用 */
+  reply(e) {
+    var that = this
+    that.setData({
+      switch_reply: 1,
+      if_focus: true,
+    })
+
+    /* 要准备前往数据库啦，哈哈哈哈，真的太快乐了 */
+    console.log(e.currentTarget.dataset.id);
+    console.log(e.currentTarget.dataset.id2);
+    console.log(e.currentTarget.dataset.name);
+    that.setData({
+      reply_words: '回复' + e.currentTarget.dataset.name + ':',
+      forum_id1: e.currentTarget.dataset.id,
+      comment_id1: e.currentTarget.dataset.id2,
+      which_reply_name: e.currentTarget.dataset.name
+    })
+  },
+  change_reply_switch() {
+    console.log('点到了');
+    var that = this
+    that.setData({
+      switch_reply: 0
+    })
+  },
+  close_comment() {
+    var that = this;
+    /* 要不关的时候也做一个假的数据增加 */
+
+    var animation = wx.createAnimation({
+      duration: 100,
+      timingFunction: "linear",
+      delay: 0
+    })
+    this.animation = animation
+    this.animation.translateY(0).step()
+    that.setData({
+      animationData: animation.export(),
+
+    })
+    setTimeout(function () {
+      animation.translateY(520).step()
+      this.setData({
+        animationData: animation.export(),
+      })
+    }.bind(this), 0)
+    setTimeout(function () {
+      this.setData({
+        showModalStatus: false,
+      })
+    }.bind(this), 300)
   },
 
 })
