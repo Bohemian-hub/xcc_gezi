@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-01-24 18:44:18
+ * @LastEditTime: 2021-01-24 23:18:14
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.wxml
@@ -163,27 +163,10 @@
         </view>
     </view>
     <!-- 帖子的浏览区域 -->
-    <!-- 弄一个分页器，用个戴框架的，这样响应速度可能会快一些 -->
-    <scroll-view scroll-x class="bg-white nav text-center" bindtouchstart="touchStart" onPageScroll='onPageScroll'>
-        <view class="cu-item {{0==TabCur?'text-blue cur':''}}" bindtap="tabSelect" data-id="0">
-            <text class="cuIcon-all"></text> 推荐
-        </view>
-        <view class="cu-item {{1==TabCur?'text-blue cur':''}}" bindtap="tabSelect" data-id="1">
-            <text class="cuIcon-text"></text>学习
-        </view>
-        <view class="cu-item {{2==TabCur?'text-blue cur':''}}" bindtap="tabSelect" data-id="2">
-            <text class="cuIcon-clothesfill"></text> 生活
-        </view>
-        <view class="cu-item {{3==TabCur?'text-blue cur':''}}" bindtap="tabSelect" data-id="3">
-            <text class="cuIcon-likefill"></text> 情感
-        </view>
-    </scroll-view>
-    <view class="">
 
-    </view>
     <!--下面是我要做的 -->
     <view class="forum_one" wx:for="{{display_forum_data}}" wx:key="item" wx:for-index="idx" bindtouchstart="touchStart"
-        onPageScroll='onPageScroll'>
+        onPageScroll='onPageScroll' wx:if="{{item.fields.status != 0}}">
         <view class="forum_one_name">
             <view class="forum_one_name_img" style="background-image: url({{item.fields.post_data_avatarUrl}});">
             </view>
@@ -244,7 +227,7 @@
                 评论
             </button>
             <view class="forum_one_comment_button" bindtap="tolike" data-idx="{{idx}}">
-                <text class="{{item.fields.iflove == 1?' cuIcon-likefill':'cuIcon-like'}}" style="color:red"
+                <text class="{{item.fields.iflove == 1?'cuIcon-likefill':'cuIcon-like'}}" style="color:red"
                     data-idx="{{idx}}">
 
                 </text>
@@ -258,8 +241,8 @@
         <!-- 显示点赞的人名字吧 -->
         <view class="loveperson" wx:if="{{item.fields.lover.length>0}}">
             <view class="anameoflove">
-                <view class="lover_display" style="display: inline-block;" wx:for="{{item.fields.lover}}"
-                    wx:for-item="lover" wx:if="{{index<20}}">
+                <view class="lover_display" style="float: left;" wx:for="{{item.fields.lover}}" wx:for-item="lover"
+                    wx:if="{{index<20}}">
                     {{lover}}
                     <view wx:if="{{index<item.fields.lover.length-1}}" style="display: inline-block;">、</view>
                 </view>等{{item.fields.lover.length}}人觉得很赞
@@ -285,6 +268,10 @@
 
 
             </view>
+            <view bindtap="makecomment" data-id='{{item.pk}}'>
+                显示更多
+            </view>
+
 
 
         </view>
@@ -298,7 +285,10 @@
 </view>
 
 
+<!-- 展示评论的时候来个薄膜 -->
+<view class="shadow" style="display: {{turn_shadow?'block':'none'}};">
 
+</view>
 
 
 <!-- 下面我要做一个发布按钮，准备进入发布页面 -->

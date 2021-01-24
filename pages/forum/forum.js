@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-01-24 17:37:26
+ * @LastEditTime: 2021-01-24 23:21:13
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.js
@@ -69,7 +69,7 @@ Page({
     /* 一次性请求二十条数据，只需要传入第几次获取 */
     console.log(that.data.get_forum_times);   //显示是第几次去获取数据
     wx.request({
-      url: 'https://www.xiyuangezi.cn/forum/get_forum', //仅为示例，并非真实的接口地址
+      url: 'http://127.0.0.1:8000/forum/get_forum', //仅为示例，并非真实的接口地址
       data: {
         get_forum_times: that.data.get_forum_times,
       },
@@ -90,69 +90,44 @@ Page({
           res.data[index].fields.comment = []
           res.data[index].fields.soncomment = []
         }
-        if (that.data.display_forum_data.length == 0) {     //如果之前display数组中没有数据，则把数据给他
-          /* 数组里面没与数据，需要把获取到的数据写进数组 */
-          that.setData({
-            display_forum_data: res.data
-          })
-        } else {           //如果之前display数组中有数据，则把刚刚获取到的数据拼接进去
-          that.setData({
-            display_forum_data: that.data.display_forum_data.concat(res.data)
-          })
-        }
         /* 下面是有图片的话处理里面的图片数据，将字符创变成数组。似乎并不影响页面数组总数 */
-        for (let i = 0; i < that.data.display_forum_data.length; i++) {    //这个
-          if (that.data.display_forum_data[i].fields.post_data_pic.length == 0) {
+        for (let i = 0; i < res.data.length; i++) {    //这个
+          if (res.data[i].fields.post_data_pic.length == 0) {
             /* 说明没得图片 */
             that.setData({
-              ['display_forum_data[' + i + '].fields.has_pic']: 0    //没得图片
+              ['res.data[' + i + '].fields.has_pic']: 0    //没得图片
             })
           }
-
           /* 把他们变成数组 ，让页面可以看得到*/
-          var stringResult = that.data.display_forum_data[i].fields.post_data_pic.split(',');
+          var stringResult = res.data[i].fields.post_data_pic.split(',');
           //console.log(stringResult);
-          that.setData({
-            ['display_forum_data[' + i + '].fields.post_data_pic2']: stringResult,
-          })
+          res.data[i].fields.post_data_pic2 = stringResult
+        }
+        /* 话题相关 */
+        for (let i = 0; i < res.data.length; i++) {
+          res.data[i].fields.topic_arr = []
+          if (res.data[i].fields.topic1 !== "init") {    //一次看五个话题字段是否有值，有值就方到topic_arr里面去
+            res.data[i].fields.topic_arr[0] = res.data[i].fields.topic1
+          }
+          if (res.data[i].fields.topic2 !== "init") {
+            res.data[i].fields.topic_arr[1] = res.data[i].fields.topic2
+          }
+          if (res.data[i].fields.topic3 !== "init") {
+            res.data[i].fields.topic_arr[2] = res.data[i].fields.topic3
+          }
+          if (res.data[i].fields.topic4 !== "init") {
+            res.data[i].fields.topic_arr[3] = res.data[i].fields.topic4
+          }
+          if (res.data[i].fields.topic5 !== "init") {
+            res.data[i].fields.topic_arr[4] = res.data[i].fields.topic1
+          }
 
         }
-        setTimeout(() => {     //等一哈之后再渲染图片，不然会有src异步错误
+        /* 新获取的数据追加到页面 */
+        for (let index = 0; index < res.data.length; index++) {
           that.setData({
-            if_display_pic: 1
+            display_forum_data: that.data.display_forum_data.concat(res.data[index])
           })
-        }, 100);
-        for (let i = 0; i < that.data.display_forum_data.length; i++) {
-          if (that.data.display_forum_data[i].fields.topic1 !== "init") {    //一次看五个话题字段是否有值，有值就方到topic_arr里面去
-            that.setData({
-              ['display_forum_data[' + i + '].fields.topic_arr[0]']: that.data.display_forum_data[i].fields.topic1
-            })
-          } else {
-            that.setData({
-              ['display_forum_data[' + i + '].fields.topic_arr']: []
-            })
-          }
-          if (that.data.display_forum_data[i].fields.topic2 !== "init") {
-            that.setData({
-              ['display_forum_data[' + i + '].fields.topic_arr[1]']: that.data.display_forum_data[i].fields.topic2
-            })
-          }
-          if (that.data.display_forum_data[i].fields.topic3 !== "init") {
-            that.setData({
-              ['display_forum_data[' + i + '].fields.topic_arr[2]']: that.data.display_forum_data[i].fields.topic3
-            })
-          }
-          if (that.data.display_forum_data[i].fields.topic4 !== "init") {
-            that.setData({
-              ['display_forum_data[' + i + '].fields.topic_arr[3]']: that.data.display_forum_data[i].fields.topic4
-            })
-          }
-          if (that.data.display_forum_data[i].fields.topic5 !== "init") {
-            that.setData({
-              ['display_forum_data[' + i + '].fields.topic_arr[4]']: that.data.display_forum_data[i].fields.topic5
-            })
-          }
-
         }
         /* 获取我点了哪些帖子的赞 */
         setTimeout(() => {
@@ -182,8 +157,6 @@ Page({
           });
 
         }, 500);
-
-
         /* 字段渲染完了，可以准备获取点赞信息了，每次获取点赞信息就获取已有的forum_id 的点赞信息/最新拉取到的forum_id */
         var getloverforumarr = []
         for (let index = 0; index < res.data.length; index++) {
@@ -207,7 +180,7 @@ Page({
             success: (result) => {
               /* 拿到所有的爱之后，循环这个爱同时匹配display中，有一样的就追加到lover数组中去 */
               console.log(result);
-              console.log(that.data.display_forum_data);
+
               for (let index = 0; index < result.data.length; index++) {
                 for (let index2 = 0; index2 < that.data.display_forum_data.length; index2++) {
                   if (that.data.display_forum_data[index2].pk == result.data[index].fields.forum_id) {
@@ -218,16 +191,16 @@ Page({
                 }
 
               }
-              console.log(that.data.display_forum_data);
+
             },
           });
         }, 1000);
-
         /* 现在应该获取评论信息了，首先是第一个，大评论 */
         var getloverforumarr = []
         for (let index = 0; index < res.data.length; index++) {
           getloverforumarr = getloverforumarr.concat(res.data[index].pk)
         }
+        /* 获取评论 */
         wx.request({
           url: 'http://127.0.0.1:8000/forum/get_comment', //仅为示例，并非真实的接口地址
           data: {
@@ -249,9 +222,9 @@ Page({
               }
 
             }
-            console.log(that.data.display_forum_data);
           },
         });
+        /* 获取子评论 */
         wx.request({
           url: 'http://127.0.0.1:8000/forum/get_son_comment', //仅为示例，并非真实的接口地址
           data: {
@@ -275,76 +248,16 @@ Page({
               }
 
             }
-            console.log(that.data.display_forum_data);
           },
         });
+        setTimeout(() => {     //等一哈之后再渲染图片，不然会有src异步错误
+          that.setData({
+            if_display_pic: 1
+          })
+        }, 100);
 
       }
     })
-  },
-  tabSelect(e) {
-    if (this.data.control_status == 1) {
-      this.setData({
-        TabCur: e.currentTarget.dataset.id,
-        scrollLeft: (e.currentTarget.dataset.id - 1) * 60
-      })
-      console.log(this.data.TabCur);
-      /* 点了之后调整页面的数据，采用过滤的方式 */
-      console.log(this.data.display_forum_data);
-
-      if (this.data.TabCur == 0) {
-        this.setData({
-          display_forum_data: this.data.display_temp
-        })
-      } else {
-        /* 先把数据备份一下，用temp数组来备份 */
-        this.setData({
-          display_temp2: this.data.display_temp,/* 先拿到所有的数据，循环遍历进行操作 */
-          display_forum_data: []/* 把页面渲染数组清空 */
-        })
-        for (let index = 0; index < this.data.display_temp2.length; index++) {
-          if (this.data.TabCur == 1) {
-            if (this.data.display_temp2[index].fields.classify == 'learn') {
-              console.log("欧利酱");
-              this.setData({
-                display_forum_data: this.data.display_forum_data.concat(this.data.display_temp2[index])
-              })
-            }
-          } else if (this.data.TabCur == 2) {
-            if (this.data.display_temp2[index].fields.classify == 'life') {
-              console.log("嘎嘎");
-              this.setData({
-                display_forum_data: this.data.display_forum_data.concat(this.data.display_temp2[index])
-              })
-            }
-          } else if (this.data.TabCur == 3) {
-            if (this.data.display_temp2[index].fields.classify == 'emotion') {
-              console.log("阿里系铁路");
-              this.setData({
-                display_forum_data: this.data.display_forum_data.concat(this.data.display_temp2[index])
-              })
-            }
-          }
-        }
-      }
-      if (this.data.display_forum_data.length <= 20) {
-        this.setData({
-          loadingtext: '我也是有底线的'
-        })
-      }
-    } else {
-      console.log("你手速太快了");
-      /* 此刻数据没有完成初始化，先给用户讲个笑话 */
-      wx.showModal({
-        title: '提示',
-        content: '从前有个剑客，他心是冷的，剑是冷的，手是冷的，于是他冻死了……',
-        showCancel: false,
-        confirmText: '心疼他',
-        confirmColor: '#3CC51F',
-      });
-
-    }
-
   },
   previewImage: function (e) {
     var current = e.target.dataset.src;
@@ -716,7 +629,8 @@ Page({
                 if (that.data.display_forum_data[index].pk == this.data.now_forum_id) {
                   this.setData({
                     now_display_comment: that.data.display_forum_data[index].fields.comment,
-                    comment_onclick_count: that.data.display_forum_data[index].fields.comment.length
+                    now_display_soncomment: that.data.display_forum_data[index].fields.soncomment,
+                    comment_onclick_count: that.data.display_forum_data[index].fields.comment.length + that.data.display_forum_data[index].fields.soncomment.length
                   })
                 }
 
@@ -868,7 +782,7 @@ Page({
     console.log(e.currentTarget.dataset.id);
     that.setData({
       switch_reply: 0,
-      now_forum_id: e.currentTarget.dataset.id
+      now_forum_id: e.currentTarget.dataset.id,
     })
 
     console.log(that.data.display_forum_data);
@@ -900,7 +814,8 @@ Page({
     setTimeout(function () {
       animation.translateY(0).step()
       this.setData({
-        animationData: animation.export()
+        animationData: animation.export(),
+        turn_shadow: 1
       })
     }.bind(this), 0)
 
@@ -953,7 +868,6 @@ Page({
   close_comment() {
     var that = this;
     /* 要不关的时候也做一个假的数据增加 */
-
     var animation = wx.createAnimation({
       duration: 100,
       timingFunction: "linear",
@@ -963,7 +877,7 @@ Page({
     this.animation.translateY(0).step()
     that.setData({
       animationData: animation.export(),
-
+      turn_shadow: 0
     })
     setTimeout(function () {
       animation.translateY(520).step()
