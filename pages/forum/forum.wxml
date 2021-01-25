@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-01-24 23:18:14
+ * @LastEditTime: 2021-01-25 12:36:02
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.wxml
@@ -219,9 +219,10 @@
                 </text>
                 分享
             </view>
-            <button class="forum_one_comment_button" bindtap="makecomment" data-id='{{item.pk}}' open-type='getUserInfo'
-                bindgetuserinfo="getuserinfo" style="border-right: 1rpx  solid rgb(138, 138, 138);">
-                <text class="cuIcon-comment" data-id='{{idx}}'>
+            <button class="forum_one_comment_button" bindtap="makecomment" data-id='{{item.pk}}'
+                data-studentId="{{item.fields.studentId}}" open-type='getUserInfo' bindgetuserinfo="getuserinfo"
+                style="border-right: 1rpx  solid rgb(138, 138, 138);">
+                <text class="cuIcon-comment" data-id='{{item.pk}}' data-studentId="{{item.fields.studentId}}">
 
                 </text>
                 评论
@@ -268,7 +269,7 @@
 
 
             </view>
-            <view bindtap="makecomment" data-id='{{item.pk}}'>
+            <view bindtap="makecomment" data-id='{{item.pk}}' wx:if="{{item.fields.comment.length>3}}" style="color: rgb(192, 192, 192);">
                 显示更多
             </view>
 
@@ -406,7 +407,7 @@
 
 
 <!-- 下面制作评论板块 -->
-<view class="close_comment" wx:if="{{showModalStatus}}" bindtap="close_comment">
+<view class="close_comment" wx:if="{{showModalStatus}}" bindtap="close_comment" bindtouchstart="close_comment">
 
 </view>
 
@@ -446,9 +447,14 @@
                     </image>
                 </view>
                 <view class="content_right">
-                    <view class="content_right_name">{{item.name}}</view>
+                    <view class="content_right_name">
+                        <view class="item_name">{{item.name}} </view>
+                        <view class="item_name_actor" wx:if="{{now_turn_studentid_of_forum == item.studentId}}">楼主
+                        </view>
+                    </view>
                     <view class="content_right_content" bindtap="reply" data-id="{{item.forum_id}}"
-                        data-id2="{{item.comment_id}}" data-name="{{item.name}}">
+                        bindlongpress='longPress' data-delete_comment_id="{{item.comment_id}}" data-form="normal"
+                        data-id2="{{item.comment_id}}" data-name="{{item.name}}" data-studentId="{{item.studentId}}">
                         {{item.comment_content}}
                     </view>
                     <view>
@@ -458,7 +464,9 @@
                                 {{item2.name}}回复{{item2.son_comment_to_who}}:
                             </view>
                             <view bindtap="reply" data-id="{{item.forum_id}}" data-id2="{{item.comment_id}}"
-                                data-name="{{item2.name}}">
+                                data-name="{{item2.name}}" bindlongpress='longPress'
+                                data-delete_comment_id="{{item2.son_comment_id}}" data-form="son"
+                                data-studentId="{{item2.studentId}}">
                                 {{item2.son_comment_content}}
                             </view>
 
@@ -473,4 +481,16 @@
         </scroll-view>
 
     </view>
+</view>
+
+<view class="if_delete_comment" style="display: {{turn_delete?'block':'none'}}">
+    <view class="if_delete_comment_yes" bindtap="delete_this_comment">
+        删除
+    </view>
+    <view class="if_delete_comment_cancel" bindtap="close_comment_delete">
+        取消
+    </view>
+</view>
+<view class="shadow2" style="display: {{turn_shadow2?'block':'none'}};" bindtap="close_comment_delete">
+
 </view>

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-01-24 23:21:13
+ * @LastEditTime: 2021-01-25 13:46:47
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.js
@@ -593,15 +593,23 @@ Page({
           wx.showToast({
             title: '评论成功！',
             icon: 'success',
-            duration: 2000,//持续的时间
+            duration: 1000,//持续的时间
+          })
+          /* 清楚输入框的数据记录 */
+          that.setData({
+            comment_of_forum: ''
           })
           /* 评论成功之后就要想办法刷新数据了 */
           var getloverforumarr = []
-          for (let index = 0; index < that.data.display_forum_data.length; index++) {
-            getloverforumarr = getloverforumarr.concat(that.data.display_forum_data[index].pk)
-            that.setData({
-              ['display_forum_data[' + index + '].fields.comment']: []     //把他们里面的评论数据先清空
-            })
+          getloverforumarr = getloverforumarr.concat(that.data.now_forum_id)
+          console.log(getloverforumarr);
+          /* 现在开始准备对这条forum中的评论清空 */
+          for (let index = 0; index < that.data.display_forum_data.length; index++) {   //对已经有的数据的评论数据进行清空
+            if (that.data.display_forum_data[index].pk == that.data.now_forum_id) {
+              console.log("匹配到啦");
+              that.data.display_forum_data[index].fields.comment = []
+            }
+
           }
           wx.request({
             url: 'http://127.0.0.1:8000/forum/get_comment', //仅为示例，并非真实的接口地址
@@ -716,7 +724,10 @@ Page({
           wx.showToast({
             title: '回复成功！',
             icon: 'success',
-            duration: 2000,//持续的时间
+            duration: 1000,//持续的时间
+          })
+          that.setData({
+            comment_of_forum: ''
           })
           /* 刷新数据！！！ */
           var getloverforumarr = []
@@ -780,9 +791,11 @@ Page({
   makecomment(e) {
     var that = this;
     console.log(e.currentTarget.dataset.id);
+    console.log(e.currentTarget.dataset.studentid);
     that.setData({
       switch_reply: 0,
       now_forum_id: e.currentTarget.dataset.id,
+      now_turn_studentid_of_forum: e.currentTarget.dataset.studentid
     })
 
     console.log(that.data.display_forum_data);
@@ -880,7 +893,7 @@ Page({
       turn_shadow: 0
     })
     setTimeout(function () {
-      animation.translateY(520).step()
+      animation.translateY(920).step()
       this.setData({
         animationData: animation.export(),
       })
@@ -891,5 +904,175 @@ Page({
       })
     }.bind(this), 300)
   },
+  longPress(e) {
+    console.log("长按事件");
+    console.log(e.currentTarget.dataset.delete_comment_id);
+    console.log(e.currentTarget.dataset.form);
+    console.log(e.currentTarget.dataset.studentid);
+    /* 判断这条评论是不是我发的 */
+    if (e.currentTarget.dataset.studentid == wx.getStorageSync("studentId")) {
+      this.setData({
+        turn_shadow2: true,
+        turn_delete: true,
+        delete_comment_form: e.currentTarget.dataset.form,
+        delete_comment_id: e.currentTarget.dataset.delete_comment_id
+      })
+    }
+
+  },
+  close_comment_delete() {
+    this.setData({
+      turn_shadow2: false,
+      turn_delete: false
+    })
+  },
+  delete_this_comment() {
+    var that = this
+    if (this.data.delete_comment_form == 'normal') {
+      console.log("是我发的大评论");
+      console.log(this.data.delete_comment_id);
+      /* 发送请求删除大评论 */
+      wx.request({
+        url: 'http://127.0.0.1:8000/forum/delete_comment', //仅为示例，并非真实的接口地址
+        data: {
+          delete_comment_id: this.data.delete_comment_id
+        },
+        method: "POST",
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' // 默认值
+        },
+        success: (result) => {
+          this.close_comment_delete()
+          console.log(result);
+          console.log("评论删除成功！");
+          wx.showToast({
+            title: '删除成功！',
+            icon: 'success',
+            duration: 2000,//持续的时间
+          })
+          /* 清楚输入框的数据记录 */
+          that.setData({
+            comment_of_forum: ''
+          })
+          /* 评论成功之后就要想办法刷新数据了 */
+          var getloverforumarr = []
+          for (let index = 0; index < that.data.display_forum_data.length; index++) {
+            getloverforumarr = getloverforumarr.concat(that.data.display_forum_data[index].pk)
+            that.setData({
+              ['display_forum_data[' + index + '].fields.comment']: []     //把他们里面的评论数据先清空
+            })
+          }
+          wx.request({
+            url: 'http://127.0.0.1:8000/forum/get_comment', //仅为示例，并非真实的接口地址
+            data: {
+              getloverforumarr: getloverforumarr
+            },
+            method: "POST",
+            header: {
+              'content-type': 'application/x-www-form-urlencoded' // 默认值
+            },
+            success: (result) => {
+              console.log(result);
+              for (let index = 0; index < result.data.length; index++) {
+                for (let index2 = 0; index2 < that.data.display_forum_data.length; index2++) {
+                  if (that.data.display_forum_data[index2].pk == result.data[index].fields.forum_id) {
+                    console.log(result.data[index].fields);
+                    that.setData({
+                      ['display_forum_data[' + index2 + '].fields.comment']: that.data.display_forum_data[index2].fields.comment.concat(result.data[index].fields)
+                    })
+                  }
+                }
+              }
+              console.log(that.data.display_forum_data);
+              for (let index = 0; index < that.data.display_forum_data.length; index++) {
+                if (that.data.display_forum_data[index].pk == this.data.now_forum_id) {
+                  this.setData({
+                    now_display_comment: that.data.display_forum_data[index].fields.comment,
+                    now_display_soncomment: that.data.display_forum_data[index].fields.soncomment,
+                    comment_onclick_count: that.data.display_forum_data[index].fields.comment.length + that.data.display_forum_data[index].fields.soncomment.length
+                  })
+                }
+
+              }
+
+            },
+          });
+
+        },
+      });
+
+
+    } else if (this.data.delete_comment_form == 'son') {
+      console.log("是我发的子评论");
+      console.log(this.data.delete_comment_id);
+      /* 发送请求删除子评论 */
+      wx.request({
+        url: 'http://127.0.0.1:8000/forum/delete_son_comment', //仅为示例，并非真实的接口地址
+        data: {
+          delete_comment_id: this.data.delete_comment_id
+        },
+        method: "POST",
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' // 默认值
+        },
+        success: (result) => {
+          console.log(result);
+          this.close_comment_delete()
+          console.log("删除评论成功！");
+          wx.showToast({
+            title: '删除成功！',
+            icon: 'success',
+            duration: 1000,//持续的时间
+          })
+          that.setData({
+            comment_of_forum: ''
+          })
+          /* 刷新数据！！！ */
+          var getloverforumarr = []
+          for (let index = 0; index < that.data.display_forum_data.length; index++) {
+            getloverforumarr = getloverforumarr.concat(that.data.display_forum_data[index].pk)
+            that.setData({
+              ['display_forum_data[' + index + '].fields.soncomment']: []     //把他们里面的评论数据先清空
+            })
+          }
+          wx.request({
+            url: 'http://127.0.0.1:8000/forum/get_son_comment', //仅为示例，并非真实的接口地址
+            data: {
+              getloverforumarr: getloverforumarr
+            },
+            method: "POST",
+            header: {
+              'content-type': 'application/x-www-form-urlencoded' // 默认值
+            },
+            success: (result) => {
+              console.log(result);
+              for (let index = 0; index < result.data.length; index++) {
+                for (let index2 = 0; index2 < that.data.display_forum_data.length; index2++) {
+                  if (that.data.display_forum_data[index2].pk == result.data[index].fields.forum_id) {
+                    console.log(result.data[index].fields);
+                    that.setData({
+                      ['display_forum_data[' + index2 + '].fields.soncomment']: that.data.display_forum_data[index2].fields.soncomment.concat(result.data[index].fields)
+                    })
+                  }
+                }
+              }
+              console.log(that.data.display_forum_data);
+              for (let index = 0; index < that.data.display_forum_data.length; index++) {
+                if (that.data.display_forum_data[index].pk == this.data.now_forum_id) {
+                  this.setData({
+                    now_display_comment: that.data.display_forum_data[index].fields.comment,
+                    now_display_soncomment: that.data.display_forum_data[index].fields.soncomment,
+                    comment_onclick_count: that.data.display_forum_data[index].fields.comment.length + that.data.display_forum_data[index].fields.soncomment.length
+                  })
+                }
+
+              }
+
+            },
+          });
+        },
+      });
+    }
+  }
 
 })

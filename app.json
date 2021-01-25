@@ -1,9 +1,9 @@
 {
   "pages": [
-
+    "pages/index/index",
     "pages/forum/forum",
     "pages/ConfessionWall/ConfessionWall",
-    "pages/index/index",
+
     "pages/forum_publish/forum_publish",
 
     "pages/new_confesswall/new_confesswall",
