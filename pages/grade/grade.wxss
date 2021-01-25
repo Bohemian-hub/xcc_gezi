@@ -1,125 +1,48 @@
 page{
-    background-color: rgba(225, 243, 217, 0.514);
+    background-color: #3295d9;
 }
-.page_back{
+.back{
     width: 50rpx;
-    margin-top: 35rpx;
-    float: left;
-    margin-left: 20rpx;
-    
-}
-.grade_back{
-    width: 25%;
-    float: left;
-    height: 120rpx;
-    background-color: white;    
-    border-radius: 20rpx;
-    margin: 40rpx 0 10rpx 2.5%;
-    box-shadow: 0rpx 0rpx 10rpx rgb(201, 201, 201);
-}
-.page_back_text{
-    font-size: 45rpx;
-    line-height: 122rpx;
-    float: left;
-    text-align: center;
-    width: 100%;
-}
-.grade_when{
-    width: 67.5%;
-    height: 120rpx;
-    background-color: white;
-    margin: 40rpx auto 10rpx 2.5%;
-    border-radius: 20rpx;
-    float: left;
-    box-shadow: 0rpx 0rpx 10rpx rgb(201, 201, 201);
-    text-align: center;
-    font-size: 45rpx;
-    line-height: 120rpx;
-    
-}
-.grade_when_choose{
-    width: 67.5%;
+    height: 50rpx;
     position: fixed;
-    height: 880rpx;
-    background-color: rgba(247, 247, 247, 0);
+    top: 100rpx;
+    left: 30rpx;
+    line-height: 50rpx;
+    text-align: center;
+    color: white;
 
 }
-.grade_when_button_text{
-    height: 80rpx;
-    line-height: 120rpx;
-    color: rgb(7, 131, 202);
-}
-.red_text{
-    height: 40rpx;
-    line-height: 40rpx;
-    font-size: 25rpx;
+.text_of_infor{
+    height: 250rpx;
     text-align: center;
-    color: rgb(194, 23, 171);
+
+    color: white;
 }
-.grade_choose_one{
-    background-color: rgba(255, 255, 255, 0.842);
-    height: 100rpx;
-    line-height: 100rpx;
-    margin-top: 10rpx;
-    box-shadow: 0 0 8rpx rgb(175, 175, 175);
-    border-radius: 20rpx;
+.text_of_infor_name{
+    padding-top: 100rpx;
+    font-size: 35rpx;
 }
-.grade_rank{
-    width: 30%;
-    height: 120rpx;
-    background-color: white;
-    margin: 10rpx 0 10rpx 2.5%;
-    border-radius: 20rpx;
-    float: left;
-    box-shadow: 0rpx 0rpx 10rpx rgb(201, 201, 201)
-    
+.express_company_choose_value{
+    width: 40%;
+    height: 60rpx;
+    margin: 0 auto;
 }
-.grade_rank_number{
-    width: 100%;
-    height: 80rpx;
-    line-height: 80rpx;
-    font-size: 48rpx;
-    text-align: center;
-}
-.grade_rank_name{
-    width: 100%;
-    height: 40rpx;
-    line-height: 40rpx;
-    font-size: 28rpx;
-    text-align: center;
-}
-.grade_hint{
-    width: 96%;
-    height: 120rpx;
-    background-color: rgb(255, 255, 255);
-    margin: 10rpx auto 10rpx 2%;
-    border-radius: 20rpx;
-    float: left;
-    box-shadow: 0rpx 0rpx 10rpx rgb(201, 201, 201);
-    padding: 20rpx;
-    text-indent: 2em;
-}
-.grade_hint_careful{
-    color: red;
-}
+
 .grade_content{
-    width: 96%;
+    width: 100%;
     background-color: rgba(206, 206, 206, 0);
     border-radius: 50rpx;
-    margin:  80rpx auto;
-    padding-top: 60rpx;
+    margin:  10rpx auto;
+    overflow:hidden;
 }
 .grade_cource{
     width: 100%;
-    height: 150rpx;
+    height: 120rpx;
     background-color: rgb(255, 255, 255);
-    margin: 5rpx auto;
-    
-
 }
 .grade_left{
     width: 75%;
-    height: 150rpx;
+    height: 120rpx;
     background-color: rgb(255, 255, 255);
     float: left;
 
@@ -137,14 +60,14 @@ page{
     overflow: hidden;
 }
 .grade_right{
-    height: 150rpx;
+    height: 120rpx;
     width: 20%;
     background-color: rgb(255, 255, 255);
     margin-left: 5%;
     float: left;
 }
 .grade_left_learnscore{
-    height: 50rpx;
+    height: 30rpx;
     background-color: rgba(255, 255, 255, 0);
     width: 80rpx;
     float: left;
@@ -155,19 +78,19 @@ page{
     margin-left: 5%;
     color:  rgb(255, 154, 175);
     font-size: 25rpx;
-    line-height: 50rpx;
+    line-height: 30rpx;
 
 
 }
 .grade_left_test_quality{
-    height: 50rpx;
+    height: 30rpx;
     background-color: rgba(255, 255, 255, 0);
     width: 140rpx;
     float: left;
     margin-right: 20rpx;
     text-align: center;
     border-radius: 10rpx;
-    line-height: 50rpx;
+    line-height: 30rpx;
     border: green solid 2rpx;
     color:  green;
     font-size: 25rpx;
@@ -176,12 +99,12 @@ page{
 
 }
 .grade_left_cource_quality{
-    height: 50rpx;
+    height: 30rpx;
     background-color: rgba(255, 255, 255, 0);
     width: 80rpx;
     float: left;
     text-align: center;
-    line-height: 50rpx;
+    line-height: 30rpx;
     border: rgb(177, 0, 29) solid 2rpx;
     border-radius: 10rpx;
     color: rgb(177, 0, 29);
@@ -190,9 +113,9 @@ page{
 }
 .grade_right_grade{
     width: 100%;
-    height: 80rpx;
+    height: 55rpx;
     text-align: center;
-    font-size: 60rpx;
+    font-size: 50rpx;
     padding-top: 10rpx;
     background-color: rgba(255, 192, 203, 0);
     color: rgb(0, 113, 206);

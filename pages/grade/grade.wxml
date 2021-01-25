@@ -1,73 +1,34 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-26 21:05:54
- * @LastEditTime: 2020-11-27 23:01:27
+ * @LastEditTime: 2021-01-25 17:27:30
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/grade/grade.wxml
 -->
 
-<view class="grade_back" bindtap="back_index">
+<view class="back" bindtap="back_index">
+    <text class="cuIcon-back">
+
+    </text>
+</view>
 
 
-    <view class="page_back_text">
-        返回
+<view class="text_of_infor">
+    <view class="text_of_infor_name">{{}}何东的期末考试成绩单</view>
+    <view class="text_of_infor_point">绩点：{{gpa}}</view>
+    <view class="text_of_infor_term">
+        <view class="express_company_choose_value">
+            <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                <view class="picker">
+                    当前学期：{{array[index]}} <text class="cuIcon-unfold">
+
+                    </text>
+                </view>
+            </picker>
+
+        </view>
     </view>
-
-</view>
-<view class="grade_when">
-    <view class="grade_when_button" bindtap="turn_choose">
-        <view class="grade_when_button_text">
-            学期:{{which_term}}
-        </view>
-        <view class="red_text">
-            点击切换学期
-        </view>
-
-
-    </view>
-
-    <view class="grade_when_choose" style="display: {{turn_choose==1?'block':'none'}};">
-            <view class="grade_choose_one" bindtap="change_term" data-name="2019年 学期2">
-            2020年 学期1
-        </view>
-        <view class="grade_choose_one" bindtap="change_term" data-name="2019年 学期2">
-            2019年 学期2
-        </view>
-        <view class="grade_choose_one" bindtap="change_term" data-name="2019年 学期1">
-            2019年 学期1
-
-        </view>
-        <view class="grade_choose_one" bindtap="change_term" data-name="2018年 学期2">
-            2018年 学期2
-        </view>
-        <view class="grade_choose_one" bindtap="change_term" data-name="2018年 学期1">
-            2018年 学期1
-        </view>
-
-    </view>
-
-</view>
-<view class="grade_rank">
-    <view class="grade_rank_number">{{something}}{{get_befor}}</view>
-    <view class="grade_rank_name">学分绩点</view>
-</view>
-<view class="grade_rank">
-    <view class="grade_rank_number">39</view>
-    <view class="grade_rank_name">班级排名</view>
-</view>
-<view class="grade_rank">
-    <view class="grade_rank_number">106</view>
-    <view class="grade_rank_name">专业排名</view>
-</view>
-<view style="clear: both;">
-</view>
-
-<view class="grade_hint">
-    <font class="grade_hint_careful">
-        温馨提示:
-    </font>
-    {{}}18计科二班已加入46人，5人未初始化成绩，邀请更多同学加入，使排名更准确
 </view>
 
 <view class="grade_content">
@@ -94,8 +55,4 @@
 
 
 
-</view>
-
-<view class="get_grade" bindtap="getgrade">
-    获取成绩
 </view>

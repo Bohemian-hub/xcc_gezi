@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2021-01-17 14:24:54
+ * @LastEditTime: 2021-01-25 14:12:20
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.js
@@ -219,12 +219,6 @@ Page({
       this.setData({
         showwhat: 'strive',
       })
-    } else if (event.currentTarget.dataset.id == '表白') {
-      console.log(5);
-
-      this.setData({
-        showwhat: 'confess',
-      })
     } else {
       this.setData({
         showwhat: 'else',
@@ -359,7 +353,7 @@ Page({
     ref = setInterval(function () {
       that.Get_time();
 
-    }, 120000);
+    }, 300000);
 
   },
   get_passage() {

@@ -1,11 +1,11 @@
 {
   "pages": [
+
     "pages/index/index",
     "pages/forum/forum",
     "pages/ConfessionWall/ConfessionWall",
-
+    "pages/grade/grade",
     "pages/forum_publish/forum_publish",
-
     "pages/new_confesswall/new_confesswall",
     "pages/new_publish_confess/new_publish_confess",
     "pages/setting_talkback/setting_talkback",
@@ -17,7 +17,7 @@
     "pages/express/express",
     "pages/express_order/express_order",
     "pages/schedule/schedule",
-    "pages/grade/grade",
+
     "pages/login/login",
     "pages/publish_confess/publish_confess",
     "pages/pay/pay",

@@ -27,7 +27,7 @@
         <view class="content_niceday">
             <!-- 左侧的one区域 -->
             <view class="cardleft" bindtap="hidden_onetext_on_onepic">
-                <image class="cardleft_bg" src="{{imageone_src}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false"
+                <image class="cardleft_bg" src="{{imageone_src}}" lazy-load="false"
                     binderror="" bindload="" />
                 <view class="cardleft_date" style="display:{{hidden_onetext_on_onepic=='yes'?'none':'block'}}">
                     {{one_date}} {{one_week}}
@@ -116,11 +116,11 @@
 
 
 
-            <view class="menu_left" bindtap="jiaowu" data-id="表白">
-                <image class="menu_left_icon" src="https://s3.ax1x.com/2020/12/21/rB2Kzj.png" mode="widthFix"
+            <view class="menu_left" bindtap="forum">
+                <image class="menu_left_icon" src="https://s3.ax1x.com/2021/01/25/sLVENQ.png" mode="widthFix"
                     lazy-load="false" binderror="" bindload="" />
                 <view class="menu_left_text">
-                    表白
+                    论坛
                 </view>
 
             </view>
@@ -219,24 +219,13 @@
         <!-- 以防自己关闭自己 -->
         <scroll-view class="son_menu_function_panel" scroll-y="true">
 
-            <view class="son_menu_function {{showwhat=='confess' ? 'show' : 'notshow'}}" bindtap="confress_page">
-                <view class="son_menu_function_image">
-                    <image class="son_menu_function_image_icon" src="https://s1.ax1x.com/2020/11/10/BbbpAe.png"
-                        mode="widthFix" lazy-load="false" binderror="" bindload="" />
-                </view>
-                <view class="son_menu_function_title">
-                    表白墙
-                </view>
-
-            </view>
-
-            <view class="son_menu_function {{showwhat=='confess' ? 'show' : 'notshow'}}" bindtap="new_confesswall">
+            <view class="son_menu_function {{showwhat=='strive' ? 'show' : 'notshow'}}" bindtap="new_confesswall">
                 <view class="son_menu_function_image">
                     <image class="son_menu_function_image_icon" src="https://s3.ax1x.com/2020/12/21/rB2QQs.png"
                         mode="widthFix" lazy-load="false" binderror="" bindload="" />
                 </view>
                 <view class="son_menu_function_title">
-                    表白信
+                    私信
                 </view>
 
             </view>
@@ -261,17 +250,6 @@
                 </view>
                 <view class="son_menu_function_title">
                     课表
-                </view>
-
-            </view>
-
-            <view class="son_menu_function {{showwhat=='server' ? 'show' : 'notshow'}}" bindtap="forum">
-                <view class="son_menu_function_image">
-                    <image class="son_menu_function_image_icon" src="https://s3.ax1x.com/2021/01/06/sVNFU0.png"
-                        mode="widthFix" lazy-load="false" binderror="" bindload="" />
-                </view>
-                <view class="son_menu_function_title">
-                    论坛
                 </view>
 
             </view>

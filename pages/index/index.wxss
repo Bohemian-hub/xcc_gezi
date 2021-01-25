@@ -219,6 +219,7 @@ color: #23a7ff;
   margin: 10rpx;
   margin-left: 30rpx;
   z-index: 999;
+  height: auto;
 }
 .weather_location{
   width: 100%;
@@ -230,6 +231,7 @@ color: #23a7ff;
   width: 30rpx;
   margin-top: 20rpx;
   margin-left: 80rpx;
+  height: auto;
 }
 .weather_location_position{
   float: left;
@@ -298,6 +300,7 @@ color: #23a7ff;
 }
 .menu_setting_icon{
   width: 100%;
+  height: auto;
 }
 .menu_left{
   width: 30%;
@@ -313,12 +316,13 @@ color: #23a7ff;
 }
 .menu_left_icon{
   margin-top: 50rpx;
-width: 40rpx;
+  width: 60rpx;
+  height: auto;
 }
 .menu_left_text{
   margin-top: 20rpx;
-height: 20rpx;
-line-height: 20rpx;
+  height: 20rpx;
+  line-height: 20rpx;
 }
 .menu_middle{
   width: 30%;
@@ -343,6 +347,7 @@ box-shadow: 0rpx 0rpx 5rpx #0bb979;
   margin-top: 25rpx;
   margin-left: 40rpx;
 width: 40rpx;
+height: auto;
 
 }
 .menu_middle_up_text{
@@ -567,7 +572,7 @@ background-size: 100%;
 }
 .son_menu_function_image_icon{
   width: 100%;
-  height: 100%;
+  height: auto;
 }
 .son_menu_function_title{
   font-size: 15rpx;
