@@ -2,6 +2,7 @@
   "pages": [
 
     "pages/index/index",
+    "pages/schedule/schedule",
     "pages/forum/forum",
     "pages/ConfessionWall/ConfessionWall",
     "pages/grade/grade",
@@ -16,7 +17,7 @@
     "pages/express_catch/express_catch",
     "pages/express/express",
     "pages/express_order/express_order",
-    "pages/schedule/schedule",
+
 
     "pages/login/login",
     "pages/publish_confess/publish_confess",
