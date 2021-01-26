@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-26 12:28:15
- * @LastEditTime: 2021-01-26 19:21:05
+ * @LastEditTime: 2021-01-26 20:23:19
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/topic/topic.js
@@ -32,7 +32,7 @@ Page({
   get_topic() {
     var that = this
     wx.request({
-      url: 'https://www.xiyuangezi.cn/forum/get_topic', //仅为示例，并非真实的接口地址
+      url: 'http://127.0.0.1:8000/forum/get_topic', //仅为示例，并非真实的接口地址
       header: {
         'content-type': 'application/json' // 默认值
       },
@@ -104,5 +104,11 @@ Page({
         peach_arr: peach_arr
       })
     }
+  },
+  nevigator_to_topic(e) {
+    console.log(e.currentTarget.dataset.name);
+    wx.redirectTo({
+      url: '../topic_one/topic_one?name=' + e.currentTarget.dataset.name + '&url=' + e.currentTarget.dataset.url
+    })
   }
 })

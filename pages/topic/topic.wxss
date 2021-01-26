@@ -47,7 +47,26 @@ page{
     line-height: 40rpx;
     color: #00cec9;
 }
-.hot_one{
+.hot_one1{
+    width: 90%;
+    height: 320rpx;
+    background-color: pink;
+    border-radius: 30rpx;
+    margin-top: 20rpx;
+    margin-left: 5%;
+    float: left;
+    text-align: center;
+    line-height: 40rpx;
+    padding-top: 130rpx;
+    padding-left: 30rpx;
+    padding-right: 30rpx;
+    font-size: 32rpx;
+    font-weight: 800;
+    color: white;
+    overflow: hidden;
+    text-shadow:5px 1px 6px rgb(124, 124, 124)
+}
+.hot_one2{
     width: 45%;
     height: 160rpx;
     background-color: pink;
@@ -65,6 +84,47 @@ page{
     color: white;
     overflow: hidden;
     text-shadow:5px 1px 6px rgb(124, 124, 124)
+}
+.hot_one3{
+    width: 30%;
+    height: 160rpx;
+    background-color: pink;
+    border-radius: 30rpx;
+    margin-top: 20rpx;
+    margin-left: 2.5%;
+    float: left;
+    text-align: center;
+    line-height: 40rpx;
+    padding-top: 56rpx;
+    padding-left: 30rpx;
+    padding-right: 30rpx;
+    font-size: 26rpx;
+    font-weight: 800;
+    color: white;
+    overflow: hidden;
+    text-shadow:5px 1px 6px rgb(124, 124, 124)
+}
+.hot_one4{
+    width: 45%;
+    height: 160rpx;
+    background-color: pink;
+    border-radius: 30rpx;
+    margin-top: 20rpx;
+    margin-left: 3.3%;
+    float: left;
+    text-align: center;
+    line-height: 40rpx;
+    padding-top: 60rpx;
+    padding-left: 30rpx;
+    padding-right: 30rpx;
+    font-size: 32rpx;
+    font-weight: 800;
+    color: white;
+    overflow: hidden;
+    text-shadow:5px 1px 6px rgb(124, 124, 124)
+}
+.hot_one{
+    display: none;
 }
 .all_topic{
     width: 100%;

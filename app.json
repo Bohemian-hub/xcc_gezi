@@ -2,6 +2,7 @@
   "pages": [
 
     "pages/topic/topic",
+    "pages/topic_one/topic_one",
     "pages/new_confesswall/new_confesswall",
     "pages/express/express",
     "pages/forum/forum",
