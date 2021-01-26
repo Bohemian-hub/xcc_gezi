@@ -1,5 +1,5 @@
 page{
-    background-color: #bebebe60;
+    background-color: #131313;
 }
 .title{
     width: 100%;
@@ -27,7 +27,8 @@ page{
 }
 .forum_write{
     margin-bottom: 20rpx;
-    background-color: white;
+    background-color: rgb(53, 53, 53);
+    color: white;
 }
 .topic_display{
 
@@ -40,7 +41,7 @@ page{
     padding-left: 15rpx;
     padding-right: 15rpx;
     border-radius: 20rpx;
-    background-color: #e9e9e9;
+    background-color: #444444;
     line-height: 40rpx;
     width: auto;
     color: #1cb4ed;
@@ -52,7 +53,7 @@ page{
 }
 .delete_topic_close{
     float: left;
-    background-color: #d4d4d4;
+    background-color: #4e4e4e;
     color: white;
     height: 30rpx;
     width: 30rpx;
@@ -65,7 +66,7 @@ page{
 .forum_topic{
     width: 100%;
     height: 120rpx;
-    background-color: white;
+    background-color: rgb(87, 87, 87);
     border-bottom:1rpx solid rgba(182, 182, 182, 0.356);
 }
 .forum_topic_left{
@@ -100,10 +101,11 @@ page{
 .placeholder{
     height: 150rpx;
 }
+
 .publish_button{
     width: 96%;
     height: 100rpx;
-    background-color: #1cb4ed;
+    background-color: #004b66;
     position: fixed;
     bottom: 10rpx;
     margin-left: 2%;

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-01-26 16:29:03
+ * @LastEditTime: 2021-01-26 22:55:33
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.js
@@ -378,6 +378,11 @@ Page({
     wx.navigateTo({
       url: "../topic/topic",
     });
+  },
+  frank() {
+    wx.redirectTo({
+      url: '../topic_one/topic_one?name=坦白说'
+    })
   },
   back_index() {
     wx.redirectTo({
@@ -1077,6 +1082,18 @@ Page({
         },
       });
     }
+  },
+  nevigator_to_topic(e) {
+    console.log(e.currentTarget.dataset.name);
+    wx.redirectTo({
+      url: '../topic_one/topic_one?name=' + e.currentTarget.dataset.name
+    })
+  },
+  frank_publish() {
+    wx.redirectTo({
+      url: '../frank_publish/frank_publish'
+    })
   }
+
 
 })

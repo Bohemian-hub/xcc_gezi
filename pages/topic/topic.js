@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-26 12:28:15
- * @LastEditTime: 2021-01-26 20:23:19
+ * @LastEditTime: 2021-01-26 21:34:32
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/topic/topic.js
@@ -108,7 +108,7 @@ Page({
   nevigator_to_topic(e) {
     console.log(e.currentTarget.dataset.name);
     wx.redirectTo({
-      url: '../topic_one/topic_one?name=' + e.currentTarget.dataset.name + '&url=' + e.currentTarget.dataset.url
+      url: '../topic_one/topic_one?name=' + e.currentTarget.dataset.name
     })
   }
 })

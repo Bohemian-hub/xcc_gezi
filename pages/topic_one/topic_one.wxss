@@ -4,7 +4,7 @@ page{
 }
 .topic_pic{
     height: 320rpx;
-    background-color: pink;
+    background-color: rgb(218, 193, 52);
     background-size: 100%;
     line-height: 320rpx;
     text-align: center;
@@ -137,8 +137,7 @@ page{
     width: 100%;
     background-color: rgb(255, 255, 255);
     margin-bottom: 20rpx;
-    box-shadow: 0 0 20rpx rgb(211, 211, 211);
-    webkit-overflow-scrolling: touch    
+    box-shadow: 0 0 20rpx rgb(211, 211, 211); 
 
 }
 .forum_one_name_img{

@@ -45,7 +45,7 @@
         <!-- 下面是文字 -->
         <view class="forum_one_content">
             <view class="topic_display" style="display: inline-block;" wx:for="{{item.fields.topic_arr}}"
-                wx:for-item="topic">
+                wx:for-item="topic" bindtap="nevigator_to_topic" data-name="{{topic}}">
                 {{topic}}
             </view>
             {{item.fields.input_content}}

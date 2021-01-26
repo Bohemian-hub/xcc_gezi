@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-01-26 20:54:30
+ * @LastEditTime: 2021-01-26 22:56:13
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.js
@@ -49,11 +49,10 @@ Page({
     this.setData({
       control_status: 0,   //此刻不允许操作
       page_topic_name: options.name,
-      page_topic_url: options.url,
     })
-    this.animation1 = wx.createAnimation()
-    this.animation2 = wx.createAnimation()
-    this.animation3 = wx.createAnimation()
+    if (options.name != '坦白说') {
+      this.get_topic_url(options.name)
+    }
     /* 页面加载的时候获取数据 */
     /* 这里一次性获取20条数据，下面的方法实现上滑一次获取下一个20条数据，上拉一次重新获取第一个二十条数据 */
     /* 这里直接引用一个获取20条数据的函数 */
@@ -69,6 +68,24 @@ Page({
   },
   refresh() {
     this.onReachBottom()
+  },
+  get_topic_url(e) {
+    var that = this
+    wx.request({
+      url: 'http://127.0.0.1:8000/forum/get_topic_url', //仅为示例，并非真实的接口地址
+      data: {
+        page_topic_name: e,
+      },
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      success(res) {
+        that.setData({
+          page_topic_url: res.data[0].fields.backgroundimg
+        })
+      }
+    })
   },
   get_forum() {
     var that = this;
@@ -131,11 +148,20 @@ Page({
         for (let index = 0; index < res.data.length; index++) {
           /* 下面是数据的渲染，同时对数据进行筛选 */
           console.log(res.data[index].fields.topic1);
-          if (res.data[index].fields.topic1 == that.data.page_topic_name || res.data[index].fields.topic2 == that.data.page_topic_name || res.data[index].fields.topic3 == that.data.page_topic_name || res.data[index].fields.topic4 == that.data.page_topic_name || res.data[index].fields.topic5 == that.data.page_topic_name) {
-            that.setData({
-              display_forum_data: that.data.display_forum_data.concat(res.data[index])
-            })
+          if (that.data.page_topic_name == '坦白说') {
+            if (res.data[index].fields.classify == 'frank') {
+              that.setData({
+                display_forum_data: that.data.display_forum_data.concat(res.data[index])
+              })
+            }
+          } else {
+            if (res.data[index].fields.topic1 == that.data.page_topic_name || res.data[index].fields.topic2 == that.data.page_topic_name || res.data[index].fields.topic3 == that.data.page_topic_name || res.data[index].fields.topic4 == that.data.page_topic_name || res.data[index].fields.topic5 == that.data.page_topic_name) {
+              that.setData({
+                display_forum_data: that.data.display_forum_data.concat(res.data[index])
+              })
+            }
           }
+
         }
         if (that.data.display_forum_data.length < 20) {      //没有获取到数据
           that.setData({
@@ -1012,6 +1038,12 @@ Page({
         },
       });
     }
+  },
+  nevigator_to_topic(e) {
+    console.log(e.currentTarget.dataset.name);
+    wx.redirectTo({
+      url: '../topic_one/topic_one?name=' + e.currentTarget.dataset.name
+    })
   }
 
 })
