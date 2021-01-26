@@ -1,24 +1,19 @@
 <!--
  * @Author: your name
  * @Date: 2020-12-01 10:00:16
- * @LastEditTime: 2021-01-06 18:48:53
+ * @LastEditTime: 2021-01-26 10:37:36
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express/express.wxml
 -->
 <view class="title">
-    <view class="title_back" hover-class="none" hover-stop-propagation="false" bindtap="back_index">
+    快递
+    <view class="back" bindtap="back_index">
+        <text class="cuIcon-back">
 
-        <view class="page_back_text">
-            返回
-        </view>
-
-    </view>
-    <view class="title_text">
-        快递服务
+        </text>
     </view>
 </view>
-
 <!-- 这里做一个菜单切换 -->
 <view class="menu_change">
     <view class="menu_1" bindtap="turn_page_neworder"
@@ -33,17 +28,20 @@
     <view class="express_infor">
         <view class="express_infor_one">
             <view class="express_piece" style="background-color: rgb(212, 137, 40);"></view>
-            <input class="express_info_text" placeholder="请填写收件人姓名" bindinput='getInputValue1' value="{{express_info_text_name}}">
+            <input class="express_info_text" placeholder="请填写收件人姓名" bindinput='getInputValue1'
+                value="{{express_info_text_name}}">
             </input>
         </view>
         <view class="express_infor_one">
             <view class="express_piece" style="background-color: rgb(40, 200, 212);"></view>
-            <input class=" express_info_text" placeholder="请填写收件人电话" bindinput='getInputValue2' value="{{express_info_text_tel}}">
+            <input class=" express_info_text" placeholder="请填写收件人电话" bindinput='getInputValue2'
+                value="{{express_info_text_tel}}">
             </input>
         </view>
         <view class="express_infor_one">
             <view class="express_piece" style="background-color: rgb(206, 40, 212);"></view>
-            <input class=" express_info_text" placeholder="请填写取件码" bindinput='getInputValue3' value="{{express_info_text_code}}">
+            <input class=" express_info_text" placeholder="请填写取件码" bindinput='getInputValue3'
+                value="{{express_info_text_code}}">
             </input>
         </view>
     </view>
@@ -219,7 +217,8 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. 学生在填写需求订单之后，会由我们指派的可信任的代取员取件,男生送至寝室，女生送至楼下或者宿管室。
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. 当订单被接取，代取费生效；接单后24小时若代取员未取，订单自动取消，代取费退回客户。
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. 若包裹过大过重或时间紧迫可适当增加小费，代取员会优先为您处理。
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. 当包裹在从驿站拿出若有异常，代取员将反馈给客户，代取员不承担快递公司造成的包裹损坏，丢失，回寄等问题。
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.
+                当包裹在从驿站拿出若有异常，代取员将反馈给客户，代取员不承担快递公司造成的包裹损坏，丢失，回寄等问题。
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;更多问题请 设置—联系客服 进行咨询。
 
             </text>
@@ -293,7 +292,7 @@
     </view>
 
     <view class="apply_panel" style="display: {{nothing1==1?'block':'none'}};">
-        <view class="apply_panel_title">你还没有需要派送的订单，快去接单赚钱吧！</view>
+        <view class="apply_panel_title">你还没有需要取的快递，快去下单吧！</view>
     </view>
 
     <view class="catcher_infor" style="display: {{catcher_show==1?'block':'none'}};">

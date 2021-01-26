@@ -15,7 +15,7 @@
 
 
 <view class="text_of_infor">
-    <view class="text_of_infor_name">{{}}何东的期末考试成绩单</view>
+    <view class="text_of_infor_name">{{student_name}}的期末考试成绩单</view>
     <view class="text_of_infor_point">绩点：{{gpa}}</view>
     <view class="text_of_infor_term">
         <view class="express_company_choose_value">

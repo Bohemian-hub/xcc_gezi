@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-26 21:05:54
- * @LastEditTime: 2021-01-25 17:14:04
+ * @LastEditTime: 2021-01-26 10:04:40
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/grade/grade.js
@@ -26,7 +26,9 @@ Page({
    */
   onLoad: function (options) {
     /* 首先去数据库中加载成绩 */
-
+    this.setData({
+      student_name: wx.getStorageSync("name")
+    })
     this.getgrade(2020, 1)
     var grade = wx.getStorageSync('grade')
     if (grade == "大一") {

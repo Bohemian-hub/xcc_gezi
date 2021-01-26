@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2021-01-25 14:12:20
+ * @LastEditTime: 2021-01-26 10:24:21
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.js
@@ -213,7 +213,7 @@ Page({
       this.setData({
         showwhat: 'goods',
       })
-    } else if (event.currentTarget.dataset.id == '努力') {
+    } else if (event.currentTarget.dataset.id == '工具') {
       console.log(4);
 
       this.setData({

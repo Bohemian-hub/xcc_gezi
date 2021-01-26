@@ -4,38 +4,18 @@ background-color: #ffeaa7;
 
 .title{
     width: 100%;
-    height: 150rpx;
+    height: 140rpx;
     background-color: #00cec9;
-
-    padding-left: 50rpx;
-    position: fixed;
-    top: 0;
-    z-index: 999;
-}
-.place_hoder{
-    width: 100%;
-    height: 150rpx;
+    text-align: center;
+    font-size: 40rpx;
+    position: relative;
+    color: white;
+    line-height: 220rpx;
 }
 .back{
-    width: 100rpx;
-    height: 80rpx;
-    background-color: rgb(255, 255, 255);
-    float: left;
-    margin-top: 50rpx;
-    border-radius: 5rpx;
-    text-align: center;
-    line-height: 80rpx;
-    font-size: 40rpx;
-}
-.text{
-    color: white;
-    width: 450rpx;
-    background-color: #ffffff00;
-    font-size: 50rpx;
-    line-height: 150rpx;
-    text-align: center;
-    float: left;
-
+    position: absolute;
+    top: 0rpx;
+    left: 30rpx;
 }
 .button_change{
     width:35%;
@@ -98,21 +78,29 @@ background-color: #ffeaa7;
     padding:5rpx;
     font-size: 25rpx;
     position: absolute;
+    bottom: 45rpx;
+    text-align: right;
+}
+.time{
+    width: 100%;
+    height: 30rpx;
+    padding:5rpx;
+    font-size: 25rpx;
+    position: absolute;
     bottom: 15rpx;
     text-align: right;
-
 }
 .publish{
     position: fixed;
-    width: 40%;
+    width: 14%;
     height: 100rpx;
     background-color: #a29bfe;
     bottom: 20rpx;
-    left: 30%;
+    left: 80%;
     border-radius: 100rpx;
     border: 5rpx solid white;
     text-align: center;
-    line-height: 100rpx;
-    font-size: 40rpx;
+    line-height: 75rpx;
+    font-size: 80rpx;
     color: white;
 }

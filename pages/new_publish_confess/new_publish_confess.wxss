@@ -4,37 +4,18 @@ background-color: #fff9e3;
 
 .title{
     width: 100%;
-    height: 150rpx;
+    height: 140rpx;
     background-color: #00cec9;
-    padding-left: 50rpx;
-    position: fixed;
-    top: 0;
-    z-index: 999;
-}
-.place_hoder{
-    width: 100%;
-    height: 150rpx;
+    text-align: center;
+    font-size: 40rpx;
+    position: relative;
+    color: white;
+    line-height: 220rpx;
 }
 .back{
-    width: 130rpx;
-    height: 80rpx;
-    background-color: rgb(255, 255, 255);
-    float: left;
-    margin-top: 50rpx;
-    border-radius: 8rpx;
-    text-align: center;
-    line-height: 80rpx;
-    font-size: 40rpx;
-}
-.text{
-    color: white;
-    width: 450rpx;
-    background-color: #ffffff00;
-    font-size: 50rpx;
-    line-height: 175rpx;
-    text-align: center;
-    float: left;
-
+    position: absolute;
+    top: 0rpx;
+    left: 30rpx;
 }
 .free{
     background-color: #00cecb00;
@@ -140,19 +121,6 @@ background-color: #fff9e3;
     z-index: 999;
     opacity:0;
 }
-.dear{
-    width: 100rpx;
-    height: 50rpx;
-    background-color: #eb7c3b00;
-    float: left;
-    line-height: 50rpx;
-    font-weight: 800;
-    color: rgb(51, 29, 0);
-    font-size: 35rpx;
-    margin-left: 20rpx;
-    opacity:0;
-
-}
 .dearname{
     width: 200rpx;
     height: 50rpx;
@@ -161,6 +129,7 @@ background-color: #fff9e3;
     color: rgb(71, 40, 0);
     border-bottom: 1rpx dashed rgb(128, 128, 128);
     opacity:0;
+    padding-left: 50rpx;
     text-align: center;
 
 }

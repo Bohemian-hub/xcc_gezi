@@ -7,15 +7,11 @@
  * @FilePath: /miniprogram-5/pages/express_catch/express_catch.wxml
 -->
 <view class="title">
-    <view class="title_back" hover-class="none" hover-stop-propagation="false" bindtap="back_index">
+    接单
+    <view class="back" bindtap="back_index">
+        <text class="cuIcon-back">
 
-        <view class="page_back_text">
-            返回
-        </view>
-
-    </view>
-    <view class="title_text">
-        快递服务
+        </text>
     </view>
 </view>
 <view class="menu_change">
@@ -216,7 +212,7 @@
     </view>
 
     <view class="apply_panel" style="display: {{nothing2==1?'block':'none'}};">
-        <view class="apply_panel_title">你还没有需要取的快递，快去下单吧！</view>
+        <view class="apply_panel_title">你没有可派送的订单了，快去接单赚钱吧！</view>
     </view>
 
 </view>

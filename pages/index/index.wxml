@@ -153,12 +153,12 @@
                         生活
                     </view>
                 </view>
-                <view class="menu_right_down" bindtap="jiaowu" data-id="努力">
-                    <image class="menu_middle_up_icon" src="https://s1.ax1x.com/2020/11/10/Bbjmfe.png" mode="widthFix"
+                <view class="menu_right_down" bindtap="jiaowu" data-id="工具">
+                    <image class="menu_middle_up_icon" src="https://s3.ax1x.com/2021/01/26/sXirZD.png" mode="widthFix"
                         lazy-load="false" binderror="" bindload="" />
 
                     <view class="menu_middle_up_text">
-                        努力
+                        工具
                     </view>
                 </view>
             </view>
@@ -285,110 +285,29 @@
                         mode="widthFix" lazy-load="false" binderror="" bindload="" />
                 </view>
                 <view class="son_menu_function_title">
-                    挣钱
+                    兼职
                 </view>
 
             </view>
 
             <view class="son_menu_function {{showwhat=='goods' ? 'show' : 'notshow'}}" bindtap="notdofunction">
                 <view class="son_menu_function_image">
-                    <image class="son_menu_function_image_icon" src="https://s3.ax1x.com/2020/11/13/D9kTAI.png"
+                    <image class="son_menu_function_image_icon" src="https://s3.ax1x.com/2021/01/26/sXFMYd.png"
                         mode="widthFix" lazy-load="false" binderror="" bindload="" />
                 </view>
                 <view class="son_menu_function_title">
-                    闲置
-                </view>
-
-            </view>
-
-            <view class="son_menu_function {{showwhat=='goods' ? 'show' : 'notshow'}}" bindtap="notdofunction">
-                <view class="son_menu_function_image">
-                    <image class="son_menu_function_image_icon" src="https://s3.ax1x.com/2020/11/13/D9kIHA.png"
-                        mode="widthFix" lazy-load="false" binderror="" bindload="" />
-                </view>
-                <view class="son_menu_function_title">
-                    微商
+                    微笑淘宝
                 </view>
 
             </view>
 
             <view class="son_menu_function {{showwhat=='strive' ? 'show' : 'notshow'}}" bindtap="notdofunction">
                 <view class="son_menu_function_image">
-                    <image class="son_menu_function_image_icon" src="https://s3.ax1x.com/2020/11/13/D9k5Bd.png"
+                    <image class="son_menu_function_image_icon" src="https://s3.ax1x.com/2021/01/26/sXFOtH.png"
                         mode="widthFix" lazy-load="false" binderror="" bindload="" />
                 </view>
                 <view class="son_menu_function_title">
-                    学术探讨
-                </view>
-
-            </view>
-            <view class="son_menu_function {{showwhat=='strive' ? 'show' : 'notshow'}}" bindtap="notdofunction">
-                <view class="son_menu_function_image">
-                    <image class="son_menu_function_image_icon" src="https://s3.ax1x.com/2020/11/13/D9kWcD.png"
-                        mode="widthFix" lazy-load="false" binderror="" bindload="" />
-                </view>
-                <view class="son_menu_function_title">
-                    早起打卡
-                </view>
-
-            </view>
-            <view class="son_menu_function {{showwhat=='strive' ? 'show' : 'notshow'}}" bindtap="notdofunction">
-                <view class="son_menu_function_image">
-                    <image class="son_menu_function_image_icon" src="https://s3.ax1x.com/2020/11/13/D9kfje.png"
-                        mode="widthFix" lazy-load="false" binderror="" bindload="" />
-                </view>
-                <view class="son_menu_function_title">
-                    西院美景
-                </view>
-
-            </view>
-            <view class="son_menu_function {{showwhat=='strive' ? 'show' : 'notshow'}}" bindtap="notdofunction">
-                <view class="son_menu_function_image">
-                    <image class="son_menu_function_image_icon" src="https://s3.ax1x.com/2020/11/13/D9kr7R.png"
-                        mode="widthFix" lazy-load="false" binderror="" bindload="" />
-                </view>
-                <view class="son_menu_function_title">
-                    单词卡片
-                </view>
-
-            </view>
-            <view class="son_menu_function {{showwhat=='strive' ? 'show' : 'notshow'}}" bindtap="notdofunction">
-                <view class="son_menu_function_image">
-                    <image class="son_menu_function_image_icon" src="https://s3.ax1x.com/2020/11/13/D9kyA1.png"
-                        mode="widthFix" lazy-load="false" binderror="" bindload="" />
-                </view>
-                <view class="son_menu_function_title">
-                    备忘录
-                </view>
-
-            </view>
-            <view class="son_menu_function {{showwhat=='strive' ? 'show' : 'notshow'}}" bindtap="notdofunction">
-                <view class="son_menu_function_image">
-                    <image class="son_menu_function_image_icon" src="https://s3.ax1x.com/2020/11/13/D9k29K.png"
-                        mode="widthFix" lazy-load="false" binderror="" bindload="" />
-                </view>
-                <view class="son_menu_function_title">
-                    星座运势
-                </view>
-
-            </view>
-            <view class="son_menu_function {{showwhat=='strive' ? 'show' : 'notshow'}}" bindtap="notdofunction">
-                <view class="son_menu_function_image">
-                    <image class="son_menu_function_image_icon" src="https://s3.ax1x.com/2020/11/13/D9k6tx.png"
-                        mode="widthFix" lazy-load="false" binderror="" bindload="" />
-                </view>
-                <view class="son_menu_function_title">
-                    心情日历
-                </view>
-
-            </view>
-            <view class="son_menu_function {{showwhat=='strive' ? 'show' : 'notshow'}}" bindtap="notdofunction">
-                <view class="son_menu_function_image">
-                    <image class="son_menu_function_image_icon" src="https://s3.ax1x.com/2020/11/13/D9kch6.png"
-                        mode="widthFix" lazy-load="false" binderror="" bindload="" />
-                </view>
-                <view class="son_menu_function_title">
-                    通讯录
+                    共享通讯录
                 </view>
 
             </view>

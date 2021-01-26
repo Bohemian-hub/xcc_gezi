@@ -1,13 +1,13 @@
 {
   "pages": [
-
+    "pages/new_confesswall/new_confesswall",
+    "pages/express/express",
+    "pages/forum/forum",
     "pages/index/index",
     "pages/schedule/schedule",
-    "pages/forum/forum",
     "pages/ConfessionWall/ConfessionWall",
     "pages/grade/grade",
     "pages/forum_publish/forum_publish",
-    "pages/new_confesswall/new_confesswall",
     "pages/new_publish_confess/new_publish_confess",
     "pages/setting_talkback/setting_talkback",
     "pages/setting_order/setting_order",
@@ -15,10 +15,7 @@
     "pages/setting/setting",
     "pages/express_task/express_task",
     "pages/express_catch/express_catch",
-    "pages/express/express",
     "pages/express_order/express_order",
-
-
     "pages/login/login",
     "pages/publish_confess/publish_confess",
     "pages/pay/pay",

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-16 22:19:42
- * @LastEditTime: 2020-12-20 23:12:11
+ * @LastEditTime: 2021-01-26 11:00:43
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/new_publish_confess/new_publish_confess.js
@@ -280,7 +280,7 @@ Page({
 
           wx.showModal({
             title: '提示',
-            content: '你的表白信已经寄出，他会在登录西院格子时看到哦。',
+            content: '你的信件已经寄出，他会在登录『西院格子』时看到哦。',
             showCancel: false,
             confirmText: '确定',
             confirmColor: '#3CC51F',
@@ -306,7 +306,7 @@ Page({
   nonamesubmit() {
     wx.showModal({
       title: '提示',
-      content: '你即将发送匿名表白，Ta可能永远不知道你爱Ta！',
+      content: '你即将发送匿名信，Ta可能永远不知道你是谁！',
       showCancel: true,
       cancelText: '取消',
       cancelColor: '#000000',
@@ -326,7 +326,7 @@ Page({
   confesssubmit() {
     wx.showModal({
       title: '提示',
-      content: '确定发送表白吗',
+      content: '确定发送吗',
       showCancel: true,
       cancelText: '取消',
       cancelColor: '#000000',

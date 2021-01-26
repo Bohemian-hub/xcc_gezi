@@ -7,28 +7,14 @@ page{
     background-color: rgb(41, 191, 250);
     text-align: center;
     font-size: 40rpx;
+    position: relative;
+    color: white;
+    line-height: 220rpx;
 }
-.title_back{
-    width: 25%;
-    background-color: rgb(255, 255, 255);
-    height: 80rpx;
-    float: left;
-    margin: 50rpx 0 10rpx 5%;
-    border-radius: 20rpx;
-}
-.title_text{
-    background-color: rgba(250, 235, 215, 0);
-    width: 40%;
-    height: 80rpx;
-    float: left;
-    margin-top: 30rpx;
-    line-height: 120rpx;
-    color: rgb(255, 255, 255);
-}
-
-.page_back_text{
-    line-height: 80rpx;
-    width: 100%;
+.back{
+    position: absolute;
+    top: 0rpx;
+    left: 30rpx;
 }
 /* 下面是功能功能菜单区域 */
 .forum_function{

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-28 10:04:46
- * @LastEditTime: 2021-01-25 22:50:03
+ * @LastEditTime: 2021-01-26 10:04:03
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/schedule/schedule.js
@@ -27,6 +27,7 @@ Page({
     sta_cource: [],
     sun_cource: [],
     color: ['#ff89c0', '#4ea8fd', '#f69b7b', '#63e453', '#ed8c8f', '#ff89c0', '#4ea8fd', '#f69b7b', '#63e453', '#ed8c8f', '#ff89c0', '#4ea8fd', '#f69b7b', '#63e453', '#ed8c8f', '#ff89c0', '#4ea8fd', '#f69b7b', '#63e453', '#ed8c8f', '#ff89c0', '#4ea8fd', '#f69b7b', '#63e453', '#ed8c8f']
+
   },
 
   /**
@@ -34,7 +35,9 @@ Page({
    */
   onLoad: function (options) {
     this.get_schedule()
-
+    this.setData({
+      student_name: wx.getStorageSync("name")
+    })
   },
   /* 做一个页面数据请求 */
   /*   cal_time() {    //获取目前是第几周这个东西，因为还没时间暂时不可用

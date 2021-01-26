@@ -7,11 +7,11 @@
  * @FilePath: /miniprogram-5/pages/new_publish_confess/new_publish_confess.wxml
 -->
 <view class="title">
+    新建
     <view class="back" bindtap="back">
-        返回
-    </view>
-    <view class="text">
-        表一个白
+        <text class="cuIcon-back">
+
+        </text>
     </view>
 </view>
 <view class="place_hoder">
@@ -86,14 +86,11 @@
 <view class="question_one" style="display: {{ifquestion4show}}">
     <view class="free">
         <view class="question" animation="{{animation4}}">
-            4.写一封表白信吧
+            4.编辑你的私信
         </view>
 
         <view class="paper" animation="{{animation5}}" >
             <view>
-                <view class="dear" animation="{{animation5}}">
-                    Dear
-                </view>
                 <input class="dearname" type="text" placeholder="真实姓名" animation="{{animation5}}" bindinput='getInputValue1'>
                 </input>
                 <view class="dear" animation="{{animation5}}">
@@ -118,11 +115,11 @@
 
 
         <view class="noname_confess" animation="{{animation4}}" bindtap="nonamesubmit">
-            匿名表白
+            匿名
         </view>
 
         <view class="send_confess" animation="{{animation4}}" bindtap="confesssubmit">
-            发送表白
+            发送
         </view>
 
 

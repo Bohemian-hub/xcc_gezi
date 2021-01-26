@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-28 10:04:46
- * @LastEditTime: 2021-01-25 23:02:04
+ * @LastEditTime: 2021-01-26 10:04:18
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/schedule/schedule.wxml
@@ -12,7 +12,7 @@
     </text>
 </view>
 <view class="text_of_infor">
-    <view class="text_of_infor_name">{{}}何东的课表</view>
+    <view class="text_of_infor_name">{{student_name}}的课表</view>
     <view>
         <view class="express_company_choose_value">
             <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
@@ -155,7 +155,7 @@
 
     </view>
     <view class="evening">
-        
+
     </view>
 
 
