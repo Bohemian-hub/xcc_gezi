@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-01-26 12:28:15
- * @LastEditTime: 2021-01-26 13:46:41
+ * @LastEditTime: 2021-01-26 18:55:53
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/topic/topic.wxml
@@ -15,8 +15,9 @@
     </view>
 </view>
 <view class="search">
-    <input class="search_input" type="text" placeholder="🔍输入话题关键词">
+    <input class="search_input" type="text" placeholder="🔍输入话题关键词" bindinput="search">
     </input>
+
 </view>
 <view class="title_fu">
     <view class="shu">
@@ -30,17 +31,9 @@
 
 </view>
 
-<view class="hot_one">
-    #院草何东#
-</view>
-<view class="hot_one">
-    #院花舒玉书,好好学习哈哈哈#
-</view>
-<view class="hot_one">
-
-</view>
-<view class="hot_one">
-
+<view class="hot_one" wx:for="{{hot_topicList}}"
+    style="background-image: url({{item.fields.backgroundimg}});background-size: 100%;">
+    {{item.fields.content}}
 </view>
 <view style="clear: both;">
 
@@ -52,6 +45,20 @@
         <view class="forum_topic_left_bottom">创建于{{item.fields.create_time}}</view>
     </view>
     <view style="clear: both;">
+
+    </view>
+
+</view>
+
+<view class="search_display" style="display: {{turn_search == 1?'block':'none'}};">
+    <view class="one_peach_topic" wx:for="{{peach_arr}}">
+        <view class="one_peach_topic_title">
+            {{item.fields.content}}
+        </view>
+
+        <view class="one_peach_topic_num">
+            {{item.fields.use_times}}人添加该话题
+        </view>
 
     </view>
 

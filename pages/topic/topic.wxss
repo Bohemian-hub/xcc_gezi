@@ -64,6 +64,7 @@ page{
     font-weight: 800;
     color: white;
     overflow: hidden;
+    text-shadow:5px 1px 6px rgb(124, 124, 124)
 }
 .all_topic{
     width: 100%;
@@ -90,4 +91,31 @@ page{
     line-height: 60rpx;
     margin-left: 20rpx;
     color: rgb(158, 158, 158);
+}
+.search_display{
+    height: 1600rpx;
+    width: 100%;
+    position: fixed;
+    top: 220rpx;
+    background-color: rgba(255, 255, 255, 0.589);
+}
+.one_peach_topic{
+    height: 120rpx;
+    background-color: white;
+
+
+}
+.one_peach_topic_title{
+    height: 60rpx;
+    line-height: 60rpx;
+    padding-left: 40rpx;
+    font-size: 30rpx;
+    color: #26acdd;
+}
+.one_peach_topic_num{
+    height: 60rpx;
+    background-color: white;
+    padding-left: 40rpx;
+    font-size: 20rpx;
+    color: #26acdd;
 }

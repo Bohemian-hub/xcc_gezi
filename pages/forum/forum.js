@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-01-26 16:09:29
+ * @LastEditTime: 2021-01-26 16:29:03
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.js
@@ -373,6 +373,11 @@ Page({
       url: "../forum_publish/forum_publish?classify=" + e.currentTarget.dataset.classify,
     });
 
+  },
+  topic_content() {
+    wx.navigateTo({
+      url: "../topic/topic",
+    });
   },
   back_index() {
     wx.redirectTo({
