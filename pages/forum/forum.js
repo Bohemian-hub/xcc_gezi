@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-01-25 13:46:47
+ * @LastEditTime: 2021-01-26 16:09:29
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.js
@@ -94,9 +94,7 @@ Page({
         for (let i = 0; i < res.data.length; i++) {    //这个
           if (res.data[i].fields.post_data_pic.length == 0) {
             /* 说明没得图片 */
-            that.setData({
-              ['res.data[' + i + '].fields.has_pic']: 0    //没得图片
-            })
+            res.data[i].fields.has_pic = 0
           }
           /* 把他们变成数组 ，让页面可以看得到*/
           var stringResult = res.data[i].fields.post_data_pic.split(',');
@@ -129,6 +127,7 @@ Page({
             display_forum_data: that.data.display_forum_data.concat(res.data[index])
           })
         }
+        console.log(that.data.display_forum_data);
         /* 获取我点了哪些帖子的赞 */
         setTimeout(() => {
           console.log('执行获取我点了哪些帖子的赞');

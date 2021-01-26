@@ -327,26 +327,7 @@
 
             </image>
             <view>
-                学习
-
-            </view>
-        </view>
-        <view class="classify_one" bindtap="publish_learn" data-classify="life">
-            <image class="classify_one_img" src="https://s3.ax1x.com/2021/01/11/s3aspD.png">
-
-            </image>
-            <view>
-                生活
-
-            </view>
-        </view>
-        <view class="classify_one" bindtap="publish_learn" data-classify="emotion">
-            <image class="classify_one_img" src="https://s3.ax1x.com/2021/01/11/s31Cdg.png">
-
-            </image>
-            <view>
-                情感
-
+                发帖
             </view>
         </view>
         <view class="classify_one">

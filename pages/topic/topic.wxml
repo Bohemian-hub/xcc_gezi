@@ -1,0 +1,58 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-01-26 12:28:15
+ * @LastEditTime: 2021-01-26 13:46:41
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /miniprogram-5/pages/topic/topic.wxml
+-->
+<view class="title">
+    话题
+    <view class="back" bindtap="back">
+        <text class="cuIcon-back">
+
+        </text>
+    </view>
+</view>
+<view class="search">
+    <input class="search_input" type="text" placeholder="🔍输入话题关键词">
+    </input>
+</view>
+<view class="title_fu">
+    <view class="shu">
+
+    </view>
+    <view class="title_one">
+        热门话题
+    </view>
+</view>
+<view style="clear: both;">
+
+</view>
+
+<view class="hot_one">
+    #院草何东#
+</view>
+<view class="hot_one">
+    #院花舒玉书,好好学习哈哈哈#
+</view>
+<view class="hot_one">
+
+</view>
+<view class="hot_one">
+
+</view>
+<view style="clear: both;">
+
+</view>
+<view class="all_topic">
+    <view class="forum_topic_left" wx:for="{{topicList}}">
+        <view class="forum_topic_left_top">{{index+1}}.{{item.fields.content}}</view>
+        <view class="forum_topic_left_bottom">{{item.fields.use_times}}人添加该话题</view>
+        <view class="forum_topic_left_bottom">创建于{{item.fields.create_time}}</view>
+    </view>
+    <view style="clear: both;">
+
+    </view>
+
+</view>
