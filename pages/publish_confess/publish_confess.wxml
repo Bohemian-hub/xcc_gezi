@@ -1,155 +1,93 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-18 15:06:45
- * @LastEditTime: 2020-11-26 18:37:49
+ * @LastEditTime: 2021-01-27 22:22:30
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/publish_confess/publish_confess.wxml
 -->
-<view class="page_back_button" bindtap='page_back_index'>
-    <image class="page_back" src="https://s1.ax1x.com/2020/11/11/BXy3Jf.png" mode="widthFix" lazy-load="false"
-        binderror="" bindload="" />
+<view class="title" bindtouchstart="touchStart" onPageScroll='onPageScroll'>
+    创建单身档案
+    <view class="back" bindtap="back">
+        <text class="cuIcon-back">
 
+        </text>
+    </view>
 </view>
 <view class="form_sentence">
-    "I fell in love with you the moment I saw you."
-</view>
-
-
-<view class="form_preview">
-    <image class="form_preview_img" src="https://s3.ax1x.com/2020/11/20/DMJ5kt.png" mode="widthFix" lazy-load="false"
-        binderror="" bindload="" />
-
+    "祝我们找到属于自己的幸福"
 </view>
 
 <view class="form_title_object">
     <view class="form_title">
         <view class="input_text_me">
-            我：
+            姓名：
         </view>
-        <input class="input_me" bindinput='getInputValue1' placeholder="告诉Ta你是...">框框</input>
+        <input class="input_me" bindinput='getInputValue1' placeholder="">框框</input>
     </view>
     <view class="form_object">
         <view class="input_text_me">
-            Ta：
+            年龄：
         </view>
-        <input class="input_me" bindinput='getInputValue2' placeholder="你怎么称呼Ta：">框框</input>
+        <input class="input_me" bindinput='getInputValue2' placeholder="">框框</input>
     </view>
-</view>
-
-
-<view style="clear: both;">
-
-</view>
-
-
-
-
-
-
-<view class="form_background">
-    <view class="choose_bg">
-        背景：
+    <view class="form_object">
+        <view class="input_text_me">
+            星座：
+        </view>
+        <input class="input_me" bindinput='getInputValue3' placeholder="">框框</input>
+    </view>
+    <view class="form_object">
+        <view class="input_text_me">
+            性别：
+        </view>
+        <input class="input_me" bindinput='getInputValue4' placeholder="">框框</input>
+    </view>
+    <view class="form_object">
+        <view class="input_text_me">
+            性取向：
+        </view>
+        <input class="input_me" bindinput='getInputValue5' placeholder="">框框</input>
+    </view>
+    <view class="form_object">
+        <view class="input_text_me">
+            二级学院：
+        </view>
+        <input class="input_me" bindinput='getInputValue6' placeholder="">框框</input>
+    </view>
+    <view class="form_object">
+        <view class="input_text_me">
+            联系方式：
+        </view>
+        <input class="input_me" bindinput='getInputValue7' placeholder="eg：QQ:2605191106">框框</input>
     </view>
     <!--设置监听器，当点击radio时调用-->
-    <radio-group bindchange="listenerRadioGroup">
-
-        <view class=" choose_bg_one1">
-
-        </view>
-        <view class="choose_bg_one2">
-
-        </view>
-        <view class="choose_bg_one3">
-
-        </view>
-        <view style="clear: both;">
-
-        </view>
+    <!--     <radio-group bindchange="listenerRadioGroup">
         <label class="choose_label">
             <radio class="choose_radio_first" value="1" checked="checked" />
             <radio class="choose_radio_sec" value="2" />
-            <radio class="choose_radio_sec" value="3" />
         </label>
-
-    </radio-group>
+    </radio-group> -->
 </view>
 
-<view class="form_img">
-    <view class="input_text_me">
-        图：
-    </view>
-    <view style="clear: both;">
 
-    </view>
 
-    <view class="cu-form-group">
-        <view class="grid col-4 grid-square flex-sub">
-            <view class="{{choose_image_index=='image1'?'bg-img-choose':'bg-img'}}" bindtap="choose_image"
-                data-id="image1">
-                <image class="choose_image_one" src='https://s3.ax1x.com/2020/11/24/DtJDqx.md.png' mode='aspectFill'>
-                </image>
-            </view>
-            <view class="{{choose_image_index=='image2'?'bg-img-choose':'bg-img'}}" bindtap="choose_image"
-                data-id="image2">
-                <image
-                    src='https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3118951955,1143076286&fm=26&gp=0.jpg'
-                    mode='aspectFill'></image>
-            </view>
-            <view class="{{choose_image_index=='image3'?'bg-img-choose':'bg-img'}}" bindtap="choose_image"
-                data-id="image3">
-                <image src='https://s3.ax1x.com/2020/11/24/DtNC24.png' style='margin-top:30rpx' mode="widthFix"></image>
-            </view>
-            <view class="{{choose_image_index=='image4'?'bg-img-choose':'bg-img'}}" wx:for="{{imgList}}" wx:key="index"
-                bindtap="ViewImage" data-url="{{imgList[index]}}">
-                <image src='{{imgList[index]}}' mode='aspectFill'></image>
-                <view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
-                    <text class="cuIcon-close"></text>
-                </view>
-            </view>
-            <view class="solids" bindtap="ChooseImage" wx:if="{{imgList.length<1}}">
-                <text class="cuIcon-cameraadd"></text>
-            </view>
-        </view>
-    </view>
 
-</view>
+
+
 <view class="form_content">
     <view class="input_text_me">
         内容：
     </view>
-    <textarea class="input_content" bindinput="getInputValue3" maxlength="500" placeholder="字数限制500个字哦"></textarea>
+    <textarea class="input_content" bindinput="getInputValue8" maxlength="500"
+        placeholder="200字内描述自己的形象、求偶标准、以及心目中的他/她等等"></textarea>
 
 </view>
-<view class=" form_button" bindtap="publish">
+<view class="tip">
+    <view>1.不愿意透露的信息请使用"*"代替</view>
+    <view>2.填写联系方式是请加上“QQ：/Tel：/微信：”</view>
+</view>
+
+<view class="form_button" bindtap="add_confess">
     发布
-</view>
-
-
-
-<view class="warning1" style="display: {{warn_display==1?'block':'none'}};">
-    <view class="warn_title">
-        欢迎！
-        <view class="view_close" bindtap="close_warn">
-            ×
-        </view>
-    </view>
-    <view class="warn_content">
-        您当前正在表白墙发布页面，为保证平台有序运营，平台限制用户每天只能发布两条表白墙，<text
-            style="font-weight:800">您当前还可以发布{{publish_chance}}条表白墙!</text>你的发布将在管理员审核后展示在表白墙页面。
-    </view>
-</view>
-
-
-
-<view class="warning2" style="display:{{warn_display2==1?'block':'none'}};">
-    <view class="warn_title">
-        提示
-        <view class="view_close" bindtap="close_warn2">
-            ×
-        </view>
-    </view>
-    <view class="warn_content">
-        不好意思，你今日的机会已经使用完啦，明天再来吧
-    </view>
 </view>

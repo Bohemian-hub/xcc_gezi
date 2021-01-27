@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-01-26 10:38:36
+ * @LastEditTime: 2021-01-27 18:54:10
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.wxml
@@ -52,7 +52,7 @@
 
 
         </view>
-        <view class="forum_function_one">
+        <view class="forum_function_one" bindtap="single">
             <image class="function_img" src="https://s3.ax1x.com/2021/01/06/sZiSN6.png" mode="widthFix"
                 lazy-load="false" binderror="" bindload="">
 
@@ -166,11 +166,9 @@
             <view class="forum_one_name_text">
                 <view class="forum_one_name_text_top">
                     <view class="forum_one_name_text_top_nickname">{{item.fields.post_data_name}}</view>
-                    <view class="forum_one_name_text_top_college"
-                        style="background-color: {{item.fields.tag_color}}">
+                    <view class="forum_one_name_text_top_college" style="background-color: {{item.fields.tag_color}}">
                         {{item.fields.post_data_college}}</view>
-                    <view class="forum_one_name_text_top_grade"
-                        style="background-color: {{item.fields.tag_color}};">
+                    <view class="forum_one_name_text_top_grade" style="background-color: {{item.fields.tag_color}};">
                         {{item.fields.post_data_grade}}</view>
                 </view>
                 <view class="forum_one_name_text_bottom">{{item.fields.real_time}}</view>

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-01-27 15:21:32
+ * @LastEditTime: 2021-01-27 18:55:15
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.js
@@ -388,6 +388,11 @@ Page({
   activity() {
     wx.redirectTo({
       url: '../topic_one/topic_one?name=活动'
+    })
+  },
+  single() {
+    wx.redirectTo({
+      url: '../ConfessionWall/ConfessionWall'
     })
   },
   back_index() {

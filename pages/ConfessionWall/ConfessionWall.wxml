@@ -1,95 +1,56 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-13 23:35:52
- * @LastEditTime: 2020-11-25 11:32:21
+ * @LastEditTime: 2021-01-27 21:31:31
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/ConfessionWall/ConfessionWall.wxml
 -->
 
 
-<view class="page_back_button" bindtap='page_back_index'>
-    <image class="page_back" src="https://s1.ax1x.com/2020/11/11/BXy3Jf.png" mode="widthFix" lazy-load="false"
-        binderror="" bindload="" />
 
-</view>
+<view class="title_confress">西院单身档案</view>
 
-<view class="title">
-    <view class="title_confress">表白墙</view>
-    <view class="title_division">|</view>
-    <view class="title_complain" bindtap="complain_panel">吐槽墙</view>
-</view>
 
 <view class="date_and_numbers">
     <view class="date">
-        {{confess_time}}:
+        记录西院859位单身狗
     </view>
     <view class="numbers">
-         生活告诉我们，爱不在于朝夕相伴，而应能风雨同舟。
+        "爱情是一朵生长在悬崖峭壁边缘上的花朵，想要摘取它，需要勇气!"
     </view>
-    <view style="clear: both;">
-    </view>
-
 </view>
 
 <swiper class="card-swiper {{DotStyle?'square-dot':'square-dot'}}" indicator-dots="true" circular="true" autoplay="true"
     interval="8000" duration="500" indicator-color="#8799a3" indicator-active-color="#0081ff">
 
     <!-- 这就是儿子了吧 -->
-    <swiper-item wx:for="{{confessList}}" wx:key="item.fields">
-        <view class="confress_panel" style="background-image: url({{item.fields.bg_img}})">
-            <view class="confress_panel_top">
-                <view class="confress_panel_title">
-                    {{item.fields.confess_name}}的表白卡
-                </view>
-                <view class="confress_panel_numbers">
-                    {{index+1}}/{{confessList.length}}
-                </view>
-                <view style="clear: both;">
-                </view>
-                <view class="confess_to_who_text" selectable="false" space="false" decode="false">
-                    To {{item.fields.confess_object}} :
-                </view>
+    <swiper-item wx:for="{{confessList}}" wx:key="item.fields" bindtap="turn_infor">
+        <view class="confress_panel">
+            <view class="name">
+                何东
+            </view>
+            <view class="age">
+                20
+            </view>
+            <view class="star">
+                金牛座
+            </view>
+            <view class="sex">
+                男
+            </view>
+            <view class="sexto">
+                女
+            </view>
+            <view class="college">
+                信息技术学院
+            </view>
+            <view class="tip">
+                点击查看档案
             </view>
 
-            <view style="width:100%;">                  
-                <view class="confess_image">
-                    <image class="confess_image_icon" src="{{item.fields.object_img}}" mode="heightFix"
-                        lazy-load="false" binderror="" bindload="" />
-                </view>
-
-
-                <scroll-view class="confess_text" scroll-y="true">
-                    <view class="confess_text_frame">
-                        {{item.fields.confess_content}}
-                    </view>
-                </scroll-view>
-
-            </view>
-
-            <view class="confess_makelove">
-
-
-                <view class="confess_right_love_numbers"
-                    style="color: {{index+1==onclick_love_id[index]?'red':'white'}};">
-                    {{item.fields.love_count}}
-                </view>
-                <image class="confess_right_love"
-                    src="{{onclick_love_id[index]==1?'https://s3.ax1x.com/2020/11/15/DFhSuF.png':'https://s3.ax1x.com/2020/11/15/DFhpB4.png'}}"
-                    data-id='{{index+1}}' bindtap="makelove">
-                </image>
-
-
-                <view class="confess_right_comment_numbers">
-                    {{item.fields.comment_count}}
-                </view>
-                <image class="confess_right_comment" src="../../image_icon/comment.png" data-id='{{index+1}}'
-                    bindtap="makecomment">
-                </image>
-
-
-            </view>
         </view>
+
     </swiper-item>
 
 
@@ -97,96 +58,22 @@
 
 <view class="publish">
     <view class="publish_confess" bindtap="publish_confess">
-        我要表白
+        加入档案
     </view>
     <view class="publish_complain" bindtap="publish_complain">
-        我要吐槽
+        我的档案
     </view>
 </view>
-
-<view class="close_comment" wx:if="{{showModalStatus}}" bindtap="close_comment">
-
-</view>
-
-
-<view class="comment_panel" animation="{{animationData}}" wx:if="{{showModalStatus}}">
-    <!-- <view class="comment_panel" animation="{{animationData}}"> -->
-    <view class=" comment_panel_scanf" style="display: {{switch_reply == 0?'block':'none'}}">
-        <input class="comment_panel_scanf_frame" bindinput='getInputValue1' placeholder="评论一个叭！" value='{{inputValue}}'
-            maxlength="50"></input>
-        <view class="comment_panel_scanf_button" bindtap="comment_send">发送</view>
+<view class="infor" bindtap="turn_infor" style="display: {{if_show_infor?'block':'none'}};">
+    <view class="month">
+        5
     </view>
-    <view class=" comment_panel_scanf" style="display: {{switch_reply == 1?'block':'none'}}">
-        <input focus="{{if_focus}}" class="comment_panel_scanf_frame" bindinput='getInputValue2'
-            placeholder="{{reply_words}}" value='{{inputValue}}' maxlength="50"></input>
-        <view class="comment_panel_scanf_button" bindtap="son_comment_send">回复</view>
+    <view class="dayly">
+        20
     </view>
-    <view class="comment_panel_comment">
-        <view class="comment_panel_comment_title">
-            评论{{comment_onclick_count}}
-        </view>
-        <view class="comment_panel_comment_back" style="display: {{switch_reply == 1?'block':'none'}}"
-            bindtap="change_reply_switch">
-            返回评论
-        </view>
-        <view style="clear: both;">
-
-        </view>
-
-
-        <scroll-view class="comment_panel_comment_title_content" scroll-y="true">
-
-            <!-- 这就是其中一个评论吧 -->
-            <view class="comment_panel_comment_title_content_one" wx:for="{{now_comment_all}}" wx:key="item.fields">
-                <view class="content_left">
-                    <image class="content_left_head"
-                        src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2913758430,898689551&fm=26&gp=0.jpg"
-                        mode="aspectFit" lazy-load="false" binderror="" bindload="">
-                    </image>
-                </view>
-                <view class="content_right">
-                    <view class="content_right_name">{{item.fields.name}}</view>
-                    <view class="content_right_content" bindtap="reply" data-id="{{item.fields.son_comment_id}}"
-                        data-name="{{item.fields.name}}">
-                        {{item.fields.comment_content}}
-                    </view>
-                    <view>
-                        <view class="content_right_content_son" wx:for="{{now_son_comment_all}}" wx:for-item="item2"
-                            wx:key="item2.fields"
-                            style="display: {{item.fields.son_comment_id==item2.fields.son_comment_id?'block':'none'}};">
-                            <view class="son_from" selectable="false" space="false" decode="false">
-                                {{item2.fields.son_name}}回复{{item2.fields.son_comment_to_who}}:
-                            </view>
-                            <view bindtap="reply" data-id="{{item.fields.son_comment_id}}"
-                                data-name="{{item2.fields.son_name}}">
-                                {{item2.fields.son_comment_content}}
-                            </view>
-
-                        </view>
-                    </view>
-
-                    <view class="content_right_time">{{item.fields.comment_time}}</view>
-                </view>
-                <view style="clear:both;"></view>
-            </view>
-
-        </scroll-view>
-
-    </view>
-</view>
-
-
-<view class="warning1" style="display:{{warning1==1?'block':'none'}}">
-    请勿重复点赞！
-    <view class="warning1_confirm" bindtap="close_warning">
-        [确定]
+    <view class="contact">
+        联系方式：tel:18081239804
     </view>
 
-</view>
-<view class="warning2" style="display:{{warning2==1?'block':'none'}}">
-    正在努力开发中...
-    <view class="warning1_confirm" bindtap="close_warning">
-        [确定]
-    </view>
-
+    (240字以内)我身高一米八，体重七十公斤，希望找一个爱我疼我想我天天给我违反的女孩子，我心目中的他应该是16-25岁，大一到大四都行，身高高于一米就可以了，这样我可以抱抱她，我可以和他一起走路，一起去吃好吃的东西，我感觉我的文笔真的太好了吧，哈哈哈
 </view>

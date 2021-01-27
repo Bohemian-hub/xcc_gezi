@@ -1,79 +1,37 @@
 page{
-    background-image: url(https://s3.ax1x.com/2020/12/08/rpoOld.jpg);
+    background-image: url(https://s3.ax1x.com/2021/01/27/sz8WoF.jpg);
     background-size: 100% 100%;
 }
-.page_back_button{
-    margin-top: 40rpx;
-    margin-left: 20rpx;
-    padding: 30rpx;
-    width: 20%;
-}
-.page_back{
-    width: 50rpx;
-    
-}
-.title{
-    text-align: center;
-    margin: 0rpx auto 0 auto;
-    width: 500rpx;
-    height: 60rpx;
-    background-color: rgba(255, 192, 203, 0);
 
-}
 .title_confress{
-    width: 200rpx;  
+    width: 100%;
     text-align: center;
     background-color: rgba(70, 130, 182, 0);
-    float: left;
-    font-size: 60rpx;
-    line-height: 60rpx;
-    color: rgb(29, 152, 253);
+    font-size: 50rpx;
+    line-height: 200rpx;
+    color: #fab862;
     font-weight: 800;  
-}
-.title_division{
-    width: 100rpx;  
-    text-align: center;
-    background-color: rgba(68, 108, 143, 0);
-    float: left;
-    font-size: 80rpx;
-    line-height: 60rpx;
-    color: white;
-    font-weight: 100;
-
-}
-.title_complain{
-    width: 200rpx;  
-    text-align: center;
-    background-color: rgba(19, 134, 235, 0);
-    float: left;
-    font-size: 60rpx;
-    line-height: 60rpx;
-    color: white;
-    font-weight: 800;  
-
+    height: 200rpx;
 }
 .date_and_numbers{
     width: 90%;
-    margin: 100rpx auto 20rpx auto;
+    margin: 50rpx auto 50rpx auto;
+    height: 100rpx;
+    color: white;
 }
 .date{
-    width: 50%;
-    margin: 0 auto;
-    color: rgb(0, 0, 0);
+    width: 100%;
+    text-align: center;
     background-color: rgba(255, 255, 255, 0);
     font-weight: 800;  
     font-size: 40rpx;
     text-indent: 2em;
-    
-    
-    
 }
 .numbers{
     width: 90%;
     height:40rpx;
-    margin: 0 auto;
-    color: rgb(0, 0, 0);
-    text-align: left;
+    margin: 20rpx auto;
+    text-align: center;
     background-color: rgba(175, 10, 10, 0);
     font-size: 30rpx;
     text-indent: 2em;
@@ -82,119 +40,57 @@ page{
 .confress_panel{
   width: 90%;
   height: 100%;
-  border-radius: 20rpx;
+  border-radius: 5rpx;
   background-size: 100% 100%;
+  background-image: url(https://s3.ax1x.com/2021/01/27/szyZQK.png);
   box-shadow: 0rpx 0rpx 20rpx rgb(112, 31, 31);
   opacity: 1;
   position: relative;
   overflow: hidden;
   
 }
-.confress_panel_top{
-
-  width: 100%;
-  height: 150rpx;
-}
-.confress_panel_title{
-  width: 50%;
-  float: left;
-  margin: 20rpx;
-  font-size: 35rpx;
-  font-weight: 800;
-  color: rgb(0, 171, 238);
-  text-shadow: 0 0 10rpx rgb(52, 231, 231);
-
-}
-.confress_panel_numbers{
-  color: rgb(75, 75, 75);
-  text-shadow: 0 0 10rpx rgb(255, 255, 255);
-  width: 30%;
-  font-size: 50rpx;
-  
-  float: right;
-  text-align: right;
-  padding: 20rpx;
-}
-.confess_to_who_text{
-  width: 100%;
-  height: 50rpx;
-  padding-left: 20rpx;
-  line-height: 35rpx;
-  font-size: 30rpx;
-  color: rgb(214, 57, 57);
-  text-shadow: 0 0 5rpx rgb(255, 0, 0);
-}
-
-.confess_image{
-  text-align: center;
-  margin: 0 auto;
-  background-image: url(https://s3.ax1x.com/2020/11/24/DtwyX4.md.png);
-  background-size: 100% 100%;
-  padding: 30rpx;
-
-}
-.confess_image_icon{
-  height: 210rpx;
-}
-.confess_text{
-  text-indent: 2em;
-  width: 91%;
-  height: 355rpx;
-  padding:20rpx;
-  margin: 0rpx auto 15rpx auto;
-}
-.confess_text_frame{
-  background-color: rgba(255, 255, 255, 0.329);
-
-  font-size: 30rpx;
-  font-weight: 800;
-  color:white;
-  text-shadow: 0 0 15rpx rgb(248, 110, 110);
-}
-.confess_makelove{
-  width: 100%;
-  height: 90rpx;
-  background-color: rgba(255, 192, 203, 0.445) ;
+.name{
   position: absolute;
-  bottom: 0;
+  top: 346rpx;
+  left: 228rpx;
+}
+.age{
+  position: absolute;
+  top: 396rpx;
+  left: 228rpx;
+}
+.star{
+  position: absolute;
+  top: 430rpx;
+  left: 228rpx;
+}
+.sex{
+  position: absolute;
+  top: 471rpx;
+  left: 228rpx;
+}
+.sexto{
+  position: absolute;
+  top: 512rpx;
+  left: 228rpx;
+}
+.college{
+  position: absolute;
+  top: 556rpx;
+  left: 228rpx;
+}
+.tip{
+  color: #ed270e;
+  position: absolute;
+  left:200rpx;
+  bottom:50rpx;
 }
 
-.confess_right_comment {
-  width: 15%;
-  height: 80rpx;
-  float: right;
-  background-size: 100% 100% ;
-
-
-}
-.confess_right_love{
-  margin-left: 40rpx;
-  margin-top: 5rpx;
-  width: 13%;
-  height: 75rpx;
-  background-size: 100% 100% ;
-  float: right;
-}
-.confess_right_love_numbers{
-  margin-right: 20rpx;
-  height: 80rpx;
-  line-height: 80rpx;
-  float: right;
-  color: white;
-}
-.confess_right_comment_numbers{
-
-  height: 80rpx;
-  line-height: 80rpx;
-  float: right;
-  color: white;
-
-}
 .publish{
     width: 100%;
     height: 120rpx;
     position: fixed;
-    bottom: 0;
+    bottom: 50rpx;
     background-color: rgba(250, 235, 215, 0);
 }
 .publish_confess{
@@ -204,7 +100,7 @@ page{
     line-height: 100rpx;
     border-radius: 20rpx;
     font-size: 35rpx;
-    background-color: rgb(105, 196, 248);
+    background-color: rgb(250, 184, 98);
     box-shadow: 0rpx 0rpx 20rpx rgb(250, 174, 174);
     color: white;
     font-weight: 800;
@@ -217,176 +113,40 @@ page{
     line-height: 100rpx;
     border-radius: 20rpx;
     font-size: 35rpx;
-    background-color: rgb(202, 12, 44);
+    background-color: rgb(250, 184, 98);
     box-shadow: 0rpx 0rpx 20rpx rgb(255, 169, 169);
     color: white;
     font-weight: 800;
     float: left;
 }
-.close_comment{
-  width: 100%;
-  height: 800rpx;
+.infor{
   position: fixed;
-  top: 0;
-  background-color: rgba(250, 235, 215, 0);
-}
-.comment_panel{
-  position: fixed;
-  height: 820rpx;
-  width: 100%;
-  bottom: 0;
-  background-color: rgba(250, 235, 215, 0);
-}
-.comment_panel_scanf{
-  height: 80rpx;
-  width: 100%;
-  background-color: rgba(255, 255, 255, 0);
-}
-.comment_panel_scanf_frame{
-width: 70%;
-height: 70rpx;
-background-color: rgb(255, 255, 255);
-float: left;
-margin-left: 5%;
-border-radius: 50rpx;
-padding-left: 20rpx;
-font-size: 30rpx;
-box-shadow: 0 0 20rpx rgb(143, 143, 143);
-}
-.comment_panel_scanf_button{
-  width: 15%;
-  height: 70rpx;
-  background-color: rgb(255, 85, 85);
-  float: left;
-  margin-left: 5%;
-  border-radius: 15rpx;
-  color: white;
-  text-align: center;
-  line-height: 70rpx;
-  font-size: 40rpx;
-}
-.comment_panel_comment{
-  background-color: rgb(255, 255, 255);
-  border-top-left-radius: 50rpx;
-  border-top-right-radius: 50rpx;
-  height: 740rpx;
-  padding-top: 30rpx;
-}
-.comment_panel_comment_title{
-  width: 50%;
-  padding-left: 5%;
-  font-size: 40rpx;
-  font-weight: 800;
-  float: left;
-  height: 60rpx;
-
-background-color: rgba(209, 128, 21, 0);
-}
-.comment_panel_comment_back{
-  width: 30%;
-  margin-left: 14%;
-  font-size: 40rpx;
-  font-weight: 600;
-  height: 60rpx;
-  float: left;
-  text-align: center;
-  border-radius: 30rpx;
-  border: 2rpx solid rgb(141, 141, 141);
-  background-color: rgba(21, 209, 137, 0);
-}
-.comment_panel_comment_title_content{
   width: 90%;
-  height: 650rpx;
-  margin: 0 auto;
-}
-.comment_panel_comment_title_content_one{
-  border-bottom: 4rpx solid rgb(204, 204, 204);
-  padding-top: 10rpx;
-  padding-bottom: 20rpx;
-}
-.content_left{
-  width: 15%;
-  height: 100rpx;
-  background-color: pink;
-  border-radius: 50%;
-  float: left;
-  overflow: hidden;
-  box-shadow: 0 0 20rpx rgb(143, 143, 143);
-
-  
-}
-.content_left_head{
-  width: 100%;
-  height: 100%;
-}
-.content_right{
-  width: 80%;
-  background-color: rgba(60, 184, 167, 0);
-  float: left;
-  height: auto;
-  margin-left: 3%;
-}
-.content_right_name{
-  width: 100%;
-  height: 60rpx;
-  font-size: 35rpx;
-  font-weight: 800;
-}
-.content_right_content{
+  height: 1100rpx;
+  background-image: url(https://s3.ax1x.com/2021/01/27/szgdTe.png);
+  background-repeat: none;
+  background-size: 100% 100%;
+  top: 250rpx;
+  left: 5%;
+  padding: 65rpx;
+  line-height: 84rpx;
   text-indent: 2em;
-  color: rgb(7, 7, 7);
-}
-.content_right_content_son{
-  width: 100%;
-  line-height: 60rpx;
-  background-color: rgba(138, 138, 138, 0.151);  
-  margin-bottom: 10rpx;
-  padding: 10rpx;
-}
-.son_from{
-  color: rgb(19, 111, 187);
-  float: left;
-}
-.son_content{
-  float: left;
-}
-.content_right_time{
-  margin-top: 10rpx;
-  color: rgb(146, 146, 146);
-}
-.warning1{
-  width: 60%;
-  height: 40rpx;
-  font-size: 30rpx;
-  line-height: 40rpx;
-  background-color: aliceblue;
-  color: red;
-  padding-left: 20rpx;
-}
-.warning1_confirm{
-  width: 30%;
-  float: right;
-  text-align: right;
-  padding-right: 20rpx;
-  color: black;
-  font-weight: 900;
-}
+  color: rgb(111, 116, 116);
+  overflow: hidden;
 
-.warning2{
-  width: 60%;
-  height: 40rpx;
-  font-size: 30rpx;
-  line-height: 40rpx;
-  background-color: aliceblue;
-  color: red;
-  padding-left: 20rpx;
 }
-.warning2_confirm{
-  width: 40%;
-  float: right;
-  text-align: right;
-  padding-right: 20rpx;
-  color: black;
-  font-weight: 900;
-
+.month{
+  position: absolute;
+  bottom: -14rpx;
+  right: 188rpx;
+}
+.dayly{
+  position: absolute;
+  bottom: -14rpx;
+  right: 108rpx;
+}
+.contact{
+  position: absolute;
+  bottom: 80rpx;
+  left: 58rpx;
 }
