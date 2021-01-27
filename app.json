@@ -26,8 +26,7 @@
     "pages/logs/logs",
     "pages/setting_more/setting_more",
     "pages/index_passage/index_passage",
-    "pages/activity_publish/activity_publish",
-    "pages/activity/activity"
+    "pages/activity_publish/activity_publish"
   ],
   "window": {
     "backgroundTextStyle": "light",

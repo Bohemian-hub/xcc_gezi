@@ -137,6 +137,8 @@ page{
     width: 100%;
     float: left;
     border-bottom: 0.1rpx solid rgb(238, 238, 238);
+    background-size: 100%;
+    text-align: center;
 }
 .forum_topic_left_top{
     height: 60rpx;

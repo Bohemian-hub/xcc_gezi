@@ -7,7 +7,7 @@
  * @FilePath: /miniprogram-5/pages/topic_one/topic_one.wxml
 -->
 <view class="title">
-    话题论坛
+    {{page_display_name}}
     <view class="back" bindtap="back">
         <text class="cuIcon-back">
 
@@ -28,10 +28,10 @@
                 <view class="forum_one_name_text_top">
                     <view class="forum_one_name_text_top_nickname">{{item.fields.post_data_name}}</view>
                     <view class="forum_one_name_text_top_college"
-                        style="background-color: {{item.fields.post_data_sex == '男'?'skyblue':'pink'}};">
+                        style="background-color: {{item.fields.tag_color}}">
                         {{item.fields.post_data_college}}</view>
                     <view class="forum_one_name_text_top_grade"
-                        style="background-color: {{item.fields.post_data_sex == '男'?'skyblue':'pink'}};">
+                        style="background-color: {{item.fields.tag_color}};">
                         {{item.fields.post_data_grade}}</view>
                 </view>
                 <view class="forum_one_name_text_bottom">{{item.fields.real_time}}</view>

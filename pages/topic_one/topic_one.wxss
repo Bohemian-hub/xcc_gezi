@@ -3,14 +3,14 @@ page{
     background-color: rgba(235, 235, 235, 0.699);
 }
 .topic_pic{
-    height: 320rpx;
+    height: 360rpx;
     background-color: rgb(218, 193, 52);
-    background-size: 100%;
     line-height: 320rpx;
     text-align: center;
     font-size: 50rpx;
     color: white;
-    text-shadow:5px 1px 6px rgb(124, 124, 124)
+    text-shadow:5px 1px 6px rgb(124, 124, 124);
+    background-size: 100% 100%;
 }
 .title{
     width: 100%;

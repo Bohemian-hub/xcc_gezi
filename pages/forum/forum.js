@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-01-27 14:11:16
+ * @LastEditTime: 2021-01-27 15:21:32
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.js
@@ -385,7 +385,11 @@ Page({
       url: '../topic_one/topic_one?name=坦白说'
     })
   },
-
+  activity() {
+    wx.redirectTo({
+      url: '../topic_one/topic_one?name=活动'
+    })
+  },
   back_index() {
     wx.redirectTo({
       url: "../index/index",
@@ -1126,7 +1130,7 @@ Page({
     })
 
   },
-  activity() {
+  activity_publish() {
     /* 验证我的身份 */
     /* 直接去数据库中获取我的身份即可 */
     wx.request({

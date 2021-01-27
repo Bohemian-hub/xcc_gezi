@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-01-26 22:56:13
+ * @LastEditTime: 2021-01-27 17:36:59
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.js
@@ -48,10 +48,13 @@ Page({
   onLoad: function (options) {
     this.setData({
       control_status: 0,   //此刻不允许操作
-      page_topic_name: options.name,
+      page_what_name: options.name,
     })
-    if (options.name != '坦白说') {
+    if (options.name != '坦白说' && options.name != '活动') {
       this.get_topic_url(options.name)
+      this.setData({
+        page_topic_name: options.name,
+      })
     }
     /* 页面加载的时候获取数据 */
     /* 这里一次性获取20条数据，下面的方法实现上滑一次获取下一个20条数据，上拉一次重新获取第一个二十条数据 */
@@ -108,13 +111,10 @@ Page({
           })
         }
         console.log(res.data);
-        for (let index = 0; index < res.data.length; index++) {
-          res.data[index].fields.lover = []
-          res.data[index].fields.comment = []
-          res.data[index].fields.soncomment = []
-        }
-        /* 下面是有图片的话处理里面的图片数据，将字符创变成数组。似乎并不影响页面数组总数 */
-        for (let i = 0; i < res.data.length; i++) {    //这个
+        for (let i = 0; i < res.data.length; i++) {
+          res.data[i].fields.lover = []
+          res.data[i].fields.comment = []
+          res.data[i].fields.soncomment = []
           if (res.data[i].fields.post_data_pic.length == 0) {
             /* 说明没得图片 */
             res.data[i].fields.has_pic = 0
@@ -123,9 +123,6 @@ Page({
           var stringResult = res.data[i].fields.post_data_pic.split(',');
           //console.log(stringResult);
           res.data[i].fields.post_data_pic2 = stringResult
-        }
-        /* 话题相关 */
-        for (let i = 0; i < res.data.length; i++) {
           res.data[i].fields.topic_arr = []
           if (res.data[i].fields.topic1 !== "init") {    //一次看五个话题字段是否有值，有值就方到topic_arr里面去
             res.data[i].fields.topic_arr[0] = res.data[i].fields.topic1
@@ -143,21 +140,44 @@ Page({
             res.data[i].fields.topic_arr[4] = res.data[i].fields.topic1
           }
 
-        }
-        /* 新获取的数据追加到页面 */
-        for (let index = 0; index < res.data.length; index++) {
+          if (res.data[i].fields.post_data_grade == '大一' || res.data[i].fields.post_data_grade == '大二' || res.data[i].fields.post_data_grade == '大三' || res.data[i].fields.post_data_grade == '大四') {
+            if (res.data[i].fields.post_data_sex == '男') {
+              res.data[i].fields.tag_color = 'skyblue'
+            }
+            else {
+              res.data[i].fields.tag_color = 'pink'
+            }
+          } else if (res.data[i].fields.post_data_grade == '未知年级') {
+            res.data[i].fields.tag_color = 'green'
+          } else if (res.data[i].fields.post_data_grade == '总监') {
+            res.data[i].fields.tag_color = 'orange'
+          } else {
+            res.data[i].fields.tag_color = 'purple'
+          }
           /* 下面是数据的渲染，同时对数据进行筛选 */
-          console.log(res.data[index].fields.topic1);
-          if (that.data.page_topic_name == '坦白说') {
-            if (res.data[index].fields.classify == 'frank') {
+          console.log(res.data[i].fields.topic1);
+          if (that.data.page_what_name == '坦白说') {
+            if (res.data[i].fields.classify == 'frank') {
               that.setData({
-                display_forum_data: that.data.display_forum_data.concat(res.data[index])
+                display_forum_data: that.data.display_forum_data.concat(res.data[i]),
+                page_topic_url: 'https://s3.ax1x.com/2021/01/27/szVM5V.jpg',
+                page_display_name: '坦白说'
+              })
+            }
+          } else if (that.data.page_what_name == '活动') {
+            if (res.data[i].fields.classify == 'activity') {
+              that.setData({
+                display_forum_data: that.data.display_forum_data.concat(res.data[i]),
+                page_topic_url: 'https://s3.ax1x.com/2021/01/27/szEQ6H.jpg',
+                page_display_name: '活动'
+
               })
             }
           } else {
-            if (res.data[index].fields.topic1 == that.data.page_topic_name || res.data[index].fields.topic2 == that.data.page_topic_name || res.data[index].fields.topic3 == that.data.page_topic_name || res.data[index].fields.topic4 == that.data.page_topic_name || res.data[index].fields.topic5 == that.data.page_topic_name) {
+            if (res.data[i].fields.topic1 == that.data.page_what_name || res.data[i].fields.topic2 == that.data.page_what_name || res.data[i].fields.topic3 == that.data.page_what_name || res.data[i].fields.topic4 == that.data.page_what_name || res.data[i].fields.topic5 == that.data.page_what_name) {
               that.setData({
-                display_forum_data: that.data.display_forum_data.concat(res.data[index])
+                display_forum_data: that.data.display_forum_data.concat(res.data[i]),
+                page_display_name: '话题'
               })
             }
           }

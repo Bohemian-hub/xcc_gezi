@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-01-26 12:28:15
- * @LastEditTime: 2021-01-26 21:26:31
+ * @LastEditTime: 2021-01-27 17:05:14
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/topic/topic.wxml
@@ -43,7 +43,8 @@
 </view>
 <view class="all_topic">
     <view class="forum_topic_left" wx:for="{{topicList}}" bindtap="nevigator_to_topic"
-        data-url="{{item.fields.backgroundimg}}" data-name="{{item.fields.content}}">
+        style="background-image: url({{item.fields.backgroundimg}});" data-url="{{item.fields.backgroundimg}}"
+        data-name="{{item.fields.content}}">
         <view class="forum_topic_left_top">{{index+1}}.{{item.fields.content}}</view>
         <view class="forum_topic_left_bottom">{{item.fields.use_times}}人添加该话题</view>
         <view class="forum_topic_left_bottom">创建于{{item.fields.create_time}}</view>
@@ -55,7 +56,8 @@
 </view>
 
 <view class="search_display" style="display: {{turn_search == 1?'block':'none'}};">
-    <view class="one_peach_topic" wx:for="{{peach_arr}}">
+    <view class="one_peach_topic" wx:for="{{peach_arr}}" bindtap="nevigator_to_topic"
+        data-url="{{item.fields.backgroundimg}}" data-name="{{item.fields.content}}">
         <view class="one_peach_topic_title">
             {{item.fields.content}}
         </view>
