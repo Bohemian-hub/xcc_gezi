@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-01-26 22:55:33
+ * @LastEditTime: 2021-01-27 14:11:16
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.js
@@ -84,25 +84,20 @@ Page({
             loadingtext: '我也是有底线的'
           })
         }
-        console.log(res.data);
-        for (let index = 0; index < res.data.length; index++) {
-          res.data[index].fields.lover = []
-          res.data[index].fields.comment = []
-          res.data[index].fields.soncomment = []
-        }
         /* 下面是有图片的话处理里面的图片数据，将字符创变成数组。似乎并不影响页面数组总数 */
         for (let i = 0; i < res.data.length; i++) {    //这个
           if (res.data[i].fields.post_data_pic.length == 0) {
             /* 说明没得图片 */
             res.data[i].fields.has_pic = 0
           }
+          res.data[i].fields.lover = []
+          res.data[i].fields.comment = []
+          res.data[i].fields.soncomment = []
           /* 把他们变成数组 ，让页面可以看得到*/
           var stringResult = res.data[i].fields.post_data_pic.split(',');
           //console.log(stringResult);
           res.data[i].fields.post_data_pic2 = stringResult
-        }
-        /* 话题相关 */
-        for (let i = 0; i < res.data.length; i++) {
+
           res.data[i].fields.topic_arr = []
           if (res.data[i].fields.topic1 !== "init") {    //一次看五个话题字段是否有值，有值就方到topic_arr里面去
             res.data[i].fields.topic_arr[0] = res.data[i].fields.topic1
@@ -120,11 +115,24 @@ Page({
             res.data[i].fields.topic_arr[4] = res.data[i].fields.topic1
           }
 
-        }
-        /* 新获取的数据追加到页面 */
-        for (let index = 0; index < res.data.length; index++) {
+          if (res.data[i].fields.post_data_grade == '大一' || res.data[i].fields.post_data_grade == '大二' || res.data[i].fields.post_data_grade == '大三' || res.data[i].fields.post_data_grade == '大四') {
+            if (res.data[i].fields.post_data_sex == '男') {
+              res.data[i].fields.tag_color = 'skyblue'
+            }
+            else {
+              res.data[i].fields.tag_color = 'pink'
+            }
+          } else if (res.data[i].fields.post_data_grade == '未知年级') {
+            res.data[i].fields.tag_color = 'green'
+          } else if (res.data[i].fields.post_data_grade == '总监') {
+            res.data[i].fields.tag_color = 'orange'
+          } else {
+            res.data[i].fields.tag_color = 'purple'
+          }
+
+          /* 新获取的数据追加到页面 */
           that.setData({
-            display_forum_data: that.data.display_forum_data.concat(res.data[index])
+            display_forum_data: that.data.display_forum_data.concat(res.data[i])
           })
         }
         console.log(that.data.display_forum_data);
@@ -366,14 +374,7 @@ Page({
       masking_show: false
     })
   },
-  /* 发布内容跳转 */
-  publish_learn(e) {
-    console.log(e.currentTarget.dataset.classify);
-    wx.navigateTo({
-      url: "../forum_publish/forum_publish?classify=" + e.currentTarget.dataset.classify,
-    });
 
-  },
   topic_content() {
     wx.navigateTo({
       url: "../topic/topic",
@@ -384,6 +385,7 @@ Page({
       url: '../topic_one/topic_one?name=坦白说'
     })
   },
+
   back_index() {
     wx.redirectTo({
       url: "../index/index",
@@ -1093,7 +1095,72 @@ Page({
     wx.redirectTo({
       url: '../frank_publish/frank_publish'
     })
-  }
+  },
+  publish_learn() {
+    wx.request({
+      url: 'http://127.0.0.1:8000/info/activity', //仅为示例，并非真实的接口地址
+      data: {
+        studentId: wx.getStorageSync('studentId')
+      },
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      success: (result) => {
+        console.log(result);
+        if (result.data[0].fields.department == 'init') {
+          wx.navigateTo({
+            url: "../forum_publish/forum_publish?classify=learn&department=init",
+          });
+        } else {
+          console.log(result.data[0].fields.department);
+          console.log(result.data[0].fields.position);
+          var department = result.data[0].fields.department
+          var position = result.data[0].fields.position
+          /* 准备页面跳转，记得传三个值过去 */
+          wx.navigateTo({
+            url: '../forum_publish/forum_publish?classify=learn&department=' + department + '&position=' + position
+          })
+        }
+      }
+    })
+
+  },
+  activity() {
+    /* 验证我的身份 */
+    /* 直接去数据库中获取我的身份即可 */
+    wx.request({
+      url: 'http://127.0.0.1:8000/info/activity', //仅为示例，并非真实的接口地址
+      data: {
+        studentId: wx.getStorageSync('studentId')
+      },
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      success: (result) => {
+        console.log(result);
+        if (result.data[0].fields.department == 'init') {
+          console.log("真不是认证用户");
+          wx.showModal({
+            title: '提示',
+            content: '你是普通学生，没有发布活动的权限，请咨询客服以完成认证'
+          })
+
+        } else {
+          console.log(result.data[0].fields.department);
+          console.log(result.data[0].fields.position);
+          var department = result.data[0].fields.department
+          var position = result.data[0].fields.position
+          /* 准备页面跳转，记得传三个值过去 */
+          wx.navigateTo({
+            url: '../activity_publish/activity_publish?department=' + department + '&position=' + position
+          })
+        }
+      }
+    })
+
+  },
 
 
 })

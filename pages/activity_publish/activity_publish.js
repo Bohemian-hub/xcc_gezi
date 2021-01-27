@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-11 09:56:30
- * @LastEditTime: 2021-01-27 14:20:20
+ * @LastEditTime: 2021-01-27 11:13:22
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum_publish/forum_publish.js
@@ -14,7 +14,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    classify: 'learn',
+    classify: 'activity',
     imgList: [],
     topicList: [],
     input_content: '',
@@ -25,8 +25,6 @@ Page({
     filename: '',
     post_data_pic: [],
     post_data_name: '',
-    post_data_grade: '',
-    post_data_college: '',
     post_data_sex: '',
     tempavatarUrl: '',
     post_data_avatarUrl: '',
@@ -108,26 +106,13 @@ Page({
   onLoad: function (options) {
     /* 页面在加载的时候从和后台数据库中请求数据 */
     this.get_topic()
-    console.log(options);
-    console.log(options.classify);
     console.log(options.department);
     console.log(options.position);
     this.setData({
-      post_data_name: wx.getStorageSync('name'),
-      post_data_sex: wx.getStorageSync('sex'),
-      classify: options.classify
+      classify: 'activity',
+      department: options.department,
+      position: options.position
     })
-    if (options.department == 'init') {
-      this.setData({
-        post_data_grade: wx.getStorageSync('grade'),
-        post_data_college: wx.getStorageSync('college'),
-      })
-    } else {
-      this.setData({
-        post_data_grade: options.position,
-        post_data_college: options.department,
-      })
-    }
   },
   back_index() {
     wx.redirectTo({
@@ -222,6 +207,8 @@ Page({
       })
       /* ----------------------这里是算时间----------------------- */
       that.get_publish_time()
+      /* -----------------------这里是获取其他值---------------------- */
+      that.get_other_infor()
       /* 表示我选择了自定义的图片，这样才上传图片，否则我不用图片 */
 
       /* 现在分情况看是否上传图片 */
@@ -302,6 +289,13 @@ Page({
         duration: 2000
       })
     }
+  },
+  get_other_infor() {
+
+    this.setData({
+      post_data_name: wx.getStorageSync('name'),
+      post_data_sex: wx.getStorageSync('sex'),
+    })
   },
   uploadavatar() {
     var that = this
@@ -388,17 +382,30 @@ Page({
     })
   },
   preparedata_to_post() {
+    console.log(this.data.post_data_name);
+    console.log(this.data.post_data_sex);
+    console.log(this.data.position);
+    console.log(this.data.department);
+    console.log(this.data.input_content);
+    console.log(JSON.stringify(this.data.post_data_pic));
+    console.log("数组：");
+    console.log(this.data.post_data_pic);
+    console.log(this.data.post_data_avatarUrl);
+    console.log(this.data.card_time);
+    console.log(this.data.real_time);
+    console.log(this.data.real_date);
+    console.log(this.data.classify);
 
     /* 数据已经拿到了，现在准备向后端发送请求，现在先把数据传入后端 */
     wx.request({
       url: 'http://127.0.0.1:8000/forum/add_forum', //仅为示例，并非真实的接口地址
       data: {
-        classify: this.data.classify,
+        classify: 'activity',
         studentId: wx.getStorageSync('studentId'),
         post_data_name: this.data.post_data_name,
         post_data_sex: this.data.post_data_sex,
-        post_data_grade: this.data.post_data_grade,
-        post_data_college: this.data.post_data_college,
+        post_data_grade: this.data.position,
+        post_data_college: this.data.department,
         input_content: this.data.input_content,
         topic_content: this.data.topic_content,
         post_data_pic: JSON.stringify(this.data.post_data_pic),

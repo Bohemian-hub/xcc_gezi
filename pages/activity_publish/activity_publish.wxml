@@ -1,13 +1,13 @@
 <!--
  * @Author: your name
  * @Date: 2021-01-11 09:56:30
- * @LastEditTime: 2021-01-16 21:23:02
+ * @LastEditTime: 2021-01-26 22:45:50
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum_publish/forum_publish.wxml
 -->
 <view class="title" bindtouchstart="touchStart" onPageScroll='onPageScroll'>
-    坦白说
+    发布活动
     <view class="back" bindtap="back_index">
         <text class="cuIcon-back">
 
@@ -91,6 +91,6 @@
 
 </view>
 
-<button open-type='getUserInfo' class="publish_button" bindtap="publish">
+<button open-type='getUserInfo' class="publish_button" bindgetuserinfo="getuserinfo">
     发布
 </button>
