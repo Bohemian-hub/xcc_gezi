@@ -2,20 +2,25 @@ page{
     background-image: url(https://s3.ax1x.com/2021/01/27/sz8WoF.jpg);
     background-size: 100% 100%;
 }
-
-.title_confress{
-    width: 100%;
-    text-align: center;
-    background-color: rgba(70, 130, 182, 0);
-    font-size: 50rpx;
-    line-height: 200rpx;
-    color: #fab862;
-    font-weight: 800;  
-    height: 200rpx;
+.title{
+  width: 100%;
+  height: 140rpx;
+  background-color: #fab862;
+  text-align: center;
+  font-size: 40rpx;
+  position: relative;
+  color: white;
+  line-height: 220rpx;
 }
+.back{
+  position: absolute;
+  top: 0rpx;
+  left: 30rpx;
+}
+
 .date_and_numbers{
     width: 90%;
-    margin: 50rpx auto 50rpx auto;
+    margin: 50rpx auto 120rpx auto;
     height: 100rpx;
     color: white;
 }
@@ -25,12 +30,11 @@ page{
     background-color: rgba(255, 255, 255, 0);
     font-weight: 800;  
     font-size: 40rpx;
-    text-indent: 2em;
 }
 .numbers{
     width: 90%;
     height:40rpx;
-    margin: 20rpx auto;
+    margin: 60rpx auto;
     text-align: center;
     background-color: rgba(175, 10, 10, 0);
     font-size: 30rpx;
@@ -85,6 +89,12 @@ page{
   left:200rpx;
   bottom:50rpx;
 }
+.list{
+  position: absolute;
+  left:250rpx;
+  bottom:10rpx;
+  color: rgb(78, 78, 78);
+}
 
 .publish{
     width: 100%;
@@ -94,7 +104,7 @@ page{
     background-color: rgba(250, 235, 215, 0);
 }
 .publish_confess{
-    width: 30%;
+    width: 70%;
     margin-left: 15%;
     text-align: center;
     line-height: 100rpx;
@@ -106,30 +116,18 @@ page{
     font-weight: 800;
     float: left;
 }
-.publish_complain{
-    width: 30%;
-    margin-left: 10%;
-    text-align: center;
-    line-height: 100rpx;
-    border-radius: 20rpx;
-    font-size: 35rpx;
-    background-color: rgb(250, 184, 98);
-    box-shadow: 0rpx 0rpx 20rpx rgb(255, 169, 169);
-    color: white;
-    font-weight: 800;
-    float: left;
-}
 .infor{
-  position: fixed;
+  position: absolute;
   width: 90%;
-  height: 1100rpx;
+  height: 70%;
   background-image: url(https://s3.ax1x.com/2021/01/27/szgdTe.png);
   background-repeat: none;
   background-size: 100% 100%;
-  top: 250rpx;
+  top: 260rpx;
   left: 5%;
-  padding: 65rpx;
-  line-height: 84rpx;
+  padding: 30rpx;
+  padding-top: 85rpx;
+  line-height: 45rpx;
   text-indent: 2em;
   color: rgb(111, 116, 116);
   overflow: hidden;
@@ -137,16 +135,16 @@ page{
 }
 .month{
   position: absolute;
-  bottom: -14rpx;
+  bottom: 8rpx;
   right: 188rpx;
 }
 .dayly{
   position: absolute;
-  bottom: -14rpx;
+  bottom: 8rpx;
   right: 108rpx;
 }
 .contact{
   position: absolute;
-  bottom: 80rpx;
-  left: 58rpx;
+  bottom: 108rpx;
+  left: 18rpx;
 }

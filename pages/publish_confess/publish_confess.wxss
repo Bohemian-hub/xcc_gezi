@@ -242,7 +242,7 @@ border: 6rpx solid rgb(0, 156, 39);
 }
 .tip{
 text-align: left;
-padding-left: 100rpx;
-padding-top: 30rpx;
+padding-left: 99rpx;
+padding-top: 15rpx;
 width: 100%;
 }

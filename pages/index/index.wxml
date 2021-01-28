@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2021-01-02 22:25:53
+ * @LastEditTime: 2021-01-28 20:36:57
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.wxml
@@ -27,8 +27,7 @@
         <view class="content_niceday">
             <!-- 左侧的one区域 -->
             <view class="cardleft" bindtap="hidden_onetext_on_onepic">
-                <image class="cardleft_bg" src="{{imageone_src}}" lazy-load="false"
-                    binderror="" bindload="" />
+                <image class="cardleft_bg" src="{{imageone_src}}" lazy-load="false" binderror="" bindload="" />
                 <view class="cardleft_date" style="display:{{hidden_onetext_on_onepic=='yes'?'none':'block'}}">
                     {{one_date}} {{one_week}}
                 </view>
@@ -226,6 +225,17 @@
                 </view>
                 <view class="son_menu_function_title">
                     私信
+                </view>
+
+            </view>
+
+            <view class="son_menu_function {{showwhat=='strive' ? 'show' : 'notshow'}}" bindtap="single">
+                <view class="son_menu_function_image">
+                    <image class="son_menu_function_image_icon" src="https://s3.ax1x.com/2021/01/28/y9bf0g.png"
+                        mode="widthFix" lazy-load="false" binderror="" bindload="" />
+                </view>
+                <view class="son_menu_function_title">
+                    单身档案
                 </view>
 
             </view>

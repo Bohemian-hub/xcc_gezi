@@ -23,37 +23,37 @@
         <view class="input_text_me">
             姓名：
         </view>
-        <input class="input_me" bindinput='getInputValue1' placeholder="">框框</input>
+        <input class="input_me" bindinput='getInputValue1' placeholder="姓名">框框</input>
     </view>
     <view class="form_object">
         <view class="input_text_me">
             年龄：
         </view>
-        <input class="input_me" bindinput='getInputValue2' placeholder="">框框</input>
+        <input class="input_me" bindinput='getInputValue2' placeholder="年龄">框框</input>
     </view>
     <view class="form_object">
         <view class="input_text_me">
             星座：
         </view>
-        <input class="input_me" bindinput='getInputValue3' placeholder="">框框</input>
+        <input class="input_me" bindinput='getInputValue3' placeholder="星座">框框</input>
     </view>
     <view class="form_object">
         <view class="input_text_me">
             性别：
         </view>
-        <input class="input_me" bindinput='getInputValue4' placeholder="">框框</input>
+        <input class="input_me" bindinput='getInputValue4' placeholder="性别">框框</input>
     </view>
     <view class="form_object">
         <view class="input_text_me">
             性取向：
         </view>
-        <input class="input_me" bindinput='getInputValue5' placeholder="">框框</input>
+        <input class="input_me" bindinput='getInputValue5' placeholder="性取向">框框</input>
     </view>
     <view class="form_object">
         <view class="input_text_me">
             二级学院：
         </view>
-        <input class="input_me" bindinput='getInputValue6' placeholder="">框框</input>
+        <input class="input_me" bindinput='getInputValue6' placeholder="填写简称  eg:信息院">框框</input>
     </view>
     <view class="form_object">
         <view class="input_text_me">
@@ -79,13 +79,14 @@
     <view class="input_text_me">
         内容：
     </view>
-    <textarea class="input_content" bindinput="getInputValue8" maxlength="500"
-        placeholder="200字内描述自己的形象、求偶标准、以及心目中的他/她等等"></textarea>
+    <textarea class="input_content" bindinput="getInputValue8" maxlength="400"
+        placeholder="400字内描述自己的形象、求偶标准、以及心目中的他/她等等"></textarea>
 
 </view>
-<view class="tip">
+<view class="tip" style="color:red;">
     <view>1.不愿意透露的信息请使用"*"代替</view>
-    <view>2.填写联系方式是请加上“QQ：/Tel：/微信：”</view>
+    <view>2.填写联系方式是请加上“QQ:/Tel:/微信:”</view>
+    <view>3.发布后系统将为你展示七天，祝您早日脱单！</view>
 </view>
 
 <view class="form_button" bindtap="add_confess">

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-18 15:06:45
- * @LastEditTime: 2021-01-27 22:30:27
+ * @LastEditTime: 2021-01-28 18:15:47
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/publish_confess/publish_confess.js
@@ -108,20 +108,29 @@ Page({
 
 
     } else {
-      /* 展示所有即将录入数据库的东西 */
-      console.log('----------------------------');
-      console.log(wx.getStorageSync('name'));
-      console.log(wx.getStorageSync('studentId'));
-      console.log(that.data.name);
-      console.log(that.data.age);
-      console.log(that.data.star);
-      console.log(that.data.sex);
-      console.log(that.data.sexto);
-      console.log(that.data.college);
-      console.log(that.data.contact);
-      console.log(that.data.content);
-      console.log('----------------------------');
-
+      /* 获取时间 */
+      var myDate = new Date();
+      var month = myDate.getMonth() + 1
+      var daly = myDate.getDate()
+      var h = myDate.getHours();       //获取当前小时数(0-23)
+      var m = myDate.getMinutes();     //获取当前分钟数(0-59)
+      var s = myDate.getSeconds();     //获取当前秒数(0-59)
+      if (daly < 10) {
+        daly = "0" + String(daly)
+      }
+      if (month < 10) {
+        month = "0" + String(month)
+      }
+      if (h < 10) {
+        h = "0" + String(h)
+      }
+      if (m < 10) {
+        m = "0" + String(m)
+      } if (s < 10) {
+        s = "0" + String(s)
+      }
+      var love_time = myDate.getFullYear() + '' + month + '' + daly
+      var record_time = myDate.getFullYear() + '' + month + '' + daly + '' + h + '' + m + '' + s
       wx.request({
         url: 'http://127.0.0.1:8000/confess/add_confess', //仅为示例，并非真实的接口地址
         data: {
@@ -134,7 +143,12 @@ Page({
           sexto: that.data.sexto,
           college: that.data.college,
           contact: that.data.contact,
-          content: that.data.content
+          content: that.data.content,
+          time: love_time,
+          month: month,
+          dayly: daly,
+          record_time: record_time
+
         },
         method: "POST",
         header: {

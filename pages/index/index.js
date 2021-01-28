@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2021-01-26 10:24:21
+ * @LastEditTime: 2021-01-28 20:33:17
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.js
@@ -283,14 +283,14 @@ Page({
       url: '../schedule/schedule',
     })
   },
-  confress_page: function () {
-    wx.navigateTo({
-      url: '../ConfessionWall/ConfessionWall',
-    })
-  },
   new_confesswall: function () {
     wx.navigateTo({
       url: '../new_confesswall/new_confesswall',
+    })
+  },
+  single() {
+    wx.navigateTo({
+      url: '../ConfessionWall/ConfessionWall',
     })
   },
   forum() {

@@ -1,79 +1,87 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-13 23:35:52
- * @LastEditTime: 2021-01-27 21:31:31
+ * @LastEditTime: 2021-01-28 20:19:30
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/ConfessionWall/ConfessionWall.wxml
 -->
 
 
+<view class="title" bindtouchstart="touchStart" onPageScroll='onPageScroll'>
+    西院单身档案
+    <view class="back" bindtap="back_index">
+        <text class="cuIcon-back">
 
-<view class="title_confress">西院单身档案</view>
+        </text>
+    </view>
+</view>
 
 
 <view class="date_and_numbers">
     <view class="date">
-        记录西院859位单身狗
+        记录西院
+        <a style="color: red;">{{confessList.length}}</a> 位单身狗
     </view>
     <view class="numbers">
         "爱情是一朵生长在悬崖峭壁边缘上的花朵，想要摘取它，需要勇气!"
     </view>
 </view>
 
-<swiper class="card-swiper {{DotStyle?'square-dot':'square-dot'}}" indicator-dots="true" circular="true" autoplay="true"
-    interval="8000" duration="500" indicator-color="#8799a3" indicator-active-color="#0081ff">
+<swiper class="card-swiper {{DotStyle?'square-dot':'square-dot'}}" indicator-dots="true" circular="true"
+    autoplay="false" interval="600000" duration="500" indicator-color="#8799a3" indicator-active-color="#0081ff">
 
     <!-- 这就是儿子了吧 -->
-    <swiper-item wx:for="{{confessList}}" wx:key="item.fields" bindtap="turn_infor">
+    <swiper-item wx:for="{{confessList}}" wx:key="item.fields" bindtap="turn_infor"
+        data-content="{{item.fields.content}}" data-month="{{item.fields.month}}" data-dayly="{{item.fields.dayly}}"
+        data-contact="{{item.fields.contact}}">
         <view class="confress_panel">
             <view class="name">
-                何东
+                {{item.fields.name}}
             </view>
             <view class="age">
-                20
+                {{item.fields.age}}
             </view>
             <view class="star">
-                金牛座
+                {{item.fields.star}}
             </view>
             <view class="sex">
-                男
+                {{item.fields.sex}}
             </view>
             <view class="sexto">
-                女
+                {{item.fields.sexto}}
             </view>
             <view class="college">
-                信息技术学院
+                {{item.fields.college}}
             </view>
             <view class="tip">
                 点击查看档案
             </view>
-
+            <view class="list">
+                {{index+1}}/{{confessList.length}}
+            </view>
         </view>
-
     </swiper-item>
 
 
 </swiper>
-
+<view style="display: {{if_show_infor?'block':'none'}};" bindtap="close_infor">
+    <view class="infor">
+        <view class="month">
+            {{month}}
+        </view>
+        <view class="dayly">
+            {{dayly}}
+        </view>
+        <view class="contact">
+            {{contact}}
+        </view>
+        {{content}}
+    </view>
+</view>
 <view class="publish">
     <view class="publish_confess" bindtap="publish_confess">
         加入档案
     </view>
-    <view class="publish_complain" bindtap="publish_complain">
-        我的档案
-    </view>
-</view>
-<view class="infor" bindtap="turn_infor" style="display: {{if_show_infor?'block':'none'}};">
-    <view class="month">
-        5
-    </view>
-    <view class="dayly">
-        20
-    </view>
-    <view class="contact">
-        联系方式：tel:18081239804
-    </view>
 
-    (240字以内)我身高一米八，体重七十公斤，希望找一个爱我疼我想我天天给我违反的女孩子，我心目中的他应该是16-25岁，大一到大四都行，身高高于一米就可以了，这样我可以抱抱她，我可以和他一起走路，一起去吃好吃的东西，我感觉我的文笔真的太好了吧，哈哈哈
 </view>

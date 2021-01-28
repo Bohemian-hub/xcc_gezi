@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-01-27 18:55:15
+ * @LastEditTime: 2021-01-28 20:27:13
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.js
@@ -358,7 +358,7 @@ Page({
   forum_publish() {
     /* 这里产生一个动画，可以将那个东西显示出来 */
     this.animation_classify = wx.createAnimation()
-    this.animation_classify.translate(0, -405).step()
+    this.animation_classify.translate(0, -305).step()
     this.setData({ animation_classify: this.animation_classify.export() })
     /* 显示的同时也可以将背景混成透明 */
     this.setData({
