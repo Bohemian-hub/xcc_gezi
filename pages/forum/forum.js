@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-01-28 20:27:13
+ * @LastEditTime: 2021-01-29 13:56:51
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.js
@@ -38,7 +38,8 @@ Page({
     inputValue: '',   //输入框内容，用于清空
     now_forum_id: '', // 目前点击的forum的id
     now_display_comment: [],
-    now_display_soncomment: []
+    now_display_soncomment: [],
+    hot_forum: []
 
   },
 
@@ -63,11 +64,63 @@ Page({
         control_status: 1  /* 此刻允许操作 */
       })
     }, 2000);
+    this.get_hot_forum()
+  },
+  turn_hot_topic(e) {
+    console.log(e.currentTarget.dataset.pk);
+    for (let index = 0; index < this.data.hot_forum.length; index++) {
+      if (this.data.hot_forum[index].pk == e.currentTarget.dataset.pk) {
+        console.log(this.data.hot_forum[index]);
+        /* 然后把这个数据追加到最前面 */
+        var arr1 = []
+        arr1 = arr1.concat(this.data.hot_forum[index])
+        this.setData({
+          display_forum_data: arr1.concat(this.data.display_forum_data)
+        })
+      }
+    }
   },
   get_forum() {
     var that = this;
     /* 一次性请求二十条数据，只需要传入第几次获取 */
     console.log(that.data.get_forum_times);   //显示是第几次去获取数据
+
+    var today = new Date();
+    var month = today.getMonth() + 1
+    var daly = today.getDate()
+    if (daly < 10) {
+      daly = "0" + String(daly)
+    }
+    if (month < 10) {
+      month = "0" + String(month)
+    }
+    var today_date = today.getFullYear() + '' + month + '' + daly
+
+    var yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    var month = yesterday.getMonth() + 1
+    var daly = yesterday.getDate()
+    if (daly < 10) {
+      daly = "0" + String(daly)
+    }
+    if (month < 10) {
+      month = "0" + String(month)
+    }
+    var yesterday_date = yesterday.getFullYear() + '' + month + '' + daly
+
+    var beforeyesterday = new Date();
+    beforeyesterday.setDate(beforeyesterday.getDate() - 2);
+    var month = beforeyesterday.getMonth() + 1
+    var daly = beforeyesterday.getDate()
+    if (daly < 10) {
+      daly = "0" + String(daly)
+    }
+    if (month < 10) {
+      month = "0" + String(month)
+    }
+    var before_yesterday_date = beforeyesterday.getFullYear() + '' + month + '' + daly
+
+    console.log(today_date, yesterday_date, before_yesterday_date);
     wx.request({
       url: 'http://127.0.0.1:8000/forum/get_forum', //仅为示例，并非真实的接口地址
       data: {
@@ -124,10 +177,20 @@ Page({
             }
           } else if (res.data[i].fields.post_data_grade == '未知年级') {
             res.data[i].fields.tag_color = 'green'
-          } else if (res.data[i].fields.post_data_grade == '总监') {
+          } else if (res.data[i].fields.post_data_grade == '创始人') {
             res.data[i].fields.tag_color = 'orange'
           } else {
             res.data[i].fields.tag_color = 'purple'
+          }
+          console.log(today_date, yesterday_date, before_yesterday_date);
+          if (res.data[i].fields.real_date == today_date) {
+            res.data[i].fields.real_time = '今天' + res.data[i].fields.real_time
+          } else if (res.data[i].fields.real_date == yesterday_date) {
+            res.data[i].fields.real_time = '昨天' + res.data[i].fields.real_time
+          } else if (res.data[i].fields.real_date == before_yesterday_date) {
+            res.data[i].fields.real_time = '前天' + res.data[i].fields.real_time
+          } else {
+            res.data[i].fields.real_time = res.data[i].fields.real_date + ' ' + res.data[i].fields.real_time
           }
 
           /* 新获取的数据追加到页面 */
@@ -266,6 +329,61 @@ Page({
       }
     })
   },
+  get_hot_forum() {
+    var that = this
+    var myDate = new Date();
+    myDate.setDate(myDate.getDate() - 3);
+    var month = myDate.getMonth() + 1
+    var daly = myDate.getDate()
+    var h = myDate.getHours();       //获取当前小时数(0-23)
+    var m = myDate.getMinutes();     //获取当前分钟数(0-59)
+    var s = myDate.getSeconds();     //获取当前秒数(0-59)
+    if (daly < 10) {
+      daly = "0" + String(daly)
+    }
+    if (month < 10) {
+      month = "0" + String(month)
+    }
+    if (h < 10) {
+      h = "0" + String(h)
+    }
+    if (m < 10) {
+      m = "0" + String(m)
+    } if (s < 10) {
+      s = "0" + String(s)
+    }
+    var hot_time = myDate.getFullYear() + '' + month + '' + daly + '' + h + '' + m + '' + s
+    console.log(hot_time);
+    wx.request({
+      url: 'http://127.0.0.1:8000/forum/get_hot_forum',
+      data: {
+        hot_time: hot_time,
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      method: 'POST',
+      success: function (res) {
+        console.log(res.data);
+        for (let i = 0; i < res.data.length; i++) {
+          if (res.data[i].fields.post_data_pic.length == 0) {
+            /* 说明没得图片 */
+            res.data[i].fields.has_pic = 0
+          } else {
+            var stringResult = res.data[i].fields.post_data_pic.split(',');
+            res.data[i].fields.post_data_pic2 = stringResult
+            that.setData({
+              hot_forum: that.data.hot_forum.concat(res.data[i])
+            })
+          }
+        }
+
+
+        console.log(that.data.hot_forum);
+      }
+    });
+
+  },
   previewImage: function (e) {
     var current = e.target.dataset.src;
     var Listindex = e.target.dataset.index;
@@ -390,9 +508,14 @@ Page({
       url: '../topic_one/topic_one?name=活动'
     })
   },
-  single() {
+  help() {
     wx.redirectTo({
-      url: '../ConfessionWall/ConfessionWall'
+      url: '../topic_one/topic_one?name=求助'
+    })
+  },
+  my_forum() {
+    wx.redirectTo({
+      url: '../forum_of_me/forum_of_me'
     })
   },
   back_index() {
@@ -1105,6 +1228,7 @@ Page({
       url: '../frank_publish/frank_publish'
     })
   },
+
   publish_learn() {
     wx.request({
       url: 'http://127.0.0.1:8000/info/activity', //仅为示例，并非真实的接口地址
@@ -1134,6 +1258,35 @@ Page({
       }
     })
 
+  },
+  help_publish() {
+    wx.request({
+      url: 'http://127.0.0.1:8000/info/activity', //仅为示例，并非真实的接口地址
+      data: {
+        studentId: wx.getStorageSync('studentId')
+      },
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      success: (result) => {
+        console.log(result);
+        if (result.data[0].fields.department == 'init') {
+          wx.navigateTo({
+            url: "../help_publish/help_publish?classify=help&department=init",
+          });
+        } else {
+          console.log(result.data[0].fields.department);
+          console.log(result.data[0].fields.position);
+          var department = result.data[0].fields.department
+          var position = result.data[0].fields.position
+          /* 准备页面跳转，记得传三个值过去 */
+          wx.navigateTo({
+            url: '../help_publish/help_publish?classify=help&department=' + department + '&position=' + position
+          })
+        }
+      }
+    })
   },
   activity_publish() {
     /* 验证我的身份 */

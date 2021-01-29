@@ -1,108 +1,27 @@
 <!--
  * @Author: your name
- * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-01-27 18:54:10
+ * @Date: 2021-01-26 19:30:49
+ * @LastEditTime: 2021-01-28 21:45:28
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: /miniprogram-5/pages/forum/forum.wxml
+ * @FilePath: /miniprogram-5/pages/topic_one/topic_one.wxml
 -->
-<!-- 现在开始开发论坛功能，这是一个不简单的过程 -->
+<view class="title">
+    我的发布
+    <view class="back" bindtap="back">
+        <text class="cuIcon-back">
+
+        </text>
+    </view>
+</view>
+<view class="tip">
+    长按需要删除的帖子;
+</view>
+
 <view onPageScroll="onPageScroll2">
-    <view class="title" bindtouchstart="touchStart" onPageScroll='onPageScroll'>
-        西院论坛
-        <view class="back" bindtap="back_index">
-            <text class="cuIcon-back">
-
-            </text>
-        </view>
-    </view>
-    <!-- 功能区面板 -->
-    <view class="forum_function" hover-class="none" hover-stop-propagation="false" bindtouchstart="touchStart"
-        onPageScroll='onPageScroll'>
-        <view class="forum_function_one" bindtap="topic_content">
-            <image class="function_img" src="https://s3.ax1x.com/2021/01/06/sZPXu9.png" mode="widthFix"
-                lazy-load="false" binderror="" bindload="">
-
-            </image>
-            <view class="function_text">
-                话题
-            </view>
-
-
-
-        </view>
-        <view class="forum_function_one" bindtap="frank">
-            <image class="function_img" src="https://s3.ax1x.com/2021/01/29/yCrXVS.png" mode="widthFix"
-                lazy-load="false" binderror="" bindload="">
-
-            </image>
-            <view class="function_text">
-                坦白说
-            </view>
-        </view>
-        <view class="forum_function_one" bindtap="activity">
-            <image class="function_img" src="https://s3.ax1x.com/2021/01/29/yCrLb8.png" mode="widthFix"
-                lazy-load="false" binderror="" bindload="">
-
-            </image>
-            <view class="function_text">
-                活动
-            </view>
-        </view>
-        <view class="forum_function_one" bindtap="help">
-            <image class="function_img" src="https://s3.ax1x.com/2021/01/29/yCrjUg.png" mode="widthFix"
-                lazy-load="false" binderror="" bindload="">
-
-            </image>
-            <view class="function_text">
-                求助
-            </view>
-        </view>
-        <view class="forum_function_one" bindtap="my_forum">
-            <image class="function_img" src="https://s3.ax1x.com/2021/01/29/yCrv5Q.png" mode="widthFix"
-                lazy-load="false" binderror="" bindload="">
-
-            </image>
-            <view class="function_text">
-                我的
-            </view>
-
-
-
-        </view>
-
-    </view>
-    <!-- 今日热门贴子区域，使用点赞数最多来计算显示 -->
-    <view class="hot_post" bindtouchstart="touchStart" onPageScroll='onPageScroll'>
-        <view class="hot_post_title">
-            <view class="hot_post_xian"></view>
-            <view class="hot_post_title_text">热门帖子</view>
-
-        </view>
-        <view class="hot_one" wx:for="{{hot_forum}}" wx:if="{{index<4}}" bindtap="turn_hot_topic" data-pk="{{item.pk}}"
-            style="background-image: url({{item.fields.post_data_pic2[0]}});">
-            <view class="hot_title">
-                {{item.fields.input_content}}
-            </view>
-            <view class="hot_who">
-                <image class="hot_who_img"
-                    src="{{item.fields.post_data_avatarUrl}}">
-
-                </image>
-                <view class="hot_who_text">
-                    {{item.fields.post_data_name}}
-                </view>
-
-            </view>
-
-        </view>
-
-    </view>
-    <!-- 帖子的浏览区域 -->
-
     <!--下面是我要做的 -->
-    <view class="forum_one" wx:for="{{display_forum_data}}" wx:key="item" wx:for-index="idx" bindtouchstart="touchStart"
-        onPageScroll='onPageScroll' wx:if="{{item.fields.status != 0}}">
+    <view class="forum_one" wx:for="{{display_forum_data}}" wx:key="item" wx:for-index="idx" onPageScroll='onPageScroll'
+        bindlongpress="delete_forum" wx:if="{{item.fields.status != 0}}" data-forum_id="{{item.pk}}">
         <view class="forum_one_name">
             <view class="forum_one_name_img" style="background-image: url({{item.fields.post_data_avatarUrl}});">
             </view>
@@ -227,38 +146,19 @@
 </view>
 
 
-<!-- 下面我要做一个发布按钮，准备进入发布页面 -->
-<view style="display: {{turnmenu?'block':'none'}};">
-
-    <view class="edit" animation="{{animation2}}">
-
-        <view style="display:{{shouldshow?'block':'none'}};" bindtap="forum_publish">
-            发布
-        </view>
-    </view>
-    <view class="reback" animation="{{animation3}}">
-
-        <view style="display:{{shouldshow?'block':'none'}};">
-            反馈
-        </view>
-    </view>
-</view>
-
 <!-- 下面这是一个加号 -->
 <view class="top" bindtap="totop">
 </view>
-<view class="menu" bindtap="turnmenu"
-    style="background-image: url({{turnmenu?'https://s3.ax1x.com/2021/01/10/s1UMhF.png':'https://s3.ax1x.com/2021/01/10/s1kLtS.png'}});">
+<view class="refresh" bindtap="refresh">
 </view>
 
-<view class="masking" style="display: {{masking_show?'block':'none'}};" catchtouchstart="touchStart">
+<view class="masking" style="display: {{masking_show?'block':'none'}};">
 
 </view>
 
 <!-- 下面是发布分类 -->
 <view class="choose_classify" animation="{{animation_classify}}" catchtouchmove="myCatchTouch">
     <view class="choose_classify_top">
-    您的每一次发布，我对您的喜爱就多一分，感谢您的支持，更多有趣有用的功能仍在开发中！
     </view>
     <view class="choose_classify_middle">
         <view class="classify_one" bindtap="publish_learn" data-classify="learn">
@@ -269,16 +169,26 @@
                 发帖
             </view>
         </view>
-        <view class="classify_one" bindtap="activity_publish">
-            <image class="classify_one_img" src="https://s3.ax1x.com/2021/01/29/yCrLb8.png">
+        <view class="classify_one">
+            <image class="classify_one_img" src="https://s3.ax1x.com/2021/01/06/sZiSN6.png">
 
             </image>
             <view>
-                活动
+                邂逅
+
             </view>
         </view>
-        <view class="classify_one" bindtap="frank_publish">
-            <image class="classify_one_img" src="https://s3.ax1x.com/2021/01/29/yCrXVS.png">
+        <view class="classify_one">
+            <image class="classify_one_img" src="https://s3.ax1x.com/2021/01/06/sZPvH1.png">
+
+            </image>
+            <view>
+                打卡
+
+            </view>
+        </view>
+        <view class="classify_one">
+            <image class="classify_one_img" src="https://s3.ax1x.com/2021/01/06/sZPzAx.png">
 
             </image>
             <view>
@@ -286,14 +196,23 @@
             </view>
 
         </view>
-                <view class="classify_one" bindtap="help_publish">
-            <image class="classify_one_img" src="https://s3.ax1x.com/2021/01/29/yCrjUg.png">
+        <view class="classify_one">
+            <image class="classify_one_img" src="https://s3.ax1x.com/2021/01/11/s3GAWd.png">
 
             </image>
             <view>
-                求助
-            </view>
+                暂无
 
+            </view>
+        </view>
+        <view class="classify_one">
+            <image class="classify_one_img" src="https://s3.ax1x.com/2021/01/11/s3GAWd.png">
+
+            </image>
+            <view>
+                暂无
+
+            </view>
         </view>
     </view>
     <view class="choose_classify_bottom" bindtap="forum_publish_close">

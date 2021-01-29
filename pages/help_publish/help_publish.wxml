@@ -1,0 +1,96 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-01-11 09:56:30
+ * @LastEditTime: 2021-01-26 22:45:50
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /miniprogram-5/pages/forum_publish/forum_publish.wxml
+-->
+<view class="title" bindtouchstart="touchStart" onPageScroll='onPageScroll'>
+    发布求助
+    <view class="back" bindtap="back_index">
+        <text class="cuIcon-back">
+
+        </text>
+    </view>
+</view>
+
+<view class="forum_write">
+
+    <textarea class="forum_content" value="{{input_content}}" placeholder="500字以内" bindinput="" maxlength="500"
+        bindinput="bind_input_content">
+    </textarea>
+
+    <scroll-view class="forum_pic" scroll-x="false" scroll-y="true">
+        <view class="cu-form-group">
+            <view class="grid col-4 grid-square flex-sub">
+                <view class="bg-img" wx:for="{{imgList}}" wx:key="{{index}}" bindtap="ViewImage"
+                    data-url="{{imgList[index]}}" wx:if="{{index<9}}">
+                    <image src='{{imgList[index]}}' mode='aspectFill'></image>
+                    <view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
+                        <text class="cuIcon-close"></text>
+                    </view>
+                </view>
+                <view class="solids" bindtap="ChooseImage" wx:if="{{imgList.length<9}}">
+                    <text class="cuIcon-cameraadd"></text>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+
+    <view class="topic_display" style="display: {{topic_show?'inline-block':'none'}};">
+
+        <view class="topic_display_what" wx:for="{{topic_content}}" wx:key="{{index}}">
+            <view style="display: inline-block;">
+                <view class="delete_topic_content">
+                    {{topic_content[index]}}
+                </view>
+
+                <view class="delete_topic_close" bindtap="clear_topic" data-index="{{index}}">
+                    ×
+                </view>
+            </view>
+        </view>
+
+    </view>
+
+
+</view>
+
+<view class="forum_topic">
+    <view class="forum_topic_left">
+        <input class="forum_topic_left_top" type="text" placeholder="#自定义话题#" bindinput="add_topic_text"
+            placeholder-class="input-placeholder" maxlength="10">
+
+        </input>
+        <view class="forum_topic_left_bottom">新增话题(十个字以内) </view>
+    </view>
+    <view class="forum_topic_right" bindtap="add_this_topic" data-topic="{{add_topic_content}}">
+        <image class="forum_topic_right_jia" src="https://s3.ax1x.com/2021/01/11/s3qsds.png">
+
+        </image>
+    </view>
+</view>
+
+
+
+<view class="forum_topic" wx:for="{{topicList}}">
+    <view class="forum_topic_left">
+        <view class="forum_topic_left_top">{{item.fields.content}}</view>
+        <view class="forum_topic_left_bottom">{{item.fields.use_times}}人添加该话题</view>
+    </view>
+    <view class="forum_topic_right" bindtap="add_this_topic" data-topic="{{item.fields.content}}">
+        <image class="forum_topic_right_jia" src="https://s3.ax1x.com/2021/01/11/s3qsds.png">
+
+        </image>
+    </view>
+</view>
+
+
+<view class="placeholder">
+
+</view>
+
+<button open-type='getUserInfo' class="publish_button" bindgetuserinfo="getuserinfo">
+    发布
+</button>

@@ -1,5 +1,16 @@
+
 page{
     background-color: rgba(235, 235, 235, 0.699);
+}
+.topic_pic{
+    height: 360rpx;
+    background-color: rgb(218, 193, 52);
+    line-height: 320rpx;
+    text-align: center;
+    font-size: 50rpx;
+    color: white;
+    text-shadow:5px 1px 6px rgb(124, 124, 124);
+    background-size: 100% 100%;
 }
 .title{
     width: 100%;
@@ -16,6 +27,9 @@ page{
     top: 0rpx;
     left: 30rpx;
 }
+.tip{
+    text-align: center;
+}
 /* 下面是功能功能菜单区域 */
 .forum_function{
     width: 100%;
@@ -24,8 +38,8 @@ page{
     padding-top: 20rpx;
 }
 .forum_function_one{
-    width: 15.4%;
-    margin-left: 3.6%;
+    width: 16.4%;
+    margin-left: 3%;
     background-color: rgba(255, 192, 203, 0);
     height: 170rpx;
     float: left;
@@ -57,8 +71,9 @@ page{
     margin-left: 2%;
     border-radius: 10rpx;
     overflow: hidden;
+
     border: .1rpx solid rgb(199, 199, 199);
-    position: relative;
+
 }
 .hot_post_title{
     height: 50rpx;
@@ -85,8 +100,8 @@ page{
 }
 .hot_title{
     width: 100%;
-    bottom: 40rpx;
-    position: absolute;
+    height: 75rpx;
+    margin-top: 116rpx;
     background-color: rgba(255, 255, 255, 0.5);
     line-height: 25rpx;
     font-size: 20rpx;
@@ -99,8 +114,6 @@ page{
     -webkit-line-clamp: 3;
 }
 .hot_who{
-    position: absolute;
-    bottom: 0;
     width: 100%;
     height: 40rpx;
     font-size: 20rpx;
@@ -127,8 +140,7 @@ page{
     width: 100%;
     background-color: rgb(255, 255, 255);
     margin-bottom: 20rpx;
-    box-shadow: 0 0 20rpx rgb(211, 211, 211);
-    webkit-overflow-scrolling: touch    
+    box-shadow: 0 0 20rpx rgb(211, 211, 211); 
 
 }
 .forum_one_name_img{
@@ -313,50 +325,25 @@ page{
     font-weight: 500;
     color: #ffad10;
 }
-.reback{
+
+.refresh{
     position: fixed;
     bottom: 200rpx;
     width: 80rpx;
     height: 80rpx;
     right: 50rpx;
-    background-image: url(https://s3.ax1x.com/2021/01/10/s1io3d.png);
+    background-image: url(https://s3.ax1x.com/2021/01/26/svST0g.png);
     background-size: 100% 100%;
     text-align: center;
     line-height: 200rpx;
     font-weight: 500;
-    color: #775cff;
-}
-.edit{
-    position: fixed;
-    bottom: 200rpx;
-    width: 80rpx;
-    height: 80rpx;
-    right: 50rpx;
-    background-image: url(https://s3.ax1x.com/2021/01/10/s1iI9H.png);
-    background-size: 100% 100%;
-    text-align: center;
-    line-height: 200rpx;
-    font-weight: 500;
-    color: #0edcc6;
-}
-.menu{
-    position: fixed;
-    bottom: 200rpx;
-    width: 80rpx;
-    height: 80rpx;
-    right: 50rpx;
-    background-image: url(https://s3.ax1x.com/2021/01/10/s1kLtS.png);
-    background-size: 100% 100%;
-    text-align: center;
-    line-height: 200rpx;
-    font-weight: 500;
-    color: #0edcc6;
+    color: #ffad10;
 }
 .choose_classify{
     position: fixed;
     width: 100%;
-    height: 520rpx;
-    bottom: -520rpx;
+    height: 770rpx;
+    bottom: -770rpx;
     background-color: rgb(235, 235, 235);
 }
 .choose_classify_top{
@@ -364,28 +351,21 @@ page{
     width: 100%;
     background-color: white;
     border-bottom: 3rpx solid rgb(235, 235, 235);
-    text-indent: 2em;
-    line-height: 60rpx;
-    font-size: 32rpx;
-    color: rgb(31, 127, 253);
-    padding: 20rpx;
 }
 
 .choose_classify_middle{
-    height: 250rpx;
+    height: 500rpx;
     width: 100%;
     background-color: white;
     margin-bottom: 10rpx;
 
 }
 .choose_classify_bottom{
-    height: 200rpx;
+    height: 120rpx;
     width: 100%;
-    background-color: rgb(255, 71, 71);
+    background-color: white;
     text-align: center;
     line-height: 90rpx;
-    color: white;
-    font-size: 40rpx;
 }
 .classify_one{
     width: 25%;

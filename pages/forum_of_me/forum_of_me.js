@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-01-29 13:56:08
+ * @LastEditTime: 2021-01-29 18:36:06
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.js
@@ -50,17 +50,7 @@ Page({
       control_status: 0,   //此刻不允许操作
       page_what_name: options.name,
     })
-    if (options.name != '坦白说' && options.name != '活动' && options.name != '求助') {
-      this.get_topic_url(options.name)
-      this.setData({
-        page_topic_name: options.name,
-      })
-    }
-    /* 页面加载的时候获取数据 */
-    /* 这里一次性获取20条数据，下面的方法实现上滑一次获取下一个20条数据，上拉一次重新获取第一个二十条数据 */
-    /* 这里直接引用一个获取20条数据的函数 */
     this.get_forum()
-    this.onReachBottom()
     /* 首次加载的时候会有加载时禁止操作以及将得到的数据放到 display_temp 中 的操作*/
     setTimeout(() => {
       this.setData({
@@ -68,6 +58,11 @@ Page({
         control_status: 1  /* 此刻允许操作 */
       })
     }, 2000);
+  },
+  onPullDownRefresh: function () {
+    wx.redirectTo({
+      url: '../forum_of_me/forum_of_me',
+    })
   },
   refresh() {
     this.onReachBottom()
@@ -89,6 +84,50 @@ Page({
         })
       }
     })
+  },
+  delete_forum(e) {
+    console.log("删除相关");
+    console.log(e.currentTarget.dataset.forum_id);
+    wx.showModal({
+      title: '提示',
+      content: '是否删除此帖子？',
+      showCancel: true,
+      cancelText: '取消',
+      cancelColor: '#000000',
+      confirmText: '确定',
+      confirmColor: '#3CC51F',
+      success: (result) => {
+        if (result.confirm) {
+          wx.request({
+            url: 'http://127.0.0.1:8000/forum/delete_forum', //仅为示例，并非真实的接口地址
+            data: {
+              forum_id: e.currentTarget.dataset.forum_id,
+            },
+            method: "POST",
+            header: {
+              'content-type': 'application/x-www-form-urlencoded' // 默认值
+            },
+            success: (result) => {
+              console.log(result.data.loginnum);
+              if (result.data.loginnum == 200) {
+                wx.showToast({
+                  title: '删除成功',
+                  icon: 'success',
+                  duration: 1500,
+                });
+                setTimeout(() => {
+                  wx.redirectTo({
+                    url: '../forum_of_me/forum_of_me',
+                  })
+                }, 1500);
+
+              }
+            },
+          });
+        }
+      },
+    });
+
   },
   get_forum() {
     var that = this;
@@ -146,8 +185,6 @@ Page({
           })
         }
         console.log(res.data);
-
-
         for (let i = 0; i < res.data.length; i++) {
           res.data[i].fields.lover = []
           res.data[i].fields.comment = []
@@ -177,6 +214,21 @@ Page({
             res.data[i].fields.topic_arr[4] = res.data[i].fields.topic1
           }
 
+          if (res.data[i].fields.post_data_grade == '大一' || res.data[i].fields.post_data_grade == '大二' || res.data[i].fields.post_data_grade == '大三' || res.data[i].fields.post_data_grade == '大四') {
+            if (res.data[i].fields.post_data_sex == '男') {
+              res.data[i].fields.tag_color = 'skyblue'
+            }
+            else {
+              res.data[i].fields.tag_color = 'pink'
+            }
+          } else if (res.data[i].fields.post_data_grade == '未知年级') {
+            res.data[i].fields.tag_color = 'green'
+          } else if (res.data[i].fields.post_data_grade == '总监') {
+            res.data[i].fields.tag_color = 'orange'
+          } else {
+            res.data[i].fields.tag_color = 'purple'
+          }
+
           if (res.data[i].fields.real_date == today_date) {
             res.data[i].fields.real_time = '今天' + res.data[i].fields.real_time
           } else if (res.data[i].fields.real_date == yesterday_date) {
@@ -187,57 +239,14 @@ Page({
             res.data[i].fields.real_time = res.data[i].fields.real_date + ' ' + res.data[i].fields.real_time
           }
 
-          if (res.data[i].fields.post_data_grade == '大一' || res.data[i].fields.post_data_grade == '大二' || res.data[i].fields.post_data_grade == '大三' || res.data[i].fields.post_data_grade == '大四') {
-            if (res.data[i].fields.post_data_sex == '男') {
-              res.data[i].fields.tag_color = 'skyblue'
-            }
-            else {
-              res.data[i].fields.tag_color = 'pink'
-            }
-          } else if (res.data[i].fields.post_data_grade == '未知年级') {
-            res.data[i].fields.tag_color = 'green'
-          } else if (res.data[i].fields.post_data_grade == '创始人') {
-            res.data[i].fields.tag_color = 'orange'
-          } else {
-            res.data[i].fields.tag_color = 'purple'
-          }
           /* 下面是数据的渲染，同时对数据进行筛选 */
           console.log(res.data[i].fields.topic1);
-          if (that.data.page_what_name == '坦白说') {
-            if (res.data[i].fields.classify == 'frank') {
-              that.setData({
-                display_forum_data: that.data.display_forum_data.concat(res.data[i]),
-                page_topic_url: 'https://s3.ax1x.com/2021/01/27/szVM5V.jpg',
-                page_display_name: '坦白说'
-              })
-            }
-          } else if (that.data.page_what_name == '活动') {
-            if (res.data[i].fields.classify == 'activity') {
-              that.setData({
-                display_forum_data: that.data.display_forum_data.concat(res.data[i]),
-                page_topic_url: 'https://s3.ax1x.com/2021/01/27/szEQ6H.jpg',
-                page_display_name: '活动'
+          if (res.data[i].fields.studentId == wx.getStorageSync('studentId')) {
+            that.setData({
+              display_forum_data: that.data.display_forum_data.concat(res.data[i]),
+            })
 
-              })
-            }
-          } else if (that.data.page_what_name == '求助') {
-            if (res.data[i].fields.classify == 'help') {
-              that.setData({
-                display_forum_data: that.data.display_forum_data.concat(res.data[i]),
-                page_topic_url: 'https://s3.ax1x.com/2021/01/29/yPFFaR.md.jpg',
-                page_display_name: '求助'
-
-              })
-            }
-          } else {
-            if (res.data[i].fields.topic1 == that.data.page_what_name || res.data[i].fields.topic2 == that.data.page_what_name || res.data[i].fields.topic3 == that.data.page_what_name || res.data[i].fields.topic4 == that.data.page_what_name || res.data[i].fields.topic5 == that.data.page_what_name) {
-              that.setData({
-                display_forum_data: that.data.display_forum_data.concat(res.data[i]),
-                page_display_name: '话题'
-              })
-            }
           }
-
 
 
         }

@@ -1,10 +1,10 @@
 {
   "pages": [
-    "pages/index/index",
     "pages/forum/forum",
+    "pages/forum_of_me/forum_of_me",
+    "pages/index/index",
     "pages/ConfessionWall/ConfessionWall",
     "pages/publish_confess/publish_confess",
-
     "pages/login/login",
     "pages/frank_publish/frank_publish",
     "pages/topic/topic",
@@ -22,13 +22,13 @@
     "pages/express_task/express_task",
     "pages/express_catch/express_catch",
     "pages/express_order/express_order",
-
     "pages/pay/pay",
     "pages/product/product",
     "pages/logs/logs",
     "pages/setting_more/setting_more",
     "pages/index_passage/index_passage",
-    "pages/activity_publish/activity_publish"
+    "pages/activity_publish/activity_publish",
+    "pages/help_publish/help_publish"
   ],
   "window": {
     "backgroundTextStyle": "light",
