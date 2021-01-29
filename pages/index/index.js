@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2021-01-28 20:33:17
+ * @LastEditTime: 2021-01-29 22:14:17
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.js
@@ -296,6 +296,11 @@ Page({
   forum() {
     wx.navigateTo({
       url: '../forum/forum',
+    })
+  },
+  address() {
+    wx.navigateTo({
+      url: '../address/address',
     })
   },
   onLoad: function () {

@@ -1,0 +1,109 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-01-29 19:02:02
+ * @LastEditTime: 2021-01-29 22:11:09
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /miniprogram-5/pages/address/address.wxml
+-->
+<view class="title" bindtouchstart="touchStart" onPageScroll='onPageScroll'>
+    共享通讯录
+    <view class="back" bindtap="back_index">
+        <text class="cuIcon-back">
+
+        </text>
+    </view>
+</view>
+<view class="intro" hover-class="none" hover-stop-propagation="false">
+    <view class="" hover-class="none" hover-stop-propagation="false">
+        共享通讯录提供西院老师、机构、
+    </view>
+    <view>
+        部门联系人的电话、QQ、微信等联系方式。
+    </view>
+    <view>
+        现已记录849条联系方式
+    </view>
+    <view>
+        共25人贡献联系方式
+    </view>
+    <view>
+        系统共提供1225次查询服务
+    </view>
+</view>
+<view class="search_place">
+    <view class="search_input">
+        <input class="search_input_place" value="" type="text" placeholder="输入姓名或关键词" bindinput="keyword">
+
+        </input>
+    </view>
+    <view class="search_button" bindtap="keyword_search"></view>
+</view>
+<view class="address_one" wx:for="{{Address_arr}}">
+    <view class="person_infor">
+        <view class="infor_name">{{item.fields.input_name}}</view>
+        <view class="infor_des">{{item.fields.input_desc}}</view>
+    </view>
+    <view class="address">Tel:{{item.fields.input_tel}}</view>
+    <view class="address">QQ:{{item.fields.input_qq}}</view>
+    <view class="address">Weixin:{{item.fields.input_weixin}}</view>
+
+</view>
+
+
+<view class="offer" bindtap="turn_offer">
+    贡献
+</view>
+<view class="offer_input" style="display: {{turn_offer?'block':'none'}};">
+    <view class="offer_title">
+        共享联系方式
+    </view>
+    <view>
+        <view class="offer_name">
+            姓名:
+        </view>
+        <input class="offer_name_input" value="" type="text" placeholder="全名" maxlength="10" bindinput="input_name">
+
+        </input>
+        <view class="offer_name">
+            描述:
+        </view>
+        <input class="offer_name_input" value="" type="text" placeholder="eg：校网编部副部长" maxlength="10"
+            bindinput="input_desc">
+
+        </input>
+        <view class="offer_name">
+            Tel:
+        </view>
+        <input class="offer_name_input" value="" type="text" placeholder="" maxlength="11" bindinput="input_tel">
+
+        </input>
+        <view class="offer_name">
+            QQ:
+        </view>
+        <input class="offer_name_input" value="" type="text" placeholder="" maxlength="10" bindinput="input_qq">
+
+        </input>
+        <view class="offer_name">
+            WeiXin:
+        </view>
+        <input class="offer_name_input" value="" type="text" placeholder="" bindinput="input_weixin">
+
+        </input>
+
+    </view>
+    <view style="clear: both;">
+
+    </view>
+
+    <view class="offer_commit" bindtap="publish">
+        提交
+    </view>
+    <view class="offer_close" bindtap="close_offer">
+        关闭
+    </view>
+
+
+
+
+</view>
