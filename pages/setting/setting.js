@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-10 20:01:02
- * @LastEditTime: 2020-12-08 20:05:22
+ * @LastEditTime: 2021-01-31 21:44:48
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/setting/setting.js
@@ -20,7 +20,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
 
-  page_back_index: function () {
+  back_index: function () {
     wx.redirectTo({
       url: '../index/index',
       success: function (res) {
@@ -52,19 +52,19 @@ Page({
   onLoad: function (options) {
 
   },
-  myinfor() {
-    wx.redirectTo({
-      url: '../setting_infor/setting_infor',
-    })
-  },
   myorder() {
-    wx.redirectTo({
+    wx.navigateTo({
       url: '../setting_order/setting_order',
     })
   },
   talkback() {
-    wx.redirectTo({
+    wx.navigateTo({
       url: '../setting_talkback/setting_talkback',
+    })
+  },
+  about() {
+    wx.navigateTo({
+      url: '../about/about',
     })
   }
 })

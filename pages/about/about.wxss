@@ -1,0 +1,72 @@
+page{
+    background-color: rgb(235, 235, 235);
+}
+.title{
+    width: 100%;
+    height: 140rpx;
+    background: linear-gradient(to right, #dce35b, #45b649); 
+    text-align: center;
+    font-size: 40rpx;
+    position: relative;
+    color: rgb(255, 255, 255);
+    line-height: 220rpx;
+}
+.back{
+    position: absolute;
+    top: 0rpx;
+    left: 30rpx;
+}
+.content{
+    width: 92%;
+    height: auto;
+    margin: 0 auto;
+    background-color: white;
+    margin-top: 40rpx;
+    box-shadow: 2rpx 2rpx 20rpx rgb(134, 134, 134);
+}
+.content_title_h2{
+    color: orange;
+    font-size: 40rpx;
+    margin-top: 40rpx;
+    margin-bottom: 10rpx;
+    line-height: 60rpx;
+    height: 60rpx;
+    padding-left: 30rpx;
+
+}
+.content_title_h3{
+    color: orange;
+    font-size: 35rpx;
+    margin-top: 10rpx;
+    margin-bottom: 10rpx;
+    line-height: 60rpx;
+    height: 60rpx;
+    padding-left: 80rpx;
+
+}
+.content_text{
+    padding-left: 30rpx;
+    padding-right: 30rpx;
+    line-height: 50rpx;
+    text-indent: 2em;
+}
+.content_p{
+    margin-bottom: 30rpx;
+}
+.contact{
+    font-size: 40rpx;
+    color: orange;
+    margin-left: 50rpx;
+    margin-top: 30rpx;
+}
+.contact_desc{
+    margin-left: 60rpx;
+    font-size: 35rpx;
+    margin-top: 20rpx;
+}
+.develop{
+    text-align: center;
+    color: rgb(150, 150, 150);
+    margin-top: 60rpx;
+    
+}

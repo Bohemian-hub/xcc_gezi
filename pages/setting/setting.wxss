@@ -1,14 +1,18 @@
 
-/* pages/setting/setting.wxss */
-.page_back_button{
-    margin-top: 40rpx;
-    margin-left: 20rpx;
-    padding: 30rpx;
-    width: 20%;
+.title{
+    width: 100%;
+    height: 140rpx;
+    background-color:#f1f1f1;
+    text-align: center;
+    font-size: 40rpx;
+    position: relative;
+    color: rgb(97, 97, 97);
+    line-height: 220rpx;
 }
-.page_back{
-    width: 50rpx;
-    
+.back{
+    position: absolute;
+    top: 0rpx;
+    left: 30rpx;
 }
 .page_tile{
     width: 90%;
@@ -47,6 +51,7 @@
 .setting_menu_icon{
     width: 60rpx;
     margin-top: 100rpx;
+    height: auto;
 }
 .copyright{
     text-align: center;

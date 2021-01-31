@@ -6,16 +6,15 @@
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/setting_order/setting_order.wxml
 -->
-<view class="title">
-    <view class="title_back" bindtap="backttosetting">
-        返回
-    </view>
-    <view class="title_text">
-        我的订单
+<view class="title" bindtouchstart="touchStart" onPageScroll='onPageScroll'>
+    订单
+    <view class="back" bindtap="back">
+        <text class="cuIcon-back">
+
+        </text>
     </view>
 </view>
 <view style="clear: both;">
-
 </view>
 
 <view class="order_menu">

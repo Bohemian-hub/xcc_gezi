@@ -1,81 +1,95 @@
-<view class="page_back_button" bindtap='page_back_index'>
-   <image class="page_back" src="https://s1.ax1x.com/2020/11/11/BXy3Jf.png" mode="widthFix" lazy-load="false" binderror="" bindload="" />
-     
+<!--
+ * @Author: your name
+ * @Date: 2020-11-10 20:01:02
+ * @LastEditTime: 2021-01-31 18:39:32
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /miniprogram-5/pages/setting/setting.wxml
+-->
+<view class="title" bindtouchstart="touchStart" onPageScroll='onPageScroll'>
+    <view class="back" bindtap="back_index">
+        <text class="cuIcon-back">
+
+        </text>
+    </view>
 </view>
-  
+
 <view class="page_tile">
-Settings
+    Settings
 </view>
 <view class="xian_long">
 </view>
 <view class="xian_short">
 </view>
-  
+
 <view class="clear_both">
-    
+
 </view>
-  
-<view class="setting_menu" bindtap = "notdofunction">
-<image class="setting_menu_icon" src="https://s1.ax1x.com/2020/11/10/BLTM3n.png" mode="widthFix" lazy-load="false" binderror="" bindload="" />
+
+<view class="setting_menu" bindtap="notdofunction">
+    <image class="setting_menu_icon" src="https://s1.ax1x.com/2020/11/10/BLTM3n.png" mode="widthFix" lazy-load="false"
+        binderror="" bindload="" />
 
     <view>
         倒计时
     </view>
-      
+
 </view>
-<view class="setting_menu" bindtap = "myinfor">
-<image class="setting_menu_icon" src="https://s1.ax1x.com/2020/11/10/BLTQcq.png" mode="widthFix" lazy-load="false" binderror="" bindload="" />
-  
-    <view>
-        个人信息
-    </view>
-      
-</view>
-<view class="setting_menu" bindtap = "notdofunction">
-<image class="setting_menu_icon" src="https://s1.ax1x.com/2020/11/10/BLTeAg.png" mode="widthFix" lazy-load="false" binderror="" bindload="" />
-  
-    <view>
-        签名
-    </view>
-      
-</view>
-<view class="setting_menu" bindtap = "myorder">
-<image class="setting_menu_icon" src="https://s1.ax1x.com/2020/11/10/BLTmNQ.png" mode="widthFix" lazy-load="false" binderror="" bindload="" />
-  
+<view class="setting_menu" bindtap="myorder">
+    <image class="setting_menu_icon" src="https://s1.ax1x.com/2020/11/10/BLTmNQ.png" mode="widthFix" lazy-load="false"
+        binderror="" bindload="" />
+
     <view>
         订单
     </view>
-      
+
 </view>
-<view class="setting_menu">
-<image class="setting_menu_icon" src="https://s1.ax1x.com/2020/11/10/BLT5KP.png" mode="widthFix" lazy-load="false" binderror="" bindload="" />
-  
+<view class="setting_menu" bindtap="notdofunction">
+    <image class="setting_menu_icon" src="https://s1.ax1x.com/2020/11/10/BLT5KP.png" mode="widthFix" lazy-load="false"
+        binderror="" bindload="" />
+
     <view>
         通用
     </view>
-      
+
 </view>
-<view class="setting_menu" bindtap = "talkback">
-<image class="setting_menu_icon" src="https://s1.ax1x.com/2020/11/10/BLTnhj.png" mode="widthFix" lazy-load="false" binderror="" bindload="" />
-  
+<view class="setting_menu" bindtap="notdofunction">
+    <image class="setting_menu_icon" src="https://s1.ax1x.com/2020/11/10/BLTeAg.png" mode="widthFix" lazy-load="false"
+        binderror="" bindload="" />
+
+    <view>
+        签名
+    </view>
+
+</view>
+<view class="setting_menu" bindtap="talkback">
+    <image class="setting_menu_icon" src="https://s1.ax1x.com/2020/11/10/BLTnhj.png" mode="widthFix" lazy-load="false"
+        binderror="" bindload="" />
+
     <view>
         反馈
     </view>
-      
+
 </view>
+<view class="setting_menu" bindtap="about">
+    <image class="setting_menu_icon" src="https://s3.ax1x.com/2021/01/31/yEgn1K.png" mode="widthFix" lazy-load="false"
+        binderror="" bindload="" />
+
+    <view>
+        关于
+    </view>
+
+</view>
+
 <view class="clear_both">
-    
+
 </view>
 <view class="copyright">
     <view>
         西院格子 V1.12
     </view>
-        <view>
+    <view>
         义乌市松雷网络科技工作室
     </view>
-      
-</view>
-  
 
-  
-  
+</view>
