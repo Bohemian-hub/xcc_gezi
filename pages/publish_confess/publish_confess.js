@@ -132,7 +132,7 @@ Page({
       var love_time = myDate.getFullYear() + '' + month + '' + daly
       var record_time = myDate.getFullYear() + '' + month + '' + daly + '' + h + '' + m + '' + s
       wx.request({
-        url: 'http://127.0.0.1:8000/confess/add_confess', //仅为示例，并非真实的接口地址
+        url: 'https://www.xiyuangezi.cn/confess/add_confess', //仅为示例，并非真实的接口地址
         data: {
           realname: wx.getStorageSync('name'),
           studentId: wx.getStorageSync('studentId'),

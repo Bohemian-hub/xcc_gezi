@@ -253,7 +253,7 @@ Page({
       var time = year + '-' + month + "-" + date + " " + h + ":" + m + ':' + s;
       console.log(time);
       wx.request({
-        url: 'http://127.0.0.1:8000/confess/add_new_confess', //仅为示例，并非真实的接口地址
+        url: 'https://www.xiyuangezi.cn/confess/add_new_confess', //仅为示例，并非真实的接口地址
         data: {
           confess_name: this.data.confess_name,
           sex: this.data.sex,

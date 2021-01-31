@@ -70,7 +70,7 @@ Page({
   get_topic_url(e) {
     var that = this
     wx.request({
-      url: 'http://127.0.0.1:8000/forum/get_topic_url', //仅为示例，并非真实的接口地址
+      url: 'https://www.xiyuangezi.cn/forum/get_topic_url', //仅为示例，并非真实的接口地址
       data: {
         page_topic_name: e,
       },
@@ -99,7 +99,7 @@ Page({
       success: (result) => {
         if (result.confirm) {
           wx.request({
-            url: 'http://127.0.0.1:8000/forum/delete_forum', //仅为示例，并非真实的接口地址
+            url: 'https://www.xiyuangezi.cn/forum/delete_forum', //仅为示例，并非真实的接口地址
             data: {
               forum_id: e.currentTarget.dataset.forum_id,
             },
@@ -169,7 +169,7 @@ Page({
     /* 一次性请求二十条数据，只需要传入第几次获取 */
     console.log(that.data.get_forum_times);   //显示是第几次去获取数据
     wx.request({
-      url: 'http://127.0.0.1:8000/forum/get_forum', //仅为示例，并非真实的接口地址
+      url: 'https://www.xiyuangezi.cn/forum/get_forum', //仅为示例，并非真实的接口地址
       data: {
         get_forum_times: that.data.get_forum_times,
       },
@@ -329,7 +329,7 @@ Page({
         }
         /* 获取评论 */
         wx.request({
-          url: 'http://127.0.0.1:8000/forum/get_comment', //仅为示例，并非真实的接口地址
+          url: 'https://www.xiyuangezi.cn/forum/get_comment', //仅为示例，并非真实的接口地址
           data: {
             getloverforumarr: getloverforumarr
           },
@@ -353,7 +353,7 @@ Page({
         });
         /* 获取子评论 */
         wx.request({
-          url: 'http://127.0.0.1:8000/forum/get_son_comment', //仅为示例，并非真实的接口地址
+          url: 'https://www.xiyuangezi.cn/forum/get_son_comment', //仅为示例，并非真实的接口地址
           data: {
             getloverforumarr: getloverforumarr
           },
@@ -625,7 +625,7 @@ Page({
 
       /* 下面我要请求后端数据库了，我要将这个评论增加大哦我的评论表中去。 */
       wx.request({
-        url: 'http://127.0.0.1:8000/forum/add_comment', //仅为示例，并非真实的接口地址
+        url: 'https://www.xiyuangezi.cn/forum/add_comment', //仅为示例，并非真实的接口地址
         data: {
           name: wx.getStorageSync('name'),
           studentId: wx.getStorageSync('studentId'),
@@ -664,7 +664,7 @@ Page({
 
           }
           wx.request({
-            url: 'http://127.0.0.1:8000/forum/get_comment', //仅为示例，并非真实的接口地址
+            url: 'https://www.xiyuangezi.cn/forum/get_comment', //仅为示例，并非真实的接口地址
             data: {
               getloverforumarr: getloverforumarr
             },
@@ -756,7 +756,7 @@ Page({
 
       /* 下面我要请求后端数据库了，我要将这个评论增加大哦我的评论表中去。 */
       wx.request({
-        url: 'http://127.0.0.1:8000/forum/add_son_comment', //仅为示例，并非真实的接口地址
+        url: 'https://www.xiyuangezi.cn/forum/add_son_comment', //仅为示例，并非真实的接口地址
         data: {
           forum_id: forum_id,   //帖子id
           comment_id: comment_id,  //主评论的id
@@ -790,7 +790,7 @@ Page({
             })
           }
           wx.request({
-            url: 'http://127.0.0.1:8000/forum/get_son_comment', //仅为示例，并非真实的接口地址
+            url: 'https://www.xiyuangezi.cn/forum/get_son_comment', //仅为示例，并非真实的接口地址
             data: {
               getloverforumarr: getloverforumarr
             },
@@ -985,7 +985,7 @@ Page({
       console.log(this.data.delete_comment_id);
       /* 发送请求删除大评论 */
       wx.request({
-        url: 'http://127.0.0.1:8000/forum/delete_comment', //仅为示例，并非真实的接口地址
+        url: 'https://www.xiyuangezi.cn/forum/delete_comment', //仅为示例，并非真实的接口地址
         data: {
           delete_comment_id: this.data.delete_comment_id
         },
@@ -1015,7 +1015,7 @@ Page({
             })
           }
           wx.request({
-            url: 'http://127.0.0.1:8000/forum/get_comment', //仅为示例，并非真实的接口地址
+            url: 'https://www.xiyuangezi.cn/forum/get_comment', //仅为示例，并非真实的接口地址
             data: {
               getloverforumarr: getloverforumarr
             },
@@ -1059,7 +1059,7 @@ Page({
       console.log(this.data.delete_comment_id);
       /* 发送请求删除子评论 */
       wx.request({
-        url: 'http://127.0.0.1:8000/forum/delete_son_comment', //仅为示例，并非真实的接口地址
+        url: 'https://www.xiyuangezi.cn/forum/delete_son_comment', //仅为示例，并非真实的接口地址
         data: {
           delete_comment_id: this.data.delete_comment_id
         },
@@ -1088,7 +1088,7 @@ Page({
             })
           }
           wx.request({
-            url: 'http://127.0.0.1:8000/forum/get_son_comment', //仅为示例，并非真实的接口地址
+            url: 'https://www.xiyuangezi.cn/forum/get_son_comment', //仅为示例，并非真实的接口地址
             data: {
               getloverforumarr: getloverforumarr
             },

@@ -79,7 +79,7 @@ Page({
     var that = this
     if (that.data.keyword != '') {
       wx.request({
-        url: 'http://127.0.0.1:8000/one/get_address', //仅为示例，并非真实的接口地址
+        url: 'https://www.xiyuangezi.cn/one/get_address', //仅为示例，并非真实的接口地址
         data: {
           keyword: that.data.keyword,
         },
@@ -110,7 +110,7 @@ Page({
       console.log("至少填写一种联系方式");
       if (that.data.input_qq != '' || that.data.input_tel != '' || that.data.input_weixin != '') {
         wx.request({
-          url: 'http://127.0.0.1:8000/one/add_address', //仅为示例，并非真实的接口地址
+          url: 'https://www.xiyuangezi.cn/one/add_address', //仅为示例，并非真实的接口地址
           data: {
             studentId: wx.getStorageSync('studentId'),
             real_name: wx.getStorageSync('name'),

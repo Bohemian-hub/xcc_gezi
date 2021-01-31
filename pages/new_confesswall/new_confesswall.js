@@ -31,7 +31,7 @@ Page({
   get_new_confess() {
     /* 发送一个请求去获取我的表白 */
     wx.request({
-      url: 'http://127.0.0.1:8000/confess/get_new_confess', //仅为示例，并非真实的接口地址
+      url: 'https://www.xiyuangezi.cn/confess/get_new_confess', //仅为示例，并非真实的接口地址
       data: {
         studentId: wx.getStorageSync('studentId'),
       },
@@ -52,7 +52,7 @@ Page({
   confess_tome() {
 
     wx.request({
-      url: 'http://127.0.0.1:8000/confess/get_confess_tome', //仅为示例，并非真实的接口地址
+      url: 'https://www.xiyuangezi.cn/confess/get_confess_tome', //仅为示例，并非真实的接口地址
       /* 这里传入的值包括专业院系等等 */
       data: {
         name: wx.getStorageSync('name'),

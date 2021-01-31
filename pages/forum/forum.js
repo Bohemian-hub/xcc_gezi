@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-01-29 13:56:51
+ * @LastEditTime: 2021-01-31 11:09:40
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.js
@@ -69,6 +69,7 @@ Page({
   turn_hot_topic(e) {
     console.log(e.currentTarget.dataset.pk);
     for (let index = 0; index < this.data.hot_forum.length; index++) {
+
       if (this.data.hot_forum[index].pk == e.currentTarget.dataset.pk) {
         console.log(this.data.hot_forum[index]);
         /* 然后把这个数据追加到最前面 */
@@ -122,7 +123,7 @@ Page({
 
     console.log(today_date, yesterday_date, before_yesterday_date);
     wx.request({
-      url: 'http://127.0.0.1:8000/forum/get_forum', //仅为示例，并非真实的接口地址
+      url: 'https://www.xiyuangezi.cn/forum/get_forum', //仅为示例，并非真实的接口地址
       data: {
         get_forum_times: that.data.get_forum_times,
       },
@@ -146,10 +147,7 @@ Page({
           res.data[i].fields.lover = []
           res.data[i].fields.comment = []
           res.data[i].fields.soncomment = []
-          /* 把他们变成数组 ，让页面可以看得到*/
-          var stringResult = res.data[i].fields.post_data_pic.split(',');
-          //console.log(stringResult);
-          res.data[i].fields.post_data_pic2 = stringResult
+
 
           res.data[i].fields.topic_arr = []
           if (res.data[i].fields.topic1 !== "init") {    //一次看五个话题字段是否有值，有值就方到topic_arr里面去
@@ -194,6 +192,8 @@ Page({
           }
 
           /* 新获取的数据追加到页面 */
+          /* 把他们变成数组 ，让页面可以看得到*/
+          res.data[i].fields.post_data_pic2 = res.data[i].fields.post_data_pic.split(',')
           that.setData({
             display_forum_data: that.data.display_forum_data.concat(res.data[i])
           })
@@ -272,7 +272,7 @@ Page({
         }
         /* 获取评论 */
         wx.request({
-          url: 'http://127.0.0.1:8000/forum/get_comment', //仅为示例，并非真实的接口地址
+          url: 'https://www.xiyuangezi.cn/forum/get_comment', //仅为示例，并非真实的接口地址
           data: {
             getloverforumarr: getloverforumarr
           },
@@ -296,7 +296,7 @@ Page({
         });
         /* 获取子评论 */
         wx.request({
-          url: 'http://127.0.0.1:8000/forum/get_son_comment', //仅为示例，并非真实的接口地址
+          url: 'https://www.xiyuangezi.cn/forum/get_son_comment', //仅为示例，并非真实的接口地址
           data: {
             getloverforumarr: getloverforumarr
           },
@@ -310,7 +310,7 @@ Page({
             for (let index = 0; index < result.data.length; index++) {
               for (let index2 = 0; index2 < that.data.display_forum_data.length; index2++) {
                 if (that.data.display_forum_data[index2].pk == result.data[index].fields.forum_id) {
-                  console.log(result.data[index].fields);
+                  //console.log(result.data[index].fields);
                   that.setData({
                     ['display_forum_data[' + index2 + '].fields.soncomment']: that.data.display_forum_data[index2].fields.soncomment.concat(result.data[index].fields)
                   })
@@ -320,7 +320,27 @@ Page({
             }
           },
         });
+
         setTimeout(() => {     //等一哈之后再渲染图片，不然会有src异步错误
+          for (let index = 0; index < that.data.display_forum_data.length; index++) {
+            for (let index2 = 0; index2 < that.data.display_forum_data[index].fields.post_data_pic2.length; index2++) {
+              let img_src = that.data.display_forum_data[index].fields.post_data_pic2[index2]
+              wx.request({
+                url: img_src,
+                header: { 'content-type': 'application/json' },
+                method: 'GET',
+                success: function (res) {
+                  console.log(res.statusCode)
+                  if (res.statusCode == 403) {
+                    console.log("违规");
+                    that.setData({
+                      ['display_forum_data[' + index + '].fields.post_data_pic2[' + index2 + ']']: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Ffjmingfeng.com%2Fimg%2F5%2F8303413951%2F51%2F91bf6b6900c9f4d37839269687708ba3%2F0673389063%2F7185507321.jpg&refer=http%3A%2F%2Ffjmingfeng.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1614609784&t=203f55f724fa2af1ae2b44c75b26af22'
+                    })
+                  }
+                },
+              })
+            }
+          }
           that.setData({
             if_display_pic: 1
           })
@@ -354,8 +374,44 @@ Page({
     }
     var hot_time = myDate.getFullYear() + '' + month + '' + daly + '' + h + '' + m + '' + s
     console.log(hot_time);
+    var today = new Date();
+    var month = today.getMonth() + 1
+    var daly = today.getDate()
+    if (daly < 10) {
+      daly = "0" + String(daly)
+    }
+    if (month < 10) {
+      month = "0" + String(month)
+    }
+    var today_date = today.getFullYear() + '' + month + '' + daly
+
+    var yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    var month = yesterday.getMonth() + 1
+    var daly = yesterday.getDate()
+    if (daly < 10) {
+      daly = "0" + String(daly)
+    }
+    if (month < 10) {
+      month = "0" + String(month)
+    }
+    var yesterday_date = yesterday.getFullYear() + '' + month + '' + daly
+
+    var beforeyesterday = new Date();
+    beforeyesterday.setDate(beforeyesterday.getDate() - 2);
+    var month = beforeyesterday.getMonth() + 1
+    var daly = beforeyesterday.getDate()
+    if (daly < 10) {
+      daly = "0" + String(daly)
+    }
+    if (month < 10) {
+      month = "0" + String(month)
+    }
+    var before_yesterday_date = beforeyesterday.getFullYear() + '' + month + '' + daly
+
+    console.log(today_date, yesterday_date, before_yesterday_date);
     wx.request({
-      url: 'http://127.0.0.1:8000/forum/get_hot_forum',
+      url: 'https://www.xiyuangezi.cn/forum/get_hot_forum',
       data: {
         hot_time: hot_time,
       },
@@ -370,6 +426,15 @@ Page({
             /* 说明没得图片 */
             res.data[i].fields.has_pic = 0
           } else {
+            if (res.data[i].fields.real_date == today_date) {
+              res.data[i].fields.real_time = '今天' + res.data[i].fields.real_time
+            } else if (res.data[i].fields.real_date == yesterday_date) {
+              res.data[i].fields.real_time = '昨天' + res.data[i].fields.real_time
+            } else if (res.data[i].fields.real_date == before_yesterday_date) {
+              res.data[i].fields.real_time = '前天' + res.data[i].fields.real_time
+            } else {
+              res.data[i].fields.real_time = res.data[i].fields.real_date + ' ' + res.data[i].fields.real_time
+            }
             var stringResult = res.data[i].fields.post_data_pic.split(',');
             res.data[i].fields.post_data_pic2 = stringResult
             that.setData({
@@ -732,63 +797,83 @@ Page({
           'content-type': 'application/x-www-form-urlencoded' // 默认值
         },
         success: (result) => {
-          console.log("评论成功！");
-          wx.showToast({
-            title: '评论成功！',
-            icon: 'success',
-            duration: 1000,//持续的时间
-          })
-          /* 清楚输入框的数据记录 */
-          that.setData({
-            comment_of_forum: ''
-          })
-          /* 评论成功之后就要想办法刷新数据了 */
-          var getloverforumarr = []
-          getloverforumarr = getloverforumarr.concat(that.data.now_forum_id)
-          console.log(getloverforumarr);
-          /* 现在开始准备对这条forum中的评论清空 */
-          for (let index = 0; index < that.data.display_forum_data.length; index++) {   //对已经有的数据的评论数据进行清空
-            if (that.data.display_forum_data[index].pk == that.data.now_forum_id) {
-              console.log("匹配到啦");
-              that.data.display_forum_data[index].fields.comment = []
-            }
+          console.log(result.data.loginnum);
+          if (result.data.loginnum == 200) {
+            console.log("评论成功！");
+            wx.showToast({
+              title: '评论成功！',
+              icon: 'success',
+              duration: 1000,//持续的时间
+            })
+            /* 清楚输入框的数据记录 */
+            that.setData({
+              comment_of_forum: ''
+            })
+            /* 评论成功之后就要想办法刷新数据了 */
+            var getloverforumarr = []
+            getloverforumarr = getloverforumarr.concat(that.data.now_forum_id)
+            console.log(getloverforumarr);
+            /* 现在开始准备对这条forum中的评论清空 */
+            for (let index = 0; index < that.data.display_forum_data.length; index++) {   //对已经有的数据的评论数据进行清空
+              if (that.data.display_forum_data[index].pk == that.data.now_forum_id) {
+                console.log("匹配到啦");
+                that.data.display_forum_data[index].fields.comment = []
+              }
 
-          }
-          wx.request({
-            url: 'http://127.0.0.1:8000/forum/get_comment', //仅为示例，并非真实的接口地址
-            data: {
-              getloverforumarr: getloverforumarr
-            },
-            method: "POST",
-            header: {
-              'content-type': 'application/x-www-form-urlencoded' // 默认值
-            },
-            success: (result) => {
-              console.log(result);
-              for (let index = 0; index < result.data.length; index++) {
-                for (let index2 = 0; index2 < that.data.display_forum_data.length; index2++) {
-                  if (that.data.display_forum_data[index2].pk == result.data[index].fields.forum_id) {
-                    console.log(result.data[index].fields);
-                    that.setData({
-                      ['display_forum_data[' + index2 + '].fields.comment']: that.data.display_forum_data[index2].fields.comment.concat(result.data[index].fields)
-                    })
+            }
+            wx.request({
+              url: 'https://www.xiyuangezi.cn/forum/get_comment', //仅为示例，并非真实的接口地址
+              data: {
+                getloverforumarr: getloverforumarr
+              },
+              method: "POST",
+              header: {
+                'content-type': 'application/x-www-form-urlencoded' // 默认值
+              },
+              success: (result) => {
+                console.log(result);
+                for (let index = 0; index < result.data.length; index++) {
+                  for (let index2 = 0; index2 < that.data.display_forum_data.length; index2++) {
+                    if (that.data.display_forum_data[index2].pk == result.data[index].fields.forum_id) {
+                      console.log(result.data[index].fields);
+                      that.setData({
+                        ['display_forum_data[' + index2 + '].fields.comment']: that.data.display_forum_data[index2].fields.comment.concat(result.data[index].fields)
+                      })
+                    }
                   }
                 }
-              }
-              console.log(that.data.display_forum_data);
-              for (let index = 0; index < that.data.display_forum_data.length; index++) {
-                if (that.data.display_forum_data[index].pk == this.data.now_forum_id) {
-                  this.setData({
-                    now_display_comment: that.data.display_forum_data[index].fields.comment,
-                    now_display_soncomment: that.data.display_forum_data[index].fields.soncomment,
-                    comment_onclick_count: that.data.display_forum_data[index].fields.comment.length + that.data.display_forum_data[index].fields.soncomment.length
-                  })
+                console.log(that.data.display_forum_data);
+                for (let index = 0; index < that.data.display_forum_data.length; index++) {
+                  for (let index2 = 0; index2 < that.data.display_forum_data[index].fields.comment.length; index2++) {
+                    console.log(that.data.display_forum_data[index].fields.comment[index2].avatarUrl);
+                    if (that.data.display_forum_data[index].fields.comment[index2].avatarUrl == 'undefined') {
+                      console.log("哈哈哈");
+                      that.setData({
+                        ['display_forum_data[' + index + '].fields.comment[' + index2 + '].avatarUrl']: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2389998747,3300817372&fm=26&gp=0.jpg'
+                      })
+                    }
+                  }
+                  if (that.data.display_forum_data[index].pk == this.data.now_forum_id) {
+                    this.setData({
+                      now_display_comment: that.data.display_forum_data[index].fields.comment,
+                      now_display_soncomment: that.data.display_forum_data[index].fields.soncomment,
+                      comment_onclick_count: that.data.display_forum_data[index].fields.comment.length + that.data.display_forum_data[index].fields.soncomment.length
+                    })
+                  }
+
                 }
 
-              }
+              },
+            });
 
-            },
-          });
+          } else {
+            console.log("评论失败！");
+            wx.showToast({
+              title: '检测到内容违规',
+              icon: 'none',
+              duration: 2000,//持续的时间
+            })
+          }
 
 
         },
@@ -863,58 +948,77 @@ Page({
           'content-type': 'application/x-www-form-urlencoded' // 默认值
         },
         success: (result) => {
-          console.log("子评论成功！");
-          wx.showToast({
-            title: '回复成功！',
-            icon: 'success',
-            duration: 1000,//持续的时间
-          })
-          that.setData({
-            comment_of_forum: ''
-          })
-          /* 刷新数据！！！ */
-          var getloverforumarr = []
-          for (let index = 0; index < that.data.display_forum_data.length; index++) {
-            getloverforumarr = getloverforumarr.concat(that.data.display_forum_data[index].pk)
-            that.setData({
-              ['display_forum_data[' + index + '].fields.soncomment']: []     //把他们里面的评论数据先清空
+          if (result.data.loginnum == 200) {
+            console.log("子评论成功！");
+            wx.showToast({
+              title: '回复成功！',
+              icon: 'success',
+              duration: 1000,//持续的时间
             })
-          }
-          wx.request({
-            url: 'http://127.0.0.1:8000/forum/get_son_comment', //仅为示例，并非真实的接口地址
-            data: {
-              getloverforumarr: getloverforumarr
-            },
-            method: "POST",
-            header: {
-              'content-type': 'application/x-www-form-urlencoded' // 默认值
-            },
-            success: (result) => {
-              console.log(result);
-              for (let index = 0; index < result.data.length; index++) {
-                for (let index2 = 0; index2 < that.data.display_forum_data.length; index2++) {
-                  if (that.data.display_forum_data[index2].pk == result.data[index].fields.forum_id) {
-                    console.log(result.data[index].fields);
-                    that.setData({
-                      ['display_forum_data[' + index2 + '].fields.soncomment']: that.data.display_forum_data[index2].fields.soncomment.concat(result.data[index].fields)
-                    })
+            that.setData({
+              comment_of_forum: ''
+            })
+            /* 刷新数据！！！ */
+            var getloverforumarr = []
+            for (let index = 0; index < that.data.display_forum_data.length; index++) {
+              getloverforumarr = getloverforumarr.concat(that.data.display_forum_data[index].pk)
+              that.setData({
+                ['display_forum_data[' + index + '].fields.soncomment']: []     //把他们里面的评论数据先清空
+              })
+            }
+            wx.request({
+              url: 'https://www.xiyuangezi.cn/forum/get_son_comment', //仅为示例，并非真实的接口地址
+              data: {
+                getloverforumarr: getloverforumarr
+              },
+              method: "POST",
+              header: {
+                'content-type': 'application/x-www-form-urlencoded' // 默认值
+              },
+              success: (result) => {
+                console.log(result);
+                for (let index = 0; index < result.data.length; index++) {
+                  for (let index2 = 0; index2 < that.data.display_forum_data.length; index2++) {
+                    if (that.data.display_forum_data[index2].pk == result.data[index].fields.forum_id) {
+                      console.log(result.data[index].fields);
+                      that.setData({
+                        ['display_forum_data[' + index2 + '].fields.soncomment']: that.data.display_forum_data[index2].fields.soncomment.concat(result.data[index].fields)
+                      })
+                    }
                   }
                 }
-              }
-              console.log(that.data.display_forum_data);
-              for (let index = 0; index < that.data.display_forum_data.length; index++) {
-                if (that.data.display_forum_data[index].pk == this.data.now_forum_id) {
-                  this.setData({
-                    now_display_comment: that.data.display_forum_data[index].fields.comment,
-                    now_display_soncomment: that.data.display_forum_data[index].fields.soncomment,
-                    comment_onclick_count: that.data.display_forum_data[index].fields.comment.length + that.data.display_forum_data[index].fields.soncomment.length
-                  })
+                console.log(that.data.display_forum_data);
+                for (let index = 0; index < that.data.display_forum_data.length; index++) {
+                  for (let index2 = 0; index2 < that.data.display_forum_data[index].fields.comment.length; index2++) {
+                    console.log(that.data.display_forum_data[index].fields.comment[index2].avatarUrl);
+                    if (that.data.display_forum_data[index].fields.comment[index2].avatarUrl == 'undefined') {
+                      console.log("哈哈哈");
+                      that.setData({
+                        ['display_forum_data[' + index + '].fields.comment[' + index2 + '].avatarUrl']: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2389998747,3300817372&fm=26&gp=0.jpg'
+                      })
+                    }
+                  }
+                  if (that.data.display_forum_data[index].pk == this.data.now_forum_id) {
+                    this.setData({
+                      now_display_comment: that.data.display_forum_data[index].fields.comment,
+                      now_display_soncomment: that.data.display_forum_data[index].fields.soncomment,
+                      comment_onclick_count: that.data.display_forum_data[index].fields.comment.length + that.data.display_forum_data[index].fields.soncomment.length
+                    })
+                  }
+
                 }
 
-              }
+              },
+            });
+          } else {
+            console.log("评论失败！");
+            wx.showToast({
+              title: '检测到内容违规',
+              icon: 'none',
+              duration: 2000,//持续的时间
+            })
+          }
 
-            },
-          });
 
         },
       });
@@ -943,6 +1047,15 @@ Page({
 
     console.log(that.data.display_forum_data);
     for (let index = 0; index < that.data.display_forum_data.length; index++) {
+      for (let index2 = 0; index2 < that.data.display_forum_data[index].fields.comment.length; index2++) {
+        console.log(that.data.display_forum_data[index].fields.comment[index2].avatarUrl);
+        if (that.data.display_forum_data[index].fields.comment[index2].avatarUrl == 'undefined') {
+          console.log("哈哈哈");
+          that.setData({
+            ['display_forum_data[' + index + '].fields.comment[' + index2 + '].avatarUrl']: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2389998747,3300817372&fm=26&gp=0.jpg'
+          })
+        }
+      }
       if (that.data.display_forum_data[index].pk == e.currentTarget.dataset.id) {
         this.setData({
           now_display_comment: that.data.display_forum_data[index].fields.comment,
@@ -1076,7 +1189,7 @@ Page({
       console.log(this.data.delete_comment_id);
       /* 发送请求删除大评论 */
       wx.request({
-        url: 'http://127.0.0.1:8000/forum/delete_comment', //仅为示例，并非真实的接口地址
+        url: 'https://www.xiyuangezi.cn/forum/delete_comment', //仅为示例，并非真实的接口地址
         data: {
           delete_comment_id: this.data.delete_comment_id
         },
@@ -1106,7 +1219,7 @@ Page({
             })
           }
           wx.request({
-            url: 'http://127.0.0.1:8000/forum/get_comment', //仅为示例，并非真实的接口地址
+            url: 'https://www.xiyuangezi.cn/forum/get_comment', //仅为示例，并非真实的接口地址
             data: {
               getloverforumarr: getloverforumarr
             },
@@ -1128,6 +1241,15 @@ Page({
               }
               console.log(that.data.display_forum_data);
               for (let index = 0; index < that.data.display_forum_data.length; index++) {
+                for (let index2 = 0; index2 < that.data.display_forum_data[index].fields.comment.length; index2++) {
+                  console.log(that.data.display_forum_data[index].fields.comment[index2].avatarUrl);
+                  if (that.data.display_forum_data[index].fields.comment[index2].avatarUrl == 'undefined') {
+                    console.log("哈哈哈");
+                    that.setData({
+                      ['display_forum_data[' + index + '].fields.comment[' + index2 + '].avatarUrl']: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2389998747,3300817372&fm=26&gp=0.jpg'
+                    })
+                  }
+                }
                 if (that.data.display_forum_data[index].pk == this.data.now_forum_id) {
                   this.setData({
                     now_display_comment: that.data.display_forum_data[index].fields.comment,
@@ -1150,7 +1272,7 @@ Page({
       console.log(this.data.delete_comment_id);
       /* 发送请求删除子评论 */
       wx.request({
-        url: 'http://127.0.0.1:8000/forum/delete_son_comment', //仅为示例，并非真实的接口地址
+        url: 'https://www.xiyuangezi.cn/forum/delete_son_comment', //仅为示例，并非真实的接口地址
         data: {
           delete_comment_id: this.data.delete_comment_id
         },
@@ -1179,7 +1301,7 @@ Page({
             })
           }
           wx.request({
-            url: 'http://127.0.0.1:8000/forum/get_son_comment', //仅为示例，并非真实的接口地址
+            url: 'https://www.xiyuangezi.cn/forum/get_son_comment', //仅为示例，并非真实的接口地址
             data: {
               getloverforumarr: getloverforumarr
             },
@@ -1231,7 +1353,7 @@ Page({
 
   publish_learn() {
     wx.request({
-      url: 'http://127.0.0.1:8000/info/activity', //仅为示例，并非真实的接口地址
+      url: 'https://www.xiyuangezi.cn/info/activity', //仅为示例，并非真实的接口地址
       data: {
         studentId: wx.getStorageSync('studentId')
       },
@@ -1261,7 +1383,7 @@ Page({
   },
   help_publish() {
     wx.request({
-      url: 'http://127.0.0.1:8000/info/activity', //仅为示例，并非真实的接口地址
+      url: 'https://www.xiyuangezi.cn/info/activity', //仅为示例，并非真实的接口地址
       data: {
         studentId: wx.getStorageSync('studentId')
       },
@@ -1292,7 +1414,7 @@ Page({
     /* 验证我的身份 */
     /* 直接去数据库中获取我的身份即可 */
     wx.request({
-      url: 'http://127.0.0.1:8000/info/activity', //仅为示例，并非真实的接口地址
+      url: 'https://www.xiyuangezi.cn/info/activity', //仅为示例，并非真实的接口地址
       data: {
         studentId: wx.getStorageSync('studentId')
       },

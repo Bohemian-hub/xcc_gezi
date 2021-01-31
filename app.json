@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/address/address",
     "pages/index/index",
+    "pages/address/address",
     "pages/pay/pay",
     "pages/product/product",
     "pages/setting_talkback/setting_talkback",

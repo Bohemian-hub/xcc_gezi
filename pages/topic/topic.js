@@ -32,7 +32,7 @@ Page({
   get_topic() {
     var that = this
     wx.request({
-      url: 'http://127.0.0.1:8000/forum/get_topic', //仅为示例，并非真实的接口地址
+      url: 'https://www.xiyuangezi.cn/forum/get_topic', //仅为示例，并非真实的接口地址
       header: {
         'content-type': 'application/json' // 默认值
       },
@@ -69,7 +69,7 @@ Page({
     }
     var real_date = myDate.getFullYear() + '' + month + '' + daly;
     wx.request({
-      url: 'http://127.0.0.1:8000/forum/get_hot_topic', //仅为示例，并非真实的接口地址
+      url: 'https://www.xiyuangezi.cn/forum/get_hot_topic', //仅为示例，并非真实的接口地址
       method: "POST",
       header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值

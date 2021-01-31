@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-01-29 13:56:08
+ * @LastEditTime: 2021-01-31 10:53:52
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.js
@@ -60,7 +60,6 @@ Page({
     /* 这里一次性获取20条数据，下面的方法实现上滑一次获取下一个20条数据，上拉一次重新获取第一个二十条数据 */
     /* 这里直接引用一个获取20条数据的函数 */
     this.get_forum()
-    this.onReachBottom()
     /* 首次加载的时候会有加载时禁止操作以及将得到的数据放到 display_temp 中 的操作*/
     setTimeout(() => {
       this.setData({
@@ -75,7 +74,7 @@ Page({
   get_topic_url(e) {
     var that = this
     wx.request({
-      url: 'http://127.0.0.1:8000/forum/get_topic_url', //仅为示例，并非真实的接口地址
+      url: 'https://www.xiyuangezi.cn/forum/get_topic_url', //仅为示例，并非真实的接口地址
       data: {
         page_topic_name: e,
       },
@@ -130,7 +129,7 @@ Page({
     /* 一次性请求二十条数据，只需要传入第几次获取 */
     console.log(that.data.get_forum_times);   //显示是第几次去获取数据
     wx.request({
-      url: 'http://127.0.0.1:8000/forum/get_forum', //仅为示例，并非真实的接口地址
+      url: 'https://www.xiyuangezi.cn/forum/get_forum', //仅为示例，并非真实的接口地址
       data: {
         get_forum_times: that.data.get_forum_times,
       },
@@ -320,7 +319,7 @@ Page({
         }
         /* 获取评论 */
         wx.request({
-          url: 'http://127.0.0.1:8000/forum/get_comment', //仅为示例，并非真实的接口地址
+          url: 'https://www.xiyuangezi.cn/forum/get_comment', //仅为示例，并非真实的接口地址
           data: {
             getloverforumarr: getloverforumarr
           },
@@ -344,7 +343,7 @@ Page({
         });
         /* 获取子评论 */
         wx.request({
-          url: 'http://127.0.0.1:8000/forum/get_son_comment', //仅为示例，并非真实的接口地址
+          url: 'https://www.xiyuangezi.cn/forum/get_son_comment', //仅为示例，并非真实的接口地址
           data: {
             getloverforumarr: getloverforumarr
           },
@@ -369,6 +368,25 @@ Page({
           },
         });
         setTimeout(() => {     //等一哈之后再渲染图片，不然会有src异步错误
+          for (let index = 0; index < that.data.display_forum_data.length; index++) {
+            for (let index2 = 0; index2 < that.data.display_forum_data[index].fields.post_data_pic2.length; index2++) {
+              let img_src = that.data.display_forum_data[index].fields.post_data_pic2[index2]
+              wx.request({
+                url: img_src,
+                header: { 'content-type': 'application/json' },
+                method: 'GET',
+                success: function (res) {
+                  console.log(res.statusCode)
+                  if (res.statusCode == 403) {
+                    console.log("违规");
+                    that.setData({
+                      ['display_forum_data[' + index + '].fields.post_data_pic2[' + index2 + ']']: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Ffjmingfeng.com%2Fimg%2F5%2F8303413951%2F51%2F91bf6b6900c9f4d37839269687708ba3%2F0673389063%2F7185507321.jpg&refer=http%3A%2F%2Ffjmingfeng.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1614609784&t=203f55f724fa2af1ae2b44c75b26af22'
+                    })
+                  }
+                },
+              })
+            }
+          }
           that.setData({
             if_display_pic: 1
           })
@@ -616,7 +634,7 @@ Page({
 
       /* 下面我要请求后端数据库了，我要将这个评论增加大哦我的评论表中去。 */
       wx.request({
-        url: 'http://127.0.0.1:8000/forum/add_comment', //仅为示例，并非真实的接口地址
+        url: 'https://www.xiyuangezi.cn/forum/add_comment', //仅为示例，并非真实的接口地址
         data: {
           name: wx.getStorageSync('name'),
           studentId: wx.getStorageSync('studentId'),
@@ -655,7 +673,7 @@ Page({
 
           }
           wx.request({
-            url: 'http://127.0.0.1:8000/forum/get_comment', //仅为示例，并非真实的接口地址
+            url: 'https://www.xiyuangezi.cn/forum/get_comment', //仅为示例，并非真实的接口地址
             data: {
               getloverforumarr: getloverforumarr
             },
@@ -677,6 +695,15 @@ Page({
               }
               console.log(that.data.display_forum_data);
               for (let index = 0; index < that.data.display_forum_data.length; index++) {
+                for (let index2 = 0; index2 < that.data.display_forum_data[index].fields.comment.length; index2++) {
+                  console.log(that.data.display_forum_data[index].fields.comment[index2].avatarUrl);
+                  if (that.data.display_forum_data[index].fields.comment[index2].avatarUrl == 'undefined') {
+                    console.log("哈哈哈");
+                    that.setData({
+                      ['display_forum_data[' + index + '].fields.comment[' + index2 + '].avatarUrl']: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2389998747,3300817372&fm=26&gp=0.jpg'
+                    })
+                  }
+                }
                 if (that.data.display_forum_data[index].pk == this.data.now_forum_id) {
                   this.setData({
                     now_display_comment: that.data.display_forum_data[index].fields.comment,
@@ -747,7 +774,7 @@ Page({
 
       /* 下面我要请求后端数据库了，我要将这个评论增加大哦我的评论表中去。 */
       wx.request({
-        url: 'http://127.0.0.1:8000/forum/add_son_comment', //仅为示例，并非真实的接口地址
+        url: 'https://www.xiyuangezi.cn/forum/add_son_comment', //仅为示例，并非真实的接口地址
         data: {
           forum_id: forum_id,   //帖子id
           comment_id: comment_id,  //主评论的id
@@ -781,7 +808,7 @@ Page({
             })
           }
           wx.request({
-            url: 'http://127.0.0.1:8000/forum/get_son_comment', //仅为示例，并非真实的接口地址
+            url: 'https://www.xiyuangezi.cn/forum/get_son_comment', //仅为示例，并非真实的接口地址
             data: {
               getloverforumarr: getloverforumarr
             },
@@ -803,6 +830,15 @@ Page({
               }
               console.log(that.data.display_forum_data);
               for (let index = 0; index < that.data.display_forum_data.length; index++) {
+                for (let index2 = 0; index2 < that.data.display_forum_data[index].fields.comment.length; index2++) {
+                  console.log(that.data.display_forum_data[index].fields.comment[index2].avatarUrl);
+                  if (that.data.display_forum_data[index].fields.comment[index2].avatarUrl == 'undefined') {
+                    console.log("哈哈哈");
+                    that.setData({
+                      ['display_forum_data[' + index + '].fields.comment[' + index2 + '].avatarUrl']: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2389998747,3300817372&fm=26&gp=0.jpg'
+                    })
+                  }
+                }
                 if (that.data.display_forum_data[index].pk == this.data.now_forum_id) {
                   this.setData({
                     now_display_comment: that.data.display_forum_data[index].fields.comment,
@@ -843,6 +879,15 @@ Page({
 
     console.log(that.data.display_forum_data);
     for (let index = 0; index < that.data.display_forum_data.length; index++) {
+      for (let index2 = 0; index2 < that.data.display_forum_data[index].fields.comment.length; index2++) {
+        console.log(that.data.display_forum_data[index].fields.comment[index2].avatarUrl);
+        if (that.data.display_forum_data[index].fields.comment[index2].avatarUrl == 'undefined') {
+          console.log("哈哈哈");
+          that.setData({
+            ['display_forum_data[' + index + '].fields.comment[' + index2 + '].avatarUrl']: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2389998747,3300817372&fm=26&gp=0.jpg'
+          })
+        }
+      }
       if (that.data.display_forum_data[index].pk == e.currentTarget.dataset.id) {
         this.setData({
           now_display_comment: that.data.display_forum_data[index].fields.comment,
@@ -976,7 +1021,7 @@ Page({
       console.log(this.data.delete_comment_id);
       /* 发送请求删除大评论 */
       wx.request({
-        url: 'http://127.0.0.1:8000/forum/delete_comment', //仅为示例，并非真实的接口地址
+        url: 'https://www.xiyuangezi.cn/forum/delete_comment', //仅为示例，并非真实的接口地址
         data: {
           delete_comment_id: this.data.delete_comment_id
         },
@@ -1006,7 +1051,7 @@ Page({
             })
           }
           wx.request({
-            url: 'http://127.0.0.1:8000/forum/get_comment', //仅为示例，并非真实的接口地址
+            url: 'https://www.xiyuangezi.cn/forum/get_comment', //仅为示例，并非真实的接口地址
             data: {
               getloverforumarr: getloverforumarr
             },
@@ -1028,6 +1073,15 @@ Page({
               }
               console.log(that.data.display_forum_data);
               for (let index = 0; index < that.data.display_forum_data.length; index++) {
+                for (let index2 = 0; index2 < that.data.display_forum_data[index].fields.comment.length; index2++) {
+                  console.log(that.data.display_forum_data[index].fields.comment[index2].avatarUrl);
+                  if (that.data.display_forum_data[index].fields.comment[index2].avatarUrl == 'undefined') {
+                    console.log("哈哈哈");
+                    that.setData({
+                      ['display_forum_data[' + index + '].fields.comment[' + index2 + '].avatarUrl']: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2389998747,3300817372&fm=26&gp=0.jpg'
+                    })
+                  }
+                }
                 if (that.data.display_forum_data[index].pk == this.data.now_forum_id) {
                   this.setData({
                     now_display_comment: that.data.display_forum_data[index].fields.comment,
@@ -1050,7 +1104,7 @@ Page({
       console.log(this.data.delete_comment_id);
       /* 发送请求删除子评论 */
       wx.request({
-        url: 'http://127.0.0.1:8000/forum/delete_son_comment', //仅为示例，并非真实的接口地址
+        url: 'https://www.xiyuangezi.cn/forum/delete_son_comment', //仅为示例，并非真实的接口地址
         data: {
           delete_comment_id: this.data.delete_comment_id
         },
@@ -1079,7 +1133,7 @@ Page({
             })
           }
           wx.request({
-            url: 'http://127.0.0.1:8000/forum/get_son_comment', //仅为示例，并非真实的接口地址
+            url: 'https://www.xiyuangezi.cn/forum/get_son_comment', //仅为示例，并非真实的接口地址
             data: {
               getloverforumarr: getloverforumarr
             },

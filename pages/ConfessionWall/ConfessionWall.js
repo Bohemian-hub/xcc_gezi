@@ -41,7 +41,7 @@ Page({
     }
     var love_time = myDate.getFullYear() + '' + month + '' + daly
     wx.request({
-      url: 'http://127.0.0.1:8000/confess/get_confess', //仅为示例，并非真实的接口地址
+      url: 'https://www.xiyuangezi.cn/confess/get_confess', //仅为示例，并非真实的接口地址
       data: {
         love_time: love_time
       },
@@ -82,7 +82,7 @@ Page({
     }
     var love_time = myDate.getFullYear() + '' + month + '' + daly
     wx.request({
-      url: 'http://127.0.0.1:8000/confess/has_confess', //仅为示例，并非真实的接口地址
+      url: 'https://www.xiyuangezi.cn/confess/has_confess', //仅为示例，并非真实的接口地址
       data: {
         studentId: wx.getStorageSync('studentId'),
         love_time: love_time
