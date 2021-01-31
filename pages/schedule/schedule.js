@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-28 10:04:46
- * @LastEditTime: 2021-01-26 10:04:03
+ * @LastEditTime: 2021-01-31 16:12:46
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/schedule/schedule.js
@@ -38,6 +38,24 @@ Page({
     this.setData({
       student_name: wx.getStorageSync("name")
     })
+    var grade = wx.getStorageSync('grade')
+    if (grade == "大一") {
+      this.setData({
+        term: '大一下'
+      })
+    } else if (grade == "大二") {
+      this.setData({
+        term: '大二下'
+      })
+    } else if (grade == "大三") {
+      this.setData({
+        term: '大三下'
+      })
+    } else if (grade == "大四") {
+      this.setData({
+        term: '大四下'
+      })
+    }
   },
   /* 做一个页面数据请求 */
   /*   cal_time() {    //获取目前是第几周这个东西，因为还没时间暂时不可用

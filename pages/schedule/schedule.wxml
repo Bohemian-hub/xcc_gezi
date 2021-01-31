@@ -13,6 +13,7 @@
 </view>
 <view class="text_of_infor">
     <view class="text_of_infor_name">{{student_name}}的课表</view>
+    <view class="text_of_infor_term">{{term}}</view>
     <view>
         <view class="express_company_choose_value">
             <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">

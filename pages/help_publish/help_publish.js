@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-11 09:56:30
- * @LastEditTime: 2021-01-29 13:07:46
+ * @LastEditTime: 2021-01-31 15:51:41
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum_publish/forum_publish.js
@@ -415,7 +415,15 @@ Page({
       },
       success(res) {
         console.log(res);
-        if (res.statusCode == 200) {
+        if (res.data.loginnum == 87014) {
+          wx.hideLoading()
+          wx.showToast({
+            title: res.data.ret,
+            icon: 'none',
+            duration: 2000
+          })
+
+        } else {
           wx.hideLoading()
           wx.showToast({
             title: '发布成功！',

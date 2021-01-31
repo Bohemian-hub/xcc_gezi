@@ -13,7 +13,7 @@ page{
 
 }
 .text_of_infor{
-    height: 230rpx;
+    height: 250rpx;
     text-align: center;
 
     color: white;
@@ -22,10 +22,14 @@ page{
     padding-top: 100rpx;
     font-size: 35rpx;
 }
+.text_of_infor_term{
+    padding-top: 0rpx;
+    font-size: 35rpx;
+}
 .express_company_choose_value{
     width: 40%;
     height: 60rpx;
-    margin: 20rpx auto;
+    margin: 0rpx auto;
 }
 .schedule_content{
     width: 100%;

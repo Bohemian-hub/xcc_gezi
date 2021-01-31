@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-06 15:05:19
- * @LastEditTime: 2021-01-06 19:55:45
+ * @LastEditTime: 2021-01-31 15:59:08
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express_catch/express_catch.js
@@ -407,7 +407,7 @@ Page({
       earnshowwhat: 0,
       choosemenucolor: 0
     })
-    this.get_order()
+    this.Iamcatcher()
   },
   turn_page_myself() {
     this.setData({
