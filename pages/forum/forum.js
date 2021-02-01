@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-01-31 11:09:40
+ * @LastEditTime: 2021-01-31 21:48:57
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.js
@@ -781,7 +781,7 @@ Page({
 
       /* 下面我要请求后端数据库了，我要将这个评论增加大哦我的评论表中去。 */
       wx.request({
-        url: 'http://127.0.0.1:8000/forum/add_comment', //仅为示例，并非真实的接口地址
+        url: 'https://www.xiyuangezi.cn/forum/add_comment', //仅为示例，并非真实的接口地址
         data: {
           name: wx.getStorageSync('name'),
           studentId: wx.getStorageSync('studentId'),
@@ -932,7 +932,7 @@ Page({
 
       /* 下面我要请求后端数据库了，我要将这个评论增加大哦我的评论表中去。 */
       wx.request({
-        url: 'http://127.0.0.1:8000/forum/add_son_comment', //仅为示例，并非真实的接口地址
+        url: 'https://www.xiyuangezi.cn/forum/add_son_comment', //仅为示例，并非真实的接口地址
         data: {
           forum_id: forum_id,   //帖子id
           comment_id: comment_id,  //主评论的id
