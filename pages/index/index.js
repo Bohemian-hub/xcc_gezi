@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2021-02-01 18:29:15
+ * @LastEditTime: 2021-02-01 19:02:53
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.js
@@ -32,7 +32,8 @@ Page({
     weather_condition: '',
     weather_wendy_condition: '',
     weather_condition_src: '',
-    passagearr: []
+    passagearr: [],
+    count_text: '2021新年'
   },
 
 

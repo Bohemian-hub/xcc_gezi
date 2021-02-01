@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-08 13:17:20
- * @LastEditTime: 2021-01-31 18:42:48
+ * @LastEditTime: 2021-02-01 19:44:21
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/setting_order/setting_order.js
@@ -28,8 +28,8 @@ Page({
 
 
   back() {
-    wx.navigateBack({
-      delta: 1
+    wx.redirectTo({
+      url: '../setting/setting',
     });
 
   },
