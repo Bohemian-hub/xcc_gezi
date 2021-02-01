@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-10 20:01:02
- * @LastEditTime: 2021-01-31 21:44:48
+ * @LastEditTime: 2021-02-01 18:27:19
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/setting/setting.js
@@ -21,18 +21,9 @@ Page({
    */
 
   back_index: function () {
-    wx.redirectTo({
-      url: '../index/index',
-      success: function (res) {
-
-      },
-      fail: function (res) {
-
-      },
-      complete: function (res) {
-
-      },
-    })
+    wx.wx.navigateBack({
+      delta: 1
+    });
   },
   notdofunction() {
     wx.showModal({
@@ -66,5 +57,11 @@ Page({
     wx.navigateTo({
       url: '../about/about',
     })
+  },
+  count_down() {
+    wx.redirectTo({
+      url: '../count_change/count_change',
+    })
+
   }
 })

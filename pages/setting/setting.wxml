@@ -26,7 +26,7 @@
 
 </view>
 
-<view class="setting_menu" bindtap="notdofunction">
+<view class="setting_menu" bindtap="count_down">
     <image class="setting_menu_icon" src="https://s1.ax1x.com/2020/11/10/BLTM3n.png" mode="widthFix" lazy-load="false"
         binderror="" bindload="" />
 

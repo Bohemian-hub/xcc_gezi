@@ -125,26 +125,6 @@ box-shadow: 0rpx 0rpx 20rpx rgb(216, 216, 216);
   background-image: url(https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2847449187,2030324034&fm=26&gp=0.jpg);
   background-size: 100% 100%;
 }
-.card_right_top_choose{
-  position: absolute;
-  bottom: -400rpx;
-  width: 100%;
-  height: 400rpx;
-  background-color: #ffffff00;
-  z-index: 9999;
-  border-radius: 5rpx;
-}
-.counttime_button{
-text-align: center;
-height: 60rpx;
-line-height: 60rpx;
-background-color: #60cbf5;
-margin: 8rpx 0;
-border-radius: 20rpx;
-color: #f3f2f2;
-border: solid 4rpx #47b6ff;
-
-}
 
 .card-right-bottom {
   height: 160rpx;

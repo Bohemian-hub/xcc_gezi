@@ -41,23 +41,14 @@
 
             <view class="card_right_top" bindtap="show_choose_counttime">
                 <view class="card_right_data_counttime">
-                    距离{{}}2021考研仅剩:
+                    距离{{count_text}}仅剩:
                     <view class="card_right_data_counttime_number">
-                        18天
+                        {{count_time}}天
                     </view>
 
                 </view>
                 <view class="card_right_data_wenhou">
                     {{greeting}}
-                </view>
-                <view class="card_right_top_choose" style="display: {{show_choose_counttime == 1?'block':'none'}};">
-                    <view class="counttime_button">考研倒计时：32天</view>
-                    <view class="counttime_button">四六级倒计时：4天</view>
-                    <view class="counttime_button">初会考试：125天</view>
-                    <view class="counttime_button">期末大概：12天</view>
-                    <view class="counttime_button">教资：97天</view>
-                    <view class="counttime_button">计算机二级：110天</view>
-
                 </view>
             </view>
 

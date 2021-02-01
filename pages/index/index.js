@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2021-01-29 22:14:17
+ * @LastEditTime: 2021-02-01 18:29:15
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.js
@@ -32,7 +32,6 @@ Page({
     weather_condition: '',
     weather_wendy_condition: '',
     weather_condition_src: '',
-    show_choose_counttime: 0,
     passagearr: []
   },
 
@@ -155,18 +154,9 @@ Page({
 
   },
   show_choose_counttime() {
-    if (this.data.show_choose_counttime == 0) {
-      this.setData({
-        show_choose_counttime: 1
-
-      })
-    } else {
-      this.setData({
-        show_choose_counttime: 0
-
-      })
-    }
-
+    wx.redirectTo({
+      url: '../count_change/count_change',
+    })
   },
   notdofunction() {
     wx.showModal({
@@ -360,6 +350,56 @@ Page({
 
     }, 300000);
 
+    /* 请求倒计时相关，默认请求新年倒计时 */
+    that.get_count_time()
+
+  },
+  get_count_time() {
+    var that = this
+    var count_what = wx.getStorageSync("count")
+    if (!count_what) {
+      console.log("没有设置count");
+      count_what = 'newyear'
+      that.setData({
+        count_what: "2021新年"
+      })
+    } else if (count_what == 'newyear') {
+      that.setData({
+        count_text: '2021年新年'
+      })
+    } else if (count_what == 'cet') {
+      that.setData({
+        count_text: '2021四六级'
+      })
+    } else if (count_what == 'kaoyan') {
+      that.setData({
+        count_text: '2022考研'
+      })
+    } else if (count_what == 'teacher') {
+      that.setData({
+        count_text: '教资'
+      })
+    } else if (count_what == 'computer') {
+      that.setData({
+        count_text: '计算机二级'
+      })
+    }
+    wx.request({
+      url: 'http://127.0.0.1:8000/info/count_time', //仅为示例，并非真实的接口地址
+      data: {
+        count: count_what
+      },
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      success(res) {
+        console.log(res.data);
+        that.setData({
+          count_time: res.data
+        })
+      }
+    })
   },
   get_passage() {
     var that = this

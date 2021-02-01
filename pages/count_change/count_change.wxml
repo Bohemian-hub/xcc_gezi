@@ -1,0 +1,28 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-02-01 18:03:35
+ * @LastEditTime: 2021-02-01 18:31:20
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /miniprogram-5/pages/count_change/count_change.wxml
+-->
+<view class="title" bindtouchstart="touchStart" onPageScroll='onPageScroll'>
+    切换倒计时
+    <view class="back" bindtap="back">
+        <text class="cuIcon-back">
+
+        </text>
+    </view>
+</view>
+<view class="content_title">
+    当前倒计时:
+</view>
+<view class="count_quer" style="background-color: rgb(67, 153, 252);">{{count_text}}</view>
+<view class="content_title">
+    点击切换倒计时:
+</view>
+<view class="count_quer" bindtap="change_count" data-countthing="kaoyan">2021考研</view>
+<view class="count_quer" bindtap="change_count" data-countthing="cet">2021六月四六级考试</view>
+<view class="count_quer" bindtap="change_count" data-countthing="newyear">2021新年</view>
+<view class="count_quer" bindtap="change_count" data-countthing="teacher">教资</view>
+<view class="count_quer" bindtap="change_count" data-countthing="computer">计算机二级</view>

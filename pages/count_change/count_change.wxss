@@ -1,0 +1,32 @@
+.title{
+    width: 100%;
+    height: 140rpx;
+    background: linear-gradient(to right, #43c6ac, #f8ffae);
+    text-align: center;
+    font-size: 40rpx;
+    position: relative;
+    color: rgb(255, 255, 255);
+    line-height: 220rpx;
+}
+.back{
+    position: absolute;
+    top: 0rpx;
+    left: 30rpx;
+}
+.content_title{
+    color: rgb(40, 140, 255);
+    font-size: 35rpx;
+    padding-top: 30rpx;
+    text-align: center;
+}
+.count_quer{
+    width: 80%;
+    height: 90rpx;
+    margin: 20rpx auto;
+    background-color: #45b649;
+    text-align: center;
+    line-height: 90rpx;
+    color: white;
+    font-size: 35rpx;
+    border-radius: 10rpx;
+}
