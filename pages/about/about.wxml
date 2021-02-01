@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-01-31 21:03:29
- * @LastEditTime: 2021-01-31 21:43:20
+ * @LastEditTime: 2021-02-01 11:44:17
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/about/about.wxml
@@ -26,7 +26,7 @@
         <view class="content_p">
             我于2020年参加“中国大学生计算机设计大赛”和“小程序设计大赛”，自此开始开发基于本校的微信小程序，先后开发了易助——乐享校园生活、易街——校园二手平台。产品未正式上线运营。获得了省赛二等奖和国赛三等奖。从2020年九月开始，准备西院格子开发，以网页端开发做界面和交互设计，同时学习前后端相关技术，准备发布所需要的资质文件和平台认证，十一月三日真实开始了西院格子的代码编写。
         </view>
-        <view class="content_p">项目经过了两个夜以继日的辛苦开发后，于二月 日成功审核通过并上线试运营。</view>
+        <view class="content_p">项目经过了两个月夜以继日的辛苦开发后，于二月 日成功审核通过并上线试运营。</view>
     </view>
     <view class="content_title_h2">
         2.使用声明
@@ -41,7 +41,7 @@
     </view>
     <view class="content_text">
         <view class="content_p">
-            本小程序童工校园社区平台，用户可根据意愿发布自定义内容，尽管平台接入了官方的内容安全审核接口，会对用户发布的内容进行审核，但仍希望用户不要报以侥幸，发布违反国家法律和地方组织规定的内容。平台用户均为西院学子，一经发现将采取如封号等相关处理。
+            本小程序属于校园社区平台，用户可根据意愿发布自定义内容，尽管平台接入了官方的内容安全审核接口，会对用户发布的内容进行审核，但仍希望用户不要报以侥幸，发布违反国家法律和地方组织规定的内容。平台用户均为西院学子，一经发现将采取如封号等相关处理。
         </view>
         <view class="content_p">平台内容由用户新建发布更迭，出内容审核外，无人工干扰平台运营。</view>
     </view>
@@ -118,7 +118,8 @@
         9.技术介绍
     </view>
     <view class="content_text">
-        <view class="content_p">西院格子目前是一款微信小程序，前端采用微信原生文档功能，部分页面引用colorUI框架，图标素材存放于某图床。后端采用Python
+        <view class="content_p">
+            西院格子目前是一款微信小程序，前端采用微信原生文档功能，部分页面引用colorUI框架，图标素材来自阿里图标库，经自己我修改重新设计后存放于某图床。后端采用Python
             Django框架搭建数据接口，连接阿里云MySQL云数据库存放用户数据。部署于多台Ubuntu20.04服务器上，部署方式为Nginx+uwsgi+宝塔部署，用户图片上传至腾讯云对象存储，使用数据万象功能对图片进行审核。
         </view>
     </view>
@@ -138,6 +139,9 @@
             <view>E-mail:2605191106@qq.com</view>
         </view>
     </view>
+    <button class="contact_button" open-type="contact" session-from="weapp">
+        在线联系客服
+    </button>
     <view class="develop">
         <view>
             西院格子 V1.0.5

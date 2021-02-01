@@ -64,6 +64,18 @@ page{
     font-size: 35rpx;
     margin-top: 20rpx;
 }
+.contact_button{
+    width: 80%;
+    height: 90rpx;
+    background-color: #45b649;
+    border-radius: 20rpx;
+    margin: 50rpx auto;
+    text-align: center;
+    line-height: 90rpx;
+    color: white;
+    font-size: 29rpx;
+}
+
 .develop{
     text-align: center;
     color: rgb(150, 150, 150);
