@@ -378,6 +378,41 @@ Page({
           },
         });
         setTimeout(() => {     //等一哈之后再渲染图片，不然会有src异步错误
+          for (let index = 0; index < that.data.display_forum_data.length; index++) {
+            for (let index2 = 0; index2 < that.data.display_forum_data[index].fields.post_data_pic2.length; index2++) {
+              let img_src = that.data.display_forum_data[index].fields.post_data_pic2[index2]
+              wx.request({
+                url: img_src,
+                header: { 'content-type': 'application/json' },
+                method: 'GET',
+                success: function (res) {
+                  console.log(res.statusCode)
+                  if (res.statusCode == 403) {
+                    console.log("违规");
+                    /* 那我就直接把这个帖子删了 */
+                    console.log(that.data.display_forum_data[index].pk);
+                    wx.request({
+                      url: 'https://www.xiyuangezi.cn/forum/delete_forum', //仅为示例，并非真实的接口地址
+                      data: {
+                        forum_id: that.data.display_forum_data[index].pk,
+                      },
+                      method: "POST",
+                      header: {
+                        'content-type': 'application/x-www-form-urlencoded' // 默认值
+                      },
+                      success: (result) => {
+                        console.log(result.data.loginnum);
+                      },
+                    });
+                    /* 页面重新加载一下 */
+                    wx.redirectTo({
+                      url: '../forum/forum'
+                    })
+                  }
+                },
+              })
+            }
+          }
           that.setData({
             if_display_pic: 1
           })

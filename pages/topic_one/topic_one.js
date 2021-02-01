@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-01-31 10:53:52
+ * @LastEditTime: 2021-02-01 19:51:38
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.js
@@ -379,8 +379,24 @@ Page({
                   console.log(res.statusCode)
                   if (res.statusCode == 403) {
                     console.log("违规");
-                    that.setData({
-                      ['display_forum_data[' + index + '].fields.post_data_pic2[' + index2 + ']']: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Ffjmingfeng.com%2Fimg%2F5%2F8303413951%2F51%2F91bf6b6900c9f4d37839269687708ba3%2F0673389063%2F7185507321.jpg&refer=http%3A%2F%2Ffjmingfeng.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1614609784&t=203f55f724fa2af1ae2b44c75b26af22'
+                    /* 那我就直接把这个帖子删了 */
+                    console.log(that.data.display_forum_data[index].pk);
+                    wx.request({
+                      url: 'https://www.xiyuangezi.cn/forum/delete_forum', //仅为示例，并非真实的接口地址
+                      data: {
+                        forum_id: that.data.display_forum_data[index].pk,
+                      },
+                      method: "POST",
+                      header: {
+                        'content-type': 'application/x-www-form-urlencoded' // 默认值
+                      },
+                      success: (result) => {
+                        console.log(result.data.loginnum);
+                      },
+                    });
+                    /* 页面重新加载一下 */
+                    wx.redirectTo({
+                      url: '../forum/forum'
                     })
                   }
                 },

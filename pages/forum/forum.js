@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-02-01 19:00:12
+ * @LastEditTime: 2021-02-01 19:49:55
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.js
@@ -348,6 +348,10 @@ Page({
                         console.log(result.data.loginnum);
                       },
                     });
+                    /* 页面重新加载一下 */
+                    wx.redirectTo({
+                      url: '../forum/forum'
+                    })
                   }
                 },
               })
