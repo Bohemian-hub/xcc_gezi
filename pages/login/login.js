@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:33:47
- * @LastEditTime: 2021-02-08 20:31:02
+ * @LastEditTime: 2021-02-08 21:46:33
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/login/login.js
@@ -24,7 +24,7 @@ Page({
       title: '登录中',
     })
     wx.request({
-      url: 'http://127.0.0.1:8000/info/pinfo',
+      url: 'https://www.xiyuangezi.com/info/pinfo',
       header: {
         "content-type": "application/x-www-form-urlencoded"		//使用POST方法要带上这个header
       },
