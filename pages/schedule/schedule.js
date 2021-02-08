@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-28 10:04:46
- * @LastEditTime: 2021-01-31 16:12:46
+ * @LastEditTime: 2021-02-08 19:01:08
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/schedule/schedule.js
@@ -34,6 +34,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading({
+      title: '正在加载',
+    })
     this.get_schedule()
     this.setData({
       student_name: wx.getStorageSync("name")
@@ -56,6 +59,7 @@ Page({
         term: '大四下'
       })
     }
+
   },
   /* 做一个页面数据请求 */
   /*   cal_time() {    //获取目前是第几周这个东西，因为还没时间暂时不可用
@@ -83,9 +87,7 @@ Page({
     }, */
 
   get_schedule() {
-    wx.showLoading({
-      title: '正在加载',
-    })
+
     var that = this;
     wx.request({
       url: 'https://www.xiyuangezi.cn/info/schedule',
@@ -106,9 +108,9 @@ Page({
         })
         console.log(that.data.courceList);
         this.screen()
+        wx.hideLoading();
       },
     });
-    wx.hideLoading();
 
   },
   screen() {

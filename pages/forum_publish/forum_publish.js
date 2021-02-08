@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-11 09:56:30
- * @LastEditTime: 2021-01-31 11:20:33
+ * @LastEditTime: 2021-02-08 19:14:33
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum_publish/forum_publish.js
@@ -185,12 +185,28 @@ Page({
     /* 判断数组是否包含某一个元素 */
     if (this.data.topic_content.length > 4) {
       console.log("已经五个元素了，不能再增加了");
+      wx.showToast({
+        title: '不能再多了',
+        icon: 'none',
+        duration: 1500,
+      });
+
     } else {
       if (this.data.topic_content.indexOf(e.currentTarget.dataset.topic) > -1) {
         console.log("已经包含这个 元素了");
+        wx.showToast({
+          title: '已选',
+          icon: 'none',
+          duration: 1500,
+        });
       } else {
         this.data.topic_content[this.data.topic_content.length] = e.currentTarget.dataset.topic
         console.log(this.data.topic_content);
+        wx.showToast({
+          title: '选择成功',
+          icon: 'none',
+          duration: 1500,
+        });
         this.setData({
           topic_show: 1,
           topic_content: this.data.topic_content

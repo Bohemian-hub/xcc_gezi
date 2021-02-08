@@ -1,0 +1,25 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-02-08 17:37:17
+ * @LastEditTime: 2021-02-08 18:14:41
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /miniprogram-5/pages/notice/notice.wxml
+-->
+<view class="title" bindtouchstart="touchStart" onPageScroll='onPageScroll'>
+    消息中心
+    <view class="back" bindtap="back">
+        <text class="cuIcon-back">
+
+        </text>
+    </view>
+</view>
+<view class="notice_one" wx:for="{{notice}}">
+    <view class="notice_title">{{item.fields.notice_title}}</view>
+    <view class="notice_classify">{{item.fields.notice_intro}}</view>
+    <image class="notice_picture" wx:if="{{item.fields.notice_photo != ''}}" src="{{item.fields.notice_photo}}"
+        mode="widthFix" />
+
+    <view class="notice_content">{{item.fields.notice_content}}</view>
+    <view class="notice_time">{{item.fields.gettimeform}}</view>
+</view>

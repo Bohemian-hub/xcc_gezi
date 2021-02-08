@@ -33,6 +33,11 @@ page {
   margin: 300rpx auto 0 auto;
   text-align: center;
 }
+.title{
+  text-align: center;
+  font-size: 35rpx;
+  font-weight: 500;
+}
 .login_logo > image {
   width: 100%;
   margin-bottom: 20rpx; /*logo图片和文字的距离*/

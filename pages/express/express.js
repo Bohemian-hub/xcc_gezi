@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-01 10:00:16
- * @LastEditTime: 2021-01-06 20:07:33
+ * @LastEditTime: 2021-02-08 19:18:03
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express/express.js
@@ -263,8 +263,8 @@ Page({
           url: 'https://www.xiyuangezi.cn/express/pay',
           data: {
             code: res.code,
-            //fee: that.data.fee * 100 //传入到后端作为以分为单位的金额
-            fee: 1 //传入到后端作为以分为单位的金额
+            fee: that.data.fee * 100 //传入到后端作为以分为单位的金额
+            //fee: 1 //传入到后端作为以分为单位的金额
           },
           success: (result) => {
             console.log(result);

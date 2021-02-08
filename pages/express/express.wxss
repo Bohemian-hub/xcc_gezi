@@ -521,3 +521,10 @@ background-color: rgba(235, 235, 235, 0.699);
     font-weight: 400;
     margin-left: 40rpx;
 }
+.server_text{
+    width: 95%;
+    margin: 0 auto;
+}
+.server_line{
+    text-indent: 2em;
+}

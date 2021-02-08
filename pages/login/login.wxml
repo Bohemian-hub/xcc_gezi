@@ -8,17 +8,18 @@
 -->
 <!-- 背景区域设置 -->
 <view class='bg_box'>
-    <image src='https://s3.ax1x.com/2020/12/08/rpf8XV.jpg'></image>
+    <image src='https://s3.ax1x.com/2021/02/08/yUxzjI.png'></image>
 </view>
 <view class='bg_whitebg'>
 </view>
 <!-- 设置logo部分 -->
 <view class='login_logo'>
-    <image class="" src="../../image/logo.png" mode="widthFix" />
-    <text class="">
-        西院格子
-    </text>
+    <image class="" src="../../image/schoollogo.png" mode="widthFix" />
+
 </view>
+    <view class="title">
+        西昌学院教务系统账号
+    </view>
 <!-- 设置下方登录框 -->
 <view class="login_frame">
     <form bindsubmit='loginForm'>
@@ -39,13 +40,13 @@
 <!-- 服务 -->
 <view class="login_menu">
     <text class="login_forgetpassword" selectable="false" space="false" decode="false">
-        忘记密码
+        隐私与关于
     </text>
     <text class="shu">
         |
     </text>
     <text class="login_know" selectable="false" space="false" decode="false">
-        使用须知
+        咨询客服
     </text>
 
 </view>

@@ -159,7 +159,7 @@
             <view class="menu_all_title2">
 
                 <view class="news_title">校园·Know</view>
-                <view class="news_more">更多</view>
+                <view class="news_more" bindtap = "notice">消息</view>
                 <view class="clear_both"></view>
                 <view class="news_sub_title2">
                     关注学校最新动态资讯
