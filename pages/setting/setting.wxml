@@ -84,9 +84,13 @@
 <view class="clear_both">
 
 </view>
+<view class="loginout" bindtap = "loginout">
+    退出登录
+</view>
+  
 <view class="copyright">
     <view>
-        西院格子 V1.12
+        西院格子 V1.0.9
     </view>
     <view>
         义乌市松雷网络科技工作室

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-10 20:01:02
- * @LastEditTime: 2021-02-01 18:27:19
+ * @LastEditTime: 2021-02-08 22:34:06
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/setting/setting.js
@@ -63,5 +63,11 @@ Page({
       url: '../count_change/count_change',
     })
 
+  },
+  loginout() {
+    wx.clearStorage();
+    wx.redirectTo({
+      url: '../index/index',
+    })
   }
 })

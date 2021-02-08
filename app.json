@@ -2,6 +2,7 @@
   "pages": [
 
     "pages/index/index",
+    "pages/setting/setting",
     "pages/welcome/welcome",
     "pages/notice/notice",
     "pages/count_change/count_change",
@@ -25,7 +26,7 @@
     "pages/grade/grade",
     "pages/forum_publish/forum_publish",
     "pages/new_publish_confess/new_publish_confess",
-    "pages/setting/setting",
+
     "pages/express_catch/express_catch",
     "pages/logs/logs",
     "pages/setting_more/setting_more",

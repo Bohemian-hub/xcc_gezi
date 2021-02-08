@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-26 21:05:54
- * @LastEditTime: 2021-01-25 17:27:30
+ * @LastEditTime: 2021-02-08 22:26:30
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/grade/grade.wxml
@@ -44,7 +44,7 @@
             </view>
         </view>
         <view class="grade_right">
-            <view class="grade_right_grade">
+            <view class="grade_right_grade" style="color: {{item.grade<60?'red':''}};">
                 {{item.grade}}
             </view>
             <view class="grade_right_point">
