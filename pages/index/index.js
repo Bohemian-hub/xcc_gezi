@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2021-02-08 21:47:24
+ * @LastEditTime: 2021-02-08 21:53:57
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.js
@@ -406,7 +406,7 @@ Page({
     var that = this
     wx.request({
 
-      url: 'https://www.xiyuangezi.com/passage/get_passage', //仅为示例，并非真实的接口地址
+      url: 'https://www.xiyuangezi.cn/passage/get_passage', //仅为示例，并非真实的接口地址
       header: {
         'content-type': 'application/json' // 默认值
       },

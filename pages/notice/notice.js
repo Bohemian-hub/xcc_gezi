@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-02-08 17:37:17
- * @LastEditTime: 2021-02-08 21:47:40
+ * @LastEditTime: 2021-02-08 21:53:46
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/notice/notice.js
@@ -22,7 +22,7 @@ Page({
   onLoad: function (options) {
     var that = this
     wx.request({
-      url: 'https://www.xiyuangezi.com/passage/notice', //仅为示例，并非真实的接口地址
+      url: 'https://www.xiyuangezi.cn/passage/notice', //仅为示例，并非真实的接口地址
       method: "POST",
       header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值
