@@ -98,25 +98,13 @@ page {
 .login_menu {
   width: 80%;
   
-  margin: 400rpx 0 0 240rpx;
-}
-.login_forgetpassword {
-  float: left;
-  color: #ffffff;
-  font-weight: 400;
-}
-.shu {
-  float: left;
-  color: #ffffff;
-  font-weight: 900;
-margin: 0 8rpx;
-
+  margin: 400rpx 0 0 120rpx;
 }
 .login_know {
   float: left;
-
-  color: #ffffff;
-  font-weight: 400;
+  color: black;
+  margin-right: 30rpx;
+  background-color: rgba(255, 255, 255, 0.349);
 }
 .warning0{
   position: fixed;

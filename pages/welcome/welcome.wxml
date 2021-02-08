@@ -1,0 +1,63 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-02-08 19:44:56
+ * @LastEditTime: 2021-02-08 21:43:54
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /miniprogram-5/pages/welcome/welcome.wxml
+-->
+<view class="page" bindtap="tip">
+
+</view>
+
+<view class="text0" style="display: {{showtimes>1?'block':'none'}};">
+    你好，同学！
+</view>
+<view class="text" style="display: {{showtimes>2?'block':'none'}};">
+    你是我的<view style="display: inline-block;color:rgb(194, 160, 8)">第{{usercount}}位</view>用户，
+</view>
+<view class="text" style="display: {{showtimes>3?'block':'none'}};">
+    感谢你打开<view style="display: inline-block;color:rgb(29, 145, 212)">西院格子</view>小程序,
+</view>
+<view class="text" style="display: {{showtimes>4?'block':'none'}};">
+    它可以<view style="display: inline-block;color:rgb(28, 190, 68)">交友</view>、
+    <view style="display: inline-block;color:rgb(142, 212, 29)">求助</view>、
+    <view style="display: inline-block;color:rgb(104, 167, 240)">获取校园资讯</view>、
+    <view style="display: inline-block;color:rgb(212, 29, 197)">找对象</view>、
+    <view style="display: inline-block;color:rgb(29, 145, 212)">取快递</view>、
+    <view style="display: inline-block;color:rgb(212, 139, 29)">二手交易</view>、
+    <view style="display: inline-block;color:rgb(127, 212, 29)">查询联系方式</view>、
+    <view style="display: inline-block;color:rgb(255, 117, 225)">分享学习资料</view>……
+</view>
+<view class="text" style="display: {{showtimes>5?'block':'none'}};">
+    历时<view style="display: inline-block;color:rgb(127, 212, 29)">half a year</view>的构思设计
+</view>
+<view class="text" style="display: {{showtimes>6?'block':'none'}};">
+    长达<view style="display: inline-block;color:rgb(29, 212, 157)">two months</view>不懈的打代码
+</view>
+<view class="text" style="display: {{showtimes>7?'block':'none'}};">
+    于<view style="display: inline-block;color:rgb(184, 212, 29)">2021年2月9日14时30分</view>成功预上线
+</view>
+<view class="text" style="display: {{showtimes>8?'block':'none'}};">
+    目前公开测试
+</view>
+<view class="text" style="display: {{showtimes>9?'block':'none'}};">
+    部分功能<view style="display: inline-block;color:rgb(127, 212, 29)">内部测试</view>
+</view>
+<view class="text" style="display: {{showtimes>10?'block':'none'}};">
+    寻找<view style="display: inline-block;color:rgb(212, 29, 29)">BUG</view>,不断完善
+</view>
+<view class="text" style="display: {{showtimes>11?'block':'none'}};">
+    做西院<view style="display: inline-block;color:rgb(29, 212, 166)">唯一</view>一个的<view
+        style="display: inline-block;color:rgb(212, 29, 29)">全校</view>社交论坛
+</view>
+<view class="text" style="display: {{showtimes>12?'block':'none'}};">
+    你的<view style="display: inline-block;color:rgb(212, 29, 29)">使用</view>是我最大的动力
+</view>
+<view class="text" style="display: {{showtimes>13?'block':'none'}};">
+    ——来自开发者：何东
+</view>
+
+<button class="turn_index" style="display: {{showtimes>14?'block':'none'}};" bindtap="gotoindex">
+    开始体验
+</button>

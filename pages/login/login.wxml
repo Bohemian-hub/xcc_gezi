@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-08 23:33:47
- * @LastEditTime: 2020-11-21 15:25:52
+ * @LastEditTime: 2021-02-08 19:43:57
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Editew
  * @FilePath: /miniprogram-5/pages/login/login.wxml
@@ -17,9 +17,9 @@
     <image class="" src="../../image/schoollogo.png" mode="widthFix" />
 
 </view>
-    <view class="title">
-        西昌学院教务系统账号
-    </view>
+<view class="title">
+    西昌学院教务系统账号
+</view>
 <!-- 设置下方登录框 -->
 <view class="login_frame">
     <form bindsubmit='loginForm'>
@@ -39,15 +39,12 @@
 
 <!-- 服务 -->
 <view class="login_menu">
-    <text class="login_forgetpassword" selectable="false" space="false" decode="false">
+    <button class="login_know" bindtap="about">
         隐私与关于
-    </text>
-    <text class="shu">
-        |
-    </text>
-    <text class="login_know" selectable="false" space="false" decode="false">
-        咨询客服
-    </text>
+    </button>
+    <button class="login_know" open-type="contact" session-from="weapp">
+        在线联系客服
+    </button>
 
 </view>
 

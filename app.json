@@ -2,6 +2,7 @@
   "pages": [
 
     "pages/index/index",
+    "pages/welcome/welcome",
     "pages/notice/notice",
     "pages/count_change/count_change",
     "pages/about/about",

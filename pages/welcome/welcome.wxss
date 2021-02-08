@@ -1,0 +1,30 @@
+page{
+background-image: url(https://s3.ax1x.com/2021/02/08/ya9ha6.jpg);
+background-size: 100% 100%;
+}
+.text0{
+    text-align: center;
+    margin-top: 150rpx;
+    font-size: 35rpx;
+    color: white;
+}
+.text{
+    text-align: center;
+    font-size: 35rpx;
+    color: white;
+    width: 95%;
+    margin: 30rpx auto;
+    text-shadow: 2rpx 2rpx 10rpx rgb(61, 61, 61);
+    opacity: 1;
+}
+.turn_index{
+    width: 300rpx;
+    margin-top: 150rpx;
+}
+.page{
+    width: 100%;
+    height: 1600rpx;
+    position: fixed;
+    top: 0rpx;
+    background-color: rgba(255, 0, 0, 0);
+}

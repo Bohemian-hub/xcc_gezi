@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:33:47
- * @LastEditTime: 2021-01-27 10:48:15
+ * @LastEditTime: 2021-02-08 20:31:02
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/login/login.js
@@ -24,7 +24,7 @@ Page({
       title: '登录中',
     })
     wx.request({
-      url: 'https://www.xiyuangezi.cn/info/pinfo',
+      url: 'http://127.0.0.1:8000/info/pinfo',
       header: {
         "content-type": "application/x-www-form-urlencoded"		//使用POST方法要带上这个header
       },
@@ -35,7 +35,7 @@ Page({
       }, // 向后端发送的数据，后端通过request.data拿到该数据
       success: res => {
         if (res.statusCode == 200) {
-          console.log(res.data.ret);
+          console.log(res.data);
           /* 下面是正常请求到服务器后的if分支，我将在后端完成对后台数据的渲染 */
           if (res.data.loginnum == 1) {
             that.setData({
@@ -59,6 +59,30 @@ Page({
             setTimeout(function () {
               wx.hideLoading()
             }, 1500)
+          } else if (res.data.loginnum == 2) {
+            /* 这他娘的是个新用户 */
+            that.setData({
+              loginstatus: '1',
+            })
+            var sex = that.boyorgirl(res.data.ret.idNumber)
+            var grade = that.sumgrade(res.data.ret.grade)
+            wx.setStorageSync('username', username)
+            wx.setStorageSync('password', password)
+            wx.setStorageSync('sex', sex)
+            wx.setStorageSync('grade', grade)
+            wx.setStorageSync('name', res.data.ret.name)
+            wx.setStorageSync('studentId', res.data.ret.studentId)
+            wx.setStorageSync('college', res.data.ret.collegeName)
+            wx.setStorageSync('major', res.data.ret.majorName)
+
+
+            wx.redirectTo({
+              url: '../welcome/welcome?usercount=' + res.data.usercount,
+            })
+            setTimeout(function () {
+              wx.hideLoading()
+            }, 1500)
+
           } else if (res.data.loginnum == 400) {
             that.setData({
               loginstatus: '400',
@@ -119,6 +143,12 @@ Page({
       hangrade = "大四"
     }
     return hangrade;
+  },
+  about() {
+    wx.navigateTo({
+      url: '../about/about',
+    });
+
   }
 
 })
