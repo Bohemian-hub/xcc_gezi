@@ -1,13 +1,12 @@
 {
   "pages": [
-
     "pages/index/index",
+    "pages/address/address",
     "pages/setting/setting",
     "pages/welcome/welcome",
     "pages/notice/notice",
     "pages/count_change/count_change",
     "pages/about/about",
-    "pages/address/address",
     "pages/pay/pay",
     "pages/product/product",
     "pages/setting_talkback/setting_talkback",

@@ -65,6 +65,7 @@
         <input class="offer_name_input" value="" type="text" placeholder="全名" maxlength="10" bindinput="input_name">
 
         </input>
+        <view style="clear:both"></view>
         <view class="offer_name">
             描述:
         </view>
@@ -72,24 +73,28 @@
             bindinput="input_desc">
 
         </input>
+        <view style="clear:both"></view>
         <view class="offer_name">
             Tel:
         </view>
         <input class="offer_name_input" value="" type="text" placeholder="" maxlength="11" bindinput="input_tel">
 
         </input>
+        <view style="clear:both"></view>
         <view class="offer_name">
             QQ:
         </view>
         <input class="offer_name_input" value="" type="text" placeholder="" maxlength="10" bindinput="input_qq">
 
         </input>
+        <view style="clear:both"></view>
         <view class="offer_name">
             WeiXin:
         </view>
         <input class="offer_name_input" value="" type="text" placeholder="" bindinput="input_weixin">
 
         </input>
+        <view style="clear:both"></view>
 
     </view>
     <view style="clear: both;">
