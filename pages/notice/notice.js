@@ -22,7 +22,7 @@ Page({
   onLoad: function (options) {
     var that = this
     wx.request({
-      url: 'https://www.xiyuangezi.cn/passage/notice', //仅为示例，并非真实的接口地址
+      url: 'http://127.0.0.1:8000/passage/notice', //仅为示例，并非真实的接口地址
       method: "POST",
       header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值
