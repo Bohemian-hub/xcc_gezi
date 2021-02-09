@@ -26,3 +26,5 @@
 <view class="count_quer" bindtap="change_count" data-countthing="newyear">2021新年</view>
 <view class="count_quer" bindtap="change_count" data-countthing="teacher">教资</view>
 <view class="count_quer" bindtap="change_count" data-countthing="computer">计算机二级</view>
+<view class="count_quer" bindtap="change_count" data-countthing="tem4">专业英语四级</view>
+<view class="count_quer" bindtap="change_count" data-countthing="tem8">专业英语八级</view>

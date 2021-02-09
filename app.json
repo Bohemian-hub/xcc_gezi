@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/share/share",
+
     "pages/address/address",
     "pages/setting/setting",
     "pages/welcome/welcome",
@@ -25,7 +27,6 @@
     "pages/grade/grade",
     "pages/forum_publish/forum_publish",
     "pages/new_publish_confess/new_publish_confess",
-
     "pages/express_catch/express_catch",
     "pages/logs/logs",
     "pages/setting_more/setting_more",
@@ -40,5 +41,8 @@
     "navigationBarTextStyle": "black",
     "navigationStyle": "custom"
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "navigateToMiniProgramAppIdList": [
+    "wx26418d06c615ba66"
+  ]
 }

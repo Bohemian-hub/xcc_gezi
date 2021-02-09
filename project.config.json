@@ -64,7 +64,18 @@
         {
           "name": "pages/publish_confess/publish_confess",
           "pathName": "pages/publish_confess/publish_confess",
+          "query": "",
           "scene": null
+        },
+        {
+          "name": "模拟被跳转",
+          "pathName": "pages/share/share",
+          "query": "xh=1811030132&pswd=dswl1234",
+          "scene": 1037,
+          "referrerInfo": {
+            "appId": "wx26418d06c615ba66",
+            "extraData": "{}"
+          }
         }
       ]
     }

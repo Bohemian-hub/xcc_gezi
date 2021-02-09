@@ -54,7 +54,15 @@ Page({
       that.setData({
         count_text: '计算机二级'
       })
-    }
+    }else if (count_what == 'tem4') {
+      that.setData({
+        count_text: '专业英语四级'
+      })
+    }else if (count_what == 'tem8') {
+        that.setData({
+          count_text: '专业英语八级'
+        })
+      }
   },
   change_count(e) {
     console.log(e.currentTarget.dataset.countthing);

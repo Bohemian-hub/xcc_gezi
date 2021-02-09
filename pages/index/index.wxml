@@ -117,11 +117,11 @@
 
             <view class="menu_middle">
                 <view class="menu_middle_up" bindtap="jiaowu" data-id="教务">
-                    <image class="menu_middle_up_icon" src="https://s1.ax1x.com/2020/11/10/BbOZB6.png" mode="widthFix"
+                    <image class="menu_middle_up_icon" src="https://s3.ax1x.com/2021/02/09/ydxHEV.png" mode="widthFix"
                         lazy-load="false" binderror="" bindload="" />
 
                     <view class="menu_middle_up_text">
-                        教务
+                        西院助手
                     </view>
                 </view>
                 <view class="menu_middle_down" bindtap="jiaowu" data-id="好物">

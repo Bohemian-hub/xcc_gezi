@@ -180,7 +180,8 @@
                     wx:if="{{index<20}}">
                     {{lover}}
                     <view wx:if="{{index<item.fields.lover.length-1}}" style="display: inline-block;">、</view>
-                </view>等{{item.fields.lover.length}}人觉得很赞
+                </view>
+                <view style="display: inline-block">等{{item.fields.lover.length}}人觉得很赞</view>
             </view>
             <view style=" clear: both;">
 

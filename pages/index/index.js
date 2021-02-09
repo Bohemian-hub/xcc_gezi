@@ -254,10 +254,12 @@ Page({
     }.bind(this), 100)
 
   },
-  grade() {
-    wx.navigateTo({
-      url: '../grade/grade',
-    })
+  jiaowu() {
+    wx.navigateToMiniProgram({
+      appId: 'wx26418d06c615ba66',
+      path: '/pages/share/share?xh='+wx.getStorageSync('username')+'&pswd='+encodeURIComponent(wx.getStorageSync('password')),
+      envVersion: 'trial',// 打开正式版
+   })
   },
   express() {
     wx.navigateTo({
@@ -267,11 +269,6 @@ Page({
   makemoney() {
     wx.redirectTo({
       url: '../express_catch/express_catch',
-    })
-  },
-  coursetable() {
-    wx.navigateTo({
-      url: '../schedule/schedule',
     })
   },
   new_confesswall: function () {
@@ -384,7 +381,15 @@ Page({
       that.setData({
         count_text: '计算机二级'
       })
-    }
+    }else if (count_what == 'tem4') {
+      that.setData({
+        count_text: '专业英语四级'
+      })
+    }else if (count_what == 'tem8') {
+        that.setData({
+          count_text: '专业英语八级'
+        })
+      }
     wx.request({
       url: 'https://www.xiyuangezi.cn/info/count_time', //仅为示例，并非真实的接口地址
       data: {

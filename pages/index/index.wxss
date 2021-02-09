@@ -315,17 +315,16 @@ color: #23a7ff;
 .menu_middle_up{
 height: 90rpx;
 margin-bottom: 20rpx;
-background-color: #18d08d;
+background-color: #45affa;
 border-radius: 14rpx;
-
 line-height: 90rpx;
-box-shadow: 0rpx 0rpx 5rpx #0bb979;
+box-shadow: 0rpx 0rpx 5rpx #45affa;
 
 }
 .menu_middle_up_icon{
   float: left;
   margin-top: 25rpx;
-  margin-left: 40rpx;
+  margin-left: 20rpx;
 width: 40rpx;
 height: auto;
 
@@ -352,7 +351,7 @@ height: auto;
 .menu_right_up{
 height: 90rpx;
 margin-bottom: 20rpx;
-background-color: #4bcfdb;
+background-color: #18d08d;
 border-radius: 14rpx;
 text-align: center;
 line-height: 90rpx;
