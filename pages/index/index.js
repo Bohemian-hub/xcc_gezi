@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2021-02-10 15:26:29
+ * @LastEditTime: 2021-02-10 15:52:26
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.js
@@ -305,6 +305,7 @@ Page({
       this.setData({
         student_name: wx.getStorageSync('name'),
       })
+      this.get_share()
     }
 
     /* 这里调用函数来请求新闻 */
@@ -352,7 +353,7 @@ Page({
 
     /* 请求倒计时相关，默认请求新年倒计时 */
     that.get_count_time()
-    that.get_share()
+
 
   },
   get_share() {
@@ -364,13 +365,13 @@ Page({
         console.log(number);
         if (number > 100 && number < 888) {
           if (wx.getStorageSync('copyforumid') != number) {
-          /* 剪切板有东西  */
-          console.log("获取到了帖子id");
-          /* 马上跳转过去获取这个帖子 */
+            /* 剪切板有东西  */
+            console.log("获取到了帖子id");
+            /* 马上跳转过去获取这个帖子 */
 
-          wx.navigateTo({
-            url: '../topic_one/topic_one?forum_id=' + number + '&name=分享内容',
-          })
+            wx.navigateTo({
+              url: '../topic_one/topic_one?forum_id=' + number + '&name=分享内容',
+            })
           }
 
         }
