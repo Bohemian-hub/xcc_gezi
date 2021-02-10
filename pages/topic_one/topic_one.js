@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-02-10 15:09:13
+ * @LastEditTime: 2021-02-10 15:43:17
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.js
@@ -115,7 +115,7 @@ Page({
     var that = this
     console.log(e);
     wx.request({
-      url: 'http://127.0.0.1:8000/forum/get_share_forum', //仅为示例，并非真实的接口地址
+      url: 'https://www.xiyuangezi.cn/forum/get_share_forum', //仅为示例，并非真实的接口地址
       data: {
         forum_id: e
       },
