@@ -100,7 +100,8 @@
                     wx:if="{{index<20}}">
                     {{lover}}
                     <view wx:if="{{index<item.fields.lover.length-1}}" style="display: inline-block;">、</view>
-                </view>等{{item.fields.lover.length}}人觉得很赞
+                </view>
+                <view style="display: inline-block">等{{item.fields.lover.length}}人觉得很赞</view>
             </view>
             <view style=" clear: both;">
 
@@ -231,7 +232,6 @@
 
 
 <view class="comment_panel" animation="{{animationData}}" wx:if="{{showModalStatus}}">
-    <!-- <view class="comment_panel" animation="{{animationData}}"> -->
     <view class=" comment_panel_scanf" style="display: {{switch_reply == 0?'block':'none'}}">
         <input class="comment_panel_scanf_frame" bindinput='getInputValue1' placeholder="评论一个叭！" value='{{inputValue}}'
             maxlength="50"></input>

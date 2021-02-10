@@ -399,7 +399,7 @@ page{
   }
   .comment_panel{
     position: fixed;
-    height: 1220rpx;
+    height: 920rpx;
     width: 100%;
     bottom: 0;
     background-color: rgba(250, 235, 215, 0);
@@ -463,7 +463,7 @@ page{
   }
   .comment_panel_comment_title_content{
     width: 90%;
-    height: 1050rpx;
+    height: 750rpx;
     margin: 0 auto;
   }
   .comment_panel_comment_title_content_one{
