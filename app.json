@@ -1,8 +1,9 @@
 {
   "pages": [
+
     "pages/index/index",
     "pages/share/share",
-
+    "pages/forum/forum",
     "pages/address/address",
     "pages/setting/setting",
     "pages/welcome/welcome",
@@ -13,7 +14,7 @@
     "pages/product/product",
     "pages/setting_talkback/setting_talkback",
     "pages/setting_order/setting_order",
-    "pages/forum/forum",
+
     "pages/forum_of_me/forum_of_me",
     "pages/ConfessionWall/ConfessionWall",
     "pages/publish_confess/publish_confess",

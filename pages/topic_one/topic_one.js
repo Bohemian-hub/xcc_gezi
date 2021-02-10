@@ -1,13 +1,47 @@
 /*
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-02-01 19:51:38
+ * @LastEditTime: 2021-02-10 15:09:13
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.js
  */
 // pages/forum/forum.js
 var COS = require('../../cos-wx-sdk-v5.js');
+var today = new Date();
+var month = today.getMonth() + 1
+var daly = today.getDate()
+if (daly < 10) {
+  daly = "0" + String(daly)
+}
+if (month < 10) {
+  month = "0" + String(month)
+}
+var today_date = today.getFullYear() + '' + month + '' + daly
+
+var yesterday = new Date();
+yesterday.setDate(yesterday.getDate() - 1);
+var month = yesterday.getMonth() + 1
+var daly = yesterday.getDate()
+if (daly < 10) {
+  daly = "0" + String(daly)
+}
+if (month < 10) {
+  month = "0" + String(month)
+}
+var yesterday_date = yesterday.getFullYear() + '' + month + '' + daly
+
+var beforeyesterday = new Date();
+beforeyesterday.setDate(beforeyesterday.getDate() - 2);
+var month = beforeyesterday.getMonth() + 1
+var daly = beforeyesterday.getDate()
+if (daly < 10) {
+  daly = "0" + String(daly)
+}
+if (month < 10) {
+  month = "0" + String(month)
+}
+var before_yesterday_date = beforeyesterday.getFullYear() + '' + month + '' + daly
 Page({
 
   /**
@@ -46,27 +80,307 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this
     this.setData({
       control_status: 0,   //此刻不允许操作
       page_what_name: options.name,
     })
-    if (options.name != '坦白说' && options.name != '活动' && options.name != '求助') {
+    if (options.name != '坦白说' && options.name != '活动' && options.name != '求助' && options.name != '分享内容') {
       this.get_topic_url(options.name)
       this.setData({
         page_topic_name: options.name,
       })
     }
-    /* 页面加载的时候获取数据 */
-    /* 这里一次性获取20条数据，下面的方法实现上滑一次获取下一个20条数据，上拉一次重新获取第一个二十条数据 */
-    /* 这里直接引用一个获取20条数据的函数 */
-    this.get_forum()
-    /* 首次加载的时候会有加载时禁止操作以及将得到的数据放到 display_temp 中 的操作*/
-    setTimeout(() => {
-      this.setData({
-        display_temp: this.data.display_forum_data,
-        control_status: 1  /* 此刻允许操作 */
+    if (options.name == '分享内容') {
+      that.setData({
+        page_display_name: '分享内容',
       })
-    }, 2000);
+      that.getshare(options.forum_id)
+    } else {
+      /* 页面加载的时候获取数据 */
+      /* 这里一次性获取20条数据，下面的方法实现上滑一次获取下一个20条数据，上拉一次重新获取第一个二十条数据 */
+      /* 这里直接引用一个获取20条数据的函数 */
+      this.get_forum()
+      /* 首次加载的时候会有加载时禁止操作以及将得到的数据放到 display_temp 中 的操作*/
+      setTimeout(() => {
+        this.setData({
+          display_temp: this.data.display_forum_data,
+          control_status: 1  /* 此刻允许操作 */
+        })
+      }, 2000);
+    }
+
+  },
+  getshare(e) {
+    var that = this
+    console.log(e);
+    wx.request({
+      url: 'http://127.0.0.1:8000/forum/get_share_forum', //仅为示例，并非真实的接口地址
+      data: {
+        forum_id: e
+      },
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      success(res) {
+        /* 正因为页面中没有数据才执行下面这些操作，如果有数据的话，应该追加 */
+        if (res.data.length == 0 || res.data.length < 20) {      //没有获取到数据
+          that.setData({
+            loadingtext: '我也是有底线的'
+          })
+        }
+        console.log(res.data);
+
+
+        for (let i = 0; i < res.data.length; i++) {
+          res.data[i].fields.lover = []
+          res.data[i].fields.comment = []
+          res.data[i].fields.soncomment = []
+          if (res.data[i].fields.post_data_pic.length == 0) {
+            /* 说明没得图片 */
+            res.data[i].fields.has_pic = 0
+          }
+          /* 把他们变成数组 ，让页面可以看得到*/
+          var stringResult = res.data[i].fields.post_data_pic.split(',');
+          //console.log(stringResult);
+          res.data[i].fields.post_data_pic2 = stringResult
+          res.data[i].fields.topic_arr = []
+          if (res.data[i].fields.topic1 !== "init") {    //一次看五个话题字段是否有值，有值就方到topic_arr里面去
+            res.data[i].fields.topic_arr[0] = res.data[i].fields.topic1
+          }
+          if (res.data[i].fields.topic2 !== "init") {
+            res.data[i].fields.topic_arr[1] = res.data[i].fields.topic2
+          }
+          if (res.data[i].fields.topic3 !== "init") {
+            res.data[i].fields.topic_arr[2] = res.data[i].fields.topic3
+          }
+          if (res.data[i].fields.topic4 !== "init") {
+            res.data[i].fields.topic_arr[3] = res.data[i].fields.topic4
+          }
+          if (res.data[i].fields.topic5 !== "init") {
+            res.data[i].fields.topic_arr[4] = res.data[i].fields.topic1
+          }
+
+          if (res.data[i].fields.real_date == today_date) {
+            res.data[i].fields.real_time = '今天' + res.data[i].fields.real_time
+          } else if (res.data[i].fields.real_date == yesterday_date) {
+            res.data[i].fields.real_time = '昨天' + res.data[i].fields.real_time
+          } else if (res.data[i].fields.real_date == before_yesterday_date) {
+            res.data[i].fields.real_time = '前天' + res.data[i].fields.real_time
+          } else {
+            res.data[i].fields.real_time = res.data[i].fields.real_date + ' ' + res.data[i].fields.real_time
+          }
+
+          if (res.data[i].fields.post_data_grade == '大一' || res.data[i].fields.post_data_grade == '大二' || res.data[i].fields.post_data_grade == '大三' || res.data[i].fields.post_data_grade == '大四') {
+            if (res.data[i].fields.post_data_sex == '男') {
+              res.data[i].fields.tag_color = 'skyblue'
+            }
+            else {
+              res.data[i].fields.tag_color = 'pink'
+            }
+          } else if (res.data[i].fields.post_data_grade == '未知年级') {
+            res.data[i].fields.tag_color = 'green'
+          } else if (res.data[i].fields.post_data_grade == '创始人') {
+            res.data[i].fields.tag_color = 'orange'
+          } else {
+            res.data[i].fields.tag_color = 'purple'
+          }
+          /* 下面是数据的渲染，同时对数据进行筛选 */
+          console.log(res.data[i].fields.topic1);
+          if (that.data.page_what_name == '分享内容') {
+            that.setData({
+              display_forum_data: that.data.display_forum_data.concat(res.data[i]),
+              page_topic_url: 'https://s3.ax1x.com/2021/02/10/ywIMvT.md.jpg',
+              page_display_name: '分享内容'
+            })
+            /* 现在已经展示了分享内容了，记录一个OK */
+            /* 复制一个其他的值 */
+            wx.setClipboardData({
+              data: '谢谢你的查看 ——西院格子',
+              success: function () {
+                // 添加下面的代码可以复写复制成功默认提示文本`内容已复制` 
+                wx.showToast({
+                  title: '复制成功,前往微信、QQ粘贴吧！',
+                  duration: 0
+                })
+
+              }
+            })
+          }
+
+
+
+        }
+        if (that.data.display_forum_data.length < 20) {      //没有获取到数据
+          that.setData({
+            loadingtext: '我也是有底线的'
+          })
+        }
+        console.log(that.data.display_forum_data);
+        /* 获取我点了哪些帖子的赞 */
+        setTimeout(() => {
+          console.log('执行获取我点了哪些帖子的赞');
+          /* 先是获取一下我点赞了哪些帖子 */
+          wx.request({
+            url: 'https://www.xiyuangezi.cn/forum/get_love', //仅为示例，并非真实的接口地址
+            data: {
+              studentId: wx.getStorageSync('studentId'),
+            },
+            method: "POST",
+            header: {
+              'content-type': 'application/x-www-form-urlencoded' // 默认值
+            },
+            success: (result) => {
+              for (let index = 0; index < result.data.length; index++) {
+                const a = result.data[index].fields.forum_id
+                for (let index2 = 0; index2 < that.data.display_forum_data.length; index2++) {
+                  if (that.data.display_forum_data[index2].pk == a) {
+                    that.setData({
+                      ['display_forum_data[' + index2 + '].fields.iflove']: true,
+                    })
+                  }
+                }
+              }
+            },
+          });
+
+        }, 500);
+        /* 字段渲染完了，可以准备获取点赞信息了，每次获取点赞信息就获取已有的forum_id 的点赞信息/最新拉取到的forum_id */
+        var getloverforumarr = []
+        for (let index = 0; index < res.data.length; index++) {
+          getloverforumarr = getloverforumarr.concat(res.data[index].pk)
+        }
+        /* 把这十八条forum_id拿到后台去获取与他们有关的lover */
+        console.log(getloverforumarr);
+        /* 获取一下有帖子们有哪些人点了赞 */
+        setTimeout(() => {
+          console.log('现在执行那些帖子有哪些人点赞');
+          /* 现在准备获取一下一个帖子有哪些人点赞。真难到一个论坛要去获取三次数据，润次频繁的数据请求？ */
+          wx.request({
+            url: 'https://www.xiyuangezi.cn/forum/get_all_lover', //仅为示例，并非真实的接口地址
+            data: {
+              getloverforumarr: getloverforumarr
+            },
+            method: "POST",
+            header: {
+              'content-type': 'application/x-www-form-urlencoded' // 默认值
+            },
+            success: (result) => {
+              /* 拿到所有的爱之后，循环这个爱同时匹配display中，有一样的就追加到lover数组中去 */
+              console.log(result);
+
+              for (let index = 0; index < result.data.length; index++) {
+                for (let index2 = 0; index2 < that.data.display_forum_data.length; index2++) {
+                  if (that.data.display_forum_data[index2].pk == result.data[index].fields.forum_id) {
+                    that.setData({
+                      ['display_forum_data[' + index2 + '].fields.lover']: that.data.display_forum_data[index2].fields.lover.concat(result.data[index].fields.lover)
+                    })
+                  }
+                }
+
+              }
+
+            },
+          });
+        }, 1000);
+        /* 现在应该获取评论信息了，首先是第一个，大评论 */
+        var getloverforumarr = []
+        for (let index = 0; index < res.data.length; index++) {
+          getloverforumarr = getloverforumarr.concat(res.data[index].pk)
+        }
+        /* 获取评论 */
+        wx.request({
+          url: 'https://www.xiyuangezi.cn/forum/get_comment', //仅为示例，并非真实的接口地址
+          data: {
+            getloverforumarr: getloverforumarr
+          },
+          method: "POST",
+          header: {
+            'content-type': 'application/x-www-form-urlencoded' // 默认值
+          },
+          success: (result) => {
+            console.log(result);
+            for (let index = 0; index < result.data.length; index++) {
+              for (let index2 = 0; index2 < that.data.display_forum_data.length; index2++) {
+                if (that.data.display_forum_data[index2].pk == result.data[index].fields.forum_id) {
+                  that.setData({
+                    ['display_forum_data[' + index2 + '].fields.comment']: that.data.display_forum_data[index2].fields.comment.concat(result.data[index].fields)
+                  })
+                }
+              }
+
+            }
+          },
+        });
+        /* 获取子评论 */
+        wx.request({
+          url: 'https://www.xiyuangezi.cn/forum/get_son_comment', //仅为示例，并非真实的接口地址
+          data: {
+            getloverforumarr: getloverforumarr
+          },
+          method: "POST",
+          header: {
+            'content-type': 'application/x-www-form-urlencoded' // 默认值
+          },
+          success: (result) => {
+            console.log("哈哈");
+            console.log(result);
+            for (let index = 0; index < result.data.length; index++) {
+              for (let index2 = 0; index2 < that.data.display_forum_data.length; index2++) {
+                if (that.data.display_forum_data[index2].pk == result.data[index].fields.forum_id) {
+                  console.log(result.data[index].fields);
+                  that.setData({
+                    ['display_forum_data[' + index2 + '].fields.soncomment']: that.data.display_forum_data[index2].fields.soncomment.concat(result.data[index].fields)
+                  })
+                }
+              }
+
+            }
+          },
+        });
+        setTimeout(() => {     //等一哈之后再渲染图片，不然会有src异步错误
+          for (let index = 0; index < that.data.display_forum_data.length; index++) {
+            for (let index2 = 0; index2 < that.data.display_forum_data[index].fields.post_data_pic2.length; index2++) {
+              let img_src = that.data.display_forum_data[index].fields.post_data_pic2[index2]
+              wx.request({
+                url: img_src,
+                header: { 'content-type': 'application/json' },
+                method: 'GET',
+                success: function (res) {
+                  console.log(res.statusCode)
+                  if (res.statusCode == 403) {
+                    console.log("违规");
+                    /* 那我就直接把这个帖子删了 */
+                    console.log(that.data.display_forum_data[index].pk);
+                    wx.request({
+                      url: 'https://www.xiyuangezi.cn/forum/delete_forum', //仅为示例，并非真实的接口地址
+                      data: {
+                        forum_id: that.data.display_forum_data[index].pk,
+                      },
+                      method: "POST",
+                      header: {
+                        'content-type': 'application/x-www-form-urlencoded' // 默认值
+                      },
+                      success: (result) => {
+                        console.log(result.data.loginnum);
+                      },
+                    });
+                    /* 页面重新加载一下 */
+                    wx.redirectTo({
+                      url: '../forum/forum'
+                    })
+                  }
+                },
+              })
+            }
+          }
+          that.setData({
+            if_display_pic: 1
+          })
+        }, 100);
+      }
+    })
   },
   refresh() {
     this.onReachBottom()
@@ -92,40 +406,7 @@ Page({
   get_forum() {
     var that = this;
 
-    var today = new Date();
-    var month = today.getMonth() + 1
-    var daly = today.getDate()
-    if (daly < 10) {
-      daly = "0" + String(daly)
-    }
-    if (month < 10) {
-      month = "0" + String(month)
-    }
-    var today_date = today.getFullYear() + '' + month + '' + daly
 
-    var yesterday = new Date();
-    yesterday.setDate(yesterday.getDate() - 1);
-    var month = yesterday.getMonth() + 1
-    var daly = yesterday.getDate()
-    if (daly < 10) {
-      daly = "0" + String(daly)
-    }
-    if (month < 10) {
-      month = "0" + String(month)
-    }
-    var yesterday_date = yesterday.getFullYear() + '' + month + '' + daly
-
-    var beforeyesterday = new Date();
-    beforeyesterday.setDate(beforeyesterday.getDate() - 2);
-    var month = beforeyesterday.getMonth() + 1
-    var daly = beforeyesterday.getDate()
-    if (daly < 10) {
-      daly = "0" + String(daly)
-    }
-    if (month < 10) {
-      month = "0" + String(month)
-    }
-    var before_yesterday_date = beforeyesterday.getFullYear() + '' + month + '' + daly
     /* 一次性请求二十条数据，只需要传入第几次获取 */
     console.log(that.data.get_forum_times);   //显示是第几次去获取数据
     wx.request({

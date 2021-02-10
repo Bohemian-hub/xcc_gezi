@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2021-02-10 12:28:14
+ * @LastEditTime: 2021-02-10 15:26:29
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.js
@@ -352,7 +352,33 @@ Page({
 
     /* 请求倒计时相关，默认请求新年倒计时 */
     that.get_count_time()
+    that.get_share()
 
+  },
+  get_share() {
+    wx.getClipboardData({
+      success: function (res) {
+        console.log(res.data);
+        var string = res.data
+        var number = Number(string.replace(/[^0-9]/ig, ''))
+        console.log(number);
+        if (number > 100 && number < 888) {
+          if (wx.getStorageSync('copyforumid') != number) {
+          /* 剪切板有东西  */
+          console.log("获取到了帖子id");
+          /* 马上跳转过去获取这个帖子 */
+
+          wx.navigateTo({
+            url: '../topic_one/topic_one?forum_id=' + number + '&name=分享内容',
+          })
+          }
+
+        }
+
+
+
+      }
+    })
   },
   get_notice() {
     var that = this

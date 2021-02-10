@@ -147,7 +147,7 @@
 
         <!-- 下面是分享、赞、评论按钮区域 -->
         <view class="forum_one_comment">
-            <view class="forum_one_comment_button" style="border-right: 1rpx  solid rgb(138, 138, 138);">
+            <view class="forum_one_comment_button" bindtap="share" data-studentId="{{item.fields.studentId}}" data-id='{{item.pk}}' style="border-right: 1rpx  solid rgb(138, 138, 138);">
                 <text class="cuIcon-share">
 
                 </text>

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-02-01 19:49:55
+ * @LastEditTime: 2021-02-10 15:28:00
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.js
@@ -1049,6 +1049,34 @@ Page({
         duration: 2000
       })
     }
+  },
+
+  share(e) {
+    console.log(e.currentTarget.dataset.id);
+    console.log(e.currentTarget.dataset.studentid);
+    wx.setClipboardData({
+      data: 'xygz&' + e.currentTarget.dataset.id + '&我正在看西院格子上看这个帖子，太棒了!复制这段文字，微信搜索小程序“西院格子”，打开就可以看到啦！',
+      success: function () {
+        // 添加下面的代码可以复写复制成功默认提示文本`内容已复制` 
+        wx.showToast({
+          title: '复制成功,前往微信、QQ粘贴吧！',
+          duration: 0
+        })
+        wx.showModal({
+          title: '提示',
+          content: '分享内容已复制，快去微信、QQ粘贴吧！好友复制文本后，打开西院格子即可看到你的分享！',
+          showCancel: false,
+          confirmText: '确定',
+          confirmColor: '#3CC51F',
+        });
+        wx.setStorageSync('copyforumid', e.currentTarget.dataset.id);
+
+
+
+
+      }
+    })
+
   },
 
   makecomment(e) {
