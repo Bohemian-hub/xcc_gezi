@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-02-08 17:37:17
- * @LastEditTime: 2021-02-08 21:53:46
+ * @LastEditTime: 2021-02-10 12:10:25
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/notice/notice.js
@@ -33,6 +33,8 @@ Page({
           notice: res.data
         })
         console.log(that.data.notice);
+        wx.setStorageSync('randomKey', res.data[0].fields.randomKey);
+
       }
     })
   },
@@ -40,5 +42,6 @@ Page({
     wx.redirectTo({
       url: '../index/index',
     });
-  }
+  },
+
 })

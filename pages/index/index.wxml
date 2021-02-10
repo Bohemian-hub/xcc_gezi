@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2021-01-28 20:36:57
+ * @LastEditTime: 2021-02-10 12:16:12
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.wxml
@@ -159,7 +159,11 @@
             <view class="menu_all_title2">
 
                 <view class="news_title">校园·Know</view>
-                <view class="news_more" bindtap = "notice">消息</view>
+                <view class="news_more" bindtap="notice">消息
+                    <view class="news_point" style="display: {{newnotice?'block':'none'}};">
+
+                    </view>
+                </view>
                 <view class="clear_both"></view>
                 <view class="news_sub_title2">
                     关注学校最新动态资讯
@@ -320,5 +324,21 @@
     <view class="close_place3" bindtap="close_jiaowu">
 
     </view>
+
+</view>
+
+<view class="inportance_notice" style="display: {{importance_show?'block':'none'}};">
+    <view class="notice_title">{{inportance_notice.fields.notice_title}}</view>
+    <view class="notice_classify">{{inportance_notice.fields.notice_intro}}</view>
+    <image class="notice_picture" wx:if="{{inportance_notice.fields.notice_photo != ''}}"
+        src="{{inportance_notice.fields.notice_photo}}" mode="widthFix" />
+
+    <scroll-view class="notice_content" scroll-y="true">
+        {{inportance_notice.fields.notice_content}}
+    </scroll-view>
+    <view class="notice_time">{{inportance_notice.fields.gettimeform}}</view>
+    <button class="ok_button" bindtap="know_notice">
+        我已了解
+    </button>
 
 </view>

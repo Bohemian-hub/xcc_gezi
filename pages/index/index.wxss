@@ -411,7 +411,17 @@ background-size: 100%;
   font-size: 25rpx;
   font-weight: 600;
   border-radius: 25rpx;
+  position: relative;
 
+}
+.news_point{
+  position: absolute;
+  width:16rpx;
+  height:16rpx;
+  border-radius: 50%;
+  background-color: red;
+  right: 4rpx;
+  top: 2rpx;
 }
 .news_one{
   width: 100%;
@@ -565,5 +575,71 @@ background-size: 100%;
 }
 .notshow{
   display: none;
+
+}
+.inportance_notice{
+  position: fixed;
+  width: 80%;
+  max-height: 1200rpx;
+  background-color: rgb(255, 255, 255);
+  margin-left: 10%;
+  top:20%;
+  border-radius: 20rpx;
+  box-shadow: 2rpx 2rpx 10rpx rgb(119, 119, 119);
+  z-index: 999;
+  text-align: center;
+}
+.notice_title{
+  height: 50rpx;
+  text-align: center;
+  font-size: 38rpx;
+  color: rgb(37, 139, 255);
+  margin-top: 20rpx;
+}
+.notice_classify{
+  height: 50rpx;
+  display: inline-block;
+  text-align: center;
+  font-size: 25rpx;
+  color: white;
+  background-color: pink;
+  padding: 0 20rpx;
+  margin: 20rpx;
+  line-height: 50rpx;
+  border-radius: 20rpx;
+}
+.notice_picture{
+  width:90%;
+  margin: 0 auto;
+  background-size: 100% 100%;
+}
+.notice_content{
+  text-align: left;
+  width: 90%;
+  margin: 0 auto;
+  text-indent: 2em;
+  margin-top: 20rpx;
+  max-height: 300rpx;
+  overflow: hidden;
+}
+.notice_time{
+  height: 50rpx;
+  display: inline-block;
+  text-align: center;
+  font-size: 25rpx;
+  color: white;
+  background-color: rgb(63, 63, 63);
+  padding: 0 20rpx;
+  margin: 20rpx;
+  line-height: 50rpx;
+  border-radius: 20rpx;
+}
+.ok_button{
+  width: 50%;
+  margin: 20rpx auto;
+  height: 100rpx;
+  background-color: #5dccff;
+  line-height: 100rpx;
+  color: white;
 
 }

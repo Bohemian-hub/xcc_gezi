@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2021-02-08 21:53:57
+ * @LastEditTime: 2021-02-10 12:28:14
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.js
@@ -33,7 +33,9 @@ Page({
     weather_wendy_condition: '',
     weather_condition_src: '',
     passagearr: [],
-    count_text: '2021新年'
+    count_text: '2021新年',
+    newnotice: false,
+    importance_show: false
   },
 
 
@@ -257,9 +259,9 @@ Page({
   jiaowu() {
     wx.navigateToMiniProgram({
       appId: 'wx26418d06c615ba66',
-      path: '/pages/share/share?xh='+wx.getStorageSync('username')+'&pswd='+encodeURIComponent(wx.getStorageSync('password')),
-      envVersion: 'trial',// 打开正式版
-   })
+      path: '/pages/share/share?xh=' + wx.getStorageSync('username') + '&pswd=' + encodeURIComponent(wx.getStorageSync('password')),
+      envVersion: 'release',// 打开正式版
+    })
   },
   express() {
     wx.navigateTo({
@@ -341,7 +343,7 @@ Page({
 
       }
     })
-
+    that.get_notice()
     var ref = "";
     ref = setInterval(function () {
       that.Get_time();
@@ -351,6 +353,46 @@ Page({
     /* 请求倒计时相关，默认请求新年倒计时 */
     that.get_count_time()
 
+  },
+  get_notice() {
+    var that = this
+    wx.request({
+      url: 'https://www.xiyuangezi.cn/passage/notice', //仅为示例，并非真实的接口地址
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      success(res) {
+        console.log(res.data[0].fields.randomKey);
+        if (wx.getStorageSync("randomKey") != res.data[0].fields.randomKey) {
+          console.log("有新消息");
+          that.setData({
+            newnotice: true
+          })
+          /* 如果首条信息是重大通知就展示重大通知页面 */
+          if (res.data[0].fields.importance == 2) {
+            console.log("重大消息！");
+            /* 展示这条消息 */
+            that.setData({
+              importance_show: true,
+              inportance_notice: res.data[0]
+            })
+          }
+        }
+
+        that.setData({
+          notice: res.data
+        })
+        console.log(that.data.notice);
+      }
+    })
+  },
+  know_notice() {
+    var that = this
+    wx.setStorageSync('randomKey', this.data.inportance_notice.fields.randomKey);
+    that.setData({
+      importance_show: false
+    })
   },
   get_count_time() {
     var that = this
@@ -381,15 +423,15 @@ Page({
       that.setData({
         count_text: '计算机二级'
       })
-    }else if (count_what == 'tem4') {
+    } else if (count_what == 'tem4') {
       that.setData({
         count_text: '专业英语四级'
       })
-    }else if (count_what == 'tem8') {
-        that.setData({
-          count_text: '专业英语八级'
-        })
-      }
+    } else if (count_what == 'tem8') {
+      that.setData({
+        count_text: '专业英语八级'
+      })
+    }
     wx.request({
       url: 'https://www.xiyuangezi.cn/info/count_time', //仅为示例，并非真实的接口地址
       data: {
