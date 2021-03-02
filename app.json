@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/schedule/schedule",
+
     "pages/index/index",
+    "pages/schedule/schedule",
     "pages/share/share",
     "pages/forum/forum",
     "pages/address/address",
