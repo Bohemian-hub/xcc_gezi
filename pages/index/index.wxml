@@ -75,7 +75,7 @@
                     <image class="weather_location_icon" src="../../image_icon/location.png" mode="widthFix"
                         lazy-load="false" binderror="" bindload="" />
                     <text class="weather_location_position" selectable="false" space="false" decode="false">
-                        西昌学院北校区
+                        西昌学院
                     </text>
                 </view>
             </view>

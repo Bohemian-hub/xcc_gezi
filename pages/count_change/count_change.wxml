@@ -21,9 +21,9 @@
 <view class="content_title">
     点击切换倒计时:
 </view>
-<view class="count_quer" bindtap="change_count" data-countthing="kaoyan">2021考研</view>
+<view class="count_quer" bindtap="change_count" data-countthing="kaoyan">2022考研</view>
 <view class="count_quer" bindtap="change_count" data-countthing="cet">2021六月四六级考试</view>
-<view class="count_quer" bindtap="change_count" data-countthing="newyear">2021新年</view>
+<view class="count_quer" bindtap="change_count" data-countthing="summer">放暑假</view>
 <view class="count_quer" bindtap="change_count" data-countthing="teacher">教资</view>
 <view class="count_quer" bindtap="change_count" data-countthing="computer">计算机二级</view>
 <view class="count_quer" bindtap="change_count" data-countthing="tem4">专业英语四级</view>

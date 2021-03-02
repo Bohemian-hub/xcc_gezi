@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2021-03-02 14:12:06
+ * @LastEditTime: 2021-03-02 15:38:01
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.js
@@ -33,7 +33,7 @@ Page({
     weather_wendy_condition: '',
     weather_condition_src: '',
     passagearr: [],
-    count_text: '2021新年',
+    count_text: '2022考研',
     newnotice: false,
     importance_show: false
   },
@@ -431,13 +431,13 @@ Page({
     var count_what = wx.getStorageSync("count")
     if (!count_what) {
       console.log("没有设置count");
-      count_what = 'newyear'
+      count_what = 'kaoyan'
       that.setData({
-        count_what: "2021新年"
+        count_what: "2022考研"
       })
-    } else if (count_what == 'newyear') {
+    } else if (count_what == 'summer') {
       that.setData({
-        count_text: '2021年新年'
+        count_text: '放暑假'
       })
     } else if (count_what == 'cet') {
       that.setData({
