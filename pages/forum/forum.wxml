@@ -239,7 +239,7 @@
     </view>
     <view class="reback" animation="{{animation3}}">
 
-        <view style="display:{{shouldshow?'block':'none'}};">
+        <view style="display:{{shouldshow?'block':'none'}};" bindtap="fankui">
             反馈
         </view>
     </view>

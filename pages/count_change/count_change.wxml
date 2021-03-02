@@ -8,7 +8,7 @@
 -->
 <view class="title" bindtouchstart="touchStart" onPageScroll='onPageScroll'>
     切换倒计时
-    <view class="back" bindtap="back">
+    <view class="back" bindtap="back_index">
         <text class="cuIcon-back">
 
         </text>

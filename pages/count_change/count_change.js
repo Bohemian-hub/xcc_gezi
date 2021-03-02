@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-02-01 18:03:35
- * @LastEditTime: 2021-03-02 15:54:01
+ * @LastEditTime: 2021-03-02 16:32:44
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/count_change/count_change.js
@@ -72,6 +72,11 @@ Page({
       url: '../index/index',
     });
 
-  }
+  },
+  back_index() {
+    wx.redirectTo({
+      url: '../index/index',
+    })
+  },
 
 })

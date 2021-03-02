@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-02-10 16:12:27
+ * @LastEditTime: 2021-03-02 16:31:08
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.js
@@ -175,7 +175,7 @@ Page({
             }
           } else if (res.data[i].fields.post_data_grade == '未知年级') {
             res.data[i].fields.tag_color = 'green'
-          } else if (res.data[i].fields.post_data_grade == '创始人') {
+          } else if (res.data[i].fields.post_data_grade == '创始人' || res.data[i].fields.post_data_grade == '官方') {
             res.data[i].fields.tag_color = 'orange'
           } else {
             res.data[i].fields.tag_color = 'purple'
@@ -1394,7 +1394,11 @@ Page({
       url: '../frank_publish/frank_publish'
     })
   },
-
+  fankui() {
+    wx.redirectTo({
+      url: '../setting_talkback/setting_talkback'
+    })
+  },
   publish_learn() {
     wx.request({
       url: 'https://www.xiyuangezi.cn/info/activity', //仅为示例，并非真实的接口地址
