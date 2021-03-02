@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2021-02-10 15:52:26
+ * @LastEditTime: 2021-03-02 14:12:06
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.js
@@ -256,11 +256,16 @@ Page({
     }.bind(this), 100)
 
   },
-  jiaowu() {
+  xiyuanzhushou() {
     wx.navigateToMiniProgram({
       appId: 'wx26418d06c615ba66',
       path: '/pages/share/share?xh=' + wx.getStorageSync('username') + '&pswd=' + encodeURIComponent(wx.getStorageSync('password')),
       envVersion: 'release',// 打开正式版
+    })
+  },
+  coursetable() {
+    wx.navigateTo({
+      url: '../schedule/schedule',
     })
   },
   express() {

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-10 20:01:02
- * @LastEditTime: 2021-02-08 22:34:06
+ * @LastEditTime: 2021-03-02 13:52:23
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/setting/setting.js
@@ -21,9 +21,9 @@ Page({
    */
 
   back_index: function () {
-    wx.wx.navigateBack({
-      delta: 1
-    });
+    wx.redirectTo({
+      url: '../index/index',
+    })
   },
   notdofunction() {
     wx.showModal({

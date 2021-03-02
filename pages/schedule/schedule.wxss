@@ -75,7 +75,7 @@ page{
 .cource_classroom{
     font-size: 30rpx;
     font-weight: 600;
-    margin-top: 16rpx;
+    margin-top: 8rpx;
 }
 .cource_section{
     font-size: 30rpx;
@@ -85,7 +85,7 @@ page{
 .morning{
     width: 100%;
     height: 600rpx;
-    background-color: #ccffec;
+    background-color: #aaffe09c;
     text-align: center;
     line-height: 460rpx;
     font-size: 250rpx;
@@ -95,7 +95,7 @@ page{
 .afternoon{
     width: 100%;
     height: 420rpx;
-    background-color: #ffdede;
+    background-color: #ccffec9c;
     text-align: center;
     line-height: 420rpx;
     font-size: 250rpx;
@@ -105,7 +105,7 @@ page{
 .evening{
     width: 100%;
     height: 420rpx;
-    background-color: #ffe8cf;
+    background-color: #86ffd39c;
     text-align: center;
     line-height: 420rpx;
     font-size: 250rpx;

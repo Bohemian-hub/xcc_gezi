@@ -116,7 +116,7 @@
             </view>
 
             <view class="menu_middle">
-                <view class="menu_middle_up" bindtap="jiaowu" data-id="教务">
+                <view class="menu_middle_up" bindtap="xiyuanzhushou" data-id="教务">
                     <image class="menu_middle_up_icon" src="https://s3.ax1x.com/2021/02/09/ydxHEV.png" mode="widthFix"
                         lazy-load="false" binderror="" bindload="" />
 
@@ -235,7 +235,6 @@
 
             </view>
 
-
             <view class="son_menu_function {{showwhat=='jiaowu' ? 'show' : 'notshow'}}" bindtap="grade">
                 <view class="son_menu_function_image">
                     <image class="son_menu_function_image_icon" src="https://s3.ax1x.com/2020/11/13/D9kq9f.png"
@@ -248,7 +247,7 @@
             </view>
 
 
-            <view class=" son_menu_function {{showwhat=='jiaowu' ? 'show' : 'notshow'}}" bindtap="coursetable">
+            <view class=" son_menu_function {{showwhat=='strive' ? 'show' : 'notshow'}}" bindtap="coursetable">
                 <view class="son_menu_function_image">
                     <image class="son_menu_function_image_icon" src="https://s3.ax1x.com/2020/11/13/DpxI78.png"
                         mode="widthFix" lazy-load="false" binderror="" bindload="" />

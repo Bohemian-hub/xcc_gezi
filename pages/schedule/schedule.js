@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-28 10:04:46
- * @LastEditTime: 2021-02-08 19:01:08
+ * @LastEditTime: 2021-03-02 15:29:13
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/schedule/schedule.js
@@ -60,35 +60,64 @@ Page({
       })
     }
 
+    /* 前端先计算一下现在是第几周 */
+    /* 我希望你给我的是第几周 */
+    /* 将我们拿到的第几周放进全局变量 */
+    let nowweek = this.Computation()
+    console.log(nowweek);
+    this.setData({
+      index: nowweek - 1,
+      now_week: nowweek
+    })
+
+
+
+    /* 三秒钟之后又如果还没有拿到数据那么久重新获取 */
+    setTimeout(() => {
+      console.log(this.data.courceList);
+      if (this.data.courceList.length != 0) {
+        console.log('获取到了');
+      } else {
+        wx.hideLoading();
+        console.log('请求超时');
+        wx.showModal({
+          title: '提示',
+          content: '请求超时，是否重新获取？',
+          showCancel: true,
+          cancelText: '取消',
+          cancelColor: '#000000',
+          confirmText: '确定',
+          confirmColor: '#3CC51F',
+          success: (result) => {
+            if (result.confirm) {
+              wx.redirectTo({
+                url: '../schedule/schedule',
+              })
+            } else {
+              wx.redirectTo({
+                url: '../index/index',
+              })
+            }
+          },
+        });
+      }
+    }, 3000);
+
   },
-  /* 做一个页面数据请求 */
-  /*   cal_time() {    //获取目前是第几周这个东西，因为还没时间暂时不可用
-      wx.showLoading({
-        title: '正在加载',
-      })
-      var that = this
-      wx.request({
-        url: 'https://www.xiyuangezi.cn/info/cal_time',
-        header: {
-          'content-type': 'application/x-www-form-urlencoded'		//使用POST方法要带上这个header
-        },
-        method: "GET",
-  
-        success: (ret) => {
-          console.log(ret.data);
-          that.setData({
-            now_week: ret.data.weekth
-          })
-  
-        },
-      });
-      wx.hideLoading();
-  
-    }, */
+
+  Computation() {
+    var oDate1, iDays
+    var day2 = new Date();
+    oDate1 = new Date('2021-02-28')
+
+    iDays = parseInt(Math.abs(day2 - oDate1) / 1000 / 60 / 60 / 24)
+    return Math.ceil(iDays / 7)
+  },
 
   get_schedule() {
 
     var that = this;
+
     wx.request({
       url: 'https://www.xiyuangezi.cn/info/schedule',
       header: {
@@ -112,7 +141,10 @@ Page({
       },
     });
 
+
+
   },
+
   screen() {
     var that = this
     /* 筛选之前先把数据清空 */

@@ -1,6 +1,6 @@
 {
   "pages": [
-
+    "pages/schedule/schedule",
     "pages/index/index",
     "pages/share/share",
     "pages/forum/forum",
@@ -24,7 +24,7 @@
     "pages/topic_one/topic_one",
     "pages/new_confesswall/new_confesswall",
     "pages/express/express",
-    "pages/schedule/schedule",
+
     "pages/grade/grade",
     "pages/forum_publish/forum_publish",
     "pages/new_publish_confess/new_publish_confess",
