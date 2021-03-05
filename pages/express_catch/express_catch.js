@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-06 15:05:19
- * @LastEditTime: 2021-01-31 15:59:08
+ * @LastEditTime: 2021-03-05 22:39:27
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express_catch/express_catch.js
@@ -301,7 +301,6 @@ Page({
           wx.request({
             url: 'https://www.xiyuangezi.cn/express/cancel_catch', //仅为示例，并非真实的接口地址
             data: {
-              name: wx.getStorageSync('name'),
               order_id: e.currentTarget.dataset.id
             },
             method: "POST",

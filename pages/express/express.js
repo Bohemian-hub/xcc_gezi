@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-01 10:00:16
- * @LastEditTime: 2021-02-08 19:18:03
+ * @LastEditTime: 2021-03-05 23:16:52
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express/express.js
@@ -15,7 +15,7 @@ Page({
   data: {
     array1: ['韵达--17栋', '中通--6栋', '申通--开水房', '圆通--菜鸟驿站', '顺丰--避风塘', '邮政--主题邮局', '学生之家', '京东'],
     array2: ['小件(1-3kg)', '中件(3-5kg)', '大件(5-10kg)', '超大件(>10kg)'],
-    date: '2020-12-01',
+    date: '2021-03-05',
     array4: [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5],
     index1: 0,
     index2: 0,
@@ -38,7 +38,8 @@ Page({
     orderList: [],
     nothing: 0,
     catcher_infor: [],
-    catcher_show: 0
+    catcher_show: 0,
+    clickable: 1
 
   },
 
@@ -232,7 +233,7 @@ Page({
   },
   pay() {
     var that = this
-    if (that.data.date == '2020-12-01') {
+    if (that.data.date == '2021-03-05') {
       console.log("请检查到校日期设置");
       that.setData({
         warning: '请检查到校日期设置',
@@ -244,6 +245,10 @@ Page({
         warn_show: 1
       })
     } else {
+      /* 设置此时不可点击 */
+      that.setData({
+        clickable: 0
+      })
       that.pay_money()
     }
     setTimeout(() => {
@@ -402,9 +407,11 @@ Page({
   cancel_order(e) {
     /* 用户取消还没有人取的订单 */
     var that = this
+    var out_trade_no = e.currentTarget.dataset.id
+    console.log(out_trade_no);
     wx.showModal({
       title: '',
-      content: '确定取消此订单？（退款将收取5%手续费）',
+      content: '确定取消此订单？',
       showCancel: true,
       cancelText: '取消',
       cancelColor: '#000000',
@@ -413,23 +420,45 @@ Page({
       success: (result) => {
         if (result.confirm) {
           /* 点了确认，发送请求更改数据库的数据为3 */
+          /* 取消订单这里我就把退款同时做了，避免 多次请求 */
           wx.request({
             url: 'https://www.xiyuangezi.cn/express/cancel_order', //仅为示例，并非真实的接口地址
             data: {
-              name: wx.getStorageSync('name'),
-              order_id: e.currentTarget.dataset.id
+              order_id: e.currentTarget.dataset.id,
+              fee: e.currentTarget.dataset.fee * 100
             },
             method: "POST",
             header: {
               'content-type': 'application/x-www-form-urlencoded' // 默认值
             },
             success(res) {
-              console.log(res.data.loginnum);
+              console.log(res.data.statusnum);
               wx.hideLoading();
-              if (res.data.loginnum == 200) {
-                that.turn_page_myorder()
+              if (res.data.statusnum == 200) {
+                /* 这里是取消成功，下面准备调用退款函数 */
+                wx.showModal({
+                  title: '提示',
+                  content: '取消成功，退款将在五分钟内返还至您的账户!',
+                  showCancel: false,
+                  confirmText: '确定',
+                  confirmColor: '#3CC51F',
+                  success: () => {
+                    that.turn_page_myorder()
+                  },
+                });
+              } else if (res.data.statusnum == 500) {
+                wx.showModal({
+                  title: '提示',
+                  content: '退款异常，请联系开发者：qq:2605191106',
+                  showCancel: false,
+                  confirmText: '确定',
+                  confirmColor: '#3CC51F',
+                  success: () => {
+                    that.turn_page_myorder()
+                  },
+                });
               }
-              else if (res.data.loginnum == 100) {
+              else if (res.data.statusnum == 100) {
                 wx.showModal({
                   title: '',
                   content: '此订单已经被接单，如需退单请联系您的代取员！',
@@ -447,6 +476,8 @@ Page({
         }
       },
     });
+
+
 
 
   },

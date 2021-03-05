@@ -277,7 +277,7 @@
         <view class="task_one_button">
             <view class="task_one_button_cancel"
                 style="display: {{item.fields.order_stadus == '代取中'||item.fields.order_stadus == '待接单'?'block':'none'}};"
-                data-id="{{item.fields.transaction_id}}" bindtap="cancel_order">取消
+                data-id="{{item.fields.transaction_id}}" data-fee="{{item.fields.express_total_fee}}" bindtap="cancel_order">取消
             </view>
             <view class="task_one_button_cancel" style="display: {{item.fields.order_stadus == '已确认'?'block':'none'}};"
                 data-id="{{item.fields.transaction_id}}" bindtap="delete_already_order">删除
