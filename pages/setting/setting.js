@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-10 20:01:02
- * @LastEditTime: 2021-03-02 13:52:23
+ * @LastEditTime: 2021-03-09 13:55:21
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/setting/setting.js
@@ -44,17 +44,17 @@ Page({
 
   },
   myorder() {
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../setting_order/setting_order',
     })
   },
   talkback() {
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../setting_talkback/setting_talkback',
     })
   },
   about() {
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../about/about',
     })
   },

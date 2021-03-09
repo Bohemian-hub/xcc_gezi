@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:33:47
- * @LastEditTime: 2021-02-08 21:46:33
+ * @LastEditTime: 2021-03-09 13:54:50
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/login/login.js
@@ -145,7 +145,7 @@ Page({
     return hangrade;
   },
   about() {
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../about/about',
     });
 

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-03-02 16:31:08
+ * @LastEditTime: 2021-03-09 13:54:05
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.js
@@ -575,7 +575,7 @@ Page({
   },
 
   topic_content() {
-    wx.navigateTo({
+    wx.redirectTo({
       url: "../topic/topic",
     });
   },
@@ -1412,7 +1412,7 @@ Page({
       success: (result) => {
         console.log(result);
         if (result.data[0].fields.department == 'init') {
-          wx.navigateTo({
+          wx.redirectTo({
             url: "../forum_publish/forum_publish?classify=learn&department=init",
           });
         } else {
@@ -1421,7 +1421,7 @@ Page({
           var department = result.data[0].fields.department
           var position = result.data[0].fields.position
           /* 准备页面跳转，记得传三个值过去 */
-          wx.navigateTo({
+          wx.redirectTo({
             url: '../forum_publish/forum_publish?classify=learn&department=' + department + '&position=' + position
           })
         }
@@ -1442,7 +1442,7 @@ Page({
       success: (result) => {
         console.log(result);
         if (result.data[0].fields.department == 'init') {
-          wx.navigateTo({
+          wx.redirectTo({
             url: "../help_publish/help_publish?classify=help&department=init",
           });
         } else {
@@ -1451,7 +1451,7 @@ Page({
           var department = result.data[0].fields.department
           var position = result.data[0].fields.position
           /* 准备页面跳转，记得传三个值过去 */
-          wx.navigateTo({
+          wx.redirectTo({
             url: '../help_publish/help_publish?classify=help&department=' + department + '&position=' + position
           })
         }
@@ -1485,7 +1485,7 @@ Page({
           var department = result.data[0].fields.department
           var position = result.data[0].fields.position
           /* 准备页面跳转，记得传三个值过去 */
-          wx.navigateTo({
+          wx.redirectTo({
             url: '../activity_publish/activity_publish?department=' + department + '&position=' + position
           })
         }

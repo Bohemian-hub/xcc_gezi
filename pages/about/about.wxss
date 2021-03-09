@@ -82,3 +82,11 @@ page{
     margin-top: 60rpx;
     
 }
+.qqqun{
+    width: 60%;
+    height: 700rpx;
+    margin: 0 auto;
+    background-repeat: none;
+    background-size: 100% ;
+    background-image: url(https://s3.ax1x.com/2021/02/09/yahKC8.md.jpg);
+}

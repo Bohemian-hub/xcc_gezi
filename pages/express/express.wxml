@@ -155,7 +155,7 @@
             </view>
             <image class="express_company_choose_value_icon" src="../../image_icon/dayu.png" />
             <view class="express_company_choose_value">
-                <picker mode="date" value="{{date}}" start="2020-12-01" end="2021-02-01" bindchange="bindDateChange">
+                <picker mode="date" value="{{date}}" start="2020-03-01" end="2022-03-01" bindchange="bindDateChange">
                     <view class="picker">
                         {{date}}
                     </view>

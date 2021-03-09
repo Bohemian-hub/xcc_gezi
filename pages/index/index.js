@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2021-03-02 15:38:01
+ * @LastEditTime: 2021-03-09 13:54:36
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.js
@@ -257,19 +257,19 @@ Page({
 
   },
   xiyuanzhushou() {
-    wx.navigateToMiniProgram({
+    wx.redirectToMiniProgram({
       appId: 'wx26418d06c615ba66',
       path: '/pages/share/share?xh=' + wx.getStorageSync('username') + '&pswd=' + encodeURIComponent(wx.getStorageSync('password')),
       envVersion: 'release',// 打开正式版
     })
   },
   coursetable() {
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../schedule/schedule',
     })
   },
   express() {
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../express/express',
     })
   },
@@ -279,22 +279,22 @@ Page({
     })
   },
   new_confesswall: function () {
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../new_confesswall/new_confesswall',
     })
   },
   single() {
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../ConfessionWall/ConfessionWall',
     })
   },
   forum() {
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../forum/forum',
     })
   },
   address() {
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../address/address',
     })
   },
@@ -374,7 +374,7 @@ Page({
             console.log("获取到了帖子id");
             /* 马上跳转过去获取这个帖子 */
 
-            wx.navigateTo({
+            wx.redirectTo({
               url: '../topic_one/topic_one?forum_id=' + number + '&name=分享内容',
             })
           }
@@ -522,19 +522,19 @@ Page({
   },
 
   jump: function () {
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../setting/setting',
     })
   },
   notice() {
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../notice/notice',
     })
   },
   turn_news(e) {
     console.log(e.currentTarget.dataset.src);
     var src = e.currentTarget.dataset.src
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../index_passage/index_passage?src=' + src,
     })
   },

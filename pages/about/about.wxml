@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-01-31 21:03:29
- * @LastEditTime: 2021-02-01 11:44:17
+ * @LastEditTime: 2021-03-09 14:08:54
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/about/about.wxml
@@ -102,10 +102,10 @@
     <view class="content_text">
         <view class="content_p">生活区暂提供快递代取功能。</view>
         <view class="content_p">欢迎使用西院格子快递代取功能，本格子提供的快递代取只适用于西昌学院在校学生。</view>
-                <view class="content_p">1. 学生在填写需求订单之后，会由我们指派的可信任的代取员取件,男生送至寝室，女生暂送至楼下或者宿管室。</view>
-                <view class="content_p">2. 当订单被接取，代取费生效；接单后24小时若代取员未取，订单自动取消，代取费退回客户。</view>
-                <view class="content_p">3. 若包裹过大过重或时间紧迫可适当增加小费，代取员会优先为您处理。</view>
-                <view class="content_p">4.当包裹在从驿站拿出若有异常，代取员将反馈给客户，代取员不承担快递公司造成的包裹损坏，丢失，回寄等问题。</view>
+        <view class="content_p">1. 学生在填写需求订单之后，会由我们指派的可信任的代取员取件,男生送至寝室，女生暂送至楼下或者宿管室。</view>
+        <view class="content_p">2. 当订单被接取，代取费生效；接单后24小时若代取员未取，订单自动取消，代取费退回客户。</view>
+        <view class="content_p">3. 若包裹过大过重或时间紧迫可适当增加小费，代取员会优先为您处理。</view>
+        <view class="content_p">4.当包裹在从驿站拿出若有异常，代取员将反馈给客户，代取员不承担快递公司造成的包裹损坏，丢失，回寄等问题。</view>
     </view>
     <view class="content_title_h2">
         7.功能——好物
@@ -142,14 +142,20 @@
             <view>Tel:18081239804</view>
             <view>Weixin:dongshangwl</view>
             <view>E-mail:2605191106@qq.com</view>
+            <view style="margin-top:30rpx;">QQ群：735772529</view>
+
+
         </view>
+    </view>
+    <view class="qqqun">
+
     </view>
     <button class="contact_button" open-type="contact" session-from="weapp">
         在线联系客服
     </button>
     <view class="develop">
         <view>
-            西院格子 V1.1.6
+            西院格子 V1.1.8
         </view>
         <view>
             义乌市松雷网络科技工作室
