@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-01 10:00:16
- * @LastEditTime: 2021-03-05 23:16:52
+ * @LastEditTime: 2021-03-10 08:25:08
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express/express.js
@@ -232,30 +232,39 @@ Page({
     wx.hideLoading()
   },
   pay() {
+    console.log("点击成功");
     var that = this
-    if (that.data.date == '2021-03-05') {
-      console.log("请检查到校日期设置");
-      that.setData({
-        warning: '请检查到校日期设置',
-        warn_show: 1
-      })
-    } else if (that.data.express_name == '' || that.data.express_tel == '' || that.data.express_code == '' || that.data.express_place == '') {
-      that.setData({
-        warning: '请检查信息填写是否完善',
-        warn_show: 1
-      })
-    } else {
-      /* 设置此时不可点击 */
-      that.setData({
-        clickable: 0
-      })
-      that.pay_money()
+    if (that.data.clickable == 1) {  //这一行用来判断是否已经点击过微信支付按钮，避免重复点击产生的二次支付问题
+      if (that.data.date == '2021-03-05') {
+        console.log("请检查到校日期设置");
+        that.setData({
+          warning: '请检查到校日期设置',
+          warn_show: 1
+        })
+      } else if (that.data.express_name == '' || that.data.express_tel == '' || that.data.express_code == '' || that.data.express_place == '') {
+        that.setData({
+          warning: '请检查信息填写是否完善',
+          warn_show: 1
+        })
+      } else {
+        /* 设置此时不可点击 */
+        that.setData({
+          clickable: 0
+        })
+        wx.showLoading({
+          title: '前往支付...',
+          mask: true,
+        });
+        /* 此时已经成功的到了调用支付接口的地步了，需要打开一个微信loading */
+        that.pay_money()
+      }
+      setTimeout(() => {
+        that.setData({
+          warn_show: 0
+        })
+      }, 2000);
     }
-    setTimeout(() => {
-      that.setData({
-        warn_show: 0
-      })
-    }, 2000);
+
   },
   pay_money() {
     this.count_fee()
@@ -307,6 +316,8 @@ Page({
                     paySign: result.data.paySign,
                     success: (ret) => {
                       console.log("成功！", ret);
+                      //此时可以隐藏loading
+                      wx.hideLoading()
                       wx.showModal({
                         title: '下单成功',
                         content: '查看订单信息？',
