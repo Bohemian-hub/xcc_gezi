@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2021-03-09 13:54:36
+ * @LastEditTime: 2021-03-10 08:07:41
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.js
@@ -257,7 +257,7 @@ Page({
 
   },
   xiyuanzhushou() {
-    wx.redirectToMiniProgram({
+    wx.navigateToMiniProgram({
       appId: 'wx26418d06c615ba66',
       path: '/pages/share/share?xh=' + wx.getStorageSync('username') + '&pswd=' + encodeURIComponent(wx.getStorageSync('password')),
       envVersion: 'release',// 打开正式版
