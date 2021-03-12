@@ -1,0 +1,185 @@
+.top{
+    width: 100%;
+    height: 120rpx;
+    position: fixed;
+    top: 0;
+    background-color: rgba(255, 255, 255, 0.534);
+    line-height: 150rpx;
+    text-align: center;
+    font-size: 35rpx;
+}
+.back{
+    position: absolute;
+    height: 120rpx;
+    width: 120rpx;
+    background-color: rgba(255, 255, 255, 0.226);
+    top: 0;
+}
+.title{
+    height: 150rpx;
+    background-color: white;
+    border: 1rpx soild red;
+    padding-left: 35rpx;
+
+}
+.title_name{
+    height: 70rpx;
+    line-height: 100rpx;
+    font-weight: 600;
+    color: black;
+    font-size: 30rpx;
+    padding-left: 10rpx;
+
+}
+.title_price{
+    height: 80rpx;
+    line-height: 80rpx;
+    font-weight: 600;
+    font-size: 40rpx;
+
+    color: rgb(219, 107, 2);
+}
+.fee{
+    margin-top: 30rpx;
+    background-color: white;
+    height: 150rpx;
+    padding-left: 38rpx;
+}
+.cuIcon-moneybagfill{
+    margin-top: 36rpx;
+    color: rgb(252, 120, 13);
+    width: 20rpx;
+    float: left;
+}
+.fee_title{
+    margin-left: 15rpx;
+    width: 300rpx;
+    height: 70rpx;
+    line-height: 100rpx;
+    font-size: 30rpx;
+    float: left;
+
+}
+.fee_money{
+    clear: both;
+    width: 100%;
+    height: 80rpx;
+    line-height: 80rpx;
+    font-size: 30rpx;
+}
+.specification{
+    margin-top: 30rpx;
+    background-color: white;
+    height: 90rpx;
+    line-height: 90rpx;
+    padding-left: 38rpx;
+    font-weight: 500;
+}
+.choose_title{
+    width: 100rpx;
+    float: left;
+}
+.choose{
+    width: 350rpx;
+    float: left;
+    font-weight: 400;
+}
+.choose3{
+    width: 20rpx;
+    float: right;
+    margin-right: 40rpx;
+    font-weight: 400;
+}
+.infomation{
+    height: auto;
+}
+.information_title{
+    height: 100rpx;
+    margin-top: 30rpx;
+    padding-left: 35rpx;
+    font-weight: 500;
+    line-height: 100rpx;
+    background-color: white;
+    width: 100%;
+    float: left;
+}
+.info_pic{
+    width: 95%;
+    margin: 0 auto;
+}
+.pic_one{
+    width: 100%;
+    height: auto;
+}
+.cu-bar{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.mengban{
+    position: fixed;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(155, 155, 155, 0.5);
+}
+.bought_choose{
+    position: fixed;
+    height: 600rpx;
+    background-color: white;
+    bottom: 0;
+    width: 100%;
+    border-top-left-radius: 50rpx;
+    border-top-right-radius: 50rpx;
+}
+.bought_choose_left{
+    width: 180rpx;
+    height: 180rpx;
+    background-color: pink;
+    float: left;
+    margin-left: 30rpx;
+    margin-top: 20rpx;
+}
+.bought_choose_right{
+    height: 180rpx;
+    float: left;
+    margin-top: 20rpx;
+    margin-left: 20rpx;
+}
+.choose_title_one{
+    width: 100%;
+    clear: both;
+    height: 80rpx;
+    line-height: 80rpx;
+    margin-left: 20rpx;
+}
+.jiage_one{
+    color: rgb(255, 136, 0);
+    font-size: 40rpx;
+}
+.guige_one{
+    margin-top: 100rpx;
+}
+.tag_one{
+    height: 50rpx;
+    line-height: 50rpx;
+    border-radius:50rpx;
+    border: 1rpx solid rgb(194, 194, 194);
+    display: inline-block;
+    margin: 0 20rpx;
+    padding: 0 20rpx;
+    color: rgb(131, 131, 131);
+}
+.bought_button{
+    width: 90%;
+    height: 80rpx;
+    background-color: rgb(255, 158, 30);
+    border-radius: 50rpx;
+    text-align: center;
+    line-height: 80rpx;
+    color: white;
+    font-size: 38rpx;
+    position: absolute;
+    bottom: 20rpx;
+    left: 5%;
+}
