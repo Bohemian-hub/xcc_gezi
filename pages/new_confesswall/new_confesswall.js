@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-16 20:57:02
- * @LastEditTime: 2021-03-09 13:54:59
+ * @LastEditTime: 2021-03-12 09:52:05
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/new_confesswall/new_confesswall.js
@@ -78,7 +78,7 @@ Page({
     })
   },
   back() {
-    wx.redirectTo({
+    wx.switchTab({
       url: '../index/index',
     })
   }

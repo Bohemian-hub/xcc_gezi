@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-31 21:03:29
- * @LastEditTime: 2021-02-08 19:44:07
+ * @LastEditTime: 2021-03-12 09:49:38
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/about/about.js
@@ -24,7 +24,7 @@ Page({
   },
 
   back() {
-    wx.redirectTo({
+    wx.switchTab({
       url: '../index/index',
     });
 

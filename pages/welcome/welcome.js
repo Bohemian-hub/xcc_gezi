@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-02-08 19:44:56
- * @LastEditTime: 2021-02-08 21:44:36
+ * @LastEditTime: 2021-03-12 09:53:25
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/welcome/welcome.js
@@ -32,7 +32,7 @@ Page({
     })
   },
   gotoindex() {
-    wx.redirectTo({
+    wx.switchTab({
       url: '../index/index',
     });
 

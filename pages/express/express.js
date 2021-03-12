@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-01 10:00:16
- * @LastEditTime: 2021-03-10 08:25:08
+ * @LastEditTime: 2021-03-12 09:50:27
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express/express.js
@@ -51,7 +51,7 @@ Page({
 
   },
   back_index() {
-    wx.redirectTo({
+    wx.switchTab({
       url: '../index/index',
     })
   },
@@ -332,7 +332,7 @@ Page({
                             that.turn_page_myorder()
                           } else {//这里是点击了取消以后
                             console.log('用户点击取消')
-                            wx.redirectTo({
+                            wx.switchTab({
                               url: '../index/index',
                             })
                           }

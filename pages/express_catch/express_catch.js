@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-06 15:05:19
- * @LastEditTime: 2021-03-05 22:39:27
+ * @LastEditTime: 2021-03-12 09:51:06
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express_catch/express_catch.js
@@ -397,7 +397,7 @@ Page({
   },
 
   back_index() {
-    wx.redirectTo({
+    wx.switchTab({
       url: '../index/index',
     })
   },

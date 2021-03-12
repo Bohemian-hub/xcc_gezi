@@ -19,7 +19,7 @@ Page({
     pswd = decodeURIComponent(pswd)
     /* 做一个数据库查询，查询是否有这个用户 */
     if(wx.getStorageSync('username') == options.xh){
-      wx.redirectTo({
+      wx.switchTab({
         url: '../index/index',
       })
     }else{
@@ -61,7 +61,7 @@ Page({
             wx.setStorageSync('major', res.data.ret.majorName)
 
 
-            wx.redirectTo({
+            wx.switchTab({
               url: '../index/index',
             })
             setTimeout(function () {

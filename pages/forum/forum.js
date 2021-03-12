@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-03-09 13:54:05
+ * @LastEditTime: 2021-03-12 09:51:13
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.js
@@ -600,7 +600,7 @@ Page({
     })
   },
   back_index() {
-    wx.redirectTo({
+    wx.switchTab({
       url: "../index/index",
     });
   },

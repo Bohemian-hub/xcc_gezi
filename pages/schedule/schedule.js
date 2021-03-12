@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-28 10:04:46
- * @LastEditTime: 2021-03-02 15:29:13
+ * @LastEditTime: 2021-03-12 09:52:31
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/schedule/schedule.js
@@ -94,7 +94,7 @@ Page({
                 url: '../schedule/schedule',
               })
             } else {
-              wx.redirectTo({
+              wx.switchTab({
                 url: '../index/index',
               })
             }
@@ -219,7 +219,7 @@ Page({
     this.screen()
   },
   back_index() {
-    wx.redirectTo({
+    wx.switchTab({
       url: '../index/index',
     })
   },

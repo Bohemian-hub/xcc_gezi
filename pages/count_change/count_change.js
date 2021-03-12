@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-02-01 18:03:35
- * @LastEditTime: 2021-03-02 16:32:44
+ * @LastEditTime: 2021-03-12 09:50:10
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/count_change/count_change.js
@@ -68,13 +68,13 @@ Page({
     console.log(e.currentTarget.dataset.countthing);
     wx.setStorageSync('count', e.currentTarget.dataset.countthing)
     /* 设置完了之后就关闭这个页面 */
-    wx.redirectTo({
+    wx.switchTab({
       url: '../index/index',
     });
 
   },
   back_index() {
-    wx.redirectTo({
+    wx.switchTab({
       url: '../index/index',
     })
   },

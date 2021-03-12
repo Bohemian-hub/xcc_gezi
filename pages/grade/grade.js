@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-26 21:05:54
- * @LastEditTime: 2021-01-26 10:04:40
+ * @LastEditTime: 2021-03-12 09:51:29
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/grade/grade.js
@@ -50,7 +50,7 @@ Page({
     }
   },
   getgrade(xnm, xqm) {
-    console.log(xnm,xqm);
+    console.log(xnm, xqm);
     wx.showLoading({
       title: '正在加载...',
     })
@@ -127,7 +127,7 @@ Page({
     }
   },
   back_index() {
-    wx.redirectTo({
+    wx.switchTab({
       url: '../index/index',
     })
   },

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-10 20:01:02
- * @LastEditTime: 2021-03-09 13:55:21
+ * @LastEditTime: 2021-03-12 09:52:45
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/setting/setting.js
@@ -21,7 +21,7 @@ Page({
    */
 
   back_index: function () {
-    wx.redirectTo({
+    wx.switchTab({
       url: '../index/index',
     })
   },
@@ -66,7 +66,7 @@ Page({
   },
   loginout() {
     wx.clearStorage();
-    wx.redirectTo({
+    wx.switchTab({
       url: '../index/index',
     })
   }
