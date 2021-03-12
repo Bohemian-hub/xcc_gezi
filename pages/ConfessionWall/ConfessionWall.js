@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-13 23:35:52
- * @LastEditTime: 2021-03-09 13:53:16
+ * @LastEditTime: 2021-03-12 09:42:26
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/ConfessionWall/ConfessionWall.js
@@ -61,7 +61,7 @@ Page({
 
   },
   back_index: function () {
-    wx.redirectTo({
+    wx.switchTab({
       url: '../index/index',
       success: function (res) {
       }

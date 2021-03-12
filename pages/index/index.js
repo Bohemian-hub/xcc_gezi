@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2021-03-10 08:07:41
+ * @LastEditTime: 2021-03-12 09:39:09
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.js
@@ -32,7 +32,7 @@ Page({
     weather_condition: '',
     weather_wendy_condition: '',
     weather_condition_src: '',
-    passagearr: [],
+    /*     passagearr: [], */
     count_text: '2022考研',
     newnotice: false,
     importance_show: false
@@ -189,24 +189,7 @@ Page({
     this.animation.rotate(0).step()
     this.animation.scale(2, 2).step()
 
-    if (event.currentTarget.dataset.id == '教务') {
-      console.log(1);
-      this.setData({
-        showwhat: 'jiaowu',
-      })
-    } else if (event.currentTarget.dataset.id == '生活') {
-      console.log(2);
-
-      this.setData({
-        showwhat: 'server',
-      })
-    } else if (event.currentTarget.dataset.id == '好物') {
-      console.log(3);
-
-      this.setData({
-        showwhat: 'goods',
-      })
-    } else if (event.currentTarget.dataset.id == '工具') {
+    if (event.currentTarget.dataset.id == '更多工具') {
       console.log(4);
 
       this.setData({
@@ -315,7 +298,7 @@ Page({
 
     /* 这里调用函数来请求新闻 */
 
-    this.get_passage()
+    /*     this.get_passage() */
 
 
     /* 加载one一个接口获取数据 */
@@ -481,23 +464,23 @@ Page({
       }
     })
   },
-  get_passage() {
-    var that = this
-    wx.request({
-
-      url: 'https://www.xiyuangezi.cn/passage/get_passage', //仅为示例，并非真实的接口地址
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success(res) {
-        console.log(res.data)
-        that.setData({
-          passagearr: res.data
-        })
-        console.log(that.data.passagearr);
-      }
-    })
-  },
+  /*   get_passage() {
+      var that = this
+      wx.request({
+  
+        url: 'https://www.xiyuangezi.cn/passage/get_passage', //仅为示例，并非真实的接口地址
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        success(res) {
+          console.log(res.data)
+          that.setData({
+            passagearr: res.data
+          })
+          console.log(that.data.passagearr);
+        }
+      })
+    }, */
   hidden_onetext_on_onepic() {
     if (hidden_turn_status == 0) {
       this.setData({

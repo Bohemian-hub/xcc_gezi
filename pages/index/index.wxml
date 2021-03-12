@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2021-02-10 12:16:12
+ * @LastEditTime: 2021-03-12 09:43:52
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.wxml
@@ -110,7 +110,7 @@
                 <image class="menu_left_icon" src="https://s3.ax1x.com/2021/01/25/sLVENQ.png" mode="widthFix"
                     lazy-load="false" binderror="" bindload="" />
                 <view class="menu_left_text">
-                    论坛
+                    西院论坛
                 </view>
 
             </view>
@@ -124,33 +124,36 @@
                         西院助手
                     </view>
                 </view>
-                <view class="menu_middle_down" bindtap="jiaowu" data-id="好物">
-                    <image class="menu_middle_up_icon" src="https://s1.ax1x.com/2020/11/10/BbXjoT.png" mode="widthFix"
+
+                <view class="menu_middle_down" bindtap="notdofunction" data-id="微笑淘宝">
+                    <image class="menu_middle_up_icon" src="https://s3.ax1x.com/2021/03/12/6N7wc9.png" mode="widthFix"
                         lazy-load="false" binderror="" bindload="" />
 
                     <view class="menu_middle_up_text">
-                        好物
+                        微笑淘宝
                     </view>
                 </view>
+
             </view>
 
             <view class="menu_right">
-                <view class="menu_right_up" bindtap="jiaowu" data-id="生活">
-                    <image class="menu_middle_up_icon" src="https://s1.ax1x.com/2020/11/10/BbjuSH.png" mode="widthFix"
+                <view class="menu_right_up" bindtap="single" data-id="单身档案">
+                    <image class="menu_middle_up_icon" src="https://s3.ax1x.com/2021/03/12/6N7800.png" mode="widthFix"
                         lazy-load="false" binderror="" bindload="" />
 
                     <view class="menu_middle_up_text">
-                        生活
+                        单身档案
                     </view>
                 </view>
-                <view class="menu_right_down" bindtap="jiaowu" data-id="工具">
+                <view class="menu_right_down" bindtap="jiaowu" data-id="更多工具">
                     <image class="menu_middle_up_icon" src="https://s3.ax1x.com/2021/01/26/sXirZD.png" mode="widthFix"
                         lazy-load="false" binderror="" bindload="" />
 
                     <view class="menu_middle_up_text">
-                        工具
+                        更多工具
                     </view>
                 </view>
+
             </view>
         </view>
     </view>
@@ -158,7 +161,7 @@
         <view class="news_panel">
             <view class="menu_all_title2">
 
-                <view class="news_title">校园·Know</view>
+                <view class="news_title">校园速跑</view>
                 <view class="news_more" bindtap="notice">消息
                     <view class="news_point" style="display: {{newnotice?'block':'none'}};">
 
@@ -166,26 +169,63 @@
                 </view>
                 <view class="clear_both"></view>
                 <view class="news_sub_title2">
-                    关注学校最新动态资讯
+                    Shop activities
                 </view>
             </view>
             <view class="news_content">
-                <!-- 下面是新闻的展示，暂时不设计头条板块 -->
-                <view class="news_one" wx:for="{{passagearr}}" wx:key="" data-src="{{item.fields.passage_url}}"
-                    bindtap="turn_news">
-                    <view class="news_one_left">
-                        <view class="news_one_left_up">
-                            {{item.fields.passage_title}}
+                <!-- 在这个地方变更为校园速跑区域 -->
+                <view class="run_fun_one">
+                    <view class="run_pic1">
+                    </view>
+                    <view class="info_left">
+                        <view class="run_title">
+                            快递代取
                         </view>
-                        <view class="news_one_left_middle">
-                            {{item.fields.passage_intro}}
+                        <view class="run_price">
+                            ￥4.88
                         </view>
-                        <view class="news_one_left_down">
-                            {{item.fields.gettimeform}}
+                        <view class="run_bought_num">
+                            12854人付款
                         </view>
                     </view>
-                    <view class="news_one_right">
-                        <image class="news_one_right_image" src="{{item.fields.passage_photo}}" lazy-load="true" />
+                    <view class="info_right">
+
+                    </view>
+                </view>
+                <view class="run_fun_one">
+                    <view class="run_pic2">
+                    </view>
+                    <view class="info_left">
+                        <view class="run_title">
+                            专业代买饭
+                        </view>
+                        <view class="run_price">
+                            ￥4.88
+                        </view>
+                        <view class="run_bought_num">
+                            12854人付款
+                        </view>
+                    </view>
+                    <view class="info_right">
+
+                    </view>
+                </view>
+                <view class="run_fun_one">
+                    <view class="run_pic3">
+                    </view>
+                    <view class="info_left">
+                        <view class="run_title">
+                            复印打印（包邮到寝）
+                        </view>
+                        <view class="run_price">
+                            ￥4.88
+                        </view>
+                        <view class="run_bought_num">
+                            12854人付款
+                        </view>
+                    </view>
+                    <view class="info_right">
+
                     </view>
                 </view>
             </view>
@@ -224,7 +264,7 @@
 
             </view>
 
-            <view class="son_menu_function {{showwhat=='strive' ? 'show' : 'notshow'}}" bindtap="single">
+            <!--             <view class="son_menu_function {{showwhat=='strive' ? 'show' : 'notshow'}}" bindtap="single">
                 <view class="son_menu_function_image">
                     <image class="son_menu_function_image_icon" src="https://s3.ax1x.com/2021/01/28/y9bf0g.png"
                         mode="widthFix" lazy-load="false" binderror="" bindload="" />
@@ -233,9 +273,9 @@
                     单身档案
                 </view>
 
-            </view>
+            </view> -->
 
-            <view class="son_menu_function {{showwhat=='jiaowu' ? 'show' : 'notshow'}}" bindtap="grade">
+            <!--             <view class="son_menu_function {{showwhat=='jiaowu' ? 'show' : 'notshow'}}" bindtap="grade">
                 <view class="son_menu_function_image">
                     <image class="son_menu_function_image_icon" src="https://s3.ax1x.com/2020/11/13/D9kq9f.png"
                         mode="widthFix" lazy-load="false" binderror="" bindload="" />
@@ -244,10 +284,10 @@
                     成绩
                 </view>
 
-            </view>
+            </view> -->
 
 
-            <view class=" son_menu_function {{showwhat=='strive' ? 'show' : 'notshow'}}" bindtap="coursetable">
+            <!--             <view class=" son_menu_function {{showwhat=='strive' ? 'show' : 'notshow'}}" bindtap="coursetable">
                 <view class="son_menu_function_image">
                     <image class="son_menu_function_image_icon" src="https://s3.ax1x.com/2020/11/13/DpxI78.png"
                         mode="widthFix" lazy-load="false" binderror="" bindload="" />
@@ -256,10 +296,10 @@
                     课表
                 </view>
 
-            </view>
+            </view> -->
 
 
-            <view class="son_menu_function {{showwhat=='server' ? 'show' : 'notshow'}}" bindtap="express">
+            <!--             <view class="son_menu_function {{showwhat=='server' ? 'show' : 'notshow'}}" bindtap="express">
                 <view class="son_menu_function_image">
                     <image class="son_menu_function_image_icon" src="https://s3.ax1x.com/2021/01/06/sVNnKJ.png"
                         mode="widthFix" lazy-load="false" binderror="" bindload="" />
@@ -268,32 +308,11 @@
                     取快递
                 </view>
 
-            </view>
+            </view> -->
 
 
 
-            <view class="son_menu_function {{showwhat=='server' ? 'show' : 'notshow'}}" bindtap="notdofunction">
-                <view class="son_menu_function_image">
-                    <image class="son_menu_function_image_icon" src="https://s3.ax1x.com/2021/01/06/sVNhaq.png"
-                        mode="widthFix" lazy-load="false" binderror="" bindload="" />
-                </view>
-                <view class="son_menu_function_title">
-                    跑腿
-                </view>
-
-            </view>
-
-            <view class="son_menu_function {{showwhat=='server' ? 'show' : 'notshow'}}" bindtap="makemoney">
-                <view class="son_menu_function_image">
-                    <image class="son_menu_function_image_icon" src="https://s3.ax1x.com/2021/01/06/sVUisH.png"
-                        mode="widthFix" lazy-load="false" binderror="" bindload="" />
-                </view>
-                <view class="son_menu_function_title">
-                    兼职
-                </view>
-
-            </view>
-
+            <!-- 
             <view class="son_menu_function {{showwhat=='goods' ? 'show' : 'notshow'}}" bindtap="notdofunction">
                 <view class="son_menu_function_image">
                     <image class="son_menu_function_image_icon" src="https://s3.ax1x.com/2021/01/26/sXFMYd.png"
@@ -303,7 +322,7 @@
                     微笑淘宝
                 </view>
 
-            </view>
+            </view> -->
 
             <view class="son_menu_function {{showwhat=='strive' ? 'show' : 'notshow'}}" bindtap="address">
                 <view class="son_menu_function_image">

@@ -43,6 +43,28 @@
     "navigationBarTextStyle": "black",
     "navigationStyle": "custom"
   },
+  "tabBar": {
+    "color": "#666",
+    "selectedColor": "#21b0e9",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "首页",
+      "iconPath": "./image_icon/index2.png",
+      "selectedIconPath": "./image_icon/index1.png"
+    },
+    {
+      "pagePath": "pages/index/index",
+      "text": "购物车",
+      "iconPath": "./image_icon/che2.png",
+      "selectedIconPath": "./image_icon/che1.png"
+    },{
+      "pagePath": "pages/setting/setting",
+      "text": "我的",
+      "iconPath": "./image_icon/me2.png",
+      "selectedIconPath": "./image_icon/me1.png"
+    }
+  ]
+  },
   "sitemapLocation": "sitemap.json",
   "navigateToMiniProgramAppIdList": [
     "wx26418d06c615ba66"
