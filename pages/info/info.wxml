@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-03-12 10:06:04
- * @LastEditTime: 2021-03-13 23:14:48
+ * @LastEditTime: 2021-03-13 23:37:53
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/info/info.wxml
@@ -81,7 +81,7 @@
 <view class="bought_choose" style="display: {{switch_brought?'block':'none'}};">
     <view class="bought_choose_left" style="background-image: url({{choose_url}});background-size: 100% 100%;"></view>
     <view class="bought_choose_right">
-        <view class="jiage_one">￥{{choose_price?choose_price:show_infor.price}}</view>
+        <view class="jiage_one">￥{{choose_price?total_price:show_infor.price}}</view>
         <view class="guige_one">
             {{choose_what=='请选择'?choose_what:'已选择：'+choose_what}}{{choose_what=='请选择'?show_infor.type_options:''}}
         </view>
@@ -91,13 +91,17 @@
     </view>
     <view class="{{choose_what==item.name?'tag_one2':'tag_one'}}" wx:for="{{show_infor.options}}" bindtap="choose_tag"
         data-tag='{{item.name}}' data-url='{{item.url}}' data-price='{{item.price}}'>{{item.name}}</view>
+    <view style="clear: both;">
+
+    </view>
+
     <view class="choose_title_one2">
         数量
     </view>
     <view class="change_num">
-        <view class="num_de">-</view>
-        <view class="change_nums">1</view>
-        <view class="num_add">+</view>
+        <view class="num_de" bindtap="de_nums">-</view>
+        <view class="change_nums">{{nums}}</view>
+        <view class="num_add" bindtap="add_nums">+</view>
     </view>
 
     <view class="bought_button">

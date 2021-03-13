@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-03-12 10:06:04
- * @LastEditTime: 2021-03-13 22:58:07
+ * @LastEditTime: 2021-03-13 23:33:05
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edi
  * @FilePath: /miniprogram-5/pages/info/info.js
@@ -16,6 +16,7 @@ Page({
     /*     cardCur: 0, */
     switch_brought: 1,
     show_infor: {},
+    nums: 1,
     choose_what: '请选择',
     product_infor_express: {
       title: '快递代取',
@@ -191,8 +192,26 @@ Page({
       choose_what: e.currentTarget.dataset.tag,
       choose_price: e.currentTarget.dataset.price,
       choose_url: e.currentTarget.dataset.url,
-      total_price: e.currentTarget.dataset.price + this.data.show_infor.send_fee
+      now_price: e.currentTarget.dataset.price,
+      total_price: e.currentTarget.dataset.price * this.data.nums + this.data.show_infor.send_fee
     })
 
+  },
+  de_nums() {
+    if (this.data.nums == 1) {
+
+    } else {
+      this.setData({
+        nums: this.data.nums -= 1,
+        total_price: this.data.now_price * this.data.nums + this.data.show_infor.send_fee
+      })
+    }
+
+  },
+  add_nums() {
+    this.setData({
+      nums: this.data.nums += 1,
+      total_price: this.data.now_price * this.data.nums + this.data.show_infor.send_fee
+    })
   }
 })
