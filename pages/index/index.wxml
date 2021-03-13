@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2021-03-12 09:43:52
+ * @LastEditTime: 2021-03-12 09:40:35
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.wxml
@@ -174,7 +174,7 @@
             </view>
             <view class="news_content">
                 <!-- 在这个地方变更为校园速跑区域 -->
-                <view class="run_fun_one">
+                <view class="run_fun_one" bindtap = "toinfo" data-name='express'>
                     <view class="run_pic1">
                     </view>
                     <view class="info_left">
@@ -182,7 +182,7 @@
                             快递代取
                         </view>
                         <view class="run_price">
-                            ￥4.88
+                            ￥2.00
                         </view>
                         <view class="run_bought_num">
                             12854人付款
@@ -192,7 +192,7 @@
 
                     </view>
                 </view>
-                <view class="run_fun_one">
+                <view class="run_fun_one" bindtap = "toinfo" data-name='rice'>
                     <view class="run_pic2">
                     </view>
                     <view class="info_left">
@@ -200,7 +200,7 @@
                             专业代买饭
                         </view>
                         <view class="run_price">
-                            ￥4.88
+                            ￥8.00
                         </view>
                         <view class="run_bought_num">
                             12854人付款
@@ -210,7 +210,7 @@
 
                     </view>
                 </view>
-                <view class="run_fun_one">
+                <view class="run_fun_one" bindtap = "toinfo" data-name='print'>
                     <view class="run_pic3">
                     </view>
                     <view class="info_left">
@@ -218,7 +218,7 @@
                             复印打印（包邮到寝）
                         </view>
                         <view class="run_price">
-                            ￥4.88
+                            ￥0.30
                         </view>
                         <view class="run_bought_num">
                             12854人付款

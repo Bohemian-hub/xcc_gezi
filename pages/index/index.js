@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2021-03-12 09:39:09
+ * @LastEditTime: 2021-03-13 20:57:53
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.js
@@ -521,6 +521,12 @@ Page({
       url: '../index_passage/index_passage?src=' + src,
     })
   },
+  toinfo(e) {
+    console.log(e.currentTarget.dataset.name);
+    wx.redirectTo({
+      url: '../info/info?name=' + e.currentTarget.dataset.name,
+    })
+  }
 
 
 })

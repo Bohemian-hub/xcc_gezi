@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-03-12 10:06:04
- * @LastEditTime: 2021-03-12 12:31:02
+ * @LastEditTime: 2021-03-13 23:14:48
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/info/info.wxml
@@ -10,7 +10,7 @@
 
 <swiper class="screen-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true"
     autoplay="true" interval="5000" duration="500">
-    <swiper-item wx:for="{{product_infor_express.swiperList}}" wx:key>
+    <swiper-item wx:for="{{show_infor.swiperList}}" wx:key>
         <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
         <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover"
             wx:if="{{item.type=='video'}}"></video>
@@ -18,30 +18,30 @@
 </swiper>
 <view class="top">
     商品
-    <view class="back">
+    <view class="back" bindtap="backtoindex">
         <text class="cuIcon-back">
 
         </text>
     </view>
 </view>
 <view class="title">
-    <view class="title_name">快递代取</view>
-    <view class="title_price">￥3.33-4.99</view>
+    <view class="title_name">{{show_infor.title}}</view>
+    <view class="title_price">￥{{choose_price?total_price:show_infor.price}}</view>
 </view>
 
 <view class="fee">
     <text class="cuIcon-moneybagfill">
     </text>
     <view class="fee_title">配送费</view>
-    <view class="fee_money">2.88元</view>
+    <view class="fee_money">{{show_infor.send_fee}}元</view>
 </view>
-<view class="specification">
+<view class="specification" bindtap="switch_brought">
     <view class="choose_title">
         规格
     </view>
 
     <view class="choose">
-        请选择 大小/尺寸
+        {{choose_what=='请选择'?choose_what+' '+show_infor.type_options:'已选择：'+choose_what}}
     </view>
     <view class="choose3">
         >
@@ -51,10 +51,9 @@
     <view class="information_title">
         详情
     </view>
-    <view class="info_pic">
-        <image class="pic_one" src="https://ossweb-img.qq.com/images/lol/web201310/skin/big39000.jpg" mode="widthFix" />
-        <image class="pic_one" src="https://ossweb-img.qq.com/images/lol/web201310/skin/big39000.jpg" mode="widthFix" />
-        <image class="pic_one" src="https://ossweb-img.qq.com/images/lol/web201310/skin/big39000.jpg" mode="widthFix" />
+
+    <view class="info_pic" wx:for="{{show_infor.infoList}}" wx:key>
+        <image class="pic_one" src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
     </view>
 
 </view>
@@ -80,17 +79,27 @@
 </view>
 
 <view class="bought_choose" style="display: {{switch_brought?'block':'none'}};">
-    <view class="bought_choose_left"></view>
+    <view class="bought_choose_left" style="background-image: url({{choose_url}});background-size: 100% 100%;"></view>
     <view class="bought_choose_right">
-        <view class="jiage_one">￥3.22-￥5.55</view>
-        <view class="guige_one">请选择 快件规格</view>
+        <view class="jiage_one">￥{{choose_price?choose_price:show_infor.price}}</view>
+        <view class="guige_one">
+            {{choose_what=='请选择'?choose_what:'已选择：'+choose_what}}{{choose_what=='请选择'?show_infor.type_options:''}}
+        </view>
     </view>
     <view class="choose_title_one">
-        快件规格
+        款式
     </view>
-    <view class="tag_one">普通小包裹</view>
-    <view class="tag_one">大包裹</view>
-    <view class="tag_one">特大包裹</view>
+    <view class="{{choose_what==item.name?'tag_one2':'tag_one'}}" wx:for="{{show_infor.options}}" bindtap="choose_tag"
+        data-tag='{{item.name}}' data-url='{{item.url}}' data-price='{{item.price}}'>{{item.name}}</view>
+    <view class="choose_title_one2">
+        数量
+    </view>
+    <view class="change_num">
+        <view class="num_de">-</view>
+        <view class="change_nums">1</view>
+        <view class="num_add">+</view>
+    </view>
+
     <view class="bought_button">
         立即购买
     </view>
