@@ -4,13 +4,13 @@
     position: fixed;
     top: 0;
     background-color: rgba(255, 255, 255, 0.534);
-    line-height: 150rpx;
+    line-height: 180rpx;
     text-align: center;
     font-size: 35rpx;
 }
 .back{
     position: absolute;
-    height: 120rpx;
+    height: 150rpx;
     width: 120rpx;
     background-color: rgba(255, 255, 255, 0.226);
     top: 0;

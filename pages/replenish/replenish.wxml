@@ -1,2 +1,103 @@
-<!--pages/replenish/replenish.wxml-->
-<text>pages/replenish/replenish.wxml</text>
+<!--
+ * @Author: your name
+ * @Date: 2021-03-15 09:56:56
+ * @LastEditTime: 2021-03-15 11:44:38
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /miniprogram-5/pages/replenish/replenish.wxml
+-->
+<view class="top">
+    确认订单
+    <view class="back" bindtap="backtoindex">
+        <text class="cuIcon-back">
+
+        </text>
+    </view>
+</view>
+<view class="address">
+
+    <view class="address_left">
+        <view class="address_name">何东 18081239804</view>
+        <view class="address_place">
+            <view class='address_place_title'>
+                快递
+            </view>
+
+            西昌学院北校区15栋508
+        </view>
+
+    </view>
+    <view class="address_right">
+        >
+    </view>
+    <view style="clear: both;">
+
+    </view>
+
+
+
+    <view class="huahua">
+        <view class="huahua1"></view>
+        <view class="huahua2"></view>
+        <view class="huahua1"></view>
+        <view class="huahua2"></view>
+        <view class="huahua1"></view>
+        <view class="huahua2"></view>
+        <view class="huahua1"></view>
+        <view class="huahua2"></view>
+        <view class="huahua1"></view>
+        <view class="huahua2"></view>
+        <view class="huahua1"></view>
+        <view class="huahua2"></view>
+        <view class="huahua1"></view>
+        <view class="huahua2"></view>
+    </view>
+
+</view>
+
+<view class="product">
+    <view class="product_pic"></view>
+    <view class="product_right">
+        <view class="product_left">
+            <view class="product_title">快递代取</view>
+            <view class="product_size">大包裹</view>
+            <view class="product_price">￥8.00</view>
+        </view>
+
+        <view class="change_num">
+            <view class="num_de" bindtap="de_nums">-</view>
+            <view class="change_nums">{{nums}}4</view>
+            <view class="num_add" bindtap="add_nums">+</view>
+        </view>
+    </view>
+</view>
+<view class="leave">
+    <view class="leave_title">
+        买家留言
+    </view>
+    <textarea class="leave_write" value="" placeholder="填写备注信息、粘贴快递短信、菜品...">
+
+    </textarea>
+
+</view>
+<view class="fee">
+    <view class="fee_top">
+        <view class="fee_top_left">商品金额</view>
+        <view class="fee_top_right">￥21.00</view>
+    </view>
+    <view class="fee_bottom">
+        <view class="fee_top_left">配送费用</view>
+        <view class="fee_top_right">￥21.00</view>
+    </view>
+</view>
+
+<view class="add_infomation">
+    <view class="add_infomation_top">
+        <view class="fee_top_left">补充信息</view>
+        <view class="fee_top_right" style='color: rgb(255, 138, 28);'>未填写 ></view>
+    </view>
+</view>
+<view class="pay">
+    <view class="total">合计：￥22.00元</view>
+    <view class="pay_btn">立即付款</view>
+</view>

@@ -1,1 +1,251 @@
-/* pages/replenish/replenish.wxss */
+.top{
+    width: 100%;
+    height: 120rpx;
+    background-color: rgba(255, 255, 255, 0.534);
+    line-height: 180rpx;
+    text-align: center;
+    font-size: 35rpx;
+}
+.back{
+    position: absolute;
+    height: 150rpx;
+    width: 120rpx;
+    background-color: rgba(255, 255, 255, 0.226);
+    top: 0;
+}
+.address_left{
+    width: 90%;
+    float: left;
+}
+.address_right{
+    width: 10%;
+    float: left;
+    height: 140rpx;
+    line-height: 180rpx;
+}
+.address{
+    width: 90%;
+    background-color: white;
+    margin: 20rpx auto;
+    height: 180rpx;
+    overflow: hidden;
+    border-radius: 20rpx;
+    padding-left: 20rpx;
+}
+.address_name{
+    font-size: 39rpx;
+    font-weight: 600;
+    margin: 10rpx 0 0 10rpx;
+    line-height: 80rpx;
+    height: 80rpx;
+}
+.address_place_title{
+    width: 80rpx;
+    background-color: #ffe3cd;
+    height: 40rpx;
+    line-height: 40rpx;
+    text-align: center;
+    float: left;
+    border-radius: 10rpx;
+    color: #ff7102;
+}
+.address_place{
+    font-size: 33rpx;
+    margin-left: 10rpx;
+    height: 40rpx;
+    line-height:40rpx;
+}
+.huahua{
+    width: 100%;
+    margin-top: 30rpx;
+}
+.huahua1{
+    width: 7.1%;
+    background-color: #ff7102;
+    height: 10rpx;
+    float: left;
+    border-top-left-radius: 60%;
+    border-bottom-right-radius: 60%;
+}
+.huahua2{
+    width: 7.1%;
+    background-color: #2389ff;
+    height: 10rpx;
+    float: left;
+    border-top-left-radius: 60%;
+    border-bottom-right-radius: 60%;
+
+}
+.product{
+    width: 90%;
+    margin: 20rpx auto;
+    height: 220rpx;
+    background-color: white;
+    border-radius: 20rpx;
+
+}
+.product_pic{
+    width: 180rpx;
+    height: 180rpx;
+    margin: 20rpx;
+    background-color: #ff700252;
+    float: left;
+
+}
+.product_right{
+    width: 65%;
+    background-color: #238aff00;
+    float: left;
+    height: 180rpx;
+    margin-top: 20rpx;
+}
+.product_left{
+    width: 40%;
+    background-color: #ffe3cd00;
+    line-height: 60rpx;
+    float: left;
+
+}
+.product_title{
+    font-size: 40rpx;
+    color: black;
+
+}
+.product_size{
+
+    font-size: 30rpx;
+    color: #666;
+}
+.product_price{
+    font-size: 32rpx;
+    color: orange;
+}
+.change_num{
+    width: 150rpx;
+    float: right;
+    background-color: rgb(255, 255, 255);
+    height: 50rpx;
+    margin-top: 120rpx;
+    margin-right: 30rpx;
+    border: 1rpx solid rgb(192, 192, 192);
+    border-radius: 20rpx;
+    overflow: hidden;
+    text-align: center;
+}
+.num_de{
+    height: 40rpx;
+    line-height: 35rpx;
+    margin-top: 5rpx;
+    font-size: 40rpx;
+    margin-left: 4rpx;
+    width: 40rpx;
+    text-align: center;
+    float: left;
+    border-radius: 50rpx;
+    background-color: rgb(218, 218, 218);
+}
+.change_nums{
+    height: 50rpx;
+    width: 50rpx;
+    text-align: center;
+    float: left;
+    line-height: 50rpx;
+}
+.num_add{
+    line-height: 33rpx;
+    height: 40rpx;
+    margin-top: 5rpx;
+    font-size: 40rpx;
+    margin-right: 4rpx;
+    border-radius: 50rpx;
+    width: 40rpx;
+    text-align: center;
+    float: right;
+    background-color: rgb(218, 218, 218);
+
+}
+.leave{
+    width: 90%;
+    margin: 20rpx auto;
+    background-color: white;
+    height: 300rpx;
+    border-radius: 20rpx;
+}
+.leave_title{
+    height: 90rpx;
+    line-height: 90rpx;
+    margin-left: 30rpx;
+    font-size: 34rpx;
+}
+.leave_write{
+    background-color: #f1f1f1;
+    width: 90%;
+    margin: 0 auto;
+    height: 180rpx;
+    padding: 10rpx;
+}
+.fee{
+    width: 90%;
+    height: 220rpx;
+    border-radius: 20rpx;
+    background-color: white;
+    margin: 0 auto;
+}
+.fee_top{
+    width: 90%;
+    height: 110rpx;
+    margin: 0 auto;
+    border-bottom: 1rpx solid rgb(216, 216, 216);
+}
+.fee_bottom{
+    width: 90%;
+    height: 110rpx;
+    margin: 0 auto;
+}
+.fee_top_left{
+    line-height: 110rpx;
+    float: left;
+}
+.fee_top_right{
+    line-height: 110rpx;
+    float: right;
+}
+.add_infomation{
+    width: 90%;
+    height: 110rpx;
+    border-radius: 20rpx;
+    background-color: white;
+    margin: 20rpx auto;
+}
+.add_infomation_top{
+    width: 90%;
+    height: 110rpx;
+    margin: 0 auto;
+}
+.pay{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 100rpx;
+    background-color: white;
+
+}
+.total{
+    width: 200rpx;
+    line-height: 100rpx;
+    margin-left: 30rpx;
+    float: left;
+}
+.pay_btn{
+    width: 200rpx;
+    height: 80rpx;
+    float: right;
+    line-height: 80rpx;
+    margin-left: 30rpx;
+    background-color: orange;
+    color: white;
+    margin-top: 10rpx;
+    margin-right: 30rpx;
+    text-align: center;
+    border-radius: 50rpx;
+}
