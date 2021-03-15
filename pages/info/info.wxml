@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-03-12 10:06:04
- * @LastEditTime: 2021-03-13 23:37:53
+ * @LastEditTime: 2021-03-14 13:37:39
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/info/info.wxml
@@ -104,7 +104,7 @@
         <view class="num_add" bindtap="add_nums">+</view>
     </view>
 
-    <view class="bought_button">
+    <view class="bought_button" bindtap="bought_centain">
         立即购买
     </view>
 </view>

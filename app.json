@@ -1,6 +1,6 @@
 {
   "pages": [
-
+    "pages/replenish/replenish",
     "pages/info/info",
     "pages/share/share",
     "pages/product/product",
