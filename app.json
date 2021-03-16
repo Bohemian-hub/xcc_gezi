@@ -1,10 +1,13 @@
 {
   "pages": [
-    "pages/replenish/replenish",
+    "pages/order_addition/order_addition",
+    "pages/index/index",
+    "pages/myaddress/myaddress",
     "pages/info/info",
+    "pages/replenish/replenish",
     "pages/share/share",
     "pages/product/product",
-    "pages/index/index",
+
     "pages/schedule/schedule",
     "pages/forum/forum",
     "pages/address/address",

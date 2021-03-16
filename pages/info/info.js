@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-03-12 10:06:04
- * @LastEditTime: 2021-03-15 09:56:00
+ * @LastEditTime: 2021-03-16 09:57:51
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edi
  * @FilePath: /miniprogram-5/pages/info/info.js
@@ -159,7 +159,8 @@ Page({
     console.log(options.name);
     that.setData({
       show_infor: that.data.product_infor_express,
-      choose_url: that.data.product_infor_express.options[0].url
+      choose_url: that.data.product_infor_express.options[0].url,
+      choose_price: that.data.product_infor_express.options[0].price.toFixed(2)
     })
     if (options.name == 'rice') {
       console.log("带饭");
@@ -190,10 +191,9 @@ Page({
   choose_tag(e) {
     this.setData({
       choose_what: e.currentTarget.dataset.tag,
-      choose_price: e.currentTarget.dataset.price,
       choose_url: e.currentTarget.dataset.url,
-      now_price: e.currentTarget.dataset.price,
-      total_price: (e.currentTarget.dataset.price * this.data.nums + this.data.show_infor.send_fee).toFixed(2)
+      choose_price: e.currentTarget.dataset.price.toFixed(2),
+      now_price: e.currentTarget.dataset.price.toFixed(2)
     })
 
   },
@@ -203,7 +203,7 @@ Page({
     } else {
       this.setData({
         nums: this.data.nums -= 1,
-        total_price: (this.data.now_price * this.data.nums + this.data.show_infor.send_fee).toFixed(2)
+        total_price: this.data.now_price
       })
     }
 
@@ -231,14 +231,13 @@ Page({
       } else {
         this.setData({
           nums: this.data.nums += 1,
-          total_price: (this.data.now_price * this.data.nums + this.data.show_infor.send_fee).toFixed(2)
-
+          total_price: this.data.now_price
         })
       }
     } else if (this.data.show_infor.title == '快速打印') {
       this.setData({
         nums: this.data.nums += 1,
-        total_price: (this.data.now_price * this.data.nums + this.data.show_infor.send_fee).toFixed(2)
+        total_price: this.data.now_price
 
       })
     }
@@ -246,7 +245,7 @@ Page({
   },
   bought_centain() {
     /* 这里准备提交订单了，把订购的商品、金额发到另一个页面 */
-    if (!this.data.total_price) {
+    if (!this.data.now_price) {
       wx.showModal({
         title: '提示',
         content: '请选择规格/款式',
@@ -260,9 +259,15 @@ Page({
       console.log(this.data.show_infor.title);
       console.log(this.data.choose_what);
       console.log(this.data.nums);
-      console.log(this.data.total_price);
+      console.log(this.data.choose_price);
+      console.log(this.data.show_infor.send_fee);
+
       /* 跳转确认支付页面 */
-      
+      wx.redirectTo({
+        url: '../replenish/replenish?product_name=' + this.data.show_infor.title + '&product_size=' + this.data.choose_what + '&product_nums=' + this.data.nums + '&product_price=' + this.data.choose_price + '&send_fee=' + this.data.show_infor.send_fee,
+      })
+
+
     }
 
   }

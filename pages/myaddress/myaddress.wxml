@@ -1,0 +1,68 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-03-16 11:26:22
+ * @LastEditTime: 2021-03-16 13:58:33
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /miniprogram-5/pages/myaddress/myaddress.wxml
+-->
+<view class="top">
+    编辑收货地址
+    <view class="back" bindtap="backtoindex">
+        <text class="cuIcon-back">
+
+        </text>
+    </view>
+</view>
+<view class="input_one">
+    <view class="input_title">收货人</view>
+
+    <input class="input_input" value="{{input_name}}" type="text" placeholder="" bindinput="input_name" focus="true">
+
+    </input>
+
+</view>
+<view class="input_one">
+    <view class="input_title">手机号</view>
+
+    <input class="input_input" value="{{input_tel}}" type="text" bindinput="input_tel">
+
+    </input>
+
+</view>
+<view class="input_one">
+    <view class="input_title">学校</view>
+
+    <input class="input_input" value="{{input_school}}" type="text" bindinput="input_school">
+
+    </input>
+
+
+</view>
+<view class="input_one">
+    <view class="input_title">校区</view>
+
+    <input class="input_input" value="{{input_place}}" type="text" bindinput="input_place">
+
+    </input>
+
+</view>
+<view class="input_one">
+    <view class="input_title">宿舍(栋)</view>
+
+    <input class="input_input" value="" type="text" bindinput="input_apartment">
+
+    </input>
+
+</view>
+<view class="input_one">
+    <view class="input_title">寝室号</view>
+
+    <input class="input_input" value="" type="text" bindinput="input_room">
+
+    </input>
+
+</view>
+<view class="save_btn" bindtap="save_use">
+    保存并使用
+</view>

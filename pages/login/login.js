@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:33:47
- * @LastEditTime: 2021-03-09 13:54:50
+ * @LastEditTime: 2021-03-16 13:36:48
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/login/login.js
@@ -53,7 +53,7 @@ Page({
             wx.setStorageSync('major', res.data.ret.majorName)
 
 
-            wx.redirectTo({
+            wx.switchTab({
               url: '../index/index',
             })
             setTimeout(function () {

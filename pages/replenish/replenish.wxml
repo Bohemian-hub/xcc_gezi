@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-03-15 09:56:56
- * @LastEditTime: 2021-03-15 11:44:38
+ * @LastEditTime: 2021-03-16 10:38:16
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/replenish/replenish.wxml
@@ -14,16 +14,16 @@
         </text>
     </view>
 </view>
-<view class="address">
+<view class="address" bindtap = "change_address">
 
     <view class="address_left">
-        <view class="address_name">何东 18081239804</view>
+        <view class="address_name">{{send_name?send_name+' '+send_tel:'点击添加地址'}}</view>
         <view class="address_place">
             <view class='address_place_title'>
-                快递
+                配送
             </view>
 
-            西昌学院北校区15栋508
+            {{send_place}}
         </view>
 
     </view>
@@ -59,16 +59,19 @@
     <view class="product_pic"></view>
     <view class="product_right">
         <view class="product_left">
-            <view class="product_title">快递代取</view>
-            <view class="product_size">大包裹</view>
-            <view class="product_price">￥8.00</view>
+            <view class="product_title">{{product_name}}</view>
+            <view class="product_size">{{product_size}}</view>
+            <view class="product_price">
+                ￥{{product_price}}
+                <view class="change_num">
+                    <view class="num_de" bindtap="de_nums">-</view>
+                    <view class="change_nums">{{nums}}</view>
+                    <view class="num_add" bindtap="add_nums">+</view>
+                </view>
+            </view>
         </view>
 
-        <view class="change_num">
-            <view class="num_de" bindtap="de_nums">-</view>
-            <view class="change_nums">{{nums}}4</view>
-            <view class="num_add" bindtap="add_nums">+</view>
-        </view>
+
     </view>
 </view>
 <view class="leave">
@@ -83,11 +86,11 @@
 <view class="fee">
     <view class="fee_top">
         <view class="fee_top_left">商品金额</view>
-        <view class="fee_top_right">￥21.00</view>
+        <view class="fee_top_right">￥{{all_price}}</view>
     </view>
     <view class="fee_bottom">
         <view class="fee_top_left">配送费用</view>
-        <view class="fee_top_right">￥21.00</view>
+        <view class="fee_top_right">￥{{send_fee}}</view>
     </view>
 </view>
 
@@ -98,6 +101,15 @@
     </view>
 </view>
 <view class="pay">
-    <view class="total">合计：￥22.00元</view>
+    <view class="total">
+        <view class="total_left">
+            合计：
+        </view>
+        <view class="total_fee">
+            ￥{{total_fee}}
+        </view>
+
+
+    </view>
     <view class="pay_btn">立即付款</view>
 </view>

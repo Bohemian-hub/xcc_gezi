@@ -26,7 +26,7 @@
 </view>
 <view class="title">
     <view class="title_name">{{show_infor.title}}</view>
-    <view class="title_price">￥{{choose_price?total_price:show_infor.price}}</view>
+    <view class="title_price">￥{{now_price?choose_price:show_infor.price}}</view>
 </view>
 
 <view class="fee">
@@ -81,7 +81,7 @@
 <view class="bought_choose" style="display: {{switch_brought?'block':'none'}};">
     <view class="bought_choose_left" style="background-image: url({{choose_url}});background-size: 100% 100%;"></view>
     <view class="bought_choose_right">
-        <view class="jiage_one">￥{{choose_price?total_price:show_infor.price}}</view>
+        <view class="jiage_one">￥{{choose_price}}</view>
         <view class="guige_one">
             {{choose_what=='请选择'?choose_what:'已选择：'+choose_what}}{{choose_what=='请选择'?show_infor.type_options:''}}
         </view>

@@ -1,0 +1,48 @@
+.top{
+    width: 100%;
+    height: 120rpx;
+    background-color: rgba(255, 255, 255, 0.534);
+    line-height: 180rpx;
+    text-align: center;
+    font-size: 35rpx;
+}
+.back{
+    position: absolute;
+    height: 150rpx;
+    width: 120rpx;
+    background-color: rgba(255, 255, 255, 0.226);
+    top: 0;
+}
+.input_one{
+    height: 110rpx;
+    width: 90%;
+    margin:0 auto;
+    border-bottom: 2rpx solid rgb(219, 219, 219);
+    line-height: 110rpx;
+}
+.input_title{
+    width: 160rpx;
+    float: left;
+    background-color: rgba(255, 0, 0, 0);
+    font-size: 34rpx;
+    color: rgb(88, 88, 88);
+}
+.input_input{
+    background-color: rgba(250, 235, 215, 0);
+    float: right;
+    height: 110rpx;
+    width: 500rpx;
+    font-size: 39rpx;
+    text-align: right;
+}
+.save_btn{
+    width: 100%;
+    height: 120rpx;
+    background-color: rgb(255, 102, 0);
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    line-height: 120rpx;
+    font-size: 40rpx;
+    color: white;
+}

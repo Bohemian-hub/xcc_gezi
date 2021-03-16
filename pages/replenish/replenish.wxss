@@ -100,7 +100,7 @@
     margin-top: 20rpx;
 }
 .product_left{
-    width: 40%;
+    width: 100%;
     background-color: #ffe3cd00;
     line-height: 60rpx;
     float: left;
@@ -112,9 +112,10 @@
 
 }
 .product_size{
-
+    height: 60rpx;
     font-size: 30rpx;
     color: #666;
+    overflow: hidden;
 }
 .product_price{
     font-size: 32rpx;
@@ -125,7 +126,7 @@
     float: right;
     background-color: rgb(255, 255, 255);
     height: 50rpx;
-    margin-top: 120rpx;
+    margin-top: 10rpx;
     margin-right: 30rpx;
     border: 1rpx solid rgb(192, 192, 192);
     border-radius: 20rpx;
@@ -231,7 +232,6 @@
 
 }
 .total{
-    width: 200rpx;
     line-height: 100rpx;
     margin-left: 30rpx;
     float: left;
@@ -242,10 +242,19 @@
     float: right;
     line-height: 80rpx;
     margin-left: 30rpx;
-    background-color: orange;
+    background-color: #ff7102;
     color: white;
     margin-top: 10rpx;
     margin-right: 30rpx;
     text-align: center;
     border-radius: 50rpx;
+}
+.total_left{
+    float: left;
+    font-size: 30rpx;
+}
+.total_fee{
+    float: left;
+    font-size: 40rpx;
+    color: #ff7102;
 }
