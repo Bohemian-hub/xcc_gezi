@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-03-15 09:56:56
- * @LastEditTime: 2021-03-16 13:47:38
+ * @LastEditTime: 2021-03-16 20:19:53
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/replenish/replenish.js
@@ -18,7 +18,9 @@ Page({
     nums: '',
     product_price: '',
     all_price: '',
-    send_fee: ''
+    send_fee: '',
+    addition_status: '已填写'
+
   },
 
   /**
@@ -51,7 +53,24 @@ Page({
       send_name: wx.getStorageSync('input_name'),
       send_tel: wx.getStorageSync('input_tel'),
       send_place: wx.getStorageSync('input_place'),
+      get_code: wx.getStorageSync('qujianma'),
+      get_weihao: wx.getStorageSync('weihao'),
+      get_express: wx.getStorageSync('express'),
     })
+    if (wx.getStorageSync('qujianma') != "") {
+      this.setData({
+        addition_status: '已填写'
+      })
+    } else {
+      this.setData({
+        addition_status: '未填写 '
+      })
+    }
+    /* 值传达到位之后就清空了 */
+    setTimeout(() => {
+      wx.setStorageSync('qujianma', "");
+    }, 1000);
+    console.log(this.data);
   },
   de_nums() {
     if (this.data.nums == 1) {
@@ -114,4 +133,9 @@ Page({
     }
 
   },
+  add_infor() {
+    wx.navigateTo({
+      url: '../order_addition/order_addition?product_name=' + this.data.product_name,
+    })
+  }
 })

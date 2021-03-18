@@ -94,10 +94,10 @@
     </view>
 </view>
 
-<view class="add_infomation">
+<view class="add_infomation" bindtap = "add_infor">
     <view class="add_infomation_top">
         <view class="fee_top_left">补充信息</view>
-        <view class="fee_top_right" style='color: rgb(255, 138, 28);'>未填写 ></view>
+        <view class="fee_top_right" style='color: rgb(255, 138, 28);'>{{addition_status}} ></view>
     </view>
 </view>
 <view class="pay">

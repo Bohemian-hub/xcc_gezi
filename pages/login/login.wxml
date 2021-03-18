@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-08 23:33:47
- * @LastEditTime: 2021-02-08 19:43:57
+ * @LastEditTime: 2021-03-17 18:25:51
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Editew
  * @FilePath: /miniprogram-5/pages/login/login.wxml
@@ -30,6 +30,13 @@
         <!-- 密码输入框 -->
         <input class="login_password" name='password' type="password" placeholder="密码">
         </input>
+        <!-- 验证码输入框 -->
+        <input class="login_yanzheng" name='yanzheng' type="text" placeholder="验证码 ">
+        </input>
+        <view class="yanzhengma" style="background-image: url({{codeimg}});background-size: 100% 100%;">
+
+        </view>
+
         <button class="login_button" formType="submit" type='primary'>▶
         </button>
 

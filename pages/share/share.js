@@ -23,7 +23,10 @@ Page({
         url: '../index/index',
       })
     }else{
-      this.searchuser(options.xh,pswd)
+      /* this.searchuser(options.xh,pswd) */
+      wx.navigateTo({
+        url: '../login/login',
+      })
     }
 
   },

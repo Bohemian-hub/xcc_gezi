@@ -1,1 +1,55 @@
-/* pages/order_addition/order_addition.wxss */
+.top{
+    width: 100%;
+    height: 120rpx;
+    background-color: rgba(255, 255, 255, 0.534);
+    line-height: 180rpx;
+    text-align: center;
+    font-size: 35rpx;
+}
+.back{
+    position: absolute;
+    height: 150rpx;
+    width: 120rpx;
+    background-color: rgba(255, 255, 255, 0.226);
+    top: 0;
+}
+.input_one{
+    height: 110rpx;
+    width: 90%;
+    margin:0 auto;
+    border-bottom: 2rpx solid rgb(219, 219, 219);
+    line-height: 110rpx;
+}
+.input_title{
+    width: 160rpx;
+    float: left;
+    background-color: rgba(255, 0, 0, 0);
+    font-size: 34rpx;
+    color: rgb(88, 88, 88);
+}
+.input_input{
+    background-color: rgba(250, 235, 215, 0);
+    float: right;
+    height: 110rpx;
+    width: 500rpx;
+    font-size: 35rpx;
+    color: rgb(133, 133, 133);
+    text-align: right;
+}
+.input_tilte_place{
+    background-color: rgba(255, 192, 203, 0);
+    float: right;
+    font-size: 35rpx;
+    color:rgb(133, 133, 133);
+}
+.bottom{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 150rpx;
+    background-color: rgb(12, 199, 137);
+    text-align: center;
+    line-height: 150rpx;
+    font-size: 40rpx;
+    color: white;
+}

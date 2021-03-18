@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:33:47
- * @LastEditTime: 2021-03-16 13:36:48
+ * @LastEditTime: 2021-03-17 23:08:55
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/login/login.js
@@ -15,11 +15,55 @@ Page({
   data: {
     loginstatus: '',
   },
+  onLoad: function () {
+    /* 这里向后端发送一个请求获取验证码！ */
+    wx.request({
+      url: 'https://www.xiyuangezi.cn/info/get_yanzhengma',
+      header: {
+        "content-type": "application/x-www-form-urlencoded"		//使用POST方法要带上这个header
+      },
+      method: "POST",
+      success: res => {
+        if (res.data.loginnum == 1) {
+          console.log(res.data);
+          this.setData({
+            'tokens': res.data.tokens
+          })
+          //声明文件系统
+          const fs = wx.getFileSystemManager();
+          //随机定义路径名称
+          var times = new Date().getTime();
+          var codeimg = wx.env.USER_DATA_PATH + '/' + times + '.png';
+          fs.writeFile({
+            filePath: codeimg,
+            data: res.data.base64_data,
+            encoding: 'base64',
+            success: (res) => {
+              //写入成功了的话，新的图片路径就能用了
+              console.log(res)
+              console.log(codeimg)
+              this.setData({
+                'codeimg': codeimg
+              })
+              console.log(this.data.tokens);
+              /*               console.log(this.data.codeimg); */
+            }
+          });
+        }
+      }
+    });
+
+  },
+
+
+
   loginForm: function (data) {
     var that = this;
     console.log(data.detail.value)//  {username: "hgj", password: "fsdfsd"}
     var username = data.detail.value.username;
     var password = data.detail.value.password;
+    var yanzheng = data.detail.value.yanzheng;
+    var tokens = this.data.tokens;
     wx.showLoading({
       title: '登录中',
     })
@@ -32,8 +76,11 @@ Page({
       data: {
         name: username,
         pwd: password,
+        yanzheng: yanzheng,
+        tokens: tokens,
       }, // 向后端发送的数据，后端通过request.data拿到该数据
       success: res => {
+
         if (res.statusCode == 200) {
           console.log(res.data);
           /* 下面是正常请求到服务器后的if分支，我将在后端完成对后台数据的渲染 */

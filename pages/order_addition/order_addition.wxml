@@ -1,2 +1,43 @@
-<!--pages/order_addition/order_addition.wxml-->
-<text>pages/order_addition/order_addition.wxml</text>
+<!--
+ * @Author: your name
+ * @Date: 2021-03-16 11:26:22
+ * @LastEditTime: 2021-03-16 19:16:48
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /miniprogram-5/pages/myaddress/myaddress.wxml
+-->
+<view class="top">
+    编辑收货地址
+    <view class="back" bindtap="back">
+        <text class="cuIcon-back">
+
+        </text>
+    </view>
+</view>
+<view class="input_one" style="display: {{mode==1?'block':'none'}};">
+    <view class="input_title">快递公司</view> <!-- 用来取快递  -->
+    <picker class="input_tilte_place" bindchange="bindPickerChange1" value="{{index1}}" range="{{array1}}">
+        <view class="picker">
+            {{array1[index1]}}>
+        </view>
+    </picker>
+</view>
+<view class="input_one" style="display: {{mode==1?'block':'none'}};">
+    <view class="input_title">取件码</view> <!-- 用来取快递  -->
+    <input class="input_input" type="text" bindinput="input_code">
+    </input>
+</view>
+<view class="input_one" style="display: {{mode==1?'block':'none'}};">
+    <view class="input_title">手机尾号</view> <!-- 用来取快递  -->
+    <input class="input_input" type="number" bindinput="input_tel">
+    </input>
+
+</view>
+<view class="input_one" style="display: {{mode==2?'block':'none'}};">
+    <view class="input_title">QQ号</view> <!-- 用来发送文件  -->
+    <input class="input_input" type="number" bindinput="input_qq">
+    </input>
+</view>
+<view class="bottom" bindtap="centain">
+    确定
+</view>
