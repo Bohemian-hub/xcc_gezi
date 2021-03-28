@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-03-12 09:51:13
+ * @LastEditTime: 2021-03-28 13:13:12
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.js
@@ -606,80 +606,84 @@ Page({
   },
   /* 点赞评论机制等等 */
   tolike(e) {
-    var that = this
-    console.log(that.data.display_forum_data);
-    console.log(e.target.dataset.idx);
-    var myDate = new Date();
-    var month = myDate.getMonth() + 1
-    var daly = myDate.getDate()
-    var h = myDate.getHours();       //获取当前小时数(0-23)
-    var m = myDate.getMinutes();     //获取当前分钟数(0-59)
-    var s = myDate.getSeconds();     //获取当前秒数(0-59)
-    if (daly < 10) {
-      daly = "0" + String(daly)
-    }
-    if (month < 10) {
-      month = "0" + String(month)
-    }
-    if (h < 10) {
-      h = "0" + String(h)
-    }
-    if (m < 10) {
-      m = "0" + String(m)
-    }
-    if (s < 10) {
-      s = "0" + String(s)
-    }
-    var love_time = myDate.getFullYear() + '' + month + '' + daly + '' + h + '' + m + '' + s;
-    that.setData({
-      ['display_forum_data[' + e.target.dataset.idx + '].fields.iflove']: !this.data.display_forum_data[e.target.dataset.idx].fields.iflove
-    })
-    /* 成功实现了点赞能够让他们梁 */
-    /* 下面打算发送请求，把每一个点赞都记录下来，单独用一张论坛点赞表，这样能够让帖子去找到那些人点的赞是自己的，另一方面，也可以让点赞人知道 我点了哪些帖子的赞 */
-    /* 现在数据发送到后台， */
-    /* 保存此次的点赞信息 */
-    console.log(that.data.display_forum_data[e.target.dataset.idx].fields.iflove);    //这个是当前我点的这个东西的点赞情况
-    wx.request({
-      url: 'https://www.xiyuangezi.cn/forum/love', //仅为示例，并非真实的接口地址
-      data: {
-        lover: wx.getStorageSync('name'),
-        studentId: wx.getStorageSync('studentId'),
-        forum_id: that.data.display_forum_data[e.target.dataset.idx].pk,
-        love_status: that.data.display_forum_data[e.target.dataset.idx].fields.iflove,
-        love_time: love_time
-      },
-      method: "POST",
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
-      },
-      success: (result) => {
-        /* 这里应该是将这一条数据中的lover清空重新渲染 */
-        if (that.data.display_forum_data[e.target.dataset.idx].fields.iflove == true) {
-          /* 下面是点赞，前端的呈现数据变化 */
-          let myname = wx.getStorageSync('name').split(',')
-          that.setData({
-            ['display_forum_data[' + e.target.dataset.idx + '].fields.lover']: myname.concat(that.data.display_forum_data[e.target.dataset.idx].fields.lover),
-          })
-        } else {
-          /* 下面是取消赞时候，我需要在数组中删除我的名字 */
-          let myname = wx.getStorageSync('name')
-          for (let index = 0; index < that.data.display_forum_data[e.target.dataset.idx].fields.lover.length; index++) {
-            if (that.data.display_forum_data[e.target.dataset.idx].fields.lover[index] == myname) {
-              console.log(index);
-            }
-            that.data.display_forum_data[e.target.dataset.idx].fields.lover.splice(index, 1);
-            this.setData({
-              ['display_forum_data[' + e.target.dataset.idx + '].fields.lover']: that.data.display_forum_data[e.target.dataset.idx].fields.lover
+    if (!wx.getStorageSync('studentId')) {
+      console.log("未登录不能点赞");
+    } else {
+      var that = this
+      console.log(that.data.display_forum_data);
+      console.log(e.target.dataset.idx);
+      var myDate = new Date();
+      var month = myDate.getMonth() + 1
+      var daly = myDate.getDate()
+      var h = myDate.getHours();       //获取当前小时数(0-23)
+      var m = myDate.getMinutes();     //获取当前分钟数(0-59)
+      var s = myDate.getSeconds();     //获取当前秒数(0-59)
+      if (daly < 10) {
+        daly = "0" + String(daly)
+      }
+      if (month < 10) {
+        month = "0" + String(month)
+      }
+      if (h < 10) {
+        h = "0" + String(h)
+      }
+      if (m < 10) {
+        m = "0" + String(m)
+      }
+      if (s < 10) {
+        s = "0" + String(s)
+      }
+      var love_time = myDate.getFullYear() + '' + month + '' + daly + '' + h + '' + m + '' + s;
+      that.setData({
+        ['display_forum_data[' + e.target.dataset.idx + '].fields.iflove']: !this.data.display_forum_data[e.target.dataset.idx].fields.iflove
+      })
+      /* 成功实现了点赞能够让他们梁 */
+      /* 下面打算发送请求，把每一个点赞都记录下来，单独用一张论坛点赞表，这样能够让帖子去找到那些人点的赞是自己的，另一方面，也可以让点赞人知道 我点了哪些帖子的赞 */
+      /* 现在数据发送到后台， */
+      /* 保存此次的点赞信息 */
+      console.log(that.data.display_forum_data[e.target.dataset.idx].fields.iflove);    //这个是当前我点的这个东西的点赞情况
+      wx.request({
+        url: 'https://www.xiyuangezi.cn/forum/love', //仅为示例，并非真实的接口地址
+        data: {
+          lover: wx.getStorageSync('name'),
+          studentId: wx.getStorageSync('studentId'),
+          forum_id: that.data.display_forum_data[e.target.dataset.idx].pk,
+          love_status: that.data.display_forum_data[e.target.dataset.idx].fields.iflove,
+          love_time: love_time
+        },
+        method: "POST",
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' // 默认值
+        },
+        success: (result) => {
+          /* 这里应该是将这一条数据中的lover清空重新渲染 */
+          if (that.data.display_forum_data[e.target.dataset.idx].fields.iflove == true) {
+            /* 下面是点赞，前端的呈现数据变化 */
+            let myname = wx.getStorageSync('name').split(',')
+            that.setData({
+              ['display_forum_data[' + e.target.dataset.idx + '].fields.lover']: myname.concat(that.data.display_forum_data[e.target.dataset.idx].fields.lover),
             })
+          } else {
+            /* 下面是取消赞时候，我需要在数组中删除我的名字 */
+            let myname = wx.getStorageSync('name')
+            for (let index = 0; index < that.data.display_forum_data[e.target.dataset.idx].fields.lover.length; index++) {
+              if (that.data.display_forum_data[e.target.dataset.idx].fields.lover[index] == myname) {
+                console.log(index);
+              }
+              that.data.display_forum_data[e.target.dataset.idx].fields.lover.splice(index, 1);
+              this.setData({
+                ['display_forum_data[' + e.target.dataset.idx + '].fields.lover']: that.data.display_forum_data[e.target.dataset.idx].fields.lover
+              })
 
+            }
           }
-        }
 
-        /* 对某一个帖子点了赞或者取消赞，我们只需要发送这个帖子的forum_id获取该帖子的最新点赞情况计科 */
-        /* 没必要重新获取点赞列表，直接前端追加显示一下即可 */
+          /* 对某一个帖子点了赞或者取消赞，我们只需要发送这个帖子的forum_id获取该帖子的最新点赞情况计科 */
+          /* 没必要重新获取点赞列表，直接前端追加显示一下即可 */
 
-      },
-    });
+        },
+      });
+    }
   },
   /* 评论区域的函数 */
   getInputValue1(e) {

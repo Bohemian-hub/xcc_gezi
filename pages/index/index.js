@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2021-03-18 10:40:36
+ * @LastEditTime: 2021-03-28 13:21:43
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.js
@@ -246,38 +246,41 @@ Page({
       envVersion: 'release',// 打开正式版
     })
   },
-  coursetable() {
-    wx.redirectTo({
-      url: '../schedule/schedule',
-    })
-  },
-  express() {
-    wx.redirectTo({
-      url: '../express/express',
-    })
-  },
-  makemoney() {
-    wx.redirectTo({
-      url: '../express_catch/express_catch',
-    })
-  },
-  new_confesswall: function () {
-    wx.redirectTo({
-      url: '../new_confesswall/new_confesswall',
-    })
-  },
+  /*   coursetable() {
+      wx.navigateTo({
+        url: '../schedule/schedule',
+      })
+    }, */
+  /*   express() {
+      wx.navigateTo({
+        url: '../express/express',
+      })
+    }, */
+  /*   makemoney() {
+      wx.navigateTo({
+        url: '../express_catch/express_catch',
+      })
+    }, */
+  /*   new_confesswall: function () {
+      wx.navigateTo({
+        url: '../new_confesswall/new_confesswall',
+      })
+    }, */
   single() {
-    wx.redirectTo({
+    wx.navigateTo({
       url: '../ConfessionWall/ConfessionWall',
     })
   },
+  part_job() {
+
+  },
   forum() {
-    wx.redirectTo({
+    wx.navigateTo({
       url: '../forum/forum',
     })
   },
   address() {
-    wx.redirectTo({
+    wx.navigateTo({
       url: '../address/address',
     })
   },
@@ -293,7 +296,8 @@ Page({
       this.setData({
         student_name: wx.getStorageSync('name'),
       })
-      this.get_share()
+      /* 暂时不查看分享相关了 */
+      /*       this.get_share() */
     }
 
     /* 这里调用函数来请求新闻 */
@@ -357,7 +361,7 @@ Page({
             console.log("获取到了帖子id");
             /* 马上跳转过去获取这个帖子 */
 
-            wx.redirectTo({
+            wx.navigateTo({
               url: '../topic_one/topic_one?forum_id=' + number + '&name=分享内容',
             })
           }
@@ -503,27 +507,28 @@ Page({
       hasUserInfo: true
     })
   },
-
+  /* 跳转到设置 */
   jump: function () {
-    wx.redirectTo({
+    wx.navigateTo({
       url: '../setting/setting',
     })
   },
+  /* 跳转到设置 */
   notice() {
-    wx.redirectTo({
+    wx.navigateTo({
       url: '../notice/notice',
     })
   },
-  turn_news(e) {
-    console.log(e.currentTarget.dataset.src);
-    var src = e.currentTarget.dataset.src
-    wx.redirectTo({
-      url: '../index_passage/index_passage?src=' + src,
-    })
-  },
+  /*   turn_news(e) {
+      console.log(e.currentTarget.dataset.src);
+      var src = e.currentTarget.dataset.src
+      wx.redirectTo({
+        url: '../index_passage/index_passage?src=' + src,
+      })
+    }, */
   toinfo(e) {
     console.log(e.currentTarget.dataset.name);
-    wx.redirectTo({
+    wx.navigateTo({
       url: '../info/info?name=' + e.currentTarget.dataset.name,
     })
   }

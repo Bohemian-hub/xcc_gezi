@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2021-03-12 09:40:35
+ * @LastEditTime: 2021-03-28 12:07:07
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.wxml
@@ -91,12 +91,12 @@
                 <view class="menu_title">
                     Function
                 </view>
-
+                <!-- 
                 <view class="menu_setting" bindtap='jump'>
                     <image class="menu_setting_icon" src="https://s1.ax1x.com/2020/11/10/Bbz6tf.png" mode="widthFix"
                         lazy-load="false" binderror="" bindload="" />
 
-                </view>
+                </view> -->
                 <view class="clear_both"></view>
                 <view class="menu_sub_title">
                     正在努力开发出更优质的功能与服务哦
@@ -145,12 +145,12 @@
                         单身档案
                     </view>
                 </view>
-                <view class="menu_right_down" bindtap="jiaowu" data-id="更多工具">
-                    <image class="menu_middle_up_icon" src="https://s3.ax1x.com/2021/01/26/sXirZD.png" mode="widthFix"
-                        lazy-load="false" binderror="" bindload="" />
+                <view class="menu_right_down" bindtap="notdofunction" data-id="更多工具">
+                    <image class="menu_middle_up_icon" src="../../image_icon/兼职.png" mode="widthFix" lazy-load="false"
+                        binderror="" bindload="" />
 
                     <view class="menu_middle_up_text">
-                        更多工具
+                        兼职挣钱
                     </view>
                 </view>
 
@@ -162,11 +162,11 @@
             <view class="menu_all_title2">
 
                 <view class="news_title">校园速跑</view>
-                <view class="news_more" bindtap="notice">消息
+                <!--                 <view class="news_more" bindtap="notice">消息
                     <view class="news_point" style="display: {{newnotice?'block':'none'}};">
 
                     </view>
-                </view>
+                </view> -->
                 <view class="clear_both"></view>
                 <view class="news_sub_title2">
                     Shop activities
@@ -174,7 +174,7 @@
             </view>
             <view class="news_content">
                 <!-- 在这个地方变更为校园速跑区域 -->
-                <view class="run_fun_one" bindtap = "toinfo" data-name='express'>
+                <view class="run_fun_one" bindtap="toinfo" data-name='express'>
                     <view class="run_pic1">
                     </view>
                     <view class="info_left">
@@ -192,7 +192,7 @@
 
                     </view>
                 </view>
-                <view class="run_fun_one" bindtap = "toinfo" data-name='rice'>
+                <view class="run_fun_one" bindtap="toinfo" data-name='rice'>
                     <view class="run_pic2">
                     </view>
                     <view class="info_left">
@@ -210,7 +210,7 @@
 
                     </view>
                 </view>
-                <view class="run_fun_one" bindtap = "toinfo" data-name='print'>
+                <view class="run_fun_one" bindtap="toinfo" data-name='print'>
                     <view class="run_pic3">
                     </view>
                     <view class="info_left">
@@ -253,7 +253,7 @@
         <!-- 以防自己关闭自己 -->
         <scroll-view class="son_menu_function_panel" scroll-y="true">
 
-            <view class="son_menu_function {{showwhat=='strive' ? 'show' : 'notshow'}}" bindtap="new_confesswall">
+            <!--             <view class="son_menu_function {{showwhat=='strive' ? 'show' : 'notshow'}}" bindtap="new_confesswall">
                 <view class="son_menu_function_image">
                     <image class="son_menu_function_image_icon" src="https://s3.ax1x.com/2020/12/21/rB2QQs.png"
                         mode="widthFix" lazy-load="false" binderror="" bindload="" />
@@ -262,7 +262,7 @@
                     私信
                 </view>
 
-            </view>
+            </view> -->
 
             <!--             <view class="son_menu_function {{showwhat=='strive' ? 'show' : 'notshow'}}" bindtap="single">
                 <view class="son_menu_function_image">
@@ -324,7 +324,7 @@
 
             </view> -->
 
-            <view class="son_menu_function {{showwhat=='strive' ? 'show' : 'notshow'}}" bindtap="address">
+            <!--             <view class="son_menu_function {{showwhat=='strive' ? 'show' : 'notshow'}}" bindtap="address">
                 <view class="son_menu_function_image">
                     <image class="son_menu_function_image_icon" src="https://s3.ax1x.com/2021/01/26/sXFOtH.png"
                         mode="widthFix" lazy-load="false" binderror="" bindload="" />
@@ -333,11 +333,9 @@
                     共享通讯录
                 </view>
 
-            </view>
+            </view> -->
 
         </scroll-view>
-
-
     </view>
     <view class="close_place3" bindtap="close_jiaowu">
 

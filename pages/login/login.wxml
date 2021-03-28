@@ -33,7 +33,7 @@
         <!-- 验证码输入框 -->
         <input class="login_yanzheng" name='yanzheng' type="text" placeholder="验证码 ">
         </input>
-        <view class="yanzhengma" style="background-image: url({{codeimg}});background-size: 100% 100%;">
+        <view class="yanzhengma" style="background-image: url({{codeimg}});background-size: 100% 100%;" bindtap = "get_yanzhengma">
 
         </view>
 
@@ -58,12 +58,15 @@
 <view class="warning0" style="display: {{loginstatus==1?'block':'none'}};">
     登陆成功，正在加载...
 </view>
-<view class="warning1" style="display: {{loginstatus==400?'block':'none'}};">
+<view class="warning1" style="display: {{loginstatus==300?'block':'none'}};">
     密码错误!
 </view>
-<view class="warning2" style="display: {{loginstatus==900?'block':'none'}};">
-    系统异常，请重试！
+<view class="warning2" style="display: {{loginstatus==400?'block':'none'}};">
+    验证码错误！
 </view>
 <view class="warning3" style="display: {{loginstatus==500?'block':'none'}};">
-    登录失败，请重试!
+    服务器异常！请稍后重试
+</view>
+<view class="warning0" style="display: {{loginstatus==123?'block':'none'}};">
+    加载验证码中...
 </view>

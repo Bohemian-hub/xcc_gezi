@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-03-16 11:26:22
- * @LastEditTime: 2021-03-16 13:59:33
+ * @LastEditTime: 2021-03-19 12:03:37
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/myaddress/myaddress.js
@@ -67,10 +67,21 @@ Page({
   },
   save_use() {
     console.log(this.data);
-    wx.setStorageSync('input_name', this.data.input_name);
-    wx.setStorageSync('input_tel', this.data.input_tel);
-    wx.setStorageSync('input_place', this.data.input_school + '' + this.data.input_place + '' + this.data.input_apartment + '-' + this.data.input_room);
-    this.return_address()
+    if (this.data.input_name == '' || this.data.input_tel == '' || this.data.input_school == '' || this.data.input_place == '' || this.data.input_apartment == '' || this.data.input_room == '') {
+      wx.showModal({
+        title: '提示',
+        content: '请检查数据填写是否完整！',
+        showCancel: false,
+        confirmText: '确定',
+        confirmColor: '#3CC51F',
+      });
+    } else {
+      wx.setStorageSync('input_name', this.data.input_name);
+      wx.setStorageSync('input_tel', this.data.input_tel);
+      wx.setStorageSync('input_place', this.data.input_school + '' + this.data.input_place + '' + this.data.input_apartment + '-' + this.data.input_room);
+      this.return_address()
+    }
+
   },
   backtoindex() {
     wx.navigateBack({

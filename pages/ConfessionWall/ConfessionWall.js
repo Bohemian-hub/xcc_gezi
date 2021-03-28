@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-13 23:35:52
- * @LastEditTime: 2021-03-12 09:50:01
+ * @LastEditTime: 2021-03-28 12:36:10
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/ConfessionWall/ConfessionWall.js
@@ -30,7 +30,7 @@ Page({
     var that = this
 
     var myDate = new Date();
-    myDate.setDate(myDate.getDate() - 6);
+    myDate.setDate(myDate.getDate() - 30);
     var month = myDate.getMonth() + 1
     var daly = myDate.getDate()
     if (daly < 10) {

@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-03-15 09:56:56
- * @LastEditTime: 2021-03-16 10:38:16
+ * @LastEditTime: 2021-03-19 11:32:01
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/replenish/replenish.wxml
@@ -14,7 +14,7 @@
         </text>
     </view>
 </view>
-<view class="address" bindtap = "change_address">
+<view class="address" bindtap="change_address">
 
     <view class="address_left">
         <view class="address_name">{{send_name?send_name+' '+send_tel:'点击添加地址'}}</view>
@@ -78,7 +78,7 @@
     <view class="leave_title">
         买家留言
     </view>
-    <textarea class="leave_write" value="" placeholder="填写备注信息、粘贴快递短信、菜品...">
+    <textarea class="leave_write" value="" bindinput="input_essay" placeholder="填写备注信息、粘贴快递短信、菜品...">
 
     </textarea>
 
@@ -94,7 +94,7 @@
     </view>
 </view>
 
-<view class="add_infomation" bindtap = "add_infor">
+<view class="add_infomation" bindtap="add_infor" style="display: {{showbuchong?'block':'none'}};">
     <view class="add_infomation_top">
         <view class="fee_top_left">补充信息</view>
         <view class="fee_top_right" style='color: rgb(255, 138, 28);'>{{addition_status}} ></view>
@@ -111,5 +111,5 @@
 
 
     </view>
-    <view class="pay_btn">立即付款</view>
+    <view class="pay_btn" bindtap="prepare_pay">立即付款</view>
 </view>

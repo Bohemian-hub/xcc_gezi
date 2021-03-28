@@ -1,5 +1,6 @@
 {
   "pages": [
+
     "pages/index/index",
     "pages/order_addition/order_addition",
     "pages/myaddress/myaddress",
@@ -54,11 +55,6 @@
       "selectedIconPath": "./image_icon/index1.png"
     },
     {
-      "pagePath": "pages/index/index",
-      "text": "购物车",
-      "iconPath": "./image_icon/che2.png",
-      "selectedIconPath": "./image_icon/che1.png"
-    },{
       "pagePath": "pages/setting/setting",
       "text": "我的",
       "iconPath": "./image_icon/me2.png",

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:33:47
- * @LastEditTime: 2021-03-17 23:08:55
+ * @LastEditTime: 2021-03-28 13:24:10
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/login/login.js
@@ -17,6 +17,14 @@ Page({
   },
   onLoad: function () {
     /* 这里向后端发送一个请求获取验证码！ */
+    this.get_yanzhengma()
+
+  },
+
+  get_yanzhengma() {
+    this.setData({
+      loginstatus: '123',
+    })
     wx.request({
       url: 'https://www.xiyuangezi.cn/info/get_yanzhengma',
       header: {
@@ -43,7 +51,8 @@ Page({
               console.log(res)
               console.log(codeimg)
               this.setData({
-                'codeimg': codeimg
+                'codeimg': codeimg,
+                loginstatus: '',
               })
               console.log(this.data.tokens);
               /*               console.log(this.data.codeimg); */
@@ -52,9 +61,7 @@ Page({
         }
       }
     });
-
   },
-
 
 
   loginForm: function (data) {
@@ -76,8 +83,8 @@ Page({
       data: {
         name: username,
         pwd: password,
-        yanzheng: yanzheng,
-        tokens: tokens,
+        yanzheng: yanzheng, //new
+        tokens: tokens,   //new
       }, // 向后端发送的数据，后端通过request.data拿到该数据
       success: res => {
 
@@ -130,17 +137,11 @@ Page({
               wx.hideLoading()
             }, 1500)
 
-          } else if (res.data.loginnum == 400) {
+          } else {
             that.setData({
-              loginstatus: '400',
+              loginstatus: res.data.loginnum,
             })
-            setTimeout(function () {
-              wx.hideLoading()
-            }, 500)
-          } else if (res.data.loginnum == 500) {
-            that.setData({
-              loginstatus: '500',
-            })
+            this.get_yanzhengma()
             setTimeout(function () {
               wx.hideLoading()
             }, 500)

@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-01-27 18:54:10
+ * @LastEditTime: 2021-03-28 12:31:06
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.wxml
@@ -73,7 +73,7 @@
 
     </view>
     <!-- 今日热门贴子区域，使用点赞数最多来计算显示 -->
-    <view class="hot_post" bindtouchstart="touchStart" onPageScroll='onPageScroll'>
+    <!--     <view class="hot_post" bindtouchstart="touchStart" onPageScroll='onPageScroll'>
         <view class="hot_post_title">
             <view class="hot_post_xian"></view>
             <view class="hot_post_title_text">热门帖子</view>
@@ -97,7 +97,7 @@
 
         </view>
 
-    </view>
+    </view> -->
     <!-- 帖子的浏览区域 -->
 
     <!--下面是我要做的 -->
@@ -147,7 +147,8 @@
 
         <!-- 下面是分享、赞、评论按钮区域 -->
         <view class="forum_one_comment">
-            <view class="forum_one_comment_button" bindtap="share" data-studentId="{{item.fields.studentId}}" data-id='{{item.pk}}' style="border-right: 1rpx  solid rgb(138, 138, 138);">
+            <view class="forum_one_comment_button" bindtap="share" data-studentId="{{item.fields.studentId}}"
+                data-id='{{item.pk}}' style="border-right: 1rpx  solid rgb(138, 138, 138);">
                 <text class="cuIcon-share">
 
                 </text>
@@ -259,7 +260,7 @@
 <!-- 下面是发布分类 -->
 <view class="choose_classify" animation="{{animation_classify}}" catchtouchmove="myCatchTouch">
     <view class="choose_classify_top">
-    您的每一次发布，我对您的喜爱就多一分，感谢您的支持，更多有趣有用的功能仍在开发中！
+        您的每一次发布，我对您的喜爱就多一分，感谢您的支持，更多有趣有用的功能仍在开发中！
     </view>
     <view class="choose_classify_middle">
         <view class="classify_one" bindtap="publish_learn" data-classify="learn">
@@ -287,7 +288,7 @@
             </view>
 
         </view>
-                <view class="classify_one" bindtap="help_publish">
+        <view class="classify_one" bindtap="help_publish">
             <image class="classify_one_img" src="https://s3.ax1x.com/2021/01/29/yCrjUg.png">
 
             </image>
