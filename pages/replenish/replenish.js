@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-03-15 09:56:56
- * @LastEditTime: 2021-03-19 16:41:02
+ * @LastEditTime: 2021-03-29 11:28:54
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/replenish/replenish.js
@@ -15,6 +15,7 @@ Page({
   data: {
     product_name: '',
     product_size: '',
+    product_code: '',
     nums: '',
     product_price: '',
     all_price: '',
@@ -30,6 +31,7 @@ Page({
   onLoad: function (options) {
     console.log(options.product_name);
     console.log(options.product_size);
+    console.log(options.choose_url);
     console.log(options.product_nums);
     console.log(options.product_price);
     console.log(options.send_fee);
@@ -42,6 +44,8 @@ Page({
     this.setData({
       product_name: options.product_name,
       product_size: options.product_size,
+      product_code: options.product_code,
+      choose_url: options.choose_url,
       nums: Number(options.product_nums),
       product_price: options.product_price,
       all_price: (options.product_nums * options.product_price).toFixed(2),
@@ -101,8 +105,9 @@ Page({
 
   },
   backtoindex() {
+    console.log(this.data.product_code);
     wx.redirectTo({
-      url: '../info/info',
+      url: '../info/info?name=' + this.data.product_code,
     })
 
   },

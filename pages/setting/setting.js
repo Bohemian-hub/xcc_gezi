@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-10 20:01:02
- * @LastEditTime: 2021-03-12 09:52:45
+ * @LastEditTime: 2021-03-28 14:24:26
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/setting/setting.js
@@ -44,30 +44,30 @@ Page({
 
   },
   myorder() {
-    wx.redirectTo({
+    wx.navigateTo({
       url: '../setting_order/setting_order',
     })
   },
   talkback() {
-    wx.redirectTo({
+    wx.navigateTo({
       url: '../setting_talkback/setting_talkback',
     })
   },
   about() {
-    wx.redirectTo({
+    wx.navigateTo({
       url: '../about/about',
     })
   },
   count_down() {
-    wx.redirectTo({
+    wx.navigateTo({
       url: '../count_change/count_change',
     })
 
   },
   loginout() {
     wx.clearStorage();
-    wx.switchTab({
-      url: '../index/index',
+    wx.reLaunch({
+      url: '../login/login'
     })
   }
 })

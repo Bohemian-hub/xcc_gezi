@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2021-03-28 13:21:43
+ * @LastEditTime: 2021-03-29 08:59:13
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.js
@@ -35,7 +35,28 @@ Page({
     /*     passagearr: [], */
     count_text: '2022考研',
     newnotice: false,
-    importance_show: false
+    importance_show: false,
+    product_list: [
+      {
+        title: '快递代取',
+        code: 'express',
+        run_price: '￥2.00',
+        pay_number: '12854人付款',
+        image: 'https://s3.ax1x.com/2021/03/12/6N4zx1.png'
+      }, {
+        title: '专业代买饭',
+        code: 'rice',
+        run_price: '￥8.00',
+        pay_number: '12854人付款',
+        image: 'https://s3.ax1x.com/2021/03/12/6N4vG9.jpg'
+      }, {
+        title: '复印打印（包邮到寝）',
+        code: 'print',
+        run_price: '￥0.30',
+        pay_number: '12854人付款',
+        image: 'https://s3.ax1x.com/2021/03/12/6N5pKx.png'
+      }
+    ],
   },
 
 
@@ -157,7 +178,7 @@ Page({
 
   },
   show_choose_counttime() {
-    wx.redirectTo({
+    wx.navigateTo({
       url: '../count_change/count_change',
     })
   },

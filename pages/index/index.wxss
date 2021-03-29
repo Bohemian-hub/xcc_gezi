@@ -660,21 +660,6 @@ background-size: 100%;
 .run_pic1{
   width: 100%;
   height: 350rpx;
-  background-image: url(https://s3.ax1x.com/2021/03/12/6N4zx1.png);
-  background-size: 100% 100%;
-  background-repeat: none;
-}
-.run_pic2{
-  width: 100%;
-  height: 350rpx;
-  background-image: url(https://s3.ax1x.com/2021/03/12/6N4vG9.jpg);
-  background-size: 100% 100%;
-  background-repeat: none;
-}
-.run_pic3{
-  width: 100%;
-  height: 350rpx;
-  background-image: url(https://s3.ax1x.com/2021/03/12/6N5pKx.png);
   background-size: 100% 100%;
   background-repeat: none;
 }

@@ -10,10 +10,11 @@
 
 <swiper class="screen-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true"
     autoplay="true" interval="5000" duration="500">
-    <swiper-item wx:for="{{show_infor.swiperList}}" wx:key>
+    <swiper-item wx:for="{{product_one.swiperList}}" wx:key>
         <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
         <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover"
-            wx:if="{{item.type=='video'}}"></video>
+            wx:if="{{item.type=='video'}}">
+        </video>
     </swiper-item>
 </swiper>
 <view class="top">
@@ -25,15 +26,15 @@
     </view>
 </view>
 <view class="title">
-    <view class="title_name">{{show_infor.title}}</view>
-    <view class="title_price">￥{{now_price?choose_price:show_infor.price}}</view>
+    <view class="title_name">{{product_one.title}}</view>
+    <view class="title_price">￥{{now_price?choose_price:product_one.price}}</view>
 </view>
 
 <view class="fee">
     <text class="cuIcon-moneybagfill">
     </text>
     <view class="fee_title">配送费</view>
-    <view class="fee_money">{{show_infor.send_fee}}元</view>
+    <view class="fee_money">{{product_one.send_fee}}元</view>
 </view>
 <view class="specification" bindtap="switch_brought">
     <view class="choose_title">
@@ -41,7 +42,7 @@
     </view>
 
     <view class="choose">
-        {{choose_what=='请选择'?choose_what+' '+show_infor.type_options:'已选择：'+choose_what}}
+        {{choose_what=='请选择'?choose_what+' '+product_one.type_options:'已选择：'+choose_what}}
     </view>
     <view class="choose3">
         >
@@ -52,7 +53,7 @@
         详情
     </view>
 
-    <view class="info_pic" wx:for="{{show_infor.infoList}}" wx:key>
+    <view class="info_pic" wx:for="{{product_one.infoList}}" wx:key>
         <image class="pic_one" src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
     </view>
 
@@ -83,13 +84,13 @@
     <view class="bought_choose_right">
         <view class="jiage_one">￥{{choose_price}}</view>
         <view class="guige_one">
-            {{choose_what=='请选择'?choose_what:'已选择：'+choose_what}}{{choose_what=='请选择'?show_infor.type_options:''}}
+            {{choose_what=='请选择'?choose_what:'已选择：'+choose_what}}{{choose_what=='请选择'?product_one.type_options:''}}
         </view>
     </view>
     <view class="choose_title_one">
         款式
     </view>
-    <view class="{{choose_what==item.name?'tag_one2':'tag_one'}}" wx:for="{{show_infor.options}}" bindtap="choose_tag"
+    <view class="{{choose_what==item.name?'tag_one2':'tag_one'}}" wx:for="{{product_one.options}}" bindtap="choose_tag"
         data-tag='{{item.name}}' data-url='{{item.url}}' data-price='{{item.price}}'>{{item.name}}</view>
     <view style="clear: both;">
 

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:33:47
- * @LastEditTime: 2021-03-28 13:24:10
+ * @LastEditTime: 2021-03-29 08:18:08
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/login/login.js
@@ -141,9 +141,10 @@ Page({
             that.setData({
               loginstatus: res.data.loginnum,
             })
-            this.get_yanzhengma()
+
             setTimeout(function () {
               wx.hideLoading()
+              that.get_yanzhengma()
             }, 500)
           }
         } else {

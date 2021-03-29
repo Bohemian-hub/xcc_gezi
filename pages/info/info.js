@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-03-12 10:06:04
- * @LastEditTime: 2021-03-16 09:57:51
+ * @LastEditTime: 2021-03-29 11:31:31
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edi
  * @FilePath: /miniprogram-5/pages/info/info.js
@@ -18,9 +18,10 @@ Page({
     show_infor: {},
     nums: 1,
     choose_what: '请选择',
+    product_one: [],
     product_infor_express: {
-      title: '快递代取',
-      price: '2.00-8.00',
+      title: '加载中...',
+      price: '0.00-9.99',
       send_fee: 0,
       type_options: '大小/尺寸',
       options: [{
@@ -61,94 +62,6 @@ Page({
           url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big39000.jpg'
         }],
     },
-    product_infor_rice: {
-      title: '专业带饭',
-      price: '8.00-14.00',
-      send_fee: 2,
-      type_options: '份数/菜品',
-      options: [{
-        name: '黄焖鸡 14元/份',
-        price: 14.00,
-        url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84000.jpg'
-      }, {
-        name: '一荤一素 8元/份',
-        price: 8.00,
-        url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84001.jpg'
-      }, {
-        name: '两荤一素 10元/份',
-        price: 10.00,
-        url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84000.jpg'
-      }],
-      swiperList: [{    /*轮播图图组 */
-        id: 0,
-        type: 'image',
-        url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84000.jpg'
-      }, {
-        id: 1,
-        type: 'image',
-        url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84001.jpg',
-      }],
-      infoList: [   /*详情图组 */
-        {
-          id: 0,
-          type: 'image',
-          url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big39000.jpg'
-        }, {
-          id: 1,
-          type: 'image',
-          url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big39000.jpg'
-        }, {
-          id: 2,
-          type: 'image',
-          url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big39000.jpg'
-        }],
-    },
-    product_infor_print: {
-      title: '快速打印',
-      price: '0.30-0.80',
-      send_fee: 2,
-      type_options: '色彩/方式',
-      options: [{
-        name: '黑白单面 0.3元/张',
-        price: 0.30,
-        url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84000.jpg'
-      }, {
-        name: '黑色双面 0.5元/张',
-        price: 0.50,
-        url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84001.jpg'
-      }, {
-        name: '彩色单面 0.5元/张',
-        price: 0.50,
-        url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84000.jpg'
-      }, {
-        name: '彩色双面 0.8元/张',
-        price: 0.80,
-        url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84001.jpg'
-      }],
-      swiperList: [{    /*轮播图图组 */
-        id: 0,
-        type: 'image',
-        url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84000.jpg'
-      }, {
-        id: 1,
-        type: 'image',
-        url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84001.jpg',
-      }],
-      infoList: [   /*详情图组 */
-        {
-          id: 0,
-          type: 'image',
-          url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big39000.jpg'
-        }, {
-          id: 1,
-          type: 'image',
-          url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big39000.jpg'
-        }, {
-          id: 2,
-          type: 'image',
-          url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big39000.jpg'
-        }],
-    },
   },
 
   /**
@@ -157,24 +70,62 @@ Page({
   onLoad: function (options) {
     var that = this
     console.log(options.name);
+    /* 首先加载一个默认的视图，以避免等待数据是造成的页面不完整问题 */
     that.setData({
-      show_infor: that.data.product_infor_express,
+      product_one: that.data.product_infor_express,
       choose_url: that.data.product_infor_express.options[0].url,
       choose_price: that.data.product_infor_express.options[0].price.toFixed(2)
     })
-    if (options.name == 'rice') {
-      console.log("带饭");
-      that.setData({
-        show_infor: that.data.product_infor_rice,
-        choose_url: that.data.product_infor_rice.options[0].url
-      })
-    } else if (options.name == 'print') {
-      console.log("打印");
-      that.setData({
-        show_infor: that.data.product_infor_print,
-        choose_url: that.data.product_infor_print.options[0].url
-      })
-    }
+    /* 现在发送一个请求，获取我当前的商品的信息。 */
+    wx.request({
+      url: 'http://127.0.0.1:8000/product/get_product', //仅为示例，并非真实的接口地址
+      data: {
+        product: options.name
+      },
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      success(res) {
+        console.log(res.data);
+        /* 拿到数据之后要对数据进行处理，将字符串格式转化成数组 */
+        res.data[0].fields.options_arr = res.data[0].fields.options_arr.split(',')
+        res.data[0].fields.options_image_arr = res.data[0].fields.options_image_arr.split(',')
+        res.data[0].fields.options_price_arr = res.data[0].fields.options_price_arr.split(',')
+        res.data[0].fields.infoList0 = res.data[0].fields.infoList.split(',')
+        res.data[0].fields.swiperList0 = res.data[0].fields.swiperList.split(',')
+        res.data[0].fields.options = []
+        res.data[0].fields.swiperList = []
+        res.data[0].fields.infoList = []
+        for (let i = 0; i < res.data[0].fields.options_arr.length; i++) {
+          res.data[0].fields.options[i] = {
+            name: res.data[0].fields.options_arr[i],
+            price: Number(res.data[0].fields.options_price_arr[i]),
+            url: res.data[0].fields.options_image_arr[i]
+          }
+        }
+        for (let i = 0; i < res.data[0].fields.swiperList0.length; i++) {
+          res.data[0].fields.swiperList[i] = {
+            id: i + 1,
+            type: 'image',
+            url: res.data[0].fields.swiperList0[i]
+          }
+
+        }
+        for (let i = 0; i < res.data[0].fields.infoList0.length; i++) {
+          res.data[0].fields.infoList[i] = {
+            id: i + 1,
+            type: 'image',
+            url: res.data[0].fields.infoList0[i]
+          }
+
+        }
+        that.setData({
+          product_one: res.data[0].fields
+        })
+        console.log(that.data.product_one);
+      }
+    })
   },
 
   switch_brought() {
@@ -189,6 +140,7 @@ Page({
     })
   },
   choose_tag(e) {
+    console.log(e);
     this.setData({
       choose_what: e.currentTarget.dataset.tag,
       choose_url: e.currentTarget.dataset.url,
@@ -209,8 +161,8 @@ Page({
 
   },
   add_nums() {
-    console.log(this.data.show_infor.title);
-    if (this.data.show_infor.title == '快递代取') {
+    console.log(this.data.product_one.title);
+    if (this.data.product_one.title == '快递代取') {
       wx.showModal({
         title: '提示',
         content: '代取快递请单件一一下单！',
@@ -219,7 +171,7 @@ Page({
         confirmColor: '#3CC51F',
       });
 
-    } else if (this.data.show_infor.title == '专业带饭') {
+    } else if (this.data.product_one.title == '专业带饭') {
       if (this.data.nums == 4) {
         wx.showModal({
           title: '提示',
@@ -234,7 +186,7 @@ Page({
           total_price: this.data.now_price
         })
       }
-    } else if (this.data.show_infor.title == '快速打印') {
+    } else if (this.data.product_one.title == '快速打印') {
       this.setData({
         nums: this.data.nums += 1,
         total_price: this.data.now_price
@@ -256,15 +208,17 @@ Page({
 
     } else {
       /* 信息填写完整可以继续 */
-      console.log(this.data.show_infor.title);
+      console.log(this.data.product_one.title);
+      console.log(this.data.product_one.code);
+      console.log(this.data.choose_url);
       console.log(this.data.choose_what);
       console.log(this.data.nums);
       console.log(this.data.choose_price);
-      console.log(this.data.show_infor.send_fee);
+      console.log(this.data.product_one.send_fee);
 
       /* 跳转确认支付页面 */
-      wx.redirectTo({
-        url: '../replenish/replenish?product_name=' + this.data.show_infor.title + '&product_size=' + this.data.choose_what + '&product_nums=' + this.data.nums + '&product_price=' + this.data.choose_price + '&send_fee=' + this.data.show_infor.send_fee,
+      wx.navigateTo({
+        url: '../replenish/replenish?product_name=' + this.data.product_one.title + '&choose_url=' + this.data.choose_url + '&product_code=' + this.data.product_one.code + '&product_size=' + this.data.choose_what + '&product_nums=' + this.data.nums + '&product_price=' + this.data.choose_price + '&send_fee=' + this.data.product_one.send_fee,
       })
 
 

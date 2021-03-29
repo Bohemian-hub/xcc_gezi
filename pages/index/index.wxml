@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2021-03-28 12:07:07
+ * @LastEditTime: 2021-03-29 08:58:31
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.wxml
@@ -26,8 +26,8 @@
     <view class="content_niceday_back">
         <view class="content_niceday">
             <!-- 左侧的one区域 -->
-            <view class="cardleft" bindtap="hidden_onetext_on_onepic">
-                <image class="cardleft_bg" src="{{imageone_src}}" lazy-load="false" binderror="" bindload="" />
+            <view class="cardleft" bindtap="hidden_onetext_on_onepic"
+                style="background-image: url({{imageone_src}});background-size: 100% 100%;">
                 <view class="cardleft_date" style="display:{{hidden_onetext_on_onepic=='yes'?'none':'block'}}">
                     {{one_date}} {{one_week}}
                 </view>
@@ -146,8 +146,8 @@
                     </view>
                 </view>
                 <view class="menu_right_down" bindtap="notdofunction" data-id="更多工具">
-                    <image class="menu_middle_up_icon" src="../../image_icon/兼职.png" mode="widthFix" lazy-load="false"
-                        binderror="" bindload="" />
+                    <image class="menu_middle_up_icon" src="https://z3.ax1x.com/2021/03/28/cpPLOe.png" mode="widthFix"
+                        lazy-load="false" binderror="" bindload="" />
 
                     <view class="menu_middle_up_text">
                         兼职挣钱
@@ -174,54 +174,18 @@
             </view>
             <view class="news_content">
                 <!-- 在这个地方变更为校园速跑区域 -->
-                <view class="run_fun_one" bindtap="toinfo" data-name='express'>
-                    <view class="run_pic1">
+                <view class="run_fun_one" bindtap="toinfo" data-name='{{item.code}}' wx:for="{{product_list}}">
+                    <view class="run_pic1" style="background-image: url({{item.image}});">
                     </view>
                     <view class="info_left">
                         <view class="run_title">
-                            快递代取
+                            {{item.title}}
                         </view>
                         <view class="run_price">
-                            ￥2.00
+                            {{item.run_price}}
                         </view>
                         <view class="run_bought_num">
-                            12854人付款
-                        </view>
-                    </view>
-                    <view class="info_right">
-
-                    </view>
-                </view>
-                <view class="run_fun_one" bindtap="toinfo" data-name='rice'>
-                    <view class="run_pic2">
-                    </view>
-                    <view class="info_left">
-                        <view class="run_title">
-                            专业代买饭
-                        </view>
-                        <view class="run_price">
-                            ￥8.00
-                        </view>
-                        <view class="run_bought_num">
-                            12854人付款
-                        </view>
-                    </view>
-                    <view class="info_right">
-
-                    </view>
-                </view>
-                <view class="run_fun_one" bindtap="toinfo" data-name='print'>
-                    <view class="run_pic3">
-                    </view>
-                    <view class="info_left">
-                        <view class="run_title">
-                            复印打印（包邮到寝）
-                        </view>
-                        <view class="run_price">
-                            ￥0.30
-                        </view>
-                        <view class="run_bought_num">
-                            12854人付款
+                            {{item.pay_number}}
                         </view>
                     </view>
                     <view class="info_right">
