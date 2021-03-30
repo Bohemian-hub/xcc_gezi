@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-03-30 11:02:43
- * @LastEditTime: 2021-03-30 13:26:46
+ * @LastEditTime: 2021-03-30 20:32:27
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/my/my.js
@@ -35,6 +35,21 @@ Page({
   notice() {
     wx.navigateTo({
       url: '../notice/notice',
+    })
+  },
+  about() {
+    wx.navigateTo({
+      url: '../about/about',
+    })
+  },
+  about() {
+    wx.navigateTo({
+      url: '../about/about',
+    })
+  },
+  talkback() {
+    wx.navigateTo({
+      url: '../setting_talkback/setting_talkback',
     })
   },
   /**

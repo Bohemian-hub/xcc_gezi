@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-08 13:18:11
- * @LastEditTime: 2021-02-01 19:44:30
+ * @LastEditTime: 2021-03-30 20:33:32
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/setting_talkback/setting_talkback.js
@@ -66,8 +66,8 @@ Page({
 
   },
   back() {
-    wx.redirectTo({
-      url: '../setting/setting',
+    wx.switchTab({
+      url: '../my/my',
     });
   }
 

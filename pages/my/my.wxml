@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-03-30 11:02:43
- * @LastEditTime: 2021-03-30 13:26:26
+ * @LastEditTime: 2021-03-30 20:32:44
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/my/my.wxml
@@ -58,8 +58,8 @@
         <view class="function_one" bindtap="setting">设置</view>
         <view class="function_one">配送地址</view>
         <view class="function_one">积分</view>
-        <view class="function_one">反馈</view>
-        <view class="function_one" style="border: 0;">关于</view>
-    </view>
+        <view class="function_one" bindtap="talkback">反馈</view>
+            <view class="function_one" style="border: 0;" bindtap="about">关于</view>
+        </view>
 
-</view>
+    </view>

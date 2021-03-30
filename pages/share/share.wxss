@@ -1,1 +1,29 @@
 /* pages/share/share.wxss */
+page{
+    background-image: linear-gradient(to top, #d5dee7 0%, #ffafbd 0%, #c9ffbf 100%);
+}
+.title{
+    width: 90%;
+    margin: 200rpx auto 0 auto;
+    text-align: center;
+    font-size: 40rpx;
+}
+.yanzhengma{
+    width: 400rpx;
+    height: 100rpx;
+    background-color: antiquewhite;
+    margin: 100rpx auto;
+}
+.inputyanzhengma{
+    width: 50%;
+    height: 100rpx;
+    margin: 0 auto;
+    border: 0;
+    border-bottom: 5rpx solid rgb(146, 146, 146);
+    text-align: center;
+}
+.centain{
+    width: 400rpx;
+    height: 100rpx;
+    margin-top: 250rpx;
+}

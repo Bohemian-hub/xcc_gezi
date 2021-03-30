@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2021-02-09 22:29:27
+ * @LastEditTime: 2021-03-30 23:06:29
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /miniprogram-5/pages/share/share.js
+ */
 // pages/share/share.js
 Page({
 
@@ -18,33 +26,101 @@ Page({
     pswd = options.pswd;
     pswd = decodeURIComponent(pswd)
     /* 做一个数据库查询，查询是否有这个用户 */
-    if(wx.getStorageSync('username') == options.xh){
+    if (wx.getStorageSync('username') == options.xh) {
       wx.switchTab({
         url: '../index/index',
       })
-    }else{
+    } else {
       /* this.searchuser(options.xh,pswd) */
-      wx.navigateTo({
-        url: '../login/login',
+      /*       wx.navigateTo({
+              url: '../login/login',
+            }) */
+      /* 收集验证码做登录 */
+      this.get_yanzhengma()
+      this.setData({
+        username: options.xh,
+        password: options.pswd
       })
     }
 
   },
-/* 查询是否有这个用户 */
-  searchuser(xh,pswd){
-    var that = this
+  get_yanzhengma() {
+    this.setData({
+      loginstatus: '123',
+    })
+    wx.request({
+      url: 'https://www.xiyuangezi.cn/info/get_yanzhengma',
+      header: {
+        "content-type": "application/x-www-form-urlencoded"		//使用POST方法要带上这个header
+      },
+      method: "POST",
+      success: res => {
+        if (res.data.loginnum == 1) {
+          console.log(res.data);
+          this.setData({
+            'tokens': res.data.tokens
+          })
+          //声明文件系统
+          const fs = wx.getFileSystemManager();
+          //随机定义路径名称
+          var times = new Date().getTime();
+          var codeimg = wx.env.USER_DATA_PATH + '/' + times + '.png';
+          fs.writeFile({
+            filePath: codeimg,
+            data: res.data.base64_data,
+            encoding: 'base64',
+            success: (res) => {
+              //写入成功了的话，新的图片路径就能用了
+              console.log(res)
+              console.log(codeimg)
+              this.setData({
+                'codeimg': codeimg,
+                loginstatus: '',
+              })
+              console.log(this.data.tokens);
+              /*               console.log(this.data.codeimg); */
+            }
+          });
+        } else {
+          console.log("加载不出来了");
+          this.setData({
+            loginstatus: '500',
+          })
+        }
+      },
+    });
+  },
+  access() {
+    /* 检查不为空 */
+    console.log(this.data.yanzhen);
+    if (this.data.yanzhen) {
+      this.loginForm()
+    }
+  },
+  loginForm: function (data) {
+    var that = this;
+    console.log(data.detail.value)//  {username: "hgj", password: "fsdfsd"}
+    var username = this.data.username;
+    var password = this.data.password;
+    var yanzheng = this.data.yanzhen;
+    var tokens = this.data.tokens;
+    wx.showLoading({
+      title: '登录中',
+    })
     wx.request({
       url: 'https://www.xiyuangezi.cn/info/pinfo',
       header: {
         "content-type": "application/x-www-form-urlencoded"		//使用POST方法要带上这个header
       },
       method: "POST",
-      data: {      
-        name: xh,  
-        pwd: pswd,
-      }, // 
+      data: {
+        name: username,
+        pwd: password,
+        yanzheng: yanzheng, //new
+        tokens: tokens,   //new
+      }, // 向后端发送的数据，后端通过request.data拿到该数据
+      success: res => {
 
-      success: (res) => {
         if (res.statusCode == 200) {
           console.log(res.data);
           /* 下面是正常请求到服务器后的if分支，我将在后端完成对后台数据的渲染 */
@@ -54,8 +130,8 @@ Page({
             })
             var sex = that.boyorgirl(res.data.ret.idNumber)
             var grade = that.sumgrade(res.data.ret.grade)
-            wx.setStorageSync('username', xh)
-            wx.setStorageSync('password', pswd)
+            wx.setStorageSync('username', username)
+            wx.setStorageSync('password', password)
             wx.setStorageSync('sex', sex)
             wx.setStorageSync('grade', grade)
             wx.setStorageSync('name', res.data.ret.name)
@@ -94,19 +170,14 @@ Page({
               wx.hideLoading()
             }, 1500)
 
-          } else if (res.data.loginnum == 400) {
+          } else {
             that.setData({
-              loginstatus: '400',
+              loginstatus: res.data.loginnum,
             })
+
             setTimeout(function () {
               wx.hideLoading()
-            }, 500)
-          } else if (res.data.loginnum == 500) {
-            that.setData({
-              loginstatus: '500',
-            })
-            setTimeout(function () {
-              wx.hideLoading()
+              that.get_yanzhengma()
             }, 500)
           }
         } else {
@@ -123,84 +194,14 @@ Page({
             loginstatus: 'ok',
           })
         }, 2500)
-      }
+      },
     })
   },
-  boyorgirl(a) {
-    var sexAndAge = {};
-    var userCard = a;
-    //如果身份证号码为undefind则返回空
-    console.log(userCard);
-    //获取性别
-    if (parseInt(userCard.substr(16, 1)) % 2 == 1) {
-      sexAndAge.sex = '男'
-    } else {
-      sexAndAge.sex = '女'
-    }
-
-    return sexAndAge.sex;
-  },
-  sumgrade(e) {
-    var grade = e;
-    var hangrade = '';
-    if (grade == 20) {
-      hangrade = "大一"
-    } else if (grade == 19) {
-      hangrade = "大二"
-
-    } else if (grade == 18) {
-      hangrade = "大三"
-    } else if (grade == 17) {
-      hangrade = "大四"
-    }
-    return hangrade;
-  },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  inspect_yanzhengma(e) {
+    console.log(e.detail.value);
+    this.setData({
+      yanzhen: e.detail.value
+    })
   }
+
 })

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-03-12 10:06:04
- * @LastEditTime: 2021-03-30 13:25:01
+ * @LastEditTime: 2021-03-30 20:23:25
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edi
  * @FilePath: /miniprogram-5/pages/info/info.js

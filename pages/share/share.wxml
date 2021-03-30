@@ -1,0 +1,21 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-02-09 22:29:27
+ * @LastEditTime: 2021-03-30 20:46:16
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /miniprogram-5/pages/share/share.wxml
+-->
+<view class="title">
+    欢迎来到西院格子！请输入验证码！
+</view>
+<view class="yanzhengma" style="background-image: url({{codeimg}});background-size: 100% 100%;">
+
+</view>
+<input class="inputyanzhengma" value="" bindinput="inspect_yanzhengma">
+
+</input>
+<button class="centain" bindtap = "access">
+        确认
+</button>
+  
