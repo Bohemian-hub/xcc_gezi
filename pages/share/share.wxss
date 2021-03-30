@@ -27,3 +27,15 @@ page{
     height: 100rpx;
     margin-top: 250rpx;
 }
+.warning2{
+    position: fixed;
+    top: 1200rpx;
+    background-color: rgb(255, 31, 87);
+    width: 60%;
+    height: 60rpx;
+    margin-left: 20%;
+    text-align: center;
+    line-height: 60rpx;
+    color: #ffffff;
+    border-radius: 50rpx;
+  }

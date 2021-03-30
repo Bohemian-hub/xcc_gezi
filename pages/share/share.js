@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-02-09 22:29:27
- * @LastEditTime: 2021-03-30 23:06:29
+ * @LastEditTime: 2021-03-30 23:23:51
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/share/share.js
@@ -97,9 +97,8 @@ Page({
       this.loginForm()
     }
   },
-  loginForm: function (data) {
+  loginForm: function () {
     var that = this;
-    console.log(data.detail.value)//  {username: "hgj", password: "fsdfsd"}
     var username = this.data.username;
     var password = this.data.password;
     var yanzheng = this.data.yanzhen;
@@ -178,7 +177,7 @@ Page({
             setTimeout(function () {
               wx.hideLoading()
               that.get_yanzhengma()
-            }, 500)
+            }, 1500)
           }
         } else {
           console.log('服务器请求异常' + res.data.loginnum);
@@ -196,6 +195,35 @@ Page({
         }, 2500)
       },
     })
+  },
+  boyorgirl(a) {
+    var sexAndAge = {};
+    var userCard = a;
+    //如果身份证号码为undefind则返回空
+    console.log(userCard);
+    //获取性别
+    if (parseInt(userCard.substr(16, 1)) % 2 == 1) {
+      sexAndAge.sex = '男'
+    } else {
+      sexAndAge.sex = '女'
+    }
+
+    return sexAndAge.sex;
+  },
+  sumgrade(e) {
+    var grade = e;
+    var hangrade = '';
+    if (grade == 20) {
+      hangrade = "大一"
+    } else if (grade == 19) {
+      hangrade = "大二"
+
+    } else if (grade == 18) {
+      hangrade = "大三"
+    } else if (grade == 17) {
+      hangrade = "大四"
+    }
+    return hangrade;
   },
   inspect_yanzhengma(e) {
     console.log(e.detail.value);

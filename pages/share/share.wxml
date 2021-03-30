@@ -15,6 +15,9 @@
 <input class="inputyanzhengma" value="" bindinput="inspect_yanzhengma">
 
 </input>
+<view class="warning2" style="display: {{loginstatus==400?'block':'none'}};">
+    验证码错误！
+</view>
 <button class="centain" bindtap = "access">
         确认
 </button>
