@@ -1,0 +1,107 @@
+page{
+    background-color: #e8fffe;
+}
+.background{
+    width: 100%;
+    height: 600rpx;
+    padding-top: 200rpx;
+    background-image: linear-gradient(to top, #e8fffe 0%, #fed6e3 100%);
+    
+}
+.infoofme{
+    width: 90%;
+    margin: 0 auto;
+    height: 150rpx;
+    background-color: rgba(127, 255, 212, 0);
+}
+.left{
+    width: 150rpx;
+    height: 150rpx;
+    border-radius: 50%;
+    background-color: pink;
+    float: left;
+    overflow: hidden;
+}
+.right{
+    height: 150rpx;
+    width: 400rpx;
+    float: left;
+}
+.right_top{
+    height: 70rpx;
+    font-size: 45rpx;
+    line-height: 70rpx;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    margin-left: 20rpx;
+}
+.right_bottom{
+    height: 70rpx;
+    font-size: 35rpx;
+    line-height: 70rpx;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    margin-left: 20rpx;
+}
+.right_bottom_left{
+    float: left;
+}
+.right_bottom_right{
+    float: left;
+    margin-left: 10rpx;
+}
+.order{
+    width: 90%;
+    background-color: white;
+    height: 180rpx;
+    margin: 30rpx auto;
+    border-radius: 20rpx;
+    box-shadow: 0rpx 5rpx 20rpx rgb(212, 212, 212);
+    overflow: hidden;
+}
+.order_menu{
+    width: 33.3333333%;
+    background-color: rgba(36, 111, 177, 0);
+    height: 100%;
+    float: left;
+    
+}
+.iconf{
+    width: 100rpx;
+    height: 100rpx;
+    margin-left: 60rpx;
+    margin-top: 10rpx;
+
+}
+.iconf1{
+    width: 90rpx;
+    height: 90rpx;
+    margin-top: 20rpx;
+    margin-left: 60rpx;
+}
+.menu_name{
+    text-align: center;
+}
+.function{
+    width: 90%;
+    height: auto;
+    margin: auto;
+    background-color: white;
+    border-radius: 20rpx;
+    box-shadow: 0rpx 5rpx 20rpx rgb(212, 212, 212);
+    overflow: hidden;
+    padding-left: 20rpx;
+    padding-right: 20rpx;
+}
+.function_one{
+    height: 140rpx;
+    background-color: #fed6e300;
+    width: 100%;
+    margin-top: 10rpx;
+    line-height: 140rpx;
+    font-size: 38rpx;
+    color: rgb(92, 92, 92);
+    padding-left: 30rpx;
+    border-bottom: 2rpx solid rgb(224, 224, 224);
+
+}

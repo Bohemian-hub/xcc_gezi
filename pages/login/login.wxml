@@ -65,7 +65,7 @@
     验证码错误！
 </view>
 <view class="warning3" style="display: {{loginstatus==500?'block':'none'}};">
-    服务器异常！请稍后重试
+    教务系统异常！暂不可用
 </view>
 <view class="warning0" style="display: {{loginstatus==123?'block':'none'}};">
     加载验证码中...

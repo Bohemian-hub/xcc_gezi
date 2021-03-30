@@ -1,0 +1,65 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-03-30 11:02:43
+ * @LastEditTime: 2021-03-30 13:20:13
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /miniprogram-5/pages/my/my.wxml
+-->
+<view class="background">
+    <!-- 用户名头像 -->
+    <view class="infoofme">
+        <view class="left">
+            <open-data class="left" type="userAvatarUrl"></open-data>
+        </view>
+        <view class="right">
+            <view class="right_top">
+                {{nickname}}
+            </view>
+            <view class="right_bottom">
+                <view class="right_bottom_left">
+                    普通会员
+                </view>
+                <view class="right_bottom_right">
+                    已认证
+                </view>
+
+            </view>
+        </view>
+
+    </view>
+    <!-- 订单 -->
+    <view class="order">
+        <view class="order_menu">
+            <image class="iconf" src="https://z3.ax1x.com/2021/03/30/ciCW2q.png" mode="widthFix" />
+
+            <view class="menu_name">
+                全部订单
+            </view>
+
+        </view>
+        <view class="order_menu">
+            <image class="iconf1" src="https://z3.ax1x.com/2021/03/30/ciidnf.png" mode="widthFix" />
+
+            <view class="menu_name">
+                待配送
+            </view>
+        </view>
+        <view class="order_menu">
+            <image class="iconf" src="https://z3.ax1x.com/2021/03/30/ciCfx0.png" mode="widthFix" />
+
+            <view class="menu_name">
+                消息通知
+            </view>
+        </view>
+    </view>
+    <!-- function -->
+    <view class="function">
+        <view class="function_one" bindtap="setting">设置</view>
+        <view class="function_one">配送地址</view>
+        <view class="function_one">积分</view>
+        <view class="function_one">反馈</view>
+        <view class="function_one" style="border: 0;">关于</view>
+    </view>
+
+</view>

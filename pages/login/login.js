@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:33:47
- * @LastEditTime: 2021-03-29 08:18:08
+ * @LastEditTime: 2021-03-29 15:12:00
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/login/login.js
@@ -26,7 +26,7 @@ Page({
       loginstatus: '123',
     })
     wx.request({
-      url: 'https://www.xiyuangezi.cn/info/get_yanzhengma',
+      url: 'https://www.xiyuange.cn/info/get_yanzhengma',
       header: {
         "content-type": "application/x-www-form-urlencoded"		//使用POST方法要带上这个header
       },
@@ -58,8 +58,13 @@ Page({
               /*               console.log(this.data.codeimg); */
             }
           });
+        } else {
+          console.log("加载不出来了");
+          this.setData({
+            loginstatus: '500',
+          })
         }
-      }
+      },
     });
   },
 

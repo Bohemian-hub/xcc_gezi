@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-10 20:01:02
- * @LastEditTime: 2021-03-28 14:24:26
+ * @LastEditTime: 2021-03-30 13:06:52
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/setting/setting.js
@@ -22,7 +22,7 @@ Page({
 
   back_index: function () {
     wx.switchTab({
-      url: '../index/index',
+      url: '../my/my',
     })
   },
   notdofunction() {

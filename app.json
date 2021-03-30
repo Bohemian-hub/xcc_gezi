@@ -1,7 +1,7 @@
 {
   "pages": [
-
     "pages/index/index",
+    "pages/my/my",
     "pages/order_addition/order_addition",
     "pages/myaddress/myaddress",
     "pages/info/info",
@@ -55,7 +55,7 @@
       "selectedIconPath": "./image_icon/index1.png"
     },
     {
-      "pagePath": "pages/setting/setting",
+      "pagePath": "pages/my/my",
       "text": "我的",
       "iconPath": "./image_icon/me2.png",
       "selectedIconPath": "./image_icon/me1.png"
