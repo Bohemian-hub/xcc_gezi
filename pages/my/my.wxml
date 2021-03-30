@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-03-30 11:02:43
- * @LastEditTime: 2021-03-30 13:20:13
+ * @LastEditTime: 2021-03-30 13:26:26
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/my/my.wxml
@@ -45,7 +45,7 @@
                 待配送
             </view>
         </view>
-        <view class="order_menu">
+        <view class="order_menu" bindtap="notice">
             <image class="iconf" src="https://z3.ax1x.com/2021/03/30/ciCfx0.png" mode="widthFix" />
 
             <view class="menu_name">

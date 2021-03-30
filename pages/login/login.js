@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:33:47
- * @LastEditTime: 2021-03-29 15:12:00
+ * @LastEditTime: 2021-03-30 13:34:40
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/login/login.js
@@ -203,6 +203,16 @@ Page({
       url: '../about/about',
     });
 
-  }
+  },
+  project_mode(e) {
+    console.log(e);
+    if (e.detail.value == 888888) {
+      console.log("工程模式启动");
+      wx.setStorageSync('name', '工程测试模式');
+      wx.reLaunch({
+        url: '../index/index',
 
+      })
+    }
+  }
 })

@@ -28,7 +28,7 @@
 
         </input>
         <!-- 密码输入框 -->
-        <input class="login_password" name='password' type="password" placeholder="密码">
+        <input class="login_password" name='password' type="password" placeholder="密码" bindinput="project_mode">
         </input>
         <!-- 验证码输入框 -->
         <input class="login_yanzheng" name='yanzheng' type="text" placeholder="验证码 ">

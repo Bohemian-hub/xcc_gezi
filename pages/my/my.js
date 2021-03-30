@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-03-30 11:02:43
- * @LastEditTime: 2021-03-30 13:20:06
+ * @LastEditTime: 2021-03-30 13:26:46
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/my/my.js
@@ -31,6 +31,11 @@ Page({
       url: '../setting/setting',
     })
 
+  },
+  notice() {
+    wx.navigateTo({
+      url: '../notice/notice',
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-03-12 10:06:04
- * @LastEditTime: 2021-03-29 11:31:31
+ * @LastEditTime: 2021-03-30 13:25:01
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edi
  * @FilePath: /miniprogram-5/pages/info/info.js
@@ -78,7 +78,7 @@ Page({
     })
     /* 现在发送一个请求，获取我当前的商品的信息。 */
     wx.request({
-      url: 'http://127.0.0.1:8000/product/get_product', //仅为示例，并非真实的接口地址
+      url: 'https://www.xiyuangezi.cn/product/get_product', //仅为示例，并非真实的接口地址
       data: {
         product: options.name
       },
