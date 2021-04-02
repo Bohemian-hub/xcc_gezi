@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2021-03-29 08:59:13
+ * @LastEditTime: 2021-04-02 19:16:02
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.js
@@ -38,15 +38,21 @@ Page({
     importance_show: false,
     product_list: [
       {
+        title: '小跑',
+        code: 'run',
+        run_price: '￥自定赏金',
+        pay_number: '12854人付款',
+        image: 'https://s3.ax1x.com/2021/03/12/6N4zx1.png'
+      }, {
         title: '快递代取',
         code: 'express',
         run_price: '￥2.00',
         pay_number: '12854人付款',
-        image: 'https://s3.ax1x.com/2021/03/12/6N4zx1.png'
+        image: 'https://z3.ax1x.com/2021/04/02/cmlGAf.jpg'
       }, {
         title: '专业代买饭',
         code: 'rice',
-        run_price: '￥8.00',
+        run_price: '￥2.00',
         pay_number: '12854人付款',
         image: 'https://s3.ax1x.com/2021/03/12/6N4vG9.jpg'
       }, {
@@ -54,7 +60,13 @@ Page({
         code: 'print',
         run_price: '￥0.30',
         pay_number: '12854人付款',
-        image: 'https://s3.ax1x.com/2021/03/12/6N5pKx.png'
+        image: 'https://z3.ax1x.com/2021/04/02/cmlgCF.jpg'
+      }, {
+        title: '上门电脑维修',
+        code: 'computer',
+        run_price: '￥10',
+        pay_number: '12854人付款',
+        image: 'https://z3.ax1x.com/2021/04/02/cml234.jpg'
       }
     ],
   },

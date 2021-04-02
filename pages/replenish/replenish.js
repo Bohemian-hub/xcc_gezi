@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-03-15 09:56:56
- * @LastEditTime: 2021-03-29 11:28:54
+ * @LastEditTime: 2021-04-02 18:53:08
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/replenish/replenish.js
@@ -21,7 +21,7 @@ Page({
     all_price: '',
     send_fee: '',
     addition_status: '已填写',
-    showbuchong: true,
+    showbuchong: false,
     liuyan: ''
   },
 
@@ -35,10 +35,10 @@ Page({
     console.log(options.product_nums);
     console.log(options.product_price);
     console.log(options.send_fee);
-    if (options.product_name == '专业带饭') {
+    if (options.product_name == '快递代取' || options.product_name == '快速打印') {
       /* 不显示补充信息  */
       this.setData({
-        showbuchong: false
+        showbuchong: true
       })
     }
     this.setData({
@@ -69,9 +69,8 @@ Page({
       get_express: wx.getStorageSync('express'),
       get_qq: wx.getStorageSync('qq'),
     })
-    if (this.data.product_name == "专业带饭") {
+    if (this.data.product_name == '快递代取' || this.data.product_name == '快速打印') {
 
-    } else {
       if (wx.getStorageSync('qujianma') != "" || wx.getStorageSync('qq') != "") {
         this.setData({
           addition_status: '已填写'
@@ -144,7 +143,7 @@ Page({
           total_fee: (Number(this.data.send_fee) + this.data.nums * this.data.product_price).toFixed(2)
         })
       }
-    } else if (this.data.product_name == '快速打印') {
+    } else {
       this.setData({
         nums: this.data.nums += 1,
         all_price: (this.data.nums * this.data.product_price).toFixed(2),
@@ -192,12 +191,32 @@ Page({
       });
     } else {
       console.log("准备向后端发送数据！");
-      /*       this.pay_money() */
+      this.pay_money()
     }
   },
   pay_money() {
     var that = this
     console.log("大喊一声：wechat pay!!!")
+    /* 确定一个下单时间吧 */
+    var myDate = new Date();
+    var month = myDate.getMonth() + 1
+    var date = myDate.getDate();
+    var h = myDate.getHours();       //获取当前小时数(0-23)
+    var m = myDate.getMinutes();     //获取当前分钟数(0-59)
+    if (month < 10) {
+      month = "0" + String(month)
+    }
+    if (date < 10) {
+      date = "0" + String(date)
+    }
+    if (h < 10) {
+      h = "0" + String(h)
+    }
+    if (m < 10) {
+      m = "0" + String(m)
+    }
+    const time = month + '-' + date + ' ' + h + ":" + m;
+    console.log(time);
     wx.login({
       success(res) {
         wx.request({
@@ -209,26 +228,31 @@ Page({
           },
           success: (result) => {
             console.log(result);
-            console.log(that.data.express_name);
             wx.request({
               url: 'http://127.0.0.1:8000/express/add_order', //仅为示例，并非真实的接口地址
               data: {
-                connect_way: that.data.send_tel,
                 studentId: wx.getStorageSync('studentId'),
-                rec_name: that.data.send_name,
-                rec_tail: that.data.get_weihao,
-                rec_code: that.data.get_code,
-                rec_qq: that.data.get_qq,
-                rec_message: that.data.liuyan,
-                express_company: that.data.get_express,
-                express_place: that.data.send_place,
                 express_name: that.data.product_name,
                 express_size: that.data.product_size,
                 express_nums: that.data.nums,
+
+
                 express_send_fee: that.data.send_fee,
                 express_total_fee: that.data.total_fee,
+
+                rec_message: that.data.liuyan,
+                rec_name: that.data.send_name,
+                connect_way: that.data.send_tel,
+                express_place: that.data.send_place,
+
+                rec_code: that.data.get_code,
+                rec_tail: that.data.get_weihao,
+                express_company: that.data.get_express,
+                rec_qq: that.data.get_qq,
+
                 nonceStr: result.data.nonceStr,
-                order_stadus: 0
+                order_stadus: 0,
+                order_time: time
               },
               method: "POST",
               header: {
@@ -272,7 +296,6 @@ Page({
                                       },
                                     }); */
                 }
-
               }
             })
             // 真正的调起微信支付接口

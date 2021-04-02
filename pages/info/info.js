@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-03-12 10:06:04
- * @LastEditTime: 2021-03-30 20:23:25
+ * @LastEditTime: 2021-04-02 18:45:44
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edi
  * @FilePath: /miniprogram-5/pages/info/info.js
@@ -186,7 +186,7 @@ Page({
           total_price: this.data.now_price
         })
       }
-    } else if (this.data.product_one.title == '快速打印') {
+    } else  {
       this.setData({
         nums: this.data.nums += 1,
         total_price: this.data.now_price
