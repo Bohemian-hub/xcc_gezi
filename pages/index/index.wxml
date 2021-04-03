@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2021-03-29 08:58:31
+ * @LastEditTime: 2021-04-02 19:23:27
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.wxml
@@ -186,6 +186,26 @@
                         </view>
                         <view class="run_bought_num">
                             {{item.pay_number}}
+                        </view>
+                    </view>
+                    <view class="info_right">
+
+                    </view>
+                </view>
+
+                <view class="run_fun_one" data-name='{{item.code}}'>
+                    <view class="run_pic1"
+                        style="background-image: url(https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1612041294,3215380385&fm=26&gp=0.jpg);">
+                    </view>
+                    <view class="info_left">
+                        <view class="run_title">
+                            招商中!!!
+                        </view>
+                        <view class="run_price">
+                            ￥999
+                        </view>
+                        <view class="run_bought_num">
+                            26家加入
                         </view>
                     </view>
                     <view class="info_right">

@@ -53,34 +53,39 @@ page{
 .order{
     width: 90%;
     background-color: white;
-    height: 180rpx;
+    height: 150rpx;
     margin: 30rpx auto;
     border-radius: 20rpx;
     box-shadow: 0rpx 5rpx 20rpx rgb(212, 212, 212);
     overflow: hidden;
 }
 .order_menu{
-    width: 33.3333333%;
-    background-color: rgba(36, 111, 177, 0);
+    width: 20%;
+    background-color: rgba(32, 115, 187, 0);
     height: 100%;
     float: left;
     
 }
 .iconf{
-    width: 100rpx;
-    height: 100rpx;
-    margin-left: 60rpx;
+    width: 80rpx;
+    margin-left: 38rpx;
     margin-top: 10rpx;
 
 }
 .iconf1{
-    width: 90rpx;
-    height: 90rpx;
-    margin-top: 20rpx;
-    margin-left: 60rpx;
+    width: 75rpx;
+    margin-top: 16rpx;
+    margin-left: 34rpx;
+}
+.iconf2{
+    width: 55rpx;
+    margin-top: 24rpx;
+    margin-left: 44rpx;
+    margin-bottom: 12rpx;
 }
 .menu_name{
     text-align: center;
+    color: #4d8bfd
 }
 .function{
     width: 90%;

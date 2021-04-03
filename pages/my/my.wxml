@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-03-30 11:02:43
- * @LastEditTime: 2021-03-30 20:32:44
+ * @LastEditTime: 2021-04-02 19:47:32
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/my/my.wxml
@@ -36,20 +36,29 @@
             <view class="menu_name">
                 全部订单
             </view>
-
         </view>
         <view class="order_menu">
             <image class="iconf1" src="https://z3.ax1x.com/2021/03/30/ciidnf.png" mode="widthFix" />
-
             <view class="menu_name">
                 待配送
             </view>
         </view>
         <view class="order_menu" bindtap="notice">
+            <image class="iconf1" src="https://z3.ax1x.com/2021/04/02/cmN3Yq.png" mode="widthFix" />
+            <view class="menu_name">
+                我接的单
+            </view>
+        </view>
+        <view class="order_menu" bindtap="notice">
             <image class="iconf" src="https://z3.ax1x.com/2021/03/30/ciCfx0.png" mode="widthFix" />
-
             <view class="menu_name">
                 消息通知
+            </view>
+        </view>
+        <view class="order_menu" bindtap="notice">
+            <image class="iconf2" src="https://z3.ax1x.com/2021/04/02/cmYU3T.png" mode="widthFix" />
+            <view class="menu_name">
+                钱包
             </view>
         </view>
     </view>
@@ -59,7 +68,7 @@
         <view class="function_one">配送地址</view>
         <view class="function_one">积分</view>
         <view class="function_one" bindtap="talkback">反馈</view>
-            <view class="function_one" style="border: 0;" bindtap="about">关于</view>
-        </view>
-
+        <view class="function_one" style="border: 0;" bindtap="about">关于</view>
     </view>
+
+</view>

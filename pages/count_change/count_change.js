@@ -68,7 +68,7 @@ Page({
     console.log(e.currentTarget.dataset.countthing);
     wx.setStorageSync('count', e.currentTarget.dataset.countthing)
     /* 设置完了之后就关闭这个页面 */
-    wx.switchTab({
+    wx.reLaunch({
       url: '../index/index',
     });
 
