@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-03-15 09:56:56
- * @LastEditTime: 2021-04-02 18:53:08
+ * @LastEditTime: 2021-04-06 22:13:06
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/replenish/replenish.js
@@ -220,7 +220,7 @@ Page({
     wx.login({
       success(res) {
         wx.request({
-          url: 'http://127.0.0.1:8000/express/pay',
+          url: 'https://www.xiyuangezi.cn/express/pay',
           data: {
             code: res.code,
             fee: that.data.total_fee * 100 //传入到后端作为以分为单位的金额
@@ -229,7 +229,7 @@ Page({
           success: (result) => {
             console.log(result);
             wx.request({
-              url: 'http://127.0.0.1:8000/express/add_order', //仅为示例，并非真实的接口地址
+              url: 'https://www.xiyuangezi.cn/express/add_order', //仅为示例，并非真实的接口地址
               data: {
                 studentId: wx.getStorageSync('studentId'),
                 express_name: that.data.product_name,
@@ -261,40 +261,42 @@ Page({
               success(res) {
                 console.log(res.data.loginnum)
                 if (res.data.loginnum == 200) {
-                  /*                   wx.requestPayment({
-                                      timeStamp: result.data.timeStamp,
-                                      nonceStr: result.data.nonceStr,
-                                      package: result.data.package,
-                                      signType: result.data.signType,
-                                      paySign: result.data.paySign,
-                                      success: (ret) => {
-                                        console.log("成功！", ret);
-                                        //此时可以隐藏loading
-                                        wx.hideLoading()
-                                        wx.showModal({
-                                          title: '下单成功',
-                                          content: '查看订单信息？',
-                                          showCancel: true,//是否显示取消按钮
-                                          cancelText: "返回",//默认是“取消”
-                                          cancelColor: 'skyblue',//取消文字的颜色
-                                          confirmText: "确定",//默认是“确定”
-                                          confirmColor: 'skyblue',//确定文字的颜色
-                                          success: function (res) {
-                                            if (res.confirm) {//这里是点击了确定以后
-                                              console.log('用户点击确定')
-                                              that.turn_page_myorder()
-                                            } else {//这里是点击了取消以后
-                                              console.log('用户点击取消')
-                                              wx.switchTab({
-                                                url: '../index/index',
-                                              })
-                                            }
-                  
-                                          }
-                  
-                                        })
-                                      },
-                                    }); */
+                  wx.requestPayment({
+                    timeStamp: result.data.timeStamp,
+                    nonceStr: result.data.nonceStr,
+                    package: result.data.package,
+                    signType: result.data.signType,
+                    paySign: result.data.paySign,
+                    success: (ret) => {
+                      console.log("成功！", ret);
+                      //此时可以隐藏loading
+                      wx.hideLoading()
+                      wx.showModal({
+                        title: '下单成功',
+                        content: '查看订单信息？',
+                        showCancel: true,//是否显示取消按钮
+                        cancelText: "返回",//默认是“取消”
+                        cancelColor: 'skyblue',//取消文字的颜色
+                        confirmText: "确定",//默认是“确定”
+                        confirmColor: 'skyblue',//确定文字的颜色
+                        success: function (res) {
+                          if (res.confirm) {//这里是点击了确定以后
+                            console.log('用户点击确定')
+                            wx.navigateTo({
+                              url: '../express/express',
+                            })
+                          } else {//这里是点击了取消以后
+                            console.log('用户点击取消')
+                            wx.switchTab({
+                              url: '../index/index',
+                            })
+                          }
+
+                        }
+
+                      })
+                    },
+                  });
                 }
               }
             })

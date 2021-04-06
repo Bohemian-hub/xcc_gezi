@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-01 10:00:16
- * @LastEditTime: 2021-04-06 19:55:45
+ * @LastEditTime: 2021-04-06 22:55:47
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express/express.js
@@ -161,7 +161,7 @@ Page({
     })
     var that = this
     wx.request({
-      url: 'http://127.0.0.1:8000/express/get_express', //仅为示例，并非真实的接口地址
+      url: 'https://www.xiyuangezi.cn/express/get_my_express_order', //仅为示例，并非真实的接口地址
       data: {
         studentId: wx.getStorageSync('studentId'),
       },
@@ -195,6 +195,9 @@ Page({
           } else if (element.fields.order_stadus == 4 || element.fields.order_stadus == 6) {
             element.fields.order_stadus = '已确认'
             element.fields.order_stadus_color = 'green'
+          } else if (element.fields.order_stadus == 10) {
+            element.fields.order_stadus = '已退款'
+            element.fields.order_stadus_color = 'red'
           }
           /* 增加图片地址 */
           if (element.fields.express_name == '快递代取') {
@@ -489,6 +492,11 @@ Page({
 
 
 
+  },
+  turn_page_myorder() {
+    wx.navigateTo({
+      url: '../express/express',
+    })
   },
   catcher_infomation(e) {
     var that = this
