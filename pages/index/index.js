@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2021-04-03 10:38:52
+ * @LastEditTime: 2021-04-03 11:09:12
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.js
@@ -40,7 +40,7 @@ Page({
       {
         title: '小跑',
         code: 'run',
-        run_price: '￥自定赏金',
+        run_price: '￥3.00',
         pay_number: '12854人付款',
         image: 'https://s3.ax1x.com/2021/03/12/6N4zx1.png'
       }, {

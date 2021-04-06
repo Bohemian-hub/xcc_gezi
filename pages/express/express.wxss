@@ -49,7 +49,7 @@ background-color: rgba(235, 235, 235, 0.699);
     font-size: 35rpx;
 }
 
-.express_infor{
+/* .express_infor{
     width: 94%;
     height: 300rpx;
     background-color: rgb(255, 255, 255);
@@ -180,7 +180,7 @@ background-color: rgba(235, 235, 235, 0.699);
     height: 100%;
     float: right;
     text-align: right;
-}
+} */
 .express_company_choose_value_icon{
     height: 60%;
     width: 40rpx;
@@ -333,15 +333,61 @@ background-color: rgba(235, 235, 235, 0.699);
     width: 90%;
     background-color: white;
     box-shadow: 0 0 10rpx #666;
-    height: 640rpx;
+    height: 350rpx;
     margin: 30rpx auto;
     padding: 10rpx;
     border-radius: 10rpx;
 }
 .order_title{
-    font-size: 40rpx;
+    font-size: 35rpx;
     font-weight: 900;
     height: 60rpx;
+    width: 50%;
+    float: left;
+}
+.order_stadus{
+    float: right;
+    height: 60rpx;
+    line-height: 60rpx;
+    margin-right: 20rpx;
+    color: rgb(252, 123, 18);
+}
+.order_pic{
+    width: 150rpx;
+    height: 150rpx;
+    background-color: #FF9900;
+    float: left;
+    border-radius: 20rpx;
+}
+
+.order_content{
+    width: 480rpx;
+    height: 150rpx;
+    background-color: rgba(255, 0, 0, 0);
+    float: left;
+    padding: 10rpx;
+}
+.express_name{
+    font-size: 35rpx;
+    font-weight: 700;
+}
+.express_size{
+    font-size: 28rpx;
+    font-weight: 500;
+    float: left;
+}
+.express_nums{
+    font-size: 28rpx;
+    font-weight: 500;
+    float: right;
+}
+.express_fee{
+    height: 70rpx;
+    line-height: 70rpx;
+    float: right;
+    text-align: right;
+    margin-right: 30rpx;
+    color: rgb(0, 0, 0);
 }
 .express_order_user{
     color: rgb(12, 120, 170);
@@ -362,7 +408,7 @@ background-color: rgba(235, 235, 235, 0.699);
     font-weight: 500;
     font-size: 32rpx;
 }
-.express_order_name{
+/* .express_order_name{
     width: 50%;
     float: left;
 }
@@ -384,8 +430,8 @@ background-color: rgba(235, 235, 235, 0.699);
     color: #9b7c00;
     font-weight: 600;
     font-size: 25rpx;
-}
-.express_order_place{
+} */
+/* .express_order_place{
     width: 50%;
     float: left;
     font-size: 25rpx;
@@ -428,8 +474,8 @@ background-color: rgba(235, 235, 235, 0.699);
     text-decoration: underline;
     color: blue;
     
-}
-.express_content{
+} */
+/* .express_content{
     width: 15%;
     float: left;
     color: rgb(117, 117, 117);
@@ -446,7 +492,7 @@ background-color: rgba(235, 235, 235, 0.699);
     font-size: 20rpx;
     text-indent: 2em;
     color: rgb(50, 219, 197);
-}
+} */
 
 .task_one_button{
     height:100rpx;
@@ -455,26 +501,28 @@ background-color: rgba(235, 235, 235, 0.699);
 
 }
 .task_one_button_cancel{
-    height: 80rpx;
+    height: 50rpx;
     width: 20%;
-    margin-left: 10%;
+    margin-left: 1%;
     float: left;
-    background-color: rgb(109, 109, 109);
+    background-color: rgb(255, 255, 255);
     text-align: center;
-    line-height: 80rpx;
-    color: white;
-    border-radius: 10rpx;
+    line-height: 50rpx;
+    color: rgb(100, 100, 100);
+    border-radius: 50rpx;
+    border: 1rpx solid rgb(134, 134, 134);
 }
 .task_one_button_confirm{
-    height: 80rpx;
+    height: 50rpx;
     width: 20%;
-    margin-right: 10%;
+    margin-right: 1%;
     background-color: rgb(230, 147, 39);
     float: right;
     text-align: center;
-    line-height: 80rpx;
+    line-height: 50rpx;
     color: white;
-    border-radius: 10rpx;
+    border-radius: 50rpx;
+    border: 1rpx solid rgb(134, 134, 134);
 }
 .apply_panel{
     width: 80%;

@@ -2,6 +2,7 @@
   "pages": [
 
     "pages/index/index",
+    "pages/express/express",
     "pages/my/my",
     "pages/order_addition/order_addition",
     "pages/myaddress/myaddress",
@@ -26,7 +27,7 @@
     "pages/topic/topic",
     "pages/topic_one/topic_one",
     "pages/new_confesswall/new_confesswall",
-    "pages/express/express",
+
     "pages/grade/grade",
     "pages/express_catch/express_catch",
     "pages/logs/logs",
@@ -49,6 +50,7 @@
   "tabBar": {
     "color": "#666",
     "selectedColor": "#21b0e9",
+
     "list": [{
       "pagePath": "pages/index/index",
       "text": "首页",

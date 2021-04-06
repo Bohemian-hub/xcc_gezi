@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-01 10:00:16
- * @LastEditTime: 2021-03-12 09:50:27
+ * @LastEditTime: 2021-04-06 19:55:45
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express/express.js
@@ -29,8 +29,8 @@ Page({
     fee: '&&',
     warning: '欢迎使用',
     warn_show: 0,
-    expressshowwhat: 0,
-    choosemenucolor: 0,
+    expressshowwhat: 1,
+    choosemenucolor: 1,
     express_info_text_name: '',
     express_info_text_tel: '',
     express_info_text_code: '',
@@ -39,8 +39,9 @@ Page({
     nothing: 0,
     catcher_infor: [],
     catcher_show: 0,
-    clickable: 1
-
+    clickable: 1,
+    /* 自定义一个图片数据 */
+    shangpinpic: ['https://s3.ax1x.com/2021/03/12/6N4zx1.png', 'https://z3.ax1x.com/2021/04/02/cmlGAf.jpg', 'https://s3.ax1x.com/2021/03/12/6N4vG9.jpg', 'https://z3.ax1x.com/2021/04/02/cmlgCF.jpg', 'https://z3.ax1x.com/2021/04/02/cml234.jpg']
   },
 
   /**
@@ -48,32 +49,18 @@ Page({
    */
   onLoad: function (options) {
     this.count_fee()
-
-  },
-  back_index() {
-    wx.switchTab({
-      url: '../index/index',
-    })
-  },
-  turn_page_neworder() {
-    this.setData({
-      expressshowwhat: 0,
-      choosemenucolor: 0,
-      express_info_text_name: '',     //清空这些地方的值
-      express_info_text_tel: '',
-      express_info_text_code: '',
-    })
-
-  },
-  turn_page_myorder() {
-    /* 让填单的view不显示，让订单的view显示 */
     this.setData({
       expressshowwhat: 1,
       choosemenucolor: 1
     })
     this.get_order()  //获取订单
-
   },
+  back_index() {
+    wx.switchTab({
+      url: '../my/my',
+    })
+  },
+
   bindPickerChange1: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
@@ -174,7 +161,7 @@ Page({
     })
     var that = this
     wx.request({
-      url: 'https://www.xiyuangezi.cn/express/get_express', //仅为示例，并非真实的接口地址
+      url: 'http://127.0.0.1:8000/express/get_express', //仅为示例，并非真实的接口地址
       data: {
         studentId: wx.getStorageSync('studentId'),
       },
@@ -186,6 +173,7 @@ Page({
         console.log(res);
 
         console.log(res.data);
+        /* 将状态码变更为状态 */
         for (let index = 0; index < res.data.length; index++) {
           const element = res.data[index];
           console.log(element.fields.order_stadus);
@@ -207,15 +195,25 @@ Page({
           } else if (element.fields.order_stadus == 4 || element.fields.order_stadus == 6) {
             element.fields.order_stadus = '已确认'
             element.fields.order_stadus_color = 'green'
-
-
           }
-
+          /* 增加图片地址 */
+          if (element.fields.express_name == '快递代取') {
+            element.fields.connect_way = that.data.shangpinpic[1]
+          } else if (element.fields.express_name == '小跑') {
+            element.fields.connect_way = that.data.shangpinpic[0]
+          } else if (element.fields.express_name == '专业带饭') {
+            element.fields.connect_way = that.data.shangpinpic[2]
+          } else if (element.fields.express_name == '快速打印') {
+            element.fields.connect_way = that.data.shangpinpic[3]
+          } else if (element.fields.express_name == '上门电脑维修') {
+            element.fields.connect_way = that.data.shangpinpic[4]
+          }
         }
         that.setData({
           orderList: res.data
         })
         console.log(that.data.orderList.length);
+        /* 没有订单就显示没有订单 */
         if (that.data.orderList.length == 0) {
           that.setData({
             nothing1: 1

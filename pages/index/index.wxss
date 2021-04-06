@@ -9,10 +9,14 @@ page{
   height: 570rpx;
   z-index: -999;
   background-color: rgb(255, 255, 255);
+
+
 }
 .bg1 {
   width: 100%;
   opacity:1;
+  height: 570rpx;
+  box-shadow: 2rpx 10rpx 10rpx rgb(182, 182, 182);
 }
 .bg2 {
   top: 400rpx;
@@ -60,7 +64,7 @@ page{
   width: 100%;
   padding-bottom: 20rpx;
 /*   background-color: white; */
-box-shadow: 0rpx 0rpx 20rpx rgb(216, 216, 216);
+
 
 }
 .content_niceday {

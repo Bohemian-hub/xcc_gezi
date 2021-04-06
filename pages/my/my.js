@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-03-30 11:02:43
- * @LastEditTime: 2021-03-30 20:32:27
+ * @LastEditTime: 2021-04-06 19:55:07
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/my/my.js
@@ -50,6 +50,11 @@ Page({
   talkback() {
     wx.navigateTo({
       url: '../setting_talkback/setting_talkback',
+    })
+  },
+  express_order() {
+    wx.navigateTo({
+      url: '../express/express',
     })
   },
   /**
