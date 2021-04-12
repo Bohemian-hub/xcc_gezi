@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-01 10:00:16
- * @LastEditTime: 2021-04-06 22:55:47
+ * @LastEditTime: 2021-04-12 09:52:54
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express/express.js
@@ -537,6 +537,12 @@ Page({
       catcher_show: 0
     })
   },
+  access_info(e) {
+    console.log(e.currentTarget.dataset.id);
+    wx.navigateTo({
+      url: '../order_info/order_info?transaction_id=' + e.currentTarget.dataset.id,
+    })
+  }
 
 
 

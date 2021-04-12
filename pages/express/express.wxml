@@ -16,7 +16,7 @@
 </view>
 
 <view class="express_panel" style="display: {{expressshowwhat == 1? 'block':'none'}};">
-    <view class="order_show" wx:for="{{orderList}}" wx:key="item.fields">
+    <view class="order_show" wx:for="{{orderList}}" wx:key="item.fields" bindtap = "access_info" data-id="{{item.fields.transaction_id}}">
         <view class="order_title" hover-class="none" hover-stop-propagation="false">
             {{item.fields.order_time}}
         </view>

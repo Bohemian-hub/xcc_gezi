@@ -1,0 +1,142 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-12-08 13:17:20
+ * @LastEditTime: 2021-04-12 11:20:13
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /miniprogram-5/pages/setting_order/setting_order.wxml
+-->
+<view class="title" bindtouchstart="touchStart" onPageScroll='onPageScroll'>
+    订单详情
+    <view class="back" bindtap="back">
+        <text class="cuIcon-back">
+
+        </text>
+    </view>
+</view>
+<view style="clear: both;">
+</view>
+<view class="back_status">
+    {{order_info.order_stadus}}
+</view>
+<view class="real_content">
+
+    <view class="status_info">
+        你已成功发起退款申请，请耐心等待商家处理，我们预计二十四小时内处理，超时按拒绝退款处理。
+    </view>
+    <view class="order">
+        <view class="order_pic" style="background-image:url({{order_info.studentId}});background-size: 100%;">
+        </view>
+        <view class="order_content">
+            <view class="express_name">{{order_info.express_name}}</view>
+            <view class="express_size">{{order_info.express_size}}</view>
+            <view class="express_nums">×{{order_info.express_nums}}</view>
+        </view>
+        <view class="express_fee" hover-class="none" hover-stop-propagation="false">
+            运费￥{{order_info.express_send_fee}}，实付款￥{{order_info.express_total_fee}}
+        </view>
+        <view style="clear:both;"></view>
+
+        <view class="task_one_button">
+            <view class="task_one_button_cancel"
+                style="display: {{order_info.order_stadus == '代取中'||order_info.order_stadus == '待接单'?'block':'none'}};"
+                data-id="{{order_info.transaction_id}}" data-fee="{{order_info.express_total_fee}}"
+                bindtap="cancel_order">取消
+            </view>
+            <view class="task_one_button_cancel"
+                style="display: {{order_info.order_stadus == '已确认'?'block':'none'}};margin-left:18%;"
+                data-id="{{order_info.transaction_id}}" bindtap="delete_already_order">删除
+            </view> <!-- 只有客户已经确认的时候才显示 -->
+            <view class="task_one_button_confirm" bindtap="receive_express" data-id="{{order_info.transaction_id}}"
+                style="background-color:{{order_info.order_stadus == '代取中'?'rgb(230, 147, 39)':' rgb(69, 183, 228)'}};display: {{order_info.order_stadus == '送达待确认'?'block':'none'}};">
+                {{order_info.confim_button}}
+            </view>
+        </view>
+    </view>
+    <view class="order_liuyan">
+        <view class="info_title_one">
+            买家留言
+        </view>
+        <view class="info_value_one">
+            {{order_info.rec_message}}
+        </view>
+        <view style="clear:both;"></view>
+
+    </view>
+    <!-- 配送信息 -->
+    <view class="order_info_one">
+        <view class="info_title_one">
+            客户
+        </view>
+        <view class="info_value_one">
+            {{order_info.rec_name}}
+        </view>
+        <view style="clear:both;"></view>
+        <view class="info_title_one">
+            联系电话
+        </view>
+        <view class="info_value_one">
+            {{order_info.connect_way}}
+        </view>
+        <view style="clear:both;"></view>
+        <view class="info_title_one">
+            配送地点
+        </view>
+        <view class="info_value_one">
+            {{order_info.express_place}}
+        </view>
+        <view style="clear:both;"></view>
+    </view>
+    <!-- 业务信息 -->
+    <view class="order_info_one">
+        <view class="info_title_one">
+            QQ
+        </view>
+        <view class="info_value_one">
+            {{order_info.rec_qq}}
+        </view>
+        <view style="clear:both;"></view>
+        <view class="info_title_one">
+            取件码
+        </view>
+        <view class="info_value_one">
+            {{order_info.rec_code}}
+        </view>
+        <view style="clear:both;"></view>
+        <view class="info_title_one">
+            快递公司
+        </view>
+        <view class="info_value_one">
+            {{order_info.express_company}}
+        </view>
+        <view style="clear:both;"></view>
+        <view class="info_title_one">
+            手机尾号
+        </view>
+        <view class="info_value_one">
+            {{order_info.rec_tail}}
+        </view>
+        <view style="clear:both;"></view>
+    </view>
+    <view class="order_info_one">
+        <view class="info_title_one">
+            订单时间
+        </view>
+        <view class="info_value_one">
+            {{order_info.order_time}}
+        </view>
+        <view style="clear:both;"></view>
+        <view class="info_title_one">
+            订单号
+        </view>
+        <view class="info_value_one">
+            {{order_info.transaction_id}}
+        </view>
+        <view style="clear:both;"></view>
+    </view>
+
+
+
+
+
+</view>

@@ -1,0 +1,139 @@
+.title{
+    width: 100%;
+    height: 140rpx;
+    background-color:#f1f1f1;
+    text-align: center;
+    font-size: 40rpx;
+    position: relative;
+    color: rgb(97, 97, 97);
+    line-height: 220rpx;
+}
+.back{
+    position: absolute;
+    top: 0rpx;
+    left: 30rpx;
+}
+.back_status{
+    width: 100%;
+    height: 180rpx;
+    background-color: rgb(255, 127, 53);
+    margin-bottom: -20rpx;
+    line-height: 150rpx;
+    font-size: 40rpx;
+    color: white;
+    padding-left: 50rpx;
+}
+.real_content{
+    height: auto;
+    background-color: rgba(221, 221, 221, 0.521);
+    border-radius: 20rpx;
+    overflow: hidden;
+
+
+}
+.status_info{
+    height: 140rpx;
+    line-height: 50rpx;
+    background-color: white;
+    margin-bottom: 20rpx;
+    padding:20rpx 20rpx;
+    text-indent: 2em;
+}
+.order{
+    width: 100%;
+    height: 310rpx;
+    background-color: white;
+    padding: 20rpx 20rpx;
+}
+.order_pic{
+    width: 150rpx;
+    height: 150rpx;
+    background-color: #FF9900;
+    float: left;
+    border-radius: 20rpx;
+
+}
+
+.order_content{
+    width: 480rpx;
+    height: 150rpx;
+    background-color: rgba(255, 0, 0, 0);
+    float: left;
+    padding: 10rpx;
+}
+.express_name{
+    font-size: 35rpx;
+    font-weight: 700;
+}
+.express_size{
+    font-size: 28rpx;
+    font-weight: 500;
+    float: left;
+}
+.express_nums{
+    font-size: 28rpx;
+    font-weight: 500;
+    float: right;
+}
+.express_fee{
+    height: 70rpx;
+    line-height: 70rpx;
+    float: right;
+    text-align: right;
+    margin-right: 30rpx;
+    color: rgb(0, 0, 0);
+}
+.task_one_button{
+    height:100rpx;
+    width: 100%;
+
+
+}
+.task_one_button_cancel{
+    height: 50rpx;
+    width: 20%;
+    margin-left: 1%;
+    float: left;
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+    line-height: 50rpx;
+    color: rgb(100, 100, 100);
+    border-radius: 50rpx;
+    border: 1rpx solid rgb(134, 134, 134);
+}
+.task_one_button_confirm{
+    height: 50rpx;
+    width: 20%;
+    margin-right: 1%;
+    background-color: rgb(230, 147, 39);
+    float: right;
+    text-align: center;
+    line-height: 50rpx;
+    color: white;
+    border-radius: 50rpx;
+    border: 1rpx solid rgb(134, 134, 134);
+}
+.order_info_one{
+    background-color: white;
+    margin-top: 20rpx;
+    height: auto;
+    line-height: 50rpx;
+    padding: 20rpx;
+
+}
+.order_liuyan{
+    background-color: white;
+    margin-top: 20rpx;
+    height: auto;
+    line-height: 50rpx;
+    padding: 20rpx;
+}
+.info_title_one{
+    float: left;
+}
+.info_value_one{
+    float: right;
+    height: auto;
+    width:70%;
+    color: #838383;
+}

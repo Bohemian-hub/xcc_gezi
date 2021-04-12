@@ -1,8 +1,9 @@
 {
   "pages": [
-
-    "pages/index/index",
     "pages/express/express",
+    "pages/index/index",
+
+    "pages/order_info/order_info",
     "pages/my/my",
     "pages/order_addition/order_addition",
     "pages/myaddress/myaddress",
@@ -19,7 +20,7 @@
     "pages/count_change/count_change",
     "pages/about/about",
     "pages/setting_talkback/setting_talkback",
-    "pages/setting_order/setting_order",
+
     "pages/forum_of_me/forum_of_me",
     "pages/ConfessionWall/ConfessionWall",
     "pages/publish_confess/publish_confess",
