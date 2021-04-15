@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-08 13:17:20
- * @LastEditTime: 2021-04-12 11:19:22
+ * @LastEditTime: 2021-04-15 21:19:22
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/setting_order/setting_order.js
@@ -33,7 +33,7 @@ Page({
   get_this_order(transaction_id) {
     var that = this
     wx.request({
-      url: 'http://127.0.0.1:8000/express/get_express', //仅为示例，并非真实的接口地址
+      url: 'https://www.xiyuangezi.cn/express/get_express', //仅为示例，并非真实的接口地址
       data: {
         transaction_id: transaction_id
       },
@@ -43,28 +43,37 @@ Page({
       },
       success(res) {
         const element = res.data[0]
+        console.log(res);
         /* 将状态码变更为状态 */
         if (element.fields.order_stadus == 1) {
           element.fields.order_stadus = '待接单'
           element.fields.order_stadus_color = 'red'
+          element.fields.order_status_warning = '请耐心等待订单被接单，你如果另有打算，也可以在未被接单前取消订单！'
         } else if (element.fields.order_stadus == 2) {
           element.fields.order_stadus = '代取中'
           element.fields.order_stadus_color = 'rgb(230, 147, 39)'
           element.fields.confim_button = ''
+          element.fields.order_status_warning = '订单已经被接单，请耐心等待商品到达，有问题请联系代取同学！'
 
 
         } else if (element.fields.order_stadus == 3) {
           element.fields.order_stadus = '送达待确认'
           element.fields.order_stadus_color = 'rgb(69, 183, 228)'
           element.fields.confim_button = '确认收件'
-
+          element.fields.order_status_warning = '订单已经送达，请及时点击收货哦！'
 
         } else if (element.fields.order_stadus == 4 || element.fields.order_stadus == 6) {
           element.fields.order_stadus = '已确认'
           element.fields.order_stadus_color = 'green'
+          element.fields.order_status_warning = '你已完成确认，欢迎再次使用！'
         } else if (element.fields.order_stadus == 10) {
           element.fields.order_stadus = '已退款'
           element.fields.order_stadus_color = 'red'
+          element.fields.order_status_warning = '你已完成退款，请耐心等待退款到账，如有问题请联系客服！'
+        } else if (element.fields.order_stadus == 9) {
+          element.fields.order_stadus = '退款失败'
+          element.fields.order_stadus_color = 'red'
+          element.fields.order_status_warning = '退款失败，可能是软件账户资金不足，请联系客服处理哦！'
         }
 
         /* 增加图片地址 */
@@ -86,7 +95,86 @@ Page({
 
       }
     })
-  }
+  },
+  cancel_order(e) {
+    /* 用户取消还没有人取的订单 */
+    var that = this
+    var out_trade_no = e.currentTarget.dataset.id
+    console.log(out_trade_no);
+    wx.showModal({
+      title: '',
+      content: '确定取消此订单？',
+      showCancel: true,
+      cancelText: '取消',
+      cancelColor: '#000000',
+      confirmText: '确定',
+      confirmColor: '#3CC51F',
+      success: (result) => {
+        if (result.confirm) {
+          /* 点了确认，发送请求更改数据库的数据为3 */
+          /* 取消订单这里我就把退款同时做了，避免 多次请求 */
+          wx.request({
+            url: 'https://www.xiyuangezi.cn/express/cancel_order', //仅为示例，并非真实的接口地址
+            data: {
+              order_id: e.currentTarget.dataset.id,
+              fee: e.currentTarget.dataset.fee * 100
+            },
+            method: "POST",
+            header: {
+              'content-type': 'application/x-www-form-urlencoded' // 默认值
+            },
+            success(res) {
+              console.log(res.data.statusnum);
+              wx.hideLoading();
+              if (res.data.statusnum == 200) {
+                /* 这里是取消成功，下面准备调用退款函数 */
+                wx.showModal({
+                  title: '提示',
+                  content: '取消成功，退款将在五分钟内返还至您的账户!',
+                  showCancel: false,
+                  confirmText: '确定',
+                  confirmColor: '#3CC51F',
+                  success: () => {
+                    that.turn_page_myorder()
+                  },
+                });
+              } else if (res.data.statusnum == 500) {
+                wx.showModal({
+                  title: '提示',
+                  content: '退款异常，请联系开发者：qq:2605191106',
+                  showCancel: false,
+                  confirmText: '确定',
+                  confirmColor: '#3CC51F',
+                  success: () => {
+                    that.turn_page_myorder()
+                  },
+                });
+              }
+              else if (res.data.statusnum == 100) {
+                wx.showModal({
+                  title: '',
+                  content: '此订单已经被接单，如需退单请联系您的代取员！',
+                  showCancel: false,
+                  confirmText: '确定',
+                  confirmColor: '#3CC51F',
+                  success: () => {
+                    that.turn_page_myorder()
+                  },
+                });
+              }
+            }
+          })
+
+        }
+      },
+    });
+
+  },
+  turn_page_myorder() {
+    wx.navigateTo({
+      url: '../express/express',
+    })
+  },
 
 
 })

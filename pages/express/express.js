@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-01 10:00:16
- * @LastEditTime: 2021-04-12 09:52:54
+ * @LastEditTime: 2021-04-15 20:49:58
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express/express.js
@@ -197,6 +197,9 @@ Page({
             element.fields.order_stadus_color = 'green'
           } else if (element.fields.order_stadus == 10) {
             element.fields.order_stadus = '已退款'
+            element.fields.order_stadus_color = 'red'
+          } else if (element.fields.order_stadus == 9) {
+            element.fields.order_stadus = '退款失败'
             element.fields.order_stadus_color = 'red'
           }
           /* 增加图片地址 */

@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-12-08 13:17:20
- * @LastEditTime: 2021-04-12 11:20:13
+ * @LastEditTime: 2021-04-15 21:19:51
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/setting_order/setting_order.wxml
@@ -22,7 +22,7 @@
 <view class="real_content">
 
     <view class="status_info">
-        你已成功发起退款申请，请耐心等待商家处理，我们预计二十四小时内处理，超时按拒绝退款处理。
+        {{order_info.order_status_warning}}
     </view>
     <view class="order">
         <view class="order_pic" style="background-image:url({{order_info.studentId}});background-size: 100%;">
