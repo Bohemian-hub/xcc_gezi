@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2021-04-03 11:09:12
+ * @LastEditTime: 2021-04-17 10:56:10
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.js
@@ -279,11 +279,11 @@ Page({
       envVersion: 'release',// 打开正式版
     })
   },
-  /*   coursetable() {
+    coursetable() {
       wx.navigateTo({
         url: '../schedule/schedule',
       })
-    }, */
+    },
   /*   express() {
       wx.navigateTo({
         url: '../express/express',
@@ -380,6 +380,38 @@ Page({
     that.get_count_time()
 
 
+  },
+  downloadImg: function () {　　　　　　　　　　　　　　　　//触发函数
+
+    wx.downloadFile({
+      url: '',　　　　　　　//需要下载的图片url
+      success: function (res) {　　　　　　　　　　　　//成功后的回调函数
+        wx.saveImageToPhotosAlbum({　　　　　　　　　//保存到本地
+          filePath: res.tempFilePath,
+          success(res) {
+            wx.showToast({
+              title: '保存成功',
+              icon: 'success',
+              duration: 2000
+            })
+          },
+          fail: function (err) {
+            if (err.errMsg === "saveImageToPhotosAlbum:fail auth deny") {
+              wx.openSetting({
+                success(settingdata) {
+                  console.log(settingdata)
+                  if (settingdata.authSetting['scope.writePhotosAlbum']) {
+                    console.log('获取权限成功，给出再次点击图片保存到相册的提示。')
+                  } else {
+                    console.log('获取权限失败，给出不给权限就无法正常使用的提示')
+                  }
+                }
+              })
+            }
+          }
+        })
+      }
+    });
   },
   get_share() {
     wx.getClipboardData({

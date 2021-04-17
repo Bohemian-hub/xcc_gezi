@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-28 10:04:46
- * @LastEditTime: 2021-03-12 09:52:31
+ * @LastEditTime: 2021-04-17 12:08:42
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/schedule/schedule.js
@@ -34,10 +34,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.showLoading({
-      title: '正在加载',
-    })
-    this.get_schedule()
+    this.get_yanzhengma()
+
     this.setData({
       student_name: wx.getStorageSync("name")
     })
@@ -72,6 +70,14 @@ Page({
 
 
 
+
+
+  },
+  yanzheng_login() {
+    wx.showLoading({
+      title: '获取中...',
+    })
+    this.get_schedule()
     /* 三秒钟之后又如果还没有拿到数据那么久重新获取 */
     setTimeout(() => {
       console.log(this.data.courceList);
@@ -102,9 +108,50 @@ Page({
         });
       }
     }, 3000);
-
   },
-
+  get_yanzhengma() {
+    wx.request({
+      url: 'https://www.xiyuangezi.cn/info/get_yanzhengma',
+      header: {
+        "content-type": "application/x-www-form-urlencoded"		//使用POST方法要带上这个header
+      },
+      method: "POST",
+      success: res => {
+        if (res.data.loginnum == 1) {
+          console.log(res.data);
+          this.setData({
+            'tokens': res.data.tokens
+          })
+          //声明文件系统
+          const fs = wx.getFileSystemManager();
+          //随机定义路径名称
+          var times = new Date().getTime();
+          var codeimg = wx.env.USER_DATA_PATH + '/' + times + '.png';
+          fs.writeFile({
+            filePath: codeimg,
+            data: res.data.base64_data,
+            encoding: 'base64',
+            success: (res) => {
+              //写入成功了的话，新的图片路径就能用了
+              console.log(res)
+              console.log(codeimg)
+              this.setData({
+                'codeimg': codeimg,
+                loginstatus: '',
+              })
+              console.log(this.data.tokens);
+              /*               console.log(this.data.codeimg); */
+            }
+          });
+        } else {
+          console.log("加载不出来了");
+          this.setData({
+            loginstatus: '500',
+          })
+        }
+      },
+    });
+  },
   Computation() {
     var oDate1, iDays
     var day2 = new Date();
@@ -127,11 +174,32 @@ Page({
       data: {
         xh: wx.getStorageSync('studentId'),  //评论者的学号
         pswd: wx.getStorageSync('password'),
+        yanzheng: this.data.yanzheng, //new
+        tokens: this.data.tokens,   //new
         xnm: 2020,
         xqm: 2,
       }, // 向后端发送的数据，后端通过request.data拿到该数据
 
       success: (ret) => {
+        console.log(ret.statusCode);
+        if (ret.statusCode == 500) {
+          wx.hideLoading();
+          wx.showModal({
+            title: '',
+            content: '验证码输入错误',
+            showCancel: false,
+            confirmText: '确定',
+            confirmColor: '#3CC51F',
+            success: (result) => {
+              if (result.confirm) {
+                wx.reLaunch({
+                  url: '../schedule/schedule',
+                })
+              }
+            },
+          });
+
+        }
         that.setData({
           courceList: ret.data.normalCourse
         })
@@ -223,4 +291,10 @@ Page({
       url: '../index/index',
     })
   },
+  input_yanzheng(e) {
+    console.log(e.detail.value);
+    this.setData({
+      yanzheng: e.detail.value
+    })
+  }
 })

@@ -29,7 +29,7 @@ page{
 }
 .forum_function_one{
     width: 15.4%;
-    margin-left: 3.6%;
+    margin-left: 22.6%;
     background-color: rgba(255, 192, 203, 0);
     height: 170rpx;
     float: left;
@@ -310,7 +310,6 @@ page{
     width: 80rpx;
     height: 80rpx;
     right: 50rpx;
-    background-image: url(https://s3.ax1x.com/2021/01/10/s1i44e.png);
     background-size: 100% 100%;
     text-align: center;
     line-height: 200rpx;

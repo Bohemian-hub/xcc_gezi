@@ -111,3 +111,39 @@ page{
     font-size: 250rpx;
     color: rgba(110, 110, 110, 0.432);
 }
+.yanzhengma{
+    width: 50%;
+    height:400rpx;
+    background-color: rgb(255, 255, 255);
+    position: fixed;
+    top: 350rpx;
+    left: 25%;
+    border-radius:20rpx;
+    text-align: center;
+    line-height:50px;
+    box-shadow: 1rpx 1rpx 10rpx;
+    padding-top:20rpx
+}
+.yanzhengmatupian{
+    width: 200rpx;
+    height: 50rpx;
+    background-size: 100% 100%;
+    margin: 30rpx auto 0 auto;
+}
+.yanzhengshuru{
+    margin: auto;
+    margin-top: 50rpx;
+    width: 300rpx;
+    height: 50rpx;
+   border-bottom: 2rpx solid black;
+}   
+.centain_yanzheng{
+    background-color: pink;
+    width: 300rpx;
+    height: 60rpx;
+    margin: 0 auto 0 auto;
+    text-align: center;
+    line-height:60rpx;
+    border-radius: 20rpx;
+    margin-top:20rpx
+}

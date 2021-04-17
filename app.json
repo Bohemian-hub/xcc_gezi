@@ -1,8 +1,9 @@
 {
   "pages": [
-    "pages/express/express",
-    "pages/index/index",
 
+    "pages/index/index",
+    "pages/express/express",
+    "pages/schedule/schedule",
     "pages/order_info/order_info",
     "pages/my/my",
     "pages/order_addition/order_addition",
@@ -11,7 +12,7 @@
     "pages/replenish/replenish",
     "pages/share/share",
     "pages/product/product",
-    "pages/schedule/schedule",
+
     "pages/forum/forum",
     "pages/address/address",
     "pages/setting/setting",

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-06 21:10:31
- * @LastEditTime: 2021-03-28 13:13:12
+ * @LastEditTime: 2021-04-17 10:51:06
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/forum/forum.js
@@ -165,7 +165,7 @@ Page({
           if (res.data[i].fields.topic5 !== "init") {
             res.data[i].fields.topic_arr[4] = res.data[i].fields.topic1
           }
-
+          /* 标签颜色 */
           if (res.data[i].fields.post_data_grade == '大一' || res.data[i].fields.post_data_grade == '大二' || res.data[i].fields.post_data_grade == '大三' || res.data[i].fields.post_data_grade == '大四') {
             if (res.data[i].fields.post_data_sex == '男') {
               res.data[i].fields.tag_color = 'skyblue'
@@ -177,7 +177,7 @@ Page({
             res.data[i].fields.tag_color = 'green'
           } else if (res.data[i].fields.post_data_grade == '创始人' || res.data[i].fields.post_data_grade == '官方') {
             res.data[i].fields.tag_color = 'orange'
-          } else {
+          } else if (res.data[i].fields.post_data_grade == '合伙人 ') {
             res.data[i].fields.tag_color = 'purple'
           }
           console.log(today_date, yesterday_date, before_yesterday_date);
