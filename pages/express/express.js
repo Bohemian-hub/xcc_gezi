@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-01 10:00:16
- * @LastEditTime: 2021-04-15 20:49:58
+ * @LastEditTime: 2021-04-17 17:25:12
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express/express.js
@@ -30,12 +30,19 @@ Page({
     warning: '欢迎使用',
     warn_show: 0,
     expressshowwhat: 1,
-    choosemenucolor: 1,
+    choosemenucolor: 0,
     express_info_text_name: '',
     express_info_text_tel: '',
     express_info_text_code: '',
     /* 下面是第二个页面展示的 */
     orderList: [],
+
+    wait_order: [],
+    ing_order: [],
+    already_order: [],
+    complete_order: [],
+    refund_order: [],
+
     nothing: 0,
     catcher_infor: [],
     catcher_show: 0,
@@ -51,7 +58,7 @@ Page({
     this.count_fee()
     this.setData({
       expressshowwhat: 1,
-      choosemenucolor: 1
+      choosemenucolor: 0
     })
     this.get_order()  //获取订单
   },
@@ -173,35 +180,10 @@ Page({
         console.log(res);
 
         console.log(res.data);
-        /* 将状态码变更为状态 */
+
         for (let index = 0; index < res.data.length; index++) {
           const element = res.data[index];
           console.log(element.fields.order_stadus);
-          if (element.fields.order_stadus == 1) {
-            element.fields.order_stadus = '待接单'
-            element.fields.order_stadus_color = 'red'
-          } else if (element.fields.order_stadus == 2) {
-            element.fields.order_stadus = '代取中'
-            element.fields.order_stadus_color = 'rgb(230, 147, 39)'
-            element.fields.confim_button = ''
-
-
-          } else if (element.fields.order_stadus == 3) {
-            element.fields.order_stadus = '送达待确认'
-            element.fields.order_stadus_color = 'rgb(69, 183, 228)'
-            element.fields.confim_button = '确认收件'
-
-
-          } else if (element.fields.order_stadus == 4 || element.fields.order_stadus == 6) {
-            element.fields.order_stadus = '已确认'
-            element.fields.order_stadus_color = 'green'
-          } else if (element.fields.order_stadus == 10) {
-            element.fields.order_stadus = '已退款'
-            element.fields.order_stadus_color = 'red'
-          } else if (element.fields.order_stadus == 9) {
-            element.fields.order_stadus = '退款失败'
-            element.fields.order_stadus_color = 'red'
-          }
           /* 增加图片地址 */
           if (element.fields.express_name == '快递代取') {
             element.fields.connect_way = that.data.shangpinpic[1]
@@ -214,9 +196,50 @@ Page({
           } else if (element.fields.express_name == '上门电脑维修') {
             element.fields.connect_way = that.data.shangpinpic[4]
           }
+          /* 根据订单状态分类 */
+
+          if (element.fields.order_stadus == 1) {
+            element.fields.order_stadus = '待接单'
+            element.fields.order_stadus_color = 'red'
+            that.data.wait_order[that.data.wait_order.length] = element
+          } else if (element.fields.order_stadus == 2) {
+            element.fields.order_stadus = '代取中'
+            element.fields.order_stadus_color = 'rgb(230, 147, 39)'
+            element.fields.confim_button = ''
+            that.data.ing_order[that.data.ing_order.length] = element
+          } else if (element.fields.order_stadus == 3) {
+            element.fields.order_stadus = '送达待确认'
+            element.fields.order_stadus_color = 'rgb(69, 183, 228)'
+            element.fields.confim_button = '确认收件'
+            that.data.already_order[that.data.already_order.length] = element
+          } else if (element.fields.order_stadus == 4 || element.fields.order_stadus == 6) {
+            element.fields.order_stadus = '已确认'
+            element.fields.order_stadus_color = 'green'
+            that.data.complete_order[that.data.complete_order.length] = element
+          } else if (element.fields.order_stadus == 10) {
+            element.fields.order_stadus = '已退款'
+            element.fields.order_stadus_color = 'red'
+            that.data.refund_order[that.data.refund_order.length] = element
+          } else if (element.fields.order_stadus == 9) {
+            element.fields.order_stadus = '退款失败'
+            element.fields.order_stadus_color = 'red'
+            that.data.refund_order[that.data.refund_order.length] = element
+          }
         }
+        console.log(that.data.wait_order);
+        console.log(that.data.ing_order);
+        console.log(that.data.already_order);
+        console.log(that.data.complete_order);
+        console.log(that.data.refund_order);
         that.setData({
-          orderList: res.data
+          wait_order: that.data.wait_order,
+          ing_order: that.data.ing_order,
+          already_order: that.data.already_order,
+          complete_order: that.data.complete_order,
+          refund_order: that.data.refund_order,
+        })
+        that.setData({
+          orderList: that.data.wait_order
         })
         console.log(that.data.orderList.length);
         /* 没有订单就显示没有订单 */
@@ -545,9 +568,35 @@ Page({
     wx.navigateTo({
       url: '../order_info/order_info?transaction_id=' + e.currentTarget.dataset.id,
     })
-  }
-
-
-
-
+  },
+  choose_one(e) {
+    this.setData({
+      nothing1: 0
+    })
+    console.log(e.target.dataset.id);
+    if (e.target.dataset.id == 0) {
+      this.setData({
+        orderList: this.data.wait_order
+      })
+    } else if (e.target.dataset.id == 1) {
+      this.setData({
+        orderList: this.data.ing_order
+      })
+    } else if (e.target.dataset.id == 2) {
+      this.setData({
+        orderList: this.data.already_order
+      })
+    } else if (e.target.dataset.id == 3) {
+      this.setData({
+        orderList: this.data.complete_order
+      })
+    } else if (e.target.dataset.id == 4) {
+      this.setData({
+        orderList: this.data.refund_order
+      })
+    }
+    this.setData({
+      choosemenucolor: e.target.dataset.id
+    })
+  },
 })

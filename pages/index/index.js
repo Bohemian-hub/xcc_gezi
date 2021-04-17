@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2021-04-17 10:56:10
+ * @LastEditTime: 2021-04-17 14:52:00
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.js
@@ -279,21 +279,21 @@ Page({
       envVersion: 'release',// 打开正式版
     })
   },
-    coursetable() {
-      wx.navigateTo({
-        url: '../schedule/schedule',
-      })
-    },
+  coursetable() {
+    wx.navigateTo({
+      url: '../schedule/schedule',
+    })
+  },
   /*   express() {
       wx.navigateTo({
         url: '../express/express',
       })
     }, */
-  /*   makemoney() {
-      wx.navigateTo({
-        url: '../express_catch/express_catch',
-      })
-    }, */
+  makemoney() {
+    wx.navigateTo({
+      url: '../express_catch/express_catch?state=1',
+    })
+  },
   /*   new_confesswall: function () {
       wx.navigateTo({
         url: '../new_confesswall/new_confesswall',

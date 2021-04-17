@@ -1,13 +1,13 @@
 <!--
  * @Author: your name
  * @Date: 2020-12-01 10:00:16
- * @LastEditTime: 2021-04-06 19:53:53
+ * @LastEditTime: 2021-04-17 17:27:55
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express/express.wxml
 -->
 <view class="title">
-    快递
+    我的下单
     <view class="back" bindtap="back_index">
         <text class="cuIcon-back">
 
@@ -15,8 +15,46 @@
     </view>
 </view>
 
+<view class="menu_change">
+    <view bindtap="choose_one" data-id="0" class="menu_3"
+        style="background-color: {{choosemenucolor == 0?'#FF9900':'#757575'}}; ">
+        待接单
+        <view class="menu_order_num" style="display:{{wait_order.length == 0?'none':'block'}}">
+            {{wait_order.length}}
+        </view>
+    </view>
+    <view bindtap="choose_one" data-id="1" class="menu_4"
+        style="background-color: {{choosemenucolor == 1?'#FF9900':'#757575'}};">配送中
+        <view class="menu_order_num" style="display:{{ing_order.length == 0?'none':'block'}}">
+            {{ing_order.length}}
+        </view>
+    </view>
+    <view bindtap="choose_one" data-id="2" class="menu_4"
+        style="background-color: {{choosemenucolor == 2?'#FF9900':'#757575'}};">待确认
+        <view class="menu_order_num" style="display:{{already_order.length == 0?'none':'block'}}">
+            {{already_order.length}}
+
+        </view>
+    </view>
+    <view bindtap="choose_one" data-id="3" class="menu_4"
+        style="background-color: {{choosemenucolor == 3?'#FF9900':'#757575'}};">已确认
+        <view class="menu_order_num" style="display:{{complete_order.length == 0?'none':'block'}}">
+            {{complete_order.length}}
+
+        </view>
+    </view>
+    <view bindtap="choose_one" data-id="4" class="menu_4"
+        style="background-color: {{choosemenucolor == 4?'#FF9900':'#757575'}};">已退款
+        <view class="menu_order_num" style="display:{{refund_order.length == 0?'none':'block'}}">
+            {{refund_order.length}}
+
+        </view>
+    </view>
+</view>
+
 <view class="express_panel" style="display: {{expressshowwhat == 1? 'block':'none'}};">
-    <view class="order_show" wx:for="{{orderList}}" wx:key="item.fields" bindtap = "access_info" data-id="{{item.fields.transaction_id}}">
+    <view class="order_show" wx:for="{{orderList}}" wx:key="item.fields" bindtap="access_info"
+        data-id="{{item.fields.transaction_id}}">
         <view class="order_title" hover-class="none" hover-stop-propagation="false">
             {{item.fields.order_time}}
         </view>
@@ -73,23 +111,24 @@
             <view class="task_one_button_cancel"
                 style="display: {{item.fields.order_stadus == '代取中'||item.fields.order_stadus == '待接单'?'block':'none'}};"
                 data-id="{{item.fields.transaction_id}}" data-fee="{{item.fields.express_total_fee}}"
-                bindtap="cancel_order">取消
+                catchtap="cancel_order">取消
             </view>
-            <view class="task_one_button_cancel"
+            <!-- <view class="task_one_button_cancel"
                 style="display: {{item.fields.order_stadus == '已确认'?'block':'none'}};margin-left:18%;"
-                data-id="{{item.fields.transaction_id}}" bindtap="delete_already_order">删除
-            </view> <!-- 只有客户已经确认的时候才显示 -->
-            <view class="task_one_button_confirm" bindtap="receive_express" data-id="{{item.fields.transaction_id}}"
+                data-id="{{item.fields.transaction_id}}" catchtap="delete_already_order">删除
+            </view> -->
+            <!-- 只有客户已经确认的时候才显示 -->
+            <view class="task_one_button_confirm" catchtap="receive_express" data-id="{{item.fields.transaction_id}}"
                 style="background-color:{{item.fields.order_stadus == '代取中'?'rgb(230, 147, 39)':' rgb(69, 183, 228)'}};display: {{item.fields.order_stadus == '送达待确认'?'block':'none'}};">
                 {{item.fields.confim_button}}
             </view>
         </view>
 
     </view>
-
+    <!-- 
     <view class="apply_panel" style="display: {{nothing1==1?'block':'none'}};">
         <view class="apply_panel_title">你还没有需要取的快递，快去下单吧！</view>
-    </view>
+    </view> -->
 
     <view class="catcher_infor" style="display: {{catcher_show==1?'block':'none'}};">
         <view class="close_infor" bindtap="close_infor">

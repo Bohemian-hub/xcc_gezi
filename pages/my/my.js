@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-03-30 11:02:43
- * @LastEditTime: 2021-04-06 19:55:07
+ * @LastEditTime: 2021-04-17 14:52:42
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/my/my.js
@@ -55,6 +55,11 @@ Page({
   express_order() {
     wx.navigateTo({
       url: '../express/express',
+    })
+  },
+  makemoney() {
+    wx.navigateTo({
+      url: '../express_catch/express_catch?state=2',
     })
   },
   /**

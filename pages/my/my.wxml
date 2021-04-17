@@ -34,10 +34,10 @@
             <image class="iconf" src="https://z3.ax1x.com/2021/03/30/ciCW2q.png" mode="widthFix" />
 
             <view class="menu_name">
-                全部订单
+                我的下单
             </view>
         </view>
-        <view class="order_menu">
+        <view class="order_menu" bindtap="makemoney">
             <image class="iconf1" src="https://z3.ax1x.com/2021/03/30/ciidnf.png" mode="widthFix" />
             <view class="menu_name">
                 待配送

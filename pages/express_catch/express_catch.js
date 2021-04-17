@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-06 15:05:19
- * @LastEditTime: 2021-03-12 09:51:06
+ * @LastEditTime: 2021-04-17 18:00:24
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express_catch/express_catch.js
@@ -14,6 +14,13 @@ Page({
    */
   data: {
     orderwaitList: [],
+
+    kuaidi_order: [],
+    daifan_order: [],
+    dayin_order: [],
+    weixiu_order: [],
+    other_order: [],
+
     showtable: 0,
     applyname: '',
     applyqq: '',
@@ -32,6 +39,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options.state);
+    if (options.state == 1) {
+
+    } else if (options.state == 2) {
+      this.turn_page_myself()
+    }
     var that = this
     that.Iamcatcher()
   },
@@ -139,16 +152,18 @@ Page({
     wx.hideLoading();
 
   },
-  get_order() {
+  get_order(e) {
+    console.log(e);
     wx.showLoading({
       title: '正在加载',
     })
+    var classify = '快递代取'
     var that = this
     /* 获取所有待接订单 */
     wx.request({
       url: 'https://www.xiyuangezi.cn/express/get_all_express', //仅为示例，并非真实的接口地址
       data: {
-        studentId: wx.getStorageSync('studentId'),
+        classify: classify,
       },
       method: "POST",
       header: {
@@ -156,10 +171,40 @@ Page({
       },
       success(res) {
         console.log(res.data);
+        for (let index = 0; index < res.data.length; index++) {
+          const element = res.data[index];
+          console.log(element.fields.order_stadus);
+          /* 给订单进行分类 */
+          if (element.fields.express_name == '快递代取') {
+            that.data.kuaidi_order[that.data.kuaidi_order.length] = element
+          } else if (element.fields.express_name == '小跑') {
+            that.data.other_order[that.data.other_order.length] = element
+          } else if (element.fields.express_name == '专业带饭') {
+            that.data.daifan_order[that.data.daifan_order.length] = element
+          } else if (element.fields.express_name == '快速打印') {
+            that.data.dayin_order[that.data.dayin_order.length] = element
+          } else if (element.fields.express_name == '上门电脑维修') {
+            that.data.weixiu_order[that.data.weixiu_order.length] = element
+          }
+        }
+        console.log(that.data.kuaidi_order);
+        console.log(that.data.daifan_order);
+        console.log(that.data.dayin_order);
+        console.log(that.data.weixiu_order);
+        console.log(that.data.other_order);
         that.setData({
-          orderwaitList: res.data
+          kuaidi_order: that.data.kuaidi_order,
+          daifan_order: that.data.daifan_order,
+          dayin_order: that.data.dayin_order,
+          weixiu_order: that.data.weixiu_order,
+          other_order: that.data.other_order,
         })
-        console.log(that.data.orderwaitList.length);
+        that.setData({
+          orderwaitList: that.data.kuaidi_order
+        })
+        that.setData({
+          nothing1: 0
+        })
         if (that.data.orderwaitList.length == 0) {
           that.setData({
             nothing1: 1
@@ -398,7 +443,7 @@ Page({
 
   back_index() {
     wx.switchTab({
-      url: '../index/index',
+      url: '../my/my',
     })
   },
   turn_page_catchorder() {
@@ -415,4 +460,42 @@ Page({
     })
     this.get_my_catch_order()
   },
+  choose_one(e) {
+    console.log(e.target.dataset.id);
+    this.setData({
+      orderwaitList: []
+    })
+    this.setData({
+      nothing1: 0
+    })
+    if (e.target.dataset.id == 0) {
+      this.setData({
+        orderwaitList: this.data.kuaidi_order
+      })
+    } else if (e.target.dataset.id == 1) {
+      this.setData({
+        orderwaitList: this.data.daifan_order
+      })
+    } else if (e.target.dataset.id == 2) {
+      this.setData({
+        orderwaitList: this.data.dayin_order
+      })
+    } else if (e.target.dataset.id == 3) {
+      this.setData({
+        orderwaitList: this.data.weixiu_order
+      })
+    } else if (e.target.dataset.id == 4) {
+      this.setData({
+        orderwaitList: this.data.other_order
+      })
+    }
+    this.setData({
+      choosemenucolor: e.target.dataset.id
+    })
+  },
+  goto_catch() {
+    wx.navigateTo({
+      url: '../express_catch/express_catch?state=1',
+    })
+  }
 })

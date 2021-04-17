@@ -15,6 +15,7 @@ background-color: rgba(68, 196, 255, 0.699);
     position: absolute;
     top: 0rpx;
     left: 30rpx;
+    height:140rpx
 }
 .menu_change{
     width: 100%;
@@ -49,10 +50,10 @@ background-color: rgba(68, 196, 255, 0.699);
     font-size: 35rpx;
 }
 .menu_3{
-    width: 45%;
+    width: 17%;
     background-color: #FF9900;
     height: 100%;
-    margin-left: 4%;
+    margin-left: 2.3%;
     float: left;
     border-radius: 20rpx;
     box-shadow: 0 0 10rpx rgb(206, 206, 206);
@@ -60,12 +61,13 @@ background-color: rgba(68, 196, 255, 0.699);
     line-height: 80rpx;
     color: aliceblue;
     font-size: 35rpx;
+    position: relative;
 }
 .menu_4{
-    width: 45%;
+    width: 17%;
     background-color:#757575;
     float: left;
-    margin-left: 4%;
+    margin-left: 2.3%;
     height: 100%; 
     border-radius: 20rpx;
     box-shadow: 0 0 10rpx  rgb(206, 206, 206);
@@ -73,6 +75,19 @@ background-color: rgba(68, 196, 255, 0.699);
     line-height: 80rpx;
     color: aliceblue;
     font-size: 35rpx;
+    position: relative;
+}
+.menu_order_num{
+    position: absolute;
+    width: 40rpx;
+    height: 40rpx;
+    background-color:red;
+    top: -10rpx;
+    right: -10rpx;
+    text-align:center;
+    line-height: 40rpx; 
+    border-radius: 50%;
+    font-size: 28rpx;
 }
 /* 下面是代接订单的样式 */
 
@@ -148,6 +163,7 @@ background-color: rgba(68, 196, 255, 0.699);
     height: 45rpx;
     line-height: 50rpx;
     text-align: center;
+    color: red;
 }
 .express_catch_one_content_right_smallfee{
     text-align: center;
@@ -296,4 +312,13 @@ border-radius: 20rpx;
     text-align: center;
     font-weight: 800;
     height: 200rpx;
+}
+.goto_catch{
+    width: 300rpx;
+    height: 60rpx;
+    margin: 0 auto;
+    background-color:white;
+    text-align: center;
+    border-radius: 20rpx;
+    line-height:60rpx;
 }

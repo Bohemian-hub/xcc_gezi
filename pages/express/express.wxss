@@ -15,6 +15,7 @@ background-color: rgba(235, 235, 235, 0.699);
     position: absolute;
     top: 0rpx;
     left: 30rpx;
+    height:140rpx;
 }
 .menu_change{
     width: 100%;
@@ -48,7 +49,46 @@ background-color: rgba(235, 235, 235, 0.699);
     color: aliceblue;
     font-size: 35rpx;
 }
-
+.menu_3{
+    width: 17%;
+    background-color: #FF9900;
+    height: 100%;
+    margin-left: 2.3%;
+    float: left;
+    border-radius: 20rpx;
+    box-shadow: 0 0 10rpx rgb(206, 206, 206);
+    text-align: center;
+    line-height: 80rpx;
+    color: aliceblue;
+    font-size: 35rpx;
+    position: relative;
+}
+.menu_4{
+    width: 17%;
+    background-color:#757575;
+    float: left;
+    margin-left: 2.3%;
+    height: 100%; 
+    border-radius: 20rpx;
+    box-shadow: 0 0 10rpx  rgb(206, 206, 206);
+    text-align: center;
+    line-height: 80rpx;
+    color: aliceblue;
+    font-size: 35rpx;
+    position: relative;
+}
+.menu_order_num{
+    position: absolute;
+    width: 40rpx;
+    height: 40rpx;
+    background-color:red;
+    top: -10rpx;
+    right: -10rpx;
+    text-align:center;
+    line-height: 40rpx; 
+    border-radius: 50%;
+    font-size: 28rpx;
+}
 /* .express_infor{
     width: 94%;
     height: 300rpx;

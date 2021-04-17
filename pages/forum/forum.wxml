@@ -251,10 +251,11 @@
 </view>
 
 <!-- 下面这是一个加号 -->
-<view class="top" style="background-image: url(../../image/forum/top.png);" bindtap="totop">
+<view class="top" bindtap="totop">
+    <image class="" src="../../image/forum/top.png" mode="widthFix"/>
 </view>
-<view class="menu" bindtap="publish_learn" data-classify="learn"
-    style="background-image: url({{turnmenu?'../../image/forum/shouqi.png':'../../image/forum/add.png'}});">
+<view class="menu" bindtap="publish_learn" data-classify="learn">
+    <image class="" src="../../image/forum/add.png" mode="widthFix"/>
 </view>
 
 <view class="masking" style="display: {{masking_show?'block':'none'}};" catchtouchstart="touchStart">

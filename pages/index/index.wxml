@@ -145,7 +145,7 @@
                         单身档案
                     </view>
                 </view>
-                <view class="menu_right_down" bindtap="notdofunction" data-id="更多工具">
+                <view class="menu_right_down" bindtap="makemoney">
                     <image class="menu_middle_up_icon" src="https://z3.ax1x.com/2021/03/28/cpPLOe.png" mode="widthFix"
                         lazy-load="false" binderror="" bindload="" />
 
