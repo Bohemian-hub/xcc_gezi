@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-12-06 15:05:19
- * @LastEditTime: 2021-04-17 17:56:55
+ * @LastEditTime: 2021-04-23 12:18:43
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express_catch/express_catch.wxml
@@ -125,6 +125,14 @@
         <view class="task_one_content">
             <view class="task_one_content_title">
                 <view class="task_one_content_title_text">
+                    订单类型:
+                </view>
+                <view class="task_one_content_text">
+                    {{item.fields.express_name}}
+                </view>
+            </view>
+            <view class="task_one_content_title">
+                <view class="task_one_content_title_text">
                     姓名:
                 </view>
                 <view class="task_one_content_text">
@@ -136,23 +144,7 @@
                     电话:
                 </view>
                 <view class="task_one_content_text">
-                    {{item.fields.rec_tel}}
-                </view>
-            </view>
-            <view class="task_one_content_title" style="color:rgb(255, 95, 95);">
-                <view class="task_one_content_title_text">
-                    取件码:
-                </view>
-                <view class="task_one_content_text">
-                    {{item.fields.rec_code}}
-                </view>
-            </view>
-            <view class="task_one_content_title">
-                <view class="task_one_content_title_text">
-                    快递公司:
-                </view>
-                <view class="task_one_content_text">
-                    {{item.fields.express_company}}
+                    {{item.fields.connect_way}}
                 </view>
             </view>
             <view class="task_one_content_title" style="color:rgb(255, 95, 95);">
@@ -165,31 +157,55 @@
             </view>
             <view class="task_one_content_title">
                 <view class="task_one_content_title_text">
-                    快递类型:
+                    规格类型:
                 </view>
                 <view class="task_one_content_text">
-                    {{item.fields.express_size}}
+                    {{item.fields.express_size}}*{{item.fields.express_nums}}
+                </view>
+            </view>
+            <view class="task_one_content_title" style="display:{{item.fields.express_name=='快递代取'?'block':'none'}}">
+                <view class="task_one_content_title_text">
+                    快递公司:
+                </view>
+                <view class="task_one_content_text" style="color:rgb(255, 95, 95);">
+                    {{item.fields.express_company}}
+                </view>
+            </view>
+            <view class="task_one_content_title" style="display:{{item.fields.express_name=='快递代取'?'block':'none'}}">
+                <view class="task_one_content_title_text">
+                    取件码:
+                </view>
+                <view class="task_one_content_text" style="color:rgb(255, 95, 95);">
+                    {{item.fields.rec_code}}
+                </view>
+            </view>
+            <view class="task_one_content_title" style="display:{{item.fields.express_name=='快递代取'?'block':'none'}}">
+                <view class="task_one_content_title_text">
+                    尾号:
+                </view>
+                <view class="task_one_content_text" style="color:rgb(255, 95, 95);">
+                    {{item.fields.rec_tail}}
+                </view>
+            </view>
+            <view class="task_one_content_title" style="display:{{item.fields.express_name=='快递代取'?'none':'block'}}">
+                <view class="task_one_content_title_text">
+                    QQ:
+                </view>
+                <view class="task_one_content_text">
+                    {{item.fields.rec_qq}}
                 </view>
             </view>
             <view class="task_one_content_title">
                 <view class="task_one_content_title_text">
-                    到校日期:
+                    配送费:
                 </view>
                 <view class="task_one_content_text">
-                    {{item.fields.express_date}}
+                    ￥{{item.fields.express_send_fee}}
                 </view>
             </view>
             <view class="task_one_content_title">
                 <view class="task_one_content_title_text">
-                    小费:
-                </view>
-                <view class="task_one_content_text">
-                    ￥{{item.fields.express_small_fee}}
-                </view>
-            </view>
-            <view class="task_one_content_title">
-                <view class="task_one_content_title_text">
-                    总佣金:
+                    总费用:
                 </view>
                 <view class="task_one_content_text">
                     ￥{{item.fields.express_total_fee}}

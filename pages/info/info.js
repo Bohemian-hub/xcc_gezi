@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-03-12 10:06:04
- * @LastEditTime: 2021-04-02 18:45:44
+ * @LastEditTime: 2021-04-19 09:01:25
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edi
  * @FilePath: /miniprogram-5/pages/info/info.js
@@ -72,7 +72,7 @@ Page({
     console.log(options.name);
     /* 首先加载一个默认的视图，以避免等待数据是造成的页面不完整问题 */
     that.setData({
-      product_one: that.data.product_infor_express,
+      //product_one: that.data.product_infor_express,
       choose_url: that.data.product_infor_express.options[0].url,
       choose_price: that.data.product_infor_express.options[0].price.toFixed(2)
     })
@@ -186,7 +186,7 @@ Page({
           total_price: this.data.now_price
         })
       }
-    } else  {
+    } else {
       this.setData({
         nums: this.data.nums += 1,
         total_price: this.data.now_price

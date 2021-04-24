@@ -54,7 +54,7 @@
     </view>
 
     <view class="info_pic" wx:for="{{product_one.infoList}}" wx:key>
-        <image class="pic_one" src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
+        <image class="pic_one" src="{{item.url}}" mode="widthFix" wx:if="{{item.type=='image'}}"></image>
     </view>
 
 </view>

@@ -108,10 +108,11 @@ page{
 }
 .info_pic{
     width: 95%;
-    margin: 0 auto;
+    margin: 0 auto 100rpx auto;
 }
 .pic_one{
     width: 100%;
+    height:100%;
 }
 .cu-bar{
     position: fixed;

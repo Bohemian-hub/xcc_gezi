@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2021-04-17 14:52:00
+ * @LastEditTime: 2021-04-18 22:25:47
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.js
@@ -42,31 +42,31 @@ Page({
         code: 'run',
         run_price: '￥3.00',
         pay_number: '12854人付款',
-        image: 'https://s3.ax1x.com/2021/03/12/6N4zx1.png'
+        image: 'https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/info_arr/xiaopao/xiaopao.jpeg'
       }, {
         title: '快递代取',
         code: 'express',
         run_price: '￥2.00',
         pay_number: '12854人付款',
-        image: 'https://z3.ax1x.com/2021/04/02/cmlGAf.jpg'
+        image: 'https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/info_arr/daiqu/cmlGAf.jpg'
       }, {
         title: '专业代买饭',
         code: 'rice',
         run_price: '￥2.00',
         pay_number: '12854人付款',
-        image: 'https://s3.ax1x.com/2021/03/12/6N4vG9.jpg'
+        image: 'https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/info_arr/maifan/6N4vG9.jpg'
       }, {
         title: '复印打印（包邮到寝）',
         code: 'print',
         run_price: '￥0.30',
         pay_number: '12854人付款',
-        image: 'https://z3.ax1x.com/2021/04/02/cmlgCF.jpg'
+        image: 'https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/info_arr/print/cmlgCF.jpg'
       }, {
         title: '上门电脑维修',
         code: 'computer',
         run_price: '￥10',
         pay_number: '12854人付款',
-        image: 'https://z3.ax1x.com/2021/04/02/cml234.jpg'
+        image: 'https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/info_arr/xiu_computer/cml234.jpg'
       }
     ],
   },
