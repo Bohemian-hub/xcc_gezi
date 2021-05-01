@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-03-30 11:02:43
- * @LastEditTime: 2021-04-02 19:47:32
+ * @LastEditTime: 2021-05-01 19:33:18
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/my/my.wxml
@@ -16,6 +16,11 @@
             <view class="right_top">
                 {{nickname}}
             </view>
+            <!-- 通知 -->
+            <view class="notice" bindtap="notice">
+                消息
+            </view>
+            <view style="clear:both;"></view>
             <view class="right_bottom">
                 <view class="right_bottom_left">
                     普通会员
@@ -28,31 +33,61 @@
         </view>
 
     </view>
-    <!-- 订单 -->
-    <view class="order">
-        <view class="order_menu" bindtap = "express_order">
-            <image class="iconf" src="https://z3.ax1x.com/2021/03/30/ciCW2q.png" mode="widthFix" />
 
-            <view class="menu_name">
-                我的下单
+    <!-- 订单 -->
+    <view class="order1" bindtap="express_order">
+        <!-- 在此处展示最近的一笔订单的状态，然后有个更多订单查看。 -->
+        <view class="order_title">
+            ------订单------
+        </view>
+
+        <view style="clear:both;"></view>
+
+        <view class="order_show" style="display: {{orderList.length!=0?'block':'none'}};">
+            <view class="order_title2">
+                {{orderList[0].fields.express_name}}
+            </view>
+            <view class="order_status2">
+                ( {{orderList[0].fields.order_stadus}} )
+            </view>
+            <view style="clear:both;"></view>
+            <view class="order_pic"
+                style="background-image:url({{orderList[0].fields.connect_way}});background-size: 100%;">
+            </view>
+            <view class="order_content">
+                <view class="express_name">{{orderList[0].fields.express_size}}</view>
+                <view class="express_size">{{orderList[0].fields.order_time}}</view>
+                <view class="express_nums">×{{orderList[0].fields.express_nums}}</view>
+            </view>
+            <view style="clear:both;"></view>
+            <view class="express_fee">
+                运费￥{{orderList[0].fields.express_send_fee}}，实付款￥{{orderList[0].fields.express_total_fee}}
             </view>
         </view>
+        <view class="no_order_warning" style="display: {{orderList.length!=0?'none':'block'}};">
+            暂无订单进行中，点击这儿查看以往订单
+        </view>
+        <view style="clear:both;"></view>
+        <view class="order_more">
+            查看更多 >>>
+        </view>
+
+    </view>
+    <view class="order">
+        <view class="order_title">
+            ------兼职------
+        </view>
+
         <view class="order_menu" bindtap="makemoney">
             <image class="iconf1" src="https://z3.ax1x.com/2021/03/30/ciidnf.png" mode="widthFix" />
             <view class="menu_name">
                 待配送
             </view>
         </view>
-        <view class="order_menu" bindtap="notice">
+        <view class="order_menu" bindtap="my_catch">
             <image class="iconf1" src="https://z3.ax1x.com/2021/04/02/cmN3Yq.png" mode="widthFix" />
             <view class="menu_name">
-                我接的单
-            </view>
-        </view>
-        <view class="order_menu" bindtap="notice">
-            <image class="iconf" src="https://z3.ax1x.com/2021/03/30/ciCfx0.png" mode="widthFix" />
-            <view class="menu_name">
-                消息通知
+                所有配送
             </view>
         </view>
         <view class="order_menu" bindtap="notice">

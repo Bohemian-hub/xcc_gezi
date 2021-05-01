@@ -1,0 +1,79 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-05-01 19:49:17
+ * @LastEditTime: 2021-05-01 20:44:35
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /miniprogram-5/pages/my_catch/my_catch.wxml
+-->
+<!-- 这一页我写的稍微简单一点 ，但是还是要实现很牛逼的样子，订单通过简陋详情进行打开就可以了-->
+<view class="title">
+    我的兼职
+    <view class="back" bindtap="back_index">
+        <text class="cuIcon-back">
+
+        </text>
+    </view>
+</view>
+
+<view class="menu_change">
+    <view bindtap="choose_one" data-id="0" class="menu_3"
+        style="background-color: {{choosemenucolor == 0?'#FF9900':'#757575'}}; ">
+        待配送
+        <view class="menu_order_num" style="display:{{wait_order.length == 0?'none':'block'}}">
+            {{sending.length}}
+        </view>
+    </view>
+    <view bindtap="choose_one" data-id="1" class="menu_4"
+        style="background-color: {{choosemenucolor == 1?'#FF9900':'#757575'}};">送达
+        <view class="menu_order_num" style="display:{{ing_order.length == 0?'none':'block'}}">
+            {{arieved.length}}
+        </view>
+    </view>
+    <view bindtap="choose_one" data-id="2" class="menu_4"
+        style="background-color: {{choosemenucolor == 2?'#FF9900':'#757575'}};">结单
+        <view class="menu_order_num" style="display:{{already_order.length == 0?'none':'block'}}">
+            {{completed.length}}
+
+        </view>
+    </view>
+</view>
+
+<view class="express_panel">
+    <view class="order_show" wx:for="{{orderList}}" wx:key="item.fields" bindtap="access_info"
+        data-id="{{item.fields.transaction_id}}">
+        <view class="order_title" hover-class="none" hover-stop-propagation="false">
+            {{item.fields.order_time}}
+        </view>
+        <view class="order_stadus" hover-class="none" hover-stop-propagation="false">
+            {{item.fields.order_stadus}}
+        </view>
+        <view style="clear:both;"></view>
+        <view class="order_pic" style="background-image:url({{item.fields.connect_way}});background-size: 100%;">
+        </view>
+        <view class="order_content">
+            <view class="express_name">{{item.fields.express_name}}</view>
+            <view class="express_size">{{item.fields.express_size}}</view>
+            <view class="express_nums">×{{item.fields.express_nums}}</view>
+        </view>
+        <view class="express_fee" hover-class="none" hover-stop-propagation="false">
+            运费￥{{item.fields.express_send_fee}}，实付款￥{{item.fields.express_total_fee}}
+        </view>
+
+        <view style="clear:both;"></view>
+
+        <view class="task_one_button">
+            <view class="task_one_button_cancel"
+                style="display: {{item.fields.order_stadus == '代取中'||item.fields.order_stadus == '待接单'?'block':'none'}};"
+                data-id="{{item.fields.transaction_id}}" data-fee="{{item.fields.express_total_fee}}"
+                catchtap="cancel_order">取消
+            </view>
+            <view class="task_one_button_confirm" catchtap="receive_express" data-id="{{item.fields.transaction_id}}"
+                style="background-color:{{item.fields.order_stadus == '代取中'?'rgb(230, 147, 39)':' rgb(69, 183, 228)'}};display: {{item.fields.order_stadus == '送达待确认'?'block':'none'}};">
+                {{item.fields.confim_button}}
+            </view>
+        </view>
+
+    </view>
+
+</view>

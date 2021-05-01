@@ -1,0 +1,618 @@
+page{
+background-color: rgba(235, 235, 235, 0.699);
+}
+.title{
+    width: 100%;
+    height: 140rpx;
+    background-color: rgb(41, 191, 250);
+    text-align: center;
+    font-size: 40rpx;
+    position: relative;
+    color: white;
+    line-height: 220rpx;
+}
+.back{
+    position: absolute;
+    top: 0rpx;
+    left: 30rpx;
+    height:140rpx;
+}
+.menu_change{
+    width: 100%;
+    height: 80rpx;
+    background-color: rgba(0, 255, 255, 0);
+    margin:20rpx 0;
+}
+.menu_1{
+    width: 45%;
+    background-color: #FF9900;
+    float: left;
+    height: 100%;
+    margin-left: 4%;
+    border-radius: 20rpx;
+    box-shadow: 0 0 10rpx rgb(206, 206, 206);
+    text-align: center;
+    line-height: 80rpx;
+    color: aliceblue;
+    font-size: 35rpx;
+}
+.menu_2{
+    width: 45%;
+    background-color: #757575;
+    height: 100%;
+    margin-left: 4%;
+    float: left;    
+    border-radius: 20rpx;
+    box-shadow: 0 0 10rpx rgb(206, 206, 206);
+    text-align: center;
+    line-height: 80rpx;
+    color: aliceblue;
+    font-size: 35rpx;
+}
+.menu_3{
+    width: 17%;
+    background-color: #FF9900;
+    height: 100%;
+    margin-left: 2.3%;
+    float: left;
+    border-radius: 20rpx;
+    box-shadow: 0 0 10rpx rgb(206, 206, 206);
+    text-align: center;
+    line-height: 80rpx;
+    color: aliceblue;
+    font-size: 35rpx;
+    position: relative;
+}
+.menu_4{
+    width: 17%;
+    background-color:#757575;
+    float: left;
+    margin-left: 2.3%;
+    height: 100%; 
+    border-radius: 20rpx;
+    box-shadow: 0 0 10rpx  rgb(206, 206, 206);
+    text-align: center;
+    line-height: 80rpx;
+    color: aliceblue;
+    font-size: 35rpx;
+    position: relative;
+}
+.menu_order_num{
+    position: absolute;
+    width: 40rpx;
+    height: 40rpx;
+    background-color:red;
+    top: -10rpx;
+    right: -10rpx;
+    text-align:center;
+    line-height: 40rpx; 
+    border-radius: 50%;
+    font-size: 28rpx;
+}
+/* .express_infor{
+    width: 94%;
+    height: 300rpx;
+    background-color: rgb(255, 255, 255);
+    margin: 20rpx auto;
+}
+.express_infor_one{
+    height: 100rpx;
+    border-bottom: 1rpx solid rgba(173, 173, 173, 0.548);
+
+}
+.express_piece{
+    height: 20rpx;
+    width: 20rpx;
+    background-color: rgb(47, 163, 199);
+    margin-left: 60rpx;
+    float: left;
+    margin-top: 40rpx;
+    border-radius: 50%;
+}
+.express_info_text{
+    width: 80%;
+    float: left;
+    background-color: rgb(255, 255, 255);
+    height: 80rpx;
+    margin-top: 10rpx;
+    font-size: 30rpx;
+    padding-left: 40rpx;
+}
+.message{
+    width: 95%;
+    height: 200rpx;
+    background-color: antiquewhite;
+    margin: 0 auto;
+
+}
+.message_piece{
+    width: 100%;
+    height: 20rpx;
+    background-color: rgba(137, 43, 226, 0);
+    overflow: hidden;
+}
+.message_piece_blue{
+    width: 8%;
+    height: 100%;
+    background-color: rgb(98, 177, 223);
+    float: left;
+    margin-left: 20rpx;
+    border-top-left-radius: 20rpx;
+    border-bottom-right-radius: 20rpx;
+
+}
+.message_piece_red{
+    width: 8%;
+    height: 100%;
+    background-color: rgb(240, 175, 226);
+    margin-left: 20rpx;
+    float: left;
+    border-top-left-radius: 20rpx;
+    border-bottom-right-radius: 20rpx;
+}
+.message_content{
+    width: 95%;
+    height: 150rpx;
+    background-color: azure;
+    margin: 15rpx auto;
+}
+.message_content_text{ 
+    width: 100%;
+    height: 100%;
+}
+.express_property{
+    width: 90%;
+    height: 520rpx;
+    background-color: rgb(255, 255, 255);
+    margin: 0 auto;
+    font-size: 30rpx;
+    padding-left: 20rpx;
+    padding-right: 20rpx;
+
+}
+.express_company{
+    height: 100rpx;
+    margin-top: 20rpx;
+    line-height: 100rpx;
+
+    border-bottom: 5rpx solid rgb(228, 228, 228);
+     
+}
+.express_company_icon{
+    width: 50rpx;
+    height: 50rpx;
+    margin: 20rpx 0 0 40rpx;
+    float: left;
+}
+.express_company_text{
+    width: 30%;
+    float: left;
+    padding-left: 40rpx; 
+    
+}
+.express_place{
+    margin-top: 20rpx;
+    margin-right: 20rpx;
+    color: rgb(167, 167, 167);
+
+}
+.express_size{
+    height: 100rpx;
+    line-height: 100rpx;
+    border-bottom: 5rpx solid rgb(228, 228, 228);
+
+}
+.express_arrive{
+    height: 100rpx;
+    line-height: 100rpx;
+    border-bottom: 5rpx solid rgb(228, 228, 228);
+
+}
+.express_fee{
+    height: 100rpx;
+    line-height: 100rpx;
+
+}
+.express_company_choose_value{
+    color: rgb(167, 167, 167);
+    background-color: rgba(255, 192, 203, 0);
+    width: 40%;
+    height: 100%;
+    float: right;
+    text-align: right;
+} */
+.express_company_choose_value_icon{
+    height: 60%;
+    width: 40rpx;
+    float: right;
+    margin-top: 20rpx;
+    z-index: 99;
+}
+.clause_check{
+    width: 100%;
+    height: 50rpx;
+    padding-left: 40rpx;
+    padding-top: 30rpx;
+
+}
+.check_frame{
+    margin-right: 20rpx;
+}
+.check_frame_text{
+    color: blue;
+    text-decoration:underline;
+}
+.bottom_pay{
+    width:100%;
+    height: 110rpx;
+    position: fixed;
+    bottom: 0;
+    background-color: rgb(255, 255, 255);
+}
+.bottom_pay_money{
+    width: 60%;
+    float: left;
+    text-align: left;
+    padding-left: 40rpx;
+    line-height: 110rpx;
+}
+.bottom_pay_money_num{
+    display: inline-block;
+    color: red;
+    font-weight: 600rpx;
+    font-size: 35rpx;
+    
+}
+.bottom_pay_way{
+    width: 40%;
+    line-height: 110rpx;
+    float: left;
+    background-color: rgb(12, 187, 12);
+    color: aliceblue;
+    text-align: center;
+    font-size: 40rpx;
+}
+.clause_frame{
+    width: 70%;
+    height: 900rpx;
+    background-color: antiquewhite;
+    position: fixed;
+    top: 400rpx;
+    left: 15%;
+    z-index: 99;
+    border-radius: 20rpx;
+    border: solid rgb(170, 137, 137) 3rpx;
+    overflow:  hidden;
+}
+.clause_big_title{
+    height: 70rpx;
+    line-height: 70rpx;
+    font-size: 40rpx;
+    padding-left: 20rpx;
+    font-weight: 800;
+
+}
+.clause_small_title{
+    height: 60rpx;
+    line-height: 60rpx;
+    font-size: 35rpx;
+    padding-left: 20rpx;
+    font-weight: 600;
+    
+}
+.clause_content{
+    color: rgb(139, 139, 139);
+}
+.clause_close{
+    position: absolute;
+    width: 100%;
+    height: 80rpx;
+    background-color: rgb(204, 181, 53);
+    bottom: 0;
+    text-align: center;
+    color: aliceblue;
+    line-height: 80rpx;
+    font-size: 35rpx;
+}
+.warning{
+    width: 60%;
+    height: 60rpx;
+    border-radius: 50rpx;
+    background-color: white;
+    position: fixed;
+    bottom: 300rpx;
+    left: 20%;
+    text-align: center;
+    line-height: 60rpx;
+    box-shadow: 0 0 10rpx rgb(153, 153, 153);
+}
+
+.title{
+    width: 100%;
+    height: 140rpx;
+    background-color: rgb(69, 183, 228);
+    text-align: center;
+    font-size: 40rpx;
+}
+.title_back{
+    width: 25%;
+    background-color: rgb(255, 255, 255);
+    height: 80rpx;
+    float: left;
+    margin: 50rpx 0 10rpx 5%;
+    border-radius: 20rpx;
+}
+.title_text{
+    background-color: rgba(250, 235, 215, 0);
+    width: 50%;
+    height: 80rpx;
+    float: left;
+    margin-top: 30rpx;
+    line-height: 100rpx;
+    color: rgb(255, 255, 255);
+}
+.page_back{
+    width: 50rpx;
+    float: left;
+    margin-top: 15rpx;
+    margin-left: 10rpx;
+}
+.page_back_text{
+    line-height: 80rpx;
+    width: 100%;
+}
+.menu_change{
+    width: 100%;
+    height: 80rpx;
+    background-color: rgba(0, 255, 255, 0);
+    margin:20rpx 0;
+}
+
+
+.order_show{
+    width: 90%;
+    background-color: white;
+    box-shadow: 0 0 10rpx #666;
+    height: 350rpx;
+    margin: 30rpx auto;
+    padding: 10rpx;
+    border-radius: 10rpx;
+}
+.order_title{
+    font-size: 35rpx;
+    font-weight: 900;
+    height: 60rpx;
+    width: 50%;
+    float: left;
+}
+.order_stadus{
+    float: right;
+    height: 60rpx;
+    line-height: 60rpx;
+    margin-right: 20rpx;
+    color: rgb(252, 123, 18);
+}
+.order_pic{
+    width: 150rpx;
+    height: 150rpx;
+    background-color: #FF9900;
+    float: left;
+    border-radius: 20rpx;
+}
+
+.order_content{
+    width: 480rpx;
+    height: 150rpx;
+    background-color: rgba(255, 0, 0, 0);
+    float: left;
+    padding: 10rpx;
+}
+.express_name{
+    font-size: 35rpx;
+    font-weight: 700;
+}
+.express_size{
+    font-size: 28rpx;
+    font-weight: 500;
+    float: left;
+}
+.express_nums{
+    font-size: 28rpx;
+    font-weight: 500;
+    float: right;
+}
+.express_fee{
+    height: 70rpx;
+    line-height: 70rpx;
+    float: right;
+    text-align: right;
+    margin-right: 30rpx;
+    color: rgb(0, 0, 0);
+}
+.express_order_user{
+    color: rgb(12, 120, 170);
+    height: 80rpx;
+    padding-bottom: 90rpx;
+    border-bottom: 2rpx solid rgb(126, 148, 182);
+}
+.express_order_express{
+    color: rgb(13, 150, 70);
+    margin-top: 10rpx;
+    padding-bottom: 120rpx;
+    border-bottom: 2rpx solid rgb(49, 117, 75);
+
+}
+.express_order_order{
+    color: rgb(117, 117, 117);
+    margin-top: 10rpx;
+    font-weight: 500;
+    font-size: 32rpx;
+}
+/* .express_order_name{
+    width: 50%;
+    float: left;
+}
+.express_order_code{
+    width: 50%;
+    float: left;
+}
+.express_order_tel{
+    width: 50%;
+    float: left;
+}
+.express_order_arrivetime{
+    width: 50%;
+    float: left;
+}
+.express_order_company{
+    width: 50%;
+    float: left;
+    color: #9b7c00;
+    font-weight: 600;
+    font-size: 25rpx;
+} */
+/* .express_order_place{
+    width: 50%;
+    float: left;
+    font-size: 25rpx;
+}
+.express_order_size{
+    width: 100%;
+    font-size: 25rpx;
+    float: left;
+}
+.express_order_smallfee{
+    width: 50%;
+    font-weight: 600;
+    font-size: 25rpx;
+    float: left; 
+}
+.express_order_totalfee{
+    width: 50%;
+    font-size: 25rpx;
+    font-weight: 600;
+    float: left;
+}
+.express_order_time{
+    width: 100%;
+    float: left;
+}
+.express_order_num{
+    width: 100%;
+
+    float: left;
+}
+.express_order_status{
+    width: 50%;
+    float: left;
+    color: red;
+    font-weight: 800;
+}
+.express_order_person{
+    width: 50%;
+    float: left;
+    text-decoration: underline;
+    color: blue;
+    
+} */
+/* .express_content{
+    width: 15%;
+    float: left;
+    color: rgb(117, 117, 117);
+    font-weight: 500;
+    font-size: 32rpx;
+    overflow: hidden;
+}
+.express_content_text{
+    width: 85%;
+    float: left;
+    height: 100rpx;
+    background-color: #99cc3300;
+    line-height: 25rpx;
+    font-size: 20rpx;
+    text-indent: 2em;
+    color: rgb(50, 219, 197);
+} */
+
+.task_one_button{
+    height:100rpx;
+    width: 100%;
+
+
+}
+.task_one_button_cancel{
+    height: 50rpx;
+    width: 20%;
+    margin-left: 1%;
+    float: left;
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+    line-height: 50rpx;
+    color: rgb(100, 100, 100);
+    border-radius: 50rpx;
+    border: 1rpx solid rgb(134, 134, 134);
+}
+.task_one_button_confirm{
+    height: 50rpx;
+    width: 20%;
+    margin-right: 1%;
+    background-color: rgb(230, 147, 39);
+    float: right;
+    text-align: center;
+    line-height: 50rpx;
+    color: white;
+    border-radius: 50rpx;
+    border: 1rpx solid rgb(134, 134, 134);
+}
+.apply_panel{
+    width: 80%;
+    height: 1000rpx;
+    position: fixed;
+    left: 10%;
+    top: 300rpx;
+}
+.apply_panel_title{
+    font-size: 45rpx;
+    text-align: center;
+    font-weight: 800;
+    height: 200rpx;
+}
+.catcher_infor{
+    width: 60%;
+    height: 320rpx;
+    position: fixed;
+    top: 400rpx;
+    left: 20%;
+    background-color: #f0f0f0;
+    box-shadow: 0 0 10rpx rgb(97, 97, 97);
+    
+
+}
+.close_infor{
+    width: 60rpx;
+    height: 60rpx;
+    float: right;
+    background-color: #757575;
+    text-align: center;
+    line-height: 60rpx;
+    font-size: 60rpx; 
+}
+.infor_title{
+    font-size: 40rpx;
+    color: rgb(214, 132, 39);
+    font-weight: 600;
+    margin-left: 20rpx;
+}
+.infor_one{
+    font-size: 30rpx;
+    color: #666;
+    font-weight: 400;
+    margin-left: 40rpx;
+}
+.server_text{
+    width: 95%;
+    margin: 0 auto;
+}
+.server_line{
+    text-indent: 2em;
+}

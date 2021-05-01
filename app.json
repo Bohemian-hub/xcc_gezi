@@ -1,11 +1,13 @@
 {
   "pages": [
+    "pages/my_catch/my_catch",
+    "pages/my/my",
     "pages/index/index",
     "pages/express_catch/express_catch",
     "pages/express/express",
     "pages/schedule/schedule",
     "pages/order_info/order_info",
-    "pages/my/my",
+
     "pages/order_addition/order_addition",
     "pages/myaddress/myaddress",
     "pages/info/info",
