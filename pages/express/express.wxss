@@ -421,6 +421,11 @@ background-color: rgba(235, 235, 235, 0.699);
     font-weight: 500;
     float: right;
 }
+.express_catch_person{
+    font-size: 28rpx;
+    font-weight: 500;
+    float: left;
+}
 .express_fee{
     height: 70rpx;
     line-height: 70rpx;

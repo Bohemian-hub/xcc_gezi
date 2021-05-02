@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-01 10:00:16
- * @LastEditTime: 2021-05-01 20:07:19
+ * @LastEditTime: 2021-05-02 21:33:26
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express/express.js
@@ -524,45 +524,7 @@ Page({
       url: '../express/express',
     })
   },
-  catcher_infomation(e) {
-    var that = this
-    /* 展示代取员的信息 */
-    wx.showLoading({
-      title: '正在获取',
-    })
-    wx.request({
-      url: 'https://www.xiyuangezi.cn/express/catcher_infomation', //仅为示例，并非真实的接口地址
-      data: {
-        name: e.currentTarget.dataset.id
-      },
-      method: "POST",
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
-      },
-      success(res) {
-        console.log(res.data);
-        wx.hideLoading();
-        if (res.data.length == 1) {
-          that.setData({
-            catcher_infor: res.data[0].fields,
-            catcher_show: 1
-          })
-        }
-        else {
 
-        }
-        console.log(that.data.catcher_infor);
-      }
-    })
-
-
-  },
-  close_infor() {
-
-    this.setData({
-      catcher_show: 0
-    })
-  },
   access_info(e) {
     console.log(e.currentTarget.dataset.id);
     wx.navigateTo({

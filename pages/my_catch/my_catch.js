@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-01 19:49:17
- * @LastEditTime: 2021-05-01 20:50:18
+ * @LastEditTime: 2021-05-02 20:52:49
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/my_catch/my_catch.js
@@ -104,6 +104,12 @@ Page({
 
 
       }
+    })
+  },
+  access_info(e) {
+    console.log(e.currentTarget.dataset.id);
+    wx.navigateTo({
+      url: '../order_info/order_info?transaction_id=' + e.currentTarget.dataset.id,
     })
   },
   back_index() {

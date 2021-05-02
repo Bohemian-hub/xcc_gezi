@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-08 13:17:20
- * @LastEditTime: 2021-04-17 16:33:32
+ * @LastEditTime: 2021-05-02 21:33:37
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/setting_order/setting_order.js
@@ -13,8 +13,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    shangpinpic: ['https://s3.ax1x.com/2021/03/12/6N4zx1.png', 'https://z3.ax1x.com/2021/04/02/cmlGAf.jpg', 'https://s3.ax1x.com/2021/03/12/6N4vG9.jpg', 'https://z3.ax1x.com/2021/04/02/cmlgCF.jpg', 'https://z3.ax1x.com/2021/04/02/cml234.jpg']
-
+    shangpinpic: ['https://s3.ax1x.com/2021/03/12/6N4zx1.png', 'https://z3.ax1x.com/2021/04/02/cmlGAf.jpg', 'https://s3.ax1x.com/2021/03/12/6N4vG9.jpg', 'https://z3.ax1x.com/2021/04/02/cmlgCF.jpg', 'https://z3.ax1x.com/2021/04/02/cml234.jpg'],
+    catcher_show: 0
   },
 
   /**
@@ -26,9 +26,9 @@ Page({
   },
 
   back() {
-    wx.redirectTo({
-      url: '../express/express',
-    });
+    wx.navigateBack({
+      complete: (res) => { },
+    })
   },
   get_this_order(transaction_id) {
     var that = this
@@ -94,6 +94,45 @@ Page({
         console.log(that.data.order_info);
 
       }
+    })
+  },
+  catcher_infomation(e) {
+    var that = this
+    /* 展示代取员的信息 */
+    wx.showLoading({
+      title: '正在获取',
+    })
+    wx.request({
+      url: 'https://www.xiyuangezi.cn/express/catcher_infomation', //仅为示例，并非真实的接口地址
+      data: {
+        name: e.currentTarget.dataset.id
+      },
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      success(res) {
+        console.log(res.data);
+        wx.hideLoading();
+        if (res.data.length == 1) {
+          that.setData({
+            catcher_infor: res.data[0].fields,
+            catcher_show: 1
+          })
+        }
+        else {
+
+        }
+        console.log(that.data.catcher_infor);
+      }
+    })
+
+
+  },
+  close_infor() {
+
+    this.setData({
+      catcher_show: 0
     })
   },
   receive_express(e) {
