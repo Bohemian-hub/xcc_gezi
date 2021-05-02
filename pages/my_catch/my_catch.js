@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-01 19:49:17
- * @LastEditTime: 2021-05-02 20:52:49
+ * @LastEditTime: 2021-05-02 21:45:16
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/my_catch/my_catch.js
@@ -32,7 +32,7 @@ Page({
   get_my_catch_order() {
     var that = this
     wx.request({
-      url: 'http://127.0.0.1:8000/express/get_my_catch_order', //仅为示例，并非真实的接口地址
+      url: 'https://www.xiyuangezi.cn/express/get_my_catch_order', //仅为示例，并非真实的接口地址
       data: {
         name: wx.getStorageSync('name'),
       },
