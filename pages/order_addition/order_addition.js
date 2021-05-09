@@ -14,7 +14,6 @@ Page({
    */
   data: {
     array1: ['韵达--17栋', '中通--6栋', '申通--开水房', '圆通--菜鸟驿站', '顺丰--避风塘', '邮政--主题邮局', '学生之家', '京东'],
-    express_company: '韵达--17栋',
     index1: 0,
     input_code: '',
     input_tel: '',
@@ -60,8 +59,9 @@ Page({
   bindPickerChange1: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
-      express_company: this.data.array1[e.detail.value]
+      index1: e.detail.value
     })
+    console.log(this.data.array1[this.data.index1]);
   },
 
   back() {
@@ -93,7 +93,7 @@ Page({
         console.log(this.data);
         wx.setStorageSync('qujianma', this.data.input_code);
         wx.setStorageSync('weihao', this.data.input_tel);
-        wx.setStorageSync('express', this.data.express_company);
+        wx.setStorageSync('express', this.data.array1[this.data.index1]);
         wx.navigateBack({
           delta: 1
         });
