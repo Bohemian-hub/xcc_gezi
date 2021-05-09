@@ -73,42 +73,42 @@ Page({
 
 
   },
-  yanzheng_login() {
-    wx.showLoading({
-      title: '获取中...',
-    })
-    this.get_schedule()
-    /* 三秒钟之后又如果还没有拿到数据那么久重新获取 */
-    setTimeout(() => {
-      console.log(this.data.courceList);
-      if (this.data.courceList.length != 0) {
-        console.log('获取到了');
-      } else {
-        wx.hideLoading();
-        console.log('请求超时');
-        wx.showModal({
-          title: '提示',
-          content: '请求超时，是否重新获取？',
-          showCancel: true,
-          cancelText: '取消',
-          cancelColor: '#000000',
-          confirmText: '确定',
-          confirmColor: '#3CC51F',
-          success: (result) => {
-            if (result.confirm) {
-              wx.redirectTo({
-                url: '../schedule/schedule',
-              })
-            } else {
-              wx.switchTab({
-                url: '../index/index',
-              })
-            }
-          },
-        });
-      }
-    }, 3000);
-  },
+  // yanzheng_login() {
+  //   wx.showLoading({
+  //     title: '获取中...',
+  //   })
+  //   this.get_schedule()
+  //   /* 三秒钟之后又如果还没有拿到数据那么久重新获取 */
+  //   setTimeout(() => {
+  //     console.log(this.data.courceList);
+  //     if (this.data.courceList.length != 0) {
+  //       console.log('获取到了');
+  //     } else {
+  //       wx.hideLoading();
+  //       console.log('请求超时');
+  //       wx.showModal({
+  //         title: '提示',
+  //         content: '请求超时，是否重新获取？',
+  //         showCancel: true,
+  //         cancelText: '取消',
+  //         cancelColor: '#000000',
+  //         confirmText: '确定',
+  //         confirmColor: '#3CC51F',
+  //         success: (result) => {
+  //           if (result.confirm) {
+  //             wx.redirectTo({
+  //               url: '../schedule/schedule',
+  //             })
+  //           } else {
+  //             wx.switchTab({
+  //               url: '../index/index',
+  //             })
+  //           }
+  //         },
+  //       });
+  //     }
+  //   }, 3000);
+  // },
   get_yanzhengma() {
     wx.request({
       url: 'https://www.xiyuangezi.cn/info/get_yanzhengma',
@@ -162,7 +162,9 @@ Page({
   },
 
   get_schedule() {
-
+//获取课表数据之前。应该检查本次存储是否有课表的的缓存，
+//首次进入→看缓存→if(no){提示输入验证码→请求课程数据→存入缓存}
+//               if(yes){载入缓存}
     var that = this;
 
     wx.request({
