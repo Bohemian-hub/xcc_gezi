@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:33:47
- * @LastEditTime: 2021-05-15 00:11:32
+ * @LastEditTime: 2021-05-15 00:26:20
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/login/login.js
@@ -174,7 +174,7 @@ Page({
       })
     } else {
       wx.request({
-        url: 'http://127.0.0.1:8000/info/login',
+        url: 'https://www.xiyuangezi.cn/info/login',
         header: {
           "content-type": "application/x-www-form-urlencoded"		//使用POST方法要带上这个header
         },
