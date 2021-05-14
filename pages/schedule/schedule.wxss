@@ -147,3 +147,16 @@ page{
     border-radius: 20rpx;
     margin-top:20rpx
 }
+.refresh_class{
+    background-color:rgba(255, 255, 255, 0.527);
+    position: fixed;
+    width: 400rpx;
+    height: 70rpx;
+    right: 175rpx;
+    bottom: 50rpx;
+    border-radius: 20rpx;
+    border: 1rpx solid rgba(163, 163, 163, 0.5);
+    text-align: center;
+    line-height:70rpx;
+    color: rgba(65, 65, 65, 0.7);
+}

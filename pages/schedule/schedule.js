@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-28 10:04:46
- * @LastEditTime: 2021-05-13 21:53:17
+ * @LastEditTime: 2021-05-14 18:43:15
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/schedule/schedule.js
@@ -26,8 +26,9 @@ Page({
     fri_cource: [],
     sta_cource: [],
     sun_cource: [],
-    color: ['#ff89c0', '#4ea8fd', '#f69b7b', '#63e453', '#ed8c8f', '#ff89c0', '#4ea8fd', '#f69b7b', '#63e453', '#ed8c8f', '#ff89c0', '#4ea8fd', '#f69b7b', '#63e453', '#ed8c8f', '#ff89c0', '#4ea8fd', '#f69b7b', '#63e453', '#ed8c8f', '#ff89c0', '#4ea8fd', '#f69b7b', '#63e453', '#ed8c8f']
-
+    color: ['#ff89c0', '#4ea8fd', '#f69b7b', '#63e453', '#ed8c8f', '#ff89c0', '#4ea8fd', '#f69b7b', '#63e453', '#ed8c8f', '#ff89c0', '#4ea8fd', '#f69b7b', '#63e453', '#ed8c8f', '#ff89c0', '#4ea8fd', '#f69b7b', '#63e453', '#ed8c8f', '#ff89c0', '#4ea8fd', '#f69b7b', '#63e453', '#ed8c8f'],
+    acquire_mode: 1,
+    show_input_yanzhengma: 0
   },
 
   /**
@@ -35,9 +36,10 @@ Page({
    */
   onLoad: function (options) {
     /* 这里先发送一个请求吧，问问后端是否保存了他的课表，在此之前我得看看课表怎么存。 */
+    wx.showLoading({
+      title: '获取中...',
+    })
     this.inspect_has_course()
-
-
     this.setData({
       student_name: wx.getStorageSync("name")
     })
@@ -87,13 +89,17 @@ Page({
         console.log(ret.data.length);
         if (ret.data.length == 0) {
           /* 说明并没有保存他的课程信息，我需要加载出验证码 */
+          // 这里再展示输入框
+          that.setData({
+            show_input_yanzhengma: 1
+          })
           this.get_yanzhengma()   //先去拿到验证码
         } else {
           /* 有数据就整理数据 */
           var stringResult = ret.data[0].fields.includeSection.split(",").map(Number);//输出[123,456,789]
           for (let index = 0; index < ret.data.length; index++) {
             ret.data[index].fields.includeSection = ret.data[index].fields.includeSection.split(",").map(Number);//输出[123,456,789]
-
+            ret.data[index].fields.includeWeeks = ret.data[index].fields.includeWeeks.split(",").map(Number);//输出[123,456,789]
           }
 
           that.setData({
@@ -102,6 +108,10 @@ Page({
           console.log(that.data.courceList);
           this.screen2()
           wx.hideLoading();
+          /* 自然走了这里，那在本页面查询查询的时候请使用这里的screen2 */
+          this.setData({
+            acquire_mode: 2
+          })
         }
       },
     });
@@ -109,6 +119,9 @@ Page({
   yanzheng_login() {  //当验证码正确的时候去获取课表信息。
     wx.showLoading({
       title: '获取中...',
+    })
+    this.setData({
+      show_input_yanzhengma: 0
     })
     this.get_schedule()
     /* 三秒钟之后又如果还没有拿到数据那么久重新获取 */
@@ -150,6 +163,7 @@ Page({
       },
       method: "POST",
       success: res => {
+        wx.hideLoading()
         if (res.data.loginnum == 1) {
           console.log(res.data);
           this.setData({
@@ -199,7 +213,6 @@ Page({
     //首次进入→看缓存→if(no){提示输入验证码→请求课程数据→存入缓存}
     //               if(yes){载入缓存}
     var that = this;
-
     wx.request({
       url: 'https://www.xiyuangezi.cn/info/schedule',
       header: {
@@ -382,7 +395,12 @@ Page({
       index: e.detail.value,
       now_week: Number(e.detail.value) + 1
     })
-    this.screen()
+    if (this.data.acquire_mode == 1) {
+      this.screen()
+
+    } else if (this.data.acquire_mode == 2) {
+      this.screen2()
+    }
   },
   back_index() {
     wx.switchTab({
@@ -394,5 +412,25 @@ Page({
     this.setData({
       yanzheng: e.detail.value
     })
+  },
+  refresh_class() {
+    /* 基本是一个后端的操作，直接去后端删除数据，再重新打开本页面就可以了！ */
+    wx.request({
+      url: 'https://www.xiyuangezi.cn/one/delete_schedule',
+      header: {
+        "content-type": "application/x-www-form-urlencoded"		//使用POST方法要带上这个header
+      },
+      method: "POST",
+      data: {
+        xh: wx.getStorageSync('studentId'),
+      },
+
+      success: (ret) => {
+        console.log(ret);
+        wx.redirectTo({
+          url: '../schedule/schedule',
+        })
+      },
+    });
   }
 })

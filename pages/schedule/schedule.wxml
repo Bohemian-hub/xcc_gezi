@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-28 10:04:46
- * @LastEditTime: 2021-04-17 11:56:41
+ * @LastEditTime: 2021-05-14 18:25:31
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/schedule/schedule.wxml
@@ -163,7 +163,7 @@
 
 </view>
 
-<view class="yanzhengma" style="display:{{courceList[0]?'none':'block'}}">
+<view class="yanzhengma" style="display:{{show_input_yanzhengma==0?'none':'block'}}">
     <view>请输入验证码</view>
     <view class="yanzhengmatupian" style="background-image: url({{codeimg}});"></view>
     <input class="yanzhengshuru" bindinput="input_yanzheng">
@@ -174,4 +174,8 @@
     </view>
 
 
+</view>
+
+<view class="refresh_class" bindtap="refresh_class">
+    重新导课
 </view>
