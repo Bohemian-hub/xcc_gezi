@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-08 23:33:47
- * @LastEditTime: 2021-03-17 18:25:51
+ * @LastEditTime: 2021-05-14 22:48:58
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Editew
  * @FilePath: /miniprogram-5/pages/login/login.wxml
@@ -21,7 +21,7 @@
     西昌学院教务系统账号
 </view>
 <!-- 设置下方登录框 -->
-<view class="login_frame">
+<view class="login_frame" style="height: {{turn_input_yanzhengma==1?'400rpx':'300rpx'}};">
     <form bindsubmit='loginForm'>
         <!-- 学号用户名输入框 -->
         <input class="login_username" name='username' type="text" placeholder="学号" maxlength="10">
@@ -31,11 +31,13 @@
         <input class="login_password" name='password' type="password" placeholder="密码" bindinput="project_mode">
         </input>
         <!-- 验证码输入框 -->
-        <input class="login_yanzheng" name='yanzheng' type="text" placeholder="验证码 ">
+        <input class="login_yanzheng" style="display: {{turn_input_yanzhengma==1?'block':'none'}};" name='yanzheng'
+            type=" text" placeholder="验证码 ">
         </input>
-        <view class="yanzhengma" style="background-image: url({{codeimg}});background-size: 100% 100%;" bindtap = "get_yanzhengma">
-
-        </view>
+        <view class="yanzhengma"
+            style="display: {{turn_input_yanzhengma==1?'block':'none'}};background-image: url({{codeimg}});background-size: 100% 100%;"
+            bindtap="get_yanzhengma">
+        </view><!-- 正常登录不显示这个，当检测出来是第一次登录的时候那就用注册式登录法 -->
 
         <button class="login_button" formType="submit" type='primary'>▶
         </button>
