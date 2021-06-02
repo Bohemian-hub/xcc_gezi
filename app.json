@@ -31,7 +31,6 @@
     "pages/login/login",
     "pages/topic/topic",
     "pages/topic_one/topic_one",
-    "pages/new_confesswall/new_confesswall",
 
     "pages/grade/grade",
 
@@ -40,7 +39,6 @@
     "pages/index_passage/index_passage",
     "pages/frank_publish/frank_publish",
     "pages/forum_publish/forum_publish",
-    "pages/new_publish_confess/new_publish_confess",
     "pages/help_publish/help_publish",
     "pages/activity_publish/activity_publish"
 

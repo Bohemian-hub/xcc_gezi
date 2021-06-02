@@ -1,5 +1,5 @@
 page{
-    background-image: url(https://s3.ax1x.com/2021/01/27/sz8WoF.jpg);
+    background-image: url(https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/biaobaibeijing.jpeg);
     background-size: 100% 100%;
 }
 .title{
@@ -46,7 +46,7 @@ page{
   height: 100%;
   border-radius: 5rpx;
   background-size: 100% 100%;
-  background-image: url(https://s3.ax1x.com/2021/01/27/szyZQK.png);
+  background-image: url(https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/dangdan.png);
   box-shadow: 0rpx 0rpx 20rpx rgb(112, 31, 31);
   opacity: 1;
   position: relative;
@@ -120,7 +120,7 @@ page{
   position: absolute;
   width: 90%;
   height: 70%;
-  background-image: url(https://s3.ax1x.com/2021/01/27/szgdTe.png);
+  background-image: url(https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/zhi.png);
   background-repeat: none;
   background-size: 100% 100%;
   top: 260rpx;

@@ -66,7 +66,7 @@
         <view class="forum_topic_left_bottom">新增话题(十个字以内) </view>
     </view>
     <view class="forum_topic_right" bindtap="add_this_topic" data-topic="{{add_topic_content}}">
-        <image class="forum_topic_right_jia" src="https://s3.ax1x.com/2021/01/11/s3qsds.png">
+        <image class="forum_topic_right_jia" src="https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/jia.png">
 
         </image>
     </view>
@@ -80,7 +80,7 @@
         <view class="forum_topic_left_bottom">{{item.fields.use_times}}人添加该话题</view>
     </view>
     <view class="forum_topic_right" bindtap="add_this_topic" data-topic="{{item.fields.content}}">
-        <image class="forum_topic_right_jia" src="https://s3.ax1x.com/2021/01/11/s3qsds.png">
+        <image class="forum_topic_right_jia" src="https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/jia.png">
 
         </image>
     </view>

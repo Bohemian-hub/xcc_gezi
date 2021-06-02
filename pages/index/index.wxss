@@ -238,7 +238,7 @@ color: #23a7ff;
   padding: 20rpx 0;
 }
 .menu_all_title{
-/*   background-image: url(https://s1.ax1x.com/2020/11/11/BjSbin.png); */
+
   background-size: 100% 160%;
   padding: 0 20rpx;
   border-top-left-radius: 20rpx;
@@ -247,7 +247,7 @@ color: #23a7ff;
   
 }
 .menu_all_title2{
-/*   background-image: url(https://s1.ax1x.com/2020/11/11/BjpSZ4.png); */
+
   background-size: 100% 160%;
   padding: 0 20rpx;
   border-top-left-radius: 20rpx;
@@ -374,7 +374,7 @@ box-shadow: 0rpx 0rpx 5rpx #35aeb9;
   background-color: white;
   margin-bottom: 0;
   box-shadow: 0rpx 0rpx 20rpx rgb(216, 216, 216);
-background-image: url(https://s3.ax1x.com/2021/03/12/6NouE8.gif);
+background-image: url(https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/goodsbeijing.jpeg);
 background-size: 100%;
 }
 .news_panel{

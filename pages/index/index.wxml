@@ -12,8 +12,6 @@
 <view class='bg_box'>
     <image class="bg1" src='https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/cnFQNn.png'>
     </image>
-    <!--        <image class="bg2" src="https://s1.ax1x.com/2020/11/09/BbKmgs.png">
-        </image> -->
 </view>
 
 <view class="{{bodylock}}">
@@ -91,12 +89,6 @@
                 <view class="menu_title">
                     Function
                 </view>
-                <!-- 
-                <view class="menu_setting" bindtap='jump'>
-                    <image class="menu_setting_icon" src="https://s1.ax1x.com/2020/11/10/Bbz6tf.png" mode="widthFix"
-                        lazy-load="false" binderror="" bindload="" />
-
-                </view> -->
                 <view class="clear_both"></view>
                 <view class="menu_sub_title">
                     正在努力开发出更优质的功能与服务哦
@@ -107,7 +99,7 @@
 
 
             <view class="menu_left" bindtap="forum">
-                <image class="menu_left_icon" src="https://s3.ax1x.com/2021/01/25/sLVENQ.png" mode="widthFix"
+                <image class="menu_left_icon" src="https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/luntan.png" mode="widthFix"
                     lazy-load="false" binderror="" bindload="" />
                 <view class="menu_left_text">
                     西院论坛
@@ -117,7 +109,7 @@
 
             <view class="menu_middle">
                 <view class="menu_middle_up" bindtap="xiyuanzhushou" data-id="教务">
-                    <image class="menu_middle_up_icon" src="https://s3.ax1x.com/2021/02/09/ydxHEV.png" mode="widthFix"
+                    <image class="menu_middle_up_icon" src="https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/xiyuanzhushou.png" mode="widthFix"
                         lazy-load="false" binderror="" bindload="" />
 
                     <view class="menu_middle_up_text">
@@ -138,7 +130,7 @@
 
             <view class="menu_right">
                 <view class="menu_right_up" bindtap="single" data-id="单身档案">
-                    <image class="menu_middle_up_icon" src="https://s3.ax1x.com/2021/03/12/6N7800.png" mode="widthFix"
+                    <image class="menu_middle_up_icon" src="https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/danshen.png" mode="widthFix"
                         lazy-load="false" binderror="" bindload="" />
 
                     <view class="menu_middle_up_text">
@@ -146,7 +138,7 @@
                     </view>
                 </view>
                 <view class="menu_right_down" bindtap="makemoney">
-                    <image class="menu_middle_up_icon" src="https://z3.ax1x.com/2021/03/28/cpPLOe.png" mode="widthFix"
+                    <image class="menu_middle_up_icon" src="https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/jianzhi.png" mode="widthFix"
                         lazy-load="false" binderror="" bindload="" />
 
                     <view class="menu_middle_up_text">
@@ -233,94 +225,7 @@
     <view class="close_place2" bindtap="close_jiaowu">
 
     </view>
-    <view class="son_menu_of_jiaowu_content">
-        <!-- 以防自己关闭自己 -->
-        <scroll-view class="son_menu_function_panel" scroll-y="true">
 
-            <!--             <view class="son_menu_function {{showwhat=='strive' ? 'show' : 'notshow'}}" bindtap="new_confesswall">
-                <view class="son_menu_function_image">
-                    <image class="son_menu_function_image_icon" src="https://s3.ax1x.com/2020/12/21/rB2QQs.png"
-                        mode="widthFix" lazy-load="false" binderror="" bindload="" />
-                </view>
-                <view class="son_menu_function_title">
-                    私信
-                </view>
-
-            </view> -->
-
-            <!--             <view class="son_menu_function {{showwhat=='strive' ? 'show' : 'notshow'}}" bindtap="single">
-                <view class="son_menu_function_image">
-                    <image class="son_menu_function_image_icon" src="https://s3.ax1x.com/2021/01/28/y9bf0g.png"
-                        mode="widthFix" lazy-load="false" binderror="" bindload="" />
-                </view>
-                <view class="son_menu_function_title">
-                    单身档案
-                </view>
-
-            </view> -->
-
-            <!--             <view class="son_menu_function {{showwhat=='jiaowu' ? 'show' : 'notshow'}}" bindtap="grade">
-                <view class="son_menu_function_image">
-                    <image class="son_menu_function_image_icon" src="https://s3.ax1x.com/2020/11/13/D9kq9f.png"
-                        mode="widthFix" lazy-load="false" binderror="" bindload="" />
-                </view>
-                <view class="son_menu_function_title">
-                    成绩
-                </view>
-
-            </view> -->
-
-
-            <!--             <view class=" son_menu_function {{showwhat=='strive' ? 'show' : 'notshow'}}" bindtap="coursetable">
-                <view class="son_menu_function_image">
-                    <image class="son_menu_function_image_icon" src="https://s3.ax1x.com/2020/11/13/DpxI78.png"
-                        mode="widthFix" lazy-load="false" binderror="" bindload="" />
-                </view>
-                <view class="son_menu_function_title">
-                    课表
-                </view>
-
-            </view> -->
-
-
-            <!--             <view class="son_menu_function {{showwhat=='server' ? 'show' : 'notshow'}}" bindtap="express">
-                <view class="son_menu_function_image">
-                    <image class="son_menu_function_image_icon" src="https://s3.ax1x.com/2021/01/06/sVNnKJ.png"
-                        mode="widthFix" lazy-load="false" binderror="" bindload="" />
-                </view>
-                <view class="son_menu_function_title">
-                    取快递
-                </view>
-
-            </view> -->
-
-
-
-            <!-- 
-            <view class="son_menu_function {{showwhat=='goods' ? 'show' : 'notshow'}}" bindtap="notdofunction">
-                <view class="son_menu_function_image">
-                    <image class="son_menu_function_image_icon" src="https://s3.ax1x.com/2021/01/26/sXFMYd.png"
-                        mode="widthFix" lazy-load="false" binderror="" bindload="" />
-                </view>
-                <view class="son_menu_function_title">
-                    微笑淘宝
-                </view>
-
-            </view> -->
-
-            <!--             <view class="son_menu_function {{showwhat=='strive' ? 'show' : 'notshow'}}" bindtap="address">
-                <view class="son_menu_function_image">
-                    <image class="son_menu_function_image_icon" src="https://s3.ax1x.com/2021/01/26/sXFOtH.png"
-                        mode="widthFix" lazy-load="false" binderror="" bindload="" />
-                </view>
-                <view class="son_menu_function_title">
-                    共享通讯录
-                </view>
-
-            </view> -->
-
-        </scroll-view>
-    </view>
     <view class="close_place3" bindtap="close_jiaowu">
 
     </view>

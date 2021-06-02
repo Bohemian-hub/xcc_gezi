@@ -43,7 +43,7 @@
     height: 120rpx;
     float: left;
     background-color: rgb(255, 255, 255);
-    background-image: url(https://s3.ax1x.com/2021/01/29/yiyEex.png);
+    background-image: url(https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/souxuo.png);
     background-size: 60% 60%;
     background-repeat: no-repeat;
     background-position: 20rpx;

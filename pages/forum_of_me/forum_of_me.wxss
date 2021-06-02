@@ -318,7 +318,7 @@ page{
     width: 80rpx;
     height: 80rpx;
     right: 50rpx;
-    background-image: url(https://s3.ax1x.com/2021/01/10/s1i44e.png);
+    background-image: url(https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/top.png);
     background-size: 100% 100%;
     text-align: center;
     line-height: 200rpx;
@@ -332,7 +332,7 @@ page{
     width: 80rpx;
     height: 80rpx;
     right: 50rpx;
-    background-image: url(https://s3.ax1x.com/2021/01/26/svST0g.png);
+    background-image: url(https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/shuaxin.png);
     background-size: 100% 100%;
     text-align: center;
     line-height: 200rpx;
