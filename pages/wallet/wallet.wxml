@@ -1,0 +1,50 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-06-04 14:57:54
+ * @LastEditTime: 2021-06-04 18:25:58
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /miniprogram-5/pages/wallet/wallet.wxml
+-->
+<view class="title">
+    钱包
+    <view class="back" bindtap="back">
+        <text class="cuIcon-back">
+
+        </text>
+    </view>
+</view>
+<view class="wallet">
+</view>
+<view class="wallet_text">
+    我的钱包
+</view>
+<view class="wallet_money">
+    ￥1000.00
+</view>
+<view class="look_order">
+    查看详单 >
+</view>
+<view class="button_tixian" bindtap="tixian" style="background-color: rgb(34, 123, 206);" bindtap="tixian">
+    <view
+        style="width: 50rpx;height:50rpx;background-image:url(https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/zhifubao.png);float: left;background-size: 100%;margin-top: 20rpx;margin-left: 30rpx;">
+
+    </view>
+
+    支付宝提现
+</view>
+<view class="button_tixian" bindtap="tixian">
+    <view
+        style="width: 50rpx;height:50rpx;background-image:url(https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/weixin.png);float: left;background-size: 100%;margin-top: 20rpx;margin-left: 30rpx;">
+
+    </view>
+    微信提现
+</view>
+
+<view class="input_info">
+    <view class="input_info_title">
+        提现
+    </view>
+
+
+</view>

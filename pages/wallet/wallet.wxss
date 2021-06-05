@@ -1,0 +1,95 @@
+
+page{
+    background-color: rgba(235, 235, 235, 0.699);
+}
+.topic_pic{
+    height: 360rpx;
+    background-color: rgb(218, 193, 52);
+    line-height: 320rpx;
+    text-align: center;
+    font-size: 50rpx;
+    color: rgb(0, 0, 0);
+    text-shadow:5px 1px 6px rgb(124, 124, 124);
+    background-size: 100% 100%;
+}
+.title{
+    width: 100%;
+    height: 140rpx;
+    background-color: rgba(41, 191, 250, 0);
+    text-align: center;
+    font-size: 40rpx;
+    position: relative;
+    color: rgb(87, 87, 87);
+    line-height: 220rpx;
+}
+.back{
+    position: absolute;
+    top: 0rpx;
+    left: 30rpx;
+}
+.wallet{
+    width: 120rpx;
+    height: 120rpx;
+    background-image: url(https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/%E9%92%B1%20.png);
+    margin: 170rpx auto 0 auto;
+    background-size: 100% ;
+}
+.wallet_text{
+    width: 220rpx;
+    height: 60rpx;
+    margin: 60rpx auto 0 auto;
+    font-size: 35rpx;
+    text-align: center;
+}
+.wallet_money{
+    width: 320rpx;
+    height: 60rpx;
+    background-color: rgba(255, 0, 0, 0);
+    line-height: 60rpx;
+    margin: 0rpx auto 0 auto;
+    font-size: 60rpx;
+    font-weight: 900;
+    text-align: center;
+}
+.look_order{
+    width: 320rpx;
+    height: 60rpx;
+    color: rgb(221, 152, 23);
+    line-height: 60rpx;
+    margin: 30rpx auto 280rpx auto;
+    font-size: 30rpx;
+    font-weight: 900;
+    text-align: center;
+}
+.button_tixian{
+    width: 45%;
+    height: 90rpx;
+    background-color: rgb(10, 177, 10);
+    border-radius: 14rpx;
+    margin: 40rpx auto 0 auto;
+    line-height: 90rpx;
+    text-align: center;
+    color: white;
+    font-size: large;
+}
+.input_info{
+    display: none;
+    position: fixed;
+    width: 80%;
+    height: 1000rpx;
+    background-color: rgb(255, 253, 219);
+    top: 300rpx;
+    left: 10%;
+    border-radius: 13rpx;
+    box-shadow: 2rpx 2rpx 10rpx rgb(161, 161, 161) ;
+
+}
+.input_info_title{
+    width: 100%;
+    text-align: center;
+    line-height: 100rpx;
+    font-size: 40rpx;
+    font-weight: 500;
+    color: rgb(24, 185, 185);
+
+}

@@ -1,12 +1,10 @@
 {
   "pages": [
+    "pages/wallet/wallet",
     "pages/index/index",
     "pages/express/express",
-
     "pages/my/my",
-
     "pages/express_catch/express_catch",
-
     "pages/schedule/schedule",
     "pages/order_info/order_info",
     "pages/my_catch/my_catch",
@@ -31,9 +29,7 @@
     "pages/login/login",
     "pages/topic/topic",
     "pages/topic_one/topic_one",
-
     "pages/grade/grade",
-
     "pages/logs/logs",
     "pages/setting_more/setting_more",
     "pages/index_passage/index_passage",

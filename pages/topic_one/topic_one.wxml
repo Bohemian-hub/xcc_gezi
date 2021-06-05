@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-01-26 19:30:49
- * @LastEditTime: 2021-01-26 20:53:05
+ * @LastEditTime: 2021-06-04 15:13:32
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/topic_one/topic_one.wxml
@@ -27,11 +27,9 @@
             <view class="forum_one_name_text">
                 <view class="forum_one_name_text_top">
                     <view class="forum_one_name_text_top_nickname">{{item.fields.post_data_name}}</view>
-                    <view class="forum_one_name_text_top_college"
-                        style="background-color: {{item.fields.tag_color}}">
+                    <view class="forum_one_name_text_top_college" style="background-color: {{item.fields.tag_color}}">
                         {{item.fields.post_data_college}}</view>
-                    <view class="forum_one_name_text_top_grade"
-                        style="background-color: {{item.fields.tag_color}};">
+                    <view class="forum_one_name_text_top_grade" style="background-color: {{item.fields.tag_color}};">
                         {{item.fields.post_data_grade}}</view>
                 </view>
                 <view class="forum_one_name_text_bottom">{{item.fields.real_time}}</view>
