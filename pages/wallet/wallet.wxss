@@ -73,7 +73,7 @@ page{
     font-size: large;
 }
 .input_info{
-    display: none;
+    display: block;
     position: fixed;
     width: 80%;
     height: 1000rpx;
@@ -81,7 +81,7 @@ page{
     top: 300rpx;
     left: 10%;
     border-radius: 13rpx;
-    box-shadow: 2rpx 2rpx 10rpx rgb(161, 161, 161) ;
+    box-shadow: 2rpx 2rpx 40rpx rgb(161, 161, 161) ;
 
 }
 .input_info_title{
@@ -92,4 +92,43 @@ page{
     font-weight: 500;
     color: rgb(24, 185, 185);
 
+}
+.guanbi{
+    width: 80rpx;
+    height: 80rpx;
+    position: absolute;
+    bottom: -120rpx;
+    left: 260rpx;
+}
+.tishi{
+    width: 90%;
+    text-indent: 2em;
+    font-size: 30rpx;
+    margin: 20rpx auto;
+    color: red;
+    text-shadow: 2rpx 2rpx 10rpx white;
+}
+.realname,.account{
+    width: 300rpx;
+    height: 60rpx;
+    background-color: rgba(0, 255, 255, 0);
+    text-align: center;
+    margin:40rpx auto 10rpx auto;
+    font-size: 40rpx;
+} 
+.input_name,.input_account{
+    width:70%;
+    border-radius: 20rpx;
+    height: 68rpx;
+    margin: 0 auto;
+    background-color: white;
+    box-shadow: 0rpx  0rpx 10rpx rgb(124, 124, 124);
+    text-align: center;
+} 
+
+.deposit_button{
+    margin-top: 130rpx;
+    width: 70%;
+    border-radius: 20rpx;
+    background-color: rgb(179, 243, 61);
 }

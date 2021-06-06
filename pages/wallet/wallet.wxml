@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-06-04 14:57:54
- * @LastEditTime: 2021-06-04 18:25:58
+ * @LastEditTime: 2021-06-06 23:41:26
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/wallet/wallet.wxml
@@ -25,7 +25,8 @@
 <view class="look_order">
     查看详单 >
 </view>
-<view class="button_tixian" bindtap="tixian" style="background-color: rgb(34, 123, 206);" bindtap="tixian">
+<view class="button_tixian" bindtap="tixian" data-classify="alipay" style="background-color: rgb(34, 123, 206);"
+    bindtap="tixian">
     <view
         style="width: 50rpx;height:50rpx;background-image:url(https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/zhifubao.png);float: left;background-size: 100%;margin-top: 20rpx;margin-left: 30rpx;">
 
@@ -33,7 +34,7 @@
 
     支付宝提现
 </view>
-<view class="button_tixian" bindtap="tixian">
+<view class="button_tixian" bindtap="tixian" data-classify="wechatpay">
     <view
         style="width: 50rpx;height:50rpx;background-image:url(https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/weixin.png);float: left;background-size: 100%;margin-top: 20rpx;margin-left: 30rpx;">
 
@@ -41,10 +42,30 @@
     微信提现
 </view>
 
-<view class="input_info">
+<view class="input_info" style="display: {{show_deposit?'block':'none'}};">
     <view class="input_info_title">
-        提现
+        {{classify}}提现
     </view>
+    <view class="tishi">
+        温馨提示：下午五点前提交的支付宝提现当日到账，微信提现次日24时前到账。 请认真填写提现信息，填错后果自负。
+    </view>
+    <view style="clear:both"></view>
+    <view class="realname">真实姓名：</view>
+    <input class="input_name" type="text"></input>
+    <view class="account">{{classify}}账号：</view>
+    <input class="input_account" type="text"></input>
+
+    <button class="deposit_button">
+        提现
+    </button>
+
+
+
+    <image bindtap="tixian" class="guanbi" data-classify="guanbi"
+        src="https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/guanbi.png" mode="widthFix"
+        lazy-load="false" binderror="" bindload="">
+    </image>
+
 
 
 </view>
