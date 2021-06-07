@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-08 13:17:20
- * @LastEditTime: 2021-05-02 21:33:37
+ * @LastEditTime: 2021-06-07 12:36:48
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/setting_order/setting_order.js
@@ -135,12 +135,46 @@ Page({
       catcher_show: 0
     })
   },
+
+  /*   calculate_commission() {
+      console.log(this.data.order_info);
+      if (this.data.order_info.express_name == '小跑' || this.data.order_info.express_name == "快速打印" || this.data.order_info.express_name == "专业带饭") {
+        var commission = (this.data.order_info.express_total_fee - this.data.order_info.express_send_fee) + this.data.order_info.express_send_fee * 0.87
+        console.log("-----------佣金----------");
+        console.log("-----------佣金----------");
+        console.log("-----------佣金----------");
+        console.log("-----------佣金----------");
+        console.log("-----------佣金----------");
+        console.log(commission.toFixed(2));
+        return commission.toFixed(2)
+      } else if (this.data.order_info.express_name == '快递代取') {
+        var commission = this.data.order_info.express_total_fee * 0.87
+        console.log("-----------佣金----------");
+        console.log("-----------佣金----------");
+        console.log("-----------佣金----------");
+        console.log("-----------佣金----------");
+        console.log("-----------佣金----------");
+        console.log(commission.toFixed(2));
+        return commission.toFixed(2)
+      } else if (this.data.order_info.express_name == '上门电脑维修') {
+        var commission = this.data.order_info.express_total_fee * 0.9
+        console.log("-----------佣金----------");
+        console.log("-----------佣金----------");
+        console.log("-----------佣金----------");
+        console.log("-----------佣金----------");
+        console.log("-----------佣金----------");
+        console.log(commission.toFixed(2));
+        return commission.toFixed(2)
+      }
+    },
+   */
   receive_express(e) {
     var that = this
+    /*     var commission = this.calculate_commission() */
     /* 这里是用户确认收件，在代取员将状态从接单2变成3时，我这里就提示带我确认了 */
     /* 来一个事件将订单状态 改成4，就是已经完结 */
     wx.request({
-      url: 'https://www.xiyuangezi.cn/express/receive_express', //仅为示例，并非真实的接口地址
+      url: 'http://127.0.0.1:8000/express/receive_express', //仅为示例，并非真实的接口地址
       data: {
         name: wx.getStorageSync('name'),
         order_id: e.currentTarget.dataset.id

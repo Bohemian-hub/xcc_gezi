@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-03-30 11:02:43
- * @LastEditTime: 2021-05-01 19:33:18
+ * @LastEditTime: 2021-06-07 09:27:01
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/my/my.wxml
@@ -79,19 +79,23 @@
         </view>
 
         <view class="order_menu" bindtap="makemoney">
-            <image class="iconf1" src="https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/daipeisong.png" mode="widthFix" />
+            <image class="iconf1" src="https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/daipeisong.png"
+                mode="widthFix" />
             <view class="menu_name">
                 待配送
             </view>
         </view>
         <view class="order_menu" bindtap="my_catch">
-            <image class="iconf1" src="https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/suoyoupeisong.png" mode="widthFix" />
+            <image class="iconf1"
+                src="https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/suoyoupeisong.png"
+                mode="widthFix" />
             <view class="menu_name">
                 所有配送
             </view>
         </view>
-        <view class="order_menu" bindtap="notice">
-            <image class="iconf2" src="https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/qianbao.png" mode="widthFix" />
+        <view class="order_menu" bindtap="mt_wallet">
+            <image class="iconf2" src="https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/qianbao.png"
+                mode="widthFix" />
             <view class="menu_name">
                 钱包
             </view>

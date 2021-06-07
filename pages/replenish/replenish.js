@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-03-15 09:56:56
- * @LastEditTime: 2021-04-06 22:13:06
+ * @LastEditTime: 2021-06-07 10:44:30
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/replenish/replenish.js
@@ -194,6 +194,20 @@ Page({
       this.pay_money()
     }
   },
+  yuantofen(val) {
+    var s = val.split(".")
+    var yuan = parseInt(s[0]) * 100;
+    var fen = 0;
+    if (s.length > 1) {
+      let fenVal = (parseInt(s[1].substr(0, 1))) * 10;
+      fen += fenVal;
+      if (s[1].length > 1) {
+        fen += parseInt(s[1].substr(1, 1));
+      }
+    }
+    var fee = yuan + fen;
+    return fee;
+  },
   pay_money() {
     var that = this
     console.log("大喊一声：wechat pay!!!")
@@ -217,13 +231,15 @@ Page({
     }
     const time = month + '-' + date + ' ' + h + ":" + m;
     console.log(time);
+    console.log(this.yuantofen(this.data.total_fee));
     wx.login({
       success(res) {
         wx.request({
           url: 'https://www.xiyuangezi.cn/express/pay',
           data: {
             code: res.code,
-            fee: that.data.total_fee * 100 //传入到后端作为以分为单位的金额
+            fee: that.yuantofen(that.data.total_fee), //传入到后端作为以分为单位的金额
+            body: that.data.product_name + '-' + that.data.product_size + '-' + that.data.nums + '份'
             //fee: 1 //传入到后端作为以分为单位的金额
           },
           success: (result) => {

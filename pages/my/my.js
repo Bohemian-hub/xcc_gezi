@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-03-30 11:02:43
- * @LastEditTime: 2021-05-02 20:49:27
+ * @LastEditTime: 2021-06-07 10:41:55
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/my/my.js
@@ -177,6 +177,11 @@ Page({
       url: '../my_catch/my_catch',
     })
   },
+  mt_wallet() {
+    wx.navigateTo({
+      url: '../wallet/wallet',
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -188,7 +193,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      orderList: [],
+      wait_order: [],
+      ing_order: [],
+      already_order: [],
+      complete_order: [],
+      refund_order: [],
+    })
+    this.get_order()
   },
 
   /**

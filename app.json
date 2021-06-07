@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/wallet/wallet",
+
     "pages/index/index",
+    "pages/wallet/wallet",
     "pages/express/express",
     "pages/my/my",
     "pages/express_catch/express_catch",
