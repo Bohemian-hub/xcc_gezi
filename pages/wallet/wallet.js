@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-06-04 14:57:54
- * @LastEditTime: 2021-06-08 22:53:00
+ * @LastEditTime: 2021-06-08 23:45:19
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/wallet/wallet.js
@@ -37,8 +37,10 @@ Page({
       success: res => {
         console.log(res.data[0].fields.wallet.toFixed(2));
         let money = res.data[0].fields.wallet.toFixed(2)
+        let money2 = res.data[0].fields.wallet2.toFixed(2)
         that.setData({
-          wallet_nums: money
+          wallet_nums: money,
+          wallet_nums2: money2
         })
       }
     })
@@ -103,6 +105,7 @@ Page({
         get_input_account: that.data.get_input_account,
         get_input_money: that.data.get_input_money,
         deposit_way: that.data.classify,
+        studentId: wx.getStorageSync('studentId'),
       },
       header: {
         "content-type": "application/x-www-form-urlencoded"		//使用POST方法要带上这个header
