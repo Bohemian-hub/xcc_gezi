@@ -51,6 +51,17 @@ page{
     font-weight: 900;
     text-align: center;
 }
+.activity_money{
+    width: 320rpx;
+    height: 60rpx;
+    background-color: rgba(255, 0, 0, 0);
+    line-height: 60rpx;
+    margin: 0rpx auto 0 auto;
+    font-size: 25rpx;
+    font-weight: 600;
+    text-align: center;
+    color: red;
+}
 .look_order{
     width: 320rpx;
     height: 60rpx;
@@ -104,7 +115,7 @@ page{
     width: 90%;
     text-indent: 2em;
     font-size: 30rpx;
-    margin: 20rpx auto;
+    margin: 20rpx auto 0 auto;
     color: red;
     text-shadow: 2rpx 2rpx 10rpx white;
 }
@@ -113,8 +124,9 @@ page{
     height: 60rpx;
     background-color: rgba(0, 255, 255, 0);
     text-align: center;
-    margin:40rpx auto 10rpx auto;
-    font-size: 40rpx;
+    margin:40rpx auto 0rpx auto;
+    font-size: 30rpx;
+    line-height: 60rpx;
 } 
 .input_name,.input_account{
     width:70%;
@@ -124,11 +136,29 @@ page{
     background-color: white;
     box-shadow: 0rpx  0rpx 10rpx rgb(124, 124, 124);
     text-align: center;
+    font-size: 40rpx;
 } 
-
+.yue_info{
+    height: 40rpx;
+    text-align: center;
+    font-size: 30rpx;
+    color: rgb(223, 167, 12);
+    line-height: 40rpx;
+    margin-bottom: 8rpx;
+}
+.all_withdraw{
+    text-decoration: underline;
+    color: white;
+    border: 1rpx solid rgb(0, 102, 17);
+    padding: 4rpx 10rpx;
+    border-radius: 10rpx;
+    background-color: rgb(0, 102, 17);
+    margin-left: 20rpx;
+}
 .deposit_button{
-    margin-top: 130rpx;
+    margin-top: 60rpx;
     width: 70%;
     border-radius: 20rpx;
     background-color: rgb(179, 243, 61);
 }
+

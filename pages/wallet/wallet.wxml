@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-06-04 14:57:54
- * @LastEditTime: 2021-06-06 23:41:26
+ * @LastEditTime: 2021-06-08 23:04:38
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/wallet/wallet.wxml
@@ -20,7 +20,10 @@
     我的钱包
 </view>
 <view class="wallet_money">
-    ￥1000.00
+    ￥{{wallet_nums}}
+</view>
+<view class="activity_money">
+    活动资金￥{{wallet_nums}}
 </view>
 <view class="look_order">
     查看详单 >
@@ -51,11 +54,14 @@
     </view>
     <view style="clear:both"></view>
     <view class="realname">真实姓名：</view>
-    <input class="input_name" type="text"></input>
+    <input class="input_name" type="text" bindinput="get_input_name"></input>
     <view class="account">{{classify}}账号：</view>
-    <input class="input_account" type="text"></input>
+    <input class="input_account" type="text" bindinput="get_input_account"></input>
+    <view class="account">{{classify}}金额：</view>
+    <view class="yue_info">余额：￥{{wallet_nums}} <a class="all_withdraw" bindtap="all_withdraw">全部提现</a></view>
+    <input class="input_account" type="text" bindinput="get_input_money" value="{{get_input_money}}"></input>
 
-    <button class="deposit_button">
+    <button class="deposit_button" bindtap="centain_withdraw">
         提现
     </button>
 
