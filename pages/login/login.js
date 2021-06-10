@@ -261,7 +261,7 @@ Page({
     return hangrade;
   },
   about() {
-    wx.redirectTo({
+    wx.navigateTo({
       url: '../about/about',
     });
 
