@@ -89,6 +89,7 @@ page{
   border-radius: 10rpx;
   box-shadow: 0rpx 0rpx 20rpx rgb(131, 131, 131);
   background-color: rgba(255, 255, 255, 0);
+  opacity: .9;
 }
 .cardleft_bg {
   height: 100%;
@@ -123,7 +124,7 @@ page{
   width: 48%;
   border-radius: 10rpx;
   box-shadow: 0rpx 0rpx 20rpx rgb(131, 131, 131);
-
+  opacity: .9;
   color: black;
 /*   background-color: rgba(255, 255, 255, 0.801); */
   background-image: url(https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2847449187,2030324034&fm=26&gp=0.jpg);
@@ -138,6 +139,7 @@ page{
   box-shadow: 0rpx 0rpx 20rpx rgb(131, 131, 131);
  overflow: hidden;
   background-color: rgb(62, 178, 255);
+  opacity: .9;
 }
 
 .card_right_data_wenhou{
