@@ -24,9 +24,9 @@ Page({
   },
 
   back() {
-    wx.switchTab({
-      url: '../my/my',
-    });
+    wx.navigateBack({
+      delta: 1,
+    })
 
   }
 })

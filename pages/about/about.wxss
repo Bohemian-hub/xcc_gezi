@@ -1,5 +1,6 @@
 page{
     background-color: rgb(235, 235, 235);
+    padding-top: 140rpx;
 }
 .title{
     width: 100%;
@@ -7,7 +8,8 @@ page{
     background: linear-gradient(to right, #dce35b, #45b649); 
     text-align: center;
     font-size: 40rpx;
-    position: relative;
+    position: fixed;
+    top: 0;
     color: rgb(255, 255, 255);
     line-height: 220rpx;
 }
