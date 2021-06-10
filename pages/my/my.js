@@ -182,6 +182,22 @@ Page({
       url: '../wallet/wallet',
     })
   },
+  myaddress(){
+    wx.navigateTo({
+      url: '../myaddress/myaddress',
+    })
+  },
+  count_down() {
+    wx.navigateTo({
+      url: '../count_change/count_change',
+    })
+  },
+  loginout() {
+    wx.clearStorage();
+    wx.reLaunch({
+      url: '../login/login'
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -207,3 +207,24 @@ page{
     border-bottom: 2rpx solid rgb(224, 224, 224);
 
 }
+.loginout{
+    width: 90%;
+    background-color: rgb(252, 88, 88);
+    color: white;
+    text-align: center;
+    height: 100rpx;
+    line-height: 100rpx;
+    font-size: 35rpx;
+    margin: 30rpx auto;
+    border-radius: 20rpx;
+}
+.clear_both{
+    clear: both;
+}
+.copyright{
+    text-align: center;
+    padding-top: 80rpx;
+    height: 250rpx;
+    font-size: 30rpx;
+    color: rgb(131, 131, 131);
+}

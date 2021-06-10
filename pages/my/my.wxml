@@ -103,11 +103,25 @@
     </view>
     <!-- function -->
     <view class="function">
-        <view class="function_one" bindtap="setting">设置</view>
-        <view class="function_one">配送地址</view>
-        <view class="function_one">积分</view>
+        <view class="function_one" bindtap="myaddress">配送地址</view>
+        <view class="function_one" bindtap="count_down">倒计时</view>
         <view class="function_one" bindtap="talkback">反馈</view>
         <view class="function_one" style="border: 0;" bindtap="about">关于</view>
+    </view>
+    <view class="clear_both">
+
+    </view>
+    <view class="loginout" bindtap = "loginout">
+        退出登录
+    </view>
+    <view class="copyright">
+        <view>
+            西院格子 V2.1.4
+        </view>
+        <view>
+            义乌市松雷网络科技工作室
+        </view>
+
     </view>
 
 </view>
