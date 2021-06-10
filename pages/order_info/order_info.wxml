@@ -60,6 +60,7 @@
         </view>
         <view class="info_value_one">
             {{order_info.catch_person}}
+            <text style="color:red;">(点击查看代取员信息)</text>
         </view>
         <view style="clear:both;"></view>
 
