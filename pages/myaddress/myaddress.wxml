@@ -50,7 +50,7 @@
 <view class="input_one">
     <view class="input_title">宿舍(栋)</view>
 
-    <input class="input_input" value="" type="text" bindinput="input_apartment">
+    <input class="input_input" value="{{input_apartment}}" type="text" bindinput="input_apartment">
 
     </input>
 
@@ -58,7 +58,7 @@
 <view class="input_one">
     <view class="input_title">寝室号</view>
 
-    <input class="input_input" value="" type="text" bindinput="input_room">
+    <input class="input_input" value="{{input_room}}" type="text" bindinput="input_room">
 
     </input>
 

@@ -18,15 +18,20 @@ Page({
     input_tel: wx.getStorageSync('input_tel'),
     input_school: '西昌学院',
     input_place: '北校区',
-    input_apartment: '',
-    input_room: '',
+    input_apartment: wx.getStorageSync('input_apartment'),
+    input_room: wx.getStorageSync('input_room'),
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+    input_name: wx.getStorageSync('input_name'),
+    input_tel: wx.getStorageSync('input_tel'),
+    input_apartment: wx.getStorageSync('input_apartment'),
+    input_room: wx.getStorageSync('input_room'),
+    })
   },
 
   input_name(e) {
@@ -78,6 +83,8 @@ Page({
     } else {
       wx.setStorageSync('input_name', this.data.input_name);
       wx.setStorageSync('input_tel', this.data.input_tel);
+      wx.setStorageSync('input_apartment', this.data.input_apartment);
+      wx.setStorageSync('input_room', this.data.input_room);
       wx.setStorageSync('input_place', this.data.input_school + '' + this.data.input_place + '' + this.data.input_apartment + '-' + this.data.input_room);
       this.return_address()
     }
