@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-06-04 14:57:54
- * @LastEditTime: 2021-06-08 23:45:19
+ * @LastEditTime: 2021-06-10 18:54:50
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/wallet/wallet.js
@@ -14,6 +14,7 @@ Page({
    */
   data: {
     show_deposit: false,
+    show_fund_info: false,
     classify: '微信',
   },
 
@@ -26,7 +27,7 @@ Page({
   acquire_wallet() {
     var that = this
     wx.request({
-      url: 'http://127.0.0.1:8000/express/get_balance',
+      url: 'https://www.xiyuangezi.cn/express/get_balance',
       data: {
         studentId: wx.getStorageSync('studentId'),
       },
@@ -99,7 +100,7 @@ Page({
         }); */
     /* 现在发送一个后端请求！！！ */
     wx.request({
-      url: 'http://127.0.0.1:8000/express/withdraw',
+      url: 'https://www.xiyuangezi.cn/express/withdraw',
       data: {
         get_input_name: that.data.get_input_name,
         get_input_account: that.data.get_input_account,
@@ -121,6 +122,28 @@ Page({
     console.log("allllll");
     this.setData({
       get_input_money: this.data.wallet_nums
+    })
+  },
+  get_fund_info() {
+    var that = this
+    this.setData({
+      show_fund_info: !this.data.show_fund_info
+    })
+    wx.request({
+      url: 'https://www.xiyuangezi.cn/express/get_fund_info',
+      data: {
+        studentId: wx.getStorageSync('studentId'),
+      },
+      header: {
+        "content-type": "application/x-www-form-urlencoded"		//使用POST方法要带上这个header
+      },
+      method: "POST",
+      success: res => {
+        console.log(res.data);
+        that.setData({
+          info_list: res.data
+        })
+      }
     })
   }
 })

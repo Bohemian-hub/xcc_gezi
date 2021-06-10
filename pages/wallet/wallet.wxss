@@ -161,4 +161,41 @@ page{
     border-radius: 20rpx;
     background-color: rgb(179, 243, 61);
 }
-
+.info_all_pace{
+    max-height: 780rpx;
+    overflow: hidden;
+}
+.info_one{
+    width: 90%;
+    height: 120rpx;
+    margin: 0 auto;
+    background-color: rgba(250, 235, 215, 0);
+    border-bottom: 1rpx solid rgb(194, 194, 194);
+}
+.info_one_left{
+    width: 70%;
+    height: 100%;
+    float: left;
+}
+.info_one_right{
+    width: 30%;
+    height: 100%;
+    float: left;
+    text-align: right;
+}
+.info_one_left_top{
+    height: 60rpx;
+    line-height: 60rpx;
+    font-size: 35rpx;
+    color: black;
+}
+.info_one_left_bottom{
+    height: 60rpx;
+    font-size: 25rpx;
+    color: black;
+}
+.info_one_right_top{
+    line-height: 60rpx;
+    font-size: 35rpx;
+    font-weight: 700;
+}

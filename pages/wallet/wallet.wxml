@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-06-04 14:57:54
- * @LastEditTime: 2021-06-08 23:46:37
+ * @LastEditTime: 2021-06-10 14:38:50
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/wallet/wallet.wxml
@@ -25,7 +25,7 @@
 <view class="activity_money" style="display: {{wallet_nums2=='0.00'?'none':'block'}};">
     活动资金￥{{wallet_nums2}}
 </view>
-<view class="look_order">
+<view class="look_order" bindtap="get_fund_info">
     查看详单 >
 </view>
 <view class="button_tixian" bindtap="tixian" data-classify="alipay" style="background-color: rgb(34, 123, 206);"
@@ -68,6 +68,38 @@
 
 
     <image bindtap="tixian" class="guanbi" data-classify="guanbi"
+        src="https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/guanbi.png" mode="widthFix"
+        lazy-load="false" binderror="" bindload="">
+    </image>
+
+
+
+</view>
+
+<view class="input_info" style="display: {{show_fund_info?'block':'none'}};">
+    <view class="input_info_title">
+        交易明细
+    </view>
+    <view class="tishi">
+        温馨提示：订单完成、提现到账才会显示
+    </view>
+    <scroll-view class="info_all_pace" scroll-x="false" scroll-y="true">
+        <view class="info_one" wx:for="{{info_list}}">
+            <view class="info_one_left">
+                <view class="info_one_left_top">{{item.fields.express_name}}</view>
+                <view class="info_one_left_bottom">{{item.fields.change_time}}</view>
+            </view>
+            <view class="info_one_right">
+                <view class="info_one_right_top">￥{{item.fields.change_money}}</view>
+            </view>
+        </view>
+
+    </scroll-view>
+
+
+
+
+    <image bindtap="get_fund_info" class="guanbi" data-classify="guanbi"
         src="https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/guanbi.png" mode="widthFix"
         lazy-load="false" binderror="" bindload="">
     </image>
