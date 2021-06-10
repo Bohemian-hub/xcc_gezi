@@ -74,8 +74,8 @@ Page({
 
   },
   back_index() {
-    wx.switchTab({
-      url: '../index/index',
+    wx.navigateBack({
+      delta: 1,
     })
   },
 
