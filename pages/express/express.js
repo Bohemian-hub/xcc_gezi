@@ -386,7 +386,7 @@ Page({
     /* 这里是用户确认收件，在代取员将状态从接单2变成3时，我这里就提示带我确认了 */
     /* 来一个事件将订单状态 改成4，就是已经完结 */
     wx.request({
-      url: 'http://127.0.0.1:8000/express/receive_express', //仅为示例，并非真实的接口地址
+      url: 'https://www.xiyuangezi.cn/express/receive_express', //仅为示例，并非真实的接口地址
       data: {
         name: wx.getStorageSync('name'),
         order_id: e.currentTarget.dataset.id
