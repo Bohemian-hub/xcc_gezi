@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-03-30 11:02:43
- * @LastEditTime: 2021-06-07 09:27:01
+ * @LastEditTime: 2021-06-14 19:05:52
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/my/my.wxml
@@ -73,7 +73,7 @@
         </view>
 
     </view>
-    <view class="order">
+    <view class="order" style="display:{{show_order_panel?'block':'none'}}">
         <view class="order_title">
             ------兼职------
         </view>
@@ -103,6 +103,11 @@
     </view>
     <!-- function -->
     <view class="function">
+        <view class="function_one" bindtap="apply_catch" style="display:{{show_order_panel?'none':'block'}}">
+            <view style="float: left;">
+                代跑员认证 🔥🔥🔥
+            </view>
+        </view>
         <view class="function_one" bindtap="myaddress">配送地址</view>
         <view class="function_one" bindtap="count_down">倒计时</view>
         <view class="function_one" bindtap="talkback">反馈</view>
@@ -111,7 +116,7 @@
     <view class="clear_both">
 
     </view>
-    <view class="loginout" bindtap = "loginout">
+    <view class="loginout" bindtap="loginout">
         退出登录
     </view>
     <view class="copyright">

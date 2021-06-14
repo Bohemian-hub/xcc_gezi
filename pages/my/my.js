@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-03-30 11:02:43
- * @LastEditTime: 2021-06-07 10:41:55
+ * @LastEditTime: 2021-06-14 19:01:13
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/my/my.js
@@ -19,6 +19,7 @@ Page({
     already_order: [],
     complete_order: [],
     refund_order: [],
+    show_order_panel: false,
     shangpinpic: ['https://s3.ax1x.com/2021/03/12/6N4zx1.png', 'https://z3.ax1x.com/2021/04/02/cmlGAf.jpg', 'https://s3.ax1x.com/2021/03/12/6N4vG9.jpg', 'https://z3.ax1x.com/2021/04/02/cmlgCF.jpg', 'https://z3.ax1x.com/2021/04/02/cml234.jpg']
 
   },
@@ -31,6 +32,29 @@ Page({
       nickname: wx.getStorageSync('name'),
     })
     this.get_order()
+    this.Iamcatcher()
+  },
+  Iamcatcher() {
+    var that = this
+    wx.request({
+      url: 'https://www.xiyuangezi.cn/express/ifapply', //仅为示例，并非真实的接口地址
+      data: {
+        studentId: wx.getStorageSync('studentId'),
+      },
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      success(res) {
+        if (res.data[0].fields.check_num == 1) {
+          that.setData({
+            show_order_panel: true
+          })
+        }
+      }
+    })
+    wx.hideLoading();
+
   },
   get_order() {
     wx.showLoading({
@@ -142,6 +166,11 @@ Page({
     })
 
   },
+  apply_catch() {
+    wx.navigateTo({
+      url: '../express_catch/express_catch',
+    })
+  },
   notice() {
     wx.navigateTo({
       url: '../notice/notice',
@@ -182,7 +211,7 @@ Page({
       url: '../wallet/wallet',
     })
   },
-  myaddress(){
+  myaddress() {
     wx.navigateTo({
       url: '../myaddress/myaddress',
     })
