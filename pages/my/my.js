@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-03-30 11:02:43
- * @LastEditTime: 2021-06-14 19:01:13
+ * @LastEditTime: 2021-06-14 19:32:34
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/my/my.js
@@ -20,7 +20,11 @@ Page({
     complete_order: [],
     refund_order: [],
     show_order_panel: false,
-    shangpinpic: ['https://s3.ax1x.com/2021/03/12/6N4zx1.png', 'https://z3.ax1x.com/2021/04/02/cmlGAf.jpg', 'https://s3.ax1x.com/2021/03/12/6N4vG9.jpg', 'https://z3.ax1x.com/2021/04/02/cmlgCF.jpg', 'https://z3.ax1x.com/2021/04/02/cml234.jpg']
+    shangpinpic: ['https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/chanpintu/xiaopao.png',
+      'https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/chanpintu/kauidi.jpeg',
+      'https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/chanpintu/fan.jpeg',
+      'https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/chanpintu/dayin.jpeg',
+      'https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/chanpintu/xiudiannao.jpeg']
 
   },
 
