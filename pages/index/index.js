@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2021-04-18 22:25:47
+ * @LastEditTime: 2021-06-14 18:38:42
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.js
@@ -319,30 +319,46 @@ Page({
   },
   onLoad: function () {
 
-    var value = wx.getStorageSync('name')
+    this.setData({
+      student_name: wx.getStorageSync('name'),
+    })
     // if是说明如果没有本地信息,需要客户进行第一次认证,反之则不需要认证
-    if (!value) {
+    if (!this.data.student_name) {
       wx.redirectTo({
         url: '../login/login',
       })
-    } else {
-      this.setData({
-        student_name: wx.getStorageSync('name'),
-      })
-      /* 暂时不查看分享相关了 */
-      /*       this.get_share() */
     }
-
-    /* 这里调用函数来请求新闻 */
-
-    /*     this.get_passage() */
-
-
     /* 加载one一个接口获取数据 */
     const that = this;
     const index = 0;
-    that.Get_time();  //页面加载的时候获取一次时间，后面就每60秒在调用一次时间获取时间了
+    that.Get_time();  //页面加载的时候获取一次时间，后面就每60秒在调用一次时间获取时间了,就是获取天气其情况
     /*     that.jiaowu(); */
+    if (wx.getStorageSync('imageone_src')) {
+      that.setData({
+        imageone_src: wx.getStorageSync('imageone_src'),
+        sentence_size: wx.getStorageSync('sentence_size'),
+        sentence: wx.getStorageSync('sentence'),
+      })
+      console.log("已经有one图片了");
+    } else {
+      that.Get_one();
+    }
+
+    that.get_notice()
+    var ref = "";
+    /*     ref = setInterval(function () {
+          that.Get_time();
+    
+        }, 300000); */   //暂时取消五分钟获取一次天气，没有必要。
+
+    /* 请求倒计时相关，默认请求新年倒计时 */
+    that.get_count_time()
+
+
+  },
+  Get_one() {
+    /* 发送获取one 请求 */
+    var that = this
     wx.request({
 
       url: 'https://www.xiyuangezi.cn/one/', //仅为示例，并非真实的接口地址
@@ -355,31 +371,25 @@ Page({
           imageone_src: res.data.img_src,
           sentence: res.data.content
         })
+        /* ai the same time ,I save this pic_src to storage */
+        wx.setStorageSync('imageone_src', res.data.img_src);
+        wx.setStorageSync('sentence', res.data.content);
         if (!res.data.content) {
           that.setData({
             sentence: "这个年龄段你睡得着觉？"
           })
+          wx.setStorageSync('sentence', "这个年龄段你睡得着觉？");
         } else {
           if (res.data.content.length < 50) {
             that.setData({
               sentence_size: '22rpx',
             })
+            wx.setStorageSync('sentence_size', "22rpx");
           }
         }
 
       }
     })
-    that.get_notice()
-    var ref = "";
-    ref = setInterval(function () {
-      that.Get_time();
-
-    }, 300000);
-
-    /* 请求倒计时相关，默认请求新年倒计时 */
-    that.get_count_time()
-
-
   },
   downloadImg: function () {　　　　　　　　　　　　　　　　//触发函数
 
@@ -447,9 +457,13 @@ Page({
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
       success(res) {
-        console.log(res.data[0].fields.randomKey);
+        /*take the first news to panel */
+        that.setData({
+          inportance_notice: res.data[0]
+        })
+
         if (wx.getStorageSync("randomKey") != res.data[0].fields.randomKey) {
-          console.log("有新消息");
+          /* has news */
           that.setData({
             newnotice: true
           })
@@ -459,7 +473,6 @@ Page({
             /* 展示这条消息 */
             that.setData({
               importance_show: true,
-              inportance_notice: res.data[0]
             })
           }
         }

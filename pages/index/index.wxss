@@ -376,9 +376,9 @@ box-shadow: 0rpx 0rpx 5rpx #35aeb9;
   background-color: white;
   margin-bottom: 0;
   box-shadow: 0rpx 0rpx 20rpx rgb(216, 216, 216);
-background-image: url(https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/goodsbeijing.jpeg);
-background-size: 100%;
-}
+  background-image: url(https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/goodsbeijing.jpeg);
+  background-size: 100%;
+  }
 .news_panel{
   width: 90%;
 /*   height: 600rpx; */
@@ -699,4 +699,59 @@ background-size: 100%;
   bottom: 5rpx;
   background-image: url(https://s3.ax1x.com/2021/03/12/6N5Yzn.md.png);
   background-size: 100% 100%;
+}
+.notice_panel{
+  height: 100rpx;
+  width: 100%;
+  margin: 0 auto 40rpx auto;
+  box-shadow: 0rpx 0rpx 20rpx rgb(216, 216, 216);
+  position: relative;
+}
+.orange_shu{
+  height: 100%;
+  width: 2%;
+  background-color: orange;
+  margin-left: 45rpx;
+  float: left;
+}
+.notice_thing_one{
+  width: 70%;
+  float: left;
+  overflow: hidden;
+  margin-left: 20rpx;
+
+}
+.big_title{
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 30rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: left;
+  font-weight: 800;
+}
+.small_info{
+  height: 40rpx;
+  line-height: 40rpx;
+  font-size: 25rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: left;
+}
+.notice_classify_show{
+  position: absolute;
+  right: 40rpx;
+  top: 15rpx;
+  max-width: 25%;
+  height: 50rpx;
+  display: inline-block;
+  text-align: center;
+  font-size: 25rpx;
+  color: white;
+  background-color: pink;
+  padding: 0 20rpx;
+  line-height: 50rpx;
+  border-radius: 20rpx;
 }

@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2021-04-02 19:23:27
+ * @LastEditTime: 2021-06-14 18:48:06
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.wxml
@@ -99,7 +99,8 @@
 
 
             <view class="menu_left" bindtap="forum">
-                <image class="menu_left_icon" src="https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/luntan.png" mode="widthFix"
+                <image class="menu_left_icon"
+                    src="https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/luntan.png" mode="widthFix"
                     lazy-load="false" binderror="" bindload="" />
                 <view class="menu_left_text">
                     西院论坛
@@ -109,8 +110,9 @@
 
             <view class="menu_middle">
                 <view class="menu_middle_up" bindtap="xiyuanzhushou" data-id="教务">
-                    <image class="menu_middle_up_icon" src="https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/xiyuanzhushou.png" mode="widthFix"
-                        lazy-load="false" binderror="" bindload="" />
+                    <image class="menu_middle_up_icon"
+                        src="https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/xiyuanzhushou.png"
+                        mode="widthFix" lazy-load="false" binderror="" bindload="" />
 
                     <view class="menu_middle_up_text">
                         西院助手
@@ -118,8 +120,8 @@
                 </view>
 
                 <view class="menu_middle_down" bindtap="coursetable" data-id="微笑淘宝">
-                    <image class="menu_middle_up_icon" src="../../image/kebiao.png" mode="widthFix"
-                        lazy-load="false" binderror="" bindload="" />
+                    <image class="menu_middle_up_icon" src="../../image/kebiao.png" mode="widthFix" lazy-load="false"
+                        binderror="" bindload="" />
 
                     <view class="menu_middle_up_text">
                         格子课表
@@ -130,16 +132,18 @@
 
             <view class="menu_right">
                 <view class="menu_right_up" bindtap="single" data-id="单身档案">
-                    <image class="menu_middle_up_icon" src="https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/danshen.png" mode="widthFix"
-                        lazy-load="false" binderror="" bindload="" />
+                    <image class="menu_middle_up_icon"
+                        src="https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/danshen.png"
+                        mode="widthFix" lazy-load="false" binderror="" bindload="" />
 
                     <view class="menu_middle_up_text">
                         单身档案
                     </view>
                 </view>
                 <view class="menu_right_down" bindtap="makemoney">
-                    <image class="menu_middle_up_icon" src="https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/jianzhi.png" mode="widthFix"
-                        lazy-load="false" binderror="" bindload="" />
+                    <image class="menu_middle_up_icon"
+                        src="https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/jianzhi.png"
+                        mode="widthFix" lazy-load="false" binderror="" bindload="" />
 
                     <view class="menu_middle_up_text">
                         兼职挣钱
@@ -149,6 +153,25 @@
             </view>
         </view>
     </view>
+    <view class="notice_panel" bindtap="notice">
+        <view class="orange_shu">
+        </view>
+        <view class="notice_thing_one">
+            <view class="big_title">
+                {{inportance_notice.fields.notice_title}}
+            </view>
+            <view class="small_info">
+                {{inportance_notice.fields.notice_content}}
+            </view>
+        </view>
+        <view class="notice_classify_show">
+            {{inportance_notice.fields.notice_intro}}
+        </view>
+
+
+
+    </view>
+
     <view class="news_panel_back">
         <view class="news_panel">
             <view class="menu_all_title2">
