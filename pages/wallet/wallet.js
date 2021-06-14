@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-06-04 14:57:54
- * @LastEditTime: 2021-06-10 18:54:50
+ * @LastEditTime: 2021-06-14 11:07:24
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/wallet/wallet.js
@@ -16,6 +16,7 @@ Page({
     show_deposit: false,
     show_fund_info: false,
     classify: '微信',
+    get_input_money: ''
   },
 
   /**
@@ -36,7 +37,7 @@ Page({
       },
       method: "POST",
       success: res => {
-        console.log(res.data[0].fields.wallet.toFixed(2));
+        console.log(res.data);
         let money = res.data[0].fields.wallet.toFixed(2)
         let money2 = res.data[0].fields.wallet2.toFixed(2)
         that.setData({
@@ -56,20 +57,37 @@ Page({
     })
   },
   tixian(e) {
-    /* 提出提现选项；要求输入支付宝账号、 */
-    console.log(e);
-    if (e.target.dataset.classify == 'alipay') {
+    /* 判断当前是否可以提现，如果有未到账的资金，就不能提现 */
+    if (this.data.wallet_nums2 != '0.00' || this.data.get_input_money != '') {
+      wx.showModal({
+        title: '提示',
+        content: '您当前有一笔提现未到账，暂不可发起二次提现。',
+        showCancel: false,
+        confirmText: '确定',
+        confirmColor: '#3CC51F',
+        success: (result) => {
+          if (result.confirm) {
+
+          }
+        },
+      });
+    } else {
+      /* 提出提现选项；要求输入支付宝账号、 */
+      console.log(e);
+      if (e.target.dataset.classify == 'alipay') {
+        this.setData({
+          classify: '支付宝'
+        })
+      } else if (e.target.dataset.classify == 'wechatpay') {
+        this.setData({
+          classify: '微信'
+        })
+      }
       this.setData({
-        classify: '支付宝'
-      })
-    } else if (e.target.dataset.classify == 'wechatpay') {
-      this.setData({
-        classify: '微信'
+        show_deposit: !this.data.show_deposit
       })
     }
-    this.setData({
-      show_deposit: !this.data.show_deposit
-    })
+
   },
   get_input_name(e) {
     console.log(e.detail.value);
@@ -113,7 +131,27 @@ Page({
       },
       method: "POST",
       success: res => {
-        console.log(res);
+        console.log(res.data.loginnum);
+        if (res.data.loginnum == 200) {
+          /* 第一步关闭提现窗口。 */
+          this.setData({
+            show_deposit: !this.data.show_deposit
+          })
+          /* 展示提示框 */
+          wx.showModal({
+            title: '提示',
+            content: '提现已成功发起，预计24小时内到账！',
+            showCancel: false,
+            confirmText: '确定',
+            confirmColor: '#3CC51F',
+            success: (result) => {
+              if (result.confirm) {
+
+              }
+            },
+          });
+
+        }
       }
     })
 
