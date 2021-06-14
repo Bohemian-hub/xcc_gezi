@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-02-08 17:37:17
- * @LastEditTime: 2021-03-30 13:27:13
+ * @LastEditTime: 2021-06-14 18:48:57
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/notice/notice.js
@@ -39,9 +39,10 @@ Page({
     })
   },
   back() {
-    wx.switchTab({
-      url: '../my/my',
+    wx.navigateBack({
+      delta: 1
     });
+
   },
 
 })
