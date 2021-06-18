@@ -1,0 +1,18 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-06-15 21:48:27
+ * @LastEditTime: 2021-06-18 16:48:04
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /miniprogram-5/pages/welcome2/welcome2.wxml
+-->
+<image class="page1_text1" animation="{{animation1}}"
+    src="https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/welcome/welcome_text1.png" mode="widthFix"
+    lazy-load="false" binderror="" bindload="" />
+<image class="page1_sanjiao" animation="{{animation2}}"
+    src="https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/welcome/yuan_sanjiao.png" mode="widthFix"
+    lazy-load="false" binderror="" bindload="" />
+
+<view class="begin_use" animation="{{animation3}}" bindtap="gotoindex">
+    {{noword?'':'欢迎使用'}}
+</view>

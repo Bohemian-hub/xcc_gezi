@@ -1,0 +1,30 @@
+page{
+  background-color: #03affc;
+}
+.page1_text1{
+  width:10%;
+  height: auto;
+  margin-left: 45%;
+}
+.page1_sanjiao{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height:auto;
+  opacity: 0;
+}
+.begin_use{
+  width: 30%;
+  height:90rpx;
+  background-color: rgba(255, 255, 255) ;
+  position: fixed;
+  bottom: 190rpx;
+  left: 35%;
+  text-align: center;
+  line-height: 90rpx;
+  border-radius: 20rpx;
+  box-shadow: 2rpx 2rpx 10rpx rgb(255, 255, 255);
+  color: #164155;
+  opacity: .8;
+}
