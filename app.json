@@ -2,7 +2,10 @@
   "pages": [
 
     "pages/index/index",
-    "pages/wallet/wallet",
+    "pages/welcome/welcome",
+    "pages/welcome2/welcome2",
+    "pages/wallet/wallet",    
+
     "pages/express/express",
     "pages/my/my",
     "pages/express_catch/express_catch",
@@ -18,7 +21,7 @@
     "pages/forum/forum",
     "pages/address/address",
     "pages/setting/setting",
-    "pages/welcome/welcome",
+
     "pages/notice/notice",
     "pages/count_change/count_change",
     "pages/about/about",

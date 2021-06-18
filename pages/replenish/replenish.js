@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-03-15 09:56:56
- * @LastEditTime: 2021-06-07 10:44:30
+ * @LastEditTime: 2021-06-18 17:24:37
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/replenish/replenish.js
@@ -22,7 +22,8 @@ Page({
     send_fee: '',
     addition_status: '已填写',
     showbuchong: false,
-    liuyan: ''
+    liuyan: '',
+    canpay: 1
   },
 
   /**
@@ -165,34 +166,54 @@ Page({
     })
   },
   prepare_pay() {
-    console.log("已经获取到的信息：");
-    console.log(this.data.product_name);
-    console.log(this.data.product_size);
-    console.log(this.data.nums);
-    console.log(this.data.send_fee);
-    console.log(this.data.total_fee);
-    console.log(this.data.liuyan);
-    console.log(this.data.send_name);
-    console.log(this.data.send_tel);
-    console.log(this.data.send_place);
-    console.log(this.data.get_code);
-    console.log(this.data.get_weihao);
-    console.log(this.data.get_express);
-    console.log(this.data.get_qq);
+    /* 禁止二次点击 */
+    if (this.data.canpay) {
+      this.setData({
+        canpay: 0     //不能支付
+      })
+      setTimeout(() => {
+        this.setData({
+          canpay: 1     //不能支付
+        })
+      }, 5000);        //五秒钟后可以支付
+      console.log("已经获取到的信息：");
+      console.log(this.data.product_name);
+      console.log(this.data.product_size);
+      console.log(this.data.nums);
+      console.log(this.data.send_fee);
+      console.log(this.data.total_fee);
+      console.log(this.data.liuyan);
+      console.log(this.data.send_name);
+      console.log(this.data.send_tel);
+      console.log(this.data.send_place);
+      console.log(this.data.get_code);
+      console.log(this.data.get_weihao);
+      console.log(this.data.get_express);
+      console.log(this.data.get_qq);
 
-    if (this.data.send_name == '' || this.data.send_tel == '' || this.data.send_place == '' || this.data.addition_status == "未填写") {
-      /* 有任何一个数据没有填写的话那就直接信息填写不完善! */
+      if (this.data.send_name == '' || this.data.send_tel == '' || this.data.send_place == '' || this.data.addition_status == "未填写") {
+        /* 有任何一个数据没有填写的话那就直接信息填写不完善! */
+        wx.showModal({
+          title: '提示',
+          content: '请检查数据填写是否完整！',
+          showCancel: false,
+          confirmText: '确定',
+          confirmColor: '#3CC51F',
+        });
+      } else {
+        console.log("准备向后端发送数据！");
+        this.pay_money()
+      }
+    } else {
       wx.showModal({
         title: '提示',
-        content: '请检查数据填写是否完整！',
+        content: '请勿发起二次支付！',
         showCancel: false,
         confirmText: '确定',
         confirmColor: '#3CC51F',
       });
-    } else {
-      console.log("准备向后端发送数据！");
-      this.pay_money()
     }
+
   },
   yuantofen(val) {
     var s = val.split(".")

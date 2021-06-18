@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:33:47
- * @LastEditTime: 2021-05-15 00:26:20
+ * @LastEditTime: 2021-06-18 16:55:20
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/login/login.js
@@ -140,7 +140,7 @@ Page({
 
 
               wx.redirectTo({
-                url: '../welcome/welcome?usercount=' + res.data.usercount,
+                url: '../welcome2/welcome2?usercount=' + res.data.usercount,
               })
               setTimeout(function () {
                 wx.hideLoading()
