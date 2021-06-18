@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-08 23:29:46
- * @LastEditTime: 2021-06-14 18:38:42
+ * @LastEditTime: 2021-06-19 00:45:22
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/index/index.js
@@ -318,7 +318,9 @@ Page({
     })
   },
   onLoad: function () {
-
+    var myDate = new Date();
+    var month = myDate.getMonth() + 1
+    var date = month + "-" + myDate.getDate();
     this.setData({
       student_name: wx.getStorageSync('name'),
     })
@@ -333,7 +335,8 @@ Page({
     const index = 0;
     that.Get_time();  //页面加载的时候获取一次时间，后面就每60秒在调用一次时间获取时间了,就是获取天气其情况
     /*     that.jiaowu(); */
-    if (wx.getStorageSync('imageone_src')) {
+    if (wx.getStorageSync('imageone_src') && wx.getStorageSync('one_set_data') == date) {
+      /* 有图片链接并且是今天的图片链接    ，  就不用获取新的图片 */
       that.setData({
         imageone_src: wx.getStorageSync('imageone_src'),
         sentence_size: wx.getStorageSync('sentence_size'),
@@ -348,7 +351,7 @@ Page({
     var ref = "";
     /*     ref = setInterval(function () {
           that.Get_time();
-    
+     
         }, 300000); */   //暂时取消五分钟获取一次天气，没有必要。
 
     /* 请求倒计时相关，默认请求新年倒计时 */
@@ -358,6 +361,9 @@ Page({
   },
   Get_one() {
     /* 发送获取one 请求 */
+    var myDate = new Date();
+    var month = myDate.getMonth() + 1
+    var date = month + "-" + myDate.getDate();
     var that = this
     wx.request({
 
@@ -372,8 +378,10 @@ Page({
           sentence: res.data.content
         })
         /* ai the same time ,I save this pic_src to storage */
+
         wx.setStorageSync('imageone_src', res.data.img_src);
         wx.setStorageSync('sentence', res.data.content);
+        wx.setStorageSync('one_set_data', date);
         if (!res.data.content) {
           that.setData({
             sentence: "这个年龄段你睡得着觉？"
@@ -549,7 +557,7 @@ Page({
   /*   get_passage() {
       var that = this
       wx.request({
-  
+   
         url: 'https://www.xiyuangezi.cn/passage/get_passage', //仅为示例，并非真实的接口地址
         header: {
           'content-type': 'application/json' // 默认值
