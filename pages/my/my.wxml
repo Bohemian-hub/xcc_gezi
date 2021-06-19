@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-03-30 11:02:43
- * @LastEditTime: 2021-06-19 16:52:18
+ * @LastEditTime: 2021-06-19 17:11:30
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/my/my.wxml
@@ -80,7 +80,7 @@
 
         <view class="order_menu" bindtap="{{show_order_panel?'makemoney':'apply_catch'}}">
             <image class="iconf1" src="https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/daipeisong.png"
-                mode="widthFix" />
+                modpe="widthFix" />
             <view class="menu_name">
                 待配送
             </view>

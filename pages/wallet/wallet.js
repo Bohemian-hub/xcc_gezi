@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-06-04 14:57:54
- * @LastEditTime: 2021-06-14 11:07:24
+ * @LastEditTime: 2021-06-19 20:32:12
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/wallet/wallet.js

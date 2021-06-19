@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-01 10:00:16
- * @LastEditTime: 2021-06-14 19:37:54
+ * @LastEditTime: 2021-06-19 18:11:12
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express/express.js
@@ -48,11 +48,11 @@ Page({
     catcher_show: 0,
     clickable: 1,
     /* 自定义一个图片数据 */
-    shangpinpic: [  'https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/chanpintu/xiaopao.png',
-    'https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/chanpintu/kauidi.jpeg',
-    'https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/chanpintu/fan.jpeg',
-    'https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/chanpintu/dayin.jpeg',
-    'https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/chanpintu/xiudiannao.jpeg']
+    shangpinpic: ['https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/chanpintu/xiaopao.png',
+      'https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/chanpintu/kauidi.jpeg',
+      'https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/chanpintu/fan.jpeg',
+      'https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/chanpintu/dayin.jpeg',
+      'https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/chanpintu/xiudiannao.jpeg']
   },
 
   /**

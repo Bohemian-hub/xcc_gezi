@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-06-04 14:57:54
- * @LastEditTime: 2021-06-10 14:38:50
+ * @LastEditTime: 2021-06-19 20:30:47
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/wallet/wallet.wxml
@@ -23,7 +23,7 @@
     ￥{{wallet_nums}}
 </view>
 <view class="activity_money" style="display: {{wallet_nums2=='0.00'?'none':'block'}};">
-    活动资金￥{{wallet_nums2}}
+    提现中：￥{{wallet_nums2}}
 </view>
 <view class="look_order" bindtap="get_fund_info">
     查看详单 >

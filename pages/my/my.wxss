@@ -191,7 +191,8 @@ page{
 
 }
 .iconf1{
-    width: 75rpx;
+    width: 80rpx;
+    height: 80rpx;
     margin-top: 16rpx;
     margin-left: 50rpx;
 }
@@ -203,7 +204,7 @@ page{
 }
 .iconf3{
     width: 106rpx;
-    margin-top: 16rpx;
+    margin-top: 24rpx;
     margin-left: 84rpx;
     margin-bottom: 12rpx;
 }

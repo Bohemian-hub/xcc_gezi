@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-12-06 15:05:19
- * @LastEditTime: 2021-04-23 12:18:43
+ * @LastEditTime: 2021-06-19 19:42:40
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/express_catch/express_catch.wxml
@@ -57,7 +57,7 @@
         <view class="express_catch_one_content">
             <view class="express_catch_one_content_left">
                 <view class="express_catch_one_content_left_size">规格：{{item.fields.express_size}}</view>
-                <view class="express_catch_one_content_place">地址：{{item.fields.express_place}}</view>
+                <view class="express_catch_one_content_place">{{item.fields.express_place}}</view>
                 <view class="express_catch_one_content_date">下单时间：{{item.fields.order_time}}</view>
             </view>
             <view class="express_catch_one_content_right">

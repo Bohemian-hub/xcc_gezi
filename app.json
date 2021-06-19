@@ -1,11 +1,11 @@
 {
   "pages": [
-
+    "pages/my/my",
     "pages/index/index",
     "pages/welcome/welcome",
     "pages/welcome2/welcome2",
     "pages/wallet/wallet",    
-    "pages/my/my",
+
     "pages/express/express",
 
     "pages/express_catch/express_catch",
