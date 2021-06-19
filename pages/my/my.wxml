@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-03-30 11:02:43
- * @LastEditTime: 2021-06-14 19:05:52
+ * @LastEditTime: 2021-06-19 16:52:18
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /miniprogram-5/pages/my/my.wxml
@@ -73,19 +73,19 @@
         </view>
 
     </view>
-    <view class="order" style="display:{{show_order_panel?'block':'none'}}">
+    <view class="order2">
         <view class="order_title">
             ------兼职------
         </view>
 
-        <view class="order_menu" bindtap="makemoney">
+        <view class="order_menu" bindtap="{{show_order_panel?'makemoney':'apply_catch'}}">
             <image class="iconf1" src="https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/daipeisong.png"
                 mode="widthFix" />
             <view class="menu_name">
                 待配送
             </view>
         </view>
-        <view class="order_menu" bindtap="my_catch">
+        <view class="order_menu" bindtap="{{show_order_panel?'my_catch':'apply_catch'}}">
             <image class="iconf1"
                 src="https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/suoyoupeisong.png"
                 mode="widthFix" />
@@ -93,8 +93,11 @@
                 所有配送
             </view>
         </view>
-        <view class="order_menu" bindtap="mt_wallet">
-            <image class="iconf2" src="https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/qianbao.png"
+
+    </view>
+    <view class="order3">
+        <view class="order_menu2" bindtap="mt_wallet">
+            <image class="iconf3" src="https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/qianbao.png"
                 mode="widthFix" />
             <view class="menu_name">
                 钱包
@@ -108,6 +111,7 @@
                 代跑员认证 🔥🔥🔥
             </view>
         </view>
+        <view class="function_one" bindtap="myaddress">限时推广</view>
         <view class="function_one" bindtap="myaddress">配送地址</view>
         <view class="function_one" bindtap="count_down">倒计时</view>
         <view class="function_one" bindtap="talkback">反馈</view>

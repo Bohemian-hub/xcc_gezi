@@ -132,14 +132,25 @@ page{
     box-shadow: 0rpx 5rpx 20rpx rgb(212, 212, 212);
     overflow: hidden;
 }
-.order{
-    width: 90%;
+.order2{
+    width: 50%;
+    background-color: white;
+    height: 200rpx;
+    margin: 30rpx 40rpx;
+    border-radius: 20rpx;
+    box-shadow: 0rpx 5rpx 20rpx rgb(212, 212, 212);
+    overflow: hidden;
+    float: left;
+}
+.order3{
+    width: 34%;
     background-color: white;
     height: 200rpx;
     margin: 30rpx auto;
     border-radius: 20rpx;
     box-shadow: 0rpx 5rpx 20rpx rgb(212, 212, 212);
     overflow: hidden;
+    float: left;
 }
 .order_title{
     height: 50rpx;
@@ -151,11 +162,21 @@ page{
     font-weight: 600;
 }
 .order_menu{
-    width: 33%;
+    width: 48%;
     background-color: rgba(32, 115, 187, 0);
     height: 100%;
     float: left;
     
+}
+.order_menu2{
+    width: 100%;
+    background-color: rgba(32, 115, 187, 0);
+    height: 100%;
+    float: left;
+    
+}
+.order_menu2 > .menu_name{
+    font-size: 35rpx;
 }
 .order_more{
     text-align: right;
@@ -172,11 +193,17 @@ page{
 .iconf1{
     width: 75rpx;
     margin-top: 16rpx;
-    margin-left: 68rpx;
+    margin-left: 50rpx;
 }
 .iconf2{
     width: 55rpx;
     margin-top: 24rpx;
+    margin-left: 84rpx;
+    margin-bottom: 12rpx;
+}
+.iconf3{
+    width: 106rpx;
+    margin-top: 16rpx;
     margin-left: 84rpx;
     margin-bottom: 12rpx;
 }

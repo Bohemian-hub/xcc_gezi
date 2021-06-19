@@ -5,9 +5,9 @@
     "pages/welcome/welcome",
     "pages/welcome2/welcome2",
     "pages/wallet/wallet",    
-
-    "pages/express/express",
     "pages/my/my",
+    "pages/express/express",
+
     "pages/express_catch/express_catch",
     "pages/schedule/schedule",
     "pages/order_info/order_info",
