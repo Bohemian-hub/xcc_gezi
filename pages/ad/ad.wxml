@@ -1,0 +1,65 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-06-19 21:34:43
+ * @LastEditTime: 2021-06-19 23:52:54
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /miniprogram-5/pages/ad/ad.wxml
+-->
+<view class="title">
+    推广
+    <view class="back" bindtap="back_index">
+        <text class="cuIcon-back">
+
+        </text>
+    </view>
+</view>
+<!-- 分成三个板块，填写邀请码，我邀请的人数以及邀请码，操作介绍 -->
+<view class="write_invate_nums" style="display: {{write_invate_code?'block':'none'}};">
+    <input type="text" class="input_of_nums" placeholder="填写邀请码" bindinput="get_studentId" />
+    <button type="button" class="invate_push" value="确认" bindtap="push_invate">确定</button>
+</view>
+<view class="write_invate_nums" style="display: {{show_my_master?'block':'none'}};">
+    <view class="my_master">
+        我的邀请人：{{my_master}}
+    </view>
+
+</view>
+<view class="my_invate">
+    <view class="my_invate_title">
+        我邀请了：
+    </view>
+    <view class="my_invate_nums">
+        32人
+    </view>
+    <view class="my_invate_code">
+        我的推荐码：<font style="color: rgb(209, 128, 7);">{{studentId}}</font><a
+            style="margin-left: 20rpx;color: blue;">点击复制</a>
+    </view>
+
+
+</view>
+<view class="invate_rule">
+    <view class="invate_rule_title">
+        ————规则————
+    </view>
+    <view class="invate_tils">
+        <text>
+            1.本活动仅适用于西昌学院在校学生
+        </text>
+        <text>
+            2.邀请人将自己的推荐码告知被邀请者，被邀请人打开本小程序，输入邀请码后就算邀请成功。
+        </text>
+        <text>
+            3.填写完邀请码后不可更改，请确保填写正确
+        </text>
+        <text>
+            4.活动时间为2021-9-1 至2021-10-1
+        </text>
+        <text>
+            5.活动解释权归小程序开发者所有，平台按规定负责履行活动规则。
+        </text>
+    </view>
+
+
+</view>

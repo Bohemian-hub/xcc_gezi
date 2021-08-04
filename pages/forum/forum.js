@@ -642,6 +642,37 @@ Page({
       /* 现在数据发送到后台， */
       /* 保存此次的点赞信息 */
       console.log(that.data.display_forum_data[e.target.dataset.idx].fields.iflove);    //这个是当前我点的这个东西的点赞情况
+
+                /* 这里应该是将这一条数据中的lover清空重新渲染 */
+                if (that.data.display_forum_data[e.target.dataset.idx].fields.iflove == true) {
+                  /* 下面是点赞，前端的呈现数据变化 */
+                  let myname = wx.getStorageSync('name').split(',')
+                  console.log(that.data.display_forum_data[e.target.dataset.idx].fields.lover);
+                  if(that.data.display_forum_data[e.target.dataset.idx].fields.lover.indexOf(myname) == -1){
+                    //找到没有我的名字
+                    that.setData({
+                      ['display_forum_data[' + e.target.dataset.idx + '].fields.lover']: myname.concat(that.data.display_forum_data[e.target.dataset.idx].fields.lover),
+                    })
+                    console.log("没有我的名字");
+                  }
+                } else {
+                  /* 下面是取消赞时候，我需要在数组中删除我的名字 */
+                  let myname = wx.getStorageSync('name')
+                  for (let index = 0; index < that.data.display_forum_data[e.target.dataset.idx].fields.lover.length; index++) {
+                    if (that.data.display_forum_data[e.target.dataset.idx].fields.lover[index] == myname) 
+                    {
+                      console.log(index);
+                    that.data.display_forum_data[e.target.dataset.idx].fields.lover.splice(index, 1);
+                    this.setData({
+                      ['display_forum_data[' + e.target.dataset.idx + '].fields.lover']: that.data.display_forum_data[e.target.dataset.idx].fields.lover
+                    })
+                  }
+                  }
+                }
+      
+                /* 对某一个帖子点了赞或者取消赞，我们只需要发送这个帖子的forum_id获取该帖子的最新点赞情况计科 */
+                /* 没必要重新获取点赞列表，直接前端追加显示一下即可 */
+                
       wx.request({
         url: 'https://www.xiyuangezi.cn/forum/love', //仅为示例，并非真实的接口地址
         data: {
@@ -656,30 +687,7 @@ Page({
           'content-type': 'application/x-www-form-urlencoded' // 默认值
         },
         success: (result) => {
-          /* 这里应该是将这一条数据中的lover清空重新渲染 */
-          if (that.data.display_forum_data[e.target.dataset.idx].fields.iflove == true) {
-            /* 下面是点赞，前端的呈现数据变化 */
-            let myname = wx.getStorageSync('name').split(',')
-            that.setData({
-              ['display_forum_data[' + e.target.dataset.idx + '].fields.lover']: myname.concat(that.data.display_forum_data[e.target.dataset.idx].fields.lover),
-            })
-          } else {
-            /* 下面是取消赞时候，我需要在数组中删除我的名字 */
-            let myname = wx.getStorageSync('name')
-            for (let index = 0; index < that.data.display_forum_data[e.target.dataset.idx].fields.lover.length; index++) {
-              if (that.data.display_forum_data[e.target.dataset.idx].fields.lover[index] == myname) {
-                console.log(index);
-              }
-              that.data.display_forum_data[e.target.dataset.idx].fields.lover.splice(index, 1);
-              this.setData({
-                ['display_forum_data[' + e.target.dataset.idx + '].fields.lover']: that.data.display_forum_data[e.target.dataset.idx].fields.lover
-              })
 
-            }
-          }
-
-          /* 对某一个帖子点了赞或者取消赞，我们只需要发送这个帖子的forum_id获取该帖子的最新点赞情况计科 */
-          /* 没必要重新获取点赞列表，直接前端追加显示一下即可 */
 
         },
       });
