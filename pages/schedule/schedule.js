@@ -46,19 +46,19 @@ Page({
     var grade = wx.getStorageSync('grade')
     if (grade == "大一") {       //根据年级显示当前是哪一学期。并不是很常规的方法
       this.setData({
-        term: '大一下'
+        term: '大一上'
       })
     } else if (grade == "大二") {
       this.setData({
-        term: '大二下'
+        term: '大二上'
       })
     } else if (grade == "大三") {
       this.setData({
-        term: '大三下'
+        term: '大三上'
       })
     } else if (grade == "大四") {
       this.setData({
-        term: '大四下'
+        term: '大四上'
       })
     }
 
@@ -134,7 +134,7 @@ Page({
         console.log('请求超时');
         wx.showModal({
           title: '提示',
-          content: '请求超时，是否重新获取？',
+          content: '或因为教务系统问题，您的课表为空！',
           showCancel: true,
           cancelText: '取消',
           cancelColor: '#000000',
@@ -144,10 +144,6 @@ Page({
             if (result.confirm) {
               wx.redirectTo({
                 url: '../schedule/schedule',
-              })
-            } else {
-              wx.switchTab({
-                url: '../index/index',
               })
             }
           },
@@ -202,7 +198,7 @@ Page({
   Computation() {
     var oDate1, iDays
     var day2 = new Date();
-    oDate1 = new Date('2021-02-28')
+    oDate1 = new Date('2021-08-29')
     /* 这里应该是计算当前是这学期的第几周，上面的日期是开学的日期。 */
     iDays = parseInt(Math.abs(day2 - oDate1) / 1000 / 60 / 60 / 24)
     return Math.ceil(iDays / 7)
@@ -224,8 +220,8 @@ Page({
         pswd: wx.getStorageSync('password'),
         yanzheng: this.data.yanzheng, //new
         tokens: this.data.tokens,   //new
-        xnm: 2020,
-        xqm: 2,
+        xnm: 2021,
+        xqm: 1,
       }, // 向后端发送的数据，后端通过request.data拿到该数据
 
       success: (ret) => {

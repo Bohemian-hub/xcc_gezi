@@ -697,7 +697,7 @@ box-shadow: 0rpx 0rpx 5rpx #35aeb9;
   position: absolute;
   right: -5rpx;
   bottom: 5rpx;
-  background-image: url(https://s3.ax1x.com/2021/03/12/6N5Yzn.md.png);
+  background-image: url(https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/bought.png);
   background-size: 100% 100%;
 }
 .notice_panel{

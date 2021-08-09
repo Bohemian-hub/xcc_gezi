@@ -30,7 +30,7 @@
         我邀请了：
     </view>
     <view class="my_invate_nums">
-        32人
+       {{howmuch_i_invate}}人
     </view>
     <view class="my_invate_code">
         我的推荐码：<font style="color: rgb(209, 128, 7);">{{studentId}}</font><a

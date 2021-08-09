@@ -29,7 +29,7 @@ Page({
     })
     /* 现在去获取我的邀请人！！！ */
     wx.request({
-      url: 'http://127.0.0.1:8000/one/get_invate', //仅为示例，并非真实的接口地址
+      url: 'https://www.xiyuangezi.cn/one/get_invate', //仅为示例，并非真实的接口地址
       data: {
         studentId: wx.getStorageSync('studentId'),
       },
@@ -48,7 +48,7 @@ Page({
             write_invate_code: true   //需要填写邀请码
           })
         } else if (res.data == 999) {
-          //填写有错，需要重新填写师傅
+          //填写有错，需要重新填写师傅   //检验邀请码填写是否正确
           wx.showModal({
             title: '提示',
             content: '邀请码填写有误，请重新填写！',
@@ -73,6 +73,24 @@ Page({
         }
       }
     })
+    wx.request({
+      url: 'https://www.xiyuangezi.cn/one/get_howmuch_invate', //仅为示例，并非真实的接口地址
+      data: {
+        studentId: wx.getStorageSync('studentId'),
+      },
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      success(res) {
+        console.log(res.data.length);
+        that.setData({
+          howmuch_i_invate :res.data.length,
+        })
+      }
+       
+    })
+    
   },
   get_studentId(e) {
     console.log(e.detail.value);
@@ -80,10 +98,12 @@ Page({
       master_studentId: e.detail.value,
     })
   },
+
+  //实现师傅和徒儿的绑定
   push_invate() {
     console.log(this.data.master_studentId);
     wx.request({
-      url: 'http://127.0.0.1:8000/one/push_invate', //仅为示例，并非真实的接口地址
+      url: 'https://www.xiyuangezi.cn/one/push_invate', //仅为示例，并非真实的接口地址
       data: {
         studentId: wx.getStorageSync('studentId'),
         master_studentId: this.data.master_studentId
@@ -103,6 +123,11 @@ Page({
         }
       }
     })
-  }
+  },
+  back_index() {
+    wx.switchTab({
+      url: "../index/index",
+    });
+  },
 
 })
