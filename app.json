@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/forum/forum",
+
     "pages/ad/ad",
     "pages/my/my",
     "pages/index/index",
@@ -20,7 +20,7 @@
     "pages/replenish/replenish",
     "pages/share/share",
     "pages/product/product",
-
+    "pages/forum/forum",
     "pages/address/address",
     "pages/setting/setting",
 
