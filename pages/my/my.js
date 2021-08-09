@@ -220,6 +220,11 @@ Page({
       url: '../myaddress/myaddress',
     })
   },
+  adad(){
+    wx.navigateTo({
+      url: '../ad/ad',
+    })
+  },
   count_down() {
     wx.navigateTo({
       url: '../count_change/count_change',

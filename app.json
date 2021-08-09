@@ -1,9 +1,9 @@
 {
   "pages": [
-
+    "pages/index/index",
     "pages/ad/ad",
     "pages/my/my",
-    "pages/index/index",
+
     "pages/welcome/welcome",
     "pages/welcome2/welcome2",
     "pages/wallet/wallet",    
