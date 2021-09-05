@@ -22,13 +22,11 @@
 <view class="wallet_money">
     ￥{{wallet_nums}}
 </view>
-<view class="activity_money" style="display: {{wallet_nums2=='0.00'?'none':'block'}};">
-    提现中：￥{{wallet_nums2}}
-</view>
+
 <view class="look_order" bindtap="get_fund_info">
     查看详单 >
 </view>
-<view class="button_tixian" bindtap="tixian" data-classify="alipay" style="background-color: rgb(34, 123, 206);"
+<!-- <view class="button_tixian" bindtap="tixian" data-classify="alipay" style="background-color: rgb(34, 123, 206);"
     bindtap="tixian">
     <view
         style="width: 50rpx;height:50rpx;background-image:url(https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/zhifubao.png);float: left;background-size: 100%;margin-top: 20rpx;margin-left: 30rpx;">
@@ -36,7 +34,7 @@
     </view>
 
     支付宝提现
-</view>
+</view> -->
 <view class="button_tixian" bindtap="tixian" data-classify="wechatpay">
     <view
         style="width: 50rpx;height:50rpx;background-image:url(https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/weixin.png);float: left;background-size: 100%;margin-top: 20rpx;margin-left: 30rpx;">
@@ -50,19 +48,17 @@
         {{classify}}提现
     </view>
     <view class="tishi">
-        温馨提示：下午五点前提交的支付宝提现当日到账，微信提现次日24时前到账。 请认真填写提现信息，填错后果自负。
+        温馨提示：提现异常请及时联系客服,最低提现金额：1元。每日最多提现30元，大额提现请联系客服处理。
     </view>
-    <view style="clear:both"></view>
-    <view class="realname">真实姓名：</view>
-    <input class="input_name" type="text" bindinput="get_input_name"></input>
-    <view class="account">{{classify}}账号：</view>
-    <input class="input_account" type="text" bindinput="get_input_account"></input>
     <view class="account">{{classify}}金额：</view>
     <view class="yue_info">余额：￥{{wallet_nums}} <a class="all_withdraw" bindtap="all_withdraw">全部提现</a></view>
     <input class="input_account" type="text" bindinput="get_input_money" value="{{get_input_money}}"></input>
 
     <button class="deposit_button" bindtap="centain_withdraw">
         提现
+    </button>
+    <button class="deposit_button" open-type="contact" session-from="weapp">
+        在线联系客服
     </button>
 
 

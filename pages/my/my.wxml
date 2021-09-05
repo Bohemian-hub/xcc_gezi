@@ -111,7 +111,7 @@
                 代跑员认证 🔥🔥🔥
             </view>
         </view>
-        <view class="function_one" bindtap="adad">限时推广</view>
+<!--         <view class="function_one" bindtap="adad">限时推广</view> -->
         <view class="function_one" bindtap="myaddress">配送地址</view>
         <view class="function_one" bindtap="count_down">倒计时</view>
         <view class="function_one" bindtap="talkback">反馈</view>
