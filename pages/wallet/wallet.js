@@ -192,7 +192,7 @@ Page({
       show_fund_info: !this.data.show_fund_info
     })
     wx.request({
-      url: 'http://127.0.0.1:8000/express/get_fund_info',
+      url: 'https://www.xiyuangezi.cn/express/get_fund_info',
       data: {
         studentId: wx.getStorageSync('studentId'),
       },
