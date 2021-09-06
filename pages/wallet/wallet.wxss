@@ -86,8 +86,8 @@ page{
 .input_info{
     display: block;
     position: fixed;
-    width: 80%;
-    height: 1000rpx;
+    width: 85%;
+    height: 1034rpx;
     background-color: rgb(255, 253, 219);
     top: 300rpx;
     left: 10%;
@@ -167,35 +167,54 @@ page{
 }
 .info_one{
     width: 90%;
-    height: 120rpx;
-    margin: 0 auto;
+    height: 160rpx;
+    margin: 20rpx auto;
+    padding: 0 10px;
     background-color: rgba(250, 235, 215, 0);
-    border-bottom: 1rpx solid rgb(194, 194, 194);
+    box-shadow: 1px 5px 10px rgba(82, 82, 82, 0.336);
 }
 .info_one_left{
     width: 70%;
-    height: 100%;
+    height: 120rpx;
     float: left;
 }
 .info_one_right{
     width: 30%;
-    height: 100%;
+    height: 120rpx;
     float: left;
     text-align: right;
 }
 .info_one_left_top{
-    height: 60rpx;
-    line-height: 60rpx;
-    font-size: 35rpx;
-    color: black;
+    height: 80rpx;
+    line-height: 80rpx;
+    font-size: 50rpx;
+
 }
-.info_one_left_bottom{
-    height: 60rpx;
+.info_one_left_middle{
+    height: 40rpx;
+    line-height: 40rpx;
     font-size: 25rpx;
-    color: black;
+
+}
+
+.info_one_left_bottom{
+    height: 20rpx;
+    line-height: 20rpx;
+    font-size: 25rpx;
+
 }
 .info_one_right_top{
-    line-height: 60rpx;
+    line-height: 40rpx;
     font-size: 35rpx;
+    font-weight: 700;
+}
+.info_one_right_middle{
+    line-height: 40rpx;
+    font-size: 20rpx;
+    font-weight: 700;
+}
+.info_one_right_bottom{
+    line-height: 40rpx;
+    font-size: 20rpx;
     font-weight: 700;
 }

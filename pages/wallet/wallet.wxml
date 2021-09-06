@@ -77,17 +77,21 @@
         交易明细
     </view>
     <view class="tishi">
-        温馨提示：订单完成、提现到账才会显示
+        温馨提示：用户确认收货订单完成，资金入账；平台收取13%跑腿费，订单成本（饭钱，打印钱）不收费；提现免费。
     </view>
     <scroll-view class="info_all_pace" scroll-x="false" scroll-y="true">
-        <view class="info_one" wx:for="{{info_list}}">
+        <view class="info_one" wx:for="{{info_list}}" style="color: {{item.fields.express_name == '提现'?'red':'green'}};">
             <view class="info_one_left">
                 <view class="info_one_left_top">{{item.fields.express_name}}</view>
-                <view class="info_one_left_bottom">{{item.fields.change_time}}</view>
+                <view class="info_one_left_middle">时间:{{item.fields.change_time}}</view>
+                
             </view>
             <view class="info_one_right">
-                <view class="info_one_right_top">￥{{item.fields.change_money}}</view>
+                <view class="info_one_right_top">{{item.fields.express_name == '提现'?'-':'+'}}{{item.fields.change_money}}</view>
+                <view class="info_one_right_middle" style="color:#787878;display: {{item.fields.express_name == '提现'?'none':'block'}};">(配送费：{{item.fields.send_fee}})</view>
+                <view class="info_one_right_bottom" style="color:#787878;display: {{item.fields.express_name == '提现'?'none':'block'}}">(交易金额：{{item.fields.total_fee}})</view>
             </view>
+            <view class="info_one_left_bottom">单号:{{item.fields.transaction_id}}</view>
         </view>
 
     </scroll-view>
