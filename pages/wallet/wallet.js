@@ -154,12 +154,14 @@ Page({
                 confirmColor: '#3CC51F',
                 success: (result) => {
                   if (result.confirm) {
-    
+                    wx.redirectTo({
+                      url: '../wallet/wallet',
+                    })
                   }
                 },
               });
     
-            }else{
+            }else if (res.data.statusnum == 500) {
               wx.showModal({
                 title: '提示',
                 content: '提现失败，请联系客服或稍后重试!',
@@ -168,7 +170,24 @@ Page({
                 confirmColor: '#3CC51F',
                 success: (result) => {
                   if (result.confirm) {
-    
+                    wx.redirectTo({
+                      url: '../wallet/wallet',
+                    })
+                  }
+                },
+              });
+            }else if (res.data.statusnum == 666) {
+              wx.showModal({
+                title: '提示',
+                content: '请确保钱包金额足够!',
+                showCancel: false,
+                confirmText: '确定',
+                confirmColor: '#3CC51F',
+                success: (result) => {
+                  if (result.confirm) {
+                    wx.redirectTo({
+                      url: '../wallet/wallet',
+                    })
                   }
                 },
               });

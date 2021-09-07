@@ -21,73 +21,50 @@
     </view>
     <view class="content_text">
         <view class="content_p">
-            我是西昌学院信息技术学院18计科何东，本小程序由我于2020年11月开始独自开发完成,注册生产经营资质:义乌市松雷网络科技工作室,注册认证服务号:最美西院格子。西院格子小程序提供的各项服务和运作权均归我本人所有。
+            我是西昌学院-信息技术学院-18计科2班-何东，本小程序由我于2020年11月开始,至2021年9月独立开发完成。西院格子小程序提供的各项服务和运作权均归我本人所有。
         </view>
-        <view class="content_p">
-            我于2020年参加“中国大学生计算机设计大赛”和“小程序设计大赛”，自此开始开发基于本校的微信小程序，先后开发了易助——乐享校园生活、易街——校园二手平台。产品未正式上线运营。获得了省赛二等奖和国赛三等奖。从2020年九月开始，准备西院格子开发，以网页端开发做界面和交互设计，同时学习前后端相关技术，准备发布所需要的资质文件和平台认证，十一月三日正式开始了西院格子的代码编写。
-        </view>
-        <view class="content_p">项目经过了两个月夜以继日的辛苦开发后，于二月九日成功审核通过并上线试运营。</view>
     </view>
     <view class="content_title_h2">
-        2.使用声明
+        2.项目价值
+    </view>
+    <view class="content_text">
+        <view class="content_p">
+            2020计算机设计大赛 省赛 二等奖
+        </view>
+        <view class="content_p">
+            2020计算机设计大赛 国赛 三等奖        
+            </view>
+        <view class="content_p">
+            2021计算机设计大赛 省赛 一等奖        
+            </view>
+        <view class="content_p">
+            2021计算机设计大赛 省赛 三等奖        
+            </view>
+        <view class="content_p">
+            2021小程序开发大赛 西南赛区 二等奖
+        </view>
+    </view>
+    <view class="content_title_h2">
+        3.使用声明
     </view>
     <view class="content_text">
         <view class="content_p">
             平台用户系统基于本校教务系统，本小程序通过官方接口缓存本地以及加密上传至服务器，登陆成功及代表你已经同意将密码缓存在本地以及加密上传至服务器，非本小程序造成的任何账号密码相关问题与开发者无关。
         </view>
-    </view>
-    <view class="content_title_h2">
-        3.平台运营机制
-    </view>
-    <view class="content_text">
         <view class="content_p">
             本小程序属于校园社区平台，用户可根据意愿发布自定义内容，尽管平台接入了官方的内容安全审核接口，会对用户发布的内容进行审核，但仍希望用户不要报以侥幸，发布违反国家法律和地方组织规定的内容。平台用户均为西院学子，一经发现将采取如封号等相关处理。
         </view>
-        <view class="content_p">平台内容由用户新建发布更迭，出内容审核外，无人工干扰平台运营。</view>
     </view>
     <view class="content_title_h2">
         4.功能——西院社区
     </view>
-    <view class="content_title_h3">
-        4.1介绍
-    </view>
+
     <view class="content_text">
         <view class="content_p">
-            本版块功能如"QQ空间"，不同的是，用户发布的帖子可被全校学生看见，无需添加好友和关注用户，发帖子的人也只会是西院学生。
+            本版块功能如"QQ空间"，不同的是，用户发布的帖子可被全校学生看见，无需添加好友和关注用户，发帖子的人也只会是西院学生。可用于校园求助，失物招领。二手交易等等。
         </view>
         <view class="content_p">
-            发帖可以携带话题，出平台已经有的话题外，用户也可自定义话题，话题列表由热度排名。平台为校园实名性质平台，非组织认证的普通学生将在发布的帖子上展示发布者姓名、学院、年级、性别信息。认证后的用户发布的帖子的学院、年级标签将被替换成组织和职位名，不展示性别。认证相关介绍请继续往下看。
-        </view>
-    </view>
-    <view class="content_title_h3">
-        4.2活动
-    </view>
-    <view class="content_text">
-        <view class="content_p">
-            活动系西院社区的子功能，与普通帖子不同的是，活动贴经认证用户发布，如“兰亭书法协会举办书法展，邀请校内师生前往观览。”认证组织采用人工审核方式，认证后普通贴也将被赋予认证标签。有认证需求请联系开发者，联系方式见此文最下方。
-        </view>
-    </view>
-    <view class="content_title_h3">
-        4.3坦白说
-    </view>
-    <view class="content_text">
-        <view class="content_p">
-            和活动类似，坦白说是西院社区一种特殊的帖子，此类帖子不展示用户的头像、昵称、学院、年级、性别信息。为保证平台和谐有序，每个用户每日最多仅可发布一条匿名坦白说，坦白说发布和一般贴都清遵守相关法律法规，若有违规内容，将采取如封号等措施。
-        </view>
-    </view>
-    <view class="content_title_h3">
-        4.4求助
-    </view>
-    <view class="content_text">
-        <view class="content_p">
-            求助功能是基于西院社区的板块功能，用户通过求助的方式发布的内容江北整合在求助专区，吸引有条件有能力的同学给予帮助，发布者可提供适当的有偿条件，提高得到帮助的成功率。</view>
-    </view>
-    <view class="content_title_h3">
-        4.5热门
-    </view>
-    <view class="content_text">
-        <view class="content_p">
-            热门帖子是最近三天点赞数最多的帖子，岁实况变化，例外帖子将人工干预不占用热门。如点赞数相同，随缘展示。
+            发帖可以携带话题，出平台已经有的话题外，用户也可自定义话题，话题列表由热度排名。平台为校园实名质平台，非组织认证的普通学生将在发布的帖子上展示发布者姓名、学院、年级、性别信息。认证后的用户发布的帖子的学院、年级标签将被替换成组织和职位名，不展示性别。认证相关介绍请继续往下看。
         </view>
     </view>
     <view class="content_title_h2">
@@ -97,15 +74,32 @@
         <view class="content_p">教务功能提供学生课表以及成绩查询，数据来自教务系统，不做主要功能，临时使用，后续将跳转至「西院助手小程序」相关页面。</view>
     </view>
     <view class="content_title_h2">
-        6.功能——生活
+        6.功能——校园速跑
     </view>
     <view class="content_text">
-        <view class="content_p">生活区暂提供快递代取功能。</view>
-        <view class="content_p">欢迎使用西院格子快递代取功能，本格子提供的快递代取只适用于西昌学院在校学生。</view>
+        <view class="content_p">生活区暂提供快递代取，买饭，打印，修电脑预约等功能。</view>
+        <view class="content_p">欢迎使用西院格子速跑服务功能，本格子提供的快递代取只适用于西昌学院在校学生。</view>
         <view class="content_p">1. 学生在填写需求订单之后，会由我们指派的可信任的代取员取件,男生送至寝室，女生暂送至楼下或者宿管室。</view>
         <view class="content_p">2. 当订单被接取，代取费生效；接单后24小时若代取员未取，订单自动取消，代取费退回客户。</view>
         <view class="content_p">3. 若包裹过大过重或时间紧迫可适当增加小费，代取员会优先为您处理。</view>
         <view class="content_p">4.当包裹在从驿站拿出若有异常，代取员将反馈给客户，代取员不承担快递公司造成的包裹损坏，丢失，回寄等问题。</view>
+        <view class="content_p"></view>
+        <view class="content_p"></view>
+ 
+        <view class="content_title_h3">
+佣金计算公式
+        </view> 
+        <view class="content_p"></view>     
+        <view class="content_p"> 小跑、快速打印、专业带饭:</view>
+        <view class="content_p"> 入账（成本+收益） =  (总金额 - 配送费) + 配送费 * 0.87</view>
+        <view class="content_p"></view>
+        <view class="content_p"> 快递代取:</view>
+        <view class="content_p"> 入账（成本+收益） = 总金额 * 0.87</view>
+        <view class="content_p"></view>
+        <view class="content_p"> 上门电脑维修:</view>
+        <view class="content_p"> 入账（成本+收益） = 总金额 * 0.9</view>
+        
+
     </view>
     <view class="content_title_h2">
         7.功能——好物
@@ -117,7 +111,7 @@
         ８.功能——工具
     </view>
     <view class="content_text">
-        <view class="content_p">此区域现在已经提供私信，单身档案，共享通讯录等功能。后续会上线更多有趣的小功能，敬请期待。</view>
+        <view class="content_p">此区域现在已经提供单身档案功能。后续会上线更多有趣的小功能，敬请期待。</view>
     </view>
     <view class="content_title_h2">
         9.技术介绍
@@ -155,7 +149,7 @@
     </button>
     <view class="develop">
         <view>
-            西院格子 V2.2.0
+            西院格子 V2.2.2
         </view>
         <view>
             义乌市松雷网络科技工作室

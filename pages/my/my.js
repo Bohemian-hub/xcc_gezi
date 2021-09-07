@@ -50,7 +50,9 @@ Page({
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
       success(res) {
-        if (res.data[0].fields.check_num == 1) {
+        console.log(res);if (res.data.length == 0) {
+          
+        }else if (res.data[0].fields.check_num == 1) {
           that.setData({
             show_order_panel: true
           })
