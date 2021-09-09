@@ -318,6 +318,7 @@ Page({
     })
   },
   onLoad: function () {
+    
     var myDate = new Date();
     var month = myDate.getMonth() + 1
     var date = month + "-" + myDate.getDate();
@@ -333,6 +334,7 @@ Page({
     /* 加载one一个接口获取数据 */
     const that = this;
     const index = 0;
+    that.get_switch()
     that.Get_time();  //页面加载的时候获取一次时间，后面就每60秒在调用一次时间获取时间了,就是获取天气其情况
     /*     that.jiaowu(); */
     if (wx.getStorageSync('imageone_src') && wx.getStorageSync('one_set_data') == date) {
@@ -358,6 +360,28 @@ Page({
     that.get_count_time()
 
 
+
+  },
+  get_switch(){
+    const that = this;
+    wx.request({
+
+      url: 'http://127.0.0.1:8000/one/get_switch', //仅为示例，并非真实的接口地址
+      data: {
+        what: 'express'
+      },
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      success(res) {
+        console.log(res.data[0].fields.what);
+        console.log(res.data[0].fields.transformation_nums);
+        that.setData({
+          express_switch:res.data[0].fields.transformation_nums
+        })
+      }
+    })
   },
   Get_one() {
     /* 发送获取one 请求 */

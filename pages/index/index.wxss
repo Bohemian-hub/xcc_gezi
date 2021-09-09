@@ -378,7 +378,28 @@ box-shadow: 0rpx 0rpx 5rpx #35aeb9;
   box-shadow: 0rpx 0rpx 20rpx rgb(216, 216, 216);
   background-image: url(https://xcc-grid-1256135907.cos.ap-nanjing.myqcloud.com/tuchuang/goodsbeijing.jpeg);
   background-size: 100%;
+  position: relative;
   }
+  .news_panel_back_mengban{
+  position: absolute;
+  width: 100%;
+  height: 1760rpx;
+  background-color: #222423a1;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+
+    }
+    .cannotorder{
+      width: 100%;
+      color: rgb(10, 201, 58);
+      line-height: 40rpx;
+      font-size: 40rpx;
+      font-weight: 800;
+      text-align: center;
+      padding: 100rpx 20rpx 20rpx 20rpx;
+
+    }
 .news_panel{
   width: 90%;
 /*   height: 600rpx; */

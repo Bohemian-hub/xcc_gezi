@@ -173,6 +173,11 @@
     </view>
 
     <view class="news_panel_back">
+        <view class="news_panel_back_mengban" style="display:{{express_switch==0?'block':'none'}}">
+            <view class="cannotorder">
+                业务维护，暂不能下单，若已经下单，请在我的-订单中，取消订单。
+            </view>
+        </view>
         <view class="news_panel">
             <view class="menu_all_title2">
 
